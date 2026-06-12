@@ -1,0 +1,67 @@
+.error-boundary {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--paper);
+}
+.eb-inner {
+  max-width: 520px;
+  width: 100%;
+}
+.eb-id {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--danger);
+  margin-bottom: 0.75rem;
+}
+.eb-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-bottom: 0.875rem;
+  line-height: 1.2;
+}
+.eb-detail {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+.eb-technical {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.875rem 1rem;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  margin-bottom: 1.75rem;
+}
+.eb-technical-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.eb-technical-message {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--danger);
+  line-height: 1.5;
+  word-break: break-word;
+}
+.eb-return {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+}
+.eb-return:hover { text-decoration: underline; }

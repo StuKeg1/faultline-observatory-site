@@ -1,0 +1,192 @@
+/* ─── THE RECORD PAGE ─────────────────────────────────────── */
+
+.the-record-page {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+/* Header */
+.tr-header {
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+  padding: 0 2rem;
+}
+.tr-header-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 2.5rem 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: end;
+}
+.tr-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.5rem;
+}
+.tr-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--page-title-size);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+.tr-subtitle {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  max-width: 460px;
+  line-height: 1.6;
+}
+.tr-summary-block {
+  display: flex;
+  gap: 2rem;
+  align-items: end;
+  border-left: 1px solid var(--rule);
+  padding-left: 2rem;
+}
+.tr-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+.tr-stat-n {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+}
+.tr-stat-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Controls */
+.tr-controls {
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 2rem;
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 40;
+}
+.tr-controls-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.tr-search {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  padding: 0.5rem 0.875rem;
+  color: var(--ink);
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.tr-search:focus { border-color: var(--accent); }
+.tr-search::placeholder { color: var(--ink-faint); }
+
+.tr-filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.tr-filter-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+}
+.tr-filter-label select {
+  font-family: var(--mono);
+  font-size: 11px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  outline: none;
+}
+.tr-filter-label select:focus { border-color: var(--accent); }
+
+/* Results bar */
+.tr-results-bar {
+  padding: 0 2rem;
+  border-bottom: 1px solid var(--rule-light);
+  background: var(--paper);
+}
+.tr-results-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0.6rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.tr-results-count {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-mid);
+  letter-spacing: 0.04em;
+}
+.tr-clear-filters {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+}
+
+/* Record list */
+.tr-main {
+  padding: 0 2rem;
+}
+.tr-main-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+}
+.tr-record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.tr-empty {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-mid);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .tr-header-inner { grid-template-columns: 1fr; }
+  .tr-summary-block { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; flex-direction: row; }
+  .tr-stat { align-items: flex-start; }
+  .tr-filters { flex-direction: column; }
+}

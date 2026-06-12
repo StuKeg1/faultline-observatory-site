@@ -1,0 +1,281 @@
+/* ─── INSTITUTIONAL NOTES ─────────────────────────────────── */
+
+/* ── Index page ── */
+.notes-index-page {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.notes-header {
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+  padding: 0 2rem;
+}
+.notes-header-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 2.5rem 0 2rem;
+}
+.notes-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.75rem;
+}
+.notes-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--page-title-size);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+.notes-subtitle {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  max-width: 500px;
+}
+
+.notes-main { padding: 0 2rem; }
+.notes-main-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+}
+
+/* Note rows */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.note-row {
+  display: block;
+  background: var(--paper-card);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+.note-row:hover { background: var(--accent-dim); }
+
+.note-row-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.note-row-id {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.note-row-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+.note-row-summary {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.8125rem;
+  color: var(--ink-mid);
+  line-height: 1.55;
+  margin-bottom: 0.875rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.note-row-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--rule-light);
+  padding-top: 0.625rem;
+}
+.note-row-relation { color: var(--ink-mid); }
+
+/* ── Type badges ── */
+.note-type-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.ntb-founding-milestone   { color: #5a3a00; background: #fdf3e0; border-color: #d4a050; }
+.ntb-evidence-note        { color: #1a4a2a; background: #e8f4ec; border-color: #80b898; }
+.ntb-consultation-note    { color: #2a3a6a; background: #eaecf8; border-color: #8898d0; }
+.ntb-constitutional-review { color: #5a1a1a; background: #faeaea; border-color: #c08080; }
+.ntb-programme-observation { color: #2a4a5a; background: #e8f0f4; border-color: #7098b0; }
+.ntb-institutional-note   { color: #3a3a2a; background: #f0efe8; border-color: #a8a890; }
+
+/* ── Status badges ── */
+.note-status-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid var(--rule);
+  color: var(--ink-light);
+  white-space: nowrap;
+}
+.nstb-published { color: var(--state-replication); border-color: #90c8a8; background: var(--state-rep-bg); }
+.nstb-draft     { color: var(--state-audit); border-color: var(--state-audit-rule); background: var(--state-audit-bg); }
+.nstb-superseded { color: var(--ink-faint); border-color: var(--rule); }
+
+/* ── Detail page ── */
+.note-detail-page {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.note-detail-header {
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+  padding: 0 2rem;
+}
+.note-detail-header-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 2rem 0 2.5rem;
+}
+
+.note-breadcrumb {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+  margin-bottom: 1.5rem;
+}
+.note-breadcrumb a { color: var(--ink-light); text-decoration: none; }
+.note-breadcrumb a:hover { color: var(--accent); }
+.note-breadcrumb .bc-current { color: var(--ink); }
+
+/* Note passport — institutional wrapper */
+.note-passport {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: start;
+}
+.note-passport-id {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+.note-passport-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--page-title-size);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1rem;
+}
+.note-passport-summary {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* Metadata panel */
+.note-passport-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  border-left: 1px solid var(--rule);
+  padding-left: 2rem;
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.npm-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.npm-label {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.npm-value { color: var(--ink); font-weight: 400; }
+.npm-relation { font-size: 10px; color: var(--ink-mid); line-height: 1.4; }
+
+/* Note body — prose inside institutional shell */
+.note-body { padding: 0 2rem; }
+.note-body-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 3rem 0 4rem;
+}
+
+.note-block {
+  margin-bottom: 1.5rem;
+}
+.note-block-heading {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule-light);
+}
+.note-block:first-child .note-block-heading {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.note-block-text {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #3a3a36;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .note-passport { grid-template-columns: 1fr; }
+  .note-passport-meta {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .npm-row { min-width: 120px; }
+}

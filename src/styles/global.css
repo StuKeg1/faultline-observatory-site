@@ -1,0 +1,119 @@
+/* ─── GLOBAL BASE ──────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+button { cursor: pointer; }
+
+/* ─── LAYOUT UTILITIES ────────────────────────────────────── */
+.section-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 2.5rem 0;
+}
+
+.site-section {
+  padding: 0 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+/* ─── STATE BADGES ────────────────────────────────────────── */
+.state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 2px 7px 2px 5px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.state-badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.sb-assertion   { color: var(--state-assertion);   background: var(--state-assertion-bg);   border-color: #ccccc4; }
+.sb-published   { color: var(--state-published);   background: var(--state-published-bg);   border-color: #b0c0e0; }
+.sb-audit       { color: var(--state-audit);       background: var(--state-audit-bg);       border-color: var(--state-audit-rule); }
+.sb-replication { color: var(--state-replication); background: var(--state-rep-bg);         border-color: #90c8a8; }
+.sb-operation   { color: var(--state-operation);   background: var(--state-op-bg);          border-color: #80b0c0; }
+.sb-validated   { color: var(--state-validated);   background: var(--state-val-bg);         border-color: #b0a060; }
+.sb-contested   { color: var(--state-contested);   background: var(--state-contested-bg);   border-color: #c08080; }
+/* Original FCIF pressure states */
+.sb-emerging    { color: var(--state-emerging);    background: var(--state-emerging-bg);    border-color: #c0c0a8; }
+.sb-escalating  { color: var(--state-escalating);  background: var(--state-escalating-bg);  border-color: #b0c4de; }
+.sb-stabilising { color: var(--state-stabilising); background: var(--state-stabilising-bg); border-color: #a0c8a8; }
+.sb-fragmenting { color: var(--state-fragmenting); background: var(--state-frag-bg);        border-color: var(--state-frag-rule); }
+.sb-resolving   { color: var(--state-resolving);   background: var(--state-resolving-bg);   border-color: #b8a0d4; }
+.sb-collapsed   { color: var(--state-collapsed);   background: var(--state-collapsed-bg);   border-color: var(--state-collapsed-rule); }
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+.site-footer {
+  padding: 2rem;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+}
+.site-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .programme-grid   { grid-template-columns: 1fr !important; }
+  .activity-entry   { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+  .site-footer      { flex-direction: column; gap: 0.5rem; text-align: center; }
+}

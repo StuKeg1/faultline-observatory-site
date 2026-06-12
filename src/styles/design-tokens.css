@@ -1,0 +1,76 @@
+/* ─── FAULTLINE OBSERVATORY — DESIGN TUNING LAYER ────────────
+   This is the single file for visual iteration.
+   Change values here; everything else derives from them.
+   tokens.css owns: colours, fonts, state palette (do not move those here)
+   This file owns: sizes, weights, spacing, layout, contrast decisions
+──────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* ── Layout widths ── */
+  --width-content:      680px;   /* body text, record pages, notes */
+  --width-foyer:        860px;   /* homepage identity block — wider than content */
+  --width-wide:        1040px;   /* future: full-bleed sections if needed */
+
+  /* ── Nav ── */
+  --nav-height:          44px;
+  --nav-font-size:       12px;
+  --nav-letter-spacing:  0.05em;
+
+  /* ── Foyer / homepage ── */
+  --foyer-title-size:    clamp(2.5rem, 5vw, 4rem);
+  --foyer-title-weight:  400;
+  --foyer-title-tracking: -0.02em;
+  --foyer-top-padding:   3.5rem;
+  --foyer-custodian-size: 11px;
+  --foyer-statement-size: 1.0625rem;
+
+  /* ── Snapshot bar ── */
+  --snapshot-padding-y:  2rem;
+  --snapshot-number-size: 1.75rem;
+  --snapshot-activity-size: 1.125rem;
+
+  /* ── Section headings ── */
+  --section-title-size:  1.1875rem;
+  --section-gap:         2.25rem;   /* padding-top/bottom per section */
+
+  /* ── Body text ── */
+  --body-text-size:      1rem;
+  --body-text-color:     #3a3a36;   /* slightly warmer than raw --ink */
+  --body-line-height:    1.75;
+
+  /* ── Muted / secondary text ── */
+  --muted-text-color:    #7a7a73;   /* = --ink-light */
+  --faint-text-color:    #b8b8b0;   /* = --ink-faint */
+
+  /* ── Record IDs ── */
+  --record-id-size:      12px;
+  --record-id-weight:    500;
+  --record-id-tracking:  0.04em;
+
+  /* ── Mutation / activity notes ── */
+  --activity-note-size:  0.9375rem;
+  --activity-note-weight: 400;
+  --activity-note-color: var(--ink);   /* full ink — not muted */
+
+  /* ── Page headers (record, programme, notes) ── */
+  --page-title-size:     clamp(1.75rem, 3.5vw, 2.75rem);
+  --page-title-weight:   400;
+  --page-title-tracking: -0.015em;
+
+  /* ── Programme cards ── */
+  --prog-card-name-size: 1rem;
+  --prog-card-id-size:   9px;
+
+  /* ── Mono labels / eyebrows ── */
+  --label-size:          9px;
+  --label-tracking:      0.12em;
+
+  /* ── State badges ── */
+  --badge-font-size:     9.5px;
+
+  /* ── Footer ── */
+  --footer-font-size:    10px;
+  --footer-tracking:     0.04em;
+
+}

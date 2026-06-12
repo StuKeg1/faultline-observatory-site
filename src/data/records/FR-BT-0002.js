@@ -1,0 +1,129 @@
+/**
+ * FR-BT-0002 — Epigenetic Reprogramming — Biological Age Reversal Without Identity Loss
+ * Programme: PROG-BT
+ * Converted from HTML record by convert-records.js
+ *
+ * Constitutional rules:
+ * - assessments[] is append-only; currentAssessment is DERIVED, never stored here
+ * - mutationLog[] is append-only, newest first
+ * - Transition Feed is DERIVED from assessments where pressureState changed
+ */
+
+export const FR_BT_0002 = {
+  id: "FR-BT-0002",
+  programme: "PROG-BT",
+
+  claim: {
+    statement: "Epigenetic reprogramming can reverse biological age in living organisms without loss of cellular identity.",
+    shortLabel: "Epigenetic Reprogramming — Biological Age Reversal Without Identity Loss",
+    openedDate: "2024-01-15",
+  },
+
+  instances: [
+    {
+      id: "IN-001",
+      qualifiedEvent: "Yamanaka factors and iPSC reprogramming — the theoretical basis and its limits",
+      description: "Takahashi and Yamanaka (2006, Cell) demonstrate that four transcription factors (Oct4, Sox2, Klf4, c-Myc) can reprogram somatic cells to a pluripotent state, resetting epigenetic age to near-zero in the process. The Nobel Prize follows in 2012. This establishes that epigenetic age is not a fixed biological property — it can be reversed. However, full OSKM reprogramming destroys cellular identity: neurons, hepatocytes, and other differentiated cells lose their function when fully reprogrammed. The clinical application (restoring a tissue's function while reversing its epigenetic age) requires partial reprogramming that reverses the clock without completing the pluripotent transition. This is the theoretical boundary the claim straddles. The full reprogramming result is supportive evidence that epigenetic age reversal is physically possible; it is not itself a demonstration of the claim, which requires identity preservation.",
+      vectors: ["supportive--epigenetic-age-reversal-possible-full-reprogramming-excludes-identity"],
+      date: "2006–16",
+    },
+    {
+      id: "IN-002",
+      qualifiedEvent: "Ocampo et al. and cyclic reprogramming — partial reprogramming in mice",
+      description: "Ocampo et al. (Belmonte lab, Salk Institute, 2016, Cell) demonstrate that cyclic short-term induction of OSKM in a progeria mouse model (expressing a premature aging phenotype) extends lifespan by approximately 30% and reduces aging hallmarks without inducing tumours or loss of cellular identity. The key finding is that intermittent, limited OSKM expression reverses some epigenetic aging marks without completing dedifferentiation. The result is in a disease model (progeria) rather than normal aging, and in mice rather than humans. Lu et al. (Harvard, 2020, Nature) demonstrate partial reprogramming in retinal ganglion cells restores vision in aged mice with optic nerve damage, reducing epigenetic age of the cells and recovering visual function. Both results provide strong preclinical evidence for partial epigenetic reprogramming without identity loss. Both are in mice. Neither addresses the clinical translation question.",
+      vectors: ["supportive--partial-reprogramming-without-identity-loss-in-mice"],
+      date: "2016–20",
+    },
+    {
+      id: "IN-003",
+      qualifiedEvent: "Altos Labs, Retro Biosciences, and partial reprogramming race — field industrialises",
+      description: "Altos Labs, founded in 2022 with approximately $3 billion in funding (Bezos, Milner, and others), hires leading reprogramming researchers including Shinya Yamanaka as chairman. Retro Biosciences raises $180M with Sam Altman personally funding. The Belmonte and Sinclair labs publish additional partial reprogramming results in mice showing epigenetic age reduction across multiple tissues. The field transitions from academic curiosity to heavily capitalised research programme. No human trials of partial epigenetic reprogramming have been initiated as of 2024. The capital commitment constitutes the fifth occurrence of anticipatory institutional evidence in the corpus. The claim transitions from EMERGING to ESCALATING: the mechanism is established in multiple mouse models, the field is serious and well-funded, and the evidence trajectory toward human trials is credible, though the human clinical evidence gap is complete — no human data exists yet.",
+      vectors: ["partial--strong-mouse-evidence-zero-human-clinical-evidence"],
+      date: "2021–23",
+    },
+    {
+      id: "IN-004",
+      qualifiedEvent: "Clock validity debate — does epigenetic age reversal reflect genuine rejuvenation?",
+      description: "As partial reprogramming evidence accumulates, a methodological dispute intensifies: do epigenetic clocks measure biological age in a way that makes \"reversal\" meaningful, or are they measuring something more limited? Morgan Levine, Jesse Poganik, and colleagues publish work showing that epigenetic clocks can be artificially reset by interventions (including caloric restriction and certain drugs) without clear organismal benefit, raising questions about whether clock reversal is a reliable surrogate for genuine rejuvenation. This is a BN-001-adjacent issue: \"biological age reversal\" may be a well-defined clock measurement without being a well-defined biological state. The dispute is not about whether OSKM reverses clock readings — it does — but about whether clock reversal constitutes the thing the claim asserts. This is the measurement-versus-reality question identified in the pre-production check, appearing in the evidence exactly as predicted.",
+      vectors: ["contesting--clock-validity-as-rejuvenation-surrogate-disputed"],
+      date: "2023–24",
+    },
+    {
+      id: "IN-005",
+      qualifiedEvent: "Partial reprogramming in non-human primates — bridging toward human evidence",
+      description: "Multiple groups publish or present preliminary results of partial reprogramming in non-human primates (NHPs), primarily cynomolgus macaques. Results show epigenetic age reduction in peripheral blood cells and some tissue samples without obvious toxicity or identity loss at doses tested. NHP results are a meaningful intermediate step between mouse models and human trials — primates share substantially more biology with humans than rodents, and safety signals in NHPs are more predictive. However, NHP epigenetic clock measurements are themselves methodologically contested (the clocks were calibrated on human data), and the functional consequences of clock reversal in NHPs have not been assessed on timescales sufficient to evaluate healthspan effects. The record notes these as partial supportive evidence: the mechanism is extending toward human-relevant biology, but the human clinical evidence gap remains complete.",
+      vectors: ["partial--nhp-evidence-human-clinical-gap-persists"],
+      date: "2024",
+    }
+  ],
+
+  assessments: [
+    // APPEND-ONLY. Do not modify existing entries.
+    {
+      id: "AS-001",
+      date: "2024-01-15",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "The claim has not been satisfied in humans. Partial epigenetic reprogramming without loss of cellular identity has been demonstrated in multiple mouse models and is extending toward non-human primates. No human clinical trials have been initiated. The biological mechanism is well-established: OSKM and related factors can reset epigenetic age marks; partial expression can do so without completing dedifferentiation; and the process produces functional improvements in at least some mouse tissues. T",
+      assessorNote: null,
+    }
+  ],
+
+  mechanisms: [
+    {
+      id: "RM-001",
+      type: "RESISTANCE MECHANISM",
+      description: "Safety window for partial reprogramming in humans. OSKM expression is potently oncogenic at high doses or sustained expression. The therapeutic window — sufficient expression to reverse epigenetic aging marks without inducing dedifferentiation or tumour formation — has been demonstrated in mice but not characterised in humans or non-human primates at clinically relevant doses. The safety constrain",
+    },
+    {
+      id: "BN-001",
+      type: "BOTTLENECK",
+      description: "Biological age measurement validity. The claim requires that biological age be reversed. The primary measurement tool — epigenetic clocks — is contested as a surrogate for genuine rejuvenation. Clocks can be reset by interventions that may not produce functional benefit. If clock reversal and functional rejuvenation are dissociable — if the clock can be moved without changing organismal biology in",
+    },
+    {
+      id: "AT-001",
+      type: "ATTRACTOR",
+      description: "First human safety data and validated functional outcome biomarkers. Two developments would materially advance this record: first, Phase I human trials demonstrating safe OSKM induction at partial reprogramming doses with measurable epigenetic clock reversal and no adverse dedifferentiation signals; second, validated functional outcome biomarkers that correlate with clock reversal and demonstrate ",
+    }
+  ],
+
+  lineage: {
+    items: [
+    { year: "2006", text: "Yamanaka reprogramming. Full OSKM reprogramming resets epigenetic age to near-zero. Cellular identity destroyed. The age reversal principle is established; the identity preservation constraint opens as the key unsolved problem." },
+    { year: "2016", text: "Cyclic partial reprogramming in progeria mice. Ocampo et al. demonstrate lifespan extension without tumour formation through intermittent OSKM. The claim becomes experimentally tractable. Partial reprogramming as a therapeutic concept enters the field." },
+    { year: "2019–21", text: "Epigenetic clock reversal demonstrated in multiple tissues. Lu et al. and others demonstrate partial reprogramming in specific tissues (retina, muscle) with functional benefit in aged mice. The claim's mechanistic basis is substantially established in rodent models." },
+    { year: "2022–23", text: "Major capitalisation and NHP extension. Altos Labs, Retro Biosciences, and related companies raise billions. NHP studies begin. The field transitions from academic research to clinical development programme. Human trials remain absent." },
+    { year: "2023–24", text: "Clock validity dispute matures. The measurement validity of epigenetic clocks as rejuvenation surrogates is formally contested. The field must resolve whether clock reversal is sufficient evidence for the claim or whether functional outcomes are required independently." }
+    ],
+    relatedRecords: [],
+  },
+
+  openQuestions: [
+    {
+      id: "OQ-001",
+      question: "INST-003 (Altos Labs capitalisation) constitutes the fifth occurrence of anticipatory institutional evidence. RN-004 was issued at three occurrences and noted that a fourth occurrence would warrant an update. A fifth occurrence in a new programme strengthens the case for RN-004 update further. Is a pattern now visible across three programmes?",
+      raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-002",
+      question: "The clock validity dispute (INST-004) is structurally similar to the FR-AI-0006 mechanism coherence dispute: both ask whether a measurement tool is tracking the thing it purports to measure. Does this suggest a general phenomenon — measurement validity as a resistance mechanism — or is it specific to certain frontier domains?",
+      raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-003",
+      question: "FR-BT-0001 and FR-BT-0002 are structurally adjacent but not related through evidence or ancestry in the way FR-MF-0001 and FR-MF-0002 were related. They share a programme and a validation constraint but have independent evidence trails. Does programme membership without evidence relationship constitute a weaker or different kind of programme structure than the PROG-MF genetic relationship?",
+      raisedDate: "2024-01-15",
+    }
+  ],
+
+  mutationLog: [
+    // APPEND-ONLY. Newest first.
+    { id: "M-005", date: "2024-01-15", field: "diagnostic_tendency_confirmed", from: "—", to: "DIAGNOSTIC-TENDENCY-CONFIRMED", note: "" },
+    { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
+    { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
+    { id: "M-002", date: "2024-01-15", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "" },
+    { id: "M-001", date: "2024-01-15", field: "record_created", from: "—", to: "RECORD-CREATED", note: "" }
+  ],
+
+  status: "open",
+};

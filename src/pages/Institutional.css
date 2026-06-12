@@ -1,0 +1,182 @@
+/* ─── INSTITUTIONAL PAGE TEMPLATE ────────────────────────────
+   Covers: Programmes index, Methodology, About, Search
+   Replaces all inline styles in Stubs.jsx
+──────────────────────────────────────────────────────────── */
+
+.inst-page {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+/* ── Header ── */
+.inst-header {
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+  padding: 3rem 2rem 2.5rem;
+}
+.inst-header-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+}
+.inst-eyebrow {
+  font-family: var(--mono);
+  font-size: var(--label-size);
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.75rem;
+}
+.inst-title {
+  font-family: var(--serif);
+  font-weight: var(--page-title-weight);
+  font-size: var(--page-title-size);
+  line-height: 1.1;
+  letter-spacing: var(--page-title-tracking);
+}
+
+/* ── Body ── */
+.inst-body {
+  padding: 0 2rem;
+}
+.inst-body-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 2.5rem 0 4rem;
+}
+.inst-intro {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+/* ── Programmes index ── */
+.inst-prog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.inst-prog-row {
+  display: block;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+.inst-prog-row:hover { background: var(--accent-dim); }
+.inst-prog-row--filled { background: var(--paper-card); }
+.inst-prog-row--empty  { background: var(--paper); }
+.inst-prog-row__id {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-mid);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+.inst-prog-row__name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.inst-prog-row--empty .inst-prog-row__name { color: var(--ink-mid); }
+.inst-prog-row__desc {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+  line-height: 1.45;
+}
+.inst-prog-row__count {
+  font-family: var(--mono);
+  font-size: 10px;
+  margin-top: 0.75rem;
+}
+.inst-prog-row--filled .inst-prog-row__count { color: var(--ink-mid); }
+.inst-prog-row--empty  .inst-prog-row__count { color: var(--ink-faint); }
+
+/* ── Methodology term/definition grid ── */
+.inst-method-intro {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+}
+.inst-term-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.inst-term {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  padding-top: 0.1rem;
+  line-height: 1.5;
+}
+.inst-def {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  color: var(--body-text-color);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+/* ── About sections ── */
+.inst-about-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.inst-about-block {
+  padding-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule-light);
+}
+.inst-about-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.inst-about-heading {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.75rem;
+}
+.inst-about-body {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: var(--body-text-size);
+  line-height: var(--body-line-height);
+  color: var(--body-text-color);
+}
+
+/* ── Search ── */
+.inst-search-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+.inst-search-note a { color: var(--accent); }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .inst-term-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
