@@ -9,7 +9,7 @@ import ErrorBoundary from "./components/ErrorBoundary.jsx";
 // Homepage and shared layout load immediately.
 // Stubs are small — no benefit splitting them.
 import Home from "./pages/Home.jsx";
-import { Programmes, Methodology, About, Search } from "./pages/Stubs.jsx";
+import { Programmes, Methodology, About, Search, HowToRead, GuidesIndex, UsingWithClaude } from "./pages/Stubs.jsx";
 
 // ─── LAZY ────────────────────────────────────────────────────
 // Heavy pages split into separate chunks.
@@ -56,6 +56,10 @@ export default function App() {
           <Route path="/search"                   element={<Search />} />
           <Route path="/notes"                    element={<NotesIndex />} />
           <Route path="/notes/:noteId"            element={<NoteDetail />} />
+          <Route path="/how-to-read"              element={<HowToRead />} />
+          <Route path="/guides"                   element={<GuidesIndex />} />
+          <Route path="/guides/how-to-read"       element={<HowToRead />} />
+          <Route path="/guides/using-with-claude" element={<UsingWithClaude />} />
           <Route path="/tokens"                   element={<TokenPreview />} />
           <Route path="*"                         element={<NotFound />} />
         </Routes>

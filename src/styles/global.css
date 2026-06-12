@@ -111,6 +111,18 @@ button { cursor: pointer; }
   gap: 8px;
 }
 
+.site-footer-guides {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.site-footer-guides a {
+  color: var(--ink-faint);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.site-footer-guides a:hover { color: var(--ink-mid); }
+
 /* ─── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 700px) {
   .programme-grid   { grid-template-columns: 1fr !important; }
