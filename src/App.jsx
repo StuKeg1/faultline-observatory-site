@@ -20,6 +20,7 @@ const Programme     = lazy(() => import("./pages/Programme.jsx"));
 const NotesIndex    = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NotesIndex })));
 const NoteDetail    = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NoteDetail })));
 const TokenPreview  = lazy(() => import("./pages/TokenPreview.jsx"));
+const InstitutionalHealth = lazy(() => import("./pages/InstitutionalHealth.jsx"));
 
 function NotFound() {
   return (
@@ -60,6 +61,7 @@ export default function App() {
           <Route path="/guides"                   element={<GuidesIndex />} />
           <Route path="/guides/how-to-read"       element={<HowToRead />} />
           <Route path="/guides/using-with-claude" element={<UsingWithClaude />} />
+          <Route path="/institutional-health"     element={<InstitutionalHealth />} />
           <Route path="/tokens"                   element={<TokenPreview />} />
           <Route path="*"                         element={<NotFound />} />
         </Routes>
