@@ -79,7 +79,7 @@
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(245,243,236,0.55);
+  color: rgba(245,243,236,0.72);
   margin-bottom: 1.1rem;
 }
 .snapshot-fields {
@@ -104,7 +104,7 @@
   font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(245,243,236,0.60);
+  color: rgba(245,243,236,0.75);
 }
 .sf-activity { gap: 0.3rem; }
 .sf-activity .sf-label { margin-bottom: 0.35rem; }
@@ -126,7 +126,7 @@
 .sf-date {
   font-family: var(--mono);
   font-size: 11px;
-  color: rgba(245,243,236,0.60);
+  color: rgba(245,243,236,0.75);
 }
 
 /* ── Sections ── */
@@ -152,7 +152,7 @@
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-light);
+  color: var(--ink-mid);
 }
 .foyer-section-title {
   font-family: var(--serif);
@@ -188,7 +188,7 @@
 .far-date {
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--ink-mid);
+  color: var(--ink);
   white-space: nowrap;
 }
 .far-id {
@@ -246,7 +246,8 @@
 .fpc-count {
   font-family: var(--mono);
   font-size: 10px;               /* was 9.5px */
-  color: var(--ink-mid);
+  color: var(--ink-mid);  letter-spacing: 0.04em;
+}
 /* ── Quiet links ── */
 .foyer-links {
   padding: 0 2rem;
@@ -316,7 +317,7 @@
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(245,243,236,0.55);
+  color: rgba(245,243,236,0.72);
   margin-bottom: 1rem;
 }
 .snapshot-fields {
@@ -341,7 +342,7 @@
   font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(245,243,236,0.60);
+  color: rgba(245,243,236,0.75);
 }
 /* Latest activity — link + date side by side */
 .sf-activity { gap: 0.3rem; }
@@ -363,7 +364,7 @@
 .sf-date {
   font-family: var(--mono);
   font-size: 11px;
-  color: rgba(245,243,236,0.60);
+  color: rgba(245,243,236,0.75);
 }
 
 /* ── Sections ── */
@@ -387,7 +388,7 @@
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-light);
+  color: var(--ink-mid);
 }
 .foyer-section-title {
   font-family: var(--serif);
@@ -423,7 +424,7 @@
 .far-date {
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--ink-mid);
+  color: var(--ink);
   white-space: nowrap;
 }
 .far-id {

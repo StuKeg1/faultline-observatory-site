@@ -117,7 +117,7 @@ button { cursor: pointer; }
   align-items: center;
 }
 .site-footer-guides a {
-  color: var(--ink-faint);
+  color: var(--ink-light);
   text-decoration: none;
   transition: color 0.15s;
 }
