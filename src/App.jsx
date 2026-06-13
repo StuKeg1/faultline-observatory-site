@@ -19,6 +19,8 @@ const FrontierRecord = lazy(() => import("./pages/FrontierRecord.jsx"));
 const Programme     = lazy(() => import("./pages/Programme.jsx"));
 const NotesIndex    = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NotesIndex })));
 const NoteDetail    = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NoteDetail })));
+const EventsIndex   = lazy(() => import("./pages/Events.jsx"));
+const EventDetail   = lazy(() => import("./pages/Events.jsx").then(m => ({ default: m.EventDetail })));
 const TokenPreview  = lazy(() => import("./pages/TokenPreview.jsx"));
 const InstitutionalHealth = lazy(() => import("./pages/InstitutionalHealth.jsx"));
 
@@ -49,6 +51,12 @@ export default function App() {
           } />
           <Route path="/the-record/:recordId/" element={
             <ErrorBoundary context="record"><FrontierRecord /></ErrorBoundary>
+          } />
+          <Route path="/events" element={
+            <ErrorBoundary context="events"><EventsIndex /></ErrorBoundary>
+          } />
+          <Route path="/events/:eventId" element={
+            <ErrorBoundary context="event"><EventDetail /></ErrorBoundary>
           } />
           <Route path="/programmes"               element={<Programmes />} />
           <Route path="/programmes/:programmeId"  element={<Programme />} />

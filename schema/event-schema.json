@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://faultlinewatch.com/schema/event-schema.json",
+  "title": "Faultline Observatory Event",
+  "description": "Canonical schema for Observatory Events. Event JSON files are the source of truth for the Event Archive and downstream renderings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventType",
+    "recordId",
+    "programme",
+    "timestamp",
+    "summary",
+    "url"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "pattern": "^OE-[0-9]{4}-[0-9]{4}$"
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "record-created",
+        "assessment-changed",
+        "verification-stage-changed",
+        "programme-created"
+      ]
+    },
+    "recordId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^FR-[A-Z]{2,4}-[0-9]{4}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "programme": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,4}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://faultlinewatch\\.com/.+"
+    },
+    "claimTitle": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previousPressureState": {
+      "type": "string",
+      "minLength": 1
+    },
+    "newPressureState": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previousVerificationStage": {
+      "type": "string",
+      "pattern": "^VS-[0-9]{2}$"
+    },
+    "newVerificationStage": {
+      "type": "string",
+      "pattern": "^VS-[0-9]{2}$"
+    },
+    "programmeName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordCount": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "eventType": {
+            "const": "record-created"
+          }
+        },
+        "required": [
+          "eventType"
+        ]
+      },
+      "then": {
+        "required": [
+          "claimTitle"
+        ],
+        "properties": {
+          "recordId": {
+            "type": "string"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "previousPressureState"
+              ]
+            },
+            {
+              "required": [
+                "newPressureState"
+              ]
+            },
+            {
+              "required": [
+                "previousVerificationStage"
+              ]
+            },
+            {
+              "required": [
+                "newVerificationStage"
+              ]
+            },
+            {
+              "required": [
+                "programmeName"
+              ]
+            },
+            {
+              "required": [
+                "recordCount"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "eventType": {
+            "const": "assessment-changed"
+          }
+        },
+        "required": [
+          "eventType"
+        ]
+      },
+      "then": {
+        "required": [
+          "previousPressureState",
+          "newPressureState"
+        ],
+        "properties": {
+          "recordId": {
+            "type": "string"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "claimTitle"
+              ]
+            },
+            {
+              "required": [
+                "previousVerificationStage"
+              ]
+            },
+            {
+              "required": [
+                "newVerificationStage"
+              ]
+            },
+            {
+              "required": [
+                "programmeName"
+              ]
+            },
+            {
+              "required": [
+                "recordCount"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "eventType": {
+            "const": "verification-stage-changed"
+          }
+        },
+        "required": [
+          "eventType"
+        ]
+      },
+      "then": {
+        "required": [
+          "previousVerificationStage",
+          "newVerificationStage"
+        ],
+        "properties": {
+          "recordId": {
+            "type": "string"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "claimTitle"
+              ]
+            },
+            {
+              "required": [
+                "previousPressureState"
+              ]
+            },
+            {
+              "required": [
+                "newPressureState"
+              ]
+            },
+            {
+              "required": [
+                "programmeName"
+              ]
+            },
+            {
+              "required": [
+                "recordCount"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "eventType": {
+            "const": "programme-created"
+          }
+        },
+        "required": [
+          "eventType"
+        ]
+      },
+      "then": {
+        "required": [
+          "programmeName",
+          "recordCount"
+        ],
+        "properties": {
+          "recordId": {
+            "type": "null"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "claimTitle"
+              ]
+            },
+            {
+              "required": [
+                "previousPressureState"
+              ]
+            },
+            {
+              "required": [
+                "newPressureState"
+              ]
+            },
+            {
+              "required": [
+                "previousVerificationStage"
+              ]
+            },
+            {
+              "required": [
+                "newVerificationStage"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

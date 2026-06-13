@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "validate:events": "node scripts/validate-events.js",
+    "prebuild": "npm run validate:events",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
