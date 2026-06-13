@@ -19,6 +19,9 @@ export default function TheRecord() {
 
   const summary = useMemo(() => getCorpusSummary(ALL_RECORDS), []);
 
+  const hasActiveFilters =
+    filterProgramme !== "all" || filterState !== "all" || query.trim().length > 0;
+
   const filtered = useMemo(() => {
     let results = ALL_RECORDS;
 
@@ -57,6 +60,22 @@ export default function TheRecord() {
 
     return results;
   }, [filterProgramme, filterState, filterStatus, sortBy, query]);
+
+  const resultLabel = (() => {
+    if (hasActiveFilters) {
+      return `Showing ${filtered.length} matching records`;
+    }
+
+    if (filterStatus === "all") {
+      return `Showing ${filtered.length} records`;
+    }
+
+    if (filterStatus === "open") {
+      return `Showing ${filtered.length} open records`;
+    }
+
+    return `Showing ${filtered.length} closed records`;
+  })();
 
   return (
     <>
@@ -168,11 +187,7 @@ export default function TheRecord() {
         {/* Results count */}
         <div className="tr-results-bar">
           <div className="tr-results-inner">
-            <span className="tr-results-count">
-              {filtered.length === ALL_RECORDS.length
-                ? `${filtered.length} records`
-                : `${filtered.length} of ${ALL_RECORDS.length} records`}
-            </span>
+            <span className="tr-results-count">{resultLabel}</span>
             {(filterProgramme !== "all" || filterState !== "all" || query) && (
               <button
                 className="tr-clear-filters"
