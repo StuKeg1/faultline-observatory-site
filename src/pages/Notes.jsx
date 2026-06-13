@@ -46,6 +46,18 @@ export function NotesIndex() {
 
         <main className="notes-main">
           <div className="notes-main-inner">
+            <section className="notes-context-link" aria-label="Institutional Health link">
+              <div className="notes-context-copy">
+                <div className="notes-context-label">Institutional Health</div>
+                <p className="notes-context-text">
+                  Weekly contextual statistics and institutional monitoring for the Observatory.
+                </p>
+              </div>
+              <Link to="/institutional-health" className="notes-context-link-btn">
+                Metrics
+              </Link>
+            </section>
+
             <div className="notes-list">
               {ALL_NOTES.map((note) => (
                 <Link

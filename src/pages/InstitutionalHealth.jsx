@@ -8,14 +8,22 @@ function formatNumber(value) {
   return new Intl.NumberFormat("en-GB").format(value);
 }
 
+function formatContextualValue(value) {
+  return value === null || value === undefined ? "Baseline period." : String(value);
+}
+
 export default function InstitutionalHealth() {
+  // Build-derived corpus counts keep this section aligned with the local record/programme registry.
+  // Visitors and page views remain placeholders until Cloudflare Analytics API integration is added.
   const contextual = {
     period: institutionalHealthCurrent.period || "Current week",
-    status: institutionalHealthCurrent.status || "Baseline period",
+    status: institutionalHealthCurrent.status || "Baseline period.",
     visitors: institutionalHealthCurrent.visitors ?? null,
     pageViews: institutionalHealthCurrent.pageViews ?? null,
     recordCount: ALL_RECORDS.length,
     programmeCount: PROGRAMMES.length,
+    topViewedRecords: institutionalHealthCurrent.topViewedRecords ?? null,
+    referralSources: institutionalHealthCurrent.referralSources ?? null,
   };
 
   return (
@@ -46,20 +54,24 @@ export default function InstitutionalHealth() {
                 <h2 className="inst-health-title">Weekly contextual statistics — not health metrics</h2>
                 <p className="inst-health-copy">
                   Visitors and page views are sourced from Cloudflare Analytics where available.
-                  Record and programme counts are derived from the local corpus registry.
+                  Record and programme counts are derived from the live corpus registry.
                 </p>
+                <p className="inst-context-governance">
+                  Weekly contextual statistics only. No institutional health triggers are derived from this section.
+                </p>
+                <p className="inst-context-updated">Last updated: 13 Jun 2026</p>
 
                 <div className="inst-context-grid">
                   <article className="inst-context-card">
                     <span className="inst-context-label">Visitors</span>
                     <strong className="inst-context-value">
-                      {contextual.visitors === null ? "Baseline period" : formatNumber(contextual.visitors)}
+                      {contextual.visitors === null ? "Baseline period." : formatNumber(contextual.visitors)}
                     </strong>
                   </article>
                   <article className="inst-context-card">
                     <span className="inst-context-label">Page views</span>
                     <strong className="inst-context-value">
-                      {contextual.pageViews === null ? "Baseline period" : formatNumber(contextual.pageViews)}
+                      {contextual.pageViews === null ? "Baseline period." : formatNumber(contextual.pageViews)}
                     </strong>
                   </article>
                   <article className="inst-context-card">
@@ -72,8 +84,23 @@ export default function InstitutionalHealth() {
                   </article>
                 </div>
 
+                <div className="inst-context-grid inst-context-grid--detail">
+                  <article className="inst-context-card inst-context-card--detail">
+                    <span className="inst-context-label">Top viewed records</span>
+                    <strong className="inst-context-value inst-context-value--detail">
+                      {formatContextualValue(contextual.topViewedRecords)}
+                    </strong>
+                  </article>
+                  <article className="inst-context-card inst-context-card--detail">
+                    <span className="inst-context-label">Referral sources</span>
+                    <strong className="inst-context-value inst-context-value--detail">
+                      {formatContextualValue(contextual.referralSources)}
+                    </strong>
+                  </article>
+                </div>
+
                 <p className="inst-context-footnote">
-                  {contextual.period}. {contextual.status}.
+                  {contextual.period}. {contextual.status}
                 </p>
               </article>
 

@@ -48,6 +48,53 @@
   padding: 1.5rem 0 3rem;
 }
 
+/* Small contextual link block */
+.notes-context-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1rem 1rem 1.1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--rule-light);
+  border-radius: 0.65rem;
+  background: linear-gradient(180deg, var(--paper-card) 0%, var(--paper) 100%);
+}
+.notes-context-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.35rem;
+}
+.notes-context-text {
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-mid);
+  margin: 0;
+}
+.notes-context-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.notes-context-link-btn:hover {
+  background: var(--accent-dim);
+}
+
 /* Note rows */
 .notes-list {
   display: flex;
@@ -267,6 +314,14 @@
 
 /* Responsive */
 @media (max-width: 700px) {
+  .notes-context-link {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .notes-context-link-btn {
+    width: 100%;
+  }
+
   .note-passport { grid-template-columns: 1fr; }
   .note-passport-meta {
     border-left: none;
