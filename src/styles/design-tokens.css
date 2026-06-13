@@ -41,7 +41,7 @@
 
   /* ── Muted / secondary text ── */
   --muted-text-color:    #7a7a73;   /* = --ink-light */
-  --faint-text-color:    #b8b8b0;   /* = --ink-faint */
+  --faint-text-color:    #9a9a92;   /* lifted from #b8b8b0 — improves metadata readability */
 
   /* ── Record IDs ── */
   --record-id-size:      12px;
@@ -63,8 +63,8 @@
   --prog-card-id-size:   9px;
 
   /* ── Mono labels / eyebrows ── */
-  --label-size:          9px;
-  --label-tracking:      0.12em;
+  --label-size:          10px;
+  --label-tracking:      0.10em;
 
   /* ── State badges ── */
   --badge-font-size:     9.5px;
