@@ -154,7 +154,6 @@ export default function Home() {
           <section className="foyer-section" aria-labelledby="activity-label">
             <div className="foyer-section-inner">
               <div className="foyer-section-head">
-                <span className="foyer-section-eyebrow">Recent</span>
                 <h2 className="foyer-section-title" id="activity-label">Archive Activity</h2>
               </div>
               <div className="foyer-activity-log" role="feed">
