@@ -18,12 +18,12 @@
   --nav-letter-spacing:  0.05em;
 
   /* ── Foyer / homepage ── */
-  --foyer-title-size:    clamp(2.5rem, 5vw, 4rem);
+  --foyer-title-size:    clamp(2.25rem, 4.5vw, 3.6rem);
   --foyer-title-weight:  400;
   --foyer-title-tracking: -0.02em;
-  --foyer-top-padding:   3.5rem;
+  --foyer-top-padding:   2.6rem;
   --foyer-custodian-size: 11px;
-  --foyer-statement-size: 1.0625rem;
+  --foyer-statement-size: 1rem;
 
   /* ── Snapshot bar ── */
   --snapshot-padding-y:  2rem;
