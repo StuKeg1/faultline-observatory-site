@@ -184,7 +184,6 @@ export default function Home() {
         <section className="foyer-section foyer-section-ruled" aria-labelledby="prog-label">
           <div className="foyer-section-inner">
             <div className="foyer-section-head">
-              <span className="foyer-section-eyebrow">Structure</span>
               <h2 className="foyer-section-title" id="prog-label">Programmes</h2>
             </div>
             <div className="foyer-prog-grid" role="list">
