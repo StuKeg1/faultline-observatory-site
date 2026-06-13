@@ -13,7 +13,7 @@
 .foyer-identity-inner {
   max-width: var(--width-foyer);            /* wider than --col: title needs more room */
   margin: 0 auto;
-  padding: var(--foyer-top-padding) 0 2rem;
+  padding: var(--foyer-top-padding) 0 1.5rem;
   display: flex;
   align-items: flex-start;
   gap: 2rem;
@@ -27,7 +27,7 @@
   font-size: var(--foyer-title-size);
   line-height: 1.0;
   letter-spacing: var(--foyer-title-tracking);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
   color: var(--ink);
 }
 .foyer-custodian {
@@ -35,7 +35,7 @@
   font-size: var(--foyer-custodian-size);
   letter-spacing: 0.1em;
   color: var(--ink-mid);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.55rem;
   text-transform: uppercase;
 }
 .foyer-statement {
