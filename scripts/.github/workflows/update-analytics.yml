@@ -1,0 +1,53 @@
+name: Update Analytics
+
+on:
+  schedule:
+    # Every Monday at 06:00 UTC — early enough to be ready for any weekly review
+    # that happens at the start of the working week.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    # Allow manual trigger from GitHub Actions UI.
+    # Useful for the first run after setup, or after an API token rotation.
+
+jobs:
+  update-analytics:
+    name: Fetch Cloudflare Analytics and commit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to commit the generated JSON file
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          # Match the .nvmrc version already pinned in the project.
+          node-version-file: ".nvmrc"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch analytics and generate JSON
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+        run: node scripts/update-analytics.js
+
+      - name: Commit generated analytics file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Only commit if the file changed. If the numbers are identical to
+          # last week (e.g. zero traffic during a gap period), skip the commit
+          # to avoid noise in the git history.
+          if git diff --quiet src/data/generated/institutional-health-analytics.json; then
+            echo "No change in analytics data — skipping commit."
+          else
+            git add src/data/generated/institutional-health-analytics.json
+            git commit -m "chore: update analytics snapshot [$(date -u '+%Y-%m-%d')]"
+            git push
+          fi
