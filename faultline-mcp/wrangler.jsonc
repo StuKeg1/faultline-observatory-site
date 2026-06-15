@@ -1,0 +1,20 @@
+{
+  // Faultline Observatory — Remote MCP Server
+  "name": "faultline-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+
+  // Required to tell Cloudflare to delete the old FaultlineMCP DO class
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["FaultlineMCP"]
+    },
+    {
+      "tag": "v2",
+      "deleted_classes": ["FaultlineMCP"]
+    }
+  ]
+}
