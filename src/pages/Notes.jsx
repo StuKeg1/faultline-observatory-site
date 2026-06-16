@@ -135,6 +135,25 @@ export function NoteDetail() {
                   <span className="npm-label">Note Date</span>
                   <span className="npm-value">{note.date}</span>
                 </div>
+                {note.author && (
+                  <div className="npm-row">
+                    <span className="npm-label">Author</span>
+                    <span className="npm-value">
+                      {note.author.url ? (
+                        <a
+                          href={note.author.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="npm-author-link"
+                        >
+                          {note.author.name}
+                        </a>
+                      ) : (
+                        note.author.name
+                      )}
+                    </span>
+                  </div>
+                )}
                 <div className="npm-row npm-row-relation">
                   <span className="npm-label">Relation</span>
                   <span className="npm-value npm-relation">{note.relation}</span>
@@ -144,17 +163,26 @@ export function NoteDetail() {
           </div>
         </header>
 
-        {/* Note body — prose, but always inside the institutional wrapper */}
+        {/* Note body — prose inside the institutional wrapper */}
         <div className="note-body">
           <div className="note-body-inner">
-            {note.body.map((block) => (
-              <div key={block.id} className="note-block">
-                {block.heading && (
-                  <h2 className="note-block-heading">{block.heading}</h2>
-                )}
-                <p className="note-block-text">{block.text}</p>
-              </div>
-            ))}
+            {note.body.map((block) => {
+              // Section break — visual separator, no text
+              if (block.type === "section-break") {
+                return <div key={block.id} className="note-section-break" />;
+              }
+              return (
+                <div key={block.id} className="note-block">
+                  {block.heading && (
+                    <h2 className="note-block-heading">{block.heading}</h2>
+                  )}
+                  <p
+                    className="note-block-text"
+                    dangerouslySetInnerHTML={{ __html: block.text }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

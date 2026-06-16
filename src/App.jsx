@@ -9,20 +9,21 @@ import ErrorBoundary from "./components/ErrorBoundary.jsx";
 // Homepage and shared layout load immediately.
 // Stubs are small — no benefit splitting them.
 import Home from "./pages/Home.jsx";
-import { Programmes, Methodology, About, Search, HowToRead, GuidesIndex, UsingWithClaude } from "./pages/Stubs.jsx";
+import { Programmes, Methodology, About, Search, HowToRead, GuidesIndex } from "./pages/Stubs.jsx";
 
 // ─── LAZY ────────────────────────────────────────────────────
 // Heavy pages split into separate chunks.
 // Vite detects dynamic import() and splits automatically.
-const TheRecord     = lazy(() => import("./pages/TheRecord.jsx"));
+const TheRecord      = lazy(() => import("./pages/TheRecord.jsx"));
 const FrontierRecord = lazy(() => import("./pages/FrontierRecord.jsx"));
-const Programme     = lazy(() => import("./pages/Programme.jsx"));
-const NotesIndex    = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NotesIndex })));
-const NoteDetail    = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NoteDetail })));
-const EventsIndex   = lazy(() => import("./pages/Events.jsx"));
-const EventDetail   = lazy(() => import("./pages/Events.jsx").then(m => ({ default: m.EventDetail })));
-const TokenPreview  = lazy(() => import("./pages/TokenPreview.jsx"));
+const Programme      = lazy(() => import("./pages/Programme.jsx"));
+const NotesIndex     = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NotesIndex })));
+const NoteDetail     = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NoteDetail })));
+const EventsIndex    = lazy(() => import("./pages/Events.jsx"));
+const EventDetail    = lazy(() => import("./pages/Events.jsx").then(m => ({ default: m.EventDetail })));
+const TokenPreview   = lazy(() => import("./pages/TokenPreview.jsx"));
 const InstitutionalHealth = lazy(() => import("./pages/InstitutionalHealth.jsx"));
+const MCPAccess      = lazy(() => import("./pages/guides/MCPAccess.jsx"));
 
 function NotFound() {
   return (
@@ -68,7 +69,7 @@ export default function App() {
           <Route path="/how-to-read"              element={<HowToRead />} />
           <Route path="/guides"                   element={<GuidesIndex />} />
           <Route path="/guides/how-to-read"       element={<HowToRead />} />
-          <Route path="/guides/using-with-claude" element={<UsingWithClaude />} />
+          <Route path="/guides/mcp-access"        element={<MCPAccess />} />
           <Route path="/institutional-health"     element={<InstitutionalHealth />} />
           <Route path="/tokens"                   element={<TokenPreview />} />
           <Route path="*"                         element={<NotFound />} />

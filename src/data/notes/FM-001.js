@@ -13,354 +13,368 @@ export const FM_001 = {
   date: "2026-06-10",
   title: "Before FCIF Had a Name",
   relation: "Institutional history / collaboration record",
+  author: {
+    name: "Stuart Kegel",
+    url: "https://www.linkedin.com/in/sjoerd-stuart-kegel-042193/",
+  },
   summary:
-    "An account of how the Faultline Observatory came into existence — before it had " +
-    "a name, a methodology, or a structure. Written to preserve the origin conditions " +
-    "of the project: the working method, the sequence of discovery, and the nature of " +
-    "the human–AI collaboration that produced it. Recorded as institutional memory, not " +
-    "as promotion.",
+    "The founder of this project is Stuart Kegel. This is his account of how the Faultline " +
+    "Observatory came into existence — before it had a name, a methodology, or a structure. " +
+    "Written to preserve the origin conditions of the project: the working method, the sequence " +
+    "of discovery, and the nature of the human–AI collaboration that produced it. Recorded as " +
+    "institutional memory, not as promotion.",
 
   body: [
     {
       id: "B-001",
       heading: null,
       text:
-        "This project did not begin with a framework. It did not begin with a website, a " +
-        "methodology, or a plan. It began with curiosity.",
+        "This project did not begin with a framework. It did not begin with a plan. It began " +
+        "with curiosity. I have a full-time job. I am a husband and a dad. Most days were " +
+        "already full before any of this entered the picture. In the beginning, I wasn\u2019t " +
+        "setting aside large blocks of time to build something. I was having conversations " +
+        "with AI \u2014 usually in the evening, half an hour, sometimes forty-five minutes \u2014 " +
+        "bringing in whatever had caught my attention. A quantum computing announcement. An " +
+        "AI prediction. A fusion breakthrough. A scientific paper. A claim about the future. " +
+        "That was enough.",
     },
     {
       id: "B-002",
       heading: null,
       text:
-        "I have a full-time job. I am a husband. A dad. Most days were already full before any " +
-        "of this entered the picture. So in the beginning, I wasn't setting aside large blocks " +
-        "of time to build something. I was having conversations — usually in the evening, half " +
-        "an hour, maybe forty-five minutes. I would look at social media, come across something " +
-        "that interested me, and bring it into the conversation. A quantum computing announcement. " +
-        "An AI prediction. A fusion breakthrough. A scientific paper. A claim about the future. " +
-        "That's all.",
+        "It all started during Christmas 2024. I was reflecting on where I wanted to focus " +
+        "and where I thought things were heading. I decided that AI mattered. More importantly, " +
+        "I decided to stop reading about it and start using it properly.",
     },
     {
       id: "B-003",
       heading: null,
       text:
-        "It was Christmas 2024. I was reflecting on what I wanted to focus on and where I " +
-        "thought things were heading. I decided that AI was important. More importantly, I " +
-        "decided to stop reading about it and start using it properly.",
+        "I chose ChatGPT, installed the app, upgraded to Plus and then just asked it: \u201chow " +
+        "can we work together in the simplest way?\u201d It explained how I could use voice mode " +
+        "on my phone. What stood out immediately was the lack of friction. Click the mic, talk " +
+        "and it responds immediately. What surprised me wasn\u2019t any particular answer. It was " +
+        "the level of discussion. Questions moved quickly beyond the surface \u2014 assumptions, " +
+        "incentives, second-order effects, historical parallels, alternative explanations. Some " +
+        "conversations went nowhere. Some became repetitive. But often they didn\u2019t. Often they " +
+        "opened a line of thought I would previously have left unfinished. That was new. The " +
+        "value wasn\u2019t that AI knew things. The value was that curiosity suddenly had somewhere " +
+        "to go.",
     },
     {
       id: "B-004",
-      heading: null,
+      heading: "Looking for a System That Didn\u2019t Exist",
       text:
-        "I chose ChatGPT, installed the app, and asked it what the easiest way to work together " +
-        "was. It explained how I could use the mic on my phone. What struck me immediately was " +
-        "the lack of friction. With voice mode, I talked and it typed back. I could simply ask " +
-        "a question. Then another. Then another. The conversation would go wherever the curiosity " +
-        "went.",
+        "Over time, a pattern started to emerge in those conversations. A lot of my questions " +
+        "were about breakthroughs \u2014 especially for innovation in \u201cnew frontier\u201d areas (like " +
+        "quantum). I realised I was looking for a system that tracked research claims over time. " +
+        "Not the headlines. The claims. For example, if somebody announced a breakthrough in " +
+        "quantum computing, where could you go three years later to see what happened next? Did " +
+        "the claim hold up? Was it challenged? Was it quietly forgotten? I assumed that record " +
+        "already existed.",
     },
     {
       id: "B-005",
       heading: null,
       text:
-        "What surprised me wasn't any particular answer. It was the level of discussion. Very " +
-        "quickly, I found myself having conversations that felt different from what I expected. " +
-        "A question could start somewhere ordinary and within minutes we would be talking about " +
-        "assumptions, incentives, second-order effects, historical parallels, alternative " +
-        "explanations. Sometimes the conversation went nowhere. Sometimes it became repetitive. " +
-        "But often it didn't. Often it opened a door.",
+        "Surely someone was already doing this. A publication, a research group, an archive, " +
+        "an analyst somewhere. For a long time, I assumed the answer already existed. I wasn\u2019t " +
+        "trying to build a system. I was trying to find one.",
     },
     {
       id: "B-006",
       heading: null,
       text:
-        "I found myself exploring topics that I would previously have left half-finished, simply " +
-        "because there was nobody available to continue the discussion. That was new. The value " +
-        "wasn't that AI knew things. The value was that curiosity suddenly had somewhere to go.",
+        "Looking back, that assumption delayed everything. I spent months treating the gap as " +
+        "my own ignorance \u2014 assuming I hadn\u2019t found the right source yet. The search changed " +
+        "over time. It began as optimistic. Then confusing. Then mildly irritating. Eventually " +
+        "it became uncomfortable.",
     },
     {
       id: "B-007",
-      heading: "Looking for a System That Didn't Exist",
+      heading: null,
       text:
-        "For a long time, I thought the answer already existed. I believed that someone was " +
-        "tracking research claims. Surely somebody was already doing this. Surely there was a " +
-        "publication, a research group, an archive, an analyst somewhere keeping track of these " +
-        "things. Not the headlines. The claims. Who said what, and when? What happened " +
-        "afterwards? Which predictions survived, and which quietly disappeared?",
+        "At some point the question shifted. Not <em>who is doing this</em>, but: what if " +
+        "nobody is?",
     },
     {
       id: "B-008",
       heading: null,
       text:
-        "I wasn't trying to build a system. I was looking for one.",
+        "Even then, I wasn\u2019t thinking in general terms. I thought it was a quantum problem. " +
+        "That felt manageable. But the deeper I looked, the more I found only fragments \u2014 " +
+        "papers, announcements, commentary, predictions.",
     },
     {
       id: "B-009",
       heading: null,
       text:
-        "If I'd believed the gap existed from the beginning, I probably would have started " +
-        "building much sooner. Instead, I spent months assuming the gap was my own ignorance — " +
-        "that I hadn't found the right source yet. The right website. The right publication. " +
-        "The right person.",
+        "What I didn\u2019t find was a record. Only later did the pattern become visible. Once you " +
+        "start asking the same questions repeatedly, the field stops mattering. The same gaps " +
+        "appeared in quantum, fusion, artificial intelligence, autonomous systems. Different " +
+        "domains. The same absence. Once visible, it was difficult to ignore.",
     },
     {
       id: "B-010",
-      heading: null,
+      heading: "The Roles Reverse",
       text:
-        "The strange thing is that the more I looked, the more uncomfortable the search became. " +
-        "At first it was optimistic. Then confusing. Then mildly irritating. Eventually I found " +
-        "myself asking a different question. Not \"Who is doing this?\" but: what if nobody is?",
+        "As the conversations continued, the same underlying pattern kept resurfacing. We would " +
+        "start with something specific \u2014 a claim, a field, a prediction \u2014 and end up back at " +
+        "the same structural questions. What was said, what was assumed, what followed. I " +
+        "resisted that conclusion for a while.",
     },
     {
       id: "B-011",
       heading: null,
       text:
-        "Even then, I wasn't thinking about a general framework. I thought it was a quantum " +
-        "problem, and that felt manageable. But the deeper I looked, the more I found only " +
-        "fragments: news, research papers, analyst reports, company announcements, arguments, " +
-        "predictions. What I didn't find was a record.",
+        "A solution for quantum felt bounded. A general solution did not. Whenever the " +
+        "discussion drifted in that direction, my instinct was to pull it back.",
     },
     {
       id: "B-012",
       heading: null,
       text:
-        "At the time I thought I was looking at a problem specific to quantum. Looking back, " +
-        "that was the last stage before the wider pattern became visible. Because once you start " +
-        "asking the same questions repeatedly, something awkward happens: the field stops " +
-        "mattering. I gradually realised that the same questions worked everywhere. Fusion. " +
-        "Artificial intelligence. Autonomous vehicles. Different domains, the same missing record.",
+        "Looking back, the broader pattern surfaced repeatedly. Not once \u2014 again and again. " +
+        "At first I treated it as coincidence. Then as over-generalisation. Then as something " +
+        "worth testing.",
     },
     {
       id: "B-013",
-      heading: "The Roles Reverse",
+      heading: null,
       text:
-        "The funny thing is that I resisted this idea for quite a while. A solution for quantum " +
-        "felt manageable; a general solution felt suspiciously large. Whenever the conversation " +
-        "drifted in that direction, my instinct was to pull it back.",
+        "Eventually I ran out of reasons to dismiss it. The shift didn\u2019t happen all at once. " +
+        "It happened in pieces. And with it, something else changed. For months I had been the " +
+        "cautious one. Now I was becoming the enthusiastic one. I wanted to test the pattern, " +
+        "extend it, see how far it went.",
     },
     {
       id: "B-014",
       heading: null,
       text:
-        "Looking back, I think the AI noticed the broader pattern before I did. Not once — " +
-        "repeatedly. We would be discussing something specific and somehow the conversation " +
-        "would circle back to the same underlying structure. At first I treated that as " +
-        "coincidence. Then as over-generalisation. Then as an interesting possibility. " +
-        "Eventually I ran out of reasons to dismiss it.",
+        "At that point, the resistance appeared from the other side. The response became " +
+        "consistent: maybe. Test it. Show another case. At the time that felt frustrating. In " +
+        "retrospect, it was necessary. The idea had survived scepticism. It now had to survive " +
+        "enthusiasm. That turned out to be a harder test.",
     },
     {
       id: "B-015",
-      heading: null,
+      heading: "A Hobby, Not a Startup",
       text:
-        "I don't think I accepted it all at once. I accepted it in pieces. Reluctantly.",
+        "As the pattern held up under scrutiny, I started to think differently about what this " +
+        "might become. In practical terms, very little was different. The cadence remained the " +
+        "same. The conversations still happened in short windows, usually in the evening. What " +
+        "changed was how I thought about it.",
     },
     {
       id: "B-016",
       heading: null,
       text:
-        "Then something interesting happened: the roles changed. For months I had been the " +
-        "cautious one. Now I was becoming enthusiastic. If the pattern existed in quantum, " +
-        "where else did it exist? How far did it go? What else did it explain?",
+        "For the first time, I considered that there might be something worth building. Not a " +
+        "business. Not a startup. A hobby. That still feels like the most accurate description. " +
+        "Something useful. Something interesting. Something that perhaps ought to exist. " +
+        "Alongside that came a second question: whether I could actually build it.",
     },
     {
       id: "B-017",
       heading: null,
       text:
-        "And, somewhat annoyingly, the resistance started coming from the other side. Every " +
-        "time I thought I had found the pattern, the response was some variation of \"Maybe.\" " +
-        "\"Let's test it.\" \"Show me another case.\" At the time I found that frustrating. " +
-        "Looking back, it was exactly what should have happened.",
+        "I had worked on websites before, but always as part of a team. This was different. " +
+        "The question was whether one person, working with AI, could take something from an " +
+        "undefined irritation to a public artifact.",
     },
     {
       id: "B-018",
       heading: null,
       text:
-        "The pattern had survived my scepticism. Now it had to survive my enthusiasm. " +
-        "That's a different test. And a much harder one.",
+        "Not a prototype. Not a presentation. Something real. That question became part of " +
+        "the project itself \u2014 not just what to build, but whether I could build it.",
     },
     {
       id: "B-019",
-      heading: "A Hobby, Not a Startup",
+      heading: "Finding Language Large Enough",
       text:
-        "Around this time the project quietly changed. Not dramatically — the cadence remained " +
-        "exactly the same. I still had a job. Still a husband. Still a dad. Most conversations " +
-        "still happened in the evening, half an hour, forty-five minutes, sometimes less. What " +
-        "changed was how I thought about it.",
+        "As the conversations deepened, something became increasingly clear. Everything existed " +
+        "inside the discussion, but nothing existed outside it. At some point, I decided I " +
+        "wanted a website \u2014 simply because I wanted something tangible. Once that decision was " +
+        "made, the work had to become legible. It needed a name, a structure, an explanation, " +
+        "a reason to exist. That exposed a problem.",
     },
     {
       id: "B-020",
       heading: null,
       text:
-        "For the first time, I started to believe there might actually be something worth " +
-        "building. Not a business. Not a startup. A hobby. That's the word that still feels " +
-        "most accurate. I thought it would be useful. Interesting. Worth existing. And perhaps, " +
-        "if I'm honest, I had become attached to the challenge.",
+        "I kept describing it as an archive, or as a quantum project. But those descriptions " +
+        "no longer seemed to fit. The conversation would stall because the language was too " +
+        "small for what we were actually discussing.",
     },
     {
       id: "B-021",
       heading: null,
-      text:
-        "The challenge wasn't just whether the archive should exist. It was whether I could " +
-        "help bring it into existence. I had worked on websites before, but always as part of " +
-        "larger teams. The challenge this time was different. Could I, as one person working " +
-        "with AI, take an idea all the way from a vague irritation to a public artifact? Not a " +
-        "presentation. Not a prototype. A real website.",
+      text: "The shift came during one of those discussions. Not as branding, but as description.",
     },
     {
       id: "B-022",
       heading: null,
       text:
-        "That question became part of the project. The archive was one experiment. The method " +
-        "of building it was another.",
+        "The word <em>institution</em> appeared \u2014 not because it sounded grand, but because " +
+        "it resolved something. It made several parts of the work make sense at once.",
     },
     {
       id: "B-023",
-      heading: "Finding Language Large Enough",
+      heading: null,
       text:
-        "At some point, I decided I wanted a website. Simply because I wanted something real. " +
-        "Something outside the conversation.",
+        "Later, something similar happened with <em>observatory</em>. The same reaction \u2014 " +
+        "not agreement, but recognition. An archive stores things. An observatory watches things. " +
+        "The project was never only about preserving claims. It was about following them. Watching " +
+        "them change. Watching evidence accumulate, predictions survive or fail, questions remain " +
+        "open or become resolved. Observatory felt right because observation sat at the centre of " +
+        "the work. Not prediction. Not advocacy. Not judgement. Observation.",
+    },
+    {
+      id: "B-023b",
+      heading: "Why Faultline?",
+      text:
+        "The harder question turned out to be the first word, not the second.",
+    },
+    {
+      id: "B-023c",
+      heading: null,
+      text:
+        "Many of the subjects I was drawn to shared a similar characteristic. They sat in places " +
+        "where uncertainty was high and consensus was weak. Quantum computing. Artificial " +
+        "intelligence. Fusion energy. Frontier science more broadly. These were areas where " +
+        "different interpretations coexisted, often for years.",
+    },
+    {
+      id: "B-023d",
+      heading: null,
+      text:
+        "What interested me was not the consensus itself, but the places where it broke down. " +
+        "The tensions. The unresolved questions. The competing explanations. The points where " +
+        "reasonable people could look at the same evidence and reach different conclusions.",
+    },
+    {
+      id: "B-023e",
+      heading: null,
+      text:
+        "A faultline is not a conclusion. It is a place of pressure. A place where underlying " +
+        "structures become visible because they do not align cleanly. That idea appealed " +
+        "immediately. The project was never intended to catalogue settled knowledge. It was " +
+        "intended to observe claims moving through uncertainty. The most interesting claims are " +
+        "often found along the faultlines.",
     },
     {
       id: "B-024",
       heading: null,
       text:
-        "When I said, \"Help me build this into a website,\" things escalated. Suddenly the " +
-        "work had to become legible. It needed a name, a structure, an explanation, a reason " +
-        "to exist. That's when we ran into another problem. I kept calling it an archive. Or " +
-        "a quantum project. And every so often the conversation would stall, because those " +
-        "descriptions no longer seemed large enough for what we were discussing.",
+        "After that, decisions became easier \u2014 not because we had a name, but because we " +
+        "finally had language that was large enough for the thing we were building.",
     },
     {
       id: "B-025",
-      heading: null,
+      heading: "Scoping It to Fit a Life",
       text:
-        "My memory is that the shift happened during one of those discussions. Not as a " +
-        "branding exercise — as an attempt to summarise what we were actually building. The AI " +
-        "described it as an institution. I remember being stopped by the word. Not because it " +
-        "sounded grand, but because it suddenly made sense of several things at once.",
+        "Once the idea of an institution took hold, a different set of questions followed. For " +
+        "the first time, I started asking practical questions that, in hindsight, probably " +
+        "should have come earlier. How large is this? How many records? How much work? How " +
+        "much maintenance? I had drifted into building something without properly scoping it.",
     },
     {
       id: "B-026",
       heading: null,
       text:
-        "Later something similar happened with another word: observatory. The AI dropped it. " +
-        "I read it. Again, the same feeling. Not agreement. Recognition. As if somebody had " +
-        "finally described the thing I had been trying to point at for weeks.",
+        "That was uncomfortable \u2014 not because I wanted something large, but because I " +
+        "didn\u2019t. I didn\u2019t want a second job. I didn\u2019t want a startup. This only worked because " +
+        "it fit around the life I already had.",
     },
     {
       id: "B-027",
       heading: null,
       text:
-        "After that, a surprising number of decisions became easier — not because we had found " +
-        "a brand, but because we finally had language that was large enough for the object we " +
-        "were building.",
+        "Once we examined the scope more carefully, the answer became clearer. It wasn\u2019t " +
+        "small, but it was manageable. By that point the collaboration itself was understood. " +
+        "Months of conversations had created a working rhythm. I knew what was useful and what " +
+        "wasn\u2019t. The question shifted again \u2014 not <em>can this be built</em>, but: can this " +
+        "be built in a way that fits within a normal life? For the first time, the answer felt " +
+        "like yes. And that made continuing a reasonable decision.",
     },
     {
       id: "B-028",
-      heading: "Scoping It to Fit a Life",
+      heading: "My Conclusion So Far",
       text:
-        "The institution idea also created a new concern. For the first time I started asking " +
-        "questions that, in hindsight, probably should have appeared much earlier. How big is " +
-        "this thing? How many records? How many programmes? How much work? How much maintenance?",
+        "I started with questions. Could this record exist? Could I build it? Could I build it " +
+        "with AI? I didn\u2019t know the answers. The point was not to prove anything in advance. " +
+        "It was to find out. Some of the answers turned out to be yes. Some were more " +
+        "complicated.",
     },
     {
       id: "B-029",
       heading: null,
       text:
-        "I had somehow drifted into building something before properly scoping it. That was an " +
-        "uncomfortable realisation — not because I wanted something huge. Quite the opposite. " +
-        "I didn't want a second job. I didn't want a startup. I didn't want a project that " +
-        "consumed my life. The whole reason this worked was because it fit around the life I " +
-        "already had.",
+        "The outcome of the project itself remains uncertain. The website may succeed or fail. " +
+        "FCIF may evolve. Faultline Observatory may grow. But one result is already fixed. I " +
+        "set out to understand what was possible when a curious person worked with a " +
+        "low-friction, high-value thinking partner \u2014 and I learned something real. That result " +
+        "stands, regardless of what comes next.",
     },
     {
       id: "B-030",
+      type: "section-break",
       heading: null,
-      text:
-        "Fortunately, once we started looking at the numbers, the answer turned out to be " +
-        "reassuring. The project wasn't small. But it was manageable.",
+      text: "",
     },
     {
       id: "B-031",
-      heading: null,
+      heading: "A Separate Note: Lessons Learned from Working with AI",
       text:
-        "More importantly, by then I already knew how the collaboration worked. Months of " +
-        "conversations had established a rhythm, a working relationship, a way of exploring " +
-        "ideas together. I knew what was useful. I knew what wasn't. I knew roughly what the " +
-        "cost was. That changed the question. It was no longer \"Could this be built?\" It became: " +
-        "could this be built in a way that fits into my normal life? And for the first time, " +
-        "I thought the answer was probably yes. I still do.",
+        "There is one final thing that feels important to mention. Not because it explains " +
+        "FCIF \u2014 because it explains why I kept coming back.",
     },
     {
       id: "B-032",
-      heading: "My Conclusion So Far",
+      heading: null,
       text:
-        "I started with questions. Could this record exist? Could I build it? Could I build it " +
-        "with AI? I genuinely didn't know the answers, and I would have accepted different " +
-        "outcomes. The experiment wasn't designed to prove that any of those things were " +
-        "possible. It was designed to find out.",
+        "The conversations themselves were valuable. What surprised me wasn\u2019t that AI could " +
+        "answer questions. It was that I suddenly had instant access to a conversational partner " +
+        "that could engage at a fairly high level with almost any topic that interested me \u2014 " +
+        "quantum computing, AI, investing, product strategy, history, scientific claims. It " +
+        "didn\u2019t matter very much where the conversation started. The barrier between curiosity " +
+        "and exploration had largely disappeared.",
     },
     {
       id: "B-033",
       heading: null,
       text:
-        "Some of the answers turned out to be yes. Some turned out to be more complicated than " +
-        "I expected. The website may succeed or fail. FCIF may evolve. Faultline Observatory " +
-        "may grow. But one result is already locked in. I set out to find out what was possible " +
-        "when a curious person worked with a low-friction, high-value thinking partner. " +
-        "And I learned something real.",
+        "The simplest description is probably: low friction, high value. That combination " +
+        "turned out to be surprisingly powerful. Not because every conversation was brilliant, " +
+        "or every idea good, but because it became easy to follow a question for longer than I " +
+        "otherwise would have.",
     },
     {
       id: "B-034",
-      heading: "A Separate Note: Lessons Learned from Working with AI",
-      text:
-        "There is one final thing that feels important to mention. Not because it explains " +
-        "FCIF — because it explains why I kept coming back.",
-    },
-    {
-      id: "B-035",
       heading: null,
       text:
-        "The conversations themselves were valuable. What surprised me wasn't that AI could " +
-        "answer questions. It was that I suddenly had instant access to a conversational partner " +
-        "that could engage at a fairly high level with almost any topic that interested me — " +
-        "quantum computing, AI, investing, product strategy, history, scientific claims. It " +
-        "didn't matter very much where the conversation started. The barrier between curiosity " +
-        "and exploration had largely disappeared.",
-    },
-    {
-      id: "B-036",
-      heading: null,
-      text:
-        "The simplest description is probably: low friction, high value. That combination turned " +
-        "out to be surprisingly powerful. Not because every conversation was brilliant, or every " +
-        "idea good, but because it became easy to follow a question for longer than I otherwise " +
-        "would have.",
-    },
-    {
-      id: "B-037",
-      heading: null,
-      text:
-        "Another thing I didn't expect was how much time we would spend calibrating the " +
-        "collaboration itself. I wasn't only interested in the ideas; I was interested in the " +
-        "process of interacting with AI. Quite early on, I started asking it for pushback — " +
+        "Another thing I didn\u2019t expect was how much time we would spend calibrating the " +
+        "collaboration itself. I wasn\u2019t only interested in the ideas; I was interested in the " +
+        "process of interacting with AI. Quite early on, I started asking it for pushback \u2014 " +
         "critiques, reviews, evaluations, occasionally even a full roast. Not because I enjoyed " +
         "being insulted. Because I wanted signal. I wanted to understand what the interaction " +
         "was actually good at and where it was likely to fail.",
     },
     {
-      id: "B-038",
+      id: "B-035",
       heading: null,
       text:
-        "Looking back, that helped. It created a habit of stepping outside the conversation and " +
-        "examining the conversation itself. The result wasn't perfection — far from it. But it " +
-        "did make the collaboration more mature. Over time I became more aware of its strengths, " +
-        "its weaknesses, and the situations where I needed to be particularly careful.",
+        "Looking back, that helped. It created a habit of stepping outside the conversation " +
+        "and examining the conversation itself. The result wasn\u2019t perfection \u2014 far from it. " +
+        "But it did make the collaboration more mature. Over time I became more aware of its " +
+        "strengths, its weaknesses, and the situations where I needed to be particularly careful.",
     },
     {
-      id: "B-039",
+      id: "B-036",
       heading: null,
       text:
-        "In hindsight, some of the most valuable discussions weren't about frontier claims at " +
+        "In hindsight, some of the most valuable discussions weren\u2019t about frontier claims at " +
         "all. They were about learning how to work together. That was never the stated " +
         "objective, but it was one of the outcomes. And unlike any individual project, that " +
         "lesson stays useful no matter what comes next.",
