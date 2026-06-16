@@ -10,7 +10,7 @@
  *
  * Required environment variables (set as GitHub Actions secrets):
  *   CF_API_TOKEN  — Cloudflare API token with Analytics:Read permission
- *   CF_ACCOUNT_ID — Cloudflare account ID (used for auth verification)
+ *   CF_ACCOUNT_ID — Cloudflare account ID
  *   CF_ZONE_ID    — Zone ID for faultlinewatch.com
  *
  * Output schema (success):
@@ -35,7 +35,7 @@ const OUTPUT_PATH = join(
   "../src/data/generated/institutional-health-analytics.json"
 );
 
-// ─── Date helpers ────────────────────────────────────────────────────────────
+// ─── Date helpers ─────────────────────────────────────────────────────────────
 
 function isoDate(d) {
   return d.toISOString().split("T")[0];
@@ -68,7 +68,6 @@ async function queryCloudflare(periodStart, periodEnd) {
           httpRequests1dGroups(
             limit: 7
             filter: { date_geq: "${periodStart}", date_leq: "${periodEnd}" }
-            orderBy: [date_ASC]
           ) {
             sum {
               pageViews
