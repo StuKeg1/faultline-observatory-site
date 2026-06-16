@@ -1,10 +1,10 @@
 {
   "source": "cloudflare",
   "periodLabel": "Last 7 completed days",
-  "periodStart": null,
-  "periodEnd": null,
-  "visitors": null,
-  "pageViews": null,
-  "generatedAt": null,
-  "status": "pipeline-not-yet-run"
+  "periodStart": "2026-06-08",
+  "periodEnd": "2026-06-15",
+  "visitors": 371,
+  "pageViews": 1725,
+  "generatedAt": "2026-06-16T13:26:43.232Z",
+  "status": "available"
 }
