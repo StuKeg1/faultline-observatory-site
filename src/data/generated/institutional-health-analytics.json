@@ -1,0 +1,10 @@
+{
+  "source": "cloudflare",
+  "periodLabel": "Last 7 completed days",
+  "periodStart": null,
+  "periodEnd": null,
+  "visitors": null,
+  "pageViews": null,
+  "generatedAt": null,
+  "status": "pipeline-not-yet-run"
+}
