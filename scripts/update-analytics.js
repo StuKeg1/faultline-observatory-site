@@ -1,202 +1,164 @@
-#!/usr/bin/env node
 /**
- * update-analytics.js
- * Faultline Observatory — Cloudflare Analytics Data Pipeline
+ * scripts/update-analytics.js
  *
- * Fetches visitor and pageview counts from the Cloudflare Analytics GraphQL API
- * and writes a generated JSON file consumed by InstitutionalHealth.jsx.
+ * Queries Cloudflare GraphQL Analytics API for faultlinewatch.com and writes
+ * src/data/generated/institutional-health-analytics.json.
  *
- * Runs weekly via GitHub Actions. No runtime API calls. No client-side secrets.
+ * Date window: last 7 completed days, excluding today, to avoid partial-day noise.
+ *   periodStart = 8 days ago
+ *   periodEnd   = yesterday
  *
- * Required environment variables:
- *   CF_API_TOKEN   — Cloudflare API token with Analytics:Read permission
- *   CF_ACCOUNT_ID  — Cloudflare account ID
- *   CF_ZONE_ID     — Zone ID for faultlinewatch.com
+ * Required environment variables (set as GitHub Actions secrets):
+ *   CF_API_TOKEN  — Cloudflare API token with Analytics:Read permission
+ *   CF_ACCOUNT_ID — Cloudflare account ID (used for auth verification)
+ *   CF_ZONE_ID    — Zone ID for faultlinewatch.com
+ *
+ * Output schema (success):
+ *   { source, periodLabel, periodStart, periodEnd, visitors, pageViews, generatedAt, status: "available" }
+ *
+ * Output schema (failure):
+ *   { source, periodLabel, periodStart, periodEnd, visitors: null, pageViews: null, generatedAt, status: "unavailable" }
  */
 
 import { writeFileSync, mkdirSync } from "fs";
-import { join, dirname } from "path";
+import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// ─── Config ──────────────────────────────────────────────────────────────────
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const CF_API_TOKEN = process.env.CF_API_TOKEN;
-const CF_ACCOUNT_ID = process.env.CF_ACCOUNT_ID;
 const CF_ZONE_ID = process.env.CF_ZONE_ID;
-const OUTPUT_PATH = join(__dirname, "../src/data/generated/institutional-health-analytics.json");
 
-// Fetch the last 28 days of data (4-week rolling window).
-// The weekly generation cadence means this always reflects recent activity
-// without being tied to a specific calendar month boundary.
-const DAYS_WINDOW = 28;
-
-// ─── Validate env ────────────────────────────────────────────────────────────
-
-function validateEnv() {
-  const missing = ["CF_API_TOKEN", "CF_ACCOUNT_ID", "CF_ZONE_ID"].filter(
-    (k) => !process.env[k]
-  );
-  if (missing.length > 0) {
-    console.error(`Missing required environment variables: ${missing.join(", ")}`);
-    process.exit(1);
-  }
-}
+const OUTPUT_PATH = join(
+  __dirname,
+  "../src/data/generated/institutional-health-analytics.json"
+);
 
 // ─── Date helpers ────────────────────────────────────────────────────────────
 
-function toDateString(date) {
-  return date.toISOString().split("T")[0];
+function isoDate(d) {
+  return d.toISOString().split("T")[0];
 }
 
-function getDateRange() {
-  const end = new Date();
-  const start = new Date();
-  start.setDate(start.getDate() - DAYS_WINDOW);
+function dateWindow() {
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+
+  const yesterday = new Date(today);
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+
+  const periodStart = new Date(today);
+  periodStart.setUTCDate(periodStart.getUTCDate() - 8);
+
   return {
-    since: toDateString(start),
-    until: toDateString(end),
+    periodStart: isoDate(periodStart),
+    periodEnd: isoDate(yesterday),
+    periodLabel: "Last 7 completed days",
   };
 }
 
-// ─── Cloudflare GraphQL query ────────────────────────────────────────────────
-//
-// Uses the httpRequests1dGroups dataset, which provides daily aggregates.
-// uniqueVisitors is the uniq count from Cloudflare's edge analytics.
-// pageViews is total requests that returned a 2xx response to a non-asset path.
-//
-// Note: Cloudflare Analytics counts "visits" (sessions) and "unique visitors"
-// (by IP+user-agent hash) rather than cookies. This is consistent with our
-// privacy-preserving approach and requires no client-side tracking.
+// ─── Cloudflare GraphQL query ─────────────────────────────────────────────────
 
-const ANALYTICS_QUERY = `
-  query FaultlineAnalytics($zoneTag: String!, $since: String!, $until: String!) {
-    viewer {
-      zones(filter: { zoneTag: $zoneTag }) {
-        httpRequests1dGroups(
-          limit: 31
-          filter: { date_geq: $since, date_leq: $until }
-          orderBy: [date_ASC]
-        ) {
-          sum {
-            visits
-            pageViews
-          }
-          uniq {
-            uniques
-          }
-          dimensions {
-            date
+async function queryCloudflare(periodStart, periodEnd) {
+  const query = `
+    query {
+      viewer {
+        zones(filter: { zoneTag: "${CF_ZONE_ID}" }) {
+          httpRequests1dGroups(
+            limit: 7
+            filter: { date_geq: "${periodStart}", date_leq: "${periodEnd}" }
+            orderBy: [date_ASC]
+          ) {
+            sum {
+              pageViews
+            }
+            uniq {
+              uniques
+            }
           }
         }
       }
     }
-  }
-`;
+  `;
 
-// ─── API call ────────────────────────────────────────────────────────────────
-
-async function fetchAnalytics(since, until) {
-  const response = await fetch("https://api.cloudflare.com/client/v4/graphql", {
+  const res = await fetch("https://api.cloudflare.com/client/v4/graphql", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${CF_API_TOKEN}`,
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      query: ANALYTICS_QUERY,
-      variables: {
-        zoneTag: CF_ZONE_ID,
-        since,
-        until,
-      },
-    }),
+    body: JSON.stringify({ query }),
   });
 
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(`Cloudflare API error ${response.status}: ${text}`);
+  if (!res.ok) {
+    throw new Error(`Cloudflare API returned ${res.status} ${res.statusText}`);
   }
 
-  const data = await response.json();
+  const data = await res.json();
 
   if (data.errors && data.errors.length > 0) {
-    const messages = data.errors.map((e) => e.message).join("; ");
-    throw new Error(`Cloudflare GraphQL errors: ${messages}`);
+    throw new Error(`GraphQL errors: ${JSON.stringify(data.errors)}`);
   }
 
   return data;
 }
 
-// ─── Aggregate results ───────────────────────────────────────────────────────
-
-function aggregateResults(data) {
-  const zones = data?.data?.viewer?.zones;
-
-  if (!zones || zones.length === 0) {
-    throw new Error("No zone data returned from Cloudflare Analytics API");
-  }
-
-  const groups = zones[0]?.httpRequests1dGroups ?? [];
-
-  if (groups.length === 0) {
-    console.warn("No analytics data returned for the requested date range.");
-    return { visitors: 0, pageViews: 0 };
-  }
-
-  // Sum across all days in the window.
-  // uniq.uniques is a per-day unique count — summing it gives a rough total
-  // that may overcount users who visit on multiple days. This is the standard
-  // Cloudflare Analytics behaviour and is documented in the IHF as contextual,
-  // not a precision metric.
-  let visitors = 0;
-  let pageViews = 0;
-
-  for (const group of groups) {
-    visitors += group.uniq?.uniques ?? 0;
-    pageViews += group.sum?.pageViews ?? 0;
-  }
-
-  return { visitors, pageViews };
-}
-
-// ─── Write output ─────────────────────────────────────────────────────────────
-
-function writeOutput(visitors, pageViews, since, until) {
-  const output = {
-    visitors,
-    pageViews,
-    windowDays: DAYS_WINDOW,
-    periodStart: since,
-    periodEnd: until,
-    generatedAt: toDateString(new Date()),
-  };
-
-  mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
-  writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + "\n", "utf8");
-
-  console.log(`Analytics written to ${OUTPUT_PATH}`);
-  console.log(`  Visitors:  ${visitors}`);
-  console.log(`  Page views: ${pageViews}`);
-  console.log(`  Period:    ${since} → ${until}`);
-}
-
-// ─── Main ────────────────────────────────────────────────────────────────────
+// ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
-  validateEnv();
+  if (!CF_API_TOKEN || !CF_ZONE_ID) {
+    throw new Error("Missing required environment variables: CF_API_TOKEN, CF_ZONE_ID");
+  }
 
-  const { since, until } = getDateRange();
-  console.log(`Fetching Cloudflare Analytics: ${since} → ${until}`);
+  const { periodStart, periodEnd, periodLabel } = dateWindow();
+  const generatedAt = new Date().toISOString();
 
-  const data = await fetchAnalytics(since, until);
-  const { visitors, pageViews } = aggregateResults(data);
+  console.log(`Querying Cloudflare Analytics: ${periodStart} → ${periodEnd}`);
 
-  writeOutput(visitors, pageViews, since, until);
+  let output;
+
+  try {
+    const data = await queryCloudflare(periodStart, periodEnd);
+    const groups = data?.data?.viewer?.zones?.[0]?.httpRequests1dGroups ?? [];
+
+    const visitors = groups.reduce((sum, g) => sum + (g.uniq?.uniques ?? 0), 0);
+    const pageViews = groups.reduce((sum, g) => sum + (g.sum?.pageViews ?? 0), 0);
+
+    console.log(`visitors=${visitors}  pageViews=${pageViews}  groups=${groups.length}`);
+
+    output = {
+      source: "cloudflare",
+      periodLabel,
+      periodStart,
+      periodEnd,
+      visitors,
+      pageViews,
+      generatedAt,
+      status: "available",
+    };
+  } catch (err) {
+    console.error("Query failed:", err.message);
+
+    output = {
+      source: "cloudflare",
+      periodLabel,
+      periodStart,
+      periodEnd,
+      visitors: null,
+      pageViews: null,
+      generatedAt,
+      status: "unavailable",
+    };
+  }
+
+  mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
+  writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + "\n", "utf-8");
+  console.log(`Written: ${OUTPUT_PATH}`);
 }
 
 main().catch((err) => {
-  console.error("update-analytics.js failed:", err.message);
+  console.error("Fatal:", err);
   process.exit(1);
 });
+
