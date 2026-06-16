@@ -38,6 +38,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: update analytics data [skip ci]"
+            git commit -m "chore: update analytics data"
             git push
           fi
