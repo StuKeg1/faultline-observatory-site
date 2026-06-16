@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import StateBadge from "../components/StateBadge.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
@@ -15,6 +15,39 @@ import {
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
+
+// ─── WARRANT PANEL ───────────────────────────────────────────
+// Driven entirely by getCurrentAssessment(record). No schema additions.
+// Main rationale: assessorNote if present, otherwise summary.
+// Assessment summary row only rendered when assessorNote is present.
+function WarrantPanel({ current }) {
+  const rationale = current.assessorNote || current.summary;
+  return (
+    <div className="warrant-panel" aria-label="State warrant">
+      <div className="wp-row">
+        <span className="wp-label">Current state</span>
+        <span className="wp-value wp-state">
+          <StateBadge pressureState={current.pressureState} />
+          <span className="wp-vs-code">{current.verificationStage}</span>
+        </span>
+      </div>
+      <div className="wp-row wp-row-rationale">
+        <span className="wp-label">Why this state?</span>
+        <span className="wp-value">{rationale}</span>
+      </div>
+      {current.assessorNote && (
+        <div className="wp-row">
+          <span className="wp-label">Assessment summary</span>
+          <span className="wp-value">{current.summary}</span>
+        </div>
+      )}
+      <div className="wp-row">
+        <span className="wp-label">In this state since</span>
+        <span className="wp-value">{current.date}</span>
+      </div>
+    </div>
+  );
+}
 
 // ─── VERIFICATION MATRIX ────────────────────────────────────
 function VerificationMatrix({ record }) {
@@ -45,12 +78,6 @@ function VerificationMatrix({ record }) {
         <span><span className="dot dot-current" aria-hidden="true" /> Current state</span>
         <span><span className="dot dot-pending" aria-hidden="true" /> Not yet reached</span>
       </div>
-      {current.assessorNote && (
-        <div className="vm-state-note">
-          <div className="vm-state-note-label">Current State Note — {current.verificationStage} {getPressureStateLabel(current.pressureState)}</div>
-          <p>{current.summary}</p>
-        </div>
-      )}
     </div>
   );
 }
@@ -165,6 +192,7 @@ function RelatedRecords({ lineage }) {
 // ─── SCROLLSPY TABS ──────────────────────────────────────────
 const SECTIONS = [
   { id: "s-matrix",    label: "Verification Matrix" },
+  { id: "s-warrant",   label: "State Warrant" },
   { id: "s-lineage",   label: "Record Lineage" },
   { id: "s-mutations", label: "Mutation Log" },
   { id: "s-evidence",  label: "Evidence Sources" },
@@ -282,7 +310,10 @@ export default function FrontierRecord() {
                   <span className="rsb-vs-code">{current.verificationStage}</span>
                 </div>
               </div>
-              <div className="rsb-centre rsb-summary">{current.summary}</div>
+              <div className="rsb-centre rsb-summary">
+                <div className="rsb-warrant-label">Why this state?</div>
+                <div>{current.assessorNote || current.summary}</div>
+              </div>
               <div className="rsb-right">
                 <div className="rsb-since-label">In this state since</div>
                 <div className="rsb-since-value">{current.date}</div>
@@ -299,6 +330,11 @@ export default function FrontierRecord() {
           <section className="record-section-inner" id="s-matrix">
             <div className="rs-header">Verification Matrix</div>
             <VerificationMatrix record={record} />
+          </section>
+
+          <section className="record-section-inner" id="s-warrant">
+            <div className="rs-header">State Warrant</div>
+            <WarrantPanel current={current} />
           </section>
 
           <section className="record-section-inner" id="s-lineage">

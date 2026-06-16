@@ -122,6 +122,14 @@
   border-left: 1px solid rgba(245,243,236,0.2);
   padding-left: 1.5rem;
 }
+.rsb-warrant-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,243,236,0.45);
+  margin-bottom: 0.3rem;
+}
 .rsb-since-label {
   font-family: var(--mono);
   font-size: 9px;
@@ -231,15 +239,51 @@
 .dot-reached { background: var(--ink-mid); }
 .dot-current { background: var(--state-audit-rule); }
 .dot-pending { background: var(--rule); border: 1px solid var(--rule); }
-.vm-state-note {
-  margin-top: 1rem; padding: 1rem 1.25rem;
-  border: 1px solid var(--rule); background: var(--paper-card);
+
+/* Warrant panel */
+.warrant-panel {
+  border: 1px solid var(--rule);
+  background: var(--paper-card);
+  display: flex;
+  flex-direction: column;
 }
-.vm-state-note-label {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.5rem;
+.wp-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--rule-light);
 }
-.vm-state-note p { font-family: var(--serif); font-size: 0.9rem; color: var(--ink-mid); font-weight: 300; line-height: 1.65; }
+.wp-row:last-child { border-bottom: none; }
+.wp-row-rationale { align-items: start; }
+.wp-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+.wp-value {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+  line-height: 1.65;
+}
+.wp-state {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--mono);
+}
+.wp-vs-code {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-light);
+}
 
 /* Timeline */
 .timeline { position: relative; }
@@ -320,4 +364,6 @@
   .verification-matrix { grid-template-columns: repeat(3, 1fr); }
   .related-grid { grid-template-columns: 1fr; }
   .timeline-entry { grid-template-columns: 80px 16px 1fr; }
+  .wp-row { grid-template-columns: 1fr; gap: 0.35rem; }
+  .wp-label { padding-top: 0; }
 }
