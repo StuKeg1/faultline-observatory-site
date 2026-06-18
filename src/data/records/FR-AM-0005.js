@@ -1,6 +1,6 @@
 /**
- * FR-MF-0005 — Room-Temperature Superconductivity — Reproducibility Under Laboratory Conditions
- * Programme: PROG-MF
+ * FR-AM-0005 — Room-Temperature Superconductivity — Reproducibility Under Laboratory Conditions
+ * Programme: PROG-AM
  * Converted from HTML record by convert-records.js
  *
  * Constitutional rules:
@@ -9,9 +9,9 @@
  * - Transition Feed is DERIVED from assessments where pressureState changed
  */
 
-export const FR_MF_0005 = {
-  id: "FR-MF-0005",
-  programme: "PROG-MF",
+export const FR_AM_0005 = {
+  id: "FR-AM-0005",
+  programme: "PROG-AM",
 
   claim: {
     statement: "A room-temperature superconductor can be produced under reproducible laboratory conditions.",
@@ -106,18 +106,19 @@ export const FR_MF_0005 = {
     },
     {
       id: "OQ-002",
-      question: "CM-001 (pre-announcement collapse mechanism) appears independently in FR-MF-0001 and FR-MF-0005 across different eras and phenomena. Two occurrences of the same collapse mechanism within one programme is a new corpus observation. Does this constitute a programme-level mechanism pattern?",
+      question: "CM-001 (pre-announcement collapse mechanism) appears independently in FR-MF-0001 and FR-AM-0005 across different eras and phenomena. Two occurrences of the same collapse mechanism within one programme is a new corpus observation. Does this constitute a programme-level mechanism pattern?",
       raisedDate: "2024-01-15",
     },
     {
       id: "OQ-003",
-      question: "FR-MF-0004 (commercial fusion) is the one escalating record in PROG-MF. The programme diagnosis suggests it may eventually follow the same collapse dynamic as FR-MF-0001 and FR-MF-0005. Is there evidence bearing on whether FR-MF-0004 is structurally different from the collapsed records — and if so, what protects it from the same dynamic?",
+      question: "FR-MF-0004 (commercial fusion) is the one escalating record in PROG-AM. The programme diagnosis suggests it may eventually follow the same collapse dynamic as FR-MF-0001 and FR-AM-0005. Is there evidence bearing on whether FR-MF-0004 is structurally different from the collapsed records — and if so, what protects it from the same dynamic?",
       raisedDate: "2024-01-15",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0005", to: "FR-AM-0005", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_failed", from: "—", to: "NULL-CONDITION-FAILED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },

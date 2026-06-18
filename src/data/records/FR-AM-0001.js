@@ -1,6 +1,6 @@
 /**
- * FR-MF-0001 — Cold Fusion — Room-Temperature Nuclear Fusion in Electrochemical Cells
- * Programme: PROG-MF
+ * FR-AM-0001 — Cold Fusion — Room-Temperature Nuclear Fusion in Electrochemical Cells
+ * Programme: PROG-AM
  * Converted from HTML record by convert-records.js
  *
  * Constitutional rules:
@@ -9,9 +9,9 @@
  * - Transition Feed is DERIVED from assessments where pressureState changed
  */
 
-export const FR_MF_0001 = {
-  id: "FR-MF-0001",
-  programme: "PROG-MF",
+export const FR_AM_0001 = {
+  id: "FR-AM-0001",
+  programme: "PROG-AM",
 
   claim: {
     statement: "Electrochemical cells can produce nuclear fusion reactions at or near room temperature.",
@@ -155,6 +155,7 @@ export const FR_MF_0001 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0001", to: "FR-AM-0001", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-005", date: "2024-01-15", field: "collapsed_state_notice_added", from: "—", to: "COLLAPSED-STATE-NOTICE-ADDED", note: "Observatory note added per collapsed pressure state." },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "RM-001, RM-002 (Resistance); BN-001 (Bottleneck); CM-001 (Collapse Mechanism) added." },
     { id: "M-003", date: "2024-01-15", field: "assessments_issued", from: "—", to: "ASSESSMENTS-ISSUED", note: "ASSESSMENT-001 (notional, EMERGING), ASSESSMENT-002 (notional, FRAGMENTING), ASSESSMENT-003 (current, COLLAPSED)." },

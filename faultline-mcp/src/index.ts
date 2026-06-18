@@ -27,7 +27,7 @@ const LIFECYCLE_STAGES = [
 type ClaimStage = typeof LIFECYCLE_STAGES[number]["stage"];
 
 const CASES = [
-  { id: "lk99", title: "LK-99 Room-Temperature Superconductor", domain: "Materials Science", status: "Invalidated" as ClaimStage, summary: "July 2023 claim of room-temperature superconductivity. Independent replication failed; impurity (Cu₂S) explains observed properties.", lastUpdated: "2025-01-01" },
+  { id: "lk99", title: "LK-99 Room-Temperature Superconductor", domain: "Advanced Materials", status: "Invalidated" as ClaimStage, summary: "July 2023 claim of room-temperature superconductivity. Independent replication failed; impurity (Cu₂S) explains observed properties.", lastUpdated: "2025-01-01" },
   { id: "google-sycamore", title: "Google Sycamore Quantum Supremacy", domain: "Quantum Computing", status: "Contested" as ClaimStage, summary: "2019 claim of quantum supremacy. Chinese team simulated classically in hours (2022); quantum advantage domain remains debated.", lastUpdated: "2025-03-01" },
   { id: "cold-fusion", title: "Pons–Fleischmann Cold Fusion", domain: "Nuclear Physics", status: "Invalidated" as ClaimStage, summary: "1989 electrochemical fusion claim. Decades of failed replication; no reproducible excess heat from nuclear reactions.", lastUpdated: "2025-01-01" },
   { id: "autonomous-vehicles", title: "Level 5 Autonomous Vehicles (2020 promises)", domain: "AI / Robotics", status: "Contested" as ClaimStage, summary: "Multiple claims of full autonomy by 2020–2021. Geofenced L4 deployments exist (Waymo); general L5 undelivered.", lastUpdated: "2025-06-01" },

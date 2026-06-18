@@ -1,6 +1,6 @@
 /**
- * FR-MF-0002 — Anomalous Excess Heat — Electrochemical Cells Beyond Conventional Chemistry
- * Programme: PROG-MF
+ * FR-AM-0002 — Anomalous Excess Heat — Electrochemical Cells Beyond Conventional Chemistry
+ * Programme: PROG-AM
  * Converted from HTML record by convert-records.js
  *
  * Constitutional rules:
@@ -9,9 +9,9 @@
  * - Transition Feed is DERIVED from assessments where pressureState changed
  */
 
-export const FR_MF_0002 = {
-  id: "FR-MF-0002",
-  programme: "PROG-MF",
+export const FR_AM_0002 = {
+  id: "FR-AM-0002",
+  programme: "PROG-AM",
 
   claim: {
     statement: "Electrochemical cells can produce anomalous excess heat that is not fully explained by conventional chemical processes.",
@@ -88,17 +88,17 @@ export const FR_MF_0002 = {
     {
       id: "IN-001",
       type: "INHERITED CONDITION",
-      description: "Parent record contamination. The entire evidence trail for this record was accumulated by researchers operating under the belief that they were observing nuclear fusion (FR-MF-0001). This belief shaped experimental design, measurement priorities, and reporting choices at every stage. The claim tracked here — anomalous heat — was never the primary object of investigation; it was a secondary observa",
+      description: "Parent record contamination. The entire evidence trail for this record was accumulated by researchers operating under the belief that they were observing nuclear fusion (FR-AM-0001). This belief shaped experimental design, measurement priorities, and reporting choices at every stage. The claim tracked here — anomalous heat — was never the primary object of investigation; it was a secondary observa",
     }
   ],
 
   lineage: {
     items: [
-    { year: "1989", text: "Anomalous heat observed, attributed to fusion. Pons and Fleischmann report excess heat and interpret it as nuclear in origin. The heat observation and the fusion interpretation are conflated from the outset. All subsequent research in this area operates under the same conflation until FR-MF-0001 for" },
+    { year: "1989", text: "Anomalous heat observed, attributed to fusion. Pons and Fleischmann report excess heat and interpret it as nuclear in origin. The heat observation and the fusion interpretation are conflated from the outset. All subsequent research in this area operates under the same conflation until FR-AM-0001 for" },
     { year: "1989–91", text: "Heat observations survive fusion collapse. When major laboratories fail to replicate nuclear products, some continue to report anomalous heat in the absence of nuclear signatures. These reports are dismissed along with the fusion claim by the mainstream community, despite addressing a different ques" },
     { year: "1993–2019", text: "Heat observations persist in marginalised community. The LENR community continues to report excess heat. The loading-fraction correlation (SRI International) is the most specific quantitative result. Mainstream science does not engage; the observations accumulate without independent evaluation." },
     { year: "2019", text: "Berliner et al. separates heat from fusion implicitly. The Google study does not confirm excess heat but acknowledges anomalous calorimetric behaviour. This is the first mainstream acknowledgement that treats the heat observation as a distinct object from the fusion claim." },
-    { year: "2024", text: "FR-MF-0001 formally separates the claims. The Observatory issues an assessment that explicitly distinguishes the collapsed fusion claim from the unresolved heat observation. FR-MF-0002 is discovered as a consequence. This is the first time in the claim's history that the heat phenomenon has been tra" }
+    { year: "2024", text: "FR-AM-0001 formally separates the claims. The Observatory issues an assessment that explicitly distinguishes the collapsed fusion claim from the unresolved heat observation. FR-AM-0002 is discovered as a consequence. This is the first time in the claim's history that the heat phenomenon has been tra" }
     ],
     relatedRecords: [],
   },
@@ -128,6 +128,7 @@ export const FR_MF_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0002", to: "FR-AM-0002", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },

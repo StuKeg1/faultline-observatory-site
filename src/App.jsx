@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SiteNav from "./components/SiteNav.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
@@ -37,6 +37,20 @@ function NotFound() {
   );
 }
 
+// ─── RECORD REDIRECT ─────────────────────────────────────────
+// Redirects legacy FR-MF-* record URLs to FR-AM-* equivalents.
+// Release 006 — Advanced Materials adoption (2026-06-18).
+function RecordRedirect() {
+  const { recordId } = useParams();
+  if (recordId?.toLowerCase().startsWith("fr-mf-")) {
+    const newId = recordId.replace(/^fr-mf-/i, "fr-am-");
+    return <Navigate to={`/the-record/${newId}`} replace />;
+  }
+  return (
+    <ErrorBoundary context="record"><FrontierRecord /></ErrorBoundary>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -47,12 +61,9 @@ export default function App() {
           <Route path="/the-record" element={
             <ErrorBoundary context="archive"><TheRecord /></ErrorBoundary>
           } />
-          <Route path="/the-record/:recordId" element={
-            <ErrorBoundary context="record"><FrontierRecord /></ErrorBoundary>
-          } />
-          <Route path="/the-record/:recordId/" element={
-            <ErrorBoundary context="record"><FrontierRecord /></ErrorBoundary>
-          } />
+          {/* Release 006 — FR-MF-* → FR-AM-* redirect handled in RecordRedirect */}
+          <Route path="/the-record/:recordId"      element={<RecordRedirect />} />
+          <Route path="/the-record/:recordId/"     element={<RecordRedirect />} />
           <Route path="/events" element={
             <ErrorBoundary context="events"><EventsIndex /></ErrorBoundary>
           } />
@@ -60,6 +71,8 @@ export default function App() {
             <ErrorBoundary context="event"><EventDetail /></ErrorBoundary>
           } />
           <Route path="/programmes"               element={<Programmes />} />
+          {/* Release 006 — /programmes/prog-mf → /programmes/prog-am */}
+          <Route path="/programmes/prog-mf"       element={<Navigate to="/programmes/prog-am" replace />} />
           <Route path="/programmes/:programmeId"  element={<Programme />} />
           <Route path="/methodology"              element={<Methodology />} />
           <Route path="/about"                    element={<About />} />

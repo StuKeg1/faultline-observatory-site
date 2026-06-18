@@ -1,6 +1,6 @@
 /**
- * FR-MF-0006 — Solid-State Batteries — Commercial Viability for Electric Vehicles
- * Programme: PROG-MF
+ * FR-AM-0006 — Solid-State Batteries — Commercial Viability for Electric Vehicles
+ * Programme: PROG-AM
  * Converted from HTML record by convert-records.js
  *
  * Constitutional rules:
@@ -9,9 +9,9 @@
  * - Transition Feed is DERIVED from assessments where pressureState changed
  */
 
-export const FR_MF_0006 = {
-  id: "FR-MF-0006",
-  programme: "PROG-MF",
+export const FR_AM_0006 = {
+  id: "FR-AM-0006",
+  programme: "PROG-AM",
 
   claim: {
     statement: "Solid-state batteries can achieve commercially viable energy density, safety, and cycle life for electric vehicles.",
@@ -30,7 +30,7 @@ export const FR_MF_0006 = {
     {
       id: "IN-002",
       qualifiedEvent: "Toyota, QuantumScape, Solid Power — industrial commitments and claimed milestones",
-      description: "Toyota announces a solid-state battery target for 2025 hybrid vehicles; QuantumScape (Bill Gates-backed, Volkswagen partnership) reports >1,000 cycle performance at high C-rates in small single-layer pouch cells at 25°C (December 2020, investor day) and publishes peer-reviewed results (Joule, 2021). Solid Power (BMW, Ford partnership) announces pilot line production. These announcements generate substantial investor and media attention. The QuantumScape peer-reviewed result is genuine: single-layer cells demonstrate the cycle life threshold under limited conditions. However, single-layer laboratory cells are not commercially manufactured multi-layer cells — the scale-up challenge from single-layer to multi-layer to pouch to prismatic to manufacturing yield is the primary unresolved engineering problem. The announcement-to-delivery gap opens: ambitious public timelines followed by delayed commercial availability. This is the closest the record comes to the PROG-MF collapse dynamic — but the mechanism is different. No scientific fraud or replication failure is involved; the gap is manufacturing scale-up, not disputed physics.",
+      description: "Toyota announces a solid-state battery target for 2025 hybrid vehicles; QuantumScape (Bill Gates-backed, Volkswagen partnership) reports >1,000 cycle performance at high C-rates in small single-layer pouch cells at 25°C (December 2020, investor day) and publishes peer-reviewed results (Joule, 2021). Solid Power (BMW, Ford partnership) announces pilot line production. These announcements generate substantial investor and media attention. The QuantumScape peer-reviewed result is genuine: single-layer cells demonstrate the cycle life threshold under limited conditions. However, single-layer laboratory cells are not commercially manufactured multi-layer cells — the scale-up challenge from single-layer to multi-layer to pouch to prismatic to manufacturing yield is the primary unresolved engineering problem. The announcement-to-delivery gap opens: ambitious public timelines followed by delayed commercial availability. This is the closest the record comes to the PROG-AM collapse dynamic — but the mechanism is different. No scientific fraud or replication failure is involved; the gap is manufacturing scale-up, not disputed physics.",
       vectors: ["partial--laboratory-cycle-life-demonstrated-manufacturing-scale-up-absent"],
       date: "2020–22",
     },
@@ -44,7 +44,7 @@ export const FR_MF_0006 = {
     {
       id: "IN-004",
       qualifiedEvent: "Toyota sulfide breakthrough claim and initial independent assessment",
-      description: "Toyota announces in June 2023 a claimed breakthrough in sulfide solid electrolyte formulation enabling all three commercial thresholds simultaneously, with a target of 2027–28 vehicle launch. The claim is made at a press briefing, not through peer-reviewed publication. Initial independent technical assessment is mixed: materials scientists note that the claimed performance parameters (1,200 Wh/L, 1,000+ cycles, 10-minute charging) are within the theoretical range for sulfide electrolytes but have not been independently verified. No peer-reviewed data has been published as of early 2024. This is the closest this record comes to the PROG-MF pattern: an announcement made at a press briefing before peer-reviewed publication, under competitive pressure, generating significant media and investor attention. However, the mechanism is commercial competitive pressure (Toyota competing with Chinese EV manufacturers) rather than scientific priority competition, and the claim is about an engineering milestone rather than a physical discovery. Whether this constitutes the collapse dynamic or a different kind of anticipatory announcement is the question the diagnosis stress condition must evaluate.",
+      description: "Toyota announces in June 2023 a claimed breakthrough in sulfide solid electrolyte formulation enabling all three commercial thresholds simultaneously, with a target of 2027–28 vehicle launch. The claim is made at a press briefing, not through peer-reviewed publication. Initial independent technical assessment is mixed: materials scientists note that the claimed performance parameters (1,200 Wh/L, 1,000+ cycles, 10-minute charging) are within the theoretical range for sulfide electrolytes but have not been independently verified. No peer-reviewed data has been published as of early 2024. This is the closest this record comes to the PROG-AM pattern: an announcement made at a press briefing before peer-reviewed publication, under competitive pressure, generating significant media and investor attention. However, the mechanism is commercial competitive pressure (Toyota competing with Chinese EV manufacturers) rather than scientific priority competition, and the claim is about an engineering milestone rather than a physical discovery. Whether this constitutes the collapse dynamic or a different kind of anticipatory announcement is the question the diagnosis stress condition must evaluate.",
       vectors: ["partial--claimed-breakthrough-peer-reviewed-verification-absent"],
       date: "2023–24",
     },
@@ -100,23 +100,24 @@ export const FR_MF_0006 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "The PROG-MF diagnosis is now qualified: it applies to physically disputed claims, not to engineering-threshold claims. Does this mean PROG-MF contains two structurally distinct claim sub-populations that should eventually be tracked separately, or is the programme's container relationship sufficient for current purposes?",
+      question: "The PROG-AM diagnosis is now qualified: it applies to physically disputed claims, not to engineering-threshold claims. Does this mean PROG-AM contains two structurally distinct claim sub-populations that should eventually be tracked separately, or is the programme's container relationship sufficient for current purposes?",
       raisedDate: "2024-01-15",
     },
     {
       id: "OQ-002",
-      question: "FR-MF-0006 is the second record in the corpus with an approximately dated attractor (Toyota/Chinese 2027–28 target), following FR-BT-0004 (2026 NHS-Galleri). Two occurrences of dated attractors. Does this warrant a procedural note — a way for the Observatory to flag records for scheduled re-entry when a dated evidence event approaches?",
+      question: "FR-AM-0006 is the second record in the corpus with an approximately dated attractor (Toyota/Chinese 2027–28 target), following FR-BT-0004 (2026 NHS-Galleri). Two occurrences of dated attractors. Does this warrant a procedural note — a way for the Observatory to flag records for scheduled re-entry when a dated evidence event approaches?",
       raisedDate: "2024-01-15",
     },
     {
       id: "OQ-003",
-      question: "INST-004 (Toyota press briefing before peer review) superficially resembles the PROG-MF collapse dynamic but differs in two ways: no disputed physics, and no subsequent replication failure. Is Toyota's pre-publication announcement better classified as commercial anticipatory evidence (RN-004 territory) rather than as the collapse mechanism (CM-001)?",
+      question: "INST-004 (Toyota press briefing before peer review) superficially resembles the PROG-AM collapse dynamic but differs in two ways: no disputed physics, and no subsequent replication failure. Is Toyota's pre-publication announcement better classified as commercial anticipatory evidence (RN-004 territory) rather than as the collapse mechanism (CM-001)?",
       raisedDate: "2024-01-15",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0006", to: "FR-AM-0006", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-005", date: "2024-01-15", field: "diagnosis_bounded", from: "—", to: "DIAGNOSIS-BOUNDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },

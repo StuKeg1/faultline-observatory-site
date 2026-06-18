@@ -1,6 +1,6 @@
 /**
- * FR-MF-0004 — Commercial Fusion Power — Net Electricity at Grid Scale
- * Programme: PROG-MF
+ * FR-AM-0004 — Commercial Fusion Power — Net Electricity at Grid Scale
+ * Programme: PROG-AM
  * Converted from HTML record by convert-records.js
  *
  * Constitutional rules:
@@ -9,9 +9,9 @@
  * - Transition Feed is DERIVED from assessments where pressureState changed
  */
 
-export const FR_MF_0004 = {
-  id: "FR-MF-0004",
-  programme: "PROG-MF",
+export const FR_AM_0004 = {
+  id: "FR-AM-0004",
+  programme: "PROG-AM",
 
   claim: {
     statement: "A commercially viable fusion power plant can generate net electricity at grid scale.",
@@ -123,6 +123,7 @@ export const FR_MF_0004 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0004", to: "FR-AM-0004", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_failed", from: "—", to: "NULL-CONDITION-FAILED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },

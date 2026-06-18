@@ -25,13 +25,13 @@ import { FR_AI_0006 } from "./records/FR-AI-0006.js";
 import { FR_AI_0007 } from "./records/FR-AI-0007.js";
 import { FR_AI_0008 } from "./records/FR-AI-0008.js";
 
-// ─── PROG-MF — Materials & Physical Frontiers ────────────────
-import { FR_MF_0001 } from "./records/FR-MF-0001.js";
-import { FR_MF_0002 } from "./records/FR-MF-0002.js";
-import { FR_MF_0003 } from "./records/FR-MF-0003.js";
-import { FR_MF_0004 } from "./records/FR-MF-0004.js";
-import { FR_MF_0005 } from "./records/FR-MF-0005.js";
-import { FR_MF_0006 } from "./records/FR-MF-0006.js";
+// ─── PROG-AM — Advanced Materials ────────────────────────────
+import { FR_AM_0001 } from "./records/FR-AM-0001.js";
+import { FR_AM_0002 } from "./records/FR-AM-0002.js";
+import { FR_AM_0003 } from "./records/FR-AM-0003.js";
+import { FR_AM_0004 } from "./records/FR-AM-0004.js";
+import { FR_AM_0005 } from "./records/FR-AM-0005.js";
+import { FR_AM_0006 } from "./records/FR-AM-0006.js";
 
 // ─── PROG-BT — Biotechnology & Life Sciences ────────────────
 import { FR_BT_0001 } from "./records/FR-BT-0001.js";
@@ -60,13 +60,13 @@ export const ALL_RECORDS = [
   FR_AI_0006,
   FR_AI_0007,
   FR_AI_0008,
-  // PROG-MF
-  FR_MF_0001,
-  FR_MF_0002,
-  FR_MF_0003,
-  FR_MF_0004,
-  FR_MF_0005,
-  FR_MF_0006,
+  // PROG-AM
+  FR_AM_0001,
+  FR_AM_0002,
+  FR_AM_0003,
+  FR_AM_0004,
+  FR_AM_0005,
+  FR_AM_0006,
   // PROG-BT
   FR_BT_0001,
   FR_BT_0002,
@@ -91,11 +91,11 @@ export const PROGRAMMES = [
       "Tracking capability claims against independent replication and operational evidence.",
   },
   {
-    id: "PROG-MF",
-    shortId: "MF",
-    name: "Materials & Physical Frontiers",
+    id: "PROG-AM",
+    shortId: "AM",
+    name: "Advanced Materials",
     description:
-      "Tracking claims in materials science, fusion, and frontier physics.",
+      "This programme tracks frontier claims whose central uncertainty concerns the behaviour, mechanism, scalability, or demonstrated viability of materials and physical systems. A claim belongs here when the contested frontier lies in the material or physical phenomenon itself — whether it exists, whether it scales, whether the proposed mechanism is correct. Claims are not excluded because they may later find application in computing, medicine, or energy; nor are they included for that reason. The allocation criterion is the location of the primary contested frontier, not the eventual application of the technology.",
   },
   {
     id: "PROG-BT",
