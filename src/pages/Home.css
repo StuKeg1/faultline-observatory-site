@@ -138,6 +138,7 @@
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--rule-light);
+  max-width: 65%;
 }
 .foyer-section-eyebrow {
   font-family: var(--mono);
@@ -211,7 +212,7 @@
 .foyer-prog-card {
   display: block;
   background: var(--paper-card);
-  padding: 1.25rem 1.5rem;
+  padding: 0.875rem 1.25rem;
   text-decoration: none;
   color: var(--ink);
   transition: background 0.15s;
@@ -224,19 +225,27 @@
   font-size: 9px;  font-weight: 500;  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-mid);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
 }
 .fpc-name {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 1rem;               /* was 0.9375rem */
+  font-size: 0.9375rem;
   color: var(--ink);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 .foyer-prog-card--empty .fpc-name { color: var(--ink-mid); }
+.fpc-desc {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.8125rem;
+  color: var(--ink-mid);
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
 .fpc-count {
   font-family: var(--mono);
-  font-size: 10px;               /* was 9.5px */
+  font-size: 9.5px;
   color: var(--ink-mid);  letter-spacing: 0.04em;
 }
 /* ── Quiet links ── */
@@ -427,7 +436,7 @@
 .foyer-prog-card {
   display: block;
   background: var(--paper-card);
-  padding: 1.25rem;
+  padding: 0.875rem 1.25rem;
   text-decoration: none;
   color: var(--ink);
   transition: background 0.15s;
@@ -441,16 +450,24 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-mid);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
 }
 .fpc-name {
   font-family: var(--serif);
   font-weight: 400;
   font-size: 0.9375rem;
   color: var(--ink);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 .foyer-prog-card--empty .fpc-name { color: var(--ink-mid); }
+.fpc-desc {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.8125rem;
+  color: var(--ink-mid);
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
 .fpc-count {
   font-family: var(--mono);
   font-size: 9.5px;
