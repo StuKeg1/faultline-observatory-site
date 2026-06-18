@@ -103,51 +103,73 @@ export default function Home() {
 
         {/* ── SNAPSHOT ── */}
         <div className="foyer-snapshot" role="region" aria-label="Observatory current state">
-          <div className="foyer-snapshot-inner">
-
-            <div className="snapshot-column">
-              <div className="snapshot-col-label">Archive State</div>
-              <div className="snapshot-fields">
-                <div className="snapshot-field">
-                  <span className="sf-value">{snapshot.recordCount}</span>
-                  <span className="sf-label">Frontier Records</span>
-                </div>
-                <div className="snapshot-field">
-                  <span className="sf-value">{snapshot.programmeCount}</span>
-                  <span className="sf-label">Programmes</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="snapshot-divider" aria-hidden="true" />
-
-            <div className="snapshot-column">
-              <div className="snapshot-col-label">Institutional State</div>
-              <div className="snapshot-fields">
-                {snapshot.latestActivity && (
-                  <div className="snapshot-field sf-activity">
-                    <span className="sf-label">Latest Activity</span>
-                    <span className="sf-value sf-value-link">
-                      <Link to={snapshot.latestActivity.url}>
-                        {snapshot.latestActivity.recordId}
-                      </Link>
-                      <span className="sf-date">{snapshot.latestActivity.date}</span>
-                    </span>
-                  </div>
-                )}
-                {snapshot.activeReviews > 0 && (
-                  <div className="snapshot-field">
-                    <span className="sf-value">{snapshot.activeReviews}</span>
-                    <span className="sf-label">
-                      Active Constitutional {snapshot.activeReviews === 1 ? "Review" : "Reviews"}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-
+          <div className="foyer-snapshot-strip">
+            <span className="fss-stat">
+              <span className="fss-value">{snapshot.recordCount}</span>
+              <span className="fss-label">Frontier Records</span>
+            </span>
+            <span className="fss-divider" aria-hidden="true" />
+            <span className="fss-stat">
+              <span className="fss-value">{snapshot.programmeCount}</span>
+              <span className="fss-label">Programmes</span>
+            </span>
+            {snapshot.latestActivity && (
+              <>
+                <span className="fss-divider" aria-hidden="true" />
+                <span className="fss-stat">
+                  <span className="fss-label">Latest Activity</span>
+                  <span className="fss-activity">
+                    <Link to={snapshot.latestActivity.url} className="fss-record-id">
+                      {snapshot.latestActivity.recordId}
+                    </Link>
+                    <span className="fss-date">{snapshot.latestActivity.date}</span>
+                  </span>
+                </span>
+              </>
+            )}
+            {snapshot.activeReviews > 0 && (
+              <>
+                <span className="fss-divider" aria-hidden="true" />
+                <span className="fss-stat">
+                  <span className="fss-value">{snapshot.activeReviews}</span>
+                  <span className="fss-label">
+                    Active Constitutional {snapshot.activeReviews === 1 ? "Review" : "Reviews"}
+                  </span>
+                </span>
+              </>
+            )}
           </div>
         </div>
+
+        {/* ── RECENT ACTIVITY ── */}
+        {recent.length > 0 && (
+          <section className="foyer-section" aria-labelledby="activity-label">
+            <div className="foyer-section-inner">
+              <div className="foyer-section-head">
+                <h2 className="foyer-section-title" id="activity-label">Archive Activity</h2>
+              </div>
+              <div className="foyer-activity-log" role="feed">
+                {recent.map((record) => {
+                  const lastMut = record.mutationLog[0];
+                  const current = getCurrentAssessment(record);
+                  return (
+                    <div key={record.id} className="foyer-activity-row">
+                      <span className="far-date">{lastMut.date}</span>
+                      <Link to={getRecordUrl(record)} className="far-id">{record.id}</Link>
+                      <span className="far-note">{lastMut.note}</span>
+                      <StateBadge pressureState={current.pressureState} />
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="foyer-section-foot">
+                <Link to="/the-record" className="foyer-more-link">
+                  View all records in The Frontier Record →
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── PROGRAMMES ── */}
         <section className="foyer-section foyer-section-ruled" aria-labelledby="prog-label">
@@ -182,36 +204,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* ── RECENT ACTIVITY ── */}
-        {recent.length > 0 && (
-          <section className="foyer-section" aria-labelledby="activity-label">
-            <div className="foyer-section-inner">
-              <div className="foyer-section-head">
-                <h2 className="foyer-section-title" id="activity-label">Archive Activity</h2>
-              </div>
-              <div className="foyer-activity-log" role="feed">
-                {recent.map((record) => {
-                  const lastMut = record.mutationLog[0];
-                  const current = getCurrentAssessment(record);
-                  return (
-                    <div key={record.id} className="foyer-activity-row">
-                      <span className="far-date">{lastMut.date}</span>
-                      <Link to={getRecordUrl(record)} className="far-id">{record.id}</Link>
-                      <span className="far-note">{lastMut.note}</span>
-                      <StateBadge pressureState={current.pressureState} />
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="foyer-section-foot">
-                <Link to="/the-record" className="foyer-more-link">
-                  View all records in The Frontier Record →
-                </Link>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* ── QUIET LINKS ── */}
         <nav className="foyer-links" aria-label="Observatory sections">

@@ -277,85 +277,66 @@
 }
 
 
-/* ── Snapshot ── */
+/* ── Snapshot strip ── */
 .foyer-snapshot {
   background: var(--ink);
   padding: 0 2rem;
 }
-.foyer-snapshot-inner {
+.foyer-snapshot-strip {
   max-width: var(--col);
   margin: 0 auto;
-  padding: 1.75rem 0;
+  padding: 0.75rem 0;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 0;
-}
-.snapshot-column {
-  flex: 1;
-  padding: 0 2rem;
-}
-.snapshot-column:first-child { padding-left: 0; }
-.snapshot-column:last-child  { padding-right: 0; }
-
-.snapshot-divider {
-  width: 1px;
-  background: rgba(245,243,236,0.15);
-  flex-shrink: 0;
-}
-
-.snapshot-col-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(245,243,236,0.72);
-  margin-bottom: 1rem;
-}
-.snapshot-fields {
-  display: flex;
-  gap: 2rem;
   flex-wrap: wrap;
 }
-.snapshot-field {
+.fss-stat {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0 1.25rem;
 }
-.sf-value {
+.fss-stat:first-child { padding-left: 0; }
+.fss-divider {
+  width: 1px;
+  height: 1rem;
+  background: rgba(245,243,236,0.2);
+  flex-shrink: 0;
+  align-self: center;
+}
+.fss-value {
   font-family: var(--mono);
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--paper);
   line-height: 1;
 }
-.sf-label {
+.fss-label {
   font-family: var(--mono);
   font-size: 9px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(245,243,236,0.75);
+  color: rgba(245,243,236,0.65);
 }
-/* Latest activity — link + date side by side */
-.sf-activity { gap: 0.3rem; }
-.sf-activity .sf-label { margin-bottom: 0.35rem; }
-.sf-value-link {
+.fss-activity {
   display: flex;
   align-items: baseline;
-  gap: 0.75rem;
-  font-size: 1rem;
+  gap: 0.6rem;
 }
-.sf-value-link a {
+.fss-record-id {
   font-family: var(--mono);
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--paper);
   text-decoration: none;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
-.sf-value-link a:hover { text-decoration: underline; }
-.sf-date {
+.fss-record-id:hover { text-decoration: underline; }
+.fss-date {
   font-family: var(--mono);
-  font-size: 11px;
-  color: rgba(245,243,236,0.75);
+  font-size: 10px;
+  color: rgba(245,243,236,0.65);
 }
 
 /* ── Sections ── */
