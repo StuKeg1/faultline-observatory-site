@@ -141,36 +141,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── RECENT ACTIVITY ── */}
-        {recent.length > 0 && (
-          <section className="foyer-section" aria-labelledby="activity-label">
-            <div className="foyer-section-inner">
-              <div className="foyer-section-head">
-                <h2 className="foyer-section-title" id="activity-label">Archive Activity</h2>
-              </div>
-              <div className="foyer-activity-log" role="feed">
-                {recent.map((record) => {
-                  const lastMut = record.mutationLog[0];
-                  const current = getCurrentAssessment(record);
-                  return (
-                    <div key={record.id} className="foyer-activity-row">
-                      <span className="far-date">{lastMut.date}</span>
-                      <Link to={getRecordUrl(record)} className="far-id">{record.id}</Link>
-                      <span className="far-note">{lastMut.note}</span>
-                      <StateBadge pressureState={current.pressureState} />
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="foyer-section-foot">
-                <Link to="/the-record" className="foyer-more-link">
-                  View all records in The Frontier Record →
-                </Link>
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* ── PROGRAMMES ── */}
         <section className="foyer-section foyer-section-ruled" aria-labelledby="prog-label">
           <div className="foyer-section-inner">
@@ -204,6 +174,36 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* ── RECENT ACTIVITY ── */}
+        {recent.length > 0 && (
+          <section className="foyer-section" aria-labelledby="activity-label">
+            <div className="foyer-section-inner">
+              <div className="foyer-section-head">
+                <h2 className="foyer-section-title" id="activity-label">Archive Activity</h2>
+              </div>
+              <div className="foyer-activity-log" role="feed">
+                {recent.map((record) => {
+                  const lastMut = record.mutationLog[0];
+                  const current = getCurrentAssessment(record);
+                  return (
+                    <div key={record.id} className="foyer-activity-row">
+                      <span className="far-date">{lastMut.date}</span>
+                      <Link to={getRecordUrl(record)} className="far-id">{record.id}</Link>
+                      <span className="far-note">{lastMut.note}</span>
+                      <StateBadge pressureState={current.pressureState} />
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="foyer-section-foot">
+                <Link to="/the-record" className="foyer-more-link">
+                  View all records in The Frontier Record →
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── QUIET LINKS ── */}
         <nav className="foyer-links" aria-label="Observatory sections">
