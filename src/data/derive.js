@@ -118,13 +118,17 @@ export function getProgrammeRecords(records, programmeId) {
 /**
  * Returns corpus-level summary statistics — feeds the homepage Snapshot block.
  * The homepage cannot claim a state the corpus doesn't support.
+ *
+ * lastMutationDate is derived from getRecentActivity() rather than raw
+ * mutationLog[0] — this keeps "most recent institutional activity" backed
+ * by a single qualified source instead of a second implementation that can
+ * silently drift out of sync with it.
  */
 export function getCorpusSummary(records) {
   const byProgramme = {};
   let openCount = 0;
   let closedCount = 0;
   let totalAssessments = 0;
-  let lastMutationDate = null;
 
   for (const record of records) {
     // Programme counts
@@ -136,15 +140,10 @@ export function getCorpusSummary(records) {
 
     // Total assessments
     totalAssessments += record.assessments.length;
-
-    // Last mutation date
-    if (record.mutationLog && record.mutationLog.length > 0) {
-      const latest = record.mutationLog[0].date; // newest first
-      if (!lastMutationDate || latest > lastMutationDate) {
-        lastMutationDate = latest;
-      }
-    }
   }
+
+  const mostRecent = getRecentActivity(records, 1)[0] ?? null;
+  const lastMutationDate = mostRecent ? mostRecent.mutationLog[0].date : null;
 
   return {
     totalRecords: records.length,
@@ -178,10 +177,27 @@ export function getProgrammeStats(records, programmeId) {
  * Returns the most recently mutated records, sorted by latest mutation date.
  * Replaces the inline recentActivity() function in Home.jsx.
  * limit defaults to 5.
+ *
+ * Qualification rule: a record only qualifies if its newest mutation log
+ * entry represents genuine post-creation activity. Records whose newest
+ * entry is co-dated with their own record_created entry are excluded —
+ * that date marks the original authoring/backfill batch, not institutional
+ * activity, and showing it as "recent" would misrepresent the record's
+ * actual trajectory. Records with no record_created entry (e.g. records
+ * with a fully hand-authored historical log) are not subject to this check.
+ *
+ * This is the single qualified source for "most recent institutional
+ * activity" — getCorpusSummary() and Home.jsx's snapshot both derive from
+ * this rather than re-implementing the sort.
  */
 export function getRecentActivity(records, limit = 5) {
   return [...records]
     .filter((r) => r.mutationLog && r.mutationLog.length > 0)
+    .filter((r) => {
+      const newest = r.mutationLog[0];
+      const creationEntry = r.mutationLog.find((m) => m.field === "record_created");
+      return !creationEntry || newest.date !== creationEntry.date;
+    })
     .sort((a, b) => b.mutationLog[0].date.localeCompare(a.mutationLog[0].date))
     .slice(0, limit);
 }
@@ -243,3 +259,4 @@ export function getVerificationStageLabel(vsCode) {
   };
   return map[vsCode] ?? vsCode;
 }
+
