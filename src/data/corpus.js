@@ -3,6 +3,10 @@
  *
  * All records imported here. The corpus is the source of truth.
  * Programme metadata is declared here; statistics are DERIVED via derive.js.
+ *
+ * Programme fields:
+ *   shortDescription — homepage-facing visitor orientation (one sentence)
+ *   scopeStatement   — constitutional programme definition (programme reading room)
  */
 
 // ─── PROG-QE — Quantum Engineering ──────────────────────────
@@ -80,28 +84,36 @@ export const PROGRAMMES = [
     id: "PROG-QE",
     shortId: "QE",
     name: "Quantum Engineering",
-    description:
+    shortDescription:
+      "Claims about quantum computation, quantum advantage, error correction, and quantum hardware progress.",
+    scopeStatement:
       "Tracking engineering bottlenecks against claims of scalable quantum computation.",
   },
   {
     id: "PROG-AI",
     shortId: "AI",
     name: "Artificial Intelligence",
-    description:
+    shortDescription:
+      "Claims about frontier AI capability, agents, alignment, evaluation, and institutional impact.",
+    scopeStatement:
       "Tracking capability claims against independent replication and operational evidence.",
   },
   {
     id: "PROG-AM",
     shortId: "AM",
     name: "Advanced Materials",
-    description:
+    shortDescription:
+      "Claims about superconductivity, fusion energy, novel materials, and frontier physical systems.",
+    scopeStatement:
       "This programme tracks frontier claims whose central uncertainty concerns the behaviour, mechanism, scalability, or demonstrated viability of materials and physical systems. A claim belongs here when the contested frontier lies in the material or physical phenomenon itself — whether it exists, whether it scales, whether the proposed mechanism is correct. Claims are not excluded because they may later find application in computing, medicine, or energy; nor are they included for that reason. The allocation criterion is the location of the primary contested frontier, not the eventual application of the technology.",
   },
   {
     id: "PROG-BT",
     shortId: "BT",
     name: "Biotechnology & Life Sciences",
-    description:
+    shortDescription:
+      "Claims about biological systems, therapeutics, life-science platforms, and biomedical innovation.",
+    scopeStatement:
       "Tracking claims in biotechnology, genomics, and life-science frontiers.",
   },
 ];

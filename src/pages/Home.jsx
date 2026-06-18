@@ -198,6 +198,9 @@ export default function Home() {
                   >
                     <div className="fpc-id">{prog.id}</div>
                     <div className="fpc-name">{prog.name}</div>
+                    {prog.shortDescription && (
+                      <div className="fpc-desc">{prog.shortDescription}</div>
+                    )}
                     <div className="fpc-count">
                       {isEmpty ? "No published records" : `${stats.total} record${stats.total !== 1 ? "s" : ""}`}
                     </div>

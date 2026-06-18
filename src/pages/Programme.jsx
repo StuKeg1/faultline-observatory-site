@@ -46,7 +46,7 @@ export default function Programme() {
     <>
       <PageMeta
         title={prog.name}
-        description={`${prog.description} ${stats.total} Frontier Record${stats.total !== 1 ? "s" : ""} in this programme.`}
+        description={`${prog.scopeStatement} ${stats.total} Frontier Record${stats.total !== 1 ? "s" : ""} in this programme.`}
         path={`/programmes/${prog.id.toLowerCase()}/`}
       />
       <div className="programme-page">
@@ -66,7 +66,7 @@ export default function Programme() {
               <div className="prog-main">
                 <div className="prog-id">{prog.id}</div>
                 <h1 className="prog-name">{prog.name}</h1>
-                <p className="prog-desc">{prog.description}</p>
+                <p className="prog-desc">{prog.scopeStatement}</p>
               </div>
 
               <aside className="prog-stats-panel" aria-label="Programme statistics">
