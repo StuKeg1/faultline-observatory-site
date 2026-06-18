@@ -167,11 +167,8 @@ export default function Home() {
                 );
               })}
             </div>
-            <div className="foyer-section-foot">
-              <Link to="/programmes" className="foyer-more-link">
-                View all programmes →
-              </Link>
-            </div>
+            {/* Note: "View all programmes" link omitted — grid shows all programmes.
+                Restore if PROGRAMMES array ever exceeds card display limit. */}
           </div>
         </section>
 
