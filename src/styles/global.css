@@ -106,6 +106,14 @@ button { cursor: pointer; }
   border-top: 1px solid var(--rule);
 }
 
+/* Resources cluster: site nav + guides + advanced access */
+.site-footer-resources {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 /* Section 1: Navigation links */
 .site-footer-nav {
   display: flex;
@@ -114,7 +122,7 @@ button { cursor: pointer; }
   flex-shrink: 0;
 }
 .site-footer-nav a {
-  color: var(--ink-faint);
+  color: var(--faint-text-color);
   text-decoration: none;
   transition: color 0.15s;
 }
@@ -135,13 +143,29 @@ button { cursor: pointer; }
   flex-shrink: 0;
 }
 .site-footer-guides a {
-  color: var(--ink-faint);
+  color: var(--faint-text-color);
   text-decoration: none;
   transition: color 0.15s;
 }
 .site-footer-guides a:hover { color: var(--ink-mid); }
 
-/* Section 3: Identity */
+/* Section 2b: MCP Access — standalone heading-link, no parent label */
+.site-footer-mcp {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.site-footer-mcp-link {
+  color: var(--ink-mid);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 9px;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.site-footer-mcp-link:hover { color: var(--accent); }
+
+/* Section 3: Identity — institutional sign-off */
 .site-footer-identity {
   display: flex;
   flex-direction: column;
@@ -154,7 +178,7 @@ button { cursor: pointer; }
   font-weight: 500;
 }
 .site-footer-tagline {
-  color: var(--ink-faint);
+  color: var(--faint-text-color);
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────────────── */
@@ -165,21 +189,29 @@ button { cursor: pointer; }
   .site-footer {
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
     text-align: center;
     font-size: 11px;
+  }
+  .site-footer-resources {
+    flex-direction: column;
+    gap: 1.25rem;
   }
   .site-footer-nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
   }
-  .site-footer-guides {
+  .site-footer-guides,
+  .site-footer-mcp {
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
   }
   .site-footer-identity {
     align-items: center;
+    width: 100%;
+    border-top: 1px solid var(--rule-light);
+    padding-top: 1.25rem;
   }
 }
