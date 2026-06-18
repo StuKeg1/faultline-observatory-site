@@ -22,11 +22,11 @@ function deriveSnapshot(records, notes) {
   const recordCount = records.length;
   const programmeCount = PROGRAMMES.length;
 
-  // Latest activity: most recent mutation — record ID + date, not just date
-  const withMutations = records.filter((r) => r.mutationLog?.length > 0);
-  const mostRecent = withMutations.sort(
-    (a, b) => b.mutationLog[0].date.localeCompare(a.mutationLog[0].date)
-  )[0] ?? null;
+  // Latest activity: most recent mutation — record ID + date, not just date.
+  // Uses getRecentActivity() — the same qualified source as the Archive
+  // Activity feed below — instead of a separate inline sort, so there is
+  // one source of "recent" rather than two that can silently drift apart.
+  const [mostRecent] = getRecentActivity(records, 1);
   const latestActivity = mostRecent
     ? { recordId: mostRecent.id, date: mostRecent.mutationLog[0].date, url: getRecordUrl(mostRecent) }
     : null;
