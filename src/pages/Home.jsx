@@ -149,6 +149,40 @@ export default function Home() {
           </div>
         </div>
 
+        {/* ── PROGRAMMES ── */}
+        <section className="foyer-section foyer-section-ruled" aria-labelledby="prog-label">
+          <div className="foyer-section-inner">
+            <div className="foyer-section-head">
+              <h2 className="foyer-section-title" id="prog-label">Programmes</h2>
+            </div>
+            <div className="foyer-prog-grid" role="list">
+              {PROGRAMMES.map((prog) => {
+                const stats = progStats[prog.id];
+                const isEmpty = stats.total === 0;
+                return (
+                  <Link
+                    key={prog.id}
+                    to={`/programmes/${prog.id.toLowerCase()}`}
+                    className={`foyer-prog-card${isEmpty ? " foyer-prog-card--empty" : ""}`}
+                    role="listitem"
+                  >
+                    <div className="fpc-id">{prog.id}</div>
+                    <div className="fpc-name">{prog.name}</div>
+                    <div className="fpc-count">
+                      {isEmpty ? "No published records" : `${stats.total} record${stats.total !== 1 ? "s" : ""}`}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="foyer-section-foot">
+              <Link to="/programmes" className="foyer-more-link">
+                View all programmes →
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* ── RECENT ACTIVITY ── */}
         {recent.length > 0 && (
           <section className="foyer-section" aria-labelledby="activity-label">
@@ -178,43 +212,6 @@ export default function Home() {
             </div>
           </section>
         )}
-
-        {/* ── PROGRAMMES ── */}
-        <section className="foyer-section foyer-section-ruled" aria-labelledby="prog-label">
-          <div className="foyer-section-inner">
-            <div className="foyer-section-head">
-              <h2 className="foyer-section-title" id="prog-label">Programmes</h2>
-            </div>
-            <div className="foyer-prog-grid" role="list">
-              {PROGRAMMES.map((prog) => {
-                const stats = progStats[prog.id];
-                const isEmpty = stats.total === 0;
-                return (
-                  <Link
-                    key={prog.id}
-                    to={`/programmes/${prog.id.toLowerCase()}`}
-                    className={`foyer-prog-card${isEmpty ? " foyer-prog-card--empty" : ""}`}
-                    role="listitem"
-                  >
-                    <div className="fpc-id">{prog.id}</div>
-                    <div className="fpc-name">{prog.name}</div>
-                    {prog.shortDescription && (
-                      <div className="fpc-desc">{prog.shortDescription}</div>
-                    )}
-                    <div className="fpc-count">
-                      {isEmpty ? "No published records" : `${stats.total} record${stats.total !== 1 ? "s" : ""}`}
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-            <div className="foyer-section-foot">
-              <Link to="/programmes" className="foyer-more-link">
-                View all programmes →
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* ── QUIET LINKS ── */}
         <nav className="foyer-links" aria-label="Observatory sections">
