@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import SiteNav from "./components/SiteNav.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 // ─── EAGER ───────────────────────────────────────────────────
 // Homepage and shared layout load immediately.
@@ -54,6 +55,7 @@ function RecordRedirect() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <SiteNav />
       <Suspense fallback={null}>
         <Routes>
