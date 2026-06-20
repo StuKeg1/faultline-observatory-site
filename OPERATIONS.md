@@ -8,6 +8,8 @@
 
 ```
 OPERATIONS.md          — Current reality and what to ship next (this file)
+Drive Operating Index  — Map of authority: which document governs what,
+                          which copies in the Drive are not authoritative
 RM-001                 — Where things live (repo map, file locations)
 RM-002                 — How to make changes (runbook, phases, tiers)
 Outstanding Work Queue — What work exists (backlog, queue, closed)
@@ -16,7 +18,46 @@ Release Manifests      — What exactly is shipping now, file by file
 
 OPERATIONS.md is a summary view. The Outstanding Work Queue is the
 authority for what exists. Release Manifests are the authority for
-what is executing.
+what is executing. The Drive Operating Index is the authority for
+which document governs what, and which Drive copies do not govern
+anything.
+
+---
+
+## Document Status Convention
+
+Drive gives Claude no edit-in-place capability — only `create_file`,
+`copy_file`, `search_files`, and `read_file_content`. Every update to
+a Drive document produces a new document under the same title in the
+same folder. This is a structural fact of the tool, not a workflow
+defect — but it means canonicality must be declared, not assumed from
+recency alone.
+
+**Every Drive document Claude creates or updates carries this header,
+immediately below the title block:**
+
+```
+Status: [CANONICAL | Superseded | Candidate vN | Draft | Dormant | Non-authoritative copy]
+Supersedes: [name of the document this replaces, or "—" if none]
+Source of truth as of: [date this version was generated]
+```
+
+Rules:
+
+- Only one document of a given title may carry `Status: CANONICAL` at
+  any time.
+- When Claude generates a new version of an existing document, the
+  new document is `CANONICAL`. The immediately preceding canonical
+  version becomes `Superseded` — Stuart relabels or trashes it on
+  next touch, per existing practice.
+- Drive copies, drafts, or imports whose actual source of truth lives
+  elsewhere (e.g. the GitHub repo) carry `Status: Non-authoritative
+  copy`, with a one-line note on where the real source of truth is.
+- This convention does not apply to files inside the GitHub repo —
+  git history already provides canonicality there.
+- This is the only addition this convention introduces. It does not
+  require a new document type, review cadence, or governance layer
+  beyond the Drive Operating Index.
 
 ---
 
@@ -103,6 +144,7 @@ Not: "Did the same tool create these files?"
 | 2026-06-15 | Codex MCP verification successful (`mcp__faultline` confirmed) |
 | 2026-06-15 | OPERATIONS.md created |
 | 2026-06-15 | File-replacement workflow adopted |
+| 2026-06-20 | Drive Operating Index created. Document Status Convention added following external IA review. |
 
 ---
 
@@ -194,3 +236,4 @@ no console errors, mobile at 375px.
 
 *OPERATIONS.md is a summary. Outstanding Work Queue is the authority.*
 *Release Manifests are the execution layer. When in doubt, read the manifest.*
+*The Drive Operating Index is the authority for which document governs what.*
