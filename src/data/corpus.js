@@ -101,7 +101,7 @@ export const PROGRAMMES = [
   {
     id: "PROG-AM",
     shortId: "AM",
-    name: "Advanced Materials",
+    name: "Advanced Materials, Physics & Energy",
     shortDescription:
       "Claims about superconductivity, fusion energy, novel materials, and frontier physical systems.",
     scopeStatement:
