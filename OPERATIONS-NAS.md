@@ -107,6 +107,34 @@ https://syn2-container-1.tail14eee2.ts.net/
 
 ---
 
+## Implementation Decisions
+
+### 2026-06-21 — `attention`/`doctor` health check: HTTP reachability, not Docker socket
+
+**Context:** Initial design for `faultline attention` checked container health via
+`docker inspect`. In practice, `sjoerd` has no access to `/var/run/docker.sock`
+(owned `root:root`, mode `660`), and Synology DSM exposes no `docker` group to
+join.
+
+**Options considered:**
+1. Add `sjoerd` to a group sharing root's GID — rejected, grants root-equivalent
+   Docker access for a command contracted to "observe only."
+2. Add a narrowly-scoped sudoers rule permitting only `docker inspect` on this
+   container — rejected, because no `visudo` exists on this system to validate
+   sudoers syntax before it takes effect, and a malformed drop-in file risks
+   breaking `sudo` entirely, including the existing `administrators`-group rule
+   that currently grants `sjoerd` sudo at all.
+
+**Decision:** `attention` and `doctor` check local HTTP reachability of
+`faultline-web` on `127.0.0.1:8088` instead of querying Docker directly. This
+requires no new privileges, avoids the sudoers risk entirely, and is arguably
+the more correct check regardless — it tests what's actually being observed
+(is the site being served) rather than a layer removed from it (is the
+container process running), and stays substrate-agnostic if the deployment
+mechanism ever changes.
+
+---
+
 ## Relationship to the public production site
 
 | | Public production (`OPERATIONS.md`) | Private NAS layer (this doc) |
