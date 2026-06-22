@@ -58,7 +58,7 @@ export function Programmes() {
             >
               <div className="inst-prog-row__id">{prog.id}</div>
               <div className="inst-prog-row__name">{prog.name}</div>
-              <div className="inst-prog-row__desc">{prog.description}</div>
+              <div className="inst-prog-row__desc">{prog.shortDescription}</div>
               <div className="inst-prog-row__count">
                 {isEmpty ? "No published records" : `${stats.total} record${stats.total !== 1 ? "s" : ""}`}
               </div>
