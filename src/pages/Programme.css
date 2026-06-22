@@ -117,6 +117,16 @@
   border-bottom: none;
 }
 
+/* Programme Diagnosis — single line, no heading, sits under the records list */
+.prog-diagnosis-line {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+  margin-top: 1.5rem;
+}
+
 /* Empty state — honest, not apologetic */
 .prog-empty-state {
   padding: 1.5rem;
