@@ -160,6 +160,7 @@ export default function Home() {
                   >
                     <div className="fpc-id">{prog.id}</div>
                     <div className="fpc-name">{prog.name}</div>
+                    <div className="fpc-desc">{prog.shortDescription}</div>
                     <div className="fpc-count">
                       {isEmpty ? "No published records" : `${stats.total} record${stats.total !== 1 ? "s" : ""}`}
                     </div>
@@ -177,7 +178,7 @@ export default function Home() {
           <section className="foyer-section" aria-labelledby="activity-label">
             <div className="foyer-section-inner">
               <div className="foyer-section-head">
-                <h2 className="foyer-section-title" id="activity-label">Archive Activity</h2>
+                <h2 className="foyer-section-title" id="activity-label">Activity Log</h2>
               </div>
               <div className="foyer-activity-log" role="feed">
                 {recent.map((record) => {
