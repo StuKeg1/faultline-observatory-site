@@ -94,7 +94,7 @@ export const PROGRAMMES = [
     shortId: "AI",
     name: "Artificial Intelligence",
     shortDescription:
-      "Claims about frontier AI capability, agents, alignment, evaluation, and institutional impact.",
+      "Claims about frontier AI capability, alignment, agents, evaluation, and institutional impact.",
     scopeStatement:
       "Tracking capability claims against independent replication and operational evidence.",
   },
@@ -103,7 +103,7 @@ export const PROGRAMMES = [
     shortId: "AM",
     name: "Advanced Materials, Physics & Energy",
     shortDescription:
-      "Claims about superconductivity, fusion energy, novel materials, and frontier physical systems.",
+      "Claims from physical science where evidence, scalability, or mechanism may reshape energy, materials, or frontier physics.",
     scopeStatement:
       "This programme tracks frontier claims whose central uncertainty concerns the behaviour, mechanism, scalability, or demonstrated viability of materials and physical systems. A claim belongs here when the contested frontier lies in the material or physical phenomenon itself — whether it exists, whether it scales, whether the proposed mechanism is correct. Claims are not excluded because they may later find application in computing, medicine, or energy; nor are they included for that reason. The allocation criterion is the location of the primary contested frontier, not the eventual application of the technology.",
   },
@@ -112,7 +112,7 @@ export const PROGRAMMES = [
     shortId: "BT",
     name: "Biotechnology & Life Sciences",
     shortDescription:
-      "Claims about biological systems, therapeutics, life-science platforms, and biomedical innovation.",
+      "Claims about biological systems, therapeutics, biomedical sciences, genomics and life-science frontiers.",
     scopeStatement:
       "Tracking claims in biotechnology, genomics, and life-science frontiers.",
   },
