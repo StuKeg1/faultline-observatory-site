@@ -95,18 +95,6 @@ export default function Programme() {
         <main className="prog-main-body">
           <div className="prog-main-inner">
 
-            {/* Programme Diagnosis */}
-            <section className="prog-section" aria-labelledby="prog-diagnosis-label">
-              <div className="prog-section-label" id="prog-diagnosis-label">
-                Programme Diagnosis
-              </div>
-              <div className="prog-diagnosis-block">
-                <p className="prog-diagnosis-text">
-                  No current programme-level diagnosis.
-                </p>
-              </div>
-            </section>
-
             {/* Recent Activity — only if records exist */}
             {hasRecords && recentMutations.length > 0 && (
               <section className="prog-section" aria-labelledby="prog-activity-label">
@@ -166,6 +154,9 @@ export default function Programme() {
                 </div>
               )}
             </section>
+
+            {/* Programme Diagnosis — single line, no heading, sits under the records */}
+            <p className="prog-diagnosis-line">No current programme-level diagnosis.</p>
 
           </div>
         </main>
