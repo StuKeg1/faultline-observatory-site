@@ -87,7 +87,7 @@ export const PROGRAMMES = [
     shortDescription:
       "Claims about quantum computation, quantum advantage, error correction, and quantum hardware progress.",
     scopeStatement:
-      "Tracking engineering bottlenecks against claims of scalable quantum computation.",
+      "Claims where the contested frontier lies in whether quantum computational capabilities can be demonstrated, sustained, and scaled beyond isolated demonstrations.",
   },
   {
     id: "PROG-AI",
@@ -96,7 +96,7 @@ export const PROGRAMMES = [
     shortDescription:
       "Claims about frontier AI capability, alignment, agents, evaluation, and institutional impact.",
     scopeStatement:
-      "Tracking capability claims against independent replication and operational evidence.",
+      "Claims where the contested frontier lies in whether artificial intelligence capabilities demonstrated under bounded conditions continue to hold beyond those conditions.",
   },
   {
     id: "PROG-AM",
@@ -114,6 +114,6 @@ export const PROGRAMMES = [
     shortDescription:
       "Claims about biological systems, therapeutics, biomedical sciences, genomics and life-science frontiers.",
     scopeStatement:
-      "Tracking claims in biotechnology, genomics, and life-science frontiers.",
+      "Claims where the contested frontier lies in whether evidence of efficacy, safety, and scale keeps pace with the deployment of biological interventions.",
   },
 ];
