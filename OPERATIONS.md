@@ -10,14 +10,14 @@ It does not own current work, release history, architectural observations, or in
 
 ## Canonical Documentation Architecture
 
-The Observatory uses four canonical living documents, each with one clear responsibility.
+The Observatory uses a set of canonical documents, each with one clear institutional responsibility.
 
 | Document | Location | Owns | Never owns |
 |---|---|---|---|
 | OPERATIONS.md | GitHub | Operating workflow, repo facts, release process, implementation rules | Current work, shipped history, observations |
 | Outstanding Work Queue | Drive | What work currently exists | Historical implementation detail, architectural reasoning |
 | Release Archive | Drive | What the Observatory has shipped | Open work, future planning |
-| Institutional Observations Register | Drive `architecture/observations/` | What the institution has learned but not yet implemented | Tasks, release plans, implementation decisions |
+| Institutional Learning Register | Drive `architecture/observations/` | What the institution has learned but not yet implemented | Tasks, release plans, implementation decisions |
 
 Architecture rule: every fact has exactly one owner. Other documents may reference it, but should not duplicate it.
 
@@ -26,20 +26,17 @@ Architecture rule: every fact has exactly one owner. Other documents may referen
 
 Operational documents are organised by institutional responsibility rather than document size.
 
-Documents may be separated when they support different operational activities or evolve at different maintenance cadences.
+Documents may be separated where distinct operational responsibilities or maintenance cadences would otherwise create unnecessary friction.
 
 The release workflow is intentionally separated into distinct operational documents:
 
-* **Outstanding Work Queue** — identifies and prioritises current work.
-* **Active Release Queue** — tracks approved releases awaiting implementation.
-* **Release Governance** — owns release references, review guidance, and migration support.
+- **Outstanding Work Queue** — identifies and prioritises current work.
+- **Active Release Queue** — tracks approved releases awaiting implementation.
+- **Release Governance** — owns release references, review guidance, and migration support.
 
 These documents are maintained independently because they support different operational activities and evolve at different cadences.
 
-This separation exists to reduce operational friction and improve day-to-day execution.
-
 The exact operational document structure is not constitutional. It may evolve through observed operational experience, provided institutional responsibilities remain clear and every fact continues to have one canonical owner.
-
 ---
 
 ## Information Flow
@@ -47,7 +44,7 @@ The exact operational document structure is not constitutional. It may evolve th
 ```text
 Diagnosis
   ↓
-Institutional Observations Register
+Institutional Learning Register
   ↓
 Outstanding Work Queue
   ↓
@@ -60,7 +57,7 @@ Release Archive
 
 OPERATIONS.md governs the workflow.
 
-Release Manifests are temporary execution documents. They are created when work enters implementation, guide a single release, and are archived by reference once complete. They are not part of the permanent documentation architecture.
+Release Manifests are temporary execution documents. They coordinate a single release and cease to be authoritative once the release has been recorded in the Release Archive. They are not part of the permanent documentation architecture.
 
 ---
 
@@ -111,7 +108,7 @@ Stuart does not edit code line by line. The workflow is:
 10. Update documentation ownership:
     - Outstanding Work Queue: remove/move actionable work.
     - Release Archive: record shipped history.
-    - Institutional Observations Register: preserve any learning not yet implemented.
+    - Institutional Learning Register: preserve any learning not yet implemented.
 ```
 
 Stuart's role: reviewer and operator.
@@ -210,7 +207,7 @@ Never violate these rules during implementation:
 - Summary statistics are derived from the live corpus unless explicitly documented otherwise.
 - The Outstanding Work Queue owns current actionable work.
 - The Release Archive owns shipped implementation history.
-- The Institutional Observations Register owns preserved institutional learning that has not yet become work.
+- The Institutional Learning Register owns preserved institutional learning that has not yet become work.
 - OPERATIONS.md owns process only.
 
 ---
@@ -244,7 +241,7 @@ After a release ships:
 1. Verify live at `faultlinewatch.com`.
 2. Move or remove shipped actionable work from the Outstanding Work Queue.
 3. Add the shipped release to the Release Archive with objective, manifest reference, commit hash, implementation notes, and historical rationale.
-4. Preserve any non-implemented institutional learning in the Institutional Observations Register.
+4. Preserve any non-implemented institutional learning in the Institutional Learning Register.
 5. Update OPERATIONS.md only if the operating workflow, repository map, file map, or implementation rules changed.
 
 ---
