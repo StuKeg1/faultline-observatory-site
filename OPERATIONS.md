@@ -22,6 +22,22 @@ The Observatory uses four canonical living documents, each with one clear respon
 Architecture rule: every fact has exactly one owner. Other documents may reference it, but should not duplicate it.
 
 ---
+## Operational Document Granularity
+
+Operational documents are organised by institutional responsibility rather than document size.
+
+Documents may be separated when they support different operational activities or evolve at different maintenance cadences.
+
+The current execution system comprises three operational documents:
+
+- **Outstanding Work Queue** — identifies and prioritises current work.
+- **Active Release Queue** — tracks approved releases awaiting implementation.
+- **Release Governance** — owns release references, review guidance, and migration support.
+
+This separation exists to reduce operational friction and improve day-to-day execution.
+
+The exact operational document structure is not constitutional. It may evolve through observed operational experience, provided institutional responsibilities remain clear and every fact continues to have one canonical owner.
+---
 
 ## Information Flow
 
