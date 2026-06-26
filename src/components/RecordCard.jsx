@@ -18,7 +18,9 @@ export default function RecordCard({ record }) {
       <div className="rc-meta">
         <span className="rc-programme">{record.programme}</span>
         <span className="rc-date">Opened {record.claim.openedDate}</span>
-        <span className="rc-mutations">{record.mutationLog.length} mutations</span>
+        <span className="rc-assessments">
+          {record.assessments.length} assessment{record.assessments.length !== 1 ? "s" : ""}
+        </span>
       </div>
     </Link>
   );

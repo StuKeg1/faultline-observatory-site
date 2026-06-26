@@ -83,22 +83,33 @@ function VerificationMatrix({ record }) {
 }
 
 // ─── RECORD LINEAGE TIMELINE ────────────────────────────────
+// RELEASE-013: distinguishes a genuine state transition from a
+// reaffirmation (state held) using the existing getTransitionFeed(),
+// already correctly computed in derive.js but never called from any
+// view before this release. No new derived function added.
 function RecordLineage({ record }) {
   const history = getAssessmentHistory(record);
+  const transitionIds = new Set(getTransitionFeed(record).map((t) => t.to.id));
   const lastIndex = history.length - 1;
   return (
     <div className="timeline" role="list">
       {history.map((a, i) => {
         const isFirst = i === 0;
         const isLast = i === lastIndex;
+        const isTransition = transitionIds.has(a.id);
         const dotClass = isFirst ? "major" : isLast ? "current" : "";
+        const eventLabel = isFirst
+          ? "Record opened — "
+          : isTransition
+          ? "State changed — "
+          : "Reassessed, no change — ";
         return (
           <div key={a.id} className="timeline-entry" role="listitem">
             <div className="tl-date">{a.date}</div>
             <div className={`tl-dot ${dotClass}`} aria-hidden="true" />
             <div className="tl-content">
-              <div className="tl-event">
-                {isFirst ? "Record opened — " : "Assessment updated — "}
+              <div className={`tl-event${!isFirst && !isTransition ? " tl-event-reaffirmed" : ""}`}>
+                {eventLabel}
                 <StateBadge pressureState={a.pressureState} />
               </div>
               <div className="tl-detail">{a.summary}</div>

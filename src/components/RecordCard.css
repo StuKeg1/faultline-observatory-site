@@ -70,3 +70,11 @@
   font-weight: 500;
 }
 }
+
+/* RELEASE-013 — assessment count, replaces the old mutation count.
+   Added as a flat rule, matching this file's dominant convention,
+   not nested inside the .rc-meta block above (that block's nesting
+   is pre-existing and untouched — see RELEASE-013 manifest). */
+.rc-assessments {
+  font-weight: 500;
+}

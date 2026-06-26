@@ -307,6 +307,10 @@
 .tl-dot.major { border-color: var(--accent); background: var(--accent-dim); }
 .tl-dot.current { border-color: var(--accent); background: var(--accent); }
 .tl-event { font-family: var(--serif); font-weight: 400; font-size: 1rem; color: var(--ink); margin-bottom: 0.3rem; }
+/* RELEASE-013 — reuses the existing italic + ink-mid de-emphasis
+   pattern (.tl-assessor-note, .prog-desc) to mark a reaffirmation
+   (state held) distinctly from a genuine state-changing entry. */
+.tl-event-reaffirmed { color: var(--ink-mid); font-style: italic; }
 .tl-detail { font-family: var(--mono); font-size: 10.5px; color: var(--ink-mid); line-height: 1.6; }
 .tl-assessor-note {
   margin-top: 0.5rem;
