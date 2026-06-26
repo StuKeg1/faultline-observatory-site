@@ -1,6 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { useMemo } from "react";
 import { PROGRAMMES, ALL_RECORDS } from "../data/corpus.js";
+import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
+import { LANDSCAPE_ESSAYS } from "../data/landscapeEssays.js";
 import { getProgrammeStats, getRecordUrl, getCurrentAssessment, getRecentActivity } from "../data/derive.js";
 import StateBadge from "../components/StateBadge.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
@@ -15,6 +17,16 @@ export default function Programme() {
 
   const records = useMemo(
     () => (prog ? ALL_RECORDS.filter((r) => r.programme === prog.id) : []),
+    [prog]
+  );
+
+  const programmeNotes = useMemo(
+    () => (prog ? PROGRAMME_NOTES.filter((note) => note.programme === prog.id) : []),
+    [prog]
+  );
+
+  const landscapeEssays = useMemo(
+    () => (prog ? LANDSCAPE_ESSAYS.filter((essay) => essay.programme === prog.id) : []),
     [prog]
   );
 
@@ -41,6 +53,8 @@ export default function Programme() {
   }
 
   const hasRecords = records.length > 0;
+  const hasProgrammeNotes = programmeNotes.length > 0;
+  const hasLandscapeEssays = landscapeEssays.length > 0;
 
   return (
     <>
@@ -154,6 +168,24 @@ export default function Programme() {
                 </div>
               )}
             </section>
+
+            {/* Programme Notes — Layer 3, rendered only when registry entries exist */}
+            {hasProgrammeNotes && (
+              <section className="prog-section" aria-labelledby="prog-notes-label">
+                <div className="prog-section-label" id="prog-notes-label">
+                  Programme Notes — {prog.id}
+                </div>
+              </section>
+            )}
+
+            {/* Landscape Essays — Layer 4, rendered only when registry entries exist */}
+            {hasLandscapeEssays && (
+              <section className="prog-section" aria-labelledby="prog-essays-label">
+                <div className="prog-section-label" id="prog-essays-label">
+                  Landscape Essays — {prog.id}
+                </div>
+              </section>
+            )}
 
             {/* Programme Diagnosis — single line, no heading, sits under the records */}
             <p className="prog-diagnosis-line">No current programme-level diagnosis.</p>
