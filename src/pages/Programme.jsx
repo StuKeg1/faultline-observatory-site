@@ -161,6 +161,13 @@ export default function Programme() {
                         <span className="prr-state">
                           <StateBadge pressureState={current.pressureState} />
                         </span>
+                        {/* RELEASE-013 — assessment depth, matching RecordCard's
+                            .rc-assessments pattern. No new derived function;
+                            record.assessments.length is read directly, same
+                            field RecordCard already reads. */}
+                        <span className="prr-assessments">
+                          {r.assessments.length} assessment{r.assessments.length !== 1 ? "s" : ""}
+                        </span>
                         <span className="prr-date">{r.claim.openedDate}</span>
                       </Link>
                     );
