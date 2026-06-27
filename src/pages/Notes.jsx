@@ -2,6 +2,8 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import { ALL_NOTES, NOTE_TYPE_LABELS, getNoteUrl } from "../data/notes.js";
+import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
+import { LANDSCAPE_ESSAYS } from "../data/landscapeEssays.js";
 import "./Notes.css";
 
 // ─── NOTE TYPE BADGE ─────────────────────────────────────────
@@ -88,9 +90,26 @@ export function NotesIndex() {
 }
 
 // ─── NOTE DETAIL — /notes/[id]/ ──────────────────────────────
+// RELEASE-014 fix (2026-06-27): this lookup previously checked ALL_NOTES
+// only, so links to PN-AI-001/LE-AI-001 from the Programme page (which
+// point here, at /notes/:noteId, reusing this existing route rather than
+// introducing new routing architecture) found no match and silently
+// redirected to /notes. Fixed by also searching PROGRAMME_NOTES and
+// LANDSCAPE_ESSAYS, decorated here with the display-only `type` and
+// `relation` fields this shared template expects — those fields are NOT
+// added to the canonical PN-AI-001.js/LE-AI-001.js files; Programme Notes
+// and Landscape Essays still do not carry a `type` field in their own
+// schema (see programmeNotes.js/landscapeEssays.js — that was a
+// deliberate RELEASE-014 scoping decision, unchanged by this fix).
 export function NoteDetail() {
   const { noteId } = useParams();
-  const note = ALL_NOTES.find(
+
+  const readingRoomNotes = [
+    ...PROGRAMME_NOTES.map((n) => ({ ...n, type: "programme-note", relation: n.programme })),
+    ...LANDSCAPE_ESSAYS.map((n) => ({ ...n, type: "landscape-essay", relation: n.programme })),
+  ];
+
+  const note = [...ALL_NOTES, ...readingRoomNotes].find(
     (n) => n.id.toLowerCase() === noteId?.toLowerCase()
   );
 
