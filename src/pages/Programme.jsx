@@ -161,10 +161,6 @@ export default function Programme() {
                         <span className="prr-state">
                           <StateBadge pressureState={current.pressureState} />
                         </span>
-                        {/* RELEASE-013 — assessment depth, matching RecordCard's
-                            .rc-assessments pattern. No new derived function;
-                            record.assessments.length is read directly, same
-                            field RecordCard already reads. */}
                         <span className="prr-assessments">
                           {r.assessments.length} assessment{r.assessments.length !== 1 ? "s" : ""}
                         </span>
@@ -176,25 +172,49 @@ export default function Programme() {
               )}
             </section>
 
-            {/* Programme Notes — Layer 3, rendered only when registry entries exist */}
+            {/* Programme Notes — Layer 3 */}
             {hasProgrammeNotes && (
               <section className="prog-section" aria-labelledby="prog-notes-label">
                 <div className="prog-section-label" id="prog-notes-label">
                   Programme Notes — {prog.id}
                 </div>
+                <div className="prog-reading-room-list">
+                  {programmeNotes.map((note) => (
+                    <Link
+                      key={note.id}
+                      to={`/notes/${note.id.toLowerCase()}`}
+                      className="prog-reading-room-row"
+                    >
+                      <span>{note.id}</span>
+                      <span>{note.title}</span>
+                    </Link>
+                  ))}
+                </div>
               </section>
             )}
 
-            {/* Landscape Essays — Layer 4, rendered only when registry entries exist */}
+            {/* Landscape Essays — Layer 4 */}
             {hasLandscapeEssays && (
               <section className="prog-section" aria-labelledby="prog-essays-label">
                 <div className="prog-section-label" id="prog-essays-label">
                   Landscape Essays — {prog.id}
                 </div>
+                <div className="prog-reading-room-list">
+                  {landscapeEssays.map((essay) => (
+                    <Link
+                      key={essay.id}
+                      to={`/notes/${essay.id.toLowerCase()}`}
+                      className="prog-reading-room-row"
+                    >
+                      <span>{essay.id}</span>
+                      <span>{essay.title}</span>
+                    </Link>
+                  ))}
+                </div>
               </section>
             )}
 
-            {/* Programme Diagnosis — single line, no heading, sits under the records */}
+            {/* Programme Diagnosis */}
             <p className="prog-diagnosis-line">No current programme-level diagnosis.</p>
 
           </div>
