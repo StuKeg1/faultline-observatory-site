@@ -54,6 +54,13 @@ export const FR_QE_0003 = {
       description: "Google releases the Willow chip (105 qubits) and publishes results demonstrating below-threshold error correction: logical error rates decrease exponentially with code distance across d=3, d=5, and d=7 surface codes, with performance improving faster than the overhead of additional physical qubits. This is the first demonstration of below-threshold operation — the regime where adding more qubits to the code actively reduces logical error rates, making the system scalable in principle. Note: FR-QE-0001 logged the Willow chip's quantum simulation result as a separate instance relevant to the quantum advantage claim. The error correction result logged here is a distinct measurement from the same hardware, relevant to this record's specific claim.",
       vectors: ["supportive--below-threshold-operation"],
       date: "2024",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Google Willow — peer-reviewed below-threshold result leaves d=11+ unresolved",
+      description: "The Willow below-threshold result is independently verifiable as a Nature/arXiv publication and materially strengthens the record's core empirical signature: the larger distance-7 logical memory suppresses error relative to distance-5, reaches approximately 0.143% error per cycle, and exceeds break-even against the best physical-qubit lifetime. The same evidence also defines the remaining constraint. The reported surface-code memories are still distance-5 and distance-7, with real-time decoding demonstrated at distance-5; the record's own OQ-001 asks whether below-threshold scaling holds at d=11 and above. No verified d=11+ below-threshold surface-code result was found in this review. This instance therefore supports sustained escalation but does not close the resolution bottleneck.",
+      vectors: ["supportive--peer-reviewed-below-threshold", "constraint--d11-plus-unresolved"],
+      date: "2024-12-09",
     }
   ],
 
@@ -66,6 +73,14 @@ export const FR_QE_0003 = {
       verificationStage: "VS-02",
       summary: "The claim describes a specific empirical signature: logical error rates improving as code distance increases. This signature has now been demonstrated. INST-003 (Google, 2023) was the first result to show simultaneous X and Z error suppression with increasing code distance, directly satisfying the claim's measurement criterion. INST-005 (Google Willow, 2024) extends this to below-threshold operation, showing that the improvement rate exceeds the overhead rate — the condition required for the res",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-28",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      summary: "The evidence gap is closed by IN-006. The Willow result is now treated as a verified, peer-reviewed below-threshold surface-code memory result rather than a general quantum-computing announcement. It materially strengthens the claim because logical error suppression improves with code distance and the larger memory exceeds break-even. The pressure state remains ESCALATING rather than RESOLVING because the record's own next decisive question — whether below-threshold scaling holds at d=11 and above — remains unanswered, and the demonstrated result is still a memory result rather than a full fault-tolerant computation pathway.",
+      assessorNote: "Assessment filed after direct review of FR-QE-0003 and current external sources on 2026-06-28. The new assessment references only IN-006 evidence already logged in this record. No existing instance, mechanism, open question, or prior assessment was modified. No transition is forced: IN-006 strengthens the claim and advances verification, but it does not satisfy OQ-001 or define the governed RESOLVING criterion requested by OQ-003.",
     }
   ],
 
@@ -118,6 +133,8 @@ export const FR_QE_0003 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-06-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "Evidence gap closed. IN-006 logged first; AS-002 issued second. Pressure state sustained as ESCALATING; verificationStage advanced VS-02 → VS-03. OQ-001 remains open because no d=11+ below-threshold result was verified." },
+    { id: "M-006", date: "2026-06-28", field: "instance_logged", from: "IN-005", to: "IN-006", note: "Willow below-threshold evidence reviewed as peer-reviewed surface-code memory result; d=11+ resolution bottleneck remains open." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
