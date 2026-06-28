@@ -7,6 +7,10 @@
  * - assessments[] is append-only; currentAssessment is DERIVED, never stored here
  * - mutationLog[] is append-only, newest first
  * - Transition Feed is DERIVED from assessments where pressureState changed
+ *
+ * RELEASE-004 (Trial 001 Corpus Update, 2026-06-27): INST-006 and ASSESSMENT-002
+ * added. Sourced from direct web verification during Trial 001, not recovered
+ * from the original 2026-06-16 generation (unrecoverable — see TRIAL-001-OUT).
  */
 
 export const FR_AM_0006 = {
@@ -54,6 +58,13 @@ export const FR_AM_0006 = {
       description: "CATL announces a semi-solid-state battery entering production in 2023 (not fully solid-state but higher solid content than conventional lithium-ion) and targets fully solid-state by 2027. BYD announces similar programmes. Chinese manufacturers are operating under different competitive dynamics than Western counterparts: state support, integrated supply chains, and volume production experience in conventional batteries provide manufacturing advantages. The Chinese programmes represent the most credible path to commercial-scale solid-state battery production in the near term, though performance verification is limited in open literature. This is the ninth occurrence of anticipatory institutional evidence: substantial industrial capital is being committed in anticipation of the claim's eventual satisfaction. Unlike previous anticipatory acts, this one involves actual production deployment of transitional technology (semi-solid) while pursuing the claim's full satisfaction.",
       vectors: ["partial--transitional-production-full-solid-state-commercial-threshold-not-yet-met"],
       date: "2023–24",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Toyota's 2025 production target elapses; 2027–28 timeline reaffirmed amid renewed delay reports",
+      description: "Toyota's solid-state battery EV timeline, already revised from 2025 to 2027–28 by IN-003, reaches its original 2025 target date in 2026 with no commercial solid-state EV delivered. Toyota receives Japanese government production approval for its sulfide-electrolyte solid-state battery technology (October 7, 2025) and announces a joint development agreement with Sumitomo Metal Mining for cathode material mass production (October 8, 2025), alongside a planned lithium-sulfide facility with Idemitsu Kosan targeted to start in 2027. At the Japan Mobility Show (late October 2025), Toyota executive Keiji Kaita reaffirms the 2027–28 production target for battery electric vehicles, citing 1,000 km-plus range and rapid charging as design goals. Within days, however, industry reporting (Electrek) describes Toyota again delaying elements of its broader EV battery plans, citing slowing EV demand even as global EV sales pass two million units monthly for the first time (September 2025). Separately, Chinese manufacturers continue parallel progress: pilot-scale all-solid-state lines report energy densities above 400 Wh/kg in early 2026, and material suppliers announce large sulfide-electrolyte production contracts. This is the fourth distinct timeline point in this record's lineage (2020 → 2023 → 2026 → 2027–28) and the first occasion on which a previously-set target date (2025) has fully elapsed within the corpus's observation window without resolution either way.",
+      vectors: ["partial--timeline-elapsed-without-delivery-genuine-progress-continues"],
+      date: "2025–26",
     }
   ],
 
@@ -66,6 +77,14 @@ export const FR_AM_0006 = {
       verificationStage: "VS-02",
       summary: "The claim has not been satisfied. No solid-state battery has simultaneously demonstrated commercially viable energy density, safety, and cycle life at the manufacturing scale and cost required for EV deployment. Individual thresholds have been approached or met in laboratory settings; the three-threshold conjunction at commercial scale has not. The pressure state is ESCALATING. The field is advancing on genuine engineering problems with substantial industrial investment. The physics is not dispu",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-27",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      summary: "INST-006 sustains the ESCALATING state identified at AS-001 rather than advancing or collapsing it. The 2025 commercial target already flagged as superseded at IN-003 has now genuinely elapsed without a solid-state EV reaching production, which removes any ambiguity about whether that particular date might still be met. At the same time, the evidence does not support reclassifying this record toward the PROG-AM collapse dynamic (CM-001 elsewhere in the corpus): government production approval for the underlying technology, a named material-supply joint venture with a defined 2027 facility start date, and continuing — if uneven — progress from Chinese manufacturers are all genuine engineering and industrial advances, not disputed physics or failed replication. The pattern remains exactly what RM-001 describes: laboratory and component-level milestones continue to be met while full commercial-scale, three-threshold delivery continues to recede. Verification stage advances to VS-03 (Audit): the underlying technology has now cleared a formal government regulatory/production-approval review, the first independent scrutiny event in this record's history — though this is approval of the technology rather than independent replication of Toyota's specific performance claims (IN-004), which remains unverified in peer-reviewed form. OQ-002's procedural question (whether dated attractors warrant scheduled re-entry) is now reinforced by direct example: this record's own dated attractor target has elapsed.",
+      assessorNote: "Sources: Toyota Motor Corporation newsroom (Oct 8, 2025); Electrek (Oct 30, 2025); evxl.co reporting on the Japan Mobility Show (Nov 9, 2025); Shanghai Metals Market solid-state battery industry tracking (Nov 2025); Solid-State Battery Scoreboard 2025–2026 (Feb 2026). Verified directly via web search during RELEASE-004 / TRIAL-001, 2026-06-27.",
     }
   ],
 
@@ -92,7 +111,8 @@ export const FR_AM_0006 = {
     { year: "1990s–2010", text: "Solid-state electrolyte research established. Ceramic, sulfide, and polymer electrolytes demonstrated in laboratory cells. Performance below commercial thresholds; fundamental materials science advanced." },
     { year: "2017–20", text: "Industrial interest intensifies. QuantumScape founded; Toyota, Samsung, and others announce major solid-state programmes. Venture capital and OEM investment grows substantially." },
     { year: "2020–22", text: "Laboratory milestones and overpromised timelines. QuantumScape demonstrates single-layer cycle performance; OEM partners announce ambitious delivery timelines. The announcement-to-delivery gap opens." },
-    { year: "2022–24", text: "Timeline revision and manufacturing pivot. Commercial timelines extend; companies pivot from vertical integration to licensing or semi-solid intermediate products. Engineering scale-up identified as primary obstacle." }
+    { year: "2022–24", text: "Timeline revision and manufacturing pivot. Commercial timelines extend; companies pivot from vertical integration to licensing or semi-solid intermediate products. Engineering scale-up identified as primary obstacle." },
+    { year: "2025–26", text: "2025 target elapses; 2027–28 reaffirmed. Toyota receives government production approval for the underlying technology and signs a material-supply joint venture, while reaffirming a 2027–28 vehicle target and simultaneously reporting renewed delays elsewhere in its EV battery plans." }
     ],
     relatedRecords: [],
   },
@@ -117,6 +137,8 @@ export const FR_AM_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: ESCALATING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
+    { id: "M-008", date: "2026-06-27", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "INST-006 added (2025 timeline window elapsed; 2027–28 target reaffirmed amid renewed delay reports)." },
     { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0006", to: "FR-AM-0006", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-005", date: "2024-01-15", field: "diagnosis_bounded", from: "—", to: "DIAGNOSIS-BOUNDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
