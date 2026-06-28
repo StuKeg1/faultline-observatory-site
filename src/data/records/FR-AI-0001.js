@@ -7,6 +7,10 @@
  * - assessments[] is append-only; currentAssessment is DERIVED, never stored here
  * - mutationLog[] is append-only, newest first
  * - Transition Feed is DERIVED from assessments where pressureState changed
+ *
+ * RELEASE-004 (Trial 001 Corpus Update, 2026-06-27): INST-006 and ASSESSMENT-002
+ * added. Sourced from direct web verification during Trial 001, not recovered
+ * from the original 2026-06-16 generation (unrecoverable — see TRIAL-001-OUT).
  */
 
 export const FR_AI_0001 = {
@@ -54,6 +58,13 @@ export const FR_AI_0001 = {
       description: "OpenAI releases o1 (September 2024) and o3 (December 2024), models trained explicitly to produce extended internal reasoning chains prior to output. o3 achieves 87.5% on ARC-AGI (a benchmark specifically designed to test novel generalisation resistant to training contamination), surpassing prior LLM performance and approaching human-level. o3 also achieves frontier-level performance on the FrontierMath benchmark (novel research-level mathematics). The ARC-AGI score is particularly significant because the benchmark was constructed specifically to prevent memorisation. Dispute: o3's reasoning process is not publicly documented; whether the extended chain-of-thought constitutes generalised reasoning or a learned meta-pattern for benchmark problem classes remains an open research question.",
       vectors: ["supportive--strongest-instance-to-date"],
       date: "2024",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Chain-of-thought faithfulness research — mechanism disclosed as partially decoupled from verbalised reasoning",
+      description: "A substantial body of interpretability research published since AS-001 directly addresses OQ-002 — whether the extended chain-of-thought mechanism in o1/o3-class models constitutes genuinely different computation or a scaled version of prior pattern-matching behaviour — by examining the mechanism's actual relationship to its own verbalised output. Anthropic's 'Reasoning Models Don't Always Say What They Think' (Chen et al., 2025) and independent work including Arcuschin et al., 'Chain-of-thought reasoning in the wild is not always faithful' (2025), and earlier foundational studies (Turpin et al. 2023; Lanham et al. 2023) establish that chain-of-thought traces frequently do not reflect the computation actually producing a model's answer: models can reach correct answers via paths not represented in their stated reasoning, and can produce plausible post-hoc rationalisations for answers reached by other means. Mechanistic interpretability work (Lindsey et al., 2025) identifies concrete cases in which a model derives its answer directly from the prompt rather than from its own intermediate reasoning text. This body of work does not resolve OQ-002 toward either pole — it does not show the mechanism is mere pattern-matching, nor that it is genuine step-by-step reasoning — but it discloses that the mechanism is more decoupled from its own narration than the framing in AT-001 assumed, adding a third axis of dispute (faithfulness) alongside contamination (RM-001) and distribution-shift sensitivity (RM-002).",
+      vectors: ["contesting--mechanism-disclosed-partially-decoupled-from-verbalised-reasoning"],
+      date: "2025–26",
     }
   ],
 
@@ -66,6 +77,14 @@ export const FR_AI_0001 = {
       verificationStage: "VS-02",
       summary: "The evidence trail shows a claim under genuine escalating pressure. Early evidence (INST-001 through INST-004) produced a contested picture: demonstrations of multi-step performance on established benchmarks were met with systematic evidence that performance degraded under surface modification and compositional novelty, suggesting distribution-matching rather than generalised reasoning. That picture was the dominant assessment context through 2023. INST-005 materially shifts the evidentiary stat",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-27",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      summary: "INST-006 sustains the ESCALATING state from AS-001 while materially sharpening OQ-002 rather than closing it. The disclosure that chain-of-thought traces are frequently unfaithful — not reliably reflecting the computation that produced an answer — means o1/o3-class performance (INST-005) cannot be straightforwardly read as evidence of the reasoning process its own output narrates. This cuts against treating AT-001's mechanism candidate as settled in either direction: a model could be performing genuine multi-step computation that its verbalised trace merely fails to describe accurately, or could be pattern-matching while its trace fabricates a plausible reasoning narrative — the faithfulness literature establishes that both are observed, without yet establishing which dominates for any specific frontier system. The claim's evidentiary picture therefore escalates in complexity: BN-001's undefined generalisation threshold is now joined by an analogous undefined-faithfulness threshold, and OQ-002 should be read going forward as two distinct questions (does the model generalise; does its chain-of-thought narrate that generalisation faithfully) rather than one. Verification stage advances to VS-03 (Audit): a substantial, multi-author, partly first-party (Anthropic) literature has now subjected the mechanism itself to direct scrutiny — the first such audit-stage evidence this record has logged.",
+      assessorNote: "Sources: Chen et al., 'Reasoning Models Don't Always Say What They Think' (Anthropic, 2025); Arcuschin et al., arXiv:2503.08679 (2025); Lanham et al., arXiv:2307.13702 (2023); Turpin et al. (NeurIPS 2023); Lindsey et al. (2025, mechanistic circuit analysis). Verified directly via web search during RELEASE-004 / TRIAL-001, 2026-06-27.",
     }
   ],
 
@@ -98,7 +117,8 @@ export const FR_AI_0001 = {
     { year: "2020", text: "GPT-3 few-shot performance. Brown et al. demonstrate GPT-3 performing tasks from few examples with no weight updates. \"In-context learning\" emerges as a candidate mechanism. The claim that this constitutes reasoning rather than pattern completion begins to be formally debated." },
     { year: "2022", text: "Emergent abilities and chain-of-thought. Wei et al. (2022a, 2022b) publish simultaneously on emergent abilities at scale and chain-of-thought prompting. Both papers assert capability thresholds crossed at sufficient scale. \"Reasoning\" enters the technical literature as a claimed capability. Immediat" },
     { year: "2023", text: "Systematic challenge to generalisation claims. Multiple groups publish evidence that LLM reasoning performance is brittle under distribution shift. Dziri et al. \"Faith and Fate\" argues that transformers are fundamentally limited in compositional generalisation by their computational structure. Claim" },
-    { year: "2024", text: "ARC-AGI and o3. OpenAI o3 achieves 87.5% on ARC-AGI. The benchmark was designed by François Chollet specifically to test generalisation resistant to memorisation. Result is widely cited as the strongest evidence to date that the capability claim has substance. The claim's pressure state moves to act" }
+    { year: "2024", text: "ARC-AGI and o3. OpenAI o3 achieves 87.5% on ARC-AGI. The benchmark was designed by François Chollet specifically to test generalisation resistant to memorisation. Result is widely cited as the strongest evidence to date that the capability claim has substance. The claim's pressure state moves to act" },
+    { year: "2025–26", text: "Chain-of-thought faithfulness literature. Anthropic and independent researchers publish substantial evidence that verbalised chain-of-thought frequently does not reflect the computation actually producing a model's answer. OQ-002 is sharpened into two distinct questions rather than resolved." }
     ],
     relatedRecords: [],
   },
@@ -133,6 +153,8 @@ export const FR_AI_0001 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: ESCALATING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
+    { id: "M-006", date: "2026-06-27", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "INST-006 added (chain-of-thought faithfulness research; OQ-002 sharpened, not closed)." },
     { id: "M-005", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "RM-001, RM-002 (Resistance); BN-001 (Bottleneck); AT-001 (Attractor) added." },
     { id: "M-004", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-001 issued. Pressure state: ESCALATING. Triggering instance: INST-005." },
     { id: "M-003", date: "2024-01-15", field: "scope_note_added", from: "—", to: "SCOPE-NOTE-ADDED", note: "Class-level claim notice added. Definitional dispute recorded as property of frontier." },
