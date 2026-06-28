@@ -29,7 +29,6 @@ export default function SiteNav() {
       <div className="nav-links">
         <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>Observatory</NavLink>
         <NavLink to="/the-record" className={({ isActive }) => isActive ? "active" : ""}>The Record</NavLink>
-        <NavLink to="/events" className={({ isActive }) => isActive ? "active" : ""}>Events</NavLink>
         <NavLink to="/programmes" className={({ isActive }) => isActive ? "active" : ""}>Programmes</NavLink>
         <NavLink to="/notes" className={({ isActive }) => isActive ? "active" : ""}>Notes</NavLink>
         <NavLink to="/methodology" className={({ isActive }) => isActive ? "active" : ""}>Methodology</NavLink>
