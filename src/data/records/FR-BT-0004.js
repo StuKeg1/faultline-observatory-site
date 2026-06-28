@@ -7,6 +7,10 @@
  * - assessments[] is append-only; currentAssessment is DERIVED, never stored here
  * - mutationLog[] is append-only, newest first
  * - Transition Feed is DERIVED from assessments where pressureState changed
+ *
+ * RELEASE-004 (Trial 001 Corpus Update, 2026-06-27): INST-006 and ASSESSMENT-002
+ * added. Sourced from direct web verification during Trial 001, not recovered
+ * from the original 2026-06-16 generation (unrecoverable — see TRIAL-001-OUT).
  */
 
 export const FR_BT_0004 = {
@@ -54,6 +58,13 @@ export const FR_BT_0004 = {
       description: "Illumina acquires GRAIL for $8 billion (2021), then is forced to divest by European regulators concerned about market concentration; the spin-out process occupies 2022–24. Simultaneously, GRAIL and competitors (Foundation Medicine, Guardant Health, Exact Sciences) continue commercial deployment and clinical validation programmes. The Galleri test is offered commercially at approximately $950 per test in the United States without FDA approval specifically for screening indications. This constitutes the eighth occurrence of anticipatory institutional evidence: substantial capital and commercial deployment are occurring in advance of the definitive clinical trial evidence (NHS-Galleri results). The commercial pressure to deploy before full validation is in tension with the scientific need to await RCT results — the same dynamic identified as potentially problematic in FR-BT-0003 OQ-2, now appearing in a cancer detection context.",
       vectors: ["partial--anticipatory-commercial-deployment-definitive-evidence-pending"],
       date: "2021–24",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "NHS-Galleri trial — full results presented at ASCO 2026",
+      description: "GRAIL presents full clinical utility, performance, and safety results from the NHS-Galleri trial in an oral presentation at the 2026 American Society of Clinical Oncology Annual Meeting (May 30, 2026), with concurrent publication in the Journal of Clinical Oncology. The trial's pre-specified primary endpoint — a combined reduction in Stage III and Stage IV diagnoses across twelve deadly cancer types — is not met within the trial's one-year follow-up window: a substantial reduction in Stage IV diagnoses (greater than 20%) is offset by a higher-than-anticipated increase in Stage III diagnoses, particularly in the prevalent screening round. The Galleri arm shows a four-fold higher overall cancer detection rate than standard-of-care screening alone. No mortality endpoint is reported in this release; GRAIL states that mortality benefit, if present, would be expected to require longer follow-up, and extends the trial's follow-up period by 6–12 months. Independent commentary (Barts Cancer Institute, via the Science Media Centre) notes that even a met primary endpoint would not itself have constituted mortality evidence, since stage shift and mortality reduction are distinct questions. This is the first instance in this record where the dated attractor identified at AT-001 has actually fired — the awaited trial event has occurred — without producing the clean resolution the attractor description anticipated.",
+      vectors: ["partial--primary-endpoint-missed-stage-shift-observed-mortality-pending"],
+      date: "2026",
     }
   ],
 
@@ -66,6 +77,14 @@ export const FR_BT_0004 = {
       verificationStage: "VS-03",
       summary: "The claim is partially supported and fragmenting. Blood-based liquid biopsy can detect cancer signals before conventional diagnosis in a demonstrable fraction of cases — the Galleri test's performance data establishes this for multiple cancer types. The detection is reliable in a technical sense: specificity is high (98.4%) and sensitivity, while lower than desired, is non-trivial across cancer types. For the claim as stated, this constitutes partial confirmation: early detection before conventi",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-27",
+      pressureState: "fragmenting",
+      verificationStage: "VS-04",
+      summary: "The NHS-Galleri trial's full results (INST-006) sustain rather than resolve the FRAGMENTING state identified at AS-001. The trial delivers exactly the kind of evidence the record's attractor (AT-001) was built to await, and the result is genuinely mixed rather than confirmatory or disconfirming: a real, substantial reduction in late-stage diagnoses coexists with a missed primary endpoint, an unexpected rise in Stage III diagnoses, and no mortality data. This is not a null result — the four-fold detection-rate increase and Stage IV reduction are real signals — but it does not resolve the central contested question (OQ-001): whether earlier detection translates into reduced mortality, or whether it is partially absorbed by stage migration and lead-time effects that RM-001/AT-001 already anticipated. Verification stage advances to VS-04 (Replication): a population-scale randomised trial has now run and reported, the most rigorous test design available short of mortality follow-up itself. The record should be re-entered when GRAIL's extended follow-up data (6–12 months from this release) becomes available, since that data — not this release — is positioned to address OQ-001 directly.",
+      assessorNote: "Sources: GRAIL press releases and ASCO 2026 presentation (May 30, 2026); Journal of Clinical Oncology; independent commentary via Science Media Centre. Verified directly via web search during RELEASE-004 / TRIAL-001, 2026-06-27.",
     }
   ],
 
@@ -92,7 +111,7 @@ export const FR_BT_0004 = {
     { year: "2008–14", text: "ctDNA technology foundation. Cell-free DNA detection established; tumour-derived fragments demonstrated in blood. The proxy signal's biological validity is established." },
     { year: "2018–21", text: "Multi-cancer detection tests developed. Galleri and competitors develop methylation-based multi-cancer panels. FDA breakthrough device designations. Commercial interest intensifies." },
     { year: "2021–23", text: "Clinical validation data emerges; lead-time bias concern formalised. SYMPLIFY and PATHFINDER provide performance data. NHS-Galleri RCT enrolls 140,000. Sensitivity gap at early stages documented." },
-    { year: "2026 (expected)", text: "NHS-Galleri mortality results. The definitive evidence event for this record is prospective and dated. First record in the corpus with a known near-term attractor timeline." }
+    { year: "2026", text: "NHS-Galleri full results presented at ASCO. Primary endpoint (combined Stage III/IV reduction) not met within one-year follow-up; Stage IV diagnoses fall, Stage III diagnoses rise; no mortality data reported. Follow-up extended 6–12 months." }
     ],
     relatedRecords: [],
   },
@@ -117,6 +136,8 @@ export const FR_BT_0004 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: FRAGMENTING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
+    { id: "M-006", date: "2026-06-27", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "INST-006 added (NHS-Galleri full trial results, ASCO 2026)." },
     { id: "M-005", date: "2024-01-15", field: "diagnosis_confirmed", from: "—", to: "DIAGNOSIS-CONFIRMED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
