@@ -122,11 +122,11 @@ button { cursor: pointer; }
   flex-shrink: 0;
 }
 .site-footer-nav a {
-  color: var(--faint-text-color);
+  color: var(--ink-mid);
   text-decoration: none;
   transition: color 0.15s;
 }
-.site-footer-nav a:hover { color: var(--ink-mid); }
+.site-footer-nav a:hover { color: var(--accent); }
 
 /* Section 2: Guides */
 .site-footer-guides {
@@ -143,11 +143,11 @@ button { cursor: pointer; }
   flex-shrink: 0;
 }
 .site-footer-guides a {
-  color: var(--faint-text-color);
+  color: var(--ink-mid);
   text-decoration: none;
   transition: color 0.15s;
 }
-.site-footer-guides a:hover { color: var(--ink-mid); }
+.site-footer-guides a:hover { color: var(--accent); }
 
 /* Section 2b: MCP Access — standalone heading-link, no parent label */
 .site-footer-mcp {
