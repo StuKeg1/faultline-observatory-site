@@ -18,51 +18,116 @@ import "./Home.css";
 // Fields that cannot be derived do not appear.
 
 function deriveSnapshot(records, notes) {
-  // Archive State
   const recordCount = records.length;
   const programmeCount = PROGRAMMES.length;
 
-  // Latest activity: most recent mutation — record ID + date, not just date.
-  // Uses getRecentActivity() — the same qualified source as the Archive
-  // Activity feed below — instead of a separate inline sort, so there is
-  // one source of "recent" rather than two that can silently drift apart.
+  const assessmentCount = records.reduce(
+    (sum, r) => sum + (r.assessments ? r.assessments.length : 0),
+    0
+  );
+
   const [mostRecent] = getRecentActivity(records, 1);
   const latestActivity = mostRecent
     ? { recordId: mostRecent.id, date: mostRecent.mutationLog[0].date, url: getRecordUrl(mostRecent) }
     : null;
 
-  // Institutional State: active constitutional reviews (CR-type notes, published)
   const activeReviews = notes.filter(
     (n) => n.type === "constitutional-review" && n.status === "published"
   ).length;
 
-  return { recordCount, programmeCount, latestActivity, activeReviews };
+  return { recordCount, programmeCount, assessmentCount, latestActivity, activeReviews };
 }
 
-// ─── MARK A ──────────────────────────────────────────────────
-function MarkA() {
+// ─── HERO RECORD ─────────────────────────────────────────────
+// Hero Rule v1: the hero must always be a real record rendered
+// from live corpus data. Never fabricate or simplify a trajectory
+// for editorial convenience.
+//
+// Hero record: FR-AM-0005
+// Fixed by editorial decision. Revisit if the record is removed
+// from the corpus; do not replace without institutional decision.
+
+const HERO_RECORD_ID = "FR-AM-0005";
+
+// Representative instance events for the hero timeline.
+// Selected to demonstrate trajectory — not a complete audit trail.
+// Update if IN- identifiers change in the source record.
+const HERO_TIMELINE = [
+  { date: "2020–23", label: "Dias retractions", note: "Two Nature papers retracted following misconduct findings" },
+  { date: "Jul–Aug 2023", label: "LK-99 null result", note: "40+ independent groups. Definitive negative within weeks" },
+  { date: "2023", label: "Community standard tightened", note: "Three-criterion reproducibility threshold established" },
+  { date: "2024", label: "No surviving claim", note: "Systematic null across all candidates" },
+  { date: "2025–26", label: "Field activity continues", note: "New claims. None cross the reopening threshold" },
+];
+
+function HeroRecord({ records }) {
+  const record = records.find((r) => r.id === HERO_RECORD_ID);
+  if (!record) return null;
+
+  const current = getCurrentAssessment(record);
+  const assessments = record.assessments ?? [];
+  const url = getRecordUrl(record);
+
   return (
-    <svg width="64" height="64" viewBox="0 0 200 200" fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Faultline Observatory mark" role="img">
-      <line x1="32" y1="14"  x2="32"  y2="172" stroke="#1a1916" strokeWidth="1.5"/>
-      <line x1="26" y1="26"  x2="32"  y2="26"  stroke="#1a1916" strokeWidth="1.2"/>
-      <line x1="26" y1="38"  x2="32"  y2="38"  stroke="#1a1916" strokeWidth="1.2"/>
-      <line x1="22" y1="50"  x2="32"  y2="50"  stroke="#1a1916" strokeWidth="1.5"/>
-      <line x1="26" y1="62"  x2="32"  y2="62"  stroke="#1a1916" strokeWidth="1.2"/>
-      <line x1="26" y1="74"  x2="32"  y2="74"  stroke="#1a1916" strokeWidth="1.2"/>
-      <line x1="22" y1="100" x2="32"  y2="100" stroke="#1a1916" strokeWidth="1.5"/>
-      <line x1="26" y1="112" x2="32"  y2="112" stroke="#1a1916" strokeWidth="1.2"/>
-      <line x1="26" y1="124" x2="32"  y2="124" stroke="#1a1916" strokeWidth="1.2"/>
-      <line x1="22" y1="150" x2="32"  y2="150" stroke="#1a1916" strokeWidth="1.5"/>
-      <line x1="26" y1="162" x2="32"  y2="162" stroke="#1a1916" strokeWidth="1.2"/>
-      <rect x="62"  y="46"  width="54" height="54" fill="#1a1916"/>
-      <rect x="116" y="100" width="54" height="50" fill="#1a1916"/>
-      <circle cx="116" cy="100" r="64" stroke="#1a1916" strokeWidth="2.2"/>
-      <line x1="32"  y1="100" x2="116" y2="100" stroke="#1a1916" strokeWidth="2.2"/>
-      <line x1="116" y1="100" x2="116" y2="88"  stroke="#1a1916" strokeWidth="2.2"/>
-      <line x1="116" y1="88"  x2="186" y2="88"  stroke="#1a1916" strokeWidth="2.2"/>
-    </svg>
+    <div className="hero-record">
+      {/* Identity */}
+      <div className="hr-identity">
+        <span className="hr-id">{record.id}</span>
+        <span className="hr-programme">{record.programme}</span>
+      </div>
+      <div className="hr-claim">{record.claim.shortLabel}</div>
+
+      {/* Current assessment */}
+      <div className="hr-assessment-current">
+        <div className="hr-assessment-row">
+          <span className="hr-assessment-label">Current assessment</span>
+          <StateBadge pressureState={current.pressureState} />
+        </div>
+        <div className="hr-assessment-meta">
+          <span className="hr-status">{record.status === "closed" ? "Closed" : "Open"}</span>
+          <span className="hr-sep">·</span>
+          <span className="hr-date">Last assessed {current.date}</span>
+        </div>
+      </div>
+
+      {/* Evidence timeline */}
+      <div className="hr-timeline">
+        <div className="hr-timeline-label">Evidence trajectory</div>
+        <div className="hr-timeline-entries">
+          {HERO_TIMELINE.map((entry, i) => (
+            <div key={i} className="hr-timeline-entry">
+              <div className="hr-tl-connector">
+                <div className="hr-tl-dot" />
+                {i < HERO_TIMELINE.length - 1 && <div className="hr-tl-line" />}
+              </div>
+              <div className="hr-tl-content">
+                <span className="hr-tl-date">{entry.date}</span>
+                <span className="hr-tl-label">{entry.label}</span>
+                <span className="hr-tl-note">{entry.note}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Assessment history */}
+      <div className="hr-assessment-history">
+        <div className="hr-assessment-history-label">Assessments</div>
+        <div className="hr-assessment-list">
+          {assessments.map((a) => (
+            <div key={a.id} className="hr-assessment-item">
+              <span className="hr-asmnt-id">{a.id}</span>
+              <span className="hr-asmnt-date">{a.date}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA */}
+      <Link to={url} className="hr-cta">
+        Read the full Frontier Record →
+      </Link>
+    </div>
   );
 }
 
@@ -84,56 +149,114 @@ export default function Home() {
       />
       <div className="home-page">
 
-        {/* ── IDENTITY ── */}
-        <header className="foyer-identity">
-          <div className="foyer-identity-inner">
-            <div className="foyer-mark">
-              <MarkA />
+        {/* ── HERO ── */}
+        <section className="home-hero" aria-label="The Public Record">
+          <div className="home-hero-inner">
+
+            {/* Left: identity statement */}
+            <div className="hero-identity">
+              <h1 className="hero-headline">
+                The Public Record<br />
+                of Technology Claims.{" "}
+                <span className="hero-headline-accent">
+                  Tracked until the<br />
+                  evidence decides.
+                </span>
+              </h1>
+              <div className="hero-copy">
+                <p>Every week, researchers, laboratories and technology companies announce breakthroughs that promise to reshape the future.</p>
+                <p>Some become enduring scientific milestones. Others evolve, fragment, or quietly disappear.</p>
+                <p className="hero-copy-bold">Faultline Observatory preserves the public history of those claims — from announcement to resolution, with the evidence visible every step of the way.</p>
+              </div>
+              <Link to="/the-record" className="hero-cta-primary">
+                Explore a Frontier Record →
+              </Link>
+              <p className="hero-trust-line">Independent. Non-partisan. Evidence-based.</p>
             </div>
-            <div className="foyer-title-block">
-              <h1 className="foyer-name">Faultline Observatory</h1>
-              <p className="foyer-custodian">Custodian of The Frontier Record</p>
-              <p className="foyer-statement">
-                A permanent public record of frontier claims
-                and how evidence changes their assessment over time.
-              </p>
+
+            {/* Right: hero record */}
+            <div className="hero-record-col">
+              <HeroRecord records={ALL_RECORDS} />
+            </div>
+
+          </div>
+        </section>
+
+        {/* ── PROGRAMMES ── */}
+        <section className="home-section home-section--programmes" aria-labelledby="prog-heading">
+          <div className="home-section-inner">
+            <div className="home-section-head">
+              <h2 className="home-section-title" id="prog-heading">
+                Explore the Public Record by Programme
+              </h2>
+            </div>
+            <div className="prog-catalogue" role="list">
+              {PROGRAMMES.map((prog) => {
+                const stats = progStats[prog.id];
+                return (
+                  <div key={prog.id} className="prog-entry" role="listitem">
+                    <div className="prog-entry-main">
+                      <div className="prog-entry-topline">
+                        <span className="prog-entry-id">{prog.id}</span>
+                        {stats.badge && (
+                          <span className={`prog-entry-badge prog-entry-badge--${stats.badge.toLowerCase()}`}>
+                            {stats.badge}
+                          </span>
+                        )}
+                      </div>
+                      <div className="prog-entry-name">{prog.name}</div>
+                      <div className="prog-entry-threshold">
+                        {prog.thresholdStatement}
+                      </div>
+                      <div className="prog-entry-meta">
+                        {stats.total === 0
+                          ? "No published records"
+                          : `${stats.total} Frontier Record${stats.total !== 1 ? "s" : ""}`}
+                      </div>
+                    </div>
+                    <Link
+                      to={`/programmes/${prog.id.toLowerCase()}`}
+                      className="prog-entry-link"
+                      aria-label={`Explore ${prog.name}`}
+                    >
+                      Explore Programme →
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </header>
+        </section>
 
-        {/* ── SNAPSHOT ── */}
-        <div className="foyer-snapshot" role="region" aria-label="Observatory current state">
-          <div className="foyer-snapshot-strip">
-            <span className="fss-stat">
-              <span className="fss-value">{snapshot.recordCount}</span>
-              <span className="fss-label">Frontier Records</span>
+        {/* ── INSTITUTIONAL SNAPSHOT ── */}
+        {/* Role: confirmation, not introduction. */}
+        {/* Positioned after programmes so numbers acquire meaning from context. */}
+        <div className="home-snapshot" role="region" aria-label="Observatory institutional facts">
+          <div className="home-snapshot-inner">
+            <span className="hsn-stat">
+              <span className="hsn-value">{snapshot.recordCount}</span>
+              <span className="hsn-label">Frontier Records</span>
             </span>
-            <span className="fss-divider" aria-hidden="true" />
-            <span className="fss-stat">
-              <span className="fss-value">{snapshot.programmeCount}</span>
-              <span className="fss-label">Programmes</span>
+            <span className="hsn-divider" aria-hidden="true" />
+            <span className="hsn-stat">
+              <span className="hsn-value">{snapshot.programmeCount}</span>
+              <span className="hsn-label">Programmes of observation</span>
+            </span>
+            <span className="hsn-divider" aria-hidden="true" />
+            <span className="hsn-stat">
+              <span className="hsn-value">{snapshot.assessmentCount}</span>
+              <span className="hsn-label">Assessments in the corpus</span>
             </span>
             {snapshot.latestActivity && (
               <>
-                <span className="fss-divider" aria-hidden="true" />
-                <span className="fss-stat">
-                  <span className="fss-label">Latest Activity</span>
-                  <span className="fss-activity">
-                    <Link to={snapshot.latestActivity.url} className="fss-record-id">
-                      {snapshot.latestActivity.recordId}
+                <span className="hsn-divider" aria-hidden="true" />
+                <span className="hsn-stat">
+                  <span className="hsn-label">Last updated</span>
+                  <span className="hsn-activity">
+                    <span className="hsn-activity-date">{snapshot.latestActivity.date}</span>
+                    <Link to={snapshot.latestActivity.url} className="hsn-activity-id">
+                      ({snapshot.latestActivity.recordId})
                     </Link>
-                    <span className="fss-date">{snapshot.latestActivity.date}</span>
-                  </span>
-                </span>
-              </>
-            )}
-            {snapshot.activeReviews > 0 && (
-              <>
-                <span className="fss-divider" aria-hidden="true" />
-                <span className="fss-stat">
-                  <span className="fss-value">{snapshot.activeReviews}</span>
-                  <span className="fss-label">
-                    Active Constitutional {snapshot.activeReviews === 1 ? "Review" : "Reviews"}
                   </span>
                 </span>
               </>
@@ -141,66 +264,29 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── PROGRAMMES ── */}
-        <section className="foyer-section foyer-section-ruled" aria-labelledby="prog-label">
-          <div className="foyer-section-inner">
-            <div className="foyer-section-head">
-              <h2 className="foyer-section-title" id="prog-label">Programmes</h2>
-            </div>
-            <div className="foyer-prog-grid" role="list">
-              {PROGRAMMES.map((prog) => {
-                const stats = progStats[prog.id];
-                const isEmpty = stats.total === 0;
-                return (
-                  <Link
-                    key={prog.id}
-                    to={`/programmes/${prog.id.toLowerCase()}`}
-                    className={`foyer-prog-card${isEmpty ? " foyer-prog-card--empty" : ""}`}
-                    role="listitem"
-                  >
-                    <div className="fpc-topline">
-                      <div className="fpc-id">{prog.id}</div>
-                      {stats.badge && (
-                        <span className={`fpc-badge fpc-badge--${stats.badge.toLowerCase()}`}>{stats.badge}</span>
-                      )}
-                    </div>
-                    <div className="fpc-name">{prog.name}</div>
-                    <div className="fpc-desc">{prog.shortDescription}</div>
-                    <div className="fpc-count">
-                      {isEmpty ? "No published records" : `${stats.total} record${stats.total !== 1 ? "s" : ""}`}
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-            {/* Note: "View all programmes" link omitted — grid shows all programmes.
-                Restore if PROGRAMMES array ever exceeds card display limit. */}
-          </div>
-        </section>
-
         {/* ── RECENT ACTIVITY ── */}
         {recent.length > 0 && (
-          <section className="foyer-section" aria-labelledby="activity-label">
-            <div className="foyer-section-inner">
-              <div className="foyer-section-head">
-                <h2 className="foyer-section-title" id="activity-label">Activity Log</h2>
+          <section className="home-section" aria-labelledby="activity-label">
+            <div className="home-section-inner">
+              <div className="home-section-head">
+                <h2 className="home-section-title" id="activity-label">Activity Log</h2>
               </div>
-              <div className="foyer-activity-log" role="feed">
+              <div className="home-activity-log" role="feed">
                 {recent.map((record) => {
                   const lastMut = record.mutationLog[0];
                   const current = getCurrentAssessment(record);
                   return (
-                    <div key={record.id} className="foyer-activity-row">
-                      <span className="far-date">{lastMut.date}</span>
-                      <Link to={getRecordUrl(record)} className="far-id">{record.id}</Link>
-                      <span className="far-note">{lastMut.note}</span>
+                    <div key={record.id} className="home-activity-row">
+                      <span className="har-date">{lastMut.date}</span>
+                      <Link to={getRecordUrl(record)} className="har-id">{record.id}</Link>
+                      <span className="har-note">{lastMut.note}</span>
                       <StateBadge pressureState={current.pressureState} />
                     </div>
                   );
                 })}
               </div>
-              <div className="foyer-section-foot">
-                <Link to="/the-record" className="foyer-more-link">
+              <div className="home-section-foot">
+                <Link to="/the-record" className="home-more-link">
                   View all records in The Frontier Record →
                 </Link>
               </div>
