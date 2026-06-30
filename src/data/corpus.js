@@ -5,8 +5,13 @@
  * Programme metadata is declared here; statistics are DERIVED via derive.js.
  *
  * Programme fields:
- *   shortDescription — homepage-facing visitor orientation (one sentence)
- *   scopeStatement   — constitutional programme definition (programme reading room)
+ *   shortDescription  — homepage-facing visitor orientation (one sentence)
+ *   scopeStatement    — constitutional programme definition (programme reading room)
+ *   thresholdStatement — public catalogue entry: one sentence defining the contested
+ *                        frontier, consistent grammatical pattern across all four
+ *                        programmes. Distinct from scopeStatement, which serves
+ *                        allocation boundary definition. Use thresholdStatement
+ *                        wherever a single public-facing threshold sentence is needed.
  */
 
 // ─── PROG-QE — Quantum Engineering ──────────────────────────
@@ -86,6 +91,8 @@ export const PROGRAMMES = [
     name: "Quantum Engineering",
     shortDescription:
       "Claims about quantum computation, quantum advantage, error correction, and quantum hardware progress.",
+    thresholdStatement:
+      "Claims where the contested frontier lies in whether quantum computational capabilities can be demonstrated, sustained, and scaled beyond isolated demonstrations.",
     scopeStatement:
       "Claims where the contested frontier lies in whether quantum computational capabilities can be demonstrated, sustained, and scaled beyond isolated demonstrations.",
   },
@@ -95,6 +102,8 @@ export const PROGRAMMES = [
     name: "Artificial Intelligence",
     shortDescription:
       "Claims about frontier AI capability, alignment, agents, evaluation, and institutional impact.",
+    thresholdStatement:
+      "Claims where the contested frontier lies in whether artificial intelligence capabilities demonstrated under bounded conditions continue to hold beyond those conditions.",
     scopeStatement:
       "Claims where the contested frontier lies in whether artificial intelligence capabilities demonstrated under bounded conditions continue to hold beyond those conditions.",
   },
@@ -104,6 +113,8 @@ export const PROGRAMMES = [
     name: "Advanced Materials, Physics & Energy",
     shortDescription:
       "Claims from physical science where evidence, scalability, or mechanism may reshape energy, materials, or frontier physics.",
+    thresholdStatement:
+      "Claims where the contested frontier lies in whether observed material phenomena can be demonstrated, reproduced, and understood under controlled conditions.",
     scopeStatement:
       "This programme tracks frontier claims whose central uncertainty concerns the behaviour, mechanism, scalability, or demonstrated viability of materials and physical systems. A claim belongs here when the contested frontier lies in the material or physical phenomenon itself — whether it exists, whether it scales, whether the proposed mechanism is correct. Claims are not excluded because they may later find application in computing, medicine, or energy; nor are they included for that reason. The allocation criterion is the location of the primary contested frontier, not the eventual application of the technology.",
   },
@@ -113,6 +124,8 @@ export const PROGRAMMES = [
     name: "Biotechnology & Life Sciences",
     shortDescription:
       "Claims about biological systems, therapeutics, biomedical sciences, genomics and life-science frontiers.",
+    thresholdStatement:
+      "Claims where the contested frontier lies in whether evidence of efficacy, safety, and scale keeps pace with the deployment of biological interventions.",
     scopeStatement:
       "Claims where the contested frontier lies in whether evidence of efficacy, safety, and scale keeps pace with the deployment of biological interventions.",
   },
