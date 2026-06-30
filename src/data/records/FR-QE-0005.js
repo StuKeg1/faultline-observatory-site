@@ -54,6 +54,13 @@ export const FR_QE_0005 = {
       description: "A Chinese research group (Bao et al. 2023) publishes a preprint claiming to have factored a 2048-bit RSA integer using a quantum-classical hybrid approach on a small quantum computer. The claim generates significant security community attention. Within weeks, multiple independent analyses demonstrate that the factored number in the paper is not a full 2048-bit RSA modulus and that the method does not scale to commercially relevant key sizes. The claim is effectively refuted by the research community without formal retraction. This instance is the most directly relevant to the claim's satisfaction condition of any instance in the record — and it fails. It is notable as the first direct attempt to demonstrate the claim that has received serious analysis. The refutation is the evidence; the attempt itself is primarily evidence about the current state of the art and the gap remaining.",
       vectors: ["contesting--direct-attempt-failed"],
       date: "2023",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Gidney (2025) and successive resource-estimate reductions — RSA and elliptic-curve",
+      description: "Craig Gidney (Google, May 2025) publishes a revised resource analysis reducing the estimated physical-qubit requirement for RSA-2048 factorisation from the Gidney-Ekerå (2021) figure of ~20 million to under 1 million, under broadly comparable fault-tolerance assumptions. The reduction is attributed to improved magic-state distillation and algorithmic refinements, not to any experimental result. A subsequent 2026 proposal applying quantum low-density parity-check (QLDPC) codes — an architecture distinct from the surface codes both prior estimates assumed — suggests the requirement could fall further, toward ~100,000 physical qubits, though this approach remains unvalidated at scale. In March 2026, a joint Google Quantum AI / Stanford / Ethereum Foundation whitepaper extends the same resource-reduction methodology to elliptic-curve cryptography, estimating fewer than 500,000 physical qubits for curves such as secp256k1. None of these are experimental results: no factorisation attempt accompanies any of them. They are successive theoretical revisions of the same estimate category as IN-002, arriving at a materially faster rate than the original record anticipated — three independent downward revisions within roughly eighteen months, where IN-002 itself represented the only major revision in the preceding decade.",
+      vectors: ["neutral--gap-re-quantified-faster-than-prior-trend"],
+      date: "2025–26",
     }
   ],
 
@@ -66,6 +73,14 @@ export const FR_QE_0005 = {
       verificationStage: "VS-02",
       summary: "The claim has not been satisfied. No quantum computer has factored a commercially relevant RSA key. The most credible direct attempt (INST-005) failed. The engineering gap between current capability and the Gidney-Ekerå resource estimate remains approximately three to four orders of magnitude in physical qubit count, with additional requirements for error rates, connectivity, and operational duration not yet demonstrated at any scale approaching relevance. The pressure state is ESCALATING. The s",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-29",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "No threshold has been crossed since AS-001 — no factorisation of a commercially relevant key has occurred, and none is closer to occurring in any demonstrated sense. What has moved is the resource-estimate trajectory underlying OQ-001. Gidney (Google, May 2025) reduced the estimated physical-qubit requirement for RSA-2048 factorisation from the Gidney-Ekerå (2021) figure of ~20 million to under 1 million, under comparable fault-tolerance assumptions — roughly a 20-fold reduction achieved through improved algorithmic and error-correction engineering rather than any experimental demonstration. A 2026 proposal using QLDPC codes (an architecture distinct from the surface codes assumed in both prior estimates) suggests a further reduction toward ~100,000 physical qubits, though this is unvalidated at scale. A March 2026 Google/Stanford/Ethereum Foundation whitepaper applies the same style of resource-reduction analysis to elliptic-curve cryptography, estimating under 500,000 physical qubits for widely used curves. All three results are theoretical resource estimates — the same evidence category as INST-002's original figure — not experimental progress toward the claim. The pressure state remains ESCALATING; no reclassification is warranted by an estimate revision alone. What is new is the rate: three independent downward revisions within roughly eighteen months is faster compression of the engineering-gap estimate than the original record anticipated, and OQ-001 now has materially fresher input than it did at AS-001.",
+      assessorNote: "Sourced from: Gidney, \"How to factor 2048-bit RSA with less than a million noisy qubits\" (May 2025, arXiv); Iceberg Quantum QLDPC architecture proposal (early 2026, unvalidated at scale per secondary reporting); Google Quantum AI / Stanford / Ethereum Foundation whitepaper on elliptic-curve cryptography resource estimates (March 2026). All three accessed via secondary technical reporting (The Quantum Insider, postquantum.com) rather than primary papers in full; primary sourcing should be substituted before this assessment is treated as fully verified.",
     }
   ],
 
@@ -118,11 +133,19 @@ export const FR_QE_0005 = {
       id: "OQ-003",
       question: "This claim sits at the top of the PROG-QE capability stack and depends on all substrate claims being satisfied first. If FR-QE-0003 or FR-QE-0004 encounter unexpected obstacles at larger scales, this claim's trajectory changes without any direct evidence bearing on it. How should a record respond when its substrate records encounter setbacks? No governed procedure exists.",
       raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-004",
+      question: "IN-006 documents three independent downward revisions to the RSA/ECC resource estimate within roughly eighteen months, compared with one major revision in the preceding decade. Is this pace itself evidence of anything — a maturing theoretical toolkit converging on a real figure, or a sequence of estimates each exploiting a different unproven architectural assumption (surface codes, then QLDPC codes, then a third approach not yet proposed)? Until a fourth estimate either confirms or breaks the trend, this question cannot be answered from the evidence available at AS-002.",
+      raisedDate: "2026-06-29",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: pace of resource-estimate revision as a possible evidence pattern in its own right." },
+    { id: "M-008", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records (Homepage v2 scoping side-effect). Pressure state unchanged: ESCALATING. New evidence (IN-006) revises the resource-estimate trajectory but crosses no claim threshold." },
+    { id: "M-007", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-006 added: Gidney (2025) and 2026 follow-on resource-estimate reductions for RSA-2048 and elliptic-curve cryptography." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_met", from: "—", to: "NULL-CONDITION-MET", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },

@@ -61,6 +61,13 @@ export const FR_AI_0005 = {
       description: "OpenAI publishes an internal framework in late 2024 defining AGI as a system that can \"outperform humans at most economically valuable work\" — a substantially narrower and more operational definition than the earlier framing of AGI as general human-level intelligence across all domains. The definition shift has a direct consequence for the claim: if AGI is now operationally defined as economic task performance, the claim becomes much closer to being satisfied by current LLM deployments, and the path claim becomes trivially supportable. Critics note that this definition migration constitutes a goalpost shift that allows the path claim to succeed by redefining the destination. For the Observatory, this is the most structurally significant instance in the record: it is the first case where the claim's target term is actively migrating under institutional pressure.",
       vectors: ["partial--target-migration-under-institutional-pressure"],
       date: "2024–25",
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "Scaling-plateau debate matures and a second architectural path consolidates",
+      description: "Through 2025–26, the bifurcation IN-004 first identified consolidates into a field-wide pattern rather than a single lab's pivot. By early 2026, mainstream technical commentary describes 2026 progress as driven \"less by raw training-scale breakthroughs and more by improvements in inference, tooling, and application design,\" with smaller, more efficient models closing capability gaps that previously required larger ones. Academic work on reinforcement-learning post-training scaling (2026) explicitly documents a \"latent saturation trend\" — larger models still gain from scale, but with diminishing returns on the original training-compute axis IN-001 and IN-006 both addressed. At the same time, frontier labs (Google, Microsoft, Meta, Amazon) continue committing tens of billions of dollars to training-scale infrastructure through 2025, indicating the industry has not converged on abandoning the original path even as the architectural mix diversifies. The claim is not resolved by this: capability continues to advance (supportive), the path continues to bifurcate beyond pure scaling (consistent with IN-004), and major capital continues to back the original path simultaneously (complicating any clean narrative of abandonment). This is best read as confirmation that the three-way fragmentation AS-001 identified — capability gains, path bifurcation, target migration — has continued rather than resolved in either direction.",
+      vectors: ["partial--fragmentation-continues-no-resolution"],
+      date: "2025–26",
     }
   ],
 
@@ -73,6 +80,14 @@ export const FR_AI_0005 = {
       verificationStage: "VS-03",
       summary: "The claim is fragmenting in a structurally unusual way. The evidence trail shows neither clean positive progression nor clean negative accumulation. Instead it shows a claim under three simultaneous pressures that are each individually partial: capability gains continue (supportive), but the path is bifurcating architecturally (INST-004); structural scaling constraints are accumulating (INST-005); and the target itself is migrating (INST-006). These pressures do not converge on a single conclusi",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-29",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "FRAGMENTING remains the correct pressure state, and IN-007 is best read as confirmation rather than a new direction. The three simultaneous pressures AS-001 identified — capability gains continuing, the path bifurcating architecturally, the target migrating — have each continued through 2025–26 without converging. Field-wide commentary now describes 2026 progress as inference- and tooling-driven rather than training-scale-driven, and academic work documents diminishing (though not zero) returns on pure training-compute scaling. Simultaneously, frontier labs' continued tens-of-billions-dollar commitments to training-scale infrastructure through 2025 show the industry has not abandoned the original path either. No single development in IN-007 resolves OQ-001 (can a claim with a migrating target reach a stable assessment state) or OQ-002 (is this dissolution or collapse) — if anything, two more years of continued three-way fragmentation without resolution is itself mild evidence that this claim may be heading toward dissolution rather than either confirmation or collapse, which is exactly the distinction OQ-002 asks the Observatory to make a governance decision about.",
+      assessorNote: "Sourced from: Medium, \"The State of Large Language Models: Latest Updates & Trends (2025–2026)\" (Feb 2026); aimultiple.com summary of 2026 RL post-training scaling-laws research describing a \"latent saturation trend\"; Metaintro coverage of continued frontier-lab capital expenditure commitments through 2025 (Dec 2025). All three are secondary roundups rather than primary papers — adequate for establishing the shape of the 2025–26 debate, not for citing specific benchmark or expenditure figures as precise.",
     }
   ],
 
@@ -124,11 +139,19 @@ export const FR_AI_0005 = {
       id: "OQ-003",
       question: "FR-AI-0005 is the first path prediction claim in the corpus. Path predictions age differently from capability claims: they can be overtaken by events, rendered moot by alternative paths succeeding, or abandoned by their proponents without formal falsification. Should path prediction claims be treated as a distinct record class, or does the current schema handle them adequately?",
       raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-004",
+      question: "Two years of continued three-way fragmentation (capability/path/target) without convergence is itself a data point. At what point — if any — should sustained non-convergence be treated as evidence toward dissolution (OQ-002's distinction) rather than simply more fragmentation? This record has no stated threshold for when 'still fragmenting' becomes 'has dissolved,' and OQ-002 already flagged that the Observatory lacks a governed answer to this question generally, not just for this record.",
+      raisedDate: "2026-06-29",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: whether sustained multi-year fragmentation without convergence should itself be treated as evidence toward dissolution." },
+    { id: "M-007", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: FRAGMENTING. New evidence (IN-007) confirms continuation of the three-way fragmentation rather than resolving it in either direction." },
+    { id: "M-006", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-007 added: 2025–26 maturation of the scaling-plateau debate and continued frontier-lab capital commitment to the original training-scale path." },
     { id: "M-005", date: "2024-01-15", field: "null_condition_failed", from: "—", to: "NULL-CONDITION-FAILED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },

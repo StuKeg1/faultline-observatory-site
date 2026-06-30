@@ -54,6 +54,13 @@ export const FR_AM_0004 = {
       description: "Independent economic analyses of fusion power costs begin appearing as private fusion companies publish revenue models. Lazard, Wood Mackenzie, and academic groups estimate levelised cost of electricity for fusion under optimistic assumptions at $50–150/MWh by 2040s, compared with solar at $24–96/MWh and wind at $26–50/MWh in 2023. Fusion advocates argue that baseload dispatchability creates a value premium not captured by levelised cost comparisons. Critics note that fusion's capital intensity and fuel cycle costs make cost competitiveness uncertain even under optimistic engineering assumptions. This is the first evidence bearing on threshold 3 (commercial viability) in the record. The evidence is prospective — based on projections, not demonstrated costs — and is contested. Threshold 3 cannot be assessed from current evidence; it remains the most distant of the three thresholds.",
       vectors: ["partial--threshold-3-projected-not-demonstrated"],
       date: "2023–24",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "2025 construction and demonstration milestones — SPARC, General Fusion, DOE roadmap",
+      description: "Multiple private and public fusion programmes pass concrete engineering milestones through 2025. Commonwealth Fusion Systems begins assembly of its SPARC tokamak (Q1 2025), targeting a net-energy demonstration. General Fusion achieves \"first plasma\" on its Lawson Machine 26 demonstration device (February 2025), a magnetised-target-fusion approach distinct from tokamak designs. The U.S. Department of Energy publishes a fusion-commercialisation roadmap (October 2025) coordinating actions across over 600 scientists, 15+ companies, and 10+ national laboratories. None of these is a threshold event under this record's three-threshold structure — no plant-level net electricity has been generated, and SPARC's own net-energy target is for 2026, not yet realised at time of writing. They are, collectively, the most concentrated burst of engineering-milestone activity since the 2022 NIF/JET results that originally moved this claim into ESCALATING, and none was reflected in the record's evidence trail before this assessment.",
+      vectors: ["partial--engineering-milestones-no-threshold-met"],
+      date: "2025",
     }
   ],
 
@@ -66,6 +73,14 @@ export const FR_AM_0004 = {
       verificationStage: "VS-02",
       summary: "The claim requires three thresholds to be met simultaneously: net electricity at plant level, grid-scale capacity, and commercial viability. None has been demonstrated. The furthest-reached threshold is threshold 1 (net electricity), which has been approached but not achieved at the plant level — NIF achieved Q > 1 at target level, not at facility level. Thresholds 2 and 3 are not yet addressable by current experimental evidence. The pressure state is ESCALATING. The NIF ignition result (INST-00",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-29",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "No threshold has been crossed since AS-001. Threshold 1 (plant-level net electricity) remains undemonstrated; SPARC's own net-energy target is dated for 2026 and is not yet realised as of this assessment. What has changed is the density of engineering-milestone activity: SPARC assembly beginning, General Fusion's first-plasma result, and a coordinated DOE commercialisation roadmap all occurred within roughly the same window (late 2025), constituting the most concentrated burst of public engineering progress since the 2022 NIF/JET results that originally moved this record into ESCALATING. None of IN-006's events individually changes the assessment — they are pre-threshold engineering progress, the same evidence category as IN-003 — but their concentration is itself worth noting against OQ-001's resolution-criteria question: if SPARC's stated 2026 net-energy target is met, the Observatory will need exactly the governed procedure OQ-001 asks for and does not yet have.",
+      assessorNote: "Sourced from: Commonwealth Fusion Systems public statements on SPARC assembly timeline (Q1 2025); General Fusion press materials and Utility Dive coverage of LM26 first-plasma milestone (Feb 2025, reported Sept 2025); U.S. DOE fusion-commercialisation roadmap announcement (Oct 2025). Accessed via secondary reporting, not primary DOE/company technical filings — primary sourcing recommended before treating SPARC's 2026 target date as confirmed rather than stated.",
     }
   ],
 
@@ -118,11 +133,19 @@ export const FR_AM_0004 = {
       id: "OQ-003",
       question: "Does the private fusion industry's commercial commitment — particularly the Helion/Microsoft agreement — constitute evidence for the claim, or is it prospective interest rather than demonstrated capability? The corpus has no precedent for a commercial contract as an evidence object.",
       raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-004",
+      question: "SPARC's stated net-energy target is 2026. If it is met, threshold 1 (plant-level net electricity, not merely target-level as at NIF) may be approached for the first time. OQ-001 already asks what pressure state a claim should enter when one of three thresholds is met while two remain distant — this question is no longer hypothetical on the timeline OQ-001 originally anticipated. The Observatory should resolve OQ-001's governance question before, not after, SPARC reports its result.",
+      raisedDate: "2026-06-29",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-010", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: SPARC's 2026 net-energy target makes OQ-001's resolution-criteria question time-sensitive rather than hypothetical." },
+    { id: "M-009", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: ESCALATING. New evidence (IN-006) is pre-threshold engineering progress; no threshold crossed." },
+    { id: "M-008", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-006 added: SPARC assembly, General Fusion first-plasma, DOE commercialisation roadmap (all 2025)." },
     { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0004", to: "FR-AM-0004", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_failed", from: "—", to: "NULL-CONDITION-FAILED", note: "" },

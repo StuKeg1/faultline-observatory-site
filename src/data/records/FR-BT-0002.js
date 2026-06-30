@@ -54,6 +54,13 @@ export const FR_BT_0002 = {
       description: "Multiple groups publish or present preliminary results of partial reprogramming in non-human primates (NHPs), primarily cynomolgus macaques. Results show epigenetic age reduction in peripheral blood cells and some tissue samples without obvious toxicity or identity loss at doses tested. NHP results are a meaningful intermediate step between mouse models and human trials — primates share substantially more biology with humans than rodents, and safety signals in NHPs are more predictive. However, NHP epigenetic clock measurements are themselves methodologically contested (the clocks were calibrated on human data), and the functional consequences of clock reversal in NHPs have not been assessed on timescales sufficient to evaluate healthspan effects. The record notes these as partial supportive evidence: the mechanism is extending toward human-relevant biology, but the human clinical evidence gap remains complete.",
       vectors: ["partial--nhp-evidence-human-clinical-gap-persists"],
       date: "2024",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Life Biosciences (ER-100) — FDA IND clearance, first human partial-reprogramming trial",
+      description: "Life Biosciences, founded on Harvard researcher David Sinclair's partial-reprogramming work, receives Investigational New Drug (IND) clearance from the FDA for ER-100, a partial OSK (Oct4/Sox2/Klf4, omitting c-Myc) reprogramming therapy targeting optic neuropathies. The company states the trial — the first-ever human trial of a partial epigenetic reprogramming therapy — will begin in Q1 2026. The preclinical pathway cited (rodent optic-nerve-injury recovery, followed by non-human-primate work) extends directly from the IN-002 and IN-005 evidence already in this record. This is the precise development AT-001 names as the resolution attractor: \"first human safety data\" at partial-reprogramming doses. The trial has not yet reported results as of this assessment — IND clearance and trial initiation are regulatory and operational milestones, not efficacy or safety data — so the human clinical evidence gap that AS-001 identified as complete is now closing rather than closed. The claim's central uncertainty (does partial reprogramming work, safely, in humans) remains unanswered, but for the first time it is being asked directly rather than only by extrapolation from animal models.",
+      vectors: ["supportive--human-trial-cleared-not-yet-resulted"],
+      date: "2026",
     }
   ],
 
@@ -66,6 +73,14 @@ export const FR_BT_0002 = {
       verificationStage: "VS-02",
       summary: "The claim has not been satisfied in humans. Partial epigenetic reprogramming without loss of cellular identity has been demonstrated in multiple mouse models and is extending toward non-human primates. No human clinical trials have been initiated. The biological mechanism is well-established: OSKM and related factors can reset epigenetic age marks; partial expression can do so without completing dedifferentiation; and the process produces functional improvements in at least some mouse tissues. T",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-29",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "The human clinical evidence gap that AS-001 identified as complete is now closing. Life Biosciences has received FDA IND clearance for ER-100, a partial OSK reprogramming therapy, with a stated trial start of Q1 2026 — the first human trial of any partial epigenetic reprogramming therapy. This is the first half of AT-001's named resolution attractor (\"first human safety data and validated functional outcome biomarkers\"); the second half — actual safety and clock-reversal data — does not yet exist, since the trial has only just been cleared to begin, not completed or reported. The pressure state remains ESCALATING rather than moving to RESOLVING: clearance to run a trial is a regulatory and operational milestone, not efficacy or safety evidence. BN-001 (clock validity as a rejuvenation surrogate) is unaffected by this development and remains the record's primary interior bottleneck regardless of how the ER-100 trial proceeds. This assessment exists to record that the record's own named attractor condition has begun to materialise, not to anticipate its outcome.",
+      assessorNote: "Sourced from: Life Biosciences public statements and lifespan.io coverage of the FDA IND clearance for ER-100 (reported Feb 2026). Accessed via secondary reporting; the FDA clearance itself and Life Biosciences' own trial registration were not independently verified at primary source. Given this is presented as a significant evidentiary development, primary verification (e.g. via ClinicalTrials.gov registration) is recommended before this assessment is treated as fully confirmed.",
     }
   ],
 
@@ -113,11 +128,19 @@ export const FR_BT_0002 = {
       id: "OQ-003",
       question: "FR-BT-0001 and FR-BT-0002 are structurally adjacent but not related through evidence or ancestry in the way FR-MF-0001 and FR-MF-0002 were related. They share a programme and a validation constraint but have independent evidence trails. Does programme membership without evidence relationship constitute a weaker or different kind of programme structure than the PROG-MF genetic relationship?",
       raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-004",
+      question: "ER-100's trial is the first direct test of AT-001's named attractor condition. When (or if) it reports results, should the pressure state move directly to RESOLVING, or does a single trial — likely small, likely focused on safety rather than efficacy at Phase 1 — only partially satisfy an attractor that names both safety data and validated functional biomarkers? The record should decide this before the trial reports, not in reaction to whatever it finds.",
+      raisedDate: "2026-06-29",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: what a single Phase 1 trial result would or would not satisfy of AT-001's two-part attractor condition." },
+    { id: "M-007", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: ESCALATING. New evidence (IN-006) is the first half of AT-001's named attractor (trial cleared) but not the second (results)." },
+    { id: "M-006", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-006 added: Life Biosciences ER-100 FDA IND clearance, first human partial-reprogramming trial, stated Q1 2026 start." },
     { id: "M-005", date: "2024-01-15", field: "diagnostic_tendency_confirmed", from: "—", to: "DIAGNOSTIC-TENDENCY-CONFIRMED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },

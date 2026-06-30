@@ -61,6 +61,13 @@ export const FR_AI_0004 = {
       description: "Hoffmann et al. (DeepMind, 2022/published impact 2023–24) demonstrate that Kaplan et al.'s scaling laws systematically underweighted data relative to parameters. Chinchilla (70B parameters, trained on 1.4T tokens) outperforms GPT-3 (175B parameters, trained on 300B tokens) across most benchmarks, suggesting that prior large models were substantially undertrained. The result refines rather than refutes scaling: scaling laws hold, but the optimal allocation between parameters and data differs from prior assumptions. For the claim, this is partial-supportive: it strengthens confidence that scaling produces genuine performance improvements, but it complicates which scaling axis is primary. The Chinchilla result is an interior mechanism finding — it updates how scaling should be implemented without challenging whether it works.",
       vectors: ["partial--scaling-confirmed-axis-refined"],
       date: "2024",
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "Test-time compute and reasoning models — a second scaling axis emerges",
+      description: "Through 2024–26, OpenAI's o1/o3, DeepSeek's R1, and comparable reasoning models demonstrate that performance on previously unseen, multi-step reasoning tasks can be improved by scaling compute spent at inference time (extended chain-of-thought, repeated sampling) rather than only by scaling training-time parameters and data — the two axes Kaplan et al. and Chinchilla both addressed. By early 2026, field commentary (Medium's State of LLMs roundup, February 2026) describes a consensus shift: progress through 2026 is expected to come less from raw training-scale increases and more from inference, tooling, and architecture, with smaller models becoming increasingly capable. Separately, multiple 2025–26 analyses (Epoch AI and others, cited in IN from FR-AI-0005) document a \"latent saturation trend\" in training-time scaling returns. For this claim specifically — performance on previously unseen tasks without task-specific optimisation — test-time compute is a genuinely new mechanism, not a refinement of the two already documented (IN-001, IN-006): it improves unseen-task performance through additional inference-time computation per query, which the original claim statement did not anticipate as a scaling dimension. This does not contest the claim's core assertion, but it means the record's account of *how* scaling produces unseen-task performance is now materially incomplete without it.",
+      vectors: ["partial--new-scaling-axis-not-previously-tracked"],
+      date: "2024–26",
     }
   ],
 
@@ -73,6 +80,14 @@ export const FR_AI_0004 = {
       verificationStage: "VS-03",
       summary: "The claim is supported in its core assertion: scaling language model training does increase performance on previously unseen tasks without task-specific optimisation. This is documented across multiple model families, task types, and evaluation methodologies. The few-shot performance documented in INST-002, the smooth scaling curves in INST-001 and INST-006, and the emergent task capabilities in INST-003 all constitute positive evidence for the claim as stated. The evidence trail is nonetheless ",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-29",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "The claim's core assertion remains supported, and the pressure state remains FRAGMENTING — IN-007 adds to the fragmentation rather than resolving it. Test-time compute and reasoning-model architectures (o1/o3, DeepSeek-R1) demonstrate that scaling inference-time computation, not only training-time parameters and data, improves performance on previously unseen reasoning tasks. This is a genuinely new mechanism for the claim's core phenomenon, not merely a third data point alongside Kaplan et al. and Chinchilla: the original claim statement (\"scaling language model training\") describes training-time scaling specifically, and IN-007's mechanism operates at inference time. By early 2026, field commentary describes a broader shift in where capability gains are expected to come from — inference and tooling rather than raw training-scale increases — which bears directly on BN-001 (no agreed definition of \"previously unseen\") and on the record's account of what \"scaling\" means well past the boundary AS-001 anticipated. This assessment does not propose a reclassification; it records that the claim's mechanism account is now materially incomplete without IN-007, two years into the record's life, in a field moving fast enough that the gap itself is notable.",
+      assessorNote: "Sourced from: Medium, \"The State of Large Language Models: Latest Updates & Trends (2025–2026)\" (Feb 2026) for the inference/tooling consensus-shift framing; general field knowledge of o1 (Sept 2024), o3 (Dec 2024), and DeepSeek-R1 (Jan 2025) release timing and capability framing. The Medium source is a secondary roundup, not a primary research paper — adequate for establishing that a shift occurred, not for citing specific benchmark figures. Primary literature (e.g. the test-time-compute scaling papers referenced in FR-AI-0005's evidence trail) should be consulted before this assessment is extended with specific numbers.",
     }
   ],
 
@@ -124,11 +139,19 @@ export const FR_AI_0004 = {
       id: "OQ-003",
       question: "PROG-AI now contains a substrate inversion: the foundational mechanism record (FR-AI-0004) is FRAGMENTING while downstream consequence records are ESCALATING. Does this inversion resolve as the scaling mechanism clarifies, or does the programme continue to build capability evidence on a contested mechanistic foundation?",
       raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-004",
+      question: "IN-007 introduces test-time/inference-time compute as a scaling axis the claim's original statement did not anticipate. Should the claim statement itself be revised to cover this — \"scaling language model training and inference\" — or does the Canonical Reality Principle's discipline (claims are stated as narrowly as the evidence warrants, scope changes go through the mutation log, not silent rewording) mean this is better tracked as an open question indefinitely, or spun into a related but distinct record? This is the same kind of structural question OQ-001 raises for \"previously unseen,\" now recurring for \"scaling.\"",
+      raisedDate: "2026-06-29",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: whether the claim statement's scope should be revisited now that a second scaling axis (test-time compute) has emerged." },
+    { id: "M-008", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: FRAGMENTING. New evidence (IN-007) adds a genuinely new mechanism (test-time compute) not anticipated by the original claim statement." },
+    { id: "M-007", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-007 added: test-time compute / reasoning models (o1/o3, DeepSeek-R1) as a second scaling axis, plus 2025–26 field consensus on inference-driven progress." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_boundary_condition_met", from: "—", to: "NULL-BOUNDARY-CONDITION-MET", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },

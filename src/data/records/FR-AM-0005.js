@@ -54,6 +54,13 @@ export const FR_AM_0005 = {
       description: "As of 2024, no room-temperature superconductivity claim has survived independent replication under the community's current evidence standards. The highest confirmed reproduced superconducting temperature remains in the high-pressure hydride family, substantially below room temperature. Multiple claims that circulated in 2023–24 as potential candidates (various hydride and organic systems) have not produced confirmed independent reproductions. The absence of a surviving claim is not merely absence of evidence — it is the result of active, systematic replication efforts that have returned null results across a broad range of materials and conditions. The field is not waiting for someone to try; it has tried repeatedly and found nothing.",
       vectors: ["contesting--systematic-null-after-active-search"],
       date: "2024",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "2025–26 activity — nickelate stabilisation, a new high-pressure record claim, and a field-wide roadmap",
+      description: "Activity in the field continues without producing a surviving claim. In February 2025, researchers at SLAC and Stanford report stabilising a nickelate superconductor at ambient pressure for the first time — a materials-science result of genuine interest, but at a transition temperature far below room temperature; it bears on the broader programme of finding ambient-pressure superconductors, not on this claim's threshold. In November 2025, a Chinese group reports a new high-pressure record of 298K (just above the conventional room-temperature threshold) in a lanthanum-scandium hydride compressed to 250–260 GPa — pressures comparable to Earth's core, with no path to device-relevant conditions, and not yet independently replicated at time of writing. In March 2026, a multi-institutional team publishes a coordinated research roadmap in PNAS arguing the barrier to room-temperature superconductivity is engineering and materials science, not physics. None of this constitutes a surviving claim under the tightened standard (INST-004): no result reports zero resistance, Meissner effect, and specific-heat anomaly together, confirmed independently, at conditions resembling laboratory practicality. The claim's bottom line is unchanged. The activity itself is the evidence worth logging: the field has not gone quiet since the 2024 null result, and the Observatory's record had not reflected that.",
+      vectors: ["neutral--field-activity-continues-no-surviving-claim"],
+      date: "2025–26",
     }
   ],
 
@@ -66,6 +73,14 @@ export const FR_AM_0005 = {
       verificationStage: "VS-05",
       summary: "The claim has not been satisfied. No room-temperature superconductor has been reproduced under independent laboratory conditions to the community's current evidence standards. The two most prominent recent claims (Dias, LK-99) both failed replication — one through misconduct findings, one through rapid systematic null results from over forty independent groups. The confirmed high-pressure hydride results (INST-003) demonstrate that reproducible superconductivity approaching room temperature is a",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-06-29",
+      pressureState: "collapsed",
+      verificationStage: "VS-05",
+      summary: "The claim remains unsatisfied and the pressure state remains COLLAPSED. IN-006 documents that the field did not go quiet after the 2024 null result — a nickelate stabilisation at ambient pressure (Feb 2025), a new 298K high-pressure record (Nov 2025, unreplicated), and a March 2026 field-wide research roadmap all represent real activity — but none meets AT-001's reopening condition: zero resistance, Meissner effect, and specific-heat anomaly, confirmed independently, under the community's tightened standard. The November 2025 result is the closest superficial match to a 'room-temperature' headline since LK-99, and is explicitly logged here so that the record does not appear to have missed it; on examination it fails the same threshold IN-001 through IN-003 already established — high pressure, no independent confirmation, no full evidentiary set. This assessment exists to confirm the COLLAPSED state remains correct under current evidence, not to revise it. The record's status remains CLOSED.",
+      assessorNote: "Sourced from: SLAC/Stanford nickelate result via Physics World and ScienceDaily coverage (Feb 2025, reported through 2025–26); La-Sc-H 298K claim via Physics World coverage of an arXiv preprint (Nov 2025) — not independently replicated, and the arXiv preprint itself not directly read; PNAS roadmap referenced via secondary summary (March 2026), primary paper not directly read. Given this record's COLLAPSED/CLOSED status and the high public-interest sensitivity of room-temperature superconductivity claims, primary-source verification of the 298K claim in particular is recommended before this assessment is cited as authoritative.",
     }
   ],
 
@@ -113,11 +128,19 @@ export const FR_AM_0005 = {
       id: "OQ-003",
       question: "FR-MF-0004 (commercial fusion) is the one escalating record in PROG-AM. The programme diagnosis suggests it may eventually follow the same collapse dynamic as FR-MF-0001 and FR-AM-0005. Is there evidence bearing on whether FR-MF-0004 is structurally different from the collapsed records — and if so, what protects it from the same dynamic?",
       raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-004",
+      question: "IN-006 logs continued field activity (nickelate stabilisation, a new high-pressure record, a field-wide roadmap) without any of it meeting AT-001's reopening bar. Is logging activity that doesn't change the verdict itself worth doing on a recurring basis for a COLLAPSED/CLOSED record, or does it risk turning this record into a running log of every superconductivity headline regardless of relevance? A future assessor should decide whether AS-002's approach sets a precedent worth repeating or an instance of over-logging worth correcting.",
+      raisedDate: "2026-06-29",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-010", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: whether logging non-threshold-crossing activity on a CLOSED record is a precedent or an over-logging risk." },
+    { id: "M-009", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state confirmed unchanged: COLLAPSED. Status confirmed unchanged: CLOSED. New evidence (IN-006) does not meet AT-001's reopening condition." },
+    { id: "M-008", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-006 added: nickelate ambient-pressure stabilisation (Feb 2025), 298K high-pressure claim (Nov 2025, unreplicated), PNAS field roadmap (Mar 2026)." },
     { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0005", to: "FR-AM-0005", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_failed", from: "—", to: "NULL-CONDITION-FAILED", note: "" },
