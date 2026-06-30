@@ -34,11 +34,6 @@ export default function SiteNav() {
         <NavLink to="/methodology" className={({ isActive }) => isActive ? "active" : ""}>Methodology</NavLink>
         <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>About</NavLink>
       </div>
-      <div className="nav-right">
-        <span className="nav-search-link">
-          <NavLink to="/search">Search</NavLink>
-        </span>
-      </div>
     </nav>
   );
 }
