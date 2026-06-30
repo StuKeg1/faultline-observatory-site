@@ -115,6 +115,46 @@ export function getProgrammeRecords(records, programmeId) {
   return records.filter((r) => r.programme === programmeId);
 }
 
+// Homepage Programme Badge V1
+//
+// Programme badges are homepage orientation labels, not record-level
+// pressure states and not institutional verdicts.
+//
+// V1 deliberately excludes terminal / institutional states from programme
+// posture derivation. collapsed and audit do not contribute.
+const PROGRAMME_BADGE_TRANSLATION_V1 = {
+  escalating: "Emerging",
+  fragmenting: "Contested",
+  resolving: "Resolving",
+};
+
+const PROGRAMME_BADGE_PRIORITY_V1 = {
+  Emerging: 1,
+  Contested: 2,
+  Resolving: 3,
+};
+
+function getProgrammeBadgeFromCounts(badgeCounts) {
+  const entries = Object.entries(badgeCounts);
+  if (entries.length === 0) return null;
+
+  entries.sort(([badgeA, countA], [badgeB, countB]) => {
+    const countDiff = countB - countA;
+    if (countDiff !== 0) return countDiff;
+    return PROGRAMME_BADGE_PRIORITY_V1[badgeB] - PROGRAMME_BADGE_PRIORITY_V1[badgeA];
+  });
+
+  return entries[0][0];
+}
+
+/**
+ * Translates a record pressure state into a homepage programme badge.
+ * Returns null for states that do not participate in V1 derivation.
+ */
+export function getProgrammeBadgeForPressureState(pressureState) {
+  return PROGRAMME_BADGE_TRANSLATION_V1[pressureState] ?? null;
+}
+
 /**
  * Returns corpus-level summary statistics — feeds the homepage Snapshot block.
  * The homepage cannot claim a state the corpus doesn't support.
@@ -162,14 +202,22 @@ export function getCorpusSummary(records) {
 export function getProgrammeStats(records, programmeId) {
   const programmeRecords = getProgrammeRecords(records, programmeId);
   const stateCounts = {};
+  const badgeCounts = {};
+
   for (const record of programmeRecords) {
     const state = getCurrentAssessment(record).pressureState;
     stateCounts[state] = (stateCounts[state] || 0) + 1;
+
+    const badge = getProgrammeBadgeForPressureState(state);
+    if (badge) badgeCounts[badge] = (badgeCounts[badge] || 0) + 1;
   }
+
   return {
     total: programmeRecords.length,
     open: programmeRecords.filter((r) => r.status === "open").length,
     stateCounts,
+    badge: getProgrammeBadgeFromCounts(badgeCounts),
+    badgeCounts,
   };
 }
 
