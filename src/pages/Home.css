@@ -209,6 +209,13 @@
 .foyer-prog-card:hover { background: var(--accent-dim); }
 .foyer-prog-card--empty { background: var(--paper); }
 .foyer-prog-card--empty:hover { background: var(--accent-dim); }
+.fpc-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.2rem;
+}
 .fpc-id {
   font-family: var(--mono);
   font-size: 9px;  font-weight: 500;  letter-spacing: 0.1em;
@@ -216,6 +223,7 @@
   color: var(--ink-mid);
   margin-bottom: 0.2rem;
 }
+.fpc-topline .fpc-id { margin-bottom: 0; }
 .fpc-name {
   font-family: var(--serif);
   font-weight: 400;
@@ -237,30 +245,38 @@
   font-size: 9.5px;
   color: var(--ink-mid);  letter-spacing: 0.03em;
 }
-
-/* ── Quiet links ── */
-.foyer-links {
-  padding: 0 2rem;
-  background: var(--paper-warm);
-  border-top: 1px solid var(--rule);
-}
-.foyer-links-inner {
-  max-width: var(--col);
-  margin: 0 auto;
-  padding: 1.25rem 0;
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-.foyer-link {
+.fpc-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.16rem 0.45rem 0.14rem;
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.07em;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
   color: var(--ink-mid);
-  text-decoration: none;
-  transition: color 0.15s;
+  background: var(--paper);
 }
-.foyer-link:hover { color: var(--accent); }
+.fpc-badge--emerging {
+  border-color: rgba(177, 119, 38, 0.35);
+  color: #8a5a16;
+  background: rgba(177, 119, 38, 0.08);
+}
+.fpc-badge--contested {
+  border-color: rgba(147, 54, 48, 0.35);
+  color: #7e2e29;
+  background: rgba(147, 54, 48, 0.08);
+}
+.fpc-badge--resolving {
+  border-color: rgba(72, 118, 77, 0.35);
+  color: #3f6b44;
+  background: rgba(72, 118, 77, 0.08);
+}
+
 
 /* ── Responsive ── */
 @media (max-width: 700px) {
@@ -269,5 +285,4 @@
   .foyer-prog-grid { grid-template-columns: 1fr; }
   .foyer-activity-row { grid-template-columns: 90px 1fr; grid-template-rows: auto auto; }
   .far-note { grid-column: 1 / -1; }
-  .foyer-links-inner { gap: 1.25rem; }
 }

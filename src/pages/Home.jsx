@@ -158,7 +158,12 @@ export default function Home() {
                     className={`foyer-prog-card${isEmpty ? " foyer-prog-card--empty" : ""}`}
                     role="listitem"
                   >
-                    <div className="fpc-id">{prog.id}</div>
+                    <div className="fpc-topline">
+                      <div className="fpc-id">{prog.id}</div>
+                      {stats.badge && (
+                        <span className={`fpc-badge fpc-badge--${stats.badge.toLowerCase()}`}>{stats.badge}</span>
+                      )}
+                    </div>
                     <div className="fpc-name">{prog.name}</div>
                     <div className="fpc-desc">{prog.shortDescription}</div>
                     <div className="fpc-count">
@@ -202,16 +207,6 @@ export default function Home() {
             </div>
           </section>
         )}
-
-        {/* ── QUIET LINKS ── */}
-        <nav className="foyer-links" aria-label="Observatory sections">
-          <div className="foyer-links-inner">
-            <Link to="/the-record"  className="foyer-link">The Frontier Record</Link>
-            <Link to="/notes"       className="foyer-link">Institutional Notes</Link>
-            <Link to="/methodology" className="foyer-link">Methodology</Link>
-            <Link to="/about"       className="foyer-link">About the Observatory</Link>
-          </div>
-        </nav>
 
       </div>
       <SiteFooter />

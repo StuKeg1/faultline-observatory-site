@@ -78,7 +78,6 @@ export default function Programme() {
 
             <div className="prog-passport">
               <div className="prog-main">
-                <div className="prog-id">{prog.id}</div>
                 <h1 className="prog-name">{prog.name}</h1>
                 <p className="prog-desc">{prog.scopeStatement}</p>
               </div>
