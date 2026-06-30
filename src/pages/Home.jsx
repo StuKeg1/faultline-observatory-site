@@ -194,8 +194,14 @@ export default function Home() {
               {PROGRAMMES.map((prog) => {
                 const stats = progStats[prog.id];
                 return (
-                  <div key={prog.id} className="prog-entry" role="listitem">
-                    <div className="prog-entry-main">
+                  <Link
+                    key={prog.id}
+                    to={`/programmes/${prog.id.toLowerCase()}`}
+                    className="prog-entry"
+                    role="listitem"
+                    aria-label={`Explore ${prog.name}`}
+                  >
+                    <div className="prog-entry-top">
                       <div className="prog-entry-topline">
                         <span className="prog-entry-id">{prog.id}</span>
                         {stats.badge && (
@@ -208,20 +214,16 @@ export default function Home() {
                       <div className="prog-entry-threshold">
                         {prog.thresholdStatement}
                       </div>
-                      <div className="prog-entry-meta">
+                    </div>
+                    <div className="prog-entry-bottom">
+                      <span className="prog-entry-meta">
                         {stats.total === 0
                           ? "No published records"
                           : `${stats.total} Frontier Record${stats.total !== 1 ? "s" : ""}`}
-                      </div>
+                      </span>
+                      <span className="prog-entry-link">Explore Programme →</span>
                     </div>
-                    <Link
-                      to={`/programmes/${prog.id.toLowerCase()}`}
-                      className="prog-entry-link"
-                      aria-label={`Explore ${prog.name}`}
-                    >
-                      Explore Programme →
-                    </Link>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
