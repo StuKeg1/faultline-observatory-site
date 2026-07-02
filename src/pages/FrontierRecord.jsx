@@ -153,8 +153,34 @@ function MutationLog({ record }) {
 }
 
 // ─── EVIDENCE SOURCES ────────────────────────────────────────
+// RELEASE-019 fix: rendered from record.instances[] — the corpus's actual
+// evidentiary field — instead of record.evidence[], which existed on only
+// one record in the entire corpus (FR-QE-0001) and left every other record
+// page throwing on render. instances[] has no citation/weight; it has
+// qualifiedEvent/description/vectors/date. Polarity (supportive/contesting/
+// neutral/partial) is read from the prefix of vectors[0] and mapped onto
+// the existing ev-weight badge classes for visual continuity. Full
+// description text is intentionally not shown in this compact list — only
+// the id, qualifiedEvent label, and polarity — to keep row layout and
+// height consistent with the prior design. No CSS changes required.
+function getInstancePolarity(instance) {
+  const vector = instance.vectors?.[0] ?? "";
+  const [polarity] = vector.split("--");
+  return polarity || "neutral";
+}
+
+function getPolarityBadgeClass(polarity) {
+  const map = {
+    supportive: "primary",
+    contesting: "counter",
+    partial: "contested",
+  };
+  return map[polarity] ?? "";
+}
+
 function EvidenceSources({ record }) {
   const [expanded, setExpanded] = useState(false);
+  const instances = record.instances ?? [];
   return (
     <div>
       <button
@@ -162,22 +188,25 @@ function EvidenceSources({ record }) {
         onClick={() => setExpanded(!expanded)}
         aria-expanded={expanded}
       >
-        <span>{record.evidence.length} sources on record</span>
+        <span>{instances.length} instances on record</span>
         <span className="evidence-toggle-label">
           {expanded ? "Hide ↑" : "Show sources ↓"}
         </span>
       </button>
       {expanded && (
         <div className="evidence-list" role="list">
-          {record.evidence.map((ev) => (
-            <div key={ev.id} className="evidence-entry" role="listitem">
-              <span className="ev-code">{ev.id}</span>
-              <span className="ev-citation">{ev.citation}</span>
-              <span className={`ev-weight ${ev.weight === "primary" ? "primary" : ev.weight === "counter" ? "counter" : ev.weight === "contested" ? "contested" : ""}`}>
-                {ev.weight}
-              </span>
-            </div>
-          ))}
+          {instances.map((inst) => {
+            const polarity = getInstancePolarity(inst);
+            return (
+              <div key={inst.id} className="evidence-entry" role="listitem">
+                <span className="ev-code">{inst.id}</span>
+                <span className="ev-citation">{inst.qualifiedEvent}</span>
+                <span className={`ev-weight ${getPolarityBadgeClass(polarity)}`}>
+                  {polarity}
+                </span>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
