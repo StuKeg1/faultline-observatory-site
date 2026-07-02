@@ -319,6 +319,17 @@ export default function FrontierRecord() {
               </div>
               <h1 className="rp-title">{record.claim.shortLabel}</h1>
               <p className="rp-definition">{record.claim.statement}</p>
+              {/* RELEASE-021: replaces the dark record-state-band. Same status
+                  info (state, VS code, since-date) in one compact line instead
+                  of a separate full-bleed dark section; full rationale now
+                  appears exactly once, in the State Warrant section below,
+                  instead of being duplicated here as well. */}
+              <div className="rp-status-row" role="status" aria-label="Current record state">
+                <StateBadge pressureState={current.pressureState} />
+                <span className="rp-status-vs">{current.verificationStage}</span>
+                <span className="rp-status-sep">·</span>
+                <span className="rp-status-since">since {current.date}</span>
+              </div>
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               <div className="rp-meta-row">
@@ -338,27 +349,6 @@ export default function FrontierRecord() {
                 <span className="rp-status-value" style={{ textTransform: "capitalize" }}>{record.status}</span>
               </div>
             </aside>
-          </div>
-
-          {/* Current state band */}
-          <div className="record-state-band" role="status" aria-label="Current record state">
-            <div className="rsb-inner">
-              <div className="rsb-left">
-                <div className="rsb-label">Current Record State</div>
-                <div className="rsb-state">
-                  <StateBadge pressureState={current.pressureState} size="large" />
-                  <span className="rsb-vs-code">{current.verificationStage}</span>
-                </div>
-              </div>
-              <div className="rsb-centre rsb-summary">
-                <div className="rsb-warrant-label">Why this state?</div>
-                <div>{current.assessorNote || current.summary}</div>
-              </div>
-              <div className="rsb-right">
-                <div className="rsb-since-label">In this state since</div>
-                <div className="rsb-since-value">{current.date}</div>
-              </div>
-            </div>
           </div>
 
           <RecordTabs activeSection={activeSection} />

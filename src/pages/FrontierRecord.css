@@ -60,6 +60,33 @@
   max-width: 520px;
   line-height: 1.7;
 }
+/* RELEASE-021: compact status row — replaces the dark record-state-band.
+   Sits on the existing paper background, so it uses the same --ink-* scale
+   as everything else on the page instead of a separate dark-background
+   rgba palette. */
+.rp-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.875rem;
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+  max-width: 520px;
+}
+.rp-status-vs {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-light);
+}
+.rp-status-sep {
+  color: var(--ink-faint);
+}
+.rp-status-since {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-light);
+}
 .rp-meta-panel {
   font-family: var(--mono);
   font-size: 11px;
@@ -79,72 +106,6 @@
 }
 .rp-status-label { color: var(--ink-mid); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
 .rp-status-value { color: var(--ink); font-weight: 500; }
-
-/* State band */
-.record-state-band {
-  border-top: 1px solid var(--rule);
-  background: var(--ink);
-  padding: 1.1rem 2rem;
-}
-.rsb-inner {
-  max-width: var(--col);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 180px 1fr 150px;
-  gap: 2rem;
-  align-items: center;
-}
-.rsb-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(245,243,236,0.58); /* RELEASE-020: was 0.45 (~4.15:1, below WCAG AA) */
-  margin-bottom: 0.3rem;
-}
-.rsb-state {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.rsb-vs-code {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: rgba(245,243,236,0.58); /* RELEASE-020: was 0.5 (~4.83:1, marginal AA pass) */
-}
-.rsb-summary {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: 0.8125rem;
-  color: rgba(245,243,236,0.75);
-  line-height: 1.6;
-  font-style: italic;
-  border-left: 1px solid rgba(245,243,236,0.2);
-  padding-left: 1.5rem;
-}
-.rsb-warrant-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(245,243,236,0.58); /* RELEASE-020: was 0.45 (~4.15:1, below WCAG AA) */
-  margin-bottom: 0.3rem;
-}
-.rsb-since-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(245,243,236,0.58); /* RELEASE-020: was 0.4 (~3.56:1, below WCAG AA) */
-  margin-bottom: 0.2rem;
-  text-align: right;
-}
-.rsb-since-value {
-  font-family: var(--mono);
-  font-size: 0.875rem;
-  color: rgba(245,243,236,0.7);
-  text-align: right;
-}
 
 /* Record tabs */
 .record-tabs {
@@ -362,9 +323,6 @@
 @media (max-width: 700px) {
   .record-passport { grid-template-columns: 1fr; }
   .rp-meta-panel { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
-  .rsb-inner { grid-template-columns: 1fr; gap: 1rem; }
-  .rsb-since-label, .rsb-since-value { text-align: left; }
-  .rsb-summary { border-left: none; padding-left: 0; border-top: 1px solid rgba(245,243,236,0.15); padding-top: 0.75rem; }
   .verification-matrix { grid-template-columns: repeat(3, 1fr); }
   .related-grid { grid-template-columns: 1fr; }
   .timeline-entry { grid-template-columns: 80px 16px 1fr; }
