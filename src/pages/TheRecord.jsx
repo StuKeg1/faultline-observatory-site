@@ -3,7 +3,7 @@ import RecordCard from "../components/RecordCard.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import { ALL_RECORDS, PROGRAMMES } from "../data/corpus.js";
-import { getCurrentAssessment, getCorpusSummary } from "../data/derive.js";
+import { getCurrentAssessment, getCorpusSummary, getSearchText } from "../data/derive.js";
 import "./TheRecord.css";
 
 const PRESSURE_STATES = [
@@ -38,12 +38,7 @@ export default function TheRecord() {
 
     if (query.trim()) {
       const q = query.toLowerCase();
-      results = results.filter(
-        (r) =>
-          r.id.toLowerCase().includes(q) ||
-          r.claim.shortLabel.toLowerCase().includes(q) ||
-          r.claim.statement.toLowerCase().includes(q)
-      );
+      results = results.filter((r) => getSearchText(r, PROGRAMMES).includes(q));
     }
 
     // Sort
@@ -118,7 +113,7 @@ export default function TheRecord() {
             <input
               className="tr-search"
               type="search"
-              placeholder="Search records, claims…"
+              placeholder="Search by claim, record ID, instance, or programme…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               aria-label="Search records"
