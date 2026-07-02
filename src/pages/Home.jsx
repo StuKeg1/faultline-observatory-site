@@ -172,6 +172,15 @@ export default function Home() {
                 Explore a Frontier Record →
               </Link>
               <p className="hero-trust-line">Independent. Non-partisan. Evidence-based.</p>
+              <Link to="/welcome" className="hero-orientation-panel">
+                <p className="hero-orientation-lead">New to the Observatory?</p>
+                <p className="hero-orientation-text">
+                  A short introduction to Frontier Records, how the Observatory evaluates evidence, and how it works.
+                </p>
+                <div className="hero-orientation-bottom">
+                  <span className="hero-orientation-cta">Quick guide →</span>
+                </div>
+              </Link>
             </div>
 
             {/* Right: hero record */}

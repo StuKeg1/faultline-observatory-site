@@ -29,6 +29,7 @@ const TokenPreview = lazy(() => import("./pages/TokenPreview.jsx"));
 const InstitutionalHealth = lazy(() => import("./pages/InstitutionalHealth.jsx"));
 const MCPAccess = lazy(() => import("./pages/guides/MCPAccess.jsx"));
 const Origins = lazy(() => import("./pages/Origins.jsx"));
+const Welcome = lazy(() => import("./pages/Welcome.jsx"));
 
 function NotFound() {
  return (
@@ -83,6 +84,7 @@ export default function App() {
  <Route path="/programmes/prog-mf" element={<Navigate to="/programmes/prog-am" replace />} />
  <Route path="/programmes/:programmeId" element={<Programme />} />
  <Route path="/methodology" element={<Methodology />} />
+ <Route path="/welcome" element={<Welcome />} />
  <Route path="/about" element={<About />} />
  <Route path="/about/origins" element={<Origins />} />
  <Route path="/search" element={<Search />} />

@@ -104,36 +104,6 @@ export function Methodology() {
   );
 }
 
-// ─── ABOUT ────────────────────────────────────────────────────
-const ABOUT_BLOCKS = [
-  { heading: "Mission",               body: "Custodian of The Frontier Record. The Observatory maintains a permanent public record of frontier claims and how evidence changes their assessment over time." },
-  { heading: "Purpose",               body: "Frontier claims — in science, engineering, and technology — routinely outrun their evidence. They are announced, celebrated, contested, and sometimes quietly abandoned. The Observatory exists to hold the record of that process in full. It tracks scientific and technology claims from announcement through replication, audit, and operational evidence." },
-  { heading: "The Record",            body: "The Frontier Record is not a database of outcomes. It is a record of trajectories — how claims were stated, what evidence tested them, and how the evidentiary position evolved. Records are never closed by editorial judgement. They close only when the observable facts warrant closure. Each record is citable, permanent, and append-only." },
-  { heading: "FCIF",                  body: "Observation is governed by the Frontier Claim Intelligence Framework. FCIF defines how claims are identified, how instances are qualified, how assessments are formed, and how pressure states are assigned. The methodology is public and append-only." },
-  { heading: "Institutional Principle", body: "Observation Before Interpretation. The Observatory records what is observable before forming interpretive positions. This is not a statement of neutrality — it is a statement of sequence." },
-  { heading: "Who the Record Serves", body: "The Frontier Record is maintained for those with an interest in how frontier claims evolve through time rather than how they are announced. Researchers, journalists, investors, policy analysts, historians of technology, and technically literate observers may find it useful as a permanent, structured archive of claim and evidence trajectories. The Observatory does not address general news readers or those seeking current product or technology information — other institutions serve that purpose better." },
-];
-
-export function About() {
-  return (
-    <InstitutionalPage eyebrow="Faultline Observatory" title="About the Observatory">
-      <PageMeta
-        title="About the Observatory"
-        description="Faultline Observatory is a public scientific observatory and publication of record. It maintains a permanent archive of frontier claims in science and technology, tracking how evidence changes their assessment over time."
-        path="/about/"
-      />
-      <div className="inst-about-sections">
-        {ABOUT_BLOCKS.map(({ heading, body }) => (
-          <div key={heading} className="inst-about-block">
-            <div className="inst-about-heading">{heading}</div>
-            <p className="inst-about-body">{body}</p>
-          </div>
-        ))}
-      </div>
-    </InstitutionalPage>
-  );
-}
-
 // ─── SEARCH ───────────────────────────────────────────────────
 export function Search() {
   return (
@@ -216,11 +186,6 @@ const GUIDES = [
     title: "How to Read a Frontier Record",
     description: "What each section of a Frontier Record contains, what verification stages mean, how to interpret open questions and the mutation log, and what to pay attention to when reading.",
   },
-  {
-    slug: "using-with-claude",
-    title: "Using the Observatory with Claude Desktop",
-    description: "How to connect Claude Desktop directly to the Frontier Record corpus via MCP, and what becomes possible when records are exposed as queryable objects rather than documents.",
-  },
 ];
 
 export function GuidesIndex() {
@@ -250,57 +215,3 @@ export function GuidesIndex() {
   );
 }
 
-// ─── USING WITH CLAUDE (MCP GUIDE) ───────────────────────────
-
-const MCP_SECTIONS = [
-  {
-    heading: "What this is",
-    body: `Faultline Observatory maintains a structured record of major scientific and technological claims and tracks how evidence changes their status over time. Normally you read these records on the website. This guide explains a different way to work with them: using Claude Desktop with a direct connection to the corpus, so you can ask questions across all records simultaneously rather than reading them one at a time.`,
-  },
-  {
-    heading: "What becomes possible",
-    body: `The website is good for reading individual records. The MCP connection is good for questions that require looking across many records at once.\n\nFor example: which claims in the quantum computing programme are most heavily contested by evidence? Which records have been in the same state for more than a year without advancing? Which programmes have the highest proportion of unresolved open questions? How does the character of evidence differ between the AI and materials science programmes?\n\nNone of those questions have a single answer you can find by opening one record. They require synthesising across the whole corpus. That is what the MCP connection makes possible.`,
-  },
-  {
-    heading: "What you need",
-    body: `The Observatory codebase — download or clone the repository. Node.js version 18 or later (check with node --version in Terminal). Claude Desktop, available at claude.ai/download — this is the desktop application, not the website. A Claude Pro subscription is required for MCP features.`,
-  },
-  {
-    heading: "Setup",
-    body: `1. Open Terminal, navigate to the Observatory folder, and run: npm install\n\n2. Find your absolute path by running pwd from inside the folder. Copy the output.\n\n3. Find the Claude Desktop config file:\n   Mac/Linux: ~/.config/claude/claude_desktop_config.json\n   Windows: %APPDATA%\\Claude\\claude_desktop_config.json\n\n   Add this, replacing the path with your actual path:\n   {\n     "mcpServers": {\n       "faultline-observatory": {\n         "command": "node",\n         "args": ["/your/path/to/faultline-observatory/mcp-server.js"]\n       }\n     }\n   }\n\n4. Run node mcp-server.js in Terminal and leave it running.\n\n5. Restart Claude Desktop. The connection activates on startup.`,
-  },
-  {
-    heading: "The three tools",
-    body: `list_records — Gets an overview of all Frontier Records: current state, programme, mutation count, open questions.\n\nread_record — Opens a specific record by ID (e.g. FR-QE-0001) and returns the full structured content: claim, assessment history, evidence log, open questions, mutation log.\n\nsearch_records — Searches across all records for a term or phrase.\n\nYou do not call these tools directly. Ask Claude questions in plain language and it decides which tools to use.`,
-  },
-  {
-    heading: "How to ask good questions",
-    body: `The connection works best when your questions ask about patterns, comparisons, or histories rather than simple lookups.\n\nQuestions that work well: "Which claims are currently most contested — where evidence is actively challenging the original claim?" / "Show me the full history of how the quantum advantage claim has evolved." / "Are there records where the claim scope was narrowed after initial publication?" / "Find records where new evidence arrived but the assessment state didn't change."\n\nQuestions that work less well: "Is quantum computing real?" (too broad — the records track specific claims, not fields) / "Which claims are most important?" (importance is not stored in the records) / "What will happen to this claim?" (the records are observational, not predictive).`,
-  },
-  {
-    heading: "What the records don't do",
-    body: `The records are not verdicts. A claim in Audit state is not a failed claim. A claim in Contested state is not a false claim. The states describe the current evidentiary situation.\n\nThe corpus is not exhaustive. The Observatory tracks a curated set of frontier claims. Absence from the corpus does not mean a claim has not been studied.\n\nThe most recent assessment is the Observatory's current view, but evidence may have arrived since the last assessment was written.\n\nThe server is read-only. Nothing you or Claude does through this connection will change the corpus.`,
-  },
-];
-
-export function UsingWithClaude() {
-  return (
-    <InstitutionalPage eyebrow="Guides" title="Using the Observatory with Claude Desktop">
-      <PageMeta
-        title="Using the Observatory with Claude Desktop"
-        description="How to connect Claude Desktop directly to the Frontier Record corpus via MCP, and what becomes possible when records are exposed as queryable objects."
-        path="/guides/using-with-claude/"
-      />
-      <div className="inst-about-sections">
-        {MCP_SECTIONS.map(({ heading, body }) => (
-          <div key={heading} className="inst-about-block">
-            <div className="inst-about-heading">{heading}</div>
-            <p className="inst-about-body" style={{ whiteSpace: "pre-line" }}>
-              {body}
-            </p>
-          </div>
-        ))}
-      </div>
-    </InstitutionalPage>
-  );
-}

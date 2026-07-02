@@ -12,7 +12,6 @@ export default function SiteFooter() {
         </nav>
 
         <nav className="site-footer-guides" aria-label="Guides navigation">
-          <span className="site-footer-guides-label">Guides</span>
           <Link to="/guides/how-to-read">How to Read a Frontier Record</Link>
         </nav>
 

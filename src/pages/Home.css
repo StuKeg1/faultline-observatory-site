@@ -98,6 +98,54 @@
   margin: 0;
 }
 
+.hero-orientation-panel {
+  display: block;
+  margin-top: 1.25rem;
+  padding: 1rem 1.125rem 0.875rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-card);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s, background 0.15s;
+}
+.hero-orientation-panel:hover {
+  border-color: var(--accent-dim);
+  background: var(--accent-dim);
+}
+
+.hero-orientation-lead {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+
+.hero-orientation-text {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+.hero-orientation-bottom {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+.hero-orientation-cta {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
 /* ── Hero right: record card ── */
 
 .hero-record-col {

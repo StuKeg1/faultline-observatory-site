@@ -28,6 +28,10 @@ const ABOUT_BLOCKS = [
  {
  heading: "Mission",
  body: "Custodian of The Frontier Record. The Observatory maintains a permanent public record of frontier claims and how evidence changes their assessment over time.",
+ link: {
+ to: "/welcome",
+ label: "Welcome to the Observatory →",
+ },
  },
  {
  heading: "Purpose",
