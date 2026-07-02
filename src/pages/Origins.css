@@ -1,0 +1,150 @@
+/* ─── RELEASE 026 — INSTITUTIONAL ORIGINS ─────────────────────
+   Dedicated founding history page under /about/origins.
+   Uses existing Observatory variables; introduces no new visual system.
+────────────────────────────────────────────────────────────── */
+
+.origins-page {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.origins-header {
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+  padding: 2.25rem 2rem 1.75rem;
+}
+
+.origins-header-inner,
+.origins-body-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+}
+
+.origins-eyebrow {
+  font-family: var(--mono);
+  font-size: var(--label-size);
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.75rem;
+}
+
+.origins-title {
+  font-family: var(--serif);
+  font-weight: var(--page-title-weight);
+  font-size: var(--page-title-size);
+  line-height: 1.1;
+  letter-spacing: var(--page-title-tracking);
+  margin: 0;
+}
+
+.origins-subtitle {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  max-width: 46rem;
+  margin: 1rem 0 0;
+}
+
+.origins-body {
+  padding: 0 2rem;
+}
+
+.origins-body-inner {
+  padding: 1.25rem 0 4rem;
+}
+
+.origins-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule-light);
+  margin-bottom: 1.75rem;
+}
+
+.origins-meta-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.35rem;
+}
+
+.origins-meta-value {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--body-text-color);
+  line-height: 1.55;
+}
+
+.origins-section {
+  padding-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.origins-section-heading {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.75rem;
+}
+
+.origins-text,
+.origins-essay p {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: var(--body-text-size);
+  line-height: var(--body-line-height);
+  color: var(--body-text-color);
+  margin: 0 0 1.35rem;
+}
+
+.origins-text a,
+.origins-essay a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-dim);
+}
+
+.origins-historical-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin: 2rem 0 1.25rem;
+}
+
+.origins-founder-intro {
+  margin-bottom: 2rem;
+}
+
+.origins-essay h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 2.6rem 0 0.9rem;
+}
+
+.origins-essay-break {
+  border: 0;
+  border-top: 1px solid var(--rule-light);
+  margin: 3rem 0 2.25rem;
+}
+
+@media (max-width: 700px) {
+  .origins-meta {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}
