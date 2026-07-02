@@ -9,8 +9,7 @@ import {
   getTransitionFeed,
   getAssessmentHistory,
   getVerificationStages,
-  getPressureStateLabel,
-  getStateBadgeClass,
+  
 } from "../data/derive.js";
 import "./FrontierRecord.css";
 
@@ -51,7 +50,7 @@ function WarrantPanel({ current }) {
 
 // ─── VERIFICATION MATRIX ────────────────────────────────────
 function VerificationMatrix({ record }) {
-  const current = getCurrentAssessment(record);
+ 
   const stages = getVerificationStages(record);
 
   return (

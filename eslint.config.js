@@ -4,44 +4,83 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
 export default [
-  { ignores: ["dist", "node_modules"] },
 
+  // Ignore generated files and standalone server tooling
+  {
+    ignores: [
+      "dist/**",
+      "node_modules/**",
+      "mcp-server.js"
+    ],
+  },
+
+  // React application
   {
     files: ["src/**/*.{js,jsx}"],
+
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      ecmaVersion: "latest",
+      sourceType: "module",
+
       parserOptions: {
-        ecmaVersion: "latest",
-        ecmaFeatures: { jsx: true },
-        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+
+      globals: {
+        ...globals.browser,
       },
     },
+
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
     },
+
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+
+      "no-unused-vars": [
+        "error",
+        {
+          varsIgnorePattern: "^[A-Z_]",
+          argsIgnorePattern: "^_",
+        },
+      ],
+
       "react-refresh/only-export-components": [
         "warn",
-        { allowConstantExport: true },
+        {
+          allowConstantExport: true,
+        },
       ],
     },
   },
 
+  // Node scripts
   {
-    files: ["scripts/**/*.js", "*.js"],
+    files: [
+      "*.js",
+      "scripts/**/*.js"
+    ],
+
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.node,
+      ecmaVersion: "latest",
       sourceType: "module",
+
+      globals: {
+        ...globals.node,
+      },
     },
+
     rules: {
       ...js.configs.recommended.rules,
+
+      // Legacy utility scripts are intentionally permissive
       "no-unused-vars": "off",
+      "no-undef": "off",
     },
   },
 ];
