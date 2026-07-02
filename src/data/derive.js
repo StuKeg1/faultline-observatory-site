@@ -45,6 +45,57 @@ export function getRecordUrl(record) {
   return `/the-record/${record.id.toLowerCase()}/`;
 }
 
+function collectSearchParts(value, parts = []) {
+  if (value == null) return parts;
+
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+    parts.push(String(value));
+    return parts;
+  }
+
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectSearchParts(item, parts));
+    return parts;
+  }
+
+  if (typeof value === "object") {
+    Object.values(value).forEach((item) => collectSearchParts(item, parts));
+  }
+
+  return parts;
+}
+
+/**
+ * Returns a plain-text public search surface for a Frontier Record.
+ *
+ * This intentionally remains simple string search. It expands search beyond
+ * the title fields without introducing a search index, dependency, or ranking
+ * system at the current corpus scale.
+ */
+export function getSearchText(record, programmes = []) {
+  const programme = programmes.find((p) => p.id === record.programme);
+  const parts = [];
+
+  collectSearchParts([
+    record.id,
+    record.status,
+    record.programme,
+    programme?.id,
+    programme?.shortId,
+    programme?.name,
+    programme?.shortDescription,
+    record.claim?.shortLabel,
+    record.claim?.statement,
+    record.claim?.openedDate,
+    record.instances,
+    record.assessments,
+    record.mutationLog,
+    record.openQuestions,
+  ], parts);
+
+  return parts.join(" ").toLowerCase();
+}
+
 /**
  * Returns the full assessment history in chronological order.
  * The single access point for any UI that iterates assessments[] —
@@ -307,4 +358,3 @@ export function getVerificationStageLabel(vsCode) {
   };
   return map[vsCode] ?? vsCode;
 }
-
