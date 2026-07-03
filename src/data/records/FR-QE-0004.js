@@ -51,7 +51,7 @@ export const FR_QE_0004 = {
     {
       id: "IN-005",
       qualifiedEvent: "Multi-platform confirmation — Microsoft topological qubit announcement",
-      description: "Microsoft announces topological qubit results in early 2025, claiming measurement of a topological gap and qubit operations with error rates consistent with topological protection. If confirmed, this would represent a third distinct hardware architecture demonstrating below-physical-rate logical qubit operation, alongside superconducting (Google Willow) and trapped-ion (Quantinuum/Microsoft) approaches. The topological result is subject to ongoing independent verification. Its relevance to FR-QE-0004 is corroborating rather than foundational: the claim is already in RESOLVING state from INST-004; INST-005 would, if confirmed, strengthen the case that below-threshold operation is architecture-agnostic. Note: this instance also appears in FR-QE-0001 in a different role — as evidence for the Majorana hardware pathway specifically.",
+      description: "Microsoft announces topological qubit results in early 2025, claiming measurement of a topological gap and qubit operations with error rates consistent with topological protection. If confirmed, this would represent a third distinct hardware architecture demonstrating below-physical-rate logical qubit operation, alongside superconducting (Google Willow) and trapped-ion (Quantinuum/Microsoft) approaches. The topological result is subject to ongoing independent verification. Its relevance to FR-QE-0004 is corroborating rather than foundational: the claim is already in RESOLVING state from INST-004; INST-005 would, if confirmed, strengthen the case that below-threshold operation is architecture-agnostic. Note: Microsoft's topological qubit programme is referenced as contextual evidence at multiple points across the Quantum Engineering corpus (see FR-QE-0003) but does not currently have a dedicated Frontier Record.",
       vectors: ["partial--pending-independent-verification"],
       date: "2024",
     },
@@ -107,7 +107,7 @@ export const FR_QE_0004 = {
     },
     {
       id: "OQ-002",
-      question: "The claim is architecture-agnostic. Current evidence is concentrated in superconducting and trapped-ion systems. If topological qubit architectures (FR-QE-0001) achieve confirmed below-threshold operation, this record gains a third platform confirmation. Does architecture-agnosticism require multi-platform demonstration, or is the current two-platform evidence sufficient for the claim as stated?",
+      question: "The claim is architecture-agnostic. Current evidence is concentrated in superconducting and trapped-ion systems. If topological qubit architectures — currently tracked only as contextual evidence within the corpus, without a dedicated Frontier Record — achieve confirmed below-threshold operation, this record gains a third platform confirmation. Does architecture-agnosticism require multi-platform demonstration, or is the current two-platform evidence sufficient for the claim as stated?",
       raisedDate: "2024-01-15",
     },
     {
@@ -119,6 +119,7 @@ export const FR_QE_0004 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-07-03", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): IN-005 and OQ-002 incorrectly cited FR-QE-0001 as containing evidence for Microsoft's topological qubit programme. FR-QE-0001 concerns Google Sycamore / random circuit sampling and contains no such content; the corpus currently has no dedicated Frontier Record for this programme. Corrected in both locations to state this accurately. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-007", date: "2026-07-03", field: "instance_appended", from: "—", to: "INSTANCE-APPENDED", note: "IN-006 added — Legg et al. Nature critique and Microsoft response, bearing on IN-005's pending-verification status. Initiation: Evidence Gap Scan Pilot 001 (Candidate 1). Scope: instance-level only; no Assessment issued; pressureState, verificationStage, and openQuestions unchanged." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_met", from: "—", to: "NULL-CONDITION-MET", note: "" },

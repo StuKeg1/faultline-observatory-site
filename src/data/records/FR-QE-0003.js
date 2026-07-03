@@ -44,7 +44,7 @@ export const FR_QE_0003 = {
     {
       id: "IN-004",
       qualifiedEvent: "Microsoft / Quantinuum — logical qubit error rates below 10⁻⁴ per gate",
-      description: "Microsoft and Quantinuum publish results demonstrating logical error rates of approximately 10⁻⁴ per two-qubit logical gate, achieved by combining Quantinuum's trapped-ion hardware with Microsoft's error correction software. The result achieves logical error rates orders of magnitude below physical rates and below thresholds generally cited as necessary for useful fault-tolerant computation. The result does not use topological qubits — it uses conventional trapped-ion hardware with software error correction. For FR-QE-0001, this is relevant: Microsoft's topological qubit programme is one pathway to fault tolerance, but INST-004 demonstrates that fault-tolerant logical operation is achievable without it. The hardware-path question and the capability-threshold question are separable.",
+      description: "Microsoft and Quantinuum publish results demonstrating logical error rates of approximately 10⁻⁴ per two-qubit logical gate, achieved by combining Quantinuum's trapped-ion hardware with Microsoft's error correction software. The result achieves logical error rates orders of magnitude below physical rates and below thresholds generally cited as necessary for useful fault-tolerant computation. The result does not use topological qubits — it uses conventional trapped-ion hardware with software error correction. This is relevant to Microsoft's topological qubit programme — discussed as contextual evidence within the Quantum Engineering corpus but without a dedicated Frontier Record — which represents one pathway to fault tolerance; INST-004 demonstrates that fault-tolerant logical operation is achievable without it. The hardware-path question and the capability-threshold question are separable.",
       vectors: ["supportive--error-rate-milestone"],
       date: "2024",
     },
@@ -121,7 +121,7 @@ export const FR_QE_0003 = {
     },
     {
       id: "OQ-002",
-      question: "The claim is architecture-agnostic, but all current strong evidence comes from superconducting (Google) and trapped-ion (Quantinuum) systems. If Microsoft's topological qubit programme (FR-QE-0001) produces a below-threshold logical qubit result, it would contribute to this record as a third hardware path. The relationship between FR-QE-0001 and FR-QE-0003 is currently one-directional: FR-QE-0003 can absorb FR-QE-0001 evidence, but not vice versa. Is this the correct relationship?",
+      question: "The claim is architecture-agnostic, but all current strong evidence comes from superconducting (Google) and trapped-ion (Quantinuum) systems. Microsoft's topological qubit programme is currently tracked as contextual evidence within the Quantum Engineering corpus rather than through a dedicated Frontier Record. How should future evidence relating to this programme be represented within the Observatory?",
       raisedDate: "2024-01-15",
     },
     {
@@ -133,6 +133,7 @@ export const FR_QE_0003 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-07-03", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): IN-004 and OQ-002 incorrectly cited FR-QE-0001 as containing evidence for Microsoft's topological qubit programme. FR-QE-0001 concerns Google Sycamore / random circuit sampling and contains no such content; the corpus currently has no dedicated Frontier Record for this programme. Corrected in both locations to state this accurately. IN-005's separate, correct reference to FR-QE-0001 (Willow's quantum-simulation instance) was reviewed and left unchanged. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-007", date: "2026-06-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "Evidence gap closed. IN-006 logged first; AS-002 issued second. Pressure state sustained as ESCALATING; verificationStage advanced VS-02 → VS-03. OQ-001 remains open because no d=11+ below-threshold result was verified." },
     { id: "M-006", date: "2026-06-28", field: "instance_logged", from: "IN-005", to: "IN-006", note: "Willow below-threshold evidence reviewed as peer-reviewed surface-code memory result; d=11+ resolution bottleneck remains open." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
