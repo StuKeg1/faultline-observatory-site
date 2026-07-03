@@ -1,2 +1,3 @@
 dist/
-.event-review-proof2/node_modules/
+.event-review-proof2/
+node_modules/
