@@ -54,6 +54,13 @@ export const FR_QE_0004 = {
       description: "Microsoft announces topological qubit results in early 2025, claiming measurement of a topological gap and qubit operations with error rates consistent with topological protection. If confirmed, this would represent a third distinct hardware architecture demonstrating below-physical-rate logical qubit operation, alongside superconducting (Google Willow) and trapped-ion (Quantinuum/Microsoft) approaches. The topological result is subject to ongoing independent verification. Its relevance to FR-QE-0004 is corroborating rather than foundational: the claim is already in RESOLVING state from INST-004; INST-005 would, if confirmed, strengthen the case that below-threshold operation is architecture-agnostic. Note: this instance also appears in FR-QE-0001 in a different role — as evidence for the Majorana hardware pathway specifically.",
       vectors: ["partial--pending-independent-verification"],
       date: "2024",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Legg et al. — peer-reviewed critique of topological gap detection; Microsoft response",
+      description: "Legg et al. publish a peer-reviewed critique in Nature (24 June 2026), \"On the robustness of topological gap detection via transport,\" arguing that the transport-based measurements underlying Microsoft's early-2025 topological qubit announcement (IN-005) do not conclusively demonstrate the topological gap claimed, citing flawed tune-up procedures and selectively chosen data. Microsoft publishes a contesting reply in the same issue. This is the first substantive development against IN-005's logged pending-independent-verification status. The evidential posture progresses from pending independent verification to active scientific contest: the claim IN-005 described is now under formal, unresolved dispute rather than awaiting a first verification attempt. This does not alter IN-005's original characterisation as corroborating rather than foundational to this record — RESOLVING was reached from IN-004 alone, and IN-006 bears on IN-005's own status, not on the pressure state this record has already reached.",
+      vectors: ["contesting--pending-verification-now-actively-disputed"],
+      date: "2026",
     }
   ],
 
@@ -112,6 +119,7 @@ export const FR_QE_0004 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-07-03", field: "instance_appended", from: "—", to: "INSTANCE-APPENDED", note: "IN-006 added — Legg et al. Nature critique and Microsoft response, bearing on IN-005's pending-verification status. Initiation: Evidence Gap Scan Pilot 001 (Candidate 1). Scope: instance-level only; no Assessment issued; pressureState, verificationStage, and openQuestions unchanged." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_met", from: "—", to: "NULL-CONDITION-MET", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
