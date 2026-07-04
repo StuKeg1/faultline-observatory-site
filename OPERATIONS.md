@@ -14,6 +14,7 @@ The Observatory uses a set of canonical documents, each with one clear instituti
 
 | Document | Location | Owns | Never owns |
 |---|---|---|---|
+| CLAUDE.md | GitHub | AI coding-agent guidance: commands, architecture, data pipeline, CI quirks. Read this first when starting AI-assisted work in the repo. | Operating workflow, release process (see OPERATIONS.md) |
 | OPERATIONS.md | GitHub | Operating workflow, repo facts, release process, implementation rules | Current work, shipped history, observations |
 | Outstanding Work Queue | Drive | What work currently exists | Historical implementation detail, architectural reasoning |
 | Release Archive | Drive | What the Observatory has shipped | Open work, future planning |

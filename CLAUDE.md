@@ -21,6 +21,8 @@ There is no test runner in this repo — CI (`.github/workflows/ci.yml`) only ru
 
 There is no `dist/` deploy step to run locally — Cloudflare Pages builds and deploys automatically on push to `main`.
 
+PRs also show a **Cloudflare Workers Builds** check. This is a separate, mis-scoped Cloudflare integration (different account ID than the real Cloudflare Pages deploy) that fails regardless of what changed. Ignore failures on this check — the checks that matter are GitHub Actions CI and the **Cloudflare Pages** deploy check.
+
 ## Architecture
 
 ### Data pipeline (the core of the app)
