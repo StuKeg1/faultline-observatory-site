@@ -192,6 +192,141 @@ export const FR_QE_0001 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first for display; do not edit prior entries.
+    //
+    // ─── Row 5 Audit Migration (2026-07-05) ──────────────────
+    // The 8 entries below (M-032–M-039) migrate this record's legacy
+    // pre-schema mutation vocabulary (M-001–M-031, preserved verbatim below)
+    // into current taxonomy field names, per Policy §7 row 5 / the Row 5
+    // Audit decision to migrate the record rather than build classifier-side
+    // translation rules for a single record's legacy shape.
+    //
+    // Each entry's `date` is the TRUE date of the underlying event (matching
+    // the corresponding assessment or evidence date), not today's date —
+    // the mutation log records when things happened, not when they were
+    // logged. Each note discloses that the entry was authored during this
+    // migration and states which legacy entry (if any) it restates. The
+    // legacy entries are NOT edited, removed, or renumbered; this is a
+    // pure addition.
+    //
+    // M-039 is the overarching migration marker, dated to the actual
+    // migration action (today). M-032–M-038 restate specific legacy events.
+    // M-037 is NOT a translation — AS-003 had no mutation-log entry at all
+    // before this migration; it is a completeness fix, flagged as such.
+    {
+      id: "M-039",
+      date: "2026-07-05",
+      field: "legacy_vocabulary_migrated",
+      from: "record_state / claim_scope / classical_baseline_note / evidence_count",
+      to: "assessment_issued / claim_scope_narrowed / instance_appended",
+      note:
+        "Row 5 Audit (2026-07-05): this record's pre-schema mutation vocabulary " +
+        "(M-001, M-004, M-009, M-021, M-030, M-031) has been restated below in current " +
+        "taxonomy field names (M-032–M-038). Legacy entries are preserved unedited. " +
+        "One entry (M-037) is a completeness fix, not a translation: AS-003 existed " +
+        "with no corresponding mutation-log entry prior to this migration. Two questions " +
+        "raised by this migration were checked against the corpus and resolved, not left " +
+        "open: (1) this record's evidence[] citation array (ES-001..ES-009) was confirmed " +
+        "unique to FR-QE-0001 — the only one of 26 live records with a separate " +
+        "evidence[] array distinct from instances[]. A single-record legacy artefact of " +
+        "schema evolution, not a corpus pattern; evidence[] additions map fully to " +
+        "instance_appended, not merely as a stand-in. (2) Whether an instance addition " +
+        "that also revises interpretation (Policy Rule 1) needs its own type distinct " +
+        "from a plain evidence addition (Rule 2) was checked for recurrence: a second, " +
+        "independent case exists (FR-AI-0005's IN-series instance, vectors tag " +
+        "'partial--capability-advance-requires-path-reinterpretation'). Both cases " +
+        "resolve the same way — the modern schema already carries interpretive weight " +
+        "on the instances[] vectors field, within instance_added, not as a separate " +
+        "Stage 1 type. M-034 is fully instance_added, not pending a future taxonomy " +
+        "addition.",
+    },
+    {
+      id: "M-038",
+      date: "2026-06-06",
+      field: "instance_appended",
+      from: "—",
+      to: "ES-009",
+      note:
+        "Migration entry (Row 5 Audit, 2026-07-05). Restates legacy M-031 " +
+        "(field: evidence_count, '8 → 9', 'ES-009 appended'). evidence[] confirmed " +
+        "unique to this record (see M-039) — maps fully to instance_appended.",
+    },
+    {
+      id: "M-037",
+      date: "2026-06-06",
+      field: "assessment_issued",
+      from: "—",
+      to: "AS-003",
+      note:
+        "Migration entry (Row 5 Audit, 2026-07-05). Completeness fix, not a translation: " +
+        "AS-003 exists in assessments[] with no prior mutation-log entry of any kind. " +
+        "Diffing against AS-002 correctly finds no pressureState or verificationStage " +
+        "change (both remain audit / VS-03) — resolves under Policy §3.5 as " +
+        "assessment_reissued_no_state_change, non-qualifying for the homepage feed.",
+    },
+    {
+      id: "M-036",
+      date: "2023-02-22",
+      field: "instance_appended",
+      from: "—",
+      to: "ES-007",
+      note:
+        "Migration entry (Row 5 Audit, 2026-07-05). Restates legacy M-030 " +
+        "(field: evidence_count, '7 → 8', 'ES-007 appended'). evidence[] confirmed " +
+        "unique to this record (see M-039) — maps fully to instance_appended.",
+    },
+    {
+      id: "M-035",
+      date: "2022-11-14",
+      field: "claim_scope_narrowed",
+      from: "Random circuit sampling (unrestricted)",
+      to: "Random circuit sampling (defined protocol v2.1)",
+      note:
+        "Migration entry (Row 5 Audit, 2026-07-05). Restates legacy M-021 " +
+        "(field: claim_scope) using the Class A taxonomy bullet 'Claim scope narrowed' " +
+        "added by this audit (Policy v0.4). Scope narrowed in response to Pan & Zhang " +
+        "simulation work — substance unchanged from the original entry.",
+    },
+    {
+      id: "M-034",
+      date: "2021-07-05",
+      field: "instance_appended",
+      from: "—",
+      to: "ES-005",
+      note:
+        "Migration entry (Row 5 Audit, 2026-07-05). Restates legacy M-009 " +
+        "(field: classical_baseline_note). ES-005 (Pan & Zhang, contested weight) is the " +
+        "underlying evidence event. Resolved as instance_appended (see M-039): a second, " +
+        "independent case (FR-AI-0005) confirmed that interpretation-revising evidence " +
+        "is carried by the instances[] vectors field within instance_added, not by a " +
+        "separate Stage 1 type — this is the correct classification, not a stand-in.",
+    },
+    {
+      id: "M-033",
+      date: "2020-03-10",
+      field: "assessment_issued",
+      from: "—",
+      to: "AS-002",
+      note:
+        "Migration entry (Row 5 Audit, 2026-07-05). Restates legacy M-004 " +
+        "(field: record_state, 'Published → Audit'). Diffing against AS-001 correctly " +
+        "detects the pressureState (published → audit) and verificationStage " +
+        "(VS-02 → VS-03) transitions.",
+    },
+    {
+      id: "M-032",
+      date: "2019-10-23",
+      field: "assessment_issued",
+      from: "—",
+      to: "AS-001",
+      note:
+        "Migration entry (Row 5 Audit, 2026-07-05). Restates legacy M-001 " +
+        "(field: record_state, '— → Assertion / Published'). AS-001 is this record's " +
+        "first assessment; classifies as assessment_first_issued.",
+    },
+    // ─── Original legacy entries (2019–2026) — preserved verbatim ───
+    // Do not edit. Restated in modern vocabulary above (M-032–M-039); this
+    // block remains the authoritative historical record of what was
+    // actually logged at the time, in the vocabulary of that era.
     {
       id: "M-031",
       date: "2026-06-06",
