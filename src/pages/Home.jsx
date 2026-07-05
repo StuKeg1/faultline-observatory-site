@@ -10,6 +10,7 @@ import {
   getCurrentAssessment,
   getRecordUrl,
   getRecentActivity,
+  getLatestDevelopments,
 } from "../data/derive.js";
 import "./Home.css";
 
@@ -134,7 +135,7 @@ function HeroRecord({ records }) {
 // ─── HOME ────────────────────────────────────────────────────
 export default function Home() {
   const snapshot = useMemo(() => deriveSnapshot(ALL_RECORDS, ALL_NOTES), []);
-  const recent   = useMemo(() => getRecentActivity(ALL_RECORDS, 5), []);
+  const latestDevelopments = useMemo(() => getLatestDevelopments(ALL_RECORDS, 5), []);
   const progStats = useMemo(
     () => Object.fromEntries(PROGRAMMES.map((p) => [p.id, getProgrammeStats(ALL_RECORDS, p.id)])),
     []
@@ -275,22 +276,28 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── RECENT ACTIVITY ── */}
-        {recent.length > 0 && (
+        {/* ── LATEST DEVELOPMENTS ── */}
+        {/* Activity Taxonomy & Qualification Policy v0.3 (Piloted, operational). */}
+        {/* Every mutation across the corpus is classified by mutationClassifier.js; */}
+        {/* only qualifying developments (Frontier/Publication activity, per policy */}
+        {/* §3.1–§3.5) appear here. Every mutation, qualifying or not, is preserved */}
+        {/* in full at /institutional-changelog — nothing shown here is hidden from */}
+        {/* the record, only reordered by public significance. */}
+        {latestDevelopments.length > 0 && (
           <section className="home-section" aria-labelledby="activity-label">
             <div className="home-section-inner">
               <div className="home-section-head">
-                <h2 className="home-section-title" id="activity-label">Activity Log</h2>
+                <h2 className="home-section-title" id="activity-label">Latest Developments</h2>
               </div>
               <div className="home-activity-log" role="feed">
-                {recent.map((record) => {
-                  const lastMut = record.mutationLog[0];
+                {latestDevelopments.map((row) => {
+                  const { record, mutation } = row;
                   const current = getCurrentAssessment(record);
                   return (
-                    <div key={record.id} className="home-activity-row">
-                      <span className="har-date">{lastMut.date}</span>
+                    <div key={`${record.id}-${mutation.id}`} className="home-activity-row">
+                      <span className="har-date">{mutation.date}</span>
                       <Link to={getRecordUrl(record)} className="har-id">{record.id}</Link>
-                      <span className="har-note">{lastMut.note}</span>
+                      <span className="har-note">{mutation.note}</span>
                       <StateBadge pressureState={current.pressureState} />
                     </div>
                   );
@@ -299,6 +306,9 @@ export default function Home() {
               <div className="home-section-foot">
                 <Link to="/the-record" className="home-more-link">
                   View all records in The Frontier Record →
+                </Link>
+                <Link to="/institutional-changelog" className="home-more-link home-more-link--secondary">
+                  View the complete Institutional Changelog →
                 </Link>
               </div>
             </div>

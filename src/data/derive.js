@@ -9,6 +9,8 @@
  * These functions have no side effects and no internal state.
  */
 
+import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.js";
+
 // ─── RECORD ACCESSORS ───────────────────────────────────────
 
 /**
@@ -299,6 +301,60 @@ export function getRecentActivity(records, limit = 5) {
     })
     .sort((a, b) => b.mutationLog[0].date.localeCompare(a.mutationLog[0].date))
     .slice(0, limit);
+}
+
+function flattenClassifiedMutations(records) {
+  const rows = [];
+  for (const record of records) {
+    if (!record.mutationLog) continue;
+    for (const mutation of record.mutationLog) {
+      const mutationType = detectMutationType(mutation, record);
+      const { qualifies, taxonomyClass, note } = qualifiesForHomepage(mutationType);
+      rows.push({
+        record,
+        mutation,
+        mutationType,
+        qualifies,
+        taxonomyClass,
+        qualificationNote: note,
+      });
+    }
+  }
+  return rows;
+}
+
+/**
+ * Returns the most recent QUALIFYING mutations across the whole corpus,
+ * per Activity Taxonomy & Qualification Policy v0.3. This is the data
+ * source for the homepage "Latest Developments" feed.
+ *
+ * Distinct from getRecentActivity(), which returns the most recently
+ * mutated RECORDS regardless of mutation type (still used for the
+ * institutional snapshot's "Last updated" stat, where "any activity, any
+ * type" is the correct question). getLatestDevelopments() answers a
+ * narrower, policy-governed question: what should a visitor be told
+ * happened.
+ *
+ * limit defaults to 5, matching the prior Activity Log's page size.
+ */
+export function getLatestDevelopments(records, limit = 5) {
+  return flattenClassifiedMutations(records)
+    .filter((row) => row.qualifies)
+    .sort((a, b) => b.mutation.date.localeCompare(a.mutation.date))
+    .slice(0, limit);
+}
+
+/**
+ * Returns EVERY mutation across the whole corpus, classified but
+ * unfiltered, newest first. This is the data source for the Institutional
+ * Changelog page — the complete audit trail. Nothing here is excluded;
+ * qualifies/taxonomyClass are included per row so the page can visibly
+ * label which entries also appear on the homepage, per Policy §3.4's
+ * requirement that this remain a routing decision, not a suppression one.
+ */
+export function getInstitutionalChangelog(records) {
+  return flattenClassifiedMutations(records)
+    .sort((a, b) => b.mutation.date.localeCompare(a.mutation.date));
 }
 
 // ─── DISPLAY HELPERS ────────────────────────────────────────

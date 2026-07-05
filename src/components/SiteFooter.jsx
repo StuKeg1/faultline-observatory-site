@@ -9,6 +9,7 @@ export default function SiteFooter() {
           <Link to="/notes/">Notes</Link>
           <Link to="/methodology/">Methodology</Link>
           <Link to="/about/">About</Link>
+          <Link to="/institutional-changelog/">Institutional Changelog</Link>
         </nav>
 
         <nav className="site-footer-guides" aria-label="Guides navigation">
