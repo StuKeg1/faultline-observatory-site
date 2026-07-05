@@ -9,9 +9,12 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 // ─── EAGER ───────────────────────────────────────────────────
 
 // Homepage and shared layout load immediately.
-// Stubs are small — no benefit splitting them.
+// Programmes/Search/HowToRead/GuidesIndex are small — no benefit splitting
+// them. Methodology was here too until it grew a Pressure State card grid,
+// an architecture index, and an Evidence Review pipeline — moved to its own
+// lazy-loaded file below on that basis.
 import Home from "./pages/Home.jsx";
-import { Programmes, Methodology, Search, HowToRead, GuidesIndex } from "./pages/Stubs.jsx";
+import { Programmes, Search, HowToRead, GuidesIndex } from "./pages/Stubs.jsx";
 import About from "./pages/About.jsx";
 
 // ─── LAZY ────────────────────────────────────────────────────
@@ -30,6 +33,7 @@ const InstitutionalHealth = lazy(() => import("./pages/InstitutionalHealth.jsx")
 const MCPAccess = lazy(() => import("./pages/guides/MCPAccess.jsx"));
 const Origins = lazy(() => import("./pages/Origins.jsx"));
 const Welcome = lazy(() => import("./pages/Welcome.jsx"));
+const Methodology = lazy(() => import("./pages/Methodology.jsx"));
 
 function NotFound() {
  return (

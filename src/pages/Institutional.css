@@ -42,6 +42,13 @@
   margin: 0 auto;
   padding: 1rem 0 4rem;
 }
+/* Methodology only — reuses the existing --width-wide token (already
+   defined in design-tokens.css, tagged "future: full-bleed sections if
+   needed") rather than inventing a new width value. Scoped via modifier
+   class so no other page's .inst-body-inner is affected. */
+.inst-body-inner--wide {
+  max-width: var(--width-wide);
+}
 .inst-intro {
   font-family: var(--serif);
   font-weight: 300;
@@ -100,7 +107,24 @@
 .inst-prog-row--filled .inst-prog-row__count { color: var(--ink-mid); }
 .inst-prog-row--empty  .inst-prog-row__count { color: var(--ink-faint); }
 
-/* ── Methodology term/definition grid ── */
+/* ── Methodology preface — two layers ──
+   1. .inst-method-preface: why the methodology exists (the thesis
+      statement), bounded by a bottom rule — a small "cover page" moment.
+   2. .inst-method-overview: how it's organised. The orientation sentence
+      itself is the heading now — no separate "Contents" label sitting
+      beside it. Constrained to under half the page width (~46%), so the
+      block visually signals "introductory material" before the full-width
+      Parts below it begin — the width contrast is the signal, not a rule
+      or a label. Entry titles are enlarged/bolder than the previous
+      version so Foundations/Judgement/Record Architecture read as the
+      dominant element, with the subtitle staying secondary. No numbering,
+      still, for the same reason as before: the Part headings below don't
+      carry it either. */
+.inst-method-preface {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule-light);
+}
 .inst-method-intro {
   font-family: var(--serif);
   font-weight: 300;
@@ -108,89 +132,86 @@
   font-size: 0.9375rem;
   color: var(--ink-mid);
   line-height: 1.65;
-  margin-bottom: 2.5rem;
 }
-.inst-term-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 2rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--rule-light);
+.inst-method-overview {
+  max-width: 46%;
+  margin-bottom: 2rem;
 }
-.inst-term {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
+.inst-method-overview__heading {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 0.95rem;
   color: var(--ink);
-  padding-top: 0.1rem;
   line-height: 1.5;
+  margin-bottom: 1.35rem;
 }
-.inst-def {
-  font-family: var(--serif);
-  font-size: 0.9375rem;
-  color: var(--body-text-color);
-  font-weight: 300;
-  line-height: 1.65;
-}
-
-/* ── Pressure State (Methodology page) ──
-   Scannable list, distinct from the flat inst-term-row grid used for the
-   other Methodology entries. Reuses existing tokens (--serif, --mono,
-   --rule-light, --ink, --ink-mid, --body-text-color) — no new visual
-   language introduced. */
-.inst-pressure-section {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--rule-light);
-}
-.inst-pressure-intro {
-  margin-top: 0.75rem;
-}
-.inst-pressure-intro p {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: 0.9375rem;
-  line-height: 1.65;
-  color: var(--body-text-color);
-  margin-bottom: 0.85rem;
-}
-.inst-pressure-intro p:last-child {
-  margin-bottom: 0;
-}
-.inst-pressure-divider {
-  border-top: 1px solid var(--rule-light);
-  margin: 1.75rem 0;
-}
-.inst-pressure-states {
+.inst-method-overview-list {
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
 }
-.inst-pressure-state {
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--rule-light);
-}
-.inst-pressure-state:last-child {
-  border-bottom: none;
-}
-.inst-pressure-state__name {
+.inst-method-overview-entry__title {
   font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
-.inst-pressure-state__body {
+.inst-method-overview-entry__sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.8125rem;
+  color: var(--ink-light);
+}
+
+/* ── Pressure State / Evidence Review shared prose (Methodology page) ──
+   One paragraph style for all running text in both Part II subsections —
+   the intro paragraphs, Pressure State's closing line, and Evidence
+   Review's lead + ending paragraphs all use this same class now. Previously
+   these were three different treatments (italic lead, plain body, italic
+   closing); collapsing them to one removes exactly the "cousins not
+   siblings" asymmetry flagged in review — 2.1 and 2.2 now share an
+   identical prose rhythm rather than each having its own. */
+.inst-methodology-prose {
+  margin: 0.75rem 0 1.25rem;
+}
+.inst-methodology-prose p {
   font-family: var(--serif);
   font-weight: 300;
   font-size: 0.9375rem;
-  line-height: 1.65;
+  line-height: 1.55;
   color: var(--body-text-color);
+  margin-bottom: 0.5rem;
+}
+.inst-methodology-prose p:last-child {
+  margin-bottom: 0;
 }
 .inst-pressure-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 1.25rem 1.5rem;
   border: 1px solid var(--rule-light);
   background: var(--paper-card);
+  margin-bottom: 1.25rem;
+}
+.inst-methodology-note-icon {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-mid);
+  margin-top: 0.15rem;
 }
 .inst-pressure-note__heading {
   font-family: var(--mono);
@@ -207,40 +228,232 @@
   line-height: 1.65;
   color: var(--body-text-color);
 }
-.inst-pressure-closing {
-  margin-top: 1.75rem;
-  font-family: var(--serif);
-  font-weight: 300;
-  font-style: italic;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--ink-mid);
-}
 
-/* ── Evidence Review (Methodology page, closing section) ──
-   Stronger top rule (2px, matching .inst-header) marks this as the page's
-   final, distinct section rather than another term/def entry. */
-.inst-evidence-review {
-  margin-top: 1rem;
+/* ── Methodology page only — inst-methodology- prefix.
+   Part grid: label column (eyebrow + title + short description) alongside
+   a content column. Three Parts (Foundations / Judgement / Record
+   Architecture), each separated by a full-width top rule. */
+.inst-methodology-part {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2.5rem;
   padding-top: 2.5rem;
-  border-top: 2px solid var(--ink);
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--rule-light);
 }
-.inst-evidence-review__heading {
+.inst-methodology-part:first-of-type {
+  margin-top: 0;
+}
+/* Part I (Foundations) felt visually empty relative to Part II — extra
+   bottom breathing room gives it presence without adding content. */
+.inst-methodology-part--foundations {
+  padding-bottom: 2.5rem;
+}
+/* Heavier rule + more space marks the close of Foundations / opening of
+   Judgement — "here begin the Foundations" in reverse. */
+.inst-methodology-part--judgement {
+  border-top-width: 2px;
+  padding-top: 3rem;
+  margin-top: 3rem;
+}
+/* Part III needs the most separation — after Evidence Review's pipeline,
+   the eye needs a clear signal it's entering reference material, not
+   another subsection of Judgement. ~64px additional gap, heavier rule.
+   padding-bottom serves two purposes at once: more visual presence for
+   Part III (it was the quietest of the three) and the whitespace-before-
+   footer gap requested separately — both land in the same place. */
+.inst-methodology-part--architecture {
+  border-top-width: 2px;
+  padding-top: 4rem;
+  margin-top: 4rem;
+  padding-bottom: 3.5rem;
+}
+.inst-methodology-part-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 0.75rem;
+}
+.inst-methodology-part-title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 1.15;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
 }
-.inst-evidence-review__lead {
+.inst-methodology-part-desc {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ink-mid);
+}
+.inst-methodology-subsection-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+.inst-methodology-subsection-label--spaced {
+  margin-top: 3rem;
+}
+
+/* Pressure State table — a real <table>, per the reference layout, rather
+   than a card grid or a boxed row list. Reads as one data structure by
+   construction, resolving the earlier "looks separated" feedback more
+   directly than either prior approach did. Wrapped in a scrolling
+   container on narrow viewports (see responsive block) rather than
+   collapsing to stacked cards, to avoid re-deriving a whole second mobile
+   layout for a table that already degrades acceptably with horizontal
+   scroll at this content length. */
+.inst-methodology-table-wrap {
+  overflow-x: auto;
+}
+.inst-methodology-pressure-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  border: 1px solid var(--rule-light);
+  margin: 0 0 1.5rem;
+}
+.inst-methodology-pressure-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  background: var(--paper-card);
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--rule-light);
+}
+.inst-methodology-pressure-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--rule-light);
+  vertical-align: top;
+}
+.inst-methodology-pressure-table tr:last-child td {
+  border-bottom: none;
+}
+.inst-methodology-pressure-table td:first-child {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  width: 200px;
+  white-space: nowrap;
+}
+.inst-methodology-pressure-table td:last-child {
   font-family: var(--serif);
   font-weight: 300;
-  font-style: italic;
   font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--body-text-color);
+}
+
+/* Architecture index — Part III's content. Deliberately denser than the
+   rest of the page: tighter padding, smaller definition text, tighter
+   line-height. This section is reference material, not narrative reading —
+   the contrast with Part II's more spacious prose is intentional. */
+.inst-methodology-index {
+  border: 1px solid var(--rule-light);
+  margin: 0.5rem 0 0;
+}
+.inst-methodology-index-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid var(--rule-light);
+}
+.inst-methodology-index-row:last-child {
+  border-bottom: none;
+}
+.inst-methodology-index-term {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-top: 0.1rem;
+  line-height: 1.4;
+}
+.inst-methodology-index-def {
+  font-family: var(--serif);
+  font-size: 0.875rem;
+  color: var(--body-text-color);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── Evidence Review pipeline — three-step horizontal flow on desktop,
+   stacked on mobile (see responsive block below). Copy unchanged; only the
+   three term/def rows became a pipeline. Now subsection 2.2 within Part II,
+   not its own top-level page section — heading duty moved to
+   .inst-methodology-subsection-label. */
+.inst-methodology-pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 1.5rem 0;
+}
+.inst-methodology-pipeline-step-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.inst-methodology-pipeline-step {
+  flex: 1;
+  border: 1px solid var(--rule-light);
+  background: var(--paper-card);
+  padding: 1.1rem 1.1rem 1.25rem;
+}
+.inst-methodology-pipeline-step__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: var(--ink-mid);
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.inst-methodology-pipeline-step__number {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+.inst-methodology-pipeline-step__icon {
+  display: flex;
+  color: var(--ink-mid);
+}
+.inst-methodology-pipeline-step__term {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.inst-methodology-pipeline-step__def {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--body-text-color);
+}
+.inst-methodology-pipeline-arrow {
+  flex: 0 0 auto;
+  padding: 0 0.85rem;
+  font-family: var(--mono);
+  font-size: 16px;
+  color: var(--ink-mid);
 }
 
 /* ── About sections ── */
@@ -459,11 +672,28 @@
 
 /* ── Responsive ── */
 @media (max-width: 700px) {
-  .inst-term-row {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
   .inst-context-grid {
     grid-template-columns: 1fr;
+  }
+  .inst-methodology-index-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .inst-methodology-part {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .inst-methodology-pipeline {
+    flex-direction: column;
+  }
+  .inst-methodology-pipeline-step-wrap {
+    flex-direction: column;
+  }
+  .inst-methodology-pipeline-arrow {
+    padding: 0.5rem 0;
+    transform: rotate(90deg);
+  }
+  .inst-method-overview {
+    max-width: 100%;
   }
 }
