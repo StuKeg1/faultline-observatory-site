@@ -71,15 +71,55 @@ export function Programmes() {
 }
 
 // ─── METHODOLOGY ──────────────────────────────────────────────
-const METHOD_BLOCKS = [
+// Pressure State is rendered as its own dedicated section (PRESSURE_STATES,
+// below) rather than as a row in METHOD_BLOCKS_PRE/POST — the six-state
+// vocabulary needs a scannable list, not a single term/def row. Split into
+// PRE and POST arrays so Pressure State keeps its original position on the
+// page (third, after Observation Before Interpretation) without needing an
+// index-based insertion into a single flat array.
+const METHOD_BLOCKS_PRE = [
   { term: "FCIF",                          def: "The Frontier Claim Intelligence Framework. The Observatory's observation methodology — governing how scientific and technology claims are identified, assessed, and tracked through time as evidence accumulates." },
   { term: "Observation Before Interpretation", def: "The founding epistemic principle. The Observatory records what is observable before forming interpretive positions. Assessments are derived from evidence, not from prior conclusions." },
-  { term: "Pressure State",               def: "The current evidentiary state of a record. Not a verdict — a description of where a claim stands under accumulated evidence. States include Assertion, Published, Audit, Replication, Operation, Validated, and Contested. Tracks how research claims move from announcement through independent verification." },
+];
+
+const METHOD_BLOCKS_POST = [
   { term: "Verification Stage",           def: "A discrete stage in the formal verification sequence (VS-01 through VS-05). The current stage is derived from assessments; it is never stored as a verdict. Mirrors the progression from initial scientific claim to independently replicated and operationally validated result." },
   { term: "Frontier Record",              def: "The atomic unit of institutional memory. Each record preserves a claim under observation, its instances, its full assessment history, its evidence trail, and its mutation log. Records are permanent, citable, and append-only." },
   { term: "Assessment",                   def: "A dated, append-only entry recording the Observatory's position on a record at a point in time. The current assessment is always the last entry — never stored separately." },
   { term: "Mutation Log",                 def: "An append-only log of every structural change to a record. Nothing is deleted; changes are recorded and the prior state is preserved." },
   { term: "Transition Feed",              def: "A derived sequence of state changes — computed from consecutive assessments where the pressure state changed. Not stored; always derived from the record's assessment history." },
+];
+
+// Pressure State — corrected 2026-07-05 to the CP-001-governed six-state
+// vocabulary (Emerging / Escalating / Stabilising / Fragmenting / Resolving /
+// Collapsed), replacing the superseded Assertion/Published/Audit/Replication/
+// Operation/Validated/Contested vocabulary. Full copy supplied by Stuart.
+const PRESSURE_STATE_INTRO = [
+  "A Pressure State records the Observatory's current assessment of a claim's evidentiary trajectory.",
+  "It is not a verdict, and it is not generated automatically.",
+  "Each Assessment reviews the accumulated evidence and determines which Pressure State best describes the claim at that point in time. The reasoning for that judgment is recorded in the Assessment itself.",
+  "As new evidence accumulates, later Assessments may retain or change the Pressure State while preserving the complete history of earlier judgments.",
+];
+
+const PRESSURE_STATES = [
+  { name: "Emerging", body: "The claim has entered the Observatory with credible evidence or a well-defined scientific question, but the evidence remains early, limited, or largely untested. The central uncertainty is still taking shape." },
+  { name: "Escalating", body: "Evidence is accumulating in a consistent direction and materially increasing confidence—or materially increasing pressure on the claim. Important developments are occurring, but significant uncertainties remain and the claim is still actively contested." },
+  { name: "Stabilising", body: "The evidentiary picture has become relatively stable. New evidence continues to appear, but it largely reinforces the existing assessment rather than substantially changing it. The claim remains under active observation." },
+  { name: "Fragmenting", body: "The evidence no longer points in a single direction. Different aspects of the claim begin to diverge, competing explanations emerge, or apparent progress in one area is offset by uncertainty in another. The claim requires deeper interpretation rather than a simple increase or decrease in confidence." },
+  { name: "Resolving", body: "The central uncertainty is approaching resolution. The remaining questions are narrower than those that originally defined the claim, and the evidence is converging toward a clear outcome. The claim has not yet been confirmed or closed." },
+  { name: "Collapsed", body: "The claim is no longer supported under current evidence. Critical evidence has failed, key assumptions have been overturned, or repeated investigation has left the central claim unsupported. The record remains part of the Observatory as a permanent account of how the evidence evolved." },
+];
+
+const PRESSURE_STATE_NOTE = "Pressure States are descriptive, not procedural. They do not represent a mandatory sequence of stages. A record may remain in one state for many years, return to an earlier state if the evidentiary picture changes, or move directly between states when the evidence warrants it. Every change in Pressure State is justified by an Assessment and preserved as part of the record's permanent history.";
+
+const PRESSURE_STATE_CLOSING = "Pressure States describe the condition of the evidence, not the eventual outcome of the claim.";
+
+// Evidence Review — new closing section, drafted content supplied by Stuart
+// (Methodology_Evidence_Review_Section.docx, uploaded 2026-07-03).
+const EVIDENCE_REVIEW_ACTIVITIES = [
+  { term: "Finding evidence",      def: "Identifying potentially relevant publications, announcements, datasets and other developments." },
+  { term: "Reviewing evidence",    def: "Evaluating whether new information materially changes the state of an existing Frontier Record." },
+  { term: "Changing assessments",  def: "Updating the public record only when the accumulated evidence justifies a different judgement." },
 ];
 
 export function Methodology() {
@@ -94,12 +134,73 @@ export function Methodology() {
         The methodology sits behind the archive. Records justify the methodology;
         the methodology does not justify the records.
       </p>
-      {METHOD_BLOCKS.map((b) => (
+
+      {METHOD_BLOCKS_PRE.map((b) => (
         <div key={b.term} className="inst-term-row">
           <div className="inst-term">{b.term}</div>
           <div className="inst-def">{b.def}</div>
         </div>
       ))}
+
+      {/* ── Pressure State — dedicated scannable section ── */}
+      <div className="inst-pressure-section">
+        <div className="inst-term">Pressure State</div>
+        <div className="inst-pressure-intro">
+          {PRESSURE_STATE_INTRO.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+        <div className="inst-pressure-divider" />
+        <div className="inst-pressure-states">
+          {PRESSURE_STATES.map((s) => (
+            <div key={s.name} className="inst-pressure-state">
+              <div className="inst-pressure-state__name">{s.name}</div>
+              <div className="inst-pressure-state__body">{s.body}</div>
+            </div>
+          ))}
+        </div>
+        <div className="inst-pressure-divider" />
+        <div className="inst-pressure-note">
+          <div className="inst-pressure-note__heading">Important Note</div>
+          <div className="inst-pressure-note__body">{PRESSURE_STATE_NOTE}</div>
+        </div>
+        <p className="inst-pressure-closing">{PRESSURE_STATE_CLOSING}</p>
+      </div>
+
+      {METHOD_BLOCKS_POST.map((b) => (
+        <div key={b.term} className="inst-term-row">
+          <div className="inst-term">{b.term}</div>
+          <div className="inst-def">{b.def}</div>
+        </div>
+      ))}
+
+      {/* ── Evidence Review — new closing section ── */}
+      <div className="inst-evidence-review">
+        <div className="inst-evidence-review__heading">Evidence Review</div>
+        <p className="inst-evidence-review__lead">
+          Finding new evidence is not the same as changing an assessment.
+        </p>
+        <p className="inst-about-body">
+          The Faultline Observatory deliberately separates three distinct activities:
+        </p>
+        {EVIDENCE_REVIEW_ACTIVITIES.map((a) => (
+          <div key={a.term} className="inst-term-row">
+            <div className="inst-term">{a.term}</div>
+            <div className="inst-def">{a.def}</div>
+          </div>
+        ))}
+        <p className="inst-about-body">This separation is intentional.</p>
+        <p className="inst-about-body">
+          Most new evidence does not change a Frontier Record. Many papers confirm existing
+          understanding. Some introduce uncertainty without resolving it. Others strengthen
+          confidence without changing the overall assessment. Only evidence that materially
+          changes the state of a claim results in a new assessment.
+        </p>
+        <p className="inst-about-body">
+          This approach helps preserve the distinction between activity and progress. The
+          Observatory records changes in evidence, not simply the passage of time.
+        </p>
+      </div>
     </InstitutionalPage>
   );
 }

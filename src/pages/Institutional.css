@@ -133,6 +133,116 @@
   line-height: 1.65;
 }
 
+/* ── Pressure State (Methodology page) ──
+   Scannable list, distinct from the flat inst-term-row grid used for the
+   other Methodology entries. Reuses existing tokens (--serif, --mono,
+   --rule-light, --ink, --ink-mid, --body-text-color) — no new visual
+   language introduced. */
+.inst-pressure-section {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.inst-pressure-intro {
+  margin-top: 0.75rem;
+}
+.inst-pressure-intro p {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--body-text-color);
+  margin-bottom: 0.85rem;
+}
+.inst-pressure-intro p:last-child {
+  margin-bottom: 0;
+}
+.inst-pressure-divider {
+  border-top: 1px solid var(--rule-light);
+  margin: 1.75rem 0;
+}
+.inst-pressure-states {
+  display: flex;
+  flex-direction: column;
+}
+.inst-pressure-state {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.inst-pressure-state:last-child {
+  border-bottom: none;
+}
+.inst-pressure-state__name {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.inst-pressure-state__body {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--body-text-color);
+}
+.inst-pressure-note {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--rule-light);
+  background: var(--paper-card);
+}
+.inst-pressure-note__heading {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.65rem;
+}
+.inst-pressure-note__body {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--body-text-color);
+}
+.inst-pressure-closing {
+  margin-top: 1.75rem;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+/* ── Evidence Review (Methodology page, closing section) ──
+   Stronger top rule (2px, matching .inst-header) marks this as the page's
+   final, distinct section rather than another term/def entry. */
+.inst-evidence-review {
+  margin-top: 1rem;
+  padding-top: 2.5rem;
+  border-top: 2px solid var(--ink);
+}
+.inst-evidence-review__heading {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.inst-evidence-review__lead {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
 /* ── About sections ── */
 .inst-about-sections {
   display: flex;
