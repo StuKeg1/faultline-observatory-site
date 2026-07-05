@@ -278,6 +278,7 @@
 }
 
 /* Mutation log */
+.mutation-table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .mutation-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 11px; }
 .mutation-table tbody tr:nth-child(even) { background: var(--paper-warm); }
 .mutation-table tbody tr:hover { background: var(--accent-dim); }
@@ -320,9 +321,35 @@
 @media (max-width: 700px) {
   .record-passport { grid-template-columns: 1fr; }
   .rp-meta-panel { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
-  .verification-matrix { grid-template-columns: repeat(3, 1fr); }
+
+  /* Keep the 5 stages in a single scrollable row instead of reflowing
+     into an uneven 3+2 grid — preserves stage order and equal widths. */
+  .verification-matrix {
+    grid-template-columns: repeat(5, minmax(108px, 1fr));
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+  .vm-stage { scroll-snap-align: start; }
+
   .related-grid { grid-template-columns: 1fr; }
   .timeline-entry { grid-template-columns: 80px 16px 1fr; }
   .wp-row { grid-template-columns: 1fr; gap: 0.35rem; }
   .wp-label { padding-top: 0; }
+
+  /* Mutation table: allow horizontal scroll instead of squeezing columns */
+  .mutation-table { min-width: 560px; }
+
+  /* Evidence rows: stack the citation under the code/weight line so long
+     instance titles have full width instead of fighting a fixed 60px gutter */
+  .evidence-entry {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "code weight"
+      "citation citation";
+    row-gap: 0.4rem;
+  }
+  .ev-code { grid-area: code; }
+  .ev-weight { grid-area: weight; }
+  .ev-citation { grid-area: citation; }
 }

@@ -126,28 +126,30 @@ function RecordLineage({ record }) {
 // ─── MUTATION LOG ────────────────────────────────────────────
 function MutationLog({ record }) {
   return (
-    <table className="mutation-table" aria-label="Record mutations">
-      <thead>
-        <tr>
-          <th>Mutation</th>
-          <th>Date</th>
-          <th>Field</th>
-          <th>Prior value</th>
-          <th>Current value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {record.mutationLog.map((m) => (
-          <tr key={m.id}>
-            <td className="mut-id">{m.id}</td>
-            <td>{m.date}</td>
-            <td className="mut-field">{m.field}</td>
-            <td className="mut-from">{m.from}</td>
-            <td className="mut-to">{m.to}</td>
+    <div className="mutation-table-scroll">
+      <table className="mutation-table" aria-label="Record mutations">
+        <thead>
+          <tr>
+            <th>Mutation</th>
+            <th>Date</th>
+            <th>Field</th>
+            <th>Prior value</th>
+            <th>Current value</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {record.mutationLog.map((m) => (
+            <tr key={m.id}>
+              <td className="mut-id">{m.id}</td>
+              <td>{m.date}</td>
+              <td className="mut-field">{m.field}</td>
+              <td className="mut-from">{m.from}</td>
+              <td className="mut-to">{m.to}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

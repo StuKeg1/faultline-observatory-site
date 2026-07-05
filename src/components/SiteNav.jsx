@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./SiteNav.css";
 
@@ -20,19 +21,70 @@ function MarkB() {
   );
 }
 
+const NAV_ITEMS = [
+  { to: "/", label: "Observatory", end: true },
+  { to: "/the-record", label: "The Record" },
+  { to: "/programmes", label: "Programmes" },
+  { to: "/notes", label: "Notes" },
+  { to: "/methodology", label: "Methodology" },
+  { to: "/about", label: "About" },
+];
+
 export default function SiteNav() {
+  const [open, setOpen] = useState(false);
+
+  // Prevent the page from scrolling behind the open mobile menu.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <nav id="site-nav" role="navigation" aria-label="Site navigation">
       <Link to="/" className="nav-logo" aria-label="Faultline Observatory home">
         <MarkB />
       </Link>
+
       <div className="nav-links">
-        <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>Observatory</NavLink>
-        <NavLink to="/the-record" className={({ isActive }) => isActive ? "active" : ""}>The Record</NavLink>
-        <NavLink to="/programmes" className={({ isActive }) => isActive ? "active" : ""}>Programmes</NavLink>
-        <NavLink to="/notes" className={({ isActive }) => isActive ? "active" : ""}>Notes</NavLink>
-        <NavLink to="/methodology" className={({ isActive }) => isActive ? "active" : ""}>Methodology</NavLink>
-        <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>About</NavLink>
+        {NAV_ITEMS.map(({ to, label, end }) => (
+          <NavLink key={to} to={to} end={end} className={({ isActive }) => isActive ? "active" : ""}>
+            {label}
+          </NavLink>
+        ))}
+      </div>
+
+      <button
+        type="button"
+        className={`nav-toggle${open ? " is-open" : ""}`}
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-controls="mobile-nav-panel"
+        onClick={() => setOpen((v) => !v)}
+      >
+        <span className="nav-toggle-bar" />
+        <span className="nav-toggle-bar" />
+        <span className="nav-toggle-bar" />
+      </button>
+
+      <div
+        id="mobile-nav-panel"
+        className={`nav-mobile-panel${open ? " is-open" : ""}`}
+        aria-hidden={!open}
+      >
+        <div className="nav-mobile-links">
+          {NAV_ITEMS.map(({ to, label, end }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              className={({ isActive }) => isActive ? "active" : ""}
+              tabIndex={open ? 0 : -1}
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </div>
       </div>
     </nav>
   );
