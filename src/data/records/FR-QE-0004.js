@@ -71,7 +71,7 @@ export const FR_QE_0004 = {
       date: "2024-01-15",
       pressureState: "resolving",
       verificationStage: "VS-04",
-      summary: "The claim has two components: below-physical-rate operation, and scalability of that operation. Both have been demonstrated. INST-002 established that below-physical-rate logical qubits are achievable in principle. INST-003 established that practically useful error rates are achievable on current hardware. INST-004 established that performance improves as the architecture scales — the defining signature of scalable below-threshold operation. No contesting evidence has been published against eith",
+      summary: "The claim has two components: below-physical-rate operation, and scalability of that operation. Both have been demonstrated. INST-002 established that below-physical-rate logical qubits are achievable in principle. INST-003 established that practically useful error rates are achievable on current hardware. INST-004 established that performance improves as the architecture scales — the defining signature of scalable below-threshold operation. No contesting evidence has been published against either component of the claim. The pressure state is RESOLVING: both elements the claim requires have been independently demonstrated and corroborate each other, though confirmation at the code distances required for practical fault-tolerant computation (d=11 and above) remains outstanding (OQ-001), and the claim's architecture-agnosticism has not yet been confirmed across a third hardware platform (OQ-002).",
       assessorNote: null,
     }
   ],

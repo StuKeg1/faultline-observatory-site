@@ -71,7 +71,7 @@ export const FR_QE_0005 = {
       date: "2024-01-15",
       pressureState: "escalating",
       verificationStage: "VS-02",
-      summary: "The claim has not been satisfied. No quantum computer has factored a commercially relevant RSA key. The most credible direct attempt (INST-005) failed. The engineering gap between current capability and the Gidney-Ekerå resource estimate remains approximately three to four orders of magnitude in physical qubit count, with additional requirements for error rates, connectivity, and operational duration not yet demonstrated at any scale approaching relevance. The pressure state is ESCALATING. The s",
+      summary: "The claim has not been satisfied. No quantum computer has factored a commercially relevant RSA key. The most credible direct attempt (INST-005) failed. The engineering gap between current capability and the Gidney-Ekerå resource estimate remains approximately three to four orders of magnitude in physical qubit count, with additional requirements for error rates, connectivity, and operational duration not yet demonstrated at any scale approaching relevance. The pressure state is ESCALATING rather than EMERGING because the substrate advances documented in FR-QE-0003 and FR-QE-0004 (INST-003) show the underlying error-correction engineering progressing on a credible trajectory, even though the gap to the resource requirement remains enormous. Institutional behaviour — NIST's finalisation of post-quantum cryptography standards (INST-004) — reflects institutional acceptance that the risk is credible enough to justify migration, adding pressure to the claim's trajectory independent of any direct technical progress toward satisfaction.",
       assessorNote: null,
     },
     {

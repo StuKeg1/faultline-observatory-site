@@ -64,7 +64,7 @@ export const FR_QE_0006 = {
       date: "2024-01-15",
       pressureState: "escalating",
       verificationStage: "VS-02",
-      summary: "The claim has not been satisfied. No fault-tolerant quantum computer has executed a practically useful quantum algorithm beyond classical simulation at the scale required for genuine practical advantage. The substrate progress (INST-003) establishes that fault-tolerant logical qubits capable of executing simple circuits now exist; the resource estimation (INST-004) establishes that practically useful chemistry simulation requires approximately two orders of magnitude more logical qubits than are",
+      summary: "The claim has not been satisfied. No fault-tolerant quantum computer has executed a practically useful quantum algorithm beyond classical simulation at the scale required for genuine practical advantage. The substrate progress (INST-003) establishes that fault-tolerant logical qubits capable of executing simple circuits now exist; the resource estimation (INST-004) establishes that practically useful chemistry simulation requires approximately two orders of magnitude more logical qubits than are currently available. The gap is smaller and more tractable than the equivalent gap for RSA factorisation (FR-QE-0005), but still represents years of further engineering. Classical simulation methods are simultaneously improving (INST-005), narrowing the space of problems that would unambiguously qualify as beyond classical reach by the time fault-tolerant hardware reaches the required scale. The pressure state is ESCALATING: the substrate is advancing on a credible path, but no agreed target problem yet exists (BN-001) on which the claim could be tested.",
       assessorNote: null,
     }
   ],

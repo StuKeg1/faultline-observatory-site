@@ -64,7 +64,7 @@ export const FR_QE_0008 = {
       date: "2024-01-15",
       pressureState: "resolving",
       verificationStage: "VS-04",
-      summary: "The claim is substantially supported and on a trajectory toward confirmation. Google's Willow results (INST-003) demonstrate exponential logical error rate suppression through code distance 7, consistent with the threshold theorem's predictions. Cross-platform confirmation from Microsoft and Quantinuum (INST-004) strengthens the result beyond a single-platform observation. The core scaling relationship — logical error rates suppressing faster than physical overhead increases — is empirically con",
+      summary: "The claim is substantially supported and on a trajectory toward confirmation. Google's Willow results (INST-003) demonstrate exponential logical error rate suppression through code distance 7, consistent with the threshold theorem's predictions. Cross-platform confirmation from Microsoft and Quantinuum (INST-004) strengthens the result beyond a single-platform observation. The core scaling relationship — logical error rates suppressing faster than physical overhead increases — is empirically confirmed at the code distances tested. The pressure state is RESOLVING: the theorem's central prediction has been consistently observed across the code distances measured so far (INST-002, INST-003) and across multiple hardware architectures, though correlated-error effects that may limit suppression at larger code distances (INST-005) have not yet been ruled out, and confirmation at the distances required for practical fault tolerance (d=9, d=11) remains the decisive open step (AT-001).",
       assessorNote: null,
     }
   ],
