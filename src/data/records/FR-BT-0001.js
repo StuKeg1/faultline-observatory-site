@@ -64,7 +64,7 @@ export const FR_BT_0001 = {
       date: "2024-01-15",
       pressureState: "escalating",
       verificationStage: "VS-02",
-      summary: "The claim has not been satisfied. No senolytic therapy has demonstrated meaningful healthspan extension in humans on clinical endpoints. The foundational preclinical evidence (INST-001) establishes a compelling causal mechanism — senescent cell accumulation contributes to aging, and their removal produces healthspan benefit in mice. The human surrogate evidence (INST-002, INST-004) demonstrates that senolytics reduce senescent cell burden in humans. But the Phase II clinical trial failures (INST",
+      summary: "The claim has not been satisfied. No senolytic therapy has demonstrated meaningful healthspan extension in humans on clinical endpoints. The foundational preclinical evidence (INST-001) establishes a compelling causal mechanism — senescent cell accumulation contributes to aging, and their removal produces healthspan benefit in mice. The human surrogate evidence (INST-002, INST-004) demonstrates that senolytics reduce senescent cell burden in humans. But the Phase II clinical trial failures (INST-003) — the first adequately powered randomised trials of senolytics in humans — failed to demonstrate benefit on primary clinical endpoints. The pressure state is ESCALATING: the mechanistic and surrogate-marker case remains strong, and the first hard clinical test has returned a null result that is attributable at least partly to drug choice, dosing, and endpoint selection (RM-002) rather than a clean refutation of the underlying hypothesis, but the surrogate-to-clinical translation gap (RM-001) is now the central unresolved obstacle.",
       assessorNote: null,
     }
   ],

@@ -71,7 +71,7 @@ export const FR_BT_0002 = {
       date: "2024-01-15",
       pressureState: "escalating",
       verificationStage: "VS-02",
-      summary: "The claim has not been satisfied in humans. Partial epigenetic reprogramming without loss of cellular identity has been demonstrated in multiple mouse models and is extending toward non-human primates. No human clinical trials have been initiated. The biological mechanism is well-established: OSKM and related factors can reset epigenetic age marks; partial expression can do so without completing dedifferentiation; and the process produces functional improvements in at least some mouse tissues. T",
+      summary: "The claim has not been satisfied in humans. Partial epigenetic reprogramming without loss of cellular identity has been demonstrated in multiple mouse models and is extending toward non-human primates. No human clinical trials have been initiated. The biological mechanism is well-established: OSKM and related factors can reset epigenetic age marks; partial expression can do so without completing dedifferentiation; and the process produces functional improvements in at least some mouse tissues. The claim's human clinical evidence gap remains complete: no partial reprogramming therapy has yet entered a human trial. The pressure state is ESCALATING: the mechanism is well established across multiple mouse models and the field is heavily capitalised (INST-003), but whether partial reprogramming is safe and effective in humans — and whether epigenetic clock reversal constitutes genuine rejuvenation rather than a movable measurement (BN-001) — remains entirely untested outside model organisms.",
       assessorNote: null,
     },
     {
