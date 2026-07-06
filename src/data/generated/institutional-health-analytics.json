@@ -1,10 +1,10 @@
 {
   "source": "cloudflare",
   "periodLabel": "Last 7 completed days",
-  "periodStart": "2026-06-21",
-  "periodEnd": "2026-06-28",
-  "visitors": 650,
-  "pageViews": 4636,
-  "generatedAt": "2026-06-29T17:13:33.374Z",
+  "periodStart": "2026-06-28",
+  "periodEnd": "2026-07-05",
+  "visitors": 426,
+  "pageViews": 1956,
+  "generatedAt": "2026-07-06T17:17:28.702Z",
   "status": "available"
 }
