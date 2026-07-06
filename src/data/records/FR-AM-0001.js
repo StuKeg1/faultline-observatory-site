@@ -86,7 +86,7 @@ export const FR_AM_0001 = {
       date: "2024-01-15",
       pressureState: "fragmenting",
       verificationStage: "VS-03",
-      summary: "Systematic replication failures at major institutions have accumulated. The Georgia Tech neutron result — the strongest independent corroboration — has been retracted. No well-equipped laboratory has produced an unambiguous positive replication under controlled conditions. Some groups continue to report anomalous heat; these reports are not accompanied by consistent nuclear signatures. The evidence trail is fragmenting: anomalous calorimetric observations persist in some laboratories while nucle",
+      summary: "Systematic replication failures at major institutions have accumulated. The Georgia Tech neutron result — the strongest independent corroboration — has been retracted. No well-equipped laboratory has produced an unambiguous positive replication under controlled conditions. Some groups continue to report anomalous heat; these reports are not accompanied by consistent nuclear signatures. The evidence trail is fragmenting: anomalous calorimetric observations persist in some laboratories while nuclear signatures required to confirm a fusion mechanism remain absent everywhere they have been sought. The Department of Energy review panel's negative consensus (INST-004) has not been overturned, but the residual community of researchers continues to report effects that have not been definitively attributed to measurement artefact either. The pressure state is FRAGMENTING: the claim is not converging toward confirmation or clean refutation, but splitting into a heat-observation thread that persists and a nuclear-mechanism thread that has found no supporting evidence.",
       assessorNote: null,
     },
     {
@@ -94,7 +94,7 @@ export const FR_AM_0001 = {
       date: "2024-01-15",
       pressureState: "collapsed",
       verificationStage: "VS-05",
-      summary: "The claim has not been reproduced under controlled conditions by independent laboratories in thirty-five years of attempts. Two formal DOE review panels have concluded the evidence does not support nuclear fusion as the explanation for observed anomalies. The most recent systematic replication attempt with state-of-the-art instrumentation (Berliner et al. 2019) returned a null result for fusion products. A residual research community persists but has not produced peer-reviewed evidence sufficien",
+      summary: "The claim has not been reproduced under controlled conditions by independent laboratories in thirty-five years of attempts. Two formal DOE review panels have concluded the evidence does not support nuclear fusion as the explanation for observed anomalies. The most recent systematic replication attempt with state-of-the-art instrumentation (Berliner et al. 2019) returned a null result for fusion products. A residual research community persists but has not produced peer-reviewed evidence sufficient to overturn either DOE panel's conclusion or the Berliner et al. null result. The pressure state is COLLAPSED: the claim has been tested extensively over more than three decades by well-resourced independent laboratories and has not been confirmed. This is a stable end state under CP-001 — the record preserves the trajectory of how the claim was tested and failed, not merely the verdict that it failed — and remains reopenable only upon a future qualifying event (OQ-002).",
       assessorNote: null,
     }
   ],

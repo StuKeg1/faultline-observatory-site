@@ -71,7 +71,7 @@ export const FR_AM_0004 = {
       date: "2024-01-15",
       pressureState: "escalating",
       verificationStage: "VS-02",
-      summary: "The claim requires three thresholds to be met simultaneously: net electricity at plant level, grid-scale capacity, and commercial viability. None has been demonstrated. The furthest-reached threshold is threshold 1 (net electricity), which has been approached but not achieved at the plant level — NIF achieved Q > 1 at target level, not at facility level. Thresholds 2 and 3 are not yet addressable by current experimental evidence. The pressure state is ESCALATING. The NIF ignition result (INST-00",
+      summary: "The claim requires three thresholds to be met simultaneously: net electricity at plant level, grid-scale capacity, and commercial viability. None has been demonstrated. The furthest-reached threshold is threshold 1 (net electricity), which has been approached but not achieved at the plant level — NIF achieved Q > 1 at target level, not at facility level. Thresholds 2 and 3 are not yet addressable by current experimental evidence. The pressure state is ESCALATING. The NIF ignition result (INST-002) demonstrates that positive fusion energy gain is achievable in the laboratory, a necessary, though not sufficient, precondition for all three thresholds even though it satisfies none of them directly. Substantial private capital (INST-003) and a public ITER/DEMO roadmap (INST-004) indicate the engineering path is being actively pursued, but threshold 1 (plant-level net electricity) remains undemonstrated, and thresholds 2 and 3 cannot yet be meaningfully assessed given the sequential dependency between them (BN-001).",
       assessorNote: null,
     },
     {

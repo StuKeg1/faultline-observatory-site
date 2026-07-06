@@ -75,7 +75,7 @@ export const FR_AM_0006 = {
       date: "2024-01-15",
       pressureState: "escalating",
       verificationStage: "VS-02",
-      summary: "The claim has not been satisfied. No solid-state battery has simultaneously demonstrated commercially viable energy density, safety, and cycle life at the manufacturing scale and cost required for EV deployment. Individual thresholds have been approached or met in laboratory settings; the three-threshold conjunction at commercial scale has not. The pressure state is ESCALATING. The field is advancing on genuine engineering problems with substantial industrial investment. The physics is not dispu",
+      summary: "The claim has not been satisfied. No solid-state battery has simultaneously demonstrated commercially viable energy density, safety, and cycle life at the manufacturing scale and cost required for EV deployment. Individual thresholds have been approached or met in laboratory settings; the three-threshold conjunction at commercial scale has not. The pressure state is ESCALATING. The field is advancing on genuine engineering problems with substantial industrial investment. The physics is not disputed — ion conduction through solid electrolytes is well understood — and the challenge is engineering and manufacturing scale-up rather than contested science (RM-001): laboratory milestones continue to be met and industrial commitment continues to grow (INST-002, INST-005), but the three-threshold conjunction at commercial manufacturing scale and cost has not been demonstrated, and announced delivery timelines have consistently receded rather than been met (INST-003).",
       assessorNote: null,
     },
     {
