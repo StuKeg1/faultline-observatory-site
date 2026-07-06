@@ -78,7 +78,7 @@ export const FR_AI_0005 = {
       date: "2024-01-15",
       pressureState: "fragmenting",
       verificationStage: "VS-03",
-      summary: "The claim is fragmenting in a structurally unusual way. The evidence trail shows neither clean positive progression nor clean negative accumulation. Instead it shows a claim under three simultaneous pressures that are each individually partial: capability gains continue (supportive), but the path is bifurcating architecturally (INST-004); structural scaling constraints are accumulating (INST-005); and the target itself is migrating (INST-006). These pressures do not converge on a single conclusi",
+      summary: "The claim is fragmenting in a structurally unusual way. The evidence trail shows neither clean positive progression nor clean negative accumulation. Instead it shows a claim under three simultaneous pressures that are each individually partial: capability gains continue (supportive), but the path is bifurcating architecturally (INST-004); structural scaling constraints are accumulating (INST-005); and the target itself is migrating (INST-006). These pressures do not converge on a single conclusion. Capability continues to advance in ways that keep the claim alive, while the path departs from pure scaling and the destination itself is redefined in ways that make the claim progressively harder to evaluate as originally stated. The pressure state is FRAGMENTING: the claim is not resolving toward confirmation or collapse but splitting along three independent axes — capability, path, and target — each of which would need to be separately addressed before the claim could reach a stable assessment (OQ-001).",
       assessorNote: null,
     },
     {
