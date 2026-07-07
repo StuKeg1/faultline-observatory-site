@@ -93,7 +93,14 @@
 // the creation batch uses "instances_logged" (plural). All three mean the
 // same governance event. Recorded as an observation, not silently erased —
 // worth a Review Note of its own at some point.
-const INSTANCE_FIELD_SYNONYMS = new Set([
+// Exported (2026-07-07, Metrics Engine build): metrics.js needs to know
+// "did an instance get logged, and when" as a raw field-name question,
+// independent of this file's homepage-worthiness classification (where a
+// founding-batch instance entry is deliberately folded into
+// creation_batch_internal). Same underlying field-name knowledge, two
+// different questions asked of it — exporting avoids a second, drifting
+// copy of this synonym set living in metrics.js.
+export const INSTANCE_FIELD_SYNONYMS = new Set([
   "instance_logged",
   "instance_appended",
   "instances_logged",
@@ -104,7 +111,9 @@ const INSTANCE_FIELD_SYNONYMS = new Set([
 // under "assessments_issued" rather than one entry per assessment — same
 // governance event, same creation-batch slot, same placeholder shape.
 // Row 5 Audit, 2026-07-05.
-const ASSESSMENT_ISSUED_FIELD_SYNONYMS = new Set([
+// Exported (2026-07-07, Metrics Engine build) — same reasoning as
+// INSTANCE_FIELD_SYNONYMS above.
+export const ASSESSMENT_ISSUED_FIELD_SYNONYMS = new Set([
   "assessment_issued",
   "assessments_issued",
 ]);
