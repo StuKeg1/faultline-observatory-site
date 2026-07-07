@@ -133,6 +133,7 @@ export const FR_QE_0003 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-07-07", field: "experimental_annotations_added", from: "—", to: "EXPERIMENTAL-ANNOTATIONS-ADDED", note: "Added experimentalAnnotations[] — a pilot, non-schema-permanent container for editorial observations distinct from assessments[] and assessorNote. Status: experimental, under institutional review. Does not assert a pressureState or verificationStage change; assessments[] and its append-only history are untouched. First entry records that the claim's evidentiary trajectory is strengthening while realization-relevant enabling capabilities (per this record's own BN-001/RM-001) show no corresponding progress. The container and its rendering may be removed in a future release without migration if the pilot does not prove useful." },
     { id: "M-008", date: "2026-07-03", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): IN-004 and OQ-002 incorrectly cited FR-QE-0001 as containing evidence for Microsoft's topological qubit programme. FR-QE-0001 concerns Google Sycamore / random circuit sampling and contains no such content; the corpus currently has no dedicated Frontier Record for this programme. Corrected in both locations to state this accurately. IN-005's separate, correct reference to FR-QE-0001 (Willow's quantum-simulation instance) was reviewed and left unchanged. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-007", date: "2026-06-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "Evidence gap closed. IN-006 logged first; AS-002 issued second. Pressure state sustained as ESCALATING; verificationStage advanced VS-02 → VS-03. OQ-001 remains open because no d=11+ below-threshold result was verified." },
     { id: "M-006", date: "2026-06-28", field: "instance_logged", from: "IN-005", to: "IN-006", note: "Willow below-threshold evidence reviewed as peer-reviewed surface-code memory result; d=11+ resolution bottleneck remains open." },
@@ -141,6 +142,23 @@ export const FR_QE_0003 = {
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
     { id: "M-002", date: "2024-01-15", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "" },
     { id: "M-001", date: "2024-01-15", field: "record_created", from: "—", to: "RECORD-CREATED", note: "" }
+  ],
+
+  // ─── EXPERIMENTAL ANNOTATIONS (pilot, 2026-07) ─────────────
+  // Not a mature FCIF object. A deliberately crude, reversible container
+  // for editorial observations that are distinct in kind from assessments[]
+  // (evidentiary state) and assessorNote (process rationale for an
+  // assessment). Renders publicly as a labeled box, separate from the
+  // State Warrant's assessment rationale. See M-009. If this pilot does
+  // not prove useful, this array and its render component can be deleted
+  // with zero migration cost — no other code path depends on it.
+  experimentalAnnotations: [
+    {
+      date: "2026-07-07",
+      label: "Observation",
+      status: "experimental",
+      text: "Observation: Although the evidentiary trajectory for this claim is strengthening, no corresponding progress toward large-scale realization is yet visible. Current evidence suggests that important remaining constraints may lie in enabling capabilities — such as physical qubit fabrication at scale and control electronics for large qubit arrays — rather than within the claim's own evidence trail.",
+    },
   ],
 
   status: "open",

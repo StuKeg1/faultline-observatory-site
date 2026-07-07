@@ -243,6 +243,46 @@
   color: var(--ink-light);
 }
 
+/* Experimental annotations — pilot (2026-07). Dashed border and muted
+   label deliberately distinguish this from the settled warrant-panel
+   styling above: this is an explicitly provisional observation genre,
+   not an institutional finding. Remove this block along with the
+   .experimental-annotations markup if the pilot is discontinued. */
+.experimental-annotations { margin-top: 0.75rem; }
+.experimental-annotation {
+  border: 1px dashed var(--rule);
+  background: var(--paper-card);
+  padding: 0.875rem 1.25rem;
+  margin-top: 0.75rem;
+}
+.ea-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.ea-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+}
+.ea-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint-text-color, var(--ink-light));
+  margin-left: auto;
+}
+.ea-text {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 0;
+}
+
 /* Timeline */
 .timeline { position: relative; }
 .timeline-entry {

@@ -48,6 +48,32 @@ function WarrantPanel({ current }) {
   );
 }
 
+// ─── EXPERIMENTAL ANNOTATIONS ────────────────────────────────
+// Pilot render (2026-07). Renders record.experimentalAnnotations if present;
+// renders nothing for the other records in the corpus, which do not have
+// this field. Deliberately separate from WarrantPanel's assessment
+// rationale — this is a distinct, explicitly experimental observation
+// genre, not an assessment finding. No schema dependency beyond the
+// optional array itself; safe to delete this component and its call site
+// with no effect on any other record if the pilot does not prove useful.
+function ExperimentalAnnotations({ record }) {
+  const annotations = record.experimentalAnnotations ?? [];
+  if (annotations.length === 0) return null;
+  return (
+    <div className="experimental-annotations" aria-label="Experimental observations">
+      {annotations.map((a, i) => (
+        <div key={i} className="experimental-annotation">
+          <div className="ea-header">
+            <span className="ea-label">{a.label}</span>
+            <span className="ea-date">{a.date}</span>
+          </div>
+          <p className="ea-text">{a.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ─── VERIFICATION MATRIX ────────────────────────────────────
 function VerificationMatrix({ record }) {
  
@@ -366,6 +392,7 @@ export default function FrontierRecord() {
           <section className="record-section-inner" id="s-warrant">
             <div className="rs-header">State Warrant</div>
             <WarrantPanel current={current} />
+            <ExperimentalAnnotations record={record} />
           </section>
 
           <section className="record-section-inner" id="s-lineage">

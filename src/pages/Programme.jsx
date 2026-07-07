@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { PROGRAMMES, ALL_RECORDS } from "../data/corpus.js";
 import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
 import { LANDSCAPE_ESSAYS } from "../data/landscapeEssays.js";
-import { getProgrammeStats, getRecordUrl, getCurrentAssessment, getRecentActivity } from "../data/derive.js";
+import { getProgrammeStats, getRecordUrl, getCurrentAssessment, getLatestDevelopments } from "../data/derive.js";
 import StateBadge from "../components/StateBadge.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
@@ -35,8 +35,16 @@ export default function Programme() {
     [prog]
   );
 
+  // RELEASE (2026-07-07): switched from getRecentActivity() — which
+  // returned the most-recently-mutated records with no qualification
+  // check, printing mutationLog[0].note verbatim regardless of mutation
+  // type — to getLatestDevelopments(), the same Activity Taxonomy &
+  // Qualification Policy v0.3 feed already used on the homepage. This
+  // closes the gap that let internal/structural mutation notes (e.g.
+  // experimental_annotations_added) surface on programme pages
+  // unfiltered. Scoped to this programme's records only.
   const recentMutations = useMemo(
-    () => getRecentActivity(records, 3),
+    () => getLatestDevelopments(records, 3),
     [records]
   );
 
@@ -115,14 +123,14 @@ export default function Programme() {
                   Recent Activity
                 </div>
                 <div className="prog-activity-list">
-                  {recentMutations.map((r) => {
-                    const lastMut = r.mutationLog[0];
-                    const current = getCurrentAssessment(r);
+                  {recentMutations.map((row) => {
+                    const { record, mutation } = row;
+                    const current = getCurrentAssessment(record);
                     return (
-                      <div key={r.id} className="prog-activity-row">
-                        <span className="par-date">{lastMut.date}</span>
-                        <Link to={getRecordUrl(r)} className="par-id">{r.id}</Link>
-                        <span className="par-note">{lastMut.note}</span>
+                      <div key={`${record.id}-${mutation.id}`} className="prog-activity-row">
+                        <span className="par-date">{mutation.date}</span>
+                        <Link to={getRecordUrl(record)} className="par-id">{record.id}</Link>
+                        <span className="par-note">{mutation.note}</span>
                         <StateBadge pressureState={current.pressureState} />
                       </div>
                     );

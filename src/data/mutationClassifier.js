@@ -209,6 +209,9 @@ export function detectMutationType(mutation, record) {
   if (mutation.field === "legacy_vocabulary_migrated") {
     return "legacy_vocabulary_migrated";
   }
+  if (mutation.field === "experimental_annotations_added") {
+    return "experimental_annotations_added";
+  }
   if (isBootstrapPlaceholder(mutation, creationDate)) {
     return "creation_batch_internal";
   }
@@ -264,6 +267,11 @@ const QUALIFICATION_TABLE = {
     false,
     "D",
     "Row 5 Audit (2026-07-05). Housekeeping: restates a record's own historical mutation-log entries in current taxonomy vocabulary. No new evidence, interpretation, or institutional structure changed — analogous to an editorial correction. Retained in full in the Institutional Changelog.",
+  ],
+  experimental_annotations_added: [
+    false,
+    "D",
+    "2026-07 pilot: records that a record gained an experimentalAnnotations[] container — internal pilot infrastructure, not itself a public development. Analogous to creation_batch_internal and legacy_vocabulary_migrated: the mutation documents a structural change to the record's shape, not a new evidentiary or assessment finding. The annotation content itself, if any, is surfaced separately on the record page — this entry governs only whether the mutation-log line qualifies for the activity feed. Retained in full in the Institutional Changelog.",
   ],
   record_identifier_migrated: [
     false,
