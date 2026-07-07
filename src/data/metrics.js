@@ -399,6 +399,19 @@ export function getProgrammeActivityConcentration(
 
 /**
  * Endurance / Stagnation indicators (Register: Endurance vs. Stagnation).
+ *
+ * RETIRED (2026-07-07, operator decision) — see RN-004 (institution/),
+ * Institutional Health Framework v0.6, and Metric Source Register v1.6.
+ * Two independent validation trials did not validate RN-004's candidate
+ * vocabulary; Trial 002 found the corpus's batch-reassessment pattern
+ * structurally unable to test the criterion, and the operator decided not
+ * to pursue a further trial. This function is retained — it is tested,
+ * correct, and reproduces the criterion RN-004 actually specifies — but is
+ * NOT called by computeAllMetrics() below, since it is no longer a
+ * standing review input. Call it directly if this question is ever
+ * revisited, but that would be new work evaluated on its own evidence, not
+ * a reopening of RN-004.
+ *
  * Candidate vocabulary per RN-004, provisional pending further validation
  * (see TRIAL-002-OUT, 2026-07-07 — Trial 002's cohort was batch-reassessed
  * in a single sitting, which limited what that trial could conclude about
@@ -467,15 +480,18 @@ export function getEnduranceStagnationIndicators(
  * v1.5 in one call. This is the single entry point intended for future
  * OHRs — call this instead of re-deriving methodology by hand each cycle.
  *
- * `options` keys, all optional: responseRate, activityConcentration,
- * enduranceStagnation — each forwarded to the corresponding function
- * above (periodStart/periodEnd/responseWindowDays/asOfDate/
- * recentWindowDays as applicable).
+ * `options` keys, all optional: responseRate, activityConcentration —
+ * each forwarded to the corresponding function above (periodStart/
+ * periodEnd/responseWindowDays as applicable).
+ *
+ * Does NOT include Endurance/Stagnation — retired 2026-07-07 (see
+ * getEnduranceStagnationIndicators() above). Call that function directly
+ * if this question is ever revisited.
  */
 export function computeAllMetrics(records, options = {}) {
   return {
     generatedAt: new Date().toISOString(),
-    sourceRegisterVersion: "1.5",
+    sourceRegisterVersion: "1.6",
     recordIntegrity: {
       silentMutationFindings: getSilentMutationFindings(records),
       mutationLogCompleteness: getMutationLogCompleteness(records),
@@ -499,6 +515,5 @@ export function computeAllMetrics(records, options = {}) {
         options.activityConcentration
       ),
     },
-    enduranceStagnation: getEnduranceStagnationIndicators(records, options.enduranceStagnation),
   };
 }
