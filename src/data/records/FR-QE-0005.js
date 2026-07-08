@@ -44,7 +44,7 @@ export const FR_QE_0005 = {
     {
       id: "IN-004",
       qualifiedEvent: "NIST post-quantum cryptography standards — world prepares for the claim being satisfied",
-      description: "NIST finalises post-quantum cryptographic standards (CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+) in 2024, providing standardised alternatives to RSA that are resistant to quantum attack. The US National Security Agency mandates migration timelines for classified systems. This is a structurally unusual evidence object for the claim: it is not evidence that a quantum computer can factor RSA keys, but it is evidence that serious institutions believe the claim will eventually be satisfied and are acting accordingly. The NIST standards constitute a form of institutional commitment evidence — the world's cryptographic infrastructure is being redesigned in anticipation of the claim's eventual satisfaction. Whether such anticipatory institutional acts constitute evidence for the claim is the same question raised by the Helion/Microsoft contract in FR-MF-0004, now appearing a second time.",
+      description: "NIST finalises post-quantum cryptographic standards (CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+) in 2024, providing standardised alternatives to RSA that are resistant to quantum attack. The US National Security Agency mandates migration timelines for classified systems. This is a structurally unusual evidence object for the claim: it is not evidence that a quantum computer can factor RSA keys, but it is evidence that serious institutions believe the claim will eventually be satisfied and are acting accordingly. The NIST standards constitute a form of institutional commitment evidence — the world's cryptographic infrastructure is being redesigned in anticipation of the claim's eventual satisfaction. Whether such anticipatory institutional acts constitute evidence for the claim is the same question raised by the Helion/Microsoft contract in FR-AM-0004, now appearing a second time.",
       vectors: ["partial--anticipatory-institutional-evidence"],
       date: "2023–24",
     },
@@ -126,7 +126,7 @@ export const FR_QE_0005 = {
     },
     {
       id: "OQ-002",
-      question: "INST-004 (NIST PQC standards) is the second occurrence of anticipatory institutional evidence as an evidence object type (the first was FR-MF-0004 INST-003, the Helion/Microsoft contract). The corpus now has two instances. Whether anticipatory institutional acts constitute evidence for a claim — and at what weight — is a recurring question that may warrant attention before a third occurrence.",
+      question: "INST-004 (NIST PQC standards) is the second occurrence of anticipatory institutional evidence as an evidence object type (the first was FR-AM-0004 INST-003, the Helion/Microsoft contract). The corpus now has two instances. Whether anticipatory institutional acts constitute evidence for a claim — and at what weight — is a recurring question that may warrant attention before a third occurrence.",
       raisedDate: "2024-01-15",
     },
     {
@@ -141,8 +141,22 @@ export const FR_QE_0005 = {
     }
   ],
 
+  realizationNotes: [
+    {
+      id: "REN-001",
+      note: "Realization currently depends on fault-tolerant hardware at cryptographically relevant logical-qubit count, sustained circuit depth, and error-correction overhead compatible with RSA-scale workloads. These lie outside Shor's algorithm and resource-estimate evidence.",
+      conflation: null,
+      raisedDate: "2026-07-08",
+      status: "open",
+      closedDate: null,
+      closedNote: null,
+    }
+  ],
+
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-011", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): IN-004 and OQ-002 referred to the stale identifier FR-MF-0004 for the Helion/Microsoft fusion contract. Corrected to FR-AM-0004 following the FR-MF-* → FR-AM-* programme identifier migration (see FR-AM-0004 M-007). No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
+    { id: "M-010", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001: fault-tolerant hardware scale/depth/overhead dependency distinguished from algorithmic and resource-estimate evidence. Corpus Review — Realization Note Candidates (v2)." },
     { id: "M-009", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: pace of resource-estimate revision as a possible evidence pattern in its own right." },
     { id: "M-008", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records (Homepage v2 scoping side-effect). Pressure state unchanged: ESCALATING. New evidence (IN-006) revises the resource-estimate trajectory but crosses no claim threshold." },
     { id: "M-007", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-006 added: Gidney (2025) and 2026 follow-on resource-estimate reductions for RSA-2048 and elliptic-curve cryptography." },

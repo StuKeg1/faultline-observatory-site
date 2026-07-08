@@ -131,8 +131,22 @@ export const FR_QE_0003 = {
     }
   ],
 
+  realizationNotes: [
+    {
+      id: "REN-001",
+      note: "Realization currently depends on large-code-distance operation with stable cryogenic control, real-time decoding, fabrication yield, and scalable packaging. These lie outside the current small-distance below-threshold evidence trajectory.",
+      conflation: null,
+      raisedDate: "2026-07-08",
+      status: "open",
+      closedDate: null,
+      closedNote: null,
+    }
+  ],
+
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-011", date: "2026-07-08", field: "experimental_annotations_retired", from: "EXPERIMENTAL-ANNOTATIONS-ADDED", to: "RETIRED", note: "Per Stuart's confirmation, the experimentalAnnotations[] pilot container (M-009) is retired and removed from this record. Its content is fully superseded by REN-001 (M-010), which formalises the same observation as a mature FCIF object. Removal carries zero migration cost, as documented in the pilot's own code comment (see FrontierRecord.jsx, record.experimentalAnnotations ?? []); no other record or component depends on this field. This is a deletion of pilot scaffolding, not an editorial correction under GP-001 and not a removal of assessments[] or other append-only evidentiary history." },
+    { id: "M-010", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001 formalises, as a mature FCIF object, the same observation raised informally in the 2026-07-07 experimentalAnnotations pilot entry (M-009): evidentiary strengthening without corresponding realization progress. The experimentalAnnotations entry is left in place under append-only discipline and not deleted; its retirement, now that a mature schema field covers the same ground, is a decision for Stuart. Corpus Review — Realization Note Candidates (v2)." },
     { id: "M-009", date: "2026-07-07", field: "experimental_annotations_added", from: "—", to: "EXPERIMENTAL-ANNOTATIONS-ADDED", note: "Added experimentalAnnotations[] — a pilot, non-schema-permanent container for editorial observations distinct from assessments[] and assessorNote. Status: experimental, under institutional review. Does not assert a pressureState or verificationStage change; assessments[] and its append-only history are untouched. First entry records that the claim's evidentiary trajectory is strengthening while realization-relevant enabling capabilities (per this record's own BN-001/RM-001) show no corresponding progress. The container and its rendering may be removed in a future release without migration if the pilot does not prove useful." },
     { id: "M-008", date: "2026-07-03", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): IN-004 and OQ-002 incorrectly cited FR-QE-0001 as containing evidence for Microsoft's topological qubit programme. FR-QE-0001 concerns Google Sycamore / random circuit sampling and contains no such content; the corpus currently has no dedicated Frontier Record for this programme. Corrected in both locations to state this accurately. IN-005's separate, correct reference to FR-QE-0001 (Willow's quantum-simulation instance) was reviewed and left unchanged. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-007", date: "2026-06-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "Evidence gap closed. IN-006 logged first; AS-002 issued second. Pressure state sustained as ESCALATING; verificationStage advanced VS-02 → VS-03. OQ-001 remains open because no d=11+ below-threshold result was verified." },
@@ -142,23 +156,6 @@ export const FR_QE_0003 = {
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
     { id: "M-002", date: "2024-01-15", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "" },
     { id: "M-001", date: "2024-01-15", field: "record_created", from: "—", to: "RECORD-CREATED", note: "" }
-  ],
-
-  // ─── EXPERIMENTAL ANNOTATIONS (pilot, 2026-07) ─────────────
-  // Not a mature FCIF object. A deliberately crude, reversible container
-  // for editorial observations that are distinct in kind from assessments[]
-  // (evidentiary state) and assessorNote (process rationale for an
-  // assessment). Renders publicly as a labeled box, separate from the
-  // State Warrant's assessment rationale. See M-009. If this pilot does
-  // not prove useful, this array and its render component can be deleted
-  // with zero migration cost — no other code path depends on it.
-  experimentalAnnotations: [
-    {
-      date: "2026-07-07",
-      label: "Observation",
-      status: "experimental",
-      text: "Observation: Although the evidentiary trajectory for this claim is strengthening, no corresponding progress toward large-scale realization is yet visible. Current evidence suggests that important remaining constraints may lie in enabling capabilities — such as physical qubit fabrication at scale and control electronics for large qubit arrays — rather than within the claim's own evidence trail.",
-    },
   ],
 
   status: "open",

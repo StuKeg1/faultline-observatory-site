@@ -94,7 +94,7 @@ export const FR_QE_0008 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "Does the distinction between independent sub-populations (PROG-MF) and hierarchical layers (PROG-QE) constitute a new observational category, or is it a refinement within the existing sub-population concept? The corpus has one occurrence of each type.",
+      question: "Does the distinction between independent sub-populations (PROG-AM) and hierarchical layers (PROG-QE) constitute a new observational category, or is it a refinement within the existing sub-population concept? The corpus has one occurrence of each type.",
       raisedDate: "2024-01-15",
     },
     {
@@ -111,6 +111,7 @@ export const FR_QE_0008 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): OQ-001 referred to the stale identifier PROG-MF. Corrected to PROG-AM following the FR-MF-* → FR-AM-* programme identifier migration. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "sub_population_condition_partial", from: "—", to: "SUB-POPULATION-CONDITION-PARTIAL", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },

@@ -110,13 +110,27 @@ export const FR_QE_0006 = {
     },
     {
       id: "OQ-003",
-      question: "All three programme diagnoses are now established. Is there a meta-observation available about what kinds of programmes generate which kinds of diagnoses? PROG-AI: surface/depth inversion (advancing capabilities, contested foundations). PROG-MF: collapse dynamic (competitive pressure, premature announcement). PROG-QE: temporal displacement (coherent foundations, distant applications). Are these diagnosis types a property of the domains, or of the specific claim configurations the Observatory selected?",
+      question: "All three programme diagnoses are now established. Is there a meta-observation available about what kinds of programmes generate which kinds of diagnoses? PROG-AI: surface/depth inversion (advancing capabilities, contested foundations). PROG-AM: collapse dynamic (competitive pressure, premature announcement). PROG-QE: temporal displacement (coherent foundations, distant applications). Are these diagnosis types a property of the domains, or of the specific claim configurations the Observatory selected?",
       raisedDate: "2024-01-15",
+    }
+  ],
+
+  realizationNotes: [
+    {
+      id: "REN-001",
+      note: "Realization currently depends on fault-tolerant hardware at application-relevant logical-qubit count and sustained circuit depth, distinct from the simple fault-tolerant circuits already demonstrated.",
+      conflation: null,
+      raisedDate: "2026-07-08",
+      status: "open",
+      closedDate: null,
+      closedNote: null,
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): OQ-003 referred to the stale identifier PROG-MF. Corrected to PROG-AM following the FR-MF-* → FR-AM-* programme identifier migration. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
+    { id: "M-007", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001: application-relevant hardware scale/depth dependency distinguished from simple fault-tolerant circuits already demonstrated. Corpus Review — Realization Note Candidates (v2)." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_failed", from: "—", to: "NULL-CONDITION-FAILED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },

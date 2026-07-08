@@ -135,8 +135,21 @@ export const FR_AM_0006 = {
     }
   ],
 
+  realizationNotes: [
+    {
+      id: "REN-001",
+      note: "Realization currently depends on manufacturing-process scale-up for solid-state cells, distinct from the underlying electrolyte and cell-chemistry evidence.",
+      conflation: null,
+      raisedDate: "2026-07-08",
+      status: "open",
+      closedDate: null,
+      closedNote: null,
+    }
+  ],
+
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-010", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001: manufacturing-process scale-up distinguished from underlying electrolyte/cell-chemistry evidence. Corpus Review — Realization Note Candidates (v2)." },
     { id: "M-009", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: ESCALATING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
     { id: "M-008", date: "2026-06-27", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "INST-006 added (2025 timeline window elapsed; 2027–28 target reaffirmed amid renewed delay reports)." },
     { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0006", to: "FR-AM-0006", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },

@@ -141,8 +141,21 @@ export const FR_AM_0004 = {
     }
   ],
 
+  realizationNotes: [
+    {
+      id: "REN-001",
+      note: "Realization currently depends on plant-scale magnet/confinement engineering, tritium-breeding infrastructure, and licensing pathways for grid-connected fusion electricity. These lie outside the evidence required to establish positive fusion gain.",
+      conflation: null,
+      raisedDate: "2026-07-08",
+      status: "open",
+      closedDate: null,
+      closedNote: null,
+    }
+  ],
+
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-011", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001: plant-scale engineering, tritium-breeding infrastructure, and licensing dependencies distinguished from fusion-gain evidence. Corpus Review — Realization Note Candidates (v2)." },
     { id: "M-010", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: SPARC's 2026 net-energy target makes OQ-001's resolution-criteria question time-sensitive rather than hypothetical." },
     { id: "M-009", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: ESCALATING. New evidence (IN-006) is pre-threshold engineering progress; no threshold crossed." },
     { id: "M-008", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-006 added: SPARC assembly, General Fusion first-plasma, DOE commercialisation roadmap (all 2025)." },

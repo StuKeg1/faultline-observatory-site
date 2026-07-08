@@ -126,7 +126,7 @@ export const FR_BT_0002 = {
     },
     {
       id: "OQ-003",
-      question: "FR-BT-0001 and FR-BT-0002 are structurally adjacent but not related through evidence or ancestry in the way FR-MF-0001 and FR-MF-0002 were related. They share a programme and a validation constraint but have independent evidence trails. Does programme membership without evidence relationship constitute a weaker or different kind of programme structure than the PROG-MF genetic relationship?",
+      question: "FR-BT-0001 and FR-BT-0002 are structurally adjacent but not related through evidence or ancestry in the way FR-AM-0001 and FR-AM-0002 were related. They share a programme and a validation constraint but have independent evidence trails. Does programme membership without evidence relationship constitute a weaker or different kind of programme structure than the PROG-AM genetic relationship?",
       raisedDate: "2024-01-15",
     },
     {
@@ -138,6 +138,7 @@ export const FR_BT_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): OQ-003 referred to the stale identifiers FR-MF-0001, FR-MF-0002, and PROG-MF. Corrected to FR-AM-0001, FR-AM-0002, and PROG-AM following the FR-MF-* → FR-AM-* programme identifier migration. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-008", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: what a single Phase 1 trial result would or would not satisfy of AT-001's two-part attractor condition." },
     { id: "M-007", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: ESCALATING. New evidence (IN-006) is the first half of AT-001's named attractor (trial cleared) but not the second (results)." },
     { id: "M-006", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-006 added: Life Biosciences ER-100 FDA IND clearance, first human partial-reprogramming trial, stated Q1 2026 start." },

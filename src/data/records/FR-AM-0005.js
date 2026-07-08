@@ -104,7 +104,7 @@ export const FR_AM_0005 = {
 
   lineage: {
     items: [
-    { year: "1986–2010s", text: "High-temperature superconductor discovery and mechanism debate. Cuprate superconductors are discovered and reproduced; the mechanism remains unresolved (FR-MF-0003). The community establishes that superconductivity above 77K is achievable and reproducible. Room temperature remains a theoretical goal" },
+    { year: "1986–2010s", text: "High-temperature superconductor discovery and mechanism debate. Cuprate superconductors are discovered and reproduced; the mechanism remains unresolved (FR-AM-0003). The community establishes that superconductivity above 77K is achievable and reproducible. Room temperature remains a theoretical goal" },
     { year: "2015–19", text: "High-pressure hydrides — confirmed reproducibility approaching room temperature. Hydrogen sulfide at 203K and lanthanum hydride at 250–260K are reproduced independently. Room-temperature superconductivity under extreme pressure becomes a credible near-term target." },
     { year: "2020–23", text: "Dias claims and retractions. Two high-profile Nature papers report near-room-temperature and room-temperature superconductivity. Both are retracted following misconduct investigations. The field's credibility is damaged; reproducibility standards tighten." },
     { year: "Jul–Aug 2023", text: "LK-99 — rapid global null result. The most systematic replication attempt in the history of superconductivity research produces definitive negative results within weeks. The claim collapses through reproducibility failure, not misconduct." },
@@ -116,17 +116,17 @@ export const FR_AM_0005 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "INST-004 represents the third occurrence of anticipatory institutional evidence in the corpus (community standard tightening in advance of future results). The watchlist item from FR-MF-0004 and FR-QE-0005 now has a third instance. Has this evidence type reached the threshold for a Review Note?",
+      question: "INST-004 represents the third occurrence of anticipatory institutional evidence in the corpus (community standard tightening in advance of future results). The watchlist item from FR-AM-0004 and FR-QE-0005 now has a third instance. Has this evidence type reached the threshold for a Review Note?",
       raisedDate: "2024-01-15",
     },
     {
       id: "OQ-002",
-      question: "CM-001 (pre-announcement collapse mechanism) appears independently in FR-MF-0001 and FR-AM-0005 across different eras and phenomena. Two occurrences of the same collapse mechanism within one programme is a new corpus observation. Does this constitute a programme-level mechanism pattern?",
+      question: "CM-001 (pre-announcement collapse mechanism) appears independently in FR-AM-0001 and FR-AM-0005 across different eras and phenomena. Two occurrences of the same collapse mechanism within one programme is a new corpus observation. Does this constitute a programme-level mechanism pattern?",
       raisedDate: "2024-01-15",
     },
     {
       id: "OQ-003",
-      question: "FR-MF-0004 (commercial fusion) is the one escalating record in PROG-AM. The programme diagnosis suggests it may eventually follow the same collapse dynamic as FR-MF-0001 and FR-AM-0005. Is there evidence bearing on whether FR-MF-0004 is structurally different from the collapsed records — and if so, what protects it from the same dynamic?",
+      question: "FR-AM-0004 (commercial fusion) is the one escalating record in PROG-AM. The programme diagnosis suggests it may eventually follow the same collapse dynamic as FR-AM-0001 and FR-AM-0005. Is there evidence bearing on whether FR-AM-0004 is structurally different from the collapsed records — and if so, what protects it from the same dynamic?",
       raisedDate: "2024-01-15",
     },
     {
@@ -138,6 +138,7 @@ export const FR_AM_0005 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-011", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): the lineage entry and OQ-001, OQ-002, and OQ-003 referred to the stale identifiers FR-MF-0001, FR-MF-0003, and FR-MF-0004 (four occurrences total). Corrected to FR-AM-0001, FR-AM-0003, and FR-AM-0004 following the FR-MF-* → FR-AM-* programme identifier migration. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-010", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: whether logging non-threshold-crossing activity on a CLOSED record is a precedent or an over-logging risk." },
     { id: "M-009", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state confirmed unchanged: COLLAPSED. Status confirmed unchanged: CLOSED. New evidence (IN-006) does not meet AT-001's reopening condition." },
     { id: "M-008", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-006 added: nickelate ambient-pressure stabilisation (Feb 2025), 298K high-pressure claim (Nov 2025, unreplicated), PNAS field roadmap (Mar 2026)." },
