@@ -73,17 +73,17 @@ export const FR_AI_0007 = {
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "\"Autonomously conduct\" lacks an agreed boundary. The claim requires autonomous research conduct, but the boundary between autonomous AI research and AI-assisted human research is contested. All current leading examples involve human-framed problems solved autonomously. Whether the claim requires only autonomous problem-solving (satisfied by GNoME and FunSearch) or also autonomous problem-identific",
+      description: "\"Autonomously conduct\" lacks an agreed boundary. The claim requires autonomous research conduct, but the boundary between autonomous AI research and AI-assisted human research is contested. All current leading examples involve human-framed problems solved autonomously. Whether the claim requires only autonomous problem-solving (satisfied by GNoME and FunSearch) or also autonomous problem-identification (not yet demonstrated) is the critical definitional gap. This is the fifth lexical bottleneck in the corpus — and notably the second in PROG-AI within two records, following the same pattern identified at FR-AI-0006.",
     },
     {
       id: "BN-002",
       type: "BOTTLENECK",
-      description: "Novelty assessment is itself a research task. The claim requires that discoveries be novel, but establishing novelty requires surveying the accessible scientific literature — which is itself an incomplete and poorly indexed object. For fast-moving fields, a result that appears novel may have been anticipated in preprints, conference talks, or unpublished work. For large, old literatures, a result ",
+      description: "Novelty assessment is itself a research task. The claim requires that discoveries be novel, but establishing novelty requires surveying the accessible scientific literature — which is itself an incomplete and poorly indexed object. For fast-moving fields, a result that appears novel may have been anticipated in preprints, conference talks, or unpublished work. For large, old literatures, a result that appears novel may rediscover forgotten work. Novelty is not directly measurable from the discovery alone; it requires a comparison to the state of knowledge, which is itself uncertain. This is a measurement validity bottleneck of the same type as FR-BT-0002 BN-001: the measurement tool (literature survey) may not reliably track the thing it purports to measure (genuine novelty).",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Autonomous problem identification with verified novel correct results. The resolution path is a demonstration where an AI system identifies a previously unrecognised scientific problem, generates hypotheses about it, designs or conducts experiments, and produces results that are independently verified as correct and novel — without a human specifying the problem space. FunSearch and GNoME satisfy ",
+      description: "Autonomous problem identification with verified novel correct results. The resolution path is a demonstration where an AI system identifies a previously unrecognised scientific problem, generates hypotheses about it, designs or conducts experiments, and produces results that are independently verified as correct and novel — without a human specifying the problem space. FunSearch and GNoME satisfy part of this; the problem-identification component is the remaining gap. Several AI research systems in development are explicitly targeting this boundary. The attractor is clearly defined and closer than analogous attractors in other records — the current evidence is within one component of satisfaction.",
     }
   ],
 
@@ -91,7 +91,7 @@ export const FR_AI_0007 = {
     items: [
     { year: "1955–90", text: "Early AI discovery systems. DENDRAL (1965) and AM (1976) demonstrate early AI systems generating hypotheses in chemistry and mathematics. The claim's aspirational form is established; the capability is far from practical demonstration." },
     { year: "2020–22", text: "AlphaFold and domain-specific breakthroughs. AlphaFold demonstrates AI-enabled discovery at unprecedented scale in structural biology. The claim transitions from aspiration to active frontier. Autonomy remains limited to execution within human-framed problems." },
-    { year: "2023", text: "GNoME, FunSearch, and generative discovery. Systems demonstrating autonomous generation of novel, experimentally verified results in materials science and mathematics. The correctness and novelty components are strongly evidenced in constrained domains. Autonomy at the problem-generation level remai" },
+    { year: "2023", text: "GNoME, FunSearch, and generative discovery. Systems demonstrating autonomous generation of novel, experimentally verified results in materials science and mathematics. The correctness and novelty components are strongly evidenced in constrained domains. Autonomy at the problem-generation level remains partial." },
     { year: "2024", text: "End-to-end autonomous systems and institutional restructuring. AI Scientist demonstrates the full research loop; major institutions begin restructuring around AI-assisted discovery. The claim enters FRAGMENTING as component claims diverge in evidential strength." }
     ],
     relatedRecords: [],
@@ -105,7 +105,7 @@ export const FR_AI_0007 = {
     },
     {
       id: "OQ-002",
-      question: "INST-005 is the sixth occurrence of anticipatory institutional evidence and the first within PROG-AI. Does it fit the existing RN-004 taxonomy of act types (commercial commitment, regulatory preparation, community standards tightening), or does institutional reorganisation constitute a fourth act type? The Broad Institute and EMBL restructuring is neither a commercial contract nor a regulatory act — it is a scientific workflow redesign. This may be relevant to Option D in the updated RN-004.",
+      question: "INST-005 is the sixth occurrence of anticipatory institutional evidence and the first within PROG-AI. Does it fit the existing taxonomy of act types (commercial commitment, regulatory preparation, community standards tightening), or does institutional reorganisation constitute a fourth act type? The Broad Institute and EMBL restructuring is neither a commercial contract nor a regulatory act — it is a scientific workflow redesign. This may be relevant to a fourth act-type option within that developing taxonomy.",
       raisedDate: "2024-01-15",
     },
     {
@@ -117,6 +117,8 @@ export const FR_AI_0007 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-07-09", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): OQ-002 incorrectly cited 'the existing RN-004 taxonomy of act types' and 'Option D in the updated RN-004.' Investigation (2026-07-09) established that the retired RN-004 (Trajectory Vocabulary — Endurance/Stagnation, retired 2026-07-07) is a different document from the act-type taxonomy (commercial commitment / regulatory preparation / community standards tightening) OQ-002 actually refers to; the latter was never filed as a numbered Review Note. OQ-002 reworded to refer to the taxonomy descriptively rather than by a document label that both never existed for this taxonomy and, independently, now names a retired document about an unrelated subject. Note for the record: M-006 (this same file) removed a parallel 'in the sense of RN-004' reference from IN-005 on the stated rationale that RN-004 was retired; that rationale conflated the two RN-004s, but M-006's action (removing the label) is unaffected — IN-005 is correct with no numbered-document reference, for the reason established here rather than the reason originally given." },
+    { id: "M-007", date: "2026-07-09", field: "description_restored", from: "—", to: "DESCRIPTION-RESTORED", note: "Editorial Correction (GP-001): BN-001, BN-002, and AT-001 mechanism descriptions, and the 2023 lineage.items entry, were truncated (500-char convert-records.js defect — same defect class as RELEASE-033's AS-001 restorations, which did not cover mechanisms[] or lineage.items[]). Full text restored verbatim from the canonical source HTML (FR_AI_0007_autonomous_scientific_discovery.html, Drive). No wording added or altered beyond restoring the truncated remainder; no other field changed. Initiated ahead of RENDER-PILOT-001 (public rendering of mechanisms[] and lineage.items[] would otherwise have shipped mid-sentence truncation to the public page). OQ-002's separate stale-reference issue (flagged 2026-07-09) is NOT addressed by this entry — see flag to operator." },
     { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-005 description reordered per EP-001 (closing synthesis moved to opening), and stale 'in the sense of RN-004' reference removed — RN-004 was retired 2026-07-07. No other wording changed." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
