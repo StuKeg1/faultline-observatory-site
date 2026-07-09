@@ -83,7 +83,7 @@ export default function InstitutionalChangelog() {
         <main className="ichl-body">
           <div className="ichl-body-inner">
             <div className="ichl-list" role="feed" aria-label="Institutional Changelog">
-              {entries.map(({ record, mutation, mutationType, qualifies, taxonomyClass }) => (
+              {entries.map(({ record, mutation, qualifies, taxonomyClass }) => (
                 <div key={`${record.id}-${mutation.id}`} className="ichl-row">
                   <span className="ichl-date">{mutation.date}</span>
                   <Link to={getRecordUrl(record)} className="ichl-record-id">
