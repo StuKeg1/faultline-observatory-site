@@ -476,7 +476,12 @@ export default function FrontierRecord() {
           <div className="record-passport">
             <div className="rp-main">
               <div className="rp-id-block">
-                <div className="rp-programme">{record.programme}</div>
+                <Link
+                  to={`/programmes/${record.programme.toLowerCase()}`}
+                  className="rp-programme rp-programme-link"
+                >
+                  {record.programme}
+                </Link>
                 <div className="rp-record-id">{record.id}</div>
               </div>
               <h1 className="rp-title">{record.claim.shortLabel}</h1>

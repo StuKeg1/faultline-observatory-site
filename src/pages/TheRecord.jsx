@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useMemo, useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
 import RecordCard from "../components/RecordCard.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
@@ -11,11 +12,36 @@ const PRESSURE_STATES = [
 ];
 
 export default function TheRecord() {
-  const [filterProgramme, setFilterProgramme] = useState("all");
-  const [filterState, setFilterState] = useState("all");
-  const [filterStatus, setFilterStatus] = useState("open");
-  const [sortBy, setSortBy] = useState("opened-desc");
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const filterProgramme = searchParams.get("programme") || "all";
+  const filterState = searchParams.get("state") || "all";
+  const filterStatus = searchParams.get("status") || "open";
+  const sortBy = searchParams.get("sort") || "opened-desc";
+  const query = searchParams.get("q") || "";
+
+  // Filter/sort state lives in the URL (not component state) so it survives
+  // browser back navigation from a record detail page instead of resetting.
+  const updateParam = useCallback(
+    (key, value, defaultValue) => {
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          if (value === defaultValue) next.delete(key);
+          else next.set(key, value);
+          return next;
+        },
+        { replace: true }
+      );
+    },
+    [setSearchParams]
+  );
+
+  const setFilterProgramme = (v) => updateParam("programme", v, "all");
+  const setFilterState = (v) => updateParam("state", v, "all");
+  const setFilterStatus = (v) => updateParam("status", v, "open");
+  const setSortBy = (v) => updateParam("sort", v, "opened-desc");
+  const setQuery = (v) => updateParam("q", v, "");
 
   const summary = useMemo(() => getCorpusSummary(ALL_RECORDS), []);
 
@@ -186,12 +212,7 @@ export default function TheRecord() {
             {(filterProgramme !== "all" || filterState !== "all" || query) && (
               <button
                 className="tr-clear-filters"
-                onClick={() => {
-                  setFilterProgramme("all");
-                  setFilterState("all");
-                  setFilterStatus("open");
-                  setQuery("");
-                }}
+                onClick={() => setSearchParams(new URLSearchParams(), { replace: true })}
               >
                 Clear filters
               </button>

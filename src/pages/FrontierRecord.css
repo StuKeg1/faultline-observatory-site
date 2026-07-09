@@ -37,6 +37,16 @@
   color: var(--ink-light);
   margin-bottom: 0.35rem;
 }
+.rp-programme-link {
+  display: inline-block;
+  text-decoration: none;
+  width: fit-content;
+}
+.rp-programme-link:hover,
+.rp-programme-link:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
 .rp-record-id {
   font-family: var(--mono);
   font-size: 1rem;
