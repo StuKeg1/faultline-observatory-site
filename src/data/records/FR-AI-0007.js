@@ -51,7 +51,7 @@ export const FR_AI_0007 = {
     {
       id: "IN-005",
       qualifiedEvent: "Major lab restructuring around AI researchers — anticipatory institutional evidence",
-      description: "Multiple major research institutions begin restructuring scientific workflows around AI tools: the Broad Institute, EMBL, and several pharmaceutical companies announce AI-first research programmes; Nature and Science publish editorials on AI's role in scientific discovery; multiple Nobel laureates comment on AI's emerging role in their fields. OpenAI, Anthropic, and Google DeepMind each announce internal research programmes treating AI-assisted discovery as a near-term capability. These are anticipatory institutional acts in the sense of RN-004: serious institutions reorganising in advance of the claim being satisfied. The acts constitute the sixth occurrence of anticipatory institutional evidence in the corpus, this time within PROG-AI — the first occurrence inside the AI programme itself.",
+      description: "These are anticipatory institutional acts — serious institutions reorganising in advance of the claim being satisfied. The acts constitute the sixth occurrence of anticipatory institutional evidence in the corpus, this time within PROG-AI — the first occurrence inside the AI programme itself. Multiple major research institutions begin restructuring scientific workflows around AI tools: the Broad Institute, EMBL, and several pharmaceutical companies announce AI-first research programmes; Nature and Science publish editorials on AI's role in scientific discovery; multiple Nobel laureates comment on AI's emerging role in their fields. OpenAI, Anthropic, and Google DeepMind each announce internal research programmes treating AI-assisted discovery as a near-term capability.",
       vectors: ["partial--anticipatory-institutional-evidence-sixth-occurrence-first-in-prog-ai"],
       date: "2024",
     }
@@ -117,6 +117,7 @@ export const FR_AI_0007 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-005 description reordered per EP-001 (closing synthesis moved to opening), and stale 'in the sense of RN-004' reference removed — RN-004 was retired 2026-07-07. No other wording changed." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
