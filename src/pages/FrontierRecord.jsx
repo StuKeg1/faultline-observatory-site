@@ -240,6 +240,110 @@ function EvidenceSources({ record }) {
   );
 }
 
+// ─── RENDER-PILOT-001 ────────────────────────────────────────
+// Combined pilot (scope note: RENDER-PILOT-001, 2026-07-09), governing
+// ADR-00X (mechanisms), ADR-00Y (open questions), ADR-00Z (claim lineage
+// narrative). Deliberately scoped to exactly these two records — per the
+// EP-001 precedent, one combined pilot rather than three isolated ones,
+// so interaction effects between the three objects can actually be
+// observed on a real page. NOT a corpus-wide rollout: every other record
+// in the corpus has the same mechanisms[]/openQuestions[]/lineage.items[]
+// data already, but renders none of it until this pilot is reviewed.
+// Removing an ID from this set, or deleting it entirely, fully reverts
+// the affected record(s) to the pre-pilot rendering with no other change
+// required anywhere in this file.
+const RENDER_PILOT_001_RECORDS = new Set(["FR-QE-0004", "FR-AI-0007"]);
+
+// ─── MECHANISMS ──────────────────────────────────────────────
+// ADR-00X. Renders record.mechanisms[] — Resistance Mechanisms, Bottlenecks,
+// Attractors, Collapse Mechanisms — the causal account behind a pressure
+// state. Previously entirely unrendered; the public page asserted a state
+// (e.g. RESOLVING, FRAGMENTING) without exposing why. Type labels/classes
+// are a first-pass plain-language gloss only — ADR-00X explicitly left
+// terminology treatment to implementation; revisit if the pilot review
+// finds the FCIF codes still read as jargon.
+const MECH_TYPE_LABELS = {
+  "RESISTANCE MECHANISM": "Resistance Mechanism",
+  "BOTTLENECK": "Bottleneck",
+  "ATTRACTOR": "Attractor",
+  "COLLAPSE MECHANISM": "Collapse Mechanism",
+};
+const MECH_TYPE_CLASS = {
+  "RESISTANCE MECHANISM": "mech-resistance",
+  "BOTTLENECK": "mech-bottleneck",
+  "ATTRACTOR": "mech-attractor",
+  "COLLAPSE MECHANISM": "mech-collapse",
+};
+
+function Mechanisms({ record }) {
+  const mechanisms = record.mechanisms ?? [];
+  if (mechanisms.length === 0) return null;
+  return (
+    <div className="mechanisms-list" role="list" aria-label="Record mechanisms">
+      {mechanisms.map((m) => (
+        <div key={m.id} className="mechanism-entry" role="listitem">
+          <div className="mech-header">
+            <span className={`mech-type-badge ${MECH_TYPE_CLASS[m.type] ?? ""}`}>
+              {MECH_TYPE_LABELS[m.type] ?? m.type}
+            </span>
+            <span className="mech-id">{m.id}</span>
+          </div>
+          <p className="mech-description">{m.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── CLAIM LINEAGE (NARRATIVE) ───────────────────────────────
+// ADR-00Z. Renders record.lineage.items[] — the schema's actual narrative
+// trajectory, era by era, in the assessor's own prose. Distinct from the
+// "Assessment History" section below, which is derived from assessments[]
+// (a state-change log) and, prior to this pilot, was the section labeled
+// "Record Lineage" corpus-wide despite not sourcing lineage.items at all
+// — see RN-00X Finding RN-02. That relabeling is applied here only for
+// pilot records (see getSections below); every other record keeps its
+// current "Record Lineage — Chronological" label and assessment-derived
+// content completely unchanged until a corpus-wide decision is made.
+function ClaimLineage({ record }) {
+  const items = record.lineage?.items ?? [];
+  if (items.length === 0) return null;
+  return (
+    <div className="claim-lineage-list" role="list" aria-label="Claim lineage narrative">
+      {items.map((item, i) => (
+        <div key={i} className="claim-lineage-entry" role="listitem">
+          <div className="cl-year">{item.year}</div>
+          <div className="cl-text">{item.text}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── OPEN QUESTIONS ──────────────────────────────────────────
+// ADR-00Y. Renders record.openQuestions[] — closes the documentation/
+// implementation divergence named in RN-00X Finding RN-01: the public
+// How to Read a Frontier Record guide already instructs readers to "read
+// the open questions," but no record page has ever rendered them. This
+// is the first.
+function OpenQuestions({ record }) {
+  const questions = record.openQuestions ?? [];
+  if (questions.length === 0) return null;
+  return (
+    <div className="open-questions-list" role="list" aria-label="Open questions">
+      {questions.map((q) => (
+        <div key={q.id} className="open-question-entry" role="listitem">
+          <span className="oq-id">{q.id}</span>
+          <div className="oq-body">
+            <p className="oq-text">{q.question}</p>
+            <span className="oq-date">Raised {q.raisedDate}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ─── RELATED RECORDS ─────────────────────────────────────────
 function RelatedRecords({ lineage }) {
   if (!lineage.relatedRecords || lineage.relatedRecords.length === 0) return null;
@@ -257,16 +361,41 @@ function RelatedRecords({ lineage }) {
 }
 
 // ─── SCROLLSPY TABS ──────────────────────────────────────────
-const SECTIONS = [
-  { id: "s-matrix",    label: "Verification Matrix" },
-  { id: "s-warrant",   label: "State Warrant" },
-  { id: "s-lineage",   label: "Record Lineage" },
-  { id: "s-mutations", label: "Mutation Log" },
-  { id: "s-evidence",  label: "Evidence Sources" },
-  { id: "s-related",   label: "Related Records" },
-];
+// getSections branches per-record rather than using one static list, so
+// that RENDER-PILOT-001's three additions (and the "Record Lineage" →
+// "Assessment History" relabel that resolving RN-02 required — see
+// ClaimLineage above) apply only to the two pilot records. Every other
+// record's tab list, section order, and labels are byte-for-byte what
+// they were before this pilot.
+function getSections(record) {
+  const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
+  const hasRelated = record.lineage?.relatedRecords?.length > 0;
 
-function RecordTabs({ activeSection }) {
+  if (!isPilot) {
+    return [
+      { id: "s-matrix",    label: "Verification Matrix" },
+      { id: "s-warrant",   label: "State Warrant" },
+      { id: "s-lineage",   label: "Record Lineage" },
+      { id: "s-mutations", label: "Mutation Log" },
+      { id: "s-evidence",  label: "Evidence Sources" },
+      ...(hasRelated ? [{ id: "s-related", label: "Related Records" }] : []),
+    ];
+  }
+
+  return [
+    { id: "s-matrix",             label: "Verification Matrix" },
+    { id: "s-warrant",            label: "State Warrant" },
+    { id: "s-mechanisms",         label: "Mechanisms" },
+    { id: "s-assessment-history", label: "Assessment History" },
+    { id: "s-claim-lineage",      label: "Claim Lineage" },
+    { id: "s-open-questions",     label: "Open Questions" },
+    { id: "s-mutations",          label: "Mutation Log" },
+    { id: "s-evidence",           label: "Evidence Sources" },
+    ...(hasRelated ? [{ id: "s-related", label: "Related Records" }] : []),
+  ];
+}
+
+function RecordTabs({ sections, activeSection }) {
   function scrollTo(id) {
     const el = document.getElementById(id);
     if (el) {
@@ -276,7 +405,7 @@ function RecordTabs({ activeSection }) {
   }
   return (
     <nav className="record-tabs" role="tablist" aria-label="Record sections">
-      {SECTIONS.map((s) => (
+      {sections.map((s) => (
         <button
           key={s.id}
           className={`record-tab${activeSection === s.id ? " active" : ""}`}
@@ -300,12 +429,16 @@ export default function FrontierRecord() {
 
   const [activeSection, setActiveSection] = useState("s-matrix");
 
-  // Scrollspy
+  // Scrollspy — guards on `record` since this hook runs before the
+  // not-found early return below; sections are computed per-record
+  // (RENDER-PILOT-001), so this can no longer read a module-level list.
   useEffect(() => {
+    if (!record) return;
+    const sections = getSections(record);
     const offset = 44 + 44 + 24; // nav + tabs + buffer
     function onScroll() {
-      let current = SECTIONS[0].id;
-      for (const s of SECTIONS) {
+      let current = sections[0].id;
+      for (const s of sections) {
         const el = document.getElementById(s.id);
         if (el && el.getBoundingClientRect().top < offset) current = s.id;
       }
@@ -313,12 +446,14 @@ export default function FrontierRecord() {
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [record]);
 
   if (!record) return <Navigate to="/the-record" replace />;
 
   const current = getCurrentAssessment(record);
   const url = `/the-record/${record.id.toLowerCase()}/`;
+  const sections = getSections(record);
+  const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
 
   return (
     <>
@@ -378,7 +513,7 @@ export default function FrontierRecord() {
             </aside>
           </div>
 
-          <RecordTabs activeSection={activeSection} />
+          <RecordTabs sections={sections} activeSection={activeSection} />
         </header>
 
         {/* Record body */}
@@ -395,10 +530,48 @@ export default function FrontierRecord() {
             <ExperimentalAnnotations record={record} />
           </section>
 
-          <section className="record-section-inner" id="s-lineage">
-            <div className="rs-header">Record Lineage — Chronological</div>
+          {/* RENDER-PILOT-001 / ADR-00X. Pilot records only. */}
+          {isPilot && (
+            <section className="record-section-inner" id="s-mechanisms">
+              <div className="rs-header">Mechanisms</div>
+              <Mechanisms record={record} />
+            </section>
+          )}
+
+          {/* RN-00X Finding RN-02: this section is sourced from
+              assessments[] (a state-change log), not record.lineage.items[]
+              — it was labeled "Record Lineage" corpus-wide despite that.
+              For pilot records, it is relabeled "Assessment History" (its
+              accurate name) and the actual lineage narrative is rendered
+              separately just below, resolving the label/source mismatch.
+              Every non-pilot record keeps the original id, label, and
+              content exactly as before — unchanged pending a corpus-wide
+              decision informed by this pilot. */}
+          <section
+            className="record-section-inner"
+            id={isPilot ? "s-assessment-history" : "s-lineage"}
+          >
+            <div className="rs-header">
+              {isPilot ? "Assessment History" : "Record Lineage — Chronological"}
+            </div>
             <RecordLineage record={record} />
           </section>
+
+          {/* RENDER-PILOT-001 / ADR-00Z. Pilot records only. */}
+          {isPilot && (
+            <section className="record-section-inner" id="s-claim-lineage">
+              <div className="rs-header">Claim Lineage</div>
+              <ClaimLineage record={record} />
+            </section>
+          )}
+
+          {/* RENDER-PILOT-001 / ADR-00Y. Pilot records only. */}
+          {isPilot && (
+            <section className="record-section-inner" id="s-open-questions">
+              <div className="rs-header">Open Questions</div>
+              <OpenQuestions record={record} />
+            </section>
+          )}
 
           <section className="record-section-inner" id="s-mutations">
             <div className="rs-header">Mutation Log</div>
