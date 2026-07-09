@@ -44,14 +44,14 @@ export const FR_BT_0001 = {
     {
       id: "IN-004",
       qualifiedEvent: "AFFIRM-NASH and MILES trials — surrogate biomarker progress",
-      description: "Multiple Phase I/II trials of D+Q and novel senolytics (fisetin, navitoclax) report reductions in circulating SASP markers (IL-6, IL-8, MMP-3), p16 expression in peripheral blood mononuclear cells, and improvements in physical performance measures in older adults. The MILES trial (Müller et al. 2023) shows D+Q reduces senescent cell burden in humans measured by multiple biomarkers. These are surrogate endpoint results: they show that senolytics do what they are supposed to do at the cellular level in humans. They do not demonstrate clinical benefit on hard endpoints (mortality, disease incidence, functional independence). The surrogate-to-clinical translation gap is the primary unresolved evidence gap for the claim.",
+      description: "The surrogate-to-clinical translation gap is the primary unresolved evidence gap for the claim. Multiple Phase I/II trials of D+Q and novel senolytics (fisetin, navitoclax) report reductions in circulating SASP markers (IL-6, IL-8, MMP-3), p16 expression in peripheral blood mononuclear cells, and improvements in physical performance measures in older adults. The MILES trial (Müller et al. 2023) shows D+Q reduces senescent cell burden in humans measured by multiple biomarkers. These are surrogate endpoint results: they show that senolytics do what they are supposed to do at the cellular level in humans. They do not demonstrate clinical benefit on hard endpoints (mortality, disease incidence, functional independence).",
       vectors: ["partial--surrogate-biomarker-progress-without-clinical-endpoints"],
       date: "2023–24",
     },
     {
       id: "IN-005",
       qualifiedEvent: "Longevity industry investment and anticipatory commercial commitments",
-      description: "The senolytic and longevity biotechnology sector receives substantial investment: Unity Biotechnology raises over $300M; Calico (Google), Altos Labs (Bezos-funded), and Human Longevity Inc. collectively raise billions targeting age-related disease and lifespan extension. The National Institute on Aging funds the Interventions Testing Programme (ITP), which has evaluated rapamycin, acarbose, and other compounds for lifespan extension in mice. Several of these companies have explicitly positioned themselves around the claim this record tracks. This is the fourth occurrence of anticipatory institutional evidence in the corpus: serious capital is being committed in anticipation of the claim's eventual satisfaction. Like previous occurrences (Helion/Microsoft, NIST PQC standards, superconductivity community tightening), this constitutes evidence about institutional belief rather than about the claim's current truth.",
+      description: "This is the fourth occurrence of anticipatory institutional evidence in the corpus: serious capital is being committed in anticipation of the claim's eventual satisfaction. Like previous occurrences (Helion/Microsoft, NIST PQC standards, superconductivity community tightening), this constitutes evidence about institutional belief rather than about the claim's current truth. The senolytic and longevity biotechnology sector receives substantial investment: Unity Biotechnology raises over $300M; Calico (Google), Altos Labs (Bezos-funded), and Human Longevity Inc. collectively raise billions targeting age-related disease and lifespan extension. The National Institute on Aging funds the Interventions Testing Programme (ITP), which has evaluated rapamycin, acarbose, and other compounds for lifespan extension in mice. Several of these companies have explicitly positioned themselves around the claim this record tracks.",
       vectors: ["partial--anticipatory-institutional-evidence-fourth-occurrence"],
       date: "2021–24",
     }
@@ -122,6 +122,7 @@ export const FR_BT_0001 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-004, IN-005 descriptions reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-005", date: "2024-01-15", field: "null_condition_partial", from: "—", to: "NULL-CONDITION-PARTIAL", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },

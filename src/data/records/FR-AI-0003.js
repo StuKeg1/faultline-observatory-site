@@ -30,7 +30,7 @@ export const FR_AI_0003 = {
     {
       id: "IN-002",
       qualifiedEvent: "Systematic jailbreak documentation — preference violation under adversarial prompting",
-      description: "Following the deployment of ChatGPT and similar RLHF-trained systems, a large body of evidence accumulates documenting systematic methods for eliciting outputs that violate expressed training preferences. Techniques including role-play framing, hypothetical framing, token manipulation, and prompt injection reliably produce outputs that the same model refuses under direct prompting. The evidence is not anecdotal: Perez et al. (2022) and Wei et al. (2023) document systematic jailbreak taxonomies; red-teaming reports from Anthropic, OpenAI, and DeepMind confirm that preference violations are reliably achievable by adversarial users. This constitutes direct contesting evidence: the systems do not continue to reflect training preferences when the deployment condition includes adversarial prompting, which is a condition not fully represented in training.",
+      description: "This constitutes direct contesting evidence: the systems do not continue to reflect training preferences when the deployment condition includes adversarial prompting, which is a condition not fully represented in training. Following the deployment of ChatGPT and similar RLHF-trained systems, a large body of evidence accumulates documenting systematic methods for eliciting outputs that violate expressed training preferences. Techniques including role-play framing, hypothetical framing, token manipulation, and prompt injection reliably produce outputs that the same model refuses under direct prompting. The evidence is not anecdotal: Perez et al. (2022) and Wei et al. (2023) document systematic jailbreak taxonomies; red-teaming reports from Anthropic, OpenAI, and DeepMind confirm that preference violations are reliably achievable by adversarial users.",
       vectors: ["contesting--adversarial-distribution-shift"],
       date: "2022–23",
     },
@@ -134,6 +134,7 @@ export const FR_AI_0003 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-002 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_result", from: "—", to: "NULL-CONDITION-RESULT", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },

@@ -44,7 +44,7 @@ export const FR_AI_0002 = {
     {
       id: "IN-004",
       qualifiedEvent: "Hallucination and reliability failure documentation — legal and medical contexts",
-      description: "Multiple documented cases emerge of LLMs producing confidently stated but fabricated outputs in high-stakes knowledge-work contexts. The Mata v. Avianca case (2023) involves attorneys submitting AI-generated legal briefs citing non-existent case law; the presiding judge imposes sanctions. Medical AI systems produce plausible but clinically incorrect recommendations in published evaluations. A systematic review of LLM performance in medical question-answering (Omiye et al. 2023) finds that all tested models produce harmful recommendations in a non-trivial fraction of cases. These events do not falsify the claim — which does not require error-free performance — but they constitute direct evidence that the \"limited human supervision\" condition is not yet safely achievable in all knowledge-work domains. The instances are contesting evidence against the universal scope of the claim.",
+      description: "These events do not falsify the claim — which does not require error-free performance — but they constitute direct evidence that the \"limited human supervision\" condition is not yet safely achievable in all knowledge-work domains. The instances are contesting evidence against the universal scope of the claim. Multiple documented cases emerge of LLMs producing confidently stated but fabricated outputs in high-stakes knowledge-work contexts. The Mata v. Avianca case (2023) involves attorneys submitting AI-generated legal briefs citing non-existent case law; the presiding judge imposes sanctions. Medical AI systems produce plausible but clinically incorrect recommendations in published evaluations. A systematic review of LLM performance in medical question-answering (Omiye et al. 2023) finds that all tested models produce harmful recommendations in a non-trivial fraction of cases.",
       vectors: ["contesting--supervision-requirement"],
       date: "2023–24",
     },
@@ -130,6 +130,7 @@ export const FR_AI_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-004 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
