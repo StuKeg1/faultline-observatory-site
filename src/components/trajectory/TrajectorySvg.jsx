@@ -25,7 +25,7 @@ export default function TrajectorySvg({ projection }) {
             y2={stage.y}
             className="trajectory-axis-line"
           />
-          <text x={0} y={stage.y + 4} className="trajectory-axis-label">
+          <text x={4} y={stage.y} dominantBaseline="middle" className="trajectory-axis-label">
             {stage.vsCode}
           </text>
         </g>

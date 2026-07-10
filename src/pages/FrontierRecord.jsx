@@ -10,18 +10,28 @@ import {
   getTransitionFeed,
   getAssessmentHistory,
   getVerificationStages,
-  
+  getStateEnteredDate,
 } from "../data/derive.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
 
 // ─── WARRANT PANEL ───────────────────────────────────────────
-// Driven entirely by getCurrentAssessment(record). No schema additions.
+// Driven entirely by getCurrentAssessment(record) and
+// getStateEnteredDate(record). No schema additions.
 // Main rationale: assessorNote if present, otherwise summary.
 // Assessment summary row only rendered when assessorNote is present.
-function WarrantPanel({ current }) {
+//
+// A record can be reaffirmed at the same pressureState across several
+// assessments (new evidence appended, stage unchanged). In that case
+// current.date is the date of the most recent reaffirmation, not the
+// date the state was entered — showing only current.date as "in this
+// state since" reads as if the state just changed. The entered-date row
+// is only shown when it differs from the last-verified date.
+function WarrantPanel({ current, record }) {
   const rationale = current.assessorNote || current.summary;
+  const enteredDate = getStateEnteredDate(record);
+  const wasReaffirmed = enteredDate !== current.date;
   return (
     <div className="warrant-panel" aria-label="State warrant">
       <div className="wp-row">
@@ -41,8 +51,14 @@ function WarrantPanel({ current }) {
           <span className="wp-value">{current.summary}</span>
         </div>
       )}
+      {wasReaffirmed && (
+        <div className="wp-row">
+          <span className="wp-label">State entered</span>
+          <span className="wp-value">{enteredDate}</span>
+        </div>
+      )}
       <div className="wp-row">
-        <span className="wp-label">In this state since</span>
+        <span className="wp-label">{wasReaffirmed ? "Last reaffirmed" : "In this state since"}</span>
         <span className="wp-value">{current.date}</span>
       </div>
     </div>
@@ -532,7 +548,7 @@ export default function FrontierRecord() {
 
           <section className="record-section-inner" id="s-warrant">
             <div className="rs-header">State Warrant</div>
-            <WarrantPanel current={current} />
+            <WarrantPanel current={current} record={record} />
             <ExperimentalAnnotations record={record} />
           </section>
 
