@@ -21,9 +21,18 @@
   font-size: 9px;
 }
 
+/* pointer-events: none — in the landscape's dense collision-dodge
+   cluster, one record's thin line can visually pass directly over
+   another record's node. Interactive lines would let that line steal a
+   click/hover meant for the node underneath (observed live: a click
+   aimed at FR-QE-0003's node hit FR-AM-0001's overlapping segment
+   instead). Restricting interaction to nodes/ticks/the current-marker
+   — each a discrete, dodge-separated point — keeps hover-isolate and
+   deep-linking reliable without reordering the SVG paint stack. */
 .trajectory-segment {
   stroke: var(--rule);
   stroke-width: 1.5;
+  pointer-events: none;
 }
 
 .trajectory-segment-transition {
@@ -40,8 +49,15 @@
   font-size: 9px;
 }
 
+/* pointer-events: none — same reasoning as .trajectory-segment above:
+   this ring is centred on the record's own currentNode, so the plain
+   node circle underneath is always independently clickable at the same
+   point. Without this, the ring's stroke path (r: 9, wider than a
+   node's r: 5) could reach far enough into the dense "Today" cluster to
+   intercept a neighbouring record's node — observed live. */
 .trajectory-current-marker {
   stroke-width: 1.5;
+  pointer-events: none;
 }
 
 .trajectory-mutation-tick {

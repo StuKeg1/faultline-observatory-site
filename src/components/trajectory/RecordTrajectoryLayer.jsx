@@ -21,6 +21,13 @@ import CurrentAssessmentMarker from "./CurrentAssessmentMarker.jsx";
  * active Reading (see EvidenceLandscape/deriveReading.js). It only adds
  * a class — hover's own isolate/peek behaviour is untouched CSS, see
  * EvidenceTrajectory.css.
+ *
+ * Deliberately not a click-through to the record's own page. In the
+ * "Today" convergence cluster, unrelated records' nodes can land only a
+ * few px apart (observed live: two different records' nodes ~5.5px
+ * apart, well inside each other's hit area) — a click there could
+ * silently misroute to the wrong record. The index list below is the
+ * reliable deep-link until that's addressed; see conversation notes.
  */
 export default function RecordTrajectoryLayer({ trajectory, emphasis }) {
   return (
