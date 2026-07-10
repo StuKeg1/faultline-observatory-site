@@ -1,6 +1,6 @@
 /* Evidence Trajectories — Prototype 001. Static, desktop-only. */
 
-.evidence-trajectory {
+.trajectory-scroll {
   overflow-x: auto;
 }
 
@@ -44,10 +44,49 @@
 
 .trajectory-mutation-tick {
   fill: var(--ink-faint);
+  pointer-events: none;
+  transition: r 120ms ease, fill 120ms ease;
+}
+
+.trajectory-mutation-tick-hit {
+  fill: transparent;
+  pointer-events: all;
+  cursor: default;
+}
+
+.trajectory-mutation-tick-group:has(.trajectory-mutation-tick-hit:hover) .trajectory-mutation-tick {
+  r: 3.5px;
+  fill: var(--ink-mid);
 }
 
 .trajectory-today-marker line {
   stroke: var(--ink-faint);
   stroke-width: 1;
   stroke-dasharray: 2 2;
+}
+
+.trajectory-today-label {
+  fill: var(--ink-faint);
+  font-size: 9px;
+  font-style: italic;
+}
+
+.trajectory-legend {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-light);
+}
+
+.trajectory-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.trajectory-legend-swatch {
+  flex-shrink: 0;
 }

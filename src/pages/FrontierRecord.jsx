@@ -562,7 +562,7 @@ export default function FrontierRecord() {
               feature. */}
           {record.id === "FR-QE-0001" && (
             <section className="record-section-inner" id="s-trajectory">
-              <div className="rs-header">Evidence Trajectory (Prototype)</div>
+              <div className="rs-header">Evidence Trajectory</div>
               <EvidenceTrajectory record={record} />
             </section>
           )}

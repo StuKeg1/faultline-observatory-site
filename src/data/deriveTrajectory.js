@@ -148,6 +148,11 @@ export function deriveEvidenceTrajectory(record, asOfDate = new Date().toISOStri
     x: xForTime(Date.parse(assessment.date), firstTime, historySpan, historyPlotWidth),
     y: yForStage(assessment.verificationStage),
     isCurrent: index === history.length - 1,
+    // First assessment establishes the state, same visual language as a
+    // transition. Every later assessment is a transition only if
+    // pressureState actually changed from the one before it — otherwise
+    // it's a reaffirmation (new evidence logged, stage held).
+    isTransition: index === 0 || history[index - 1].pressureState !== assessment.pressureState,
   }));
 
   const segments = [];
@@ -186,6 +191,7 @@ export function deriveEvidenceTrajectory(record, asOfDate = new Date().toISOStri
       mutationId: mutation.id,
       date: mutation.date,
       field: mutation.field,
+      note: mutation.note,
       x,
       y: stageInEffectAt(time, nodes),
     };
