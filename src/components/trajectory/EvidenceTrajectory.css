@@ -125,15 +125,29 @@
   font-style: italic;
 }
 
-/* Hovering any part of one record's trajectory (a node, a tick, a
-   segment) dims every other record's group, so a reader can isolate one
-   line out of the overlapping mass without a filtering interaction. */
 .record-group {
   transition: opacity 120ms ease;
 }
 
-.landscape-records:has(.record-group:hover) .record-group:not(:hover) {
+/* No Reading active (the quiet default): hover is the only contrast
+   mechanism, so it isolates — the hovered line lifts forward and every
+   other group dims — letting a reader trace one trajectory out of the
+   overlapping mass without a filtering interaction. */
+.landscape-records:not(.has-reading):has(.record-group:hover) .record-group:not(:hover) {
   opacity: 0.2;
+}
+
+/* A Reading active (Prototype 003): Focused/Context already carry the
+   contrast, so hover only needs to lift a dimmed Context trajectory
+   forward to let a reader peek at it. That peek never changes the
+   Reading itself, so no other group's opacity moves while hovering —
+   curiosity does not mutate interpretation. */
+.record-group--context {
+  opacity: 0.15;
+}
+
+.has-reading .record-group--context:hover {
+  opacity: 1;
 }
 
 .landscape-index {
@@ -176,4 +190,105 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Landscape index mirrors the chart's Reading (Prototype 003) — a
+   Context row fades to match its dimmed trajectory above, so the list
+   stays a reliable map of what's currently emphasized, not just a
+   static id lookup. */
+.landscape-index-item {
+  transition: opacity 120ms ease;
+}
+
+.landscape-index-item--context {
+  opacity: 0.4;
+}
+
+/* ─── Reading Lenses (Prototype 003) ─────────────────────────── */
+
+.reading-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.reading-lens-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.reading-lens-group-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-right: 0.15rem;
+}
+
+.reading-chip {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-light);
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease, color 120ms ease;
+}
+
+.reading-chip:hover {
+  border-color: var(--accent-mid);
+}
+
+.reading-chip[data-active] {
+  border-color: var(--accent-mid);
+  background: var(--accent-dim);
+  color: var(--ink);
+}
+
+.reading-chip--state {
+  padding: 2px 6px;
+  background: none;
+  border-color: transparent;
+}
+
+.reading-chip--state .state-badge {
+  opacity: 0.5;
+  transition: opacity 120ms ease;
+}
+
+.reading-chip--state:hover .state-badge {
+  opacity: 0.8;
+}
+
+.reading-chip--state[data-active] {
+  border-color: transparent;
+  background: none;
+}
+
+.reading-chip--state[data-active] .state-badge {
+  opacity: 1;
+}
+
+.reading-clear {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.reading-clear:hover {
+  color: var(--ink-light);
 }

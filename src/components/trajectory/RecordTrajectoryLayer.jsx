@@ -16,10 +16,18 @@ import CurrentAssessmentMarker from "./CurrentAssessmentMarker.jsx";
  * Wrapped in a group carrying data-record-id so CSS can dim every
  * other record's group on hover (see EvidenceTrajectory.css), letting
  * a reader isolate one line without a filtering interaction.
+ *
+ * emphasis (Prototype 003) is "focused" | "context" | null, from the
+ * active Reading (see EvidenceLandscape/deriveReading.js). It only adds
+ * a class — hover's own isolate/peek behaviour is untouched CSS, see
+ * EvidenceTrajectory.css.
  */
-export default function RecordTrajectoryLayer({ trajectory }) {
+export default function RecordTrajectoryLayer({ trajectory, emphasis }) {
   return (
-    <g className="record-group" data-record-id={trajectory.recordId}>
+    <g
+      className={`record-group${emphasis ? ` record-group--${emphasis}` : ""}`}
+      data-record-id={trajectory.recordId}
+    >
       <SegmentLayer segments={trajectory.segments} projectedSegment={trajectory.projectedSegment} />
       <MutationTickLayer ticks={trajectory.mutationTicks} />
       <NodeLayer nodes={trajectory.nodes} showDateLabels={false} />

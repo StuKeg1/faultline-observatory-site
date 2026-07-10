@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { useCallback } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import EvidenceLandscape from "../components/trajectory/EvidenceLandscape.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
-import { ALL_RECORDS } from "../data/corpus.js";
+import { ALL_RECORDS, PROGRAMMES } from "../data/corpus.js";
 import "./EvidenceTrajectories.css";
 
 // Prototype 002. A record only has a trajectory to render if it has been
@@ -11,6 +12,48 @@ import "./EvidenceTrajectories.css";
 const TRAJECTORY_RECORDS = ALL_RECORDS.filter((r) => r.assessments.length >= 2);
 
 export default function EvidenceTrajectories() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const activeProgrammes = searchParams.getAll("programme");
+  const activeStates = searchParams.getAll("state");
+
+  // Prototype 003. A Reading is a durable composition of Lenses, so it
+  // lives in the URL (not component state) — shareable and stable across
+  // back navigation, the same reason TheRecord's filters live in the URL.
+  // Unlike TheRecord's filters, toggling a value here never removes a
+  // trajectory from the page; see deriveReading.js.
+  const toggleLensValue = useCallback(
+    (key, value) => {
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          const values = next.getAll(key);
+          next.delete(key);
+          const nextValues = values.includes(value)
+            ? values.filter((v) => v !== value)
+            : [...values, value];
+          for (const v of nextValues) next.append(key, v);
+          return next;
+        },
+        { replace: true }
+      );
+    },
+    [setSearchParams]
+  );
+
+  const toggleProgramme = (id) => toggleLensValue("programme", id);
+  const toggleState = (state) => toggleLensValue("state", state);
+  const clearReading = () =>
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete("programme");
+        next.delete("state");
+        return next;
+      },
+      { replace: true }
+    );
+
   return (
     <>
       <PageMeta
@@ -33,7 +76,15 @@ export default function EvidenceTrajectories() {
             mutation log.
           </p>
         </header>
-        <EvidenceLandscape records={TRAJECTORY_RECORDS} />
+        <EvidenceLandscape
+          records={TRAJECTORY_RECORDS}
+          programmes={PROGRAMMES}
+          activeProgrammes={activeProgrammes}
+          activeStates={activeStates}
+          onToggleProgramme={toggleProgramme}
+          onToggleState={toggleState}
+          onClearReading={clearReading}
+        />
       </div>
       <SiteFooter />
     </>

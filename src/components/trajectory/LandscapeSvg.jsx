@@ -10,7 +10,11 @@ import TodayAxisLine from "./TodayAxisLine.jsx";
  * hover-tracking interaction). No animation, zoom, pan, or responsive
  * behaviour — desktop-only, fixed viewBox, same as Prototype 001.
  */
-export default function LandscapeSvg({ projection }) {
+// focused (Prototype 003) is the Reading's Focused/Context classification
+// — a Set of recordIds, or null when no Lens is active. It only ever adds
+// a data-derived emphasis class per record group (see
+// RecordTrajectoryLayer); it never changes which trajectories are drawn.
+export default function LandscapeSvg({ projection, focused }) {
   const { viewBox, axis, today, records } = projection;
   return (
     <svg
@@ -39,10 +43,11 @@ export default function LandscapeSvg({ projection }) {
         </g>
       ))}
 
-      <g className="landscape-records">
-        {records.map((trajectory) => (
-          <RecordTrajectoryLayer key={trajectory.recordId} trajectory={trajectory} />
-        ))}
+      <g className={`landscape-records${focused ? " has-reading" : ""}`}>
+        {records.map((trajectory) => {
+          const emphasis = !focused ? null : focused.has(trajectory.recordId) ? "focused" : "context";
+          return <RecordTrajectoryLayer key={trajectory.recordId} trajectory={trajectory} emphasis={emphasis} />;
+        })}
       </g>
 
       <TodayAxisLine today={today} plotTop={axis.plotTop} plotBottom={axis.plotBottom} />
