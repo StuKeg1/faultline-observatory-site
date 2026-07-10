@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import StateBadge from "../components/StateBadge.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import EvidenceTrajectory from "../components/trajectory/EvidenceTrajectory.jsx";
+import { MutationHighlightProvider, useMutationHighlight } from "../components/trajectory/MutationHighlightContext.jsx";
 import { ALL_RECORDS } from "../data/corpus.js";
 import {
   getCurrentAssessment,
@@ -167,9 +168,15 @@ function RecordLineage({ record }) {
 }
 
 // ─── MUTATION LOG ────────────────────────────────────────────
+// Cross-highlighted with EvidenceTrajectory's chart ticks via
+// MutationHighlightContext where that provider is present (FR-QE-0001
+// today — see the record-body wrap below). useMutationHighlight() is
+// optional-chained so this table renders and behaves exactly as before
+// for every other record, where no provider wraps it.
 function MutationLog({ record }) {
+  const highlight = useMutationHighlight();
   return (
-    <div className="mutation-table-scroll">
+    <div className="mutation-table-scroll" ref={highlight?.tableRef}>
       <table className="mutation-table" aria-label="Record mutations">
         <thead>
           <tr>
@@ -181,15 +188,25 @@ function MutationLog({ record }) {
           </tr>
         </thead>
         <tbody>
-          {record.mutationLog.map((m) => (
-            <tr key={m.id}>
-              <td className="mut-id">{m.id}</td>
-              <td>{m.date}</td>
-              <td className="mut-field">{m.field}</td>
-              <td className="mut-from">{m.from}</td>
-              <td className="mut-to">{m.to}</td>
-            </tr>
-          ))}
+          {record.mutationLog.map((m) => {
+            const isActive = highlight?.activeMutationId === m.id;
+            return (
+              <tr
+                key={m.id}
+                data-mutation-id={m.id}
+                className={isActive ? "mutation-row--active" : undefined}
+                onMouseEnter={() => highlight?.hoverMutation(m.id)}
+                onMouseLeave={() => highlight?.hoverMutation(null)}
+                onClick={() => highlight?.pinFromRow(m.id)}
+              >
+                <td className="mut-id">{m.id}</td>
+                <td>{m.date}</td>
+                <td className="mut-field">{m.field}</td>
+                <td className="mut-from">{m.from}</td>
+                <td className="mut-to">{m.to}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -471,6 +488,12 @@ export default function FrontierRecord() {
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
+  // Cross-highlight between EvidenceTrajectory's ticks and MutationLog's
+  // rows only exists where EvidenceTrajectory itself renders (see
+  // record-body below) — Fragment elsewhere is a true no-op, not an
+  // empty provider, so every other record's page is byte-for-byte
+  // unchanged.
+  const MutationHighlightWrapper = record.id === "FR-QE-0001" ? MutationHighlightProvider : Fragment;
 
   return (
     <>
@@ -539,6 +562,7 @@ export default function FrontierRecord() {
         </header>
 
         {/* Record body */}
+        <MutationHighlightWrapper>
         <div id="record-body">
 
           <section className="record-section-inner" id="s-matrix">
@@ -628,6 +652,7 @@ export default function FrontierRecord() {
           )}
 
         </div>
+        </MutationHighlightWrapper>
       </div>
       <SiteFooter />
     </>

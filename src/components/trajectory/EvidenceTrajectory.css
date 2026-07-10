@@ -72,7 +72,25 @@
   cursor: default;
 }
 
+/* Only meaningful on the single-record view, where clicking a tick pins
+   and scrolls to its row (MutationHighlightContext). Scoped so the
+   multi-record landscape — which reuses this same component but never
+   wraps the provider — doesn't imply a click affordance that does
+   nothing there. */
+.evidence-trajectory:not(.evidence-landscape) .trajectory-mutation-tick-hit {
+  cursor: pointer;
+}
+
 .trajectory-mutation-tick-group:has(.trajectory-mutation-tick-hit:hover) .trajectory-mutation-tick {
+  r: 3.5px;
+  fill: var(--ink-mid);
+}
+
+/* Cross-highlighted from the MutationLog table row below (hover or a
+   click-pinned selection) — same visual treatment as direct :hover
+   above, so an entry looks identical whether a reader found it on the
+   chart or in the table. */
+.trajectory-mutation-tick-group--active .trajectory-mutation-tick {
   r: 3.5px;
   fill: var(--ink-mid);
 }

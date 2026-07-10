@@ -332,6 +332,12 @@
 .mutation-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 11px; }
 .mutation-table tbody tr:nth-child(even) { background: var(--paper-warm); }
 .mutation-table tbody tr:hover { background: var(--accent-dim); }
+/* Cross-highlighted from EvidenceTrajectory's chart ticks (FR-QE-0001
+   only — see MutationHighlightContext.jsx). A stronger, persistent
+   marker than plain :hover so a click-pinned row stays identifiable
+   after the pointer moves elsewhere; inset shadow rather than a real
+   border so column widths never shift. */
+.mutation-table tbody tr.mutation-row--active { background: var(--accent-dim); box-shadow: inset 3px 0 0 var(--accent-mid); cursor: pointer; }
 .mutation-table th { text-align: left; font-weight: 400; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); padding: 0 0 0.875rem; border-bottom: 2px solid var(--rule); }
 .mutation-table td { padding: 0.8rem 0; border-bottom: 1px solid var(--rule-light); vertical-align: top; color: #3a3a36; font-size: 11.5px; line-height: 1.5; }
 .mutation-table td.mut-id { color: var(--accent); }
