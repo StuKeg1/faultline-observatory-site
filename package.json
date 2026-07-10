@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "validate:events": "node scripts/validate-events.js",
-    "prebuild": "npm run validate:events",
+    "validate:mutations": "node scripts/validate-mutations.js",
+    "validate:all": "npm run validate:events && npm run validate:mutations",
+    "prebuild": "npm run validate:all",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
