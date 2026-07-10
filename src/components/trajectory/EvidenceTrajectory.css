@@ -208,12 +208,17 @@
 
 .reading-controls {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem 1.5rem;
+  flex-direction: column;
+  gap: 0.6rem;
   margin-bottom: 1.25rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--rule-light);
+}
+
+.reading-lens-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .reading-lens-group {
@@ -233,6 +238,9 @@
 }
 
 .reading-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   font-family: var(--mono);
   font-size: 10.5px;
   color: var(--ink-light);
@@ -254,8 +262,17 @@
   color: var(--ink);
 }
 
+/* Visual affordance that an active chip removes on click — the whole
+   chip stays the hit target (a small glyph alone would be an unreliable
+   tap target), this just signals which action a click performs. */
+.reading-chip-remove {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--accent-mid);
+}
+
 .reading-chip--state {
-  padding: 2px 6px;
+  padding: 2px 6px 2px 6px;
   background: none;
   border-color: transparent;
 }
@@ -278,17 +295,26 @@
   opacity: 1;
 }
 
+.reading-clear-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .reading-clear {
   font-family: var(--mono);
-  font-size: 10px;
-  color: var(--ink-faint);
-  background: none;
-  border: none;
-  text-decoration: underline;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-light);
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 3px 10px;
   cursor: pointer;
-  padding: 0;
+  transition: border-color 120ms ease, color 120ms ease;
 }
 
 .reading-clear:hover {
-  color: var(--ink-light);
+  border-color: var(--accent-mid);
+  color: var(--ink);
 }
