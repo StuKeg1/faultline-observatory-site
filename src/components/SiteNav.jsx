@@ -27,7 +27,6 @@ const NAV_ITEMS = [
   { to: "/programmes", label: "Programmes" },
   { to: "/notes", label: "Notes" },
   { to: "/methodology", label: "Methodology" },
-  { to: "/search", label: "Search" },
   { to: "/about", label: "About" },
 ];
 

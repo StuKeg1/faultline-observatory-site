@@ -70,24 +70,10 @@ export function Programmes() {
   );
 }
 
-// ─── SEARCH ───────────────────────────────────────────────────
 // Methodology moved to its own file, src/pages/Methodology.jsx, as of this
 // release — it outgrew a single term/def-row treatment (Pressure State card
 // grid, architecture index, Evidence Review pipeline). See App.jsx for the
 // updated import/routing.
-export function Search() {
-  return (
-    <InstitutionalPage eyebrow="Faultline Observatory" title="Search">
-      <p className="inst-intro">
-        Full-text search across all records, claims, assessments, and programmes.
-      </p>
-      <p className="inst-search-note">
-        Search is available within <Link to="/the-record">The Record</Link> archive.
-        Full-corpus search will be available as the corpus grows.
-      </p>
-    </InstitutionalPage>
-  );
-}
 
 // ─── HOW TO READ A FRONTIER RECORD ───────────────────────────
 

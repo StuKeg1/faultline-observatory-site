@@ -14,7 +14,7 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 // an architecture index, and an Evidence Review pipeline — moved to its own
 // lazy-loaded file below on that basis.
 import Home from "./pages/Home.jsx";
-import { Programmes, Search, HowToRead, GuidesIndex } from "./pages/Stubs.jsx";
+import { Programmes, HowToRead, GuidesIndex } from "./pages/Stubs.jsx";
 import About from "./pages/About.jsx";
 
 // ─── LAZY ────────────────────────────────────────────────────
@@ -92,7 +92,6 @@ export default function App() {
  <Route path="/welcome" element={<Welcome />} />
  <Route path="/about" element={<About />} />
  <Route path="/about/origins" element={<Origins />} />
- <Route path="/search" element={<Search />} />
  <Route path="/notes" element={<NotesIndex />} />
  <Route path="/notes/:noteId" element={<NoteDetail />} />
  <Route path="/how-to-read" element={<HowToRead />} />

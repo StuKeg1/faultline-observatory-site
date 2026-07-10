@@ -543,15 +543,6 @@
 }
 .inst-page-cta:hover { background: var(--accent-mid); }
 
-/* ── Search ── */
-.inst-search-note {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-light);
-  line-height: 1.6;
-}
-.inst-search-note a { color: var(--accent); }
-
 /* ── Institutional Health ── */
 .inst-health-grid {
   display: flex;
