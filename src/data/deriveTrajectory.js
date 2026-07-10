@@ -52,14 +52,28 @@ function getStateColor(pressureState) {
 const plotWidth = VIEWBOX_WIDTH - MARGIN.left - MARGIN.right;
 const plotHeight = VIEWBOX_HEIGHT - MARGIN.top - MARGIN.bottom;
 
+// Minimum pixel width reserved for the "since last assessment" projected
+// segment. On a long-running record, the true elapsed-time proportion
+// since the last assessment can be a few pixels wide next to years of
+// prior history — a strict linear scale would render it as effectively
+// invisible. This floor only ever adds width: if the real elapsed-time
+// proportion is already this wide or wider, the floor does nothing and
+// the true proportional width is used.
+const MIN_PROJECTED_SEGMENT_WIDTH = 28;
+
 /**
  * Positions a date along the trajectory's time axis — a strict linear
- * time-scale over [domainStart, domainStart + domainSpan]. Not a shared
- * or reusable timeline engine, just this trajectory's coordinate space.
+ * time-scale over [domainStart, domainStart + domainSpan], drawn into a
+ * plot region of the given width. Not a shared or reusable timeline
+ * engine, just this trajectory's coordinate space.
  */
-function xForTime(time, domainStart, domainSpan) {
+function xForTime(time, domainStart, domainSpan, regionWidth) {
   if (domainSpan === 0) return MARGIN.left;
-  return MARGIN.left + ((time - domainStart) / domainSpan) * plotWidth;
+  return MARGIN.left + ((time - domainStart) / domainSpan) * regionWidth;
+}
+
+function clamp01(fraction) {
+  return Math.min(Math.max(fraction, 0), 1);
 }
 
 /** Positions a verification stage on the vertical axis — VS-01 low, VS-05 high. */
@@ -104,12 +118,24 @@ export function deriveEvidenceTrajectory(record, asOfDate = new Date().toISOStri
   const firstTime = Date.parse(history[0].date);
   const lastAssessmentTime = Date.parse(history[history.length - 1].date);
   const asOfTime = Date.parse(asOfDate);
+  const historySpan = lastAssessmentTime - firstTime;
 
-  // Domain extends to "today" whenever today is later than the last
-  // assessment, so the flat run since the last assessment is visible
-  // as a real gap rather than the chart ending at its own last point.
-  const domainEnd = Math.max(lastAssessmentTime, asOfTime);
-  const domainSpan = domainEnd - firstTime;
+  const showsProjection = asOfTime > lastAssessmentTime;
+
+  // The chart is split into two regions: real assessment history, and
+  // (when applicable) the projected run from the last assessment to
+  // today. Each region is its own strict linear time-scale — history is
+  // never distorted to fit the projection, and the projection is never
+  // distorted to fit history. The only adjustment is how much of the
+  // chart's total width each region gets, per MIN_PROJECTED_SEGMENT_WIDTH
+  // above.
+  let projectedWidth = 0;
+  if (showsProjection) {
+    const domainSpan = asOfTime - firstTime;
+    const naturalProjectedWidth = domainSpan > 0 ? ((asOfTime - lastAssessmentTime) / domainSpan) * plotWidth : plotWidth;
+    projectedWidth = Math.max(naturalProjectedWidth, MIN_PROJECTED_SEGMENT_WIDTH);
+  }
+  const historyPlotWidth = plotWidth - projectedWidth;
 
   const nodes = history.map((assessment, index) => ({
     assessmentId: assessment.id,
@@ -119,7 +145,7 @@ export function deriveEvidenceTrajectory(record, asOfDate = new Date().toISOStri
     stateBadgeClass: getStateBadgeClass(assessment.pressureState),
     verificationStage: assessment.verificationStage,
     color: getStateColor(assessment.pressureState),
-    x: xForTime(Date.parse(assessment.date), firstTime, domainSpan),
+    x: xForTime(Date.parse(assessment.date), firstTime, historySpan, historyPlotWidth),
     y: yForStage(assessment.verificationStage),
     isCurrent: index === history.length - 1,
   }));
@@ -143,13 +169,8 @@ export function deriveEvidenceTrajectory(record, asOfDate = new Date().toISOStri
   // Projected segment + today marker: only rendered when "today" is
   // actually later than the last assessment. Shows the last assessment
   // was a milestone reached on its way, not the end of the record's story.
-  const showsProjection = asOfTime > lastAssessmentTime;
   const todayMarker = showsProjection
-    ? {
-        date: asOfDate,
-        x: xForTime(asOfTime, firstTime, domainSpan),
-        y: lastNode.y,
-      }
+    ? { date: asOfDate, x: lastNode.x + projectedWidth, y: lastNode.y }
     : null;
   const projectedSegment = showsProjection
     ? { x1: lastNode.x, y1: lastNode.y, x2: todayMarker.x, y2: todayMarker.y }
@@ -157,11 +178,15 @@ export function deriveEvidenceTrajectory(record, asOfDate = new Date().toISOStri
 
   const mutationTicks = (record.mutationLog ?? []).map((mutation) => {
     const time = Date.parse(mutation.date);
+    const isProjected = showsProjection && time > lastAssessmentTime;
+    const x = isProjected
+      ? lastNode.x + clamp01((time - lastAssessmentTime) / (asOfTime - lastAssessmentTime)) * projectedWidth
+      : xForTime(time, firstTime, historySpan, historyPlotWidth);
     return {
       mutationId: mutation.id,
       date: mutation.date,
       field: mutation.field,
-      x: xForTime(time, firstTime, domainSpan),
+      x,
       y: stageInEffectAt(time, nodes),
     };
   });
