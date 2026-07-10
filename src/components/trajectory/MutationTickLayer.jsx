@@ -19,7 +19,7 @@ export default function MutationTickLayer({ ticks }) {
         <g key={tick.mutationId} className="trajectory-mutation-tick-group">
           <circle cx={tick.x} cy={tick.y} r={1.75} className="trajectory-mutation-tick" />
           <circle cx={tick.x} cy={tick.y} r={6} className="trajectory-mutation-tick-hit">
-            <title>{`${tick.date} — ${tick.mutationId}: ${tick.note ?? tick.field}`}</title>
+            <title>{(tick.recordId ? `${tick.recordId} — ` : "") + `${tick.date} — ${tick.mutationId}: ${tick.note ?? tick.field}`}</title>
           </circle>
         </g>
       ))}

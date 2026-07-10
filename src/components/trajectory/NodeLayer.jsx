@@ -3,8 +3,14 @@
  * assessment set or changed the pressureState; a hollow dot means it
  * reaffirmed the existing state (new evidence logged, stage held). A
  * native SVG <title> provides the only interaction (hover tooltip).
+ *
+ * showDateLabels defaults to true (the single-record trajectory's
+ * always-on date labels). The landscape view passes false — with many
+ * records' nodes sharing the same chart, always-on text for every node
+ * would be unreadable; the date is still in the hover tooltip, prefixed
+ * with the record id when node.recordId is set.
  */
-export default function NodeLayer({ nodes }) {
+export default function NodeLayer({ nodes, showDateLabels = true }) {
   return (
     <g className="trajectory-node-layer">
       {nodes.map((node) => (
@@ -18,12 +24,15 @@ export default function NodeLayer({ nodes }) {
             strokeWidth={node.isTransition ? 0 : 2}
           />
           <title>
-            {`${node.date} — ${node.pressureLabel} (${node.verificationStage})` +
+            {(node.recordId ? `${node.recordId} — ` : "") +
+              `${node.date} — ${node.pressureLabel} (${node.verificationStage})` +
               (node.isTransition ? "" : ", reaffirmed — no state change")}
           </title>
-          <text x={node.x} y={node.y - 10} className="trajectory-node-date" textAnchor="middle">
-            {node.date}
-          </text>
+          {showDateLabels && (
+            <text x={node.x} y={node.y - 10} className="trajectory-node-date" textAnchor="middle">
+              {node.date}
+            </text>
+          )}
         </g>
       ))}
     </g>

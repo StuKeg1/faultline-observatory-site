@@ -13,7 +13,9 @@ export default function CurrentAssessmentMarker({ node }) {
       stroke={node.color}
       fill="none"
     >
-      <title>{`Current assessment — ${node.pressureLabel} since ${node.date}`}</title>
+      <title>
+        {(node.recordId ? `${node.recordId} — ` : "") + `Current assessment — ${node.pressureLabel} since ${node.date}`}
+      </title>
     </circle>
   );
 }

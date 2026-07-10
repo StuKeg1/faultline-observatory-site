@@ -35,6 +35,7 @@ const Origins = lazy(() => import("./pages/Origins.jsx"));
 const Welcome = lazy(() => import("./pages/Welcome.jsx"));
 const Methodology = lazy(() => import("./pages/Methodology.jsx"));
 const InstitutionalChangelog = lazy(() => import("./pages/InstitutionalChangelog.jsx"));
+const EvidenceTrajectories = lazy(() => import("./pages/EvidenceTrajectories.jsx"));
 
 function NotFound() {
  return (
@@ -99,6 +100,7 @@ export default function App() {
  <Route path="/guides" element={<GuidesIndex />} />
  <Route path="/guides/how-to-read" element={<HowToRead />} />
  <Route path="/guides/mcp-access" element={<MCPAccess />} />
+ <Route path="/evidence-trajectories" element={<EvidenceTrajectories />} />
  <Route path="/institutional-health" element={<InstitutionalHealth />} />
  <Route path="/institutional-changelog" element={<InstitutionalChangelog />} />
  <Route path="/tokens" element={<TokenPreview />} />

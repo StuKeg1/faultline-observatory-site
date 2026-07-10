@@ -21,33 +21,11 @@ import {
   getStateBadgeClass,
   getPressureStateLabel,
 } from "./derive.js";
-
-const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
+import { VS_STAGES, getStateColor, yForStage as yForStageIn } from "./trajectoryVisuals.js";
 
 const VIEWBOX_WIDTH = 720;
 const VIEWBOX_HEIGHT = 260;
 const MARGIN = { top: 20, right: 32, bottom: 32, left: 48 };
-
-const STATE_COLOR_VAR = {
-  assertion: "--state-assertion",
-  published: "--state-published",
-  audit: "--state-audit",
-  replication: "--state-replication",
-  operation: "--state-operation",
-  validated: "--state-validated",
-  contested: "--state-contested",
-  emerging: "--state-emerging",
-  escalating: "--state-escalating",
-  stabilising: "--state-stabilising",
-  fragmenting: "--state-fragmenting",
-  resolving: "--state-resolving",
-  collapsed: "--state-collapsed",
-};
-
-function getStateColor(pressureState) {
-  const variable = STATE_COLOR_VAR[pressureState] ?? "--state-assertion";
-  return `var(${variable})`;
-}
 
 const plotWidth = VIEWBOX_WIDTH - MARGIN.left - MARGIN.right;
 const plotHeight = VIEWBOX_HEIGHT - MARGIN.top - MARGIN.bottom;
@@ -76,11 +54,9 @@ function clamp01(fraction) {
   return Math.min(Math.max(fraction, 0), 1);
 }
 
-/** Positions a verification stage on the vertical axis — VS-01 low, VS-05 high. */
+/** Positions a verification stage on this trajectory's vertical axis. */
 function yForStage(vsCode) {
-  const rank = VS_STAGES.indexOf(vsCode);
-  const step = plotHeight / (VS_STAGES.length - 1);
-  return MARGIN.top + plotHeight - rank * step;
+  return yForStageIn(vsCode, MARGIN.top, plotHeight);
 }
 
 /**
