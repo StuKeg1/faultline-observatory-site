@@ -1,0 +1,31 @@
+.evidence-trajectories-page {
+  max-width: var(--width-wide);
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.et-breadcrumb {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+  margin-bottom: 1.25rem;
+}
+
+.et-breadcrumb .bc-current {
+  color: var(--ink);
+}
+
+.evidence-trajectories-page h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.9rem;
+  margin: 0 0 1rem;
+}
+
+.et-intro {
+  max-width: var(--width-content);
+  color: var(--body-text-color);
+  line-height: var(--body-line-height);
+  margin-bottom: 2rem;
+}

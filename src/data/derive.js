@@ -41,6 +41,25 @@ export function getTransitionFeed(record) {
 }
 
 /**
+ * Returns the date the record's current pressureState was first reached —
+ * walks backward from the current assessment through any reaffirming
+ * assessments (same pressureState, no change) to find where the run
+ * started. Distinct from getCurrentAssessment(record).date, which is the
+ * date of the most recent assessment and can be much later than the date
+ * the state was actually entered if the record has been reaffirmed since.
+ */
+export function getStateEnteredDate(record) {
+  const history = getAssessmentHistory(record);
+  const current = history[history.length - 1];
+  for (let i = history.length - 1; i > 0; i--) {
+    if (history[i - 1].pressureState !== current.pressureState) {
+      return history[i].date;
+    }
+  }
+  return history[0].date;
+}
+
+/**
  * Returns the canonical public URL for a record.
  */
 export function getRecordUrl(record) {

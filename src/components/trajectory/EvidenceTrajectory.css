@@ -1,0 +1,354 @@
+/* Evidence Trajectories — Prototype 001 (single-record) and Prototype
+   002 (multi-record landscape). Static, desktop-only. Shared stylesheet
+   so both views render the visual language identically. */
+
+.trajectory-scroll {
+  overflow-x: auto;
+}
+
+.trajectory-svg {
+  font-family: var(--mono);
+}
+
+.trajectory-axis-line {
+  stroke: var(--rule-light);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.trajectory-axis-label {
+  fill: var(--ink-faint);
+  font-size: 9px;
+}
+
+/* pointer-events: none — in the landscape's dense collision-dodge
+   cluster, one record's thin line can visually pass directly over
+   another record's node. Interactive lines would let that line steal a
+   click/hover meant for the node underneath (observed live: a click
+   aimed at FR-QE-0003's node hit FR-AM-0001's overlapping segment
+   instead). Restricting interaction to nodes/ticks/the current-marker
+   — each a discrete, dodge-separated point — keeps hover-isolate and
+   deep-linking reliable without reordering the SVG paint stack. */
+.trajectory-segment {
+  stroke: var(--rule);
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+
+.trajectory-segment-transition {
+  stroke: var(--ink-light);
+}
+
+.trajectory-segment-projected {
+  stroke: var(--ink-faint);
+  stroke-dasharray: 3 3;
+}
+
+.trajectory-node-date {
+  fill: var(--ink-mid);
+  font-size: 9px;
+}
+
+/* pointer-events: none — same reasoning as .trajectory-segment above:
+   this ring is centred on the record's own currentNode, so the plain
+   node circle underneath is always independently clickable at the same
+   point. Without this, the ring's stroke path (r: 9, wider than a
+   node's r: 5) could reach far enough into the dense "Today" cluster to
+   intercept a neighbouring record's node — observed live. */
+.trajectory-current-marker {
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+
+.trajectory-mutation-tick {
+  fill: var(--ink-faint);
+  pointer-events: none;
+  transition: r 120ms ease, fill 120ms ease;
+}
+
+.trajectory-mutation-tick-hit {
+  fill: transparent;
+  pointer-events: all;
+  cursor: default;
+}
+
+/* Only meaningful on the single-record view, where clicking a tick pins
+   and scrolls to its row (MutationHighlightContext). Scoped so the
+   multi-record landscape — which reuses this same component but never
+   wraps the provider — doesn't imply a click affordance that does
+   nothing there. */
+.evidence-trajectory:not(.evidence-landscape) .trajectory-mutation-tick-hit {
+  cursor: pointer;
+}
+
+.trajectory-mutation-tick-group:has(.trajectory-mutation-tick-hit:hover) .trajectory-mutation-tick {
+  r: 3.5px;
+  fill: var(--ink-mid);
+}
+
+/* Cross-highlighted from the MutationLog table row below (hover or a
+   click-pinned selection) — same visual treatment as direct :hover
+   above, so an entry looks identical whether a reader found it on the
+   chart or in the table. */
+.trajectory-mutation-tick-group--active .trajectory-mutation-tick {
+  r: 3.5px;
+  fill: var(--ink-mid);
+}
+
+.trajectory-today-marker line {
+  stroke: var(--ink-faint);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+}
+
+.trajectory-today-label {
+  fill: var(--ink-faint);
+  font-size: 9px;
+  font-style: italic;
+}
+
+.trajectory-legend {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-light);
+}
+
+.trajectory-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.trajectory-legend-swatch {
+  flex-shrink: 0;
+}
+
+/* ─── Landscape (Prototype 002) ──────────────────────────────── */
+
+.landscape-dodge-note {
+  margin: 0.75rem 0 0;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--ink-light);
+  max-width: var(--width-content);
+}
+
+.landscape-year-line {
+  stroke: var(--rule-light);
+  stroke-width: 1;
+}
+
+.landscape-year-label {
+  fill: var(--ink-faint);
+  font-size: 9px;
+}
+
+.trajectory-today-axis line {
+  stroke: var(--ink-faint);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+}
+
+.trajectory-today-axis-label {
+  fill: var(--ink-faint);
+  font-size: 9px;
+  font-style: italic;
+}
+
+.record-group {
+  transition: opacity 120ms ease;
+}
+
+/* No Reading active (the quiet default): hover is the only contrast
+   mechanism, so it isolates — the hovered line lifts forward and every
+   other group dims — letting a reader trace one trajectory out of the
+   overlapping mass without a filtering interaction. */
+.landscape-records:not(.has-reading):has(.record-group:hover) .record-group:not(:hover) {
+  opacity: 0.2;
+}
+
+/* A Reading active (Prototype 003): Focused/Context already carry the
+   contrast, so hover only needs to lift a dimmed Context trajectory
+   forward to let a reader peek at it. That peek never changes the
+   Reading itself, so no other group's opacity moves while hovering —
+   curiosity does not mutate interpretation. */
+.record-group--context {
+  opacity: 0.15;
+}
+
+.has-reading .record-group--context:hover {
+  opacity: 1;
+}
+
+.landscape-index {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem 1rem;
+}
+
+.landscape-index-item {
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.landscape-index-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.landscape-index-link:hover .landscape-index-label {
+  color: var(--accent);
+}
+
+.landscape-index-id {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  flex-shrink: 0;
+}
+
+.landscape-index-label {
+  font-size: 13px;
+  color: var(--ink-mid);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Landscape index mirrors the chart's Reading (Prototype 003) — a
+   Context row fades to match its dimmed trajectory above, so the list
+   stays a reliable map of what's currently emphasized, not just a
+   static id lookup. */
+.landscape-index-item {
+  transition: opacity 120ms ease;
+}
+
+.landscape-index-item--context {
+  opacity: 0.4;
+}
+
+/* ─── Reading Lenses (Prototype 003) ─────────────────────────── */
+
+.reading-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.reading-lens-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.reading-lens-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.reading-lens-group-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-right: 0.15rem;
+}
+
+.reading-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-light);
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease, color 120ms ease;
+}
+
+.reading-chip:hover {
+  border-color: var(--accent-mid);
+}
+
+.reading-chip[data-active] {
+  border-color: var(--accent-mid);
+  background: var(--accent-dim);
+  color: var(--ink);
+}
+
+/* Visual affordance that an active chip removes on click — the whole
+   chip stays the hit target (a small glyph alone would be an unreliable
+   tap target), this just signals which action a click performs. */
+.reading-chip-remove {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--accent-mid);
+}
+
+.reading-chip--state {
+  padding: 2px 6px 2px 6px;
+  background: none;
+  border-color: transparent;
+}
+
+.reading-chip--state .state-badge {
+  opacity: 0.5;
+  transition: opacity 120ms ease;
+}
+
+.reading-chip--state:hover .state-badge {
+  opacity: 0.8;
+}
+
+.reading-chip--state[data-active] {
+  border-color: transparent;
+  background: none;
+}
+
+.reading-chip--state[data-active] .state-badge {
+  opacity: 1;
+}
+
+.reading-clear-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reading-clear {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-light);
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+.reading-clear:hover {
+  border-color: var(--accent-mid);
+  color: var(--ink);
+}

@@ -1,26 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import StateBadge from "../components/StateBadge.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import EvidenceTrajectory from "../components/trajectory/EvidenceTrajectory.jsx";
+import { MutationHighlightProvider, useMutationHighlight } from "../components/trajectory/MutationHighlightContext.jsx";
 import { ALL_RECORDS } from "../data/corpus.js";
 import {
   getCurrentAssessment,
   getTransitionFeed,
   getAssessmentHistory,
   getVerificationStages,
-  
+  getStateEnteredDate,
 } from "../data/derive.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
 
 // ─── WARRANT PANEL ───────────────────────────────────────────
-// Driven entirely by getCurrentAssessment(record). No schema additions.
+// Driven entirely by getCurrentAssessment(record) and
+// getStateEnteredDate(record). No schema additions.
 // Main rationale: assessorNote if present, otherwise summary.
 // Assessment summary row only rendered when assessorNote is present.
-function WarrantPanel({ current }) {
+//
+// A record can be reaffirmed at the same pressureState across several
+// assessments (new evidence appended, stage unchanged). In that case
+// current.date is the date of the most recent reaffirmation, not the
+// date the state was entered — showing only current.date as "in this
+// state since" reads as if the state just changed. The entered-date row
+// is only shown when it differs from the last-verified date.
+function WarrantPanel({ current, record }) {
   const rationale = current.assessorNote || current.summary;
+  const enteredDate = getStateEnteredDate(record);
+  const wasReaffirmed = enteredDate !== current.date;
   return (
     <div className="warrant-panel" aria-label="State warrant">
       <div className="wp-row">
@@ -40,8 +52,14 @@ function WarrantPanel({ current }) {
           <span className="wp-value">{current.summary}</span>
         </div>
       )}
+      {wasReaffirmed && (
+        <div className="wp-row">
+          <span className="wp-label">State entered</span>
+          <span className="wp-value">{enteredDate}</span>
+        </div>
+      )}
       <div className="wp-row">
-        <span className="wp-label">In this state since</span>
+        <span className="wp-label">{wasReaffirmed ? "Last reaffirmed" : "In this state since"}</span>
         <span className="wp-value">{current.date}</span>
       </div>
     </div>
@@ -150,9 +168,15 @@ function RecordLineage({ record }) {
 }
 
 // ─── MUTATION LOG ────────────────────────────────────────────
+// Cross-highlighted with EvidenceTrajectory's chart ticks via
+// MutationHighlightContext where that provider is present (FR-QE-0001
+// today — see the record-body wrap below). useMutationHighlight() is
+// optional-chained so this table renders and behaves exactly as before
+// for every other record, where no provider wraps it.
 function MutationLog({ record }) {
+  const highlight = useMutationHighlight();
   return (
-    <div className="mutation-table-scroll">
+    <div className="mutation-table-scroll" ref={highlight?.tableRef}>
       <table className="mutation-table" aria-label="Record mutations">
         <thead>
           <tr>
@@ -164,15 +188,25 @@ function MutationLog({ record }) {
           </tr>
         </thead>
         <tbody>
-          {record.mutationLog.map((m) => (
-            <tr key={m.id}>
-              <td className="mut-id">{m.id}</td>
-              <td>{m.date}</td>
-              <td className="mut-field">{m.field}</td>
-              <td className="mut-from">{m.from}</td>
-              <td className="mut-to">{m.to}</td>
-            </tr>
-          ))}
+          {record.mutationLog.map((m) => {
+            const isActive = highlight?.activeMutationId === m.id;
+            return (
+              <tr
+                key={m.id}
+                data-mutation-id={m.id}
+                className={isActive ? "mutation-row--active" : undefined}
+                onMouseEnter={() => highlight?.hoverMutation(m.id)}
+                onMouseLeave={() => highlight?.hoverMutation(null)}
+                onClick={() => highlight?.pinFromRow(m.id)}
+              >
+                <td className="mut-id">{m.id}</td>
+                <td>{m.date}</td>
+                <td className="mut-field">{m.field}</td>
+                <td className="mut-from">{m.from}</td>
+                <td className="mut-to">{m.to}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -454,6 +488,12 @@ export default function FrontierRecord() {
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
+  // Cross-highlight between EvidenceTrajectory's ticks and MutationLog's
+  // rows only exists where EvidenceTrajectory itself renders (see
+  // record-body below) — Fragment elsewhere is a true no-op, not an
+  // empty provider, so every other record's page is byte-for-byte
+  // unchanged.
+  const MutationHighlightWrapper = record.id === "FR-QE-0001" ? MutationHighlightProvider : Fragment;
 
   return (
     <>
@@ -522,6 +562,7 @@ export default function FrontierRecord() {
         </header>
 
         {/* Record body */}
+        <MutationHighlightWrapper>
         <div id="record-body">
 
           <section className="record-section-inner" id="s-matrix">
@@ -531,9 +572,24 @@ export default function FrontierRecord() {
 
           <section className="record-section-inner" id="s-warrant">
             <div className="rs-header">State Warrant</div>
-            <WarrantPanel current={current} />
+            <WarrantPanel current={current} record={record} />
             <ExperimentalAnnotations record={record} />
           </section>
+
+          {/* Evidence Trajectories — Prototype 001. Scoped to FR-QE-0001
+              only, the corpus's designated multi-assessment/transition
+              test record (per CLAUDE.md). Renders assessments[] as a
+              static SVG trajectory — a rendering projection derived from
+              the canonical corpus (see src/data/deriveTrajectory.js),
+              never a second data model. Not wired into the scrollspy tab
+              list; this is a vertical-slice prototype, not a corpus-wide
+              feature. */}
+          {record.id === "FR-QE-0001" && (
+            <section className="record-section-inner" id="s-trajectory">
+              <div className="rs-header">Evidence Trajectory</div>
+              <EvidenceTrajectory record={record} />
+            </section>
+          )}
 
           {/* RENDER-PILOT-001 / ADR-00X. Pilot records only. */}
           {isPilot && (
@@ -596,6 +652,7 @@ export default function FrontierRecord() {
           )}
 
         </div>
+        </MutationHighlightWrapper>
       </div>
       <SiteFooter />
     </>
