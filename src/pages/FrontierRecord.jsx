@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import StateBadge from "../components/StateBadge.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import EvidenceTrajectory from "../components/trajectory/EvidenceTrajectory.jsx";
 import { ALL_RECORDS } from "../data/corpus.js";
 import {
   getCurrentAssessment,
@@ -534,6 +535,21 @@ export default function FrontierRecord() {
             <WarrantPanel current={current} />
             <ExperimentalAnnotations record={record} />
           </section>
+
+          {/* Evidence Trajectories — Prototype 001. Scoped to FR-QE-0001
+              only, the corpus's designated multi-assessment/transition
+              test record (per CLAUDE.md). Renders assessments[] as a
+              static SVG trajectory — a rendering projection derived from
+              the canonical corpus (see src/data/deriveTrajectory.js),
+              never a second data model. Not wired into the scrollspy tab
+              list; this is a vertical-slice prototype, not a corpus-wide
+              feature. */}
+          {record.id === "FR-QE-0001" && (
+            <section className="record-section-inner" id="s-trajectory">
+              <div className="rs-header">Evidence Trajectory (Prototype)</div>
+              <EvidenceTrajectory record={record} />
+            </section>
+          )}
 
           {/* RENDER-PILOT-001 / ADR-00X. Pilot records only. */}
           {isPilot && (

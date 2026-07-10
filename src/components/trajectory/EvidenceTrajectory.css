@@ -1,0 +1,37 @@
+/* Evidence Trajectories — Prototype 001. Static, desktop-only. */
+
+.evidence-trajectory {
+  overflow-x: auto;
+}
+
+.trajectory-svg {
+  font-family: var(--mono);
+}
+
+.trajectory-axis-line {
+  stroke: var(--rule-light);
+  stroke-width: 1;
+}
+
+.trajectory-axis-label {
+  fill: var(--ink-faint);
+  font-size: 9px;
+}
+
+.trajectory-segment {
+  stroke: var(--rule);
+  stroke-width: 1.5;
+}
+
+.trajectory-segment-transition {
+  stroke: var(--ink-light);
+}
+
+.trajectory-node-date {
+  fill: var(--ink-mid);
+  font-size: 9px;
+}
+
+.trajectory-current-marker {
+  stroke-width: 1.5;
+}

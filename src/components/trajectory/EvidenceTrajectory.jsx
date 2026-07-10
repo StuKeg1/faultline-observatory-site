@@ -1,0 +1,18 @@
+import { deriveEvidenceTrajectory } from "../../data/deriveTrajectory.js";
+import TrajectorySvg from "./TrajectorySvg.jsx";
+import "./EvidenceTrajectory.css";
+
+/**
+ * EvidenceTrajectory — top-level wrapper. Derives the rendering
+ * projection from one Frontier Record and renders it as a static SVG
+ * trajectory. Prototype 001: one record, one trajectory, no interaction
+ * beyond node hover.
+ */
+export default function EvidenceTrajectory({ record }) {
+  const projection = deriveEvidenceTrajectory(record);
+  return (
+    <div className="evidence-trajectory">
+      <TrajectorySvg projection={projection} />
+    </div>
+  );
+}
