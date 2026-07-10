@@ -95,6 +95,14 @@
 
 /* ─── Landscape (Prototype 002) ──────────────────────────────── */
 
+.landscape-dodge-note {
+  margin: 0.75rem 0 0;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--ink-light);
+  max-width: var(--width-content);
+}
+
 .landscape-year-line {
   stroke: var(--rule-light);
   stroke-width: 1;

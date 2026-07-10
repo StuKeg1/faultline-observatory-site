@@ -29,10 +29,8 @@ export default function EvidenceTrajectories() {
           <p className="et-intro">
             {TRAJECTORY_RECORDS.length} of {ALL_RECORDS.length} Frontier Records have been reassessed at
             least once — each one has a trajectory, not just a point. Plotted here on one shared time axis
-            and verification-stage axis, derived directly from each record's own assessments[] and
-            mutationLog[]. Records sharing an exact assessment date and stage (common in this corpus's
-            batch-authored history) are nudged apart vertically for legibility only — hover any node for its
-            true date.
+            and verification-stage axis, derived directly from each record's own assessment history and
+            mutation log.
           </p>
         </header>
         <EvidenceLandscape records={TRAJECTORY_RECORDS} />
