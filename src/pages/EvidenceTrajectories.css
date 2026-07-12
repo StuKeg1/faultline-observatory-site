@@ -1,8 +1,6 @@
 .evidence-trajectories-page {
   min-height: calc(100vh - var(--nav-height));
-  background:
-    radial-gradient(circle at 28% 12%, rgba(255, 255, 255, 0.72), transparent 34%),
-    var(--paper);
+  background: var(--paper);
   color: var(--ink);
 }
 
@@ -105,6 +103,7 @@
 .et-chart-shell {
   overflow-x: auto;
   padding-bottom: 0.25rem;
+  background: var(--paper);
 }
 
 .et-chart {
