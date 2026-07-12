@@ -14,7 +14,8 @@
 }
 
 .et-hero-inner {
-  width: min(1080px, 100%);
+  max-width: var(--col);
+  width: 100%;
 }
 
 .et-main {
@@ -22,7 +23,7 @@
 }
 
 .et-hero-inner {
-  padding: 3rem 0 1.85rem;
+  padding: 2.5rem 0 2rem;
   border-bottom: 2px solid var(--ink);
 }
 
@@ -38,40 +39,42 @@
 }
 
 .et-eyebrow {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--ink-mid);
-  font-size: 11px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .et-hero h1 {
-  max-width: 620px;
+  max-width: none;
   margin: 0 0 0.75rem;
   font-family: var(--serif);
-  font-size: clamp(2.6rem, 5.4vw, 4.35rem);
-  font-weight: 400;
-  line-height: 0.98;
+  font-size: var(--page-title-size);
+  font-weight: var(--page-title-weight);
+  line-height: 1.1;
+  letter-spacing: var(--page-title-tracking);
 }
 
 .et-proposition {
   max-width: 620px;
   margin: 0;
   font-family: var(--serif);
-  font-size: 1.1rem;
-  line-height: 1.45;
+  font-size: 0.9375rem;
+  line-height: 1.6;
 }
 
 .et-instruction {
-  max-width: 660px;
-  margin: 1rem 0 0;
+  max-width: 620px;
+  margin: 0.85rem 0 0;
   font-family: var(--serif);
-  font-size: 1.02rem;
+  font-size: 0.9375rem;
   font-style: italic;
-  line-height: 1.45;
+  line-height: 1.6;
 }
 
 .et-how-to-read {
-  margin-top: 1.05rem;
+  margin-top: 0.9rem;
 }
 
 .et-how-to-read summary {
@@ -79,7 +82,7 @@
   color: var(--accent);
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11px;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
