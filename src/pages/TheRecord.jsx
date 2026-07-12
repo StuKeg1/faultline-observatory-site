@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import RecordCard from "../components/RecordCard.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
@@ -205,6 +205,20 @@ export default function TheRecord() {
           </div>
         </div>
 
+        <section className="tr-trajectory-entry" aria-labelledby="tr-trajectory-entry-title">
+          <div className="tr-trajectory-entry-inner">
+            <div>
+              <div className="tr-eyebrow">Evidence Trajectories</div>
+              <h2 id="tr-trajectory-entry-title">Read the record over time</h2>
+              <p>
+                The Record shows what the Observatory holds. Evidence Trajectories shows how its judgement got there.
+              </p>
+            </div>
+            <Link to="/evidence-trajectories/" className="tr-trajectory-link">
+              Open Evidence Trajectories
+            </Link>
+          </div>
+        </section>
         {/* Results count */}
         <div className="tr-results-bar">
           <div className="tr-results-inner">

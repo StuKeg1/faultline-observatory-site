@@ -190,3 +190,46 @@
   .tr-stat { align-items: flex-start; }
   .tr-filters { flex-direction: column; }
 }
+
+.tr-trajectory-entry {
+  padding: 0 2rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.tr-trajectory-entry-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.tr-trajectory-entry h2 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin: 0.25rem 0;
+}
+
+.tr-trajectory-entry p {
+  color: var(--ink-mid);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.tr-trajectory-link {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .tr-trajectory-entry-inner {
+    grid-template-columns: 1fr;
+  }
+}

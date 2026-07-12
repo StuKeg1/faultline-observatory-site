@@ -555,6 +555,12 @@ export default function FrontierRecord() {
                 <span className="rp-status-label">Status</span>
                 <span className="rp-status-value" style={{ textTransform: "capitalize" }}>{record.status}</span>
               </div>
+              <Link
+                to={`/evidence-trajectories/?record=${record.id}`}
+                className="rp-trajectory-link"
+              >
+                View this record in Evidence Trajectories
+              </Link>
             </aside>
           </div>
 

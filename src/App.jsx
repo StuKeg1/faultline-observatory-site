@@ -76,6 +76,12 @@ export default function App() {
  <Route path="/the-record" element={
  <ErrorBoundary context="archive"><TheRecord /></ErrorBoundary>
  } />
+ <Route path="/evidence-trajectories" element={
+ <ErrorBoundary context="evidence trajectories"><EvidenceTrajectories /></ErrorBoundary>
+ } />
+ <Route path="/evidence-trajectories/" element={
+ <ErrorBoundary context="evidence trajectories"><EvidenceTrajectories /></ErrorBoundary>
+ } />
  {/* Release 006 — FR-MF-* → FR-AM-* redirect handled in RecordRedirect */}
  <Route path="/the-record/:recordId" element={<RecordRedirect />} />
  <Route path="/the-record/:recordId/" element={<RecordRedirect />} />

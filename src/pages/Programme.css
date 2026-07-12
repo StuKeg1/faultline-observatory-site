@@ -294,3 +294,29 @@
   .prr-date { display: none; }
   .prog-reading-room-row { flex-direction: column; gap: 0.25rem; }
 }
+
+.prog-trajectory-entry {
+  display: grid;
+  gap: 0.35rem;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.prog-trajectory-entry span:first-child {
+  color: var(--accent);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prog-trajectory-entry span:last-child {
+  color: var(--ink-mid);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

@@ -11,7 +11,8 @@
     "prebuild": "npm run validate:all",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test src/pages/evidenceTrajectoryLayout.test.js"
   },
   "engines": {
     "node": ">=18"

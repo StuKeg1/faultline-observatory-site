@@ -513,3 +513,15 @@
   .ev-weight { grid-area: weight; }
   .ev-citation { grid-area: citation; }
 }
+
+.rp-trajectory-link {
+  border-top: 1px solid var(--rule-light);
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  margin-top: 0.35rem;
+  padding-top: 0.65rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

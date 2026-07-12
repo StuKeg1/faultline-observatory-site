@@ -168,6 +168,7 @@ export default function Home() {
                 <p>Every week, researchers, laboratories and technology companies announce breakthroughs that promise to reshape the future.</p>
                 <p>Some become enduring scientific milestones. Others evolve, fragment, or quietly disappear.</p>
                 <p className="hero-copy-bold">Faultline Observatory preserves the public history of those claims — from announcement to resolution, with the evidence visible every step of the way.</p>
+                <p className="hero-trajectory-bridge">Judgement changes over time. Follow how claims move through the Observatory&apos;s assessment history in <Link to="/evidence-trajectories/">Evidence Trajectories</Link>.</p>
               </div>
               <Link to="/the-record" className="hero-cta-primary">
                 Explore a Frontier Record →

@@ -139,6 +139,18 @@ export default function Programme() {
               </section>
             )}
 
+            <section className="prog-section" aria-labelledby="prog-trajectories-label">
+              <div className="prog-section-label" id="prog-trajectories-label">
+                Evidence Trajectories - {prog.id}
+              </div>
+              <Link
+                to={`/evidence-trajectories/?lens=${prog.id}`}
+                className="prog-trajectory-entry"
+              >
+                <span>View {prog.name} trajectories</span>
+                <span>{prog.shortId} records are brought forward within the full archive.</span>
+              </Link>
+            </section>
             {/* Frontier Records */}
             <section className="prog-section" aria-labelledby="prog-records-label">
               <div className="prog-section-label" id="prog-records-label">

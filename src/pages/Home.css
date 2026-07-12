@@ -72,6 +72,20 @@
   font-weight: 400 !important;
   color: var(--ink) !important;
 }
+.hero-trajectory-bridge {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rule-light);
+}
+
+.hero-trajectory-bridge a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-dim);
+}
+
+.hero-trajectory-bridge a:hover {
+  border-bottom-color: var(--accent);
+}
 
 .hero-cta-primary {
   display: inline-block;
