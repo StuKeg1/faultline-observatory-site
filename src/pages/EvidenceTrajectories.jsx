@@ -501,7 +501,7 @@ export default function EvidenceTrajectories() {
       <div className="evidence-trajectories-page">
         <header className="et-hero">
           <div className="et-hero-inner">
-            <div className="et-eyebrow">The Frontier Record</div>
+            <div className="et-eyebrow">Faultline Observatory</div>
             <h1>Evidence Trajectories</h1>
             <p className="et-proposition">
               Follow how the Observatory's judgement of technology claims has changed as evidence accumulated.
