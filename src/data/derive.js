@@ -66,6 +66,17 @@ export function getRecordUrl(record) {
   return `/the-record/${record.id.toLowerCase()}/`;
 }
 
+/**
+ * Returns the record-specific summary used for social/meta descriptions —
+ * shared by the client-side PageMeta tag (FrontierRecord.jsx) and the
+ * crawler-facing Pages Function (functions/the-record/[[recordId]].js) so
+ * both surfaces stay in sync rather than reimplementing this formatting.
+ */
+export function getRecordMetaDescription(record) {
+  const current = getCurrentAssessment(record);
+  return `${record.claim.statement.substring(0, 140)} Current state: ${current.pressureState}.`;
+}
+
 function collectSearchParts(value, parts = []) {
   if (value == null) return parts;
 
