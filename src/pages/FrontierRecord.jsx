@@ -12,6 +12,7 @@ import {
   getAssessmentHistory,
   getVerificationStages,
   getStateEnteredDate,
+  getRecordMetaDescription,
 } from "../data/derive.js";
 import "./FrontierRecord.css";
 
@@ -499,7 +500,7 @@ export default function FrontierRecord() {
     <>
       <PageMeta
         title={`${record.claim.shortLabel} — ${record.id}`}
-        description={`${record.claim.statement.substring(0, 140)} Current state: ${current.pressureState}.`}
+        description={getRecordMetaDescription(record)}
         path={url}
       />
       <div className="frontier-record-page">
