@@ -6,6 +6,7 @@
 
 .et-hero {
   padding: 0 2rem;
+  border-bottom: 2px solid var(--ink);
 }
 
 .et-hero-inner,
@@ -24,7 +25,6 @@
 
 .et-hero-inner {
   padding: 2.5rem 0 2rem;
-  border-bottom: 2px solid var(--ink);
 }
 
 .et-eyebrow,
