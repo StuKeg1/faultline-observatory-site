@@ -19,23 +19,46 @@ import About from "./pages/About.jsx";
 
 // ─── LAZY ────────────────────────────────────────────────────
 
+function lazyRoute(importer) {
+ return lazy(() => importer().then((module) => {
+  if (typeof window !== "undefined") {
+   window.sessionStorage.removeItem("faultline:chunk-reload");
+  }
+  return module;
+ }).catch((error) => {
+  const message = String(error?.message ?? error);
+  const isChunkFailure = /dynamically imported module|Failed to fetch dynamically imported module|Loading chunk|Importing a module script failed/i.test(message);
+
+  if (typeof window !== "undefined" && isChunkFailure) {
+   const key = "faultline:chunk-reload";
+   if (window.sessionStorage.getItem(key) !== "1") {
+    window.sessionStorage.setItem(key, "1");
+    window.location.reload();
+    return new Promise(() => {});
+   }
+  }
+
+  throw error;
+ }));
+}
+
 // Heavy pages split into separate chunks.
 // Vite detects dynamic import() and splits automatically.
-const TheRecord = lazy(() => import("./pages/TheRecord.jsx"));
-const FrontierRecord = lazy(() => import("./pages/FrontierRecord.jsx"));
-const Programme = lazy(() => import("./pages/Programme.jsx"));
-const NotesIndex = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NotesIndex })));
-const NoteDetail = lazy(() => import("./pages/Notes.jsx").then(m => ({ default: m.NoteDetail })));
-const EventsIndex = lazy(() => import("./pages/Events.jsx"));
-const EventDetail = lazy(() => import("./pages/Events.jsx").then(m => ({ default: m.EventDetail })));
-const TokenPreview = lazy(() => import("./pages/TokenPreview.jsx"));
-const InstitutionalHealth = lazy(() => import("./pages/InstitutionalHealth.jsx"));
-const MCPAccess = lazy(() => import("./pages/guides/MCPAccess.jsx"));
-const Origins = lazy(() => import("./pages/Origins.jsx"));
-const Welcome = lazy(() => import("./pages/Welcome.jsx"));
-const Methodology = lazy(() => import("./pages/Methodology.jsx"));
-const InstitutionalChangelog = lazy(() => import("./pages/InstitutionalChangelog.jsx"));
-const EvidenceTrajectories = lazy(() => import("./pages/EvidenceTrajectories.jsx"));
+const TheRecord = lazyRoute(() => import("./pages/TheRecord.jsx"));
+const FrontierRecord = lazyRoute(() => import("./pages/FrontierRecord.jsx"));
+const Programme = lazyRoute(() => import("./pages/Programme.jsx"));
+const NotesIndex = lazyRoute(() => import("./pages/Notes.jsx").then(m => ({ default: m.NotesIndex })));
+const NoteDetail = lazyRoute(() => import("./pages/Notes.jsx").then(m => ({ default: m.NoteDetail })));
+const EventsIndex = lazyRoute(() => import("./pages/Events.jsx"));
+const EventDetail = lazyRoute(() => import("./pages/Events.jsx").then(m => ({ default: m.EventDetail })));
+const TokenPreview = lazyRoute(() => import("./pages/TokenPreview.jsx"));
+const InstitutionalHealth = lazyRoute(() => import("./pages/InstitutionalHealth.jsx"));
+const MCPAccess = lazyRoute(() => import("./pages/guides/MCPAccess.jsx"));
+const Origins = lazyRoute(() => import("./pages/Origins.jsx"));
+const Welcome = lazyRoute(() => import("./pages/Welcome.jsx"));
+const Methodology = lazyRoute(() => import("./pages/Methodology.jsx"));
+const InstitutionalChangelog = lazyRoute(() => import("./pages/InstitutionalChangelog.jsx"));
+const EvidenceTrajectories = lazyRoute(() => import("./pages/EvidenceTrajectories.jsx"));
 
 function NotFound() {
  return (
