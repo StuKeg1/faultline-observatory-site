@@ -39,7 +39,7 @@ const ABOUT_BLOCKS = [
  },
  {
  heading: "Origins",
- body: "The Faultline Observatory did not begin as an institution. It began as a series of conversations about scientific and technological claims, an attempt to understand how evidence changes over time, and a search for a record that did not seem to exist. As the project evolved, those conversations gradually became a methodology, a public record, and eventually an institution. The full account has been preserved as part of the Observatory's institutional history.",
+ body: "The founder of the Faultline Observatory is Stuart Kegel. He did not begin this as an institution. It began as a series of conversations about scientific and technological claims, an attempt to understand how evidence changes over time, and a search for a record that did not seem to exist. As the project evolved, those conversations gradually became a methodology, a public record, and eventually an institution. The full account has been preserved as part of the Observatory's institutional history.",
  link: {
  to: "/about/origins",
  label: "Before the Observatory Had a Name →",
