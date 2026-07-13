@@ -150,14 +150,16 @@
 }
 
 .et-stage-code {
-  fill: var(--ink);
-  font-size: 12px;
-  font-weight: 700;
+  fill: var(--ink-light);
+  font-size: 9.5px;
+  font-weight: 500;
+  text-anchor: end;
 }
 
 .et-stage-name {
-  fill: var(--ink-mid);
-  font-size: 11px;
+  fill: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .et-time-tick,
@@ -671,18 +673,19 @@
 }
 
 .et-register-stage-code {
+  fill: var(--ink-light);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.et-register-stage-name {
   fill: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.02em;
-}
-
-.et-register-stage-name {
-  fill: var(--ink-mid);
-  font-family: var(--serif);
-  font-size: 11px;
-  font-style: italic;
 }
 
 

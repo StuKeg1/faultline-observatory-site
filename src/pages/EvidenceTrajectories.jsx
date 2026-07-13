@@ -131,7 +131,7 @@ function EvidenceChart({
   const geometry = useMemo(() => {
     const width = 1360;
     const height = 940;
-    const pad = { top: 86, right: 440, bottom: 92, left: 130 };
+    const pad = { top: 86, right: 440, bottom: 92, left: 176 };
     const axisLeft = 32;
     const plotLeft = pad.left;
     const todayX = width - pad.right;
@@ -230,8 +230,8 @@ function EvidenceChart({
             return (
               <g key={stage}>
                 <line x1={geometry.plotLeft} x2={geometry.todayX + 38} y1={y} y2={y} />
-                <text className="et-stage-code" x={geometry.axisLeft} y={y + 4}>{stage}</text>
-                <text className="et-stage-name" x={geometry.axisLeft + 50} y={y + 4}>{STAGE_LABELS[stage]}</text>
+                <text className="et-stage-name" x={geometry.axisLeft} y={y + 4}>{STAGE_LABELS[stage]}</text>
+                <text className="et-stage-code" x={geometry.plotLeft - 18} y={y + 4}>{stage}</text>
               </g>
             );
           })}
@@ -341,8 +341,8 @@ function EvidenceChart({
                   d={`M ${geometry.todayX + 10} ${group.trueY} H ${geometry.registerX - 24} V ${bridgeY} H ${geometry.registerX - 8}`}
                   aria-hidden="true"
                 />
-                <text className="et-register-stage-code" x={geometry.registerColumns.stageX} y={group.groupTop + 10}>{group.stage}</text>
-                <text className="et-register-stage-name" x={geometry.registerColumns.ringX} y={group.groupTop + 10}>{STAGE_LABELS[group.stage]}</text>
+                <text className="et-register-stage-name" x={geometry.registerColumns.stageX} y={group.groupTop + 10}>{STAGE_LABELS[group.stage]}</text>
+                <text className="et-register-stage-code" x={geometry.registerColumns.stageX + 86} y={group.groupTop + 10}>{group.stage}</text>
                 {group.rows.length === 0 && (
                   <text className="et-register-empty" x={geometry.registerColumns.idX} y={group.emptyLabelY + 3}>No current records</text>
                 )}
