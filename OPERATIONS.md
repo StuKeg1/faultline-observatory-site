@@ -206,6 +206,7 @@ Never violate these rules during implementation:
 - `getCurrentAssessment()` always returns `assessments[last]`; current assessment is never stored separately.
 - `getTransitionFeed()` is always derived; transition history is never manually stored.
 - Summary statistics are derived from the live corpus unless explicitly documented otherwise.
+- Evidence Trajectories (`EvidenceTrajectories.jsx`) renders only from `corpus.js`/`derive.js` — no independent trajectory storage (ADR-004).
 - The Outstanding Work Queue owns current actionable work.
 - The Release Archive owns shipped implementation history.
 - The Institutional Learning Register owns preserved institutional learning that has not yet become work.

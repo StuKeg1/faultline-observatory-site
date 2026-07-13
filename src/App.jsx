@@ -128,7 +128,6 @@ export default function App() {
  <Route path="/guides" element={<GuidesIndex />} />
  <Route path="/guides/how-to-read" element={<HowToRead />} />
  <Route path="/guides/mcp-access" element={<MCPAccess />} />
- <Route path="/evidence-trajectories" element={<EvidenceTrajectories />} />
  <Route path="/institutional-health" element={<InstitutionalHealth />} />
  <Route path="/institutional-changelog" element={<InstitutionalChangelog />} />
  <Route path="/tokens" element={<TokenPreview />} />
