@@ -210,18 +210,21 @@ function EvidenceChart({
         </g>
 
         <g className="et-chart-headings" aria-hidden="true">
-          {geometry.phaseCoordinates.map((phase) => (
-            <g key={phase.id}>
-              <text className="et-phase-heading" x={phase.center} y="26">{phase.heading}</text>
-              <text className="et-phase-subheading" x={phase.center} y="43">{phase.subheading}</text>
-            </g>
-          ))}
+          {geometry.phaseCoordinates.map((phase) => {
+            const headingX = phase.id === "origins" ? phase.center + 42 : phase.center;
+            return (
+              <g key={phase.id}>
+                <text className="et-phase-heading" x={headingX} y="26">{phase.heading}</text>
+                <text className="et-phase-subheading" x={headingX} y="43">{phase.subheading}</text>
+              </g>
+            );
+          })}
           <text className="et-phase-heading" x={geometry.registerX + 146} y="26">Current Register</text>
           <text className="et-phase-subheading" x={geometry.registerX + 146} y="43">Assessment : today</text>
         </g>
 
         <g className="et-grid" aria-hidden="true">
-          <text className="et-axis-title" x={geometry.axisLeft} y="54">Institutional assessment</text>
+          <text className="et-axis-title" x={geometry.axisLeft} y="68">Institutional assessment</text>
           {STAGE_ORDER.map((stage) => {
             const y = geometry.yForStage(stage);
             return (
