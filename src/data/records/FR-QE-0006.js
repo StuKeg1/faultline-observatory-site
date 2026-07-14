@@ -54,6 +54,13 @@ export const FR_QE_0006 = {
       description: "Simultaneously with quantum hardware progress, classical simulation methods for quantum chemistry and materials continue to improve. Tensor network methods, density matrix renormalisation group (DMRG), and machine learning-augmented classical simulation are making problems tractable classically that were previously considered quantum-only territory. Chan et al. and others demonstrate that some molecular systems previously proposed as quantum advantage targets are now tractable classically with sufficient computational resources. The \"beyond classical simulation\" threshold is not fixed: for each quantum algorithm target, the relevant comparison is against the best current classical method, which is itself advancing. This creates the same resistance mechanism as FR-QE-0005 RM-002 — the claim is a race, and both sides are moving — but at a timescale and problem scale where the race is currently active rather than decades away.",
       vectors: ["contesting--classical-methods-advancing-on-quantum-target-problems"],
       date: "2024",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Composed logical Clifford operations via lattice surgery on a superconducting surface-code processor",
+      description: "A 107-qubit superconducting surface-code processor demonstrates composed logical Clifford operations — lattice-surgery merge/split, patch expansion and shrinkage, and logical CNOT, Hadamard, and phase gates — with multi-round syndrome extraction and neural-network decoding, without post-selection (arXiv:2607.01473, large institutional collaboration, primary preprint, submitted 1 July 2026). This is a meaningful active-computation building block: it moves the fault-tolerant substrate from protected logical memory, and from the application-ready-in-principle status recorded at IN-003, to logical gate operations actually demonstrated. It does not demonstrate a practically useful quantum algorithm beyond classical simulation, which is this record's claim: the demonstrated set is Clifford-only (universal computation still requires magic-state injection for non-Clifford gates), the codes are distance-three, and the work supplies no target problem, leaving BN-001 (no agreed target problem) untouched. It is classified NEUTRAL because it advances the substrate without bearing for or against the useful-algorithm claim itself. No independent replication yet; peer review pending.",
+      vectors: ["NEUTRAL"],
+      date: "2026",
     }
   ],
 
@@ -129,6 +136,7 @@ export const FR_QE_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-07-14", field: "instance_appended", from: "—", to: "IN-006", note: "IN-006 appended — composed logical Clifford operations via lattice surgery (arXiv:2607.01473), surfaced from Frontline Scout report 2026-07-03 during evidence-gap review as non-duplicate evidence stranded in the Scout archive. Instance-level append only, classified NEUTRAL: an active-computation building block advancing the fault-tolerant substrate beyond IN-003's application-ready-in-principle status, which does not demonstrate a practically useful algorithm beyond classical simulation (Clifford-only, distance-three, no target problem — BN-001 untouched). No assessment issued; pressureState ESCALATING, verificationStage VS-02, mechanisms, and openQuestions unchanged. The source retains its separate Scout FCIF-candidate status; this instance does not pre-decide that." },
     { id: "M-008", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): OQ-003 referred to the stale identifier PROG-MF. Corrected to PROG-AM following the FR-MF-* → FR-AM-* programme identifier migration. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-007", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001: application-relevant hardware scale/depth dependency distinguished from simple fault-tolerant circuits already demonstrated. Corpus Review — Realization Note Candidates (v2)." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
