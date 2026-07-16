@@ -12,6 +12,7 @@ export default function SiteFooter() {
           <Link to="/methodology/">Methodology</Link>
           <Link to="/about/">About</Link>
           <Link to="/institutional-changelog/">Institutional Changelog</Link>
+          <a href="mailto:hello@faultlinewatch.com">Contact</a>
         </nav>
 
         <nav className="site-footer-guides" aria-label="Guides navigation">
