@@ -136,6 +136,14 @@ export default function Methodology() {
         </p>
       </div>
 
+      <div className="inst-methodology-prose">
+        <p>
+          <strong>New to the Observatory?</strong>{" "}
+          Start with the{" "}
+          <a href="/welcome">short introduction to Frontier Records and how the Observatory works →</a>
+        </p>
+      </div>
+
       <div className="inst-method-overview">
         <p className="inst-method-overview__heading">This methodology is organised into three parts.</p>
         <div className="inst-method-overview-list">
