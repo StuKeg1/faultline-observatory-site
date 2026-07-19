@@ -135,3 +135,24 @@ export async function getRedirectsManagedRoutes() {
   const all = await getAllCanonicalRoutes();
   return all.filter((route) => !route.startsWith("/the-record/"));
 }
+
+// Real, servable routes that should NOT appear in public/sitemap.xml:
+//   /tokens/            — internal design-token preview, not public content.
+//   /guides/how-to-read/ — HowToRead's own PageMeta (src/pages/Stubs.jsx)
+//                          declares "/how-to-read/" as its canonical path
+//                          regardless of which of the two routes rendered
+//                          it; listing both in the sitemap would be
+//                          duplicate content pointing at conflicting
+//                          canonicals. "/how-to-read/" stays listed since
+//                          it's the one the page itself claims.
+export const SITEMAP_EXCLUDED_ROUTES = ["/tokens/", "/guides/how-to-read/"];
+
+/**
+ * The subset of the manifest public/sitemap.xml should list — every real
+ * public route (including /the-record/*, unlike getRedirectsManagedRoutes)
+ * minus SITEMAP_EXCLUDED_ROUTES.
+ */
+export async function getSitemapRoutes() {
+  const all = await getAllCanonicalRoutes();
+  return all.filter((route) => !SITEMAP_EXCLUDED_ROUTES.includes(route));
+}

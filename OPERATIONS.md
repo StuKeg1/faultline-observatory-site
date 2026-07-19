@@ -190,6 +190,11 @@ If OPERATIONS.md grows into a full repository map, it has failed. OPERATIONS.md 
 | Change HTML head | `index.html` |
 | Change GitHub automation | `.github/workflows/` |
 | Change analytics update logic | `scripts/` and `src/data/generated/` |
+| Change what routes exist / are public | `scripts/route-manifest.js` |
+| Change `_redirects` generation | `scripts/generate-redirects.js` |
+| Change `sitemap.xml` generation | `scripts/generate-sitemap.js` |
+| Change record-URL routing (`/the-record/*`) | `functions/the-record/[[recordId]].js` — owns this subtree directly; not `_redirects` (see file header) |
+| Run the post-deploy live routing check | `scripts/smoke-live.js` (`npm run smoke:live`) |
 
 Rendering chain:
 
@@ -233,6 +238,22 @@ Minimum checks at `localhost:5173` where relevant:
 - archive/list cards render expected metadata;
 - mobile layout holds at 375px;
 - no console errors.
+
+---
+
+## Live Routing Smoke Gate
+
+A routing/Function change can pass a green build, green `npm test`, and clean lint while still being broken in production — Cloudflare gives a matched Pages Function routing precedence over `public/_redirects` for the same path in ways local tooling (`wrangler pages dev`) does not reliably reproduce. This is not hypothetical: it shipped once (see Release Archive).
+
+Any release that touches routing — `src/App.jsx`, `scripts/route-manifest.js`, `scripts/generate-redirects.js`, or anything under `functions/` — does not close until `npm run smoke:live` passes against the live deploy:
+
+```bash
+npm run smoke:live
+# or, against a preview URL before promoting:
+SMOKE_BASE_URL=https://<preview>.pages.dev npm run smoke:live
+```
+
+It asserts real HTTP status codes (known routes, unknown routes, legacy redirects, slash canonicalization) and greps the Googlebot-UA response for a record-specific `og:title`, reading its route sample live from `scripts/route-manifest.js` rather than a hardcoded list, so it keeps covering current records as the corpus grows.
 
 ---
 

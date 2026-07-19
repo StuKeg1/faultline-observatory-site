@@ -9,11 +9,13 @@
     "validate:mutations": "node scripts/validate-mutations.js",
     "validate:all": "npm run validate:events && npm run validate:mutations",
     "generate:redirects": "node scripts/generate-redirects.js",
-    "prebuild": "npm run validate:all && npm run generate:redirects",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
+    "prebuild": "npm run validate:all && npm run generate:redirects && npm run generate:sitemap",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "node --test src/pages/evidenceTrajectoryLayout.test.js scripts/redirects.test.js"
+    "test": "node --test src/pages/evidenceTrajectoryLayout.test.js scripts/redirects.test.js scripts/sitemap.test.js",
+    "smoke:live": "node scripts/smoke-live.js"
   },
   "engines": {
     "node": ">=18"

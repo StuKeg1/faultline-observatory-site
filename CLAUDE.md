@@ -11,13 +11,15 @@ Faultline Observatory — a Vite + React SPA that publishes a public record of f
 ```bash
 npm install          # install deps (Node >=18; CI uses Node 20)
 npm run dev          # dev server at localhost:5173, hot reload
-npm run build        # runs validate:events first (prebuild), then vite build -> dist/
+npm run build        # prebuild (validate:all, generate:redirects, generate:sitemap), then vite build -> dist/
 npm run preview      # serve the production build at localhost:4173
 npm run lint         # eslint .
+npm run test         # node --test — structural tests for redirects/sitemap generation + evidence trajectory layout
+npm run smoke:live   # live HTTP check against a deployed URL (defaults to production) — see OPERATIONS.md's Live Routing Smoke Gate
 npm run validate:events   # validates events/**/*.json against schema/event-schema.json
 ```
 
-There is no test runner in this repo — CI (`.github/workflows/ci.yml`) only runs `npm run lint` and `npm run build` on push/PR to `main`. Treat a clean lint + build as the correctness bar.
+CI (`.github/workflows/ci.yml`) runs `npm run lint` and `npm run build` on push/PR to `main`; it does not currently run `npm test` or `npm run smoke:live`. Treat a clean lint + build as the CI correctness bar, but for routing/Function changes specifically, `npm run smoke:live` against the live deploy is a required manual gate before the release is closed (OPERATIONS.md).
 
 There is no `dist/` deploy step to run locally — Cloudflare Pages builds and deploys automatically on push to `main`.
 
@@ -52,7 +54,15 @@ To add an Institutional Note: create `src/data/notes/XX-NNN.js` following `FM-00
 
 ### Routing and rendering
 
-`src/App.jsx` is the router. Home, top-level stubs, and About load eagerly; everything else (`TheRecord`, `FrontierRecord`, `Programme`, notes, events, `InstitutionalHealth`, guides, `Origins`, `Welcome`) is lazy-loaded via `React.lazy` — Vite code-splits these automatically. `RecordRedirect` handles the legacy `FR-MF-*` → `FR-AM-*` id migration (Release 006); a corresponding `/programmes/prog-mf` → `/programmes/prog-am` redirect exists too. Follow this pattern for future record/programme id migrations rather than mutating historical ids in place.
+`src/App.jsx` is the router. Home, top-level stubs, and About load eagerly; everything else (`TheRecord`, `FrontierRecord`, `Programme`, notes, events, `InstitutionalHealth`, guides, `Origins`, `Welcome`) is lazy-loaded via `React.lazy` — Vite code-splits these automatically. `App.jsx` still has a client-side `RecordRedirect` component and a `/programmes/prog-mf` route as defense-in-depth, but the id-migration redirect itself is no longer what serves those URLs in production — see below.
+
+### Server-side routing: `_redirects`, `sitemap.xml`, and the record Function
+
+`public/_redirects` and `public/sitemap.xml` are both **generated**, not hand-maintained — `scripts/generate-redirects.js` and `scripts/generate-sitemap.js` run in `prebuild`, reading routes live from `scripts/route-manifest.js` (which itself reads `corpus.js`/`notes.js`/`programmeNotes.js`/`landscapeEssays.js`/`events/**/*.json`). Don't hand-edit either generated file — edit `route-manifest.js` or the underlying data instead.
+
+`/the-record/*` is the one exception: `functions/the-record/[[recordId]].js` is a rest-segment Cloudflare Pages Function match that claims every request under that prefix, and Cloudflare gives a matched Function routing precedence over `_redirects` for the same path — a `_redirects` rule there is not reliably applied. That Function therefore owns its entire subtree directly: SPA-shell serving (via `env.ASSETS.fetch`, fetching `/` and `/404` — not `/index.html`/`/404.html`, which Cloudflare 308s as non-canonical aliases), slash/case canonicalization, the `FR-MF-*` → `FR-AM-*` legacy redirect (one hop, straight to the final canonical URL), unknown-id 404s, and crawler-UA OG/Twitter tag rewriting. `route-manifest.js`'s `getRedirectsManagedRoutes()` excludes this subtree from what `_redirects` generates; `getAllCanonicalRoutes()`/`getSitemapRoutes()` still include it, since the Function-vs-`_redirects` split is a serving-mechanism detail, not a public-URL one. Follow this Function-owns-its-subtree pattern for any future path that needs both a Pages Function and rewrite/redirect behavior, rather than assuming `_redirects` will apply.
+
+Any change to routing (`App.jsx`, `route-manifest.js`, `generate-redirects.js`, or anything under `functions/`) must pass `npm run smoke:live` against the live deploy before the release is considered closed — see OPERATIONS.md's Live Routing Smoke Gate. Local `wrangler pages dev` does not reliably reproduce `_redirects` 200-rewrite behavior; it is useful for iterating but not a substitute for the live check.
 
 ### Styles
 
