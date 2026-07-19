@@ -5,10 +5,16 @@
  * Replaces the old blanket `/* /index.html 200` SPA fallback, which
  * rewrote every path (including nonexistent ones) to 200, producing soft
  * 404s. Instead: an exact `200` rewrite per known route, a 301 from each
- * route's non-canonical slash form to its canonical form, and explicit
- * legacy-id redirects. Anything not listed here falls through to Cloudflare
- * Pages' native 404 handling (public/404.html), since no top-level 404.html
- * + no matching rule disables the automatic SPA fallback.
+ * route's non-canonical slash form to its canonical form, and an explicit
+ * legacy prog-mf redirect. Anything not listed here falls through to
+ * Cloudflare Pages' native 404 handling (public/404.html), since no
+ * top-level 404.html + no matching rule disables the automatic SPA
+ * fallback.
+ *
+ * Deliberately excludes /the-record/* — functions/the-record/[[recordId]].js
+ * owns that subtree's routing internally (see route-manifest.js) because a
+ * Function's route match takes precedence over _redirects for the same
+ * path, so rules here for that prefix would not reliably apply.
  *
  * Runs as part of `npm run build` (prebuild) so it can never go stale
  * relative to the corpus/notes/events data it's generated from. Fails the
@@ -18,7 +24,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { STATIC_ROUTES, LEGACY_REDIRECTS, getAllCanonicalRoutes } from "./route-manifest.js";
+import { STATIC_ROUTES, LEGACY_REDIRECTS, getRedirectsManagedRoutes } from "./route-manifest.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const OUT_PATH = path.join(ROOT, "public", "_redirects");
@@ -94,10 +100,15 @@ function validateWrittenFile(contents, canonicalRoutes) {
   }
 }
 
-const canonicalRoutes = await getAllCanonicalRoutes();
+const canonicalRoutes = await getRedirectsManagedRoutes();
+const expectedStaticCount = STATIC_ROUTES.filter((route) => !route.startsWith("/the-record/")).length;
 
-if (canonicalRoutes.length < STATIC_ROUTES.length) {
-  fail("canonical route manifest resolved fewer routes than the static list alone — dynamic import likely failed");
+if (canonicalRoutes.length < expectedStaticCount) {
+  fail("redirects-managed route set resolved fewer routes than the static list alone — dynamic import likely failed");
+}
+
+if (canonicalRoutes.some((route) => route.startsWith("/the-record/"))) {
+  fail("a /the-record/* route leaked into the _redirects-managed set — that subtree must stay Function-owned");
 }
 
 const contents = buildRedirects(canonicalRoutes);

@@ -16,6 +16,16 @@
  * which the app itself links and canonicalizes without a trailing slash
  * and in the event's own id casing (see src/pages/Events.jsx) — the
  * manifest mirrors that rather than imposing a different convention.
+ *
+ * /the-record/* is NOT written into public/_redirects even though its
+ * routes are part of this manifest. functions/the-record/[[recordId]].js
+ * is a rest-segment Function match that claims every request under that
+ * prefix — Cloudflare Pages gives Functions routing precedence, and a
+ * _redirects rule for a path a Function also matches is not reliably
+ * consulted. That subtree owns its own routing (SPA-shell serving, slash
+ * canonicalization, legacy-id redirect, 404) internally instead. See
+ * getRedirectsManagedRoutes() below for the subset _redirects actually
+ * governs.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -46,19 +56,14 @@ export const STATIC_ROUTES = [
   "/tokens/",
 ];
 
-// Legacy id-migration redirects (Release 006 — FR-MF-* -> FR-AM-*,
-// prog-mf -> prog-am). Kept as explicit rules rather than enumerated ids so
-// future FR-MF-* references (if any surface) still resolve.
-// Exact (non-placeholder) rules are listed first — Cloudflare's own
-// _redirects linter flags placeholder rules placed ahead of exact ones as
-// slower to match.
+// Legacy id-migration redirects (Release 006 — prog-mf -> prog-am). Each
+// target is the final canonical (trailing-slash) form directly — one hop,
+// not a redirect into another redirect. FR-MF-* -> FR-AM-* is handled
+// inside functions/the-record/[[recordId]].js instead (see the comment
+// above STATIC_ROUTES); it is not a _redirects rule.
 export const LEGACY_REDIRECTS = [
-  { from: "/programmes/prog-mf", to: "/programmes/prog-am" },
+  { from: "/programmes/prog-mf", to: "/programmes/prog-am/" },
   { from: "/programmes/prog-mf/", to: "/programmes/prog-am/" },
-  { from: "/the-record/fr-mf-:id", to: "/the-record/fr-am-:id" },
-  { from: "/the-record/fr-mf-:id/", to: "/the-record/fr-am-:id/" },
-  { from: "/the-record/FR-MF-:id", to: "/the-record/fr-am-:id" },
-  { from: "/the-record/FR-MF-:id/", to: "/the-record/fr-am-:id/" },
 ];
 
 function walkJsonFiles(dir) {
@@ -119,4 +124,14 @@ export async function getDynamicRoutes() {
 export async function getAllCanonicalRoutes() {
   const dynamic = await getDynamicRoutes();
   return [...STATIC_ROUTES, ...dynamic];
+}
+
+/**
+ * The subset of the manifest public/_redirects should actually generate
+ * rules for — everything except /the-record/*, which the Pages Function
+ * owns and self-serves (see comment above STATIC_ROUTES).
+ */
+export async function getRedirectsManagedRoutes() {
+  const all = await getAllCanonicalRoutes();
+  return all.filter((route) => !route.startsWith("/the-record/"));
 }

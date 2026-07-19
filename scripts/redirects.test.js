@@ -11,11 +11,17 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { STATIC_ROUTES, LEGACY_REDIRECTS, getAllCanonicalRoutes } from "./route-manifest.js";
+import {
+  STATIC_ROUTES,
+  LEGACY_REDIRECTS,
+  getAllCanonicalRoutes,
+  getRedirectsManagedRoutes,
+} from "./route-manifest.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const REDIRECTS_PATH = path.join(ROOT, "public", "_redirects");
 const NOT_FOUND_PATH = path.join(ROOT, "public", "404.html");
+const RECORD_FUNCTION_PATH = path.join(ROOT, "functions", "the-record", "[[recordId]].js");
 
 test("generator runs clean and regenerates public/_redirects", () => {
   execFileSync("node", ["scripts/generate-redirects.js"], { cwd: ROOT, stdio: "pipe" });
@@ -26,15 +32,29 @@ test("public/404.html exists (disables Cloudflare Pages automatic SPA fallback)"
   assert.ok(fs.existsSync(NOT_FOUND_PATH), "public/404.html is missing");
 });
 
+test("functions/the-record/[[recordId]].js exists (owns /the-record/* routing)", () => {
+  assert.ok(fs.existsSync(RECORD_FUNCTION_PATH), "the record-routing Function is missing");
+});
+
 test("no blanket wildcard rewrite remains", async () => {
   const contents = fs.readFileSync(REDIRECTS_PATH, "utf8");
   assert.doesNotMatch(contents, /^\/\*\s/m, "found a `/*` catch-all rule — this is exactly the soft-404 producer being removed");
 });
 
-test("every canonical route (except /) has an exact 200 rewrite", async () => {
+test("/the-record/* never appears in public/_redirects — that subtree is Function-owned", () => {
   const contents = fs.readFileSync(REDIRECTS_PATH, "utf8");
-  const routes = await getAllCanonicalRoutes();
-  assert.ok(routes.length > STATIC_ROUTES.length, "no dynamic routes resolved — corpus/notes/events import likely broken");
+  assert.doesNotMatch(
+    contents,
+    /\/the-record\//,
+    "a /the-record/* rule leaked into _redirects — Cloudflare gives the [[recordId]] Function routing precedence over _redirects for this prefix, so such a rule would be silently unreliable (this was the fr-mf → fr-am → 404 chain bug)"
+  );
+});
+
+test("every _redirects-managed route (except /) has an exact 200 rewrite", async () => {
+  const contents = fs.readFileSync(REDIRECTS_PATH, "utf8");
+  const routes = await getRedirectsManagedRoutes();
+  const expectedStaticCount = STATIC_ROUTES.filter((r) => !r.startsWith("/the-record/")).length;
+  assert.ok(routes.length > expectedStaticCount, "no dynamic routes resolved — corpus/notes/events import likely broken");
 
   for (const route of routes) {
     if (route === "/") continue;
@@ -45,9 +65,9 @@ test("every canonical route (except /) has an exact 200 rewrite", async () => {
   }
 });
 
-test("every canonical route's non-canonical slash form redirects to it", async () => {
+test("every _redirects-managed route's non-canonical slash form redirects to it", async () => {
   const contents = fs.readFileSync(REDIRECTS_PATH, "utf8");
-  const routes = await getAllCanonicalRoutes();
+  const routes = await getRedirectsManagedRoutes();
 
   for (const route of routes) {
     if (route === "/") continue;
@@ -59,10 +79,17 @@ test("every canonical route's non-canonical slash form redirects to it", async (
   }
 });
 
-test("legacy FR-MF-*/prog-mf redirects are present", () => {
+test("legacy redirects are present and resolve in one hop", () => {
   const contents = fs.readFileSync(REDIRECTS_PATH, "utf8");
   for (const r of LEGACY_REDIRECTS) {
     assert.ok(contents.includes(`${r.from} ${r.to} 301`), `missing legacy redirect ${r.from} -> ${r.to}`);
+    // The target must already be the final canonical (trailing-slash) form —
+    // never a path that itself needs a second redirect to resolve. This is
+    // exactly the fr-mf-0001 -> fr-am-0001 -> fr-am-0001/ chain-hop bug.
+    assert.ok(
+      r.to.endsWith("/") || r.to === "/",
+      `legacy redirect target "${r.to}" is not the canonical trailing-slash form — this would chain through a second redirect`
+    );
   }
 });
 
@@ -75,7 +102,7 @@ test("manifest has no duplicate routes", async () => {
   }
 });
 
-test("known static routes are present in the manifest", async () => {
+test("known static routes are present in the full manifest", async () => {
   const routes = await getAllCanonicalRoutes();
   for (const expected of [
     "/", "/the-record/", "/programmes/", "/notes/", "/events/",
