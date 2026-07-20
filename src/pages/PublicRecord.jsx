@@ -222,11 +222,26 @@ export default function PublicRecord() {
         </section>
 
         <section className="pr-snapshot" aria-label="Public Record statistics">
-          <div className="pr-shell pr-snapshot-grid">
-            <div><strong>{summary.totalRecords}</strong><span>Frontier Records</span></div>
-            <div><strong>{summary.programmeCount}</strong><span>Programmes</span></div>
-            <div><strong>{summary.totalAssessments}</strong><span>Assessments</span></div>
-            <div><strong>{summary.lastMutationDate}</strong><span>Last updated</span></div>
+          <div className="pr-shell pr-snapshot-inner">
+            <span className="pr-snapshot-stat">
+              <span className="pr-snapshot-value">{summary.totalRecords}</span>
+              <span className="pr-snapshot-label">Frontier Records</span>
+            </span>
+            <span className="pr-snapshot-divider" aria-hidden="true" />
+            <span className="pr-snapshot-stat">
+              <span className="pr-snapshot-value">{summary.programmeCount}</span>
+              <span className="pr-snapshot-label">Programmes</span>
+            </span>
+            <span className="pr-snapshot-divider" aria-hidden="true" />
+            <span className="pr-snapshot-stat">
+              <span className="pr-snapshot-value">{summary.totalAssessments}</span>
+              <span className="pr-snapshot-label">Assessments</span>
+            </span>
+            <span className="pr-snapshot-divider" aria-hidden="true" />
+            <span className="pr-snapshot-stat">
+              <span className="pr-snapshot-value">{summary.lastMutationDate}</span>
+              <span className="pr-snapshot-label">Last updated</span>
+            </span>
           </div>
         </section>
 

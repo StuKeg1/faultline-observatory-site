@@ -56,12 +56,16 @@
 .pr-record-entry strong { display: -webkit-box; min-width: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .pr-record-entry-meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.75rem; }
 .pr-record-entry-meta time { font-family: var(--mono); font-size: 9px; color: var(--ink-light); white-space: nowrap; }
-.pr-snapshot { padding: 1.4rem 2rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--paper-card); }
-.pr-snapshot-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.pr-snapshot-grid div { display: flex; flex-direction: column; gap: 0.25rem; padding: 0.5rem 1.5rem; border-left: 1px solid var(--rule); }
-.pr-snapshot-grid div:first-child { border-left: 0; padding-left: 0; }
-.pr-snapshot-grid strong { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
-.pr-snapshot-grid span { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
+/* Matches Home.css's .home-snapshot treatment (confirmation, not
+   introduction): a compact inline mono row, not a wide serif-numeral
+   grid — the two pages' snapshot bands should read as the same element. */
+.pr-snapshot { padding: 0 2rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--paper-card); }
+.pr-snapshot-inner { display: flex; align-items: center; flex-wrap: wrap; gap: 0; padding: 1.5rem 0; }
+.pr-snapshot-stat { display: flex; align-items: baseline; gap: 0.5rem; padding: 0 1.5rem; }
+.pr-snapshot-stat:first-child { padding-left: 0; }
+.pr-snapshot-divider { width: 1px; height: 0.875rem; flex-shrink: 0; align-self: center; background: var(--rule); }
+.pr-snapshot-value { font-family: var(--mono); font-size: 0.9375rem; font-weight: 500; line-height: 1; color: var(--ink); }
+.pr-snapshot-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
 .pr-developments { border-top: 1px solid var(--rule); }
 .pr-development { display: grid; grid-template-columns: 90px 100px minmax(0, 1fr) auto; gap: 1rem; align-items: start; padding: 1rem 0; border-bottom: 1px solid var(--rule-light); color: var(--ink); text-decoration: none; }
 .pr-development:hover .pr-development-id { color: var(--accent); }
@@ -86,7 +90,6 @@
      unconstrained width blows labels up well past their 3-column size. */
   .pr-trajectory-graphic { max-width: 460px; }
   .pr-method-step { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; }
-  .pr-snapshot-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem 0; }
   .pr-section-head--split { align-items: flex-start; flex-direction: column; }
   .pr-development { grid-template-columns: 80px minmax(0, 1fr); }
   .pr-development-copy { grid-column: 1 / -1; }
@@ -95,6 +98,4 @@
 @media (max-width: 520px) {
   .pr-hero, .pr-section { padding-left: 1.25rem; padding-right: 1.25rem; }
   .pr-snapshot { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .pr-snapshot-grid { grid-template-columns: 1fr; }
-  .pr-snapshot-grid div { border-left: 0; border-top: 1px solid var(--rule-light); padding-left: 0; }
 }
