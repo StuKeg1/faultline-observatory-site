@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./SiteNav.css";
 
 // Mark B SVG — ported from prototype nav
@@ -25,12 +25,38 @@ const NAV_ITEMS = [
   { to: "/", label: "Observatory", end: true },
   { to: "/public-record/", label: "Explore the Public Record" },
   { to: "/reading-room/", label: "Reading Room" },
-  { to: "/methodology", label: "Methodology" },
-  { to: "/about", label: "About" },
+  { to: "/methodology/", label: "Methodology" },
+  { to: "/about/", label: "About" },
 ];
+
+// Routes the corpus lives under besides /public-record/ itself — visiting
+// these should still light up "Explore the Public Record" even though
+// they're not nested under its own path.
+const PUBLIC_RECORD_ROUTE_BASES = ["/public-record", "/the-record", "/evidence-trajectories"];
+
+function isUnderRouteBase(pathname, base) {
+  return pathname === base || pathname.startsWith(`${base}/`);
+}
+
+function NavItem({ to, label, end, isPublicRecordActive, ...linkProps }) {
+  if (to === "/public-record/") {
+    return (
+      <Link to={to} className={isPublicRecordActive ? "active" : ""} {...linkProps}>
+        {label}
+      </Link>
+    );
+  }
+  return (
+    <NavLink to={to} end={end} className={({ isActive }) => isActive ? "active" : ""} {...linkProps}>
+      {label}
+    </NavLink>
+  );
+}
 
 export default function SiteNav() {
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isPublicRecordActive = PUBLIC_RECORD_ROUTE_BASES.some((base) => isUnderRouteBase(pathname, base));
 
   // Prevent the page from scrolling behind the open mobile menu.
   useEffect(() => {
@@ -45,10 +71,8 @@ export default function SiteNav() {
       </Link>
 
       <div className="nav-links">
-        {NAV_ITEMS.map(({ to, label, end }) => (
-          <NavLink key={to} to={to} end={end} className={({ isActive }) => isActive ? "active" : ""}>
-            {label}
-          </NavLink>
+        {NAV_ITEMS.map((item) => (
+          <NavItem key={item.to} {...item} isPublicRecordActive={isPublicRecordActive} />
         ))}
       </div>
 
@@ -71,17 +95,14 @@ export default function SiteNav() {
         aria-hidden={!open}
       >
         <div className="nav-mobile-links">
-          {NAV_ITEMS.map(({ to, label, end }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={end}
-              className={({ isActive }) => isActive ? "active" : ""}
+          {NAV_ITEMS.map((item) => (
+            <NavItem
+              key={item.to}
+              {...item}
+              isPublicRecordActive={isPublicRecordActive}
               tabIndex={open ? 0 : -1}
               onClick={() => setOpen(false)}
-            >
-              {label}
-            </NavLink>
+            />
           ))}
         </div>
       </div>

@@ -4,17 +4,30 @@
 .pr-hero .pr-shell { max-width: var(--width-content); }
 .pr-hero h1 { font-family: var(--serif); font-size: var(--page-title-size); font-weight: var(--page-title-weight); letter-spacing: var(--page-title-tracking); line-height: 1.08; margin: 0 0 0.8rem; }
 .pr-hero p { max-width: var(--width-content); font-family: var(--serif); font-size: 1rem; font-weight: 300; line-height: 1.65; color: var(--ink-mid); margin: 0; }
-.pr-eyebrow, .pr-lens-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-light); }
-.pr-eyebrow { margin-bottom: 0.9rem; }
+.pr-eyebrow, .pr-lens-eyebrow { font-family: var(--mono); letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-light); }
+.pr-eyebrow { font-size: 11px; margin-bottom: 0.9rem; }
+.pr-lens-eyebrow { font-size: 10px; }
 .pr-section { padding: 4rem 2rem; }
 .pr-section-head { margin-bottom: 2rem; }
 .pr-section-head h2 { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.65rem); font-weight: 400; letter-spacing: -0.02em; margin: 0; }
 .pr-section-head--split { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
 .pr-lenses { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--rule); background: var(--rule); gap: 1px; }
-.pr-lens { display: flex; flex-direction: column; min-width: 0; min-height: 590px; padding: 2rem; background: var(--paper-card); color: var(--ink); }
-.pr-lens h3 { min-height: 3.6em; font-family: var(--serif); font-size: 1.55rem; font-weight: 400; line-height: 1.2; margin: 2.25rem 0 1rem; }
-.pr-lens > p { min-height: 4.6rem; font-family: var(--serif); font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: var(--ink-mid); margin: 0 0 1.5rem; }
-.pr-link { font-family: var(--mono); font-size: 10px; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.28em; transition: color 0.15s, text-decoration-color 0.15s; }
+.pr-lens { display: flex; flex-direction: column; min-width: 0; padding: 2rem; background: var(--paper-card); color: var(--ink); }
+.pr-lens h3 { font-family: var(--serif); font-size: 1.55rem; font-weight: 400; line-height: 1.2; margin: 2.25rem 0 1rem; }
+.pr-lens > p { font-family: var(--serif); font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: var(--ink-mid); margin: 0 0 1.5rem; }
+/* Desktop 3-column row alignment (eyebrow/h3/p/preview/cta) without fixed
+   card heights: subgrid shares row-track sizing across the three cards.
+   Falls back to plain flex-column + margin-top:auto below 801px, where
+   cards stack and cross-card alignment is moot, and in browsers without
+   subgrid support. */
+@media (min-width: 801px) {
+  @supports (grid-template-rows: subgrid) {
+    .pr-lenses { grid-template-rows: auto auto auto 1fr auto; }
+    .pr-lens { display: grid; grid-template-rows: subgrid; grid-row: span 5; }
+    .pr-lens-cta { align-self: start; margin-top: 0; }
+  }
+}
+.pr-link { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.04em; color: var(--accent); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.28em; transition: color 0.15s, text-decoration-color 0.15s; }
 .pr-link:hover { color: var(--accent); text-decoration-color: currentColor; }
 .pr-link:focus-visible, .pr-programme-entry:focus-visible, .pr-record-entry:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .pr-lens-cta { display: inline-flex; align-self: flex-start; margin-top: auto; padding-top: 1.5rem; }
@@ -33,7 +46,9 @@
 .pr-trajectory-graphic line { stroke: var(--rule); stroke-width: 1.25; }
 .pr-trajectory-graphic polyline { fill: none; stroke: var(--ink-mid); stroke-width: 2; }
 .pr-trajectory-graphic circle { fill: var(--paper-card); stroke: var(--accent); stroke-width: 2.5; }
-.pr-trajectory-dates { display: flex; justify-content: space-between; padding-left: 4.25rem; font-family: var(--mono); font-size: 8px; color: var(--ink-light); }
+.pr-trajectory-gap line { stroke: var(--ink-light); stroke-width: 1; }
+.pr-trajectory-gap text { fill: var(--ink-light); }
+.pr-trajectory-dates { display: flex; justify-content: space-between; padding-left: 4.25rem; font-family: var(--mono); font-size: 10px; color: var(--ink-light); }
 .pr-trajectory-text { margin-top: 0.65rem; font-family: var(--mono); font-size: 9px; line-height: 1.55; color: var(--ink-mid); overflow-wrap: anywhere; }
 .pr-trajectory-text span { display: block; margin-bottom: 0.15rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-light); }
 .pr-preview-empty { padding: 1rem 0; font-family: var(--serif); font-size: 0.8rem; color: var(--ink-mid); }
@@ -53,6 +68,8 @@
 .pr-development-date, .pr-development-id { font-family: var(--mono); font-size: 10px; }
 .pr-development-id { color: var(--accent); }
 .pr-development-copy { min-width: 0; padding-right: 1rem; font-family: var(--serif); font-size: 0.86rem; line-height: 1.5; color: var(--ink-mid); overflow-wrap: anywhere; }
+.pr-development-view { display: block; margin-top: 0.4rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-light); transition: color 0.15s; }
+.pr-development:hover .pr-development-view { color: var(--accent); }
 .pr-section--method { background: var(--paper-card); border-top: 1px solid var(--rule); }
 .pr-method-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
 .pr-method-step { padding: 1.5rem; border-left: 1px solid var(--rule); }
@@ -63,10 +80,11 @@
 .pr-programme-note { margin: 2rem 0 0; max-width: 720px; font-style: italic; }
 @media (max-width: 800px) {
   .pr-lenses, .pr-method-grid { grid-template-columns: 1fr; }
-  .pr-lens { min-height: 0; }
-  .pr-lens h3 { min-height: 0; }
-  .pr-lens > p { min-height: 0; }
   .pr-lens-cta { margin-top: 0.5rem; }
+  /* Single-column cards can grow much wider than the SVG's designed size;
+     the trajectory graphic's text is sized in viewBox user units, so an
+     unconstrained width blows labels up well past their 3-column size. */
+  .pr-trajectory-graphic { max-width: 460px; }
   .pr-method-step { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; }
   .pr-snapshot-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem 0; }
   .pr-section-head--split { align-items: flex-start; flex-direction: column; }

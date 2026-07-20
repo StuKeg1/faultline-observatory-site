@@ -8,6 +8,7 @@ import {
   getCorpusSummary,
   getCurrentAssessment,
   getLatestDevelopments,
+  getMutationSummaryLabel,
   getRecordUrl,
   getVerificationStageLabel,
 } from "../data/derive.js";
@@ -66,20 +67,48 @@ function ProgrammePreview({ programmes }) {
   );
 }
 
+const TRAJECTORY_PLOT_LEFT = 92;
+const TRAJECTORY_PLOT_WIDTH = 250;
+const TRAJECTORY_GAP_LABEL_Y = 8;
+
+// Whole-calendar-month difference between two ISO date strings — used for
+// the "NN-month assessment gap" label, not a precise day-based duration.
+function monthsBetween(earlierDate, laterDate) {
+  const earlier = new Date(earlierDate);
+  const later = new Date(laterDate);
+  return (later.getFullYear() - earlier.getFullYear()) * 12 + (later.getMonth() - earlier.getMonth());
+}
+
 function TrajectoryPreview({ selection }) {
   if (!selection) {
     return <p className="pr-preview-empty">No eligible trajectory is currently available.</p>;
   }
 
   const { record, events } = selection;
-  const point = (event, index) => ({
-    x: 92 + (index / (events.length - 1)) * 250,
+  const first = events[0];
+  const last = events.at(-1);
+  const firstTime = Date.parse(first.date);
+  const lastTime = Date.parse(last.date);
+  const dateSpan = lastTime - firstTime;
+
+  const point = (event) => ({
+    x: dateSpan > 0
+      ? TRAJECTORY_PLOT_LEFT + ((Date.parse(event.date) - firstTime) / dateSpan) * TRAJECTORY_PLOT_WIDTH
+      : TRAJECTORY_PLOT_LEFT,
     y: 16 + (VS_STAGES.length - 1 - VS_STAGES.indexOf(event.verificationStage)) * 25,
   });
   const points = events.map(point);
-  const sequence = events.map(({ verificationStage }) =>
-    `${verificationStage} ${getVerificationStageLabel(verificationStage)}`
+  const sequence = events.map(({ date, verificationStage }) =>
+    `${date}: ${verificationStage} ${getVerificationStageLabel(verificationStage)}`
   );
+
+  let widestGap = null;
+  for (let i = 1; i < events.length; i++) {
+    const months = monthsBetween(events[i - 1].date, events[i].date);
+    if (months > 0 && (!widestGap || months > widestGap.months)) {
+      widestGap = { months, x1: points[i - 1].x, x2: points[i].x };
+    }
+  }
 
   return (
     <div className="pr-preview pr-trajectory-preview">
@@ -109,10 +138,20 @@ function TrajectoryPreview({ selection }) {
         {points.map(({ x, y }, index) => (
           <circle key={events[index].date} cx={x} cy={y} r="4" aria-hidden="true" />
         ))}
+        {widestGap && (
+          <g className="pr-trajectory-gap" aria-hidden="true">
+            <line x1={widestGap.x1} x2={widestGap.x2} y1={TRAJECTORY_GAP_LABEL_Y} y2={TRAJECTORY_GAP_LABEL_Y} />
+            <line x1={widestGap.x1} x2={widestGap.x1} y1={TRAJECTORY_GAP_LABEL_Y - 3} y2={TRAJECTORY_GAP_LABEL_Y + 3} />
+            <line x1={widestGap.x2} x2={widestGap.x2} y1={TRAJECTORY_GAP_LABEL_Y - 3} y2={TRAJECTORY_GAP_LABEL_Y + 3} />
+            <text x={(widestGap.x1 + widestGap.x2) / 2} y={TRAJECTORY_GAP_LABEL_Y - 2} textAnchor="middle">
+              {widestGap.months}-month assessment gap
+            </text>
+          </g>
+        )}
       </svg>
       <div className="pr-trajectory-dates" aria-hidden="true">
-        <time dateTime={events[0].date}>{events[0].date}</time>
-        <time dateTime={events.at(-1).date}>{events.at(-1).date}</time>
+        <time dateTime={first.date}>{first.date}</time>
+        <time dateTime={last.date}>{last.date}</time>
       </div>
       <p className="pr-trajectory-text">
         <span>Chronological stages</span>
@@ -201,11 +240,14 @@ export default function PublicRecord() {
               <Link to="/the-record/?sort=updated" className="pr-link">View all by latest update →</Link>
             </div>
             <div className="pr-developments">
-              {latest.map(({ record, mutation }) => (
+              {latest.map(({ record, mutation, mutationType }) => (
                 <Link to={getRecordUrl(record)} className="pr-development" key={`${record.id}-${mutation.id}`}>
                   <span className="pr-development-date">{mutation.date}</span>
                   <span className="pr-development-id">{record.id}</span>
-                  <span className="pr-development-copy">{mutation.note}</span>
+                  <span className="pr-development-copy">
+                    {getMutationSummaryLabel(mutationType, mutation)}
+                    <span className="pr-development-view">View record →</span>
+                  </span>
                   <StateBadge pressureState={getCurrentAssessment(record).pressureState} />
                 </Link>
               ))}

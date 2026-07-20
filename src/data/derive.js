@@ -444,3 +444,44 @@ export function getVerificationStageLabel(vsCode) {
   };
   return map[vsCode] ?? vsCode;
 }
+
+// A real assessment/instance/open-question ID (e.g. "AS-002", "IN-006"),
+// as distinct from the ALL-CAPS placeholder mutation.from/to carries for
+// creation-batch or non-ID-bearing mutation types (e.g. "ASSESSMENT-ISSUED").
+const MUTATION_ID_PATTERN = /^[A-Z]{1,4}-\d{2,4}$/;
+
+function mutationId(value) {
+  return typeof value === "string" && MUTATION_ID_PATTERN.test(value) ? value : null;
+}
+
+/**
+ * Returns a short, human-readable one-line label for a mutationLog entry —
+ * for feed contexts (e.g. "Latest Developments") that must not render
+ * mutation.note, which carries long internal governance prose. Built from
+ * mutationType (see mutationClassifier.js) and the mutation's field/from/to
+ * only; never reads or summarises .note.
+ */
+export function getMutationSummaryLabel(mutationType, mutation) {
+  const from = mutationId(mutation?.from);
+  const to = mutationId(mutation?.to);
+
+  switch (mutationType) {
+    case "record_created":
+      return "Frontier Record opened";
+    case "instance_added":
+      return to ? `Instance logged — ${to}` : "Instance logged";
+    case "assessment_first_issued":
+      return to ? `First assessment issued — ${to}` : "First assessment issued";
+    case "assessment_pressure_state_changed":
+    case "assessment_verification_stage_changed":
+      return from && to ? `Assessment issued — ${from} → ${to}` : "Assessment issued";
+    case "open_question_added":
+      return to ? `Open question raised — ${to}` : "Open question raised";
+    case "claim_scope_narrowed":
+      return "Claim scope narrowed";
+    case "editorial_correction":
+      return "Reference corrected";
+    default:
+      return "Record updated";
+  }
+}
