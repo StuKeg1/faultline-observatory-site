@@ -9,7 +9,16 @@ import {
   getCurrentAssessment,
   getLatestDevelopments,
   getRecordUrl,
+  getVerificationStageLabel,
 } from "../data/derive.js";
+import { getRecordUpdatedDate } from "../data/recordDirectory.js";
+import { VS_STAGES } from "../data/trajectoryVisuals.js";
+import {
+  getProgrammeUrl,
+  selectProgrammePreview,
+  selectRecordsPreview,
+  selectTrajectoryPreview,
+} from "./publicRecordPreview.js";
 import "./PublicRecord.css";
 
 const LENSES = [
@@ -43,9 +52,95 @@ const METHOD_STEPS = [
   ["Memory", "The record and its history remain available after the claim resolves."],
 ];
 
+function ProgrammePreview({ programmes }) {
+  return (
+    <div className="pr-preview pr-programme-preview" aria-label="Programme preview">
+      {programmes.map((programme) => (
+        <Link className="pr-programme-entry" to={getProgrammeUrl(programme)} key={programme.id}>
+          <span>{programme.id}</span>
+          <strong>{programme.name}</strong>
+          <small>{programme.shortDescription}</small>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+function TrajectoryPreview({ selection }) {
+  if (!selection) {
+    return <p className="pr-preview-empty">No eligible trajectory is currently available.</p>;
+  }
+
+  const { record, events } = selection;
+  const point = (event, index) => ({
+    x: 92 + (index / (events.length - 1)) * 250,
+    y: 16 + (VS_STAGES.length - 1 - VS_STAGES.indexOf(event.verificationStage)) * 25,
+  });
+  const points = events.map(point);
+  const sequence = events.map(({ verificationStage }) =>
+    `${verificationStage} ${getVerificationStageLabel(verificationStage)}`
+  );
+
+  return (
+    <div className="pr-preview pr-trajectory-preview">
+      <div className="pr-trajectory-record">
+        <span>{record.id}</span>
+        <strong>{record.claim.shortLabel}</strong>
+      </div>
+      <svg
+        className="pr-trajectory-graphic"
+        viewBox="0 0 360 124"
+        role="img"
+        aria-label={`${record.id} trajectory: ${sequence.join(" to ")}`}
+      >
+        {[...VS_STAGES].reverse().map((stage, index) => {
+          const y = 16 + index * 25;
+          return (
+            <g key={stage}>
+              <text x="76" y={y + 3} textAnchor="end">{stage}</text>
+              <line x1="84" x2="350" y1={y} y2={y} aria-hidden="true" />
+            </g>
+          );
+        })}
+        <polyline
+          points={points.map(({ x, y }) => `${x},${y}`).join(" ")}
+          aria-hidden="true"
+        />
+        {points.map(({ x, y }, index) => (
+          <circle key={events[index].date} cx={x} cy={y} r="4" aria-hidden="true" />
+        ))}
+      </svg>
+      <p className="pr-trajectory-text">
+        <span>Chronological stages</span>
+        {sequence.join(" → ")}
+      </p>
+    </div>
+  );
+}
+
+function RecordsPreview({ records }) {
+  return (
+    <div className="pr-preview pr-records-preview" aria-label="Recently updated records preview">
+      {records.map((record) => (
+        <Link className="pr-record-entry" to={getRecordUrl(record)} key={record.id}>
+          <span className="pr-record-entry-id">{record.id}</span>
+          <strong>{record.claim.shortLabel}</strong>
+          <span className="pr-record-entry-meta">
+            <StateBadge pressureState={getCurrentAssessment(record).pressureState} />
+            <time dateTime={getRecordUpdatedDate(record)}>{getRecordUpdatedDate(record)}</time>
+          </span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function PublicRecord() {
   const summary = useMemo(() => getCorpusSummary(ALL_RECORDS), []);
   const latest = useMemo(() => getLatestDevelopments(ALL_RECORDS, 4), []);
+  const programmePreview = useMemo(() => selectProgrammePreview(PROGRAMMES), []);
+  const trajectoryPreview = useMemo(() => selectTrajectoryPreview(ALL_RECORDS), []);
+  const recordsPreview = useMemo(() => selectRecordsPreview(ALL_RECORDS), []);
 
   return (
     <>
@@ -69,13 +164,16 @@ export default function PublicRecord() {
             <h2 id="pr-lenses-title">One record, three institutional lenses</h2>
           </div>
           <div className="pr-lenses">
-            {LENSES.map((lens) => (
-              <Link className="pr-lens" to={lens.to} key={lens.eyebrow}>
+            {LENSES.map((lens, index) => (
+              <article className="pr-lens" key={lens.eyebrow}>
                 <span className="pr-lens-eyebrow">{lens.eyebrow}</span>
                 <h3>{lens.title}</h3>
                 <p>{lens.description}</p>
-                <span className="pr-link">{lens.action} →</span>
-              </Link>
+                {index === 0 && <ProgrammePreview programmes={programmePreview} />}
+                {index === 1 && <TrajectoryPreview selection={trajectoryPreview} />}
+                {index === 2 && <RecordsPreview records={recordsPreview} />}
+                <Link className="pr-link pr-lens-cta" to={lens.to}>{lens.action} →</Link>
+              </article>
             ))}
           </div>
         </section>
