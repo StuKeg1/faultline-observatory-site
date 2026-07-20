@@ -23,10 +23,8 @@ function MarkB() {
 
 const NAV_ITEMS = [
   { to: "/", label: "Observatory", end: true },
-  { to: "/the-record", label: "The Record" },
-  { to: "/evidence-trajectories/", label: "Trajectories" },
-  { to: "/programmes", label: "Programmes" },
-  { to: "/notes", label: "Notes" },
+  { to: "/public-record/", label: "Explore the Public Record" },
+  { to: "/reading-room/", label: "Reading Room" },
   { to: "/methodology", label: "Methodology" },
   { to: "/about", label: "About" },
 ];
