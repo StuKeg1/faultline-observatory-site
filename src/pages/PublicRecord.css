@@ -95,6 +95,27 @@
   .pr-development-copy { grid-column: 1 / -1; }
   .pr-development .state-badge { justify-self: start; }
 }
+@media (max-width: 700px) {
+  /* Matches Home.css's .home-snapshot mobile treatment: below tablet
+     width, the compact inline row reads too small — switch to one large
+     stacked stat per row instead. */
+  .pr-snapshot-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .pr-snapshot-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    width: 100%;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--rule-light);
+  }
+  .pr-snapshot-stat:first-child { border-top: none; padding-top: 0.4rem; }
+  .pr-snapshot-divider { display: none; }
+  .pr-snapshot-value { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
+}
 @media (max-width: 520px) {
   .pr-hero, .pr-section { padding-left: 1.25rem; padding-right: 1.25rem; }
   .pr-snapshot { padding-left: 1.25rem; padding-right: 1.25rem; }
