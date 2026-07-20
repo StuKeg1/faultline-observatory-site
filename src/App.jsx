@@ -59,6 +59,8 @@ const Welcome = lazyRoute(() => import("./pages/Welcome.jsx"));
 const Methodology = lazyRoute(() => import("./pages/Methodology.jsx"));
 const InstitutionalChangelog = lazyRoute(() => import("./pages/InstitutionalChangelog.jsx"));
 const EvidenceTrajectories = lazyRoute(() => import("./pages/EvidenceTrajectories.jsx"));
+const PublicRecord = lazyRoute(() => import("./pages/PublicRecord.jsx"));
+const ReadingRoom = lazyRoute(() => import("./pages/ReadingRoom.jsx"));
 
 function NotFound() {
  return (
@@ -96,6 +98,12 @@ export default function App() {
  <Suspense fallback={null}>
  <Routes>
  <Route path="/" element={<Home />} />
+ <Route path="/public-record" element={
+ <ErrorBoundary context="public record"><PublicRecord /></ErrorBoundary>
+ } />
+ <Route path="/reading-room" element={
+ <ErrorBoundary context="reading room"><ReadingRoom /></ErrorBoundary>
+ } />
  <Route path="/the-record" element={
  <ErrorBoundary context="archive"><TheRecord /></ErrorBoundary>
  } />

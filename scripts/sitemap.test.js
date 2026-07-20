@@ -59,4 +59,6 @@ test("previously-missing routes (the reason this generator exists) are present",
   const routes = await getSitemapRoutes();
   assert.ok(routes.includes("/events/"), "/events/ missing — this was the original hand-maintained-sitemap gap");
   assert.ok(routes.includes("/institutional-changelog/"), "/institutional-changelog/ missing — same gap");
+  assert.ok(routes.includes("/public-record/"), "/public-record/ missing — ADR-002 hub must be indexable");
+  assert.ok(routes.includes("/reading-room/"), "/reading-room/ missing — ADR-002 canonical route must be indexable");
 });

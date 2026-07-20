@@ -14,7 +14,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "node --test src/pages/evidenceTrajectoryLayout.test.js scripts/redirects.test.js scripts/sitemap.test.js",
+    "test": "node --test src/data/recordDirectory.test.js src/pages/evidenceTrajectoryLayout.test.js scripts/redirects.test.js scripts/sitemap.test.js",
     "smoke:live": "node scripts/smoke-live.js"
   },
   "engines": {

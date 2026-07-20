@@ -38,6 +38,8 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, ""
 // (trailing-slash) form only — non-slash forms are generated as redirects.
 export const STATIC_ROUTES = [
   "/",
+  "/public-record/",
+  "/reading-room/",
   "/the-record/",
   "/evidence-trajectories/",
   "/events/",

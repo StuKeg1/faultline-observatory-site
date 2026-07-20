@@ -105,7 +105,7 @@ test("manifest has no duplicate routes", async () => {
 test("known static routes are present in the full manifest", async () => {
   const routes = await getAllCanonicalRoutes();
   for (const expected of [
-    "/", "/the-record/", "/programmes/", "/notes/", "/events/",
+    "/", "/public-record/", "/reading-room/", "/the-record/", "/programmes/", "/notes/", "/events/",
     "/methodology/", "/welcome/", "/about/", "/about/origins/",
     "/institutional-health/", "/institutional-changelog/", "/evidence-trajectories/",
   ]) {

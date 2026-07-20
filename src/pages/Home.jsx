@@ -170,8 +170,8 @@ export default function Home() {
                 <p className="hero-copy-bold">Faultline Observatory preserves the public history of those claims — from announcement to resolution, with the evidence visible every step of the way.</p>
                 <p className="hero-trajectory-bridge">Judgement changes over time. Follow how claims move through the Observatory&apos;s assessment history in <Link to="/evidence-trajectories/">Evidence Trajectories</Link>.</p>
               </div>
-              <Link to="/the-record" className="hero-cta-primary">
-                Explore a Frontier Record →
+              <Link to="/public-record/" className="hero-cta-primary">
+                Explore the Public Record →
               </Link>
               <p className="hero-trust-line">Independent. Non-partisan. Evidence-based.</p>
               <Link to="/welcome" className="hero-orientation-panel">
@@ -305,8 +305,8 @@ export default function Home() {
                 })}
               </div>
               <div className="home-section-foot">
-                <Link to="/the-record" className="home-more-link">
-                  View all records in The Frontier Record →
+                <Link to="/the-record/?sort=updated" className="home-more-link">
+                  View all records by latest update →
                 </Link>
                 <Link to="/institutional-changelog" className="home-more-link home-more-link--secondary">
                   View the complete Institutional Changelog →
