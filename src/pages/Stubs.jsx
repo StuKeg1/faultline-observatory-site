@@ -38,13 +38,13 @@ export function Programmes() {
     <InstitutionalPage eyebrow="Faultline Observatory" title="Programmes">
       <PageMeta
         title="Programmes"
-        description="Four observation programmes tracking frontier claims in Quantum Engineering, Artificial Intelligence, Materials and Physical Frontiers, and Biotechnology and Life Sciences."
+        description="Four observation programmes tracking frontier claims in Quantum Engineering, Artificial Intelligence, Advanced Materials, Physics & Energy, and Biotechnology & Life Sciences."
         path="/programmes/"
       />
       <p className="inst-intro">
-        The Observatory organises its records by programme — domain containers that become
-        visible as structured objects once sufficient records accumulate. All programmes are
-        listed regardless of record count.
+        Programmes show how the Observatory organises related claims into durable domains of
+        observation. Each programme brings its records, shared questions and longer-form
+        interpretation into one institutional view.
       </p>
       <div className="inst-prog-list">
         {PROGRAMMES.map((prog) => {
@@ -170,4 +170,3 @@ export function GuidesIndex() {
     </InstitutionalPage>
   );
 }
-
