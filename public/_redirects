@@ -4,6 +4,8 @@
 # Canonical slash-form redirects (exact matches; ordered ahead of the
 # placeholder-based legacy rules below per Cloudflare's own guidance —
 # exact rules resolve faster than splat/placeholder rules)
+/public-record /public-record/ 301
+/reading-room /reading-room/ 301
 /evidence-trajectories /evidence-trajectories/ 301
 /events /events/ 301
 /programmes /programmes/ 301
@@ -32,6 +34,8 @@
 /notes/le-qe-001 /notes/le-qe-001/ 301
 
 # Known routes -> SPA shell (exact matches)
+/public-record/ /index.html 200
+/reading-room/ /index.html 200
 /evidence-trajectories/ /index.html 200
 /events/ /index.html 200
 /programmes/ /index.html 200
