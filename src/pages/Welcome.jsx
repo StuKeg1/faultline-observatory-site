@@ -52,7 +52,13 @@ Instead of following the news cycle, it follows the evidence. Every significant 
 Each Record focuses on a single technological claim — a new quantum computing milestone, an AI capability, a medical breakthrough. The Record documents the original claim, the evidence that follows, and every assessment made by the Observatory. Together these create a transparent history that readers can inspect for themselves.`,
   },
   {
-    heading: "How does evidence change a record?",
+    heading: "What is not a Frontier Record?",
+    body: `Many claims do not pass as a Frontier Record.
+
+Many claims simply don't naturally generate the kind of long-lived evidence pressure that makes a Frontier Record valuable. Many claims are scientifically interesting and notable discoveries. But they're simply not part of our set of frontier programmes—where claims evolve over years under sustained technical uncertainty and institutional significance. Even if another paper appears on a claim, it’s likely to be incremental rather than a continuing public claim whose assessment people will want to revisit over a decade. One of the strengths of FCIF is that it doesn’t try to become a catalogue of every fascinating scientific result. Saying “no” to good science is part of maintaining a coherent corpus.`,
+  },
+  {
+    heading: "How does evidence change a Frontier Record?",
     body: `A Frontier Record is designed to evolve.
 
 As new evidence becomes available, the Observatory publishes additional assessments explaining whether that evidence strengthens, weakens, or meaningfully changes the claim.
