@@ -5,10 +5,11 @@ export default function SiteFooter() {
     <footer className="site-footer" role="contentinfo">
       <div className="site-footer-resources">
         <nav className="site-footer-nav" aria-label="Site navigation">
-          <Link to="/the-record/">The Record</Link>
+          <Link to="/public-record/">Explore the Public Record</Link>
+          <Link to="/reading-room/">Reading Room</Link>
+          <Link to="/the-record/">Records Directory</Link>
           <Link to="/evidence-trajectories/">Evidence Trajectories</Link>
           <Link to="/programmes/">Programmes</Link>
-          <Link to="/notes/">Notes</Link>
           <Link to="/methodology/">Methodology</Link>
           <Link to="/about/">About</Link>
           <Link to="/institutional-changelog/">Institutional Changelog</Link>
