@@ -4,19 +4,19 @@ import RecordCard from "../components/RecordCard.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import { ALL_RECORDS, PROGRAMMES } from "../data/corpus.js";
-import { getCurrentAssessment, getCorpusSummary, getSearchText } from "../data/derive.js";
+import { getCorpusSummary, getSearchText } from "../data/derive.js";
+import { FRONTIERS } from "../data/frontiers.js";
+import { PRESSURE_STATE_FILTERS } from "../data/pressureStates.js";
+import { applyRecordDirectoryView } from "../data/recordDirectory.js";
 import "./TheRecord.css";
-
-const PRESSURE_STATES = [
-  "assertion", "published", "audit", "replication", "operation", "validated", "contested",
-];
 
 export default function TheRecord() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const filterProgramme = searchParams.get("programme") || "all";
+  const filterFrontier = searchParams.get("frontier") || "all";
   const filterState = searchParams.get("state") || "all";
-  const filterStatus = searchParams.get("status") || "open";
+  const filterStatus = searchParams.get("status") || "all";
   const sortBy = searchParams.get("sort") || "opened-desc";
   const query = searchParams.get("q") || "";
 
@@ -38,49 +38,29 @@ export default function TheRecord() {
   );
 
   const setFilterProgramme = (v) => updateParam("programme", v, "all");
+  const setFilterFrontier = (v) => updateParam("frontier", v, "all");
   const setFilterState = (v) => updateParam("state", v, "all");
-  const setFilterStatus = (v) => updateParam("status", v, "open");
+  const setFilterStatus = (v) => updateParam("status", v, "all");
   const setSortBy = (v) => updateParam("sort", v, "opened-desc");
   const setQuery = (v) => updateParam("q", v, "");
 
   const summary = useMemo(() => getCorpusSummary(ALL_RECORDS), []);
 
   const hasActiveFilters =
-    filterProgramme !== "all" || filterState !== "all" || query.trim().length > 0;
+    filterProgramme !== "all" || filterFrontier !== "all" ||
+    filterState !== "all" || filterStatus !== "all" || query.trim().length > 0;
 
   const filtered = useMemo(() => {
-    let results = ALL_RECORDS;
-
-    if (filterProgramme !== "all")
-      results = results.filter((r) => r.programme === filterProgramme);
-
-    if (filterState !== "all")
-      results = results.filter(
-        (r) => getCurrentAssessment(r).pressureState === filterState
-      );
-
-    if (filterStatus !== "all")
-      results = results.filter((r) => r.status === filterStatus);
-
-    if (query.trim()) {
-      const q = query.toLowerCase();
-      results = results.filter((r) => getSearchText(r, PROGRAMMES).includes(q));
-    }
-
-    // Sort
-    results = [...results].sort((a, b) => {
-      if (sortBy === "opened-desc")
-        return b.claim.openedDate.localeCompare(a.claim.openedDate);
-      if (sortBy === "opened-asc")
-        return a.claim.openedDate.localeCompare(b.claim.openedDate);
-      if (sortBy === "mutations-desc")
-        return b.mutationLog.length - a.mutationLog.length;
-      if (sortBy === "id-asc") return a.id.localeCompare(b.id);
-      return 0;
+    return applyRecordDirectoryView(ALL_RECORDS, {
+      programme: filterProgramme,
+      frontier: filterFrontier,
+      state: filterState,
+      status: filterStatus,
+      sort: sortBy,
+      query,
+      getSearchText: (record) => getSearchText(record, PROGRAMMES),
     });
-
-    return results;
-  }, [filterProgramme, filterState, filterStatus, sortBy, query]);
+  }, [filterProgramme, filterFrontier, filterState, filterStatus, sortBy, query]);
 
   const resultLabel = (() => {
     if (hasActiveFilters) {
@@ -101,7 +81,7 @@ export default function TheRecord() {
   return (
     <>
       <PageMeta
-        title="The Frontier Record"
+        title="Records Directory"
         description="The complete archive of Frontier Records — structured assessments of scientific and technology claims tracked under evidence over time. Quantum computing, artificial intelligence, materials science, biotechnology."
         path="/the-record/"
       />
@@ -111,7 +91,7 @@ export default function TheRecord() {
           <div className="tr-header-inner">
             <div className="tr-title-block">
               <div className="tr-eyebrow">Faultline Observatory</div>
-              <h1 className="tr-title">The Frontier Record</h1>
+              <h1 className="tr-title">Records Directory</h1>
               <p className="tr-subtitle">
                 A permanent public ledger of frontier claims and the evidence that has tested them.
               </p>
@@ -160,6 +140,20 @@ export default function TheRecord() {
               </label>
 
               <label className="tr-filter-label">
+                Frontier
+                <select
+                  value={filterFrontier}
+                  onChange={(e) => setFilterFrontier(e.target.value)}
+                  aria-label="Filter by frontier"
+                >
+                  <option value="all">All frontiers</option>
+                  {FRONTIERS.map((frontier) => (
+                    <option key={frontier.slug} value={frontier.slug}>{frontier.label}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="tr-filter-label">
                 State
                 <select
                   value={filterState}
@@ -167,9 +161,9 @@ export default function TheRecord() {
                   aria-label="Filter by pressure state"
                 >
                   <option value="all">All states</option>
-                  {PRESSURE_STATES.map((s) => (
-                    <option key={s} value={s}>
-                      {s.charAt(0).toUpperCase() + s.slice(1)}
+                  {PRESSURE_STATE_FILTERS.map(({ value, label, legacy }) => (
+                    <option key={value} value={value}>
+                      {label}{legacy ? " (legacy)" : ""}
                     </option>
                   ))}
                 </select>
@@ -196,6 +190,7 @@ export default function TheRecord() {
                   aria-label="Sort records"
                 >
                   <option value="opened-desc">Opened — newest first</option>
+                  <option value="updated">Updated — newest first</option>
                   <option value="opened-asc">Opened — oldest first</option>
                   <option value="mutations-desc">Most mutations</option>
                   <option value="id-asc">Record ID</option>
@@ -223,7 +218,7 @@ export default function TheRecord() {
         <div className="tr-results-bar">
           <div className="tr-results-inner">
             <span className="tr-results-count">{resultLabel}</span>
-            {(filterProgramme !== "all" || filterState !== "all" || query) && (
+            {hasActiveFilters && (
               <button
                 className="tr-clear-filters"
                 onClick={() => setSearchParams(new URLSearchParams(), { replace: true })}
