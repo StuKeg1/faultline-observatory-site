@@ -22,6 +22,8 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, ""
 const REDIRECTS_PATH = path.join(ROOT, "public", "_redirects");
 const NOT_FOUND_PATH = path.join(ROOT, "public", "404.html");
 const RECORD_FUNCTION_PATH = path.join(ROOT, "functions", "the-record", "[[recordId]].js");
+const CATCH_ALL_FUNCTION_PATH = path.join(ROOT, "functions", "[[path]].js");
+const FUNCTION_ROUTES_PATH = path.join(ROOT, "functions", "generated-routes.js");
 
 test("generator runs clean and regenerates public/_redirects", () => {
   execFileSync("node", ["scripts/generate-redirects.js"], { cwd: ROOT, stdio: "pipe" });
@@ -34,6 +36,55 @@ test("public/404.html exists (disables Cloudflare Pages automatic SPA fallback)"
 
 test("functions/the-record/[[recordId]].js exists (owns /the-record/* routing)", () => {
   assert.ok(fs.existsSync(RECORD_FUNCTION_PATH), "the record-routing Function is missing");
+});
+
+test("catch-all Function and generated route table exist", () => {
+  assert.ok(fs.existsSync(CATCH_ALL_FUNCTION_PATH), "catch-all route Function is missing");
+  assert.ok(fs.existsSync(FUNCTION_ROUTES_PATH), "generated Function route table is missing");
+});
+
+test("generated Function route table matches the redirects-managed manifest", async () => {
+  const expected = await getRedirectsManagedRoutes();
+  const generatedUrl = `${new URL("../functions/generated-routes.js", import.meta.url).href}?t=${Date.now()}`;
+  const generated = await import(generatedUrl);
+  assert.deepEqual(generated.CANONICAL_ROUTES, expected);
+  assert.deepEqual(generated.LEGACY_REDIRECTS, LEGACY_REDIRECTS);
+});
+
+test("catch-all Function serves known routes, canonicalises aliases, and preserves unknown 404s", async () => {
+  const functionUrl = `${new URL("../functions/[[path]].js", import.meta.url).href}?t=${Date.now()}`;
+  const { onRequest } = await import(functionUrl);
+  const calls = [];
+  const contextFor = (pathname) => ({
+    request: new Request(`https://faultlinewatch.com${pathname}`),
+    env: {
+      ASSETS: {
+        fetch: async (request) => {
+          calls.push(new URL(request.url).pathname);
+          return new Response(new URL(request.url).pathname === "/" ? "SPA" : "NOT FOUND", {
+            status: new URL(request.url).pathname === "/" ? 200 : 404,
+          });
+        },
+      },
+    },
+    next: async () => new Response("RECORD FUNCTION", { status: 299 }),
+  });
+
+  const known = await onRequest(contextFor("/public-record/"));
+  assert.equal(known.status, 200);
+  assert.equal(await known.text(), "SPA");
+  assert.equal(calls.at(-1), "/");
+
+  const alias = await onRequest(contextFor("/public-record?sort=updated"));
+  assert.equal(alias.status, 301);
+  assert.equal(alias.headers.get("location"), "https://faultlinewatch.com/public-record/?sort=updated");
+
+  const unknown = await onRequest(contextFor("/not-a-real-route/"));
+  assert.equal(unknown.status, 404);
+  assert.equal(await unknown.text(), "NOT FOUND");
+
+  const record = await onRequest(contextFor("/the-record/fr-qe-0001/"));
+  assert.equal(record.status, 299);
 });
 
 test("no blanket wildcard rewrite remains", async () => {
