@@ -110,6 +110,10 @@ function TrajectoryPreview({ selection }) {
           <circle key={events[index].date} cx={x} cy={y} r="4" aria-hidden="true" />
         ))}
       </svg>
+      <div className="pr-trajectory-dates" aria-hidden="true">
+        <time dateTime={events[0].date}>{events[0].date}</time>
+        <time dateTime={events.at(-1).date}>{events.at(-1).date}</time>
+      </div>
       <p className="pr-trajectory-text">
         <span>Chronological stages</span>
         {sequence.join(" → ")}
@@ -124,7 +128,7 @@ function RecordsPreview({ records }) {
       {records.map((record) => (
         <Link className="pr-record-entry" to={getRecordUrl(record)} key={record.id}>
           <span className="pr-record-entry-id">{record.id}</span>
-          <strong>{record.claim.shortLabel}</strong>
+          <strong title={record.claim.shortLabel}>{record.claim.shortLabel}</strong>
           <span className="pr-record-entry-meta">
             <StateBadge pressureState={getCurrentAssessment(record).pressureState} />
             <time dateTime={getRecordUpdatedDate(record)}>{getRecordUpdatedDate(record)}</time>
