@@ -1,320 +1,331 @@
-import { useMemo } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import StateBadge from "../components/StateBadge.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
-import { ALL_RECORDS, PROGRAMMES } from "../data/corpus.js";
-import { ALL_NOTES } from "../data/notes.js";
-import {
-  getProgrammeStats,
-  getCurrentAssessment,
-  getRecordUrl,
-  getRecentActivity,
-  getLatestDevelopments,
-} from "../data/derive.js";
+import { ALL_RECORDS } from "../data/corpus.js";
+import { getCorpusSummary } from "../data/derive.js";
+import { HOME_QUESTIONS, resolveHomeQuestion } from "./homeQuestions.js";
 import "./Home.css";
 
-// ─── DERIVED SNAPSHOT ────────────────────────────────────────
-// Homepage Derivation Rule v1: every field derived from corpus.
-// Fields that cannot be derived do not appear.
-
-function deriveSnapshot(records, notes) {
-  const recordCount = records.length;
-  const programmeCount = PROGRAMMES.length;
-
-  const assessmentCount = records.reduce(
-    (sum, r) => sum + (r.assessments ? r.assessments.length : 0),
-    0
-  );
-
-  const [mostRecent] = getRecentActivity(records, 1);
-  const latestActivity = mostRecent
-    ? { recordId: mostRecent.id, date: mostRecent.mutationLog[0].date, url: getRecordUrl(mostRecent) }
-    : null;
-
-  const activeReviews = notes.filter(
-    (n) => n.type === "constitutional-review" && n.status === "published"
-  ).length;
-
-  return { recordCount, programmeCount, assessmentCount, latestActivity, activeReviews };
-}
-
-// ─── HERO RECORD ─────────────────────────────────────────────
-// Hero Rule v1: the hero must always be a real record rendered
-// from live corpus data. Never fabricate or simplify a trajectory
-// for editorial convenience.
+// ─── HOMEPAGE vNEXT ──────────────────────────────────────────
+// Homepage vNext Architecture & Implementation Specification v1.0
+// (21 July 2026). Route role: question-first routing layer.
+// Home → Question → Record → Explore.
 //
-// Hero record: FR-AM-0005
-// Fixed by editorial decision. Revisit if the record is removed
-// from the corpus; do not replace without institutional decision.
+// This page intentionally does not reproduce the Programme catalogue,
+// full corpus statistics or Latest Developments — those now belong to
+// /public-record/. See the spec's Phase 1 audit and §4.3 "Stop
+// consuming on Home".
+//
+// Locked-copy exception, revised (2026-07-21, operator decision): the
+// spec's Phase 2/§4.2 E-01 locks the hero to an identity statement and
+// CTA only. Earlier the same day the operator approved a single
+// bridging sentence instead of the full three-sentence "Opening"
+// narrative the Phase 1 audit marks superseded. The operator has since
+// reconsidered and approved restoring the full narrative — this
+// supersedes that earlier compromise. Recorded here, as with the first
+// exception, under E-01's "explicit editorial review approves a
+// replacement" allowance, not as a silent drift from the spec.
+//
+// Rendered as one continuous paragraph (single <p>), not three visually
+// separated ones — per operator's reference screenshot, the three
+// sentences read as one flowing block, not stacked paragraphs with gaps
+// between them.
 
-const HERO_RECORD_ID = "FR-AM-0005";
+// ─── LOCAL ICONS ─────────────────────────────────────────────
+// Illustrative navigation aids only — controlled local SVGs, single
+// neutral colour throughout. Icons never encode evidence quality,
+// pressure state, programme status or institutional preference
+// through colour; giving each card a different hue would imply a
+// ranking this page does not make. All icons are aria-hidden.
 
-// Representative instance events for the hero timeline.
-// Selected to demonstrate trajectory — not a complete audit trail.
-// Update if IN- identifiers change in the source record.
-const HERO_TIMELINE = [
-  { date: "2020–23", label: "Dias retractions", note: "Two Nature papers retracted following misconduct findings" },
-  { date: "Jul–Aug 2023", label: "LK-99 null result", note: "40+ independent groups. Definitive negative within weeks" },
-  { date: "2023", label: "Community standard tightened", note: "Three-criterion reproducibility threshold established" },
-  { date: "2024", label: "No surviving claim", note: "Systematic null across all candidates" },
-  { date: "2025–26", label: "Field activity continues", note: "New claims. None cross the reopening threshold" },
-];
+const ICON_PROPS = {
+  width: 22,
+  height: 22,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.4,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  "aria-hidden": "true",
+  focusable: "false",
+};
 
-function HeroRecord({ records }) {
-  const record = records.find((r) => r.id === HERO_RECORD_ID);
-  if (!record) return null;
-
-  const current = getCurrentAssessment(record);
-  const assessments = record.assessments ?? [];
-  const url = getRecordUrl(record);
-
+function IconQuantum() {
   return (
-    <div className="hero-record">
-      {/* Identity */}
-      <div className="hr-identity">
-        <span className="hr-id">{record.id}</span>
-        <span className="hr-programme">{record.programme}</span>
-      </div>
-      <div className="hr-claim">{record.claim.shortLabel}</div>
-
-      {/* Current assessment */}
-      <div className="hr-assessment-current">
-        <div className="hr-assessment-row">
-          <span className="hr-assessment-label">Current assessment</span>
-          <StateBadge pressureState={current.pressureState} />
-        </div>
-        <div className="hr-assessment-meta">
-          <span className="hr-status">{record.status === "closed" ? "Closed" : "Open"}</span>
-          <span className="hr-sep">·</span>
-          <span className="hr-date">Last assessed {current.date}</span>
-        </div>
-      </div>
-
-      {/* Evidence timeline */}
-      <div className="hr-timeline">
-        <div className="hr-timeline-label">Evidence trajectory</div>
-        <div className="hr-timeline-entries">
-          {HERO_TIMELINE.map((entry, i) => (
-            <div key={i} className="hr-timeline-entry">
-              <div className="hr-tl-connector">
-                <div className="hr-tl-dot" />
-                {i < HERO_TIMELINE.length - 1 && <div className="hr-tl-line" />}
-              </div>
-              <div className="hr-tl-content">
-                <span className="hr-tl-date">{entry.date}</span>
-                <span className="hr-tl-label">{entry.label}</span>
-                <span className="hr-tl-note">{entry.note}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Assessment history */}
-      <div className="hr-assessment-history">
-        <div className="hr-assessment-history-label">Assessments</div>
-        <div className="hr-assessment-list">
-          {assessments.map((a) => (
-            <div key={a.id} className="hr-assessment-item">
-              <span className="hr-asmnt-id">{a.id}</span>
-              <span className="hr-asmnt-date">{a.date}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* CTA */}
-      <Link to={url} className="hr-cta">
-        Read the full Frontier Record →
-      </Link>
-    </div>
+    <svg {...ICON_PROPS}>
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <ellipse cx="12" cy="12" rx="9" ry="3.6" />
+      <ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)" />
+    </svg>
   );
 }
+
+function IconBiopsy() {
+  return (
+    <svg {...ICON_PROPS}>
+      <path d="M9 3h6" />
+      <path d="M9 3v10.5a3 3 0 0 0 6 0V3" />
+      <path d="M9 12.5h6" />
+    </svg>
+  );
+}
+
+function IconSuperconductor() {
+  return (
+    <svg {...ICON_PROPS}>
+      <path d="M12.5 2 5 14h5l-1.5 8 8-13h-5z" />
+    </svg>
+  );
+}
+
+function IconAI() {
+  return (
+    <svg {...ICON_PROPS}>
+      <circle cx="6" cy="7" r="1.6" />
+      <circle cx="18" cy="7" r="1.6" />
+      <circle cx="12" cy="12" r="1.6" />
+      <circle cx="6" cy="17" r="1.6" />
+      <circle cx="18" cy="17" r="1.6" />
+      <path d="M7.3 8.1 10.7 11" />
+      <path d="M16.7 8.1 13.3 11" />
+      <path d="M10.7 13 7.3 15.9" />
+      <path d="M13.3 13 16.7 15.9" />
+    </svg>
+  );
+}
+
+function IconResolving() {
+  return (
+    <svg {...ICON_PROPS}>
+      <path d="M6 2h12" />
+      <path d="M6 22h12" />
+      <path d="M8 2c0 4.5 2 6.5 4 8 2-1.5 4-3.5 4-8" />
+      <path d="M8 22c0-4.5 2-6.5 4-8 2 1.5 4 3.5 4 8" />
+    </svg>
+  );
+}
+
+function IconExplore() {
+  return (
+    <svg {...ICON_PROPS}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m15 9-4.2 1.8L9 15l4.2-1.8Z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function IconDocument() {
+  return (
+    <svg {...ICON_PROPS}>
+      <path d="M7 2h7l4 4v16H7Z" />
+      <path d="M14 2v4h4" />
+      <path d="M9.5 12.5h5" />
+      <path d="M9.5 16h5" />
+    </svg>
+  );
+}
+
+function IconShield() {
+  return (
+    <svg {...ICON_PROPS}>
+      <path d="M12 2.5 19.5 5.5v6c0 5-3.2 8.3-7.5 10-4.3-1.7-7.5-5-7.5-10v-6Z" />
+    </svg>
+  );
+}
+
+function IconInfo() {
+  return (
+    <svg {...ICON_PROPS} width="16" height="16">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5.5" />
+      <circle cx="12" cy="8" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+const QUESTION_ICONS = {
+  quantum: IconQuantum,
+  biopsy: IconBiopsy,
+  superconductor: IconSuperconductor,
+  ai: IconAI,
+  resolving: IconResolving,
+  explore: IconExplore,
+};
 
 // ─── HOME ────────────────────────────────────────────────────
 export default function Home() {
-  const snapshot = useMemo(() => deriveSnapshot(ALL_RECORDS, ALL_NOTES), []);
-  const latestDevelopments = useMemo(() => getLatestDevelopments(ALL_RECORDS, 5), []);
-  const progStats = useMemo(
-    () => Object.fromEntries(PROGRAMMES.map((p) => [p.id, getProgrammeStats(ALL_RECORDS, p.id)])),
+  const totalRecords = useMemo(
+    () => getCorpusSummary(ALL_RECORDS).totalRecords,
     []
   );
+
+  const questions = useMemo(
+    () =>
+      HOME_QUESTIONS.map((entry) => ({
+        ...entry,
+        resolved: resolveHomeQuestion(entry),
+      })),
+    []
+  );
+
+  const headlineRef = useRef(null);
+  const [headlineWidth, setHeadlineWidth] = useState(null);
+
+  useLayoutEffect(() => {
+    const node = headlineRef.current;
+    if (!node) return undefined;
+
+    function updateHeadlineWidth() {
+      const width = Math.round(node.getBoundingClientRect().width);
+      setHeadlineWidth(width);
+    }
+
+    updateHeadlineWidth();
+
+    let observer;
+    if (typeof ResizeObserver !== "undefined") {
+      observer = new ResizeObserver(updateHeadlineWidth);
+      observer.observe(node);
+    }
+
+    window.addEventListener("resize", updateHeadlineWidth);
+    return () => {
+      window.removeEventListener("resize", updateHeadlineWidth);
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, []);
 
   return (
     <>
       <PageMeta
         title={null}
-        description="Custodian of The Frontier Record. A permanent public record tracking how frontier claims in science and technology evolve under evidence — quantum computing, artificial intelligence, materials science, and biotechnology."
+        description="Explore the current evidence behind tracked technology claims. Start with a question, open the canonical Frontier Record, and follow how the evidence has changed."
         path="/"
       />
       <div className="home-page">
 
         {/* ── HERO ── */}
-        <section className="home-hero" aria-label="The Public Record">
+        <section className="home-hero" aria-label="The Public Record of Technology Claims">
           <div className="home-hero-inner">
 
-            {/* Left: identity statement */}
-            <div className="hero-identity">
-              <h1 className="hero-headline">
-                The Public Record<br />
-                of Technology Claims.{" "}
-                <span className="hero-headline-accent">
-                  Tracked until the<br />
-                  evidence decides.
+            <div
+              className="home-hero-identity"
+              style={headlineWidth ? { "--home-hero-headline-width": `${headlineWidth}px` } : undefined}
+            >
+              <h1 ref={headlineRef} className="home-hero-headline">
+                The Public Record of Technology Claims.{" "}
+                <span className="home-hero-headline-accent">
+                  Tracked until the evidence decides.
                 </span>
               </h1>
-              <div className="hero-copy">
-                <p>Every week, researchers, laboratories and technology companies announce breakthroughs that promise to reshape the future.</p>
-                <p>Some become enduring scientific milestones. Others evolve, fragment, or quietly disappear.</p>
-                <p className="hero-copy-bold">Faultline Observatory preserves the public history of those claims — from announcement to resolution, with the evidence visible every step of the way.</p>
-                <p className="hero-trajectory-bridge">Judgement changes over time. Follow how claims move through the Observatory&apos;s assessment history in <Link to="/evidence-trajectories/">Evidence Trajectories</Link>.</p>
-              </div>
-              <Link to="/public-record/" className="hero-cta-primary">
-                Explore the Public Record →
-              </Link>
-              <p className="hero-trust-line">Independent. Non-partisan. Evidence-based.</p>
-              <Link to="/welcome" className="hero-orientation-panel">
-                <p className="hero-orientation-lead">New to the Observatory?</p>
-                <p className="hero-orientation-text">
-                  A short introduction to Frontier Records, how the Observatory evaluates evidence, and how it works.
-                </p>
-                <div className="hero-orientation-bottom">
-                  <span className="hero-orientation-cta">Quick guide →</span>
-                </div>
-              </Link>
+              <p className="home-hero-bridge">
+                Every week, researchers, laboratories and technology companies
+                announce breakthroughs that promise to reshape the future.
+                Some claims become enduring scientific milestones. Others
+                evolve, fragment, or quietly disappear. Faultline Observatory
+                preserves the public history of those claims — from
+                announcement to resolution, with all evidence visible.
+              </p>
             </div>
 
-            {/* Right: hero record */}
-            <div className="hero-record-col">
-              <HeroRecord records={ALL_RECORDS} />
-            </div>
+            <aside className="home-trust-card" aria-label="Evidence practice">
+              <div className="htc-block">
+                <span className="htc-icon"><IconShield /></span>
+                <div className="htc-block-copy">
+                  <div className="htc-block-title">Evidence first</div>
+                  <p className="htc-block-text">We follow the evidence, wherever it leads.</p>
+                </div>
+              </div>
+              <div className="htc-divider" aria-hidden="true" />
+              <div className="htc-block htc-block--stat">
+                <span className="htc-stat-value">{totalRecords}</span>
+                <div className="htc-block-copy">
+                  <div className="htc-block-title">Frontier Records tracked</div>
+                  <p className="htc-block-text">
+                    Append-only · Dated evidence
+                    <br />
+                    Transparent corrections
+                  </p>
+                </div>
+              </div>
+            </aside>
 
           </div>
         </section>
 
-        {/* ── PROGRAMMES ── */}
-        <section className="home-section home-section--programmes" aria-labelledby="prog-heading">
-          <div className="home-section-inner">
-            <div className="home-section-head">
-              <h2 className="home-section-title" id="prog-heading">
-                Explore the Public Record by Programme
-              </h2>
-            </div>
-            <div className="prog-catalogue" role="list">
-              {PROGRAMMES.map((prog) => {
-                const stats = progStats[prog.id];
+        {/* ── START WITH A QUESTION ── */}
+        {/* Section heading (2026-07-21, operator decision): carries the
+            "Choose a question below..." CTA that previously lived in the
+            hero, instead of the eyebrow label "Start with a question" —
+            removes duplicated instruction copy between the two sections.
+            Same locked sentence from spec §2.3 Section 2, relocated, not
+            rewritten. */}
+        <section className="home-questions" aria-labelledby="home-questions-heading">
+          <div className="home-questions-inner">
+            <h2 className="home-questions-heading" id="home-questions-heading">
+              Choose a question below to explore the current evidence.
+            </h2>
+
+            <ul className="home-question-grid" role="list">
+              {questions.map(({ id, icon, question, target, resolved }) => {
+                const Icon = QUESTION_ICONS[icon];
+                const isFallback = target.type === "public-record";
                 return (
-                  <Link
-                    key={prog.id}
-                    to={`/programmes/${prog.id.toLowerCase()}`}
-                    className="prog-entry"
-                    role="listitem"
-                    aria-label={`Explore ${prog.name}`}
-                  >
-                    <div className="prog-entry-top">
-                      <div className="prog-entry-topline">
-                        <span className="prog-entry-id">{prog.id}</span>
-                        {stats.badge && (
-                          <span className={`prog-entry-badge prog-entry-badge--${stats.badge.toLowerCase()}`}>
-                            {stats.badge}
-                          </span>
-                        )}
+                  <li key={id} className="home-question-item">
+                    <Link
+                      to={resolved.url}
+                      className={
+                        isFallback
+                          ? "home-question-card home-question-card--fallback"
+                          : "home-question-card"
+                      }
+                      aria-label={question}
+                    >
+                      <span className="hqc-icon">{Icon ? <Icon /> : null}</span>
+                      <h3 className="hqc-question">{question}</h3>
+                      <div className="hqc-foot">
+                        <span className="hqc-meta">{resolved.meta}</span>
+                        <span className="hqc-arrow" aria-hidden="true">→</span>
                       </div>
-                      <div className="prog-entry-name">{prog.name}</div>
-                      <div className="prog-entry-threshold">
-                        {prog.thresholdStatement}
-                      </div>
-                    </div>
-                    <div className="prog-entry-bottom">
-                      <span className="prog-entry-meta">
-                        {stats.total === 0
-                          ? "No published records"
-                          : `${stats.total} Frontier Record${stats.total !== 1 ? "s" : ""}`}
-                      </span>
-                      <span className="prog-entry-link">Explore Programme →</span>
-                    </div>
-                  </Link>
+                    </Link>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           </div>
         </section>
 
-        {/* ── INSTITUTIONAL SNAPSHOT ── */}
-        {/* Role: confirmation, not introduction. */}
-        {/* Positioned after programmes so numbers acquire meaning from context. */}
-        <div className="home-snapshot" role="region" aria-label="Observatory institutional facts">
-          <div className="home-snapshot-inner">
-            <span className="hsn-stat">
-              <span className="hsn-value">{snapshot.recordCount}</span>
-              <span className="hsn-label">Frontier Records</span>
-            </span>
-            <span className="hsn-divider" aria-hidden="true" />
-            <span className="hsn-stat">
-              <span className="hsn-value">{snapshot.programmeCount}</span>
-              <span className="hsn-label">Programmes of observation</span>
-            </span>
-            <span className="hsn-divider" aria-hidden="true" />
-            <span className="hsn-stat">
-              <span className="hsn-value">{snapshot.assessmentCount}</span>
-              <span className="hsn-label">Assessments in the corpus</span>
-            </span>
-            {snapshot.latestActivity && (
-              <>
-                <span className="hsn-divider" aria-hidden="true" />
-                <span className="hsn-stat">
-                  <span className="hsn-label">Last updated</span>
-                  <span className="hsn-activity">
-                    <span className="hsn-activity-date">{snapshot.latestActivity.date}</span>
-                    <Link to={snapshot.latestActivity.url} className="hsn-activity-id">
-                      ({snapshot.latestActivity.recordId})
-                    </Link>
-                  </span>
-                </span>
-              </>
-            )}
+        {/* ── NOT YET TRACKED? ── */}
+        <section className="home-untracked" aria-labelledby="home-untracked-heading">
+          <div className="home-untracked-inner">
+            <span className="hu-icon"><IconDocument /></span>
+            <div className="hu-copy">
+              <div className="hu-title" id="home-untracked-heading">Not yet tracked?</div>
+              <p className="hu-text">
+                If you&apos;ve heard a technology claim that isn&apos;t here, see what
+                qualifies for a Frontier Record and how claims enter the Observatory.
+              </p>
+            </div>
+            <Link to="/welcome/" className="hu-cta">
+              How claims become records →
+            </Link>
+          </div>
+        </section>
+
+        {/* ── TRANSPARENCY STATEMENT ── */}
+        <div className="home-transparency">
+          <div className="home-transparency-inner">
+            <span className="ht-icon"><IconInfo /></span>
+            <p className="ht-text">
+              Every record is public. Sources, methods and changes remain visible.
+            </p>
           </div>
         </div>
-
-        {/* ── LATEST DEVELOPMENTS ── */}
-        {/* Activity Taxonomy & Qualification Policy v0.3 (Piloted, operational). */}
-        {/* Every mutation across the corpus is classified by mutationClassifier.js; */}
-        {/* only qualifying developments (Frontier/Publication activity, per policy */}
-        {/* §3.1–§3.5) appear here. Every mutation, qualifying or not, is preserved */}
-        {/* in full at /institutional-changelog — nothing shown here is hidden from */}
-        {/* the record, only reordered by public significance. */}
-        {latestDevelopments.length > 0 && (
-          <section className="home-section" aria-labelledby="activity-label">
-            <div className="home-section-inner">
-              <div className="home-section-head">
-                <h2 className="home-section-title" id="activity-label">Latest Developments</h2>
-              </div>
-              <div className="home-activity-log" role="feed">
-                {latestDevelopments.map((row) => {
-                  const { record, mutation } = row;
-                  const current = getCurrentAssessment(record);
-                  return (
-                    <div key={`${record.id}-${mutation.id}`} className="home-activity-row">
-                      <span className="har-date">{mutation.date}</span>
-                      <Link to={getRecordUrl(record)} className="har-id">{record.id}</Link>
-                      <span className="har-note">{mutation.note}</span>
-                      <StateBadge pressureState={current.pressureState} />
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="home-section-foot">
-                <Link to="/the-record/?sort=updated" className="home-more-link">
-                  View all records by latest update →
-                </Link>
-                <Link to="/institutional-changelog" className="home-more-link home-more-link--secondary">
-                  View the complete Institutional Changelog →
-                </Link>
-              </div>
-            </div>
-          </section>
-        )}
 
       </div>
       <SiteFooter />
