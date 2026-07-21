@@ -12,25 +12,37 @@ import "./Home.css";
 // (21 July 2026). Route role: question-first routing layer.
 // Home → Question → Record → Explore.
 //
-// This page intentionally does not reproduce the Programme catalogue,
-// full corpus statistics or Latest Developments — those now belong to
-// /public-record/. See the spec's Phase 1 audit and §4.3 "Stop
-// consuming on Home".
+<<<<<<< HEAD
+// This page intentionally does not reproduce institutional
+// introduction, the Programme catalogue, full corpus statistics or
+// Latest Developments — those now belong to /public-record/. See the
+// spec's Phase 1 audit and §4.3 "Stop consuming on Home".
 //
-// Locked-copy exception, revised (2026-07-21, operator decision): the
-// spec's Phase 2/§4.2 E-01 locks the hero to an identity statement and
-// CTA only. Earlier the same day the operator approved a single
-// bridging sentence instead of the full three-sentence "Opening"
-// narrative the Phase 1 audit marks superseded. The operator has since
-// reconsidered and approved restoring the full narrative — this
-// supersedes that earlier compromise. Recorded here, as with the first
-// exception, under E-01's "explicit editorial review approves a
-// replacement" allowance, not as a silent drift from the spec.
+// Locked-copy exception (2026-07-21, operator decision): the hero's
+// required copy is fixed by spec §2.3 Section 2 / §4.2 E-01 to the
+// identity statement and CTA only, with no institutional explanation.
+// The operator explicitly requested a single bridging sentence between
+// them, declining to restore the full three-paragraph "Opening"
+// narrative the Phase 1 audit identifies as superseded. This is
+// the E-01 "explicit editorial review approves a replacement" case,
+// not a reversal of the architecture decision — the long-form
+// explanation stays off the homepage.
+=======
+// This page intentionally does not reproduce institutional
+// introduction, the Programme catalogue, full corpus statistics or
+// Latest Developments — those now belong to /public-record/. See the
+// spec's Phase 1 audit and §4.3 "Stop consuming on Home".
 //
-// Rendered as one continuous paragraph (single <p>), not three visually
-// separated ones — per operator's reference screenshot, the three
-// sentences read as one flowing block, not stacked paragraphs with gaps
-// between them.
+// Locked-copy exception (2026-07-21, operator decision): the hero's
+// required copy is fixed by spec §2.3 Section 2 / §4.2 E-01 to the
+// identity statement and CTA only, with no institutional explanation.
+// The operator explicitly requested a single bridging sentence between
+// them, declining to restore the full three-paragraph "Opening"
+// narrative the spec's Phase 1 audit identifies as superseded. This is
+// the E-01 "explicit editorial review approves a replacement" case,
+// not a reversal of the architecture decision — the long-form
+// explanation stays off the homepage.
+>>>>>>> 33e2bd2 (Homepage vNext: question-first architecture (spec v1.0, 21 Jul 2026))
 
 // ─── LOCAL ICONS ─────────────────────────────────────────────
 // Illustrative navigation aids only — controlled local SVGs, single
@@ -202,11 +214,11 @@ export default function Home() {
 
   return (
     <>
-      <PageMeta
+            <PageMeta
         title={null}
-        description="Explore the evidence behind technology claims. Start with a question and follow the public record as the evidence changes."
+        description="Explore the current evidence behind tracked technology claims. Start with a question, open the canonical Frontier Record, and follow how the evidence has changed."
         path="/"
-      />
+            />
       <main className="home-page">
 
         {/* ── HERO ── */}
@@ -327,7 +339,7 @@ export default function Home() {
           </div>
         </div>
 
-      </main>
+  </main>
       <SiteFooter />
     </>
   );
