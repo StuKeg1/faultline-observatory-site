@@ -30,6 +30,7 @@ export default function PageMeta({ title, description, path }) {
       <meta property="og:title"       content={fullTitle} />
       <meta property="og:description" content={desc} />
       <meta property="og:url"         content={canonical} />
+      <meta name="twitter:description" content={desc} />
     </Helmet>
   );
 }

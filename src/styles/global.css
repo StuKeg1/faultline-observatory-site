@@ -120,6 +120,8 @@ button { cursor: pointer; }
   align-items: center;
   gap: 2rem;
   flex-wrap: wrap;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 /* Section 1: Navigation links */
@@ -127,7 +129,10 @@ button { cursor: pointer; }
   display: flex;
   gap: 1.5rem;
   align-items: center;
-  flex-shrink: 0;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  min-width: 0;
+  row-gap: 0.75rem;
 }
 .site-footer-nav a {
   color: var(--ink-mid);
@@ -182,6 +187,21 @@ button { cursor: pointer; }
   color: var(--faint-text-color);
 }
 
+/* Keep the identity clear of the resource cluster before the mobile layout. */
+@media (max-width: 1400px) {
+  .site-footer {
+    align-items: flex-start;
+  }
+
+  .site-footer-resources {
+    align-items: flex-start;
+  }
+
+  .site-footer-nav {
+    flex-basis: 100%;
+  }
+}
+
 /* ─── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 700px) {
   .programme-grid   { grid-template-columns: 1fr !important; }
@@ -197,11 +217,14 @@ button { cursor: pointer; }
   .site-footer-resources {
     flex-direction: column;
     gap: 1.25rem;
+    align-items: center;
+    width: 100%;
   }
   .site-footer-nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+    width: 100%;
   }
   .site-footer-guides,
   .site-footer-mcp {

@@ -204,10 +204,10 @@ export default function Home() {
     <>
       <PageMeta
         title={null}
-        description="Explore the current evidence behind tracked technology claims. Start with a question, open the canonical Frontier Record, and follow how the evidence has changed."
+        description="Explore the evidence behind technology claims. Start with a question and follow the public record as the evidence changes."
         path="/"
       />
-      <div className="home-page">
+      <main className="home-page">
 
         {/* ── HERO ── */}
         <section className="home-hero" aria-label="The Public Record of Technology Claims">
@@ -327,7 +327,7 @@ export default function Home() {
           </div>
         </div>
 
-      </div>
+      </main>
       <SiteFooter />
     </>
   );
