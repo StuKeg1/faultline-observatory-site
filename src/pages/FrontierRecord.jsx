@@ -63,6 +63,18 @@ function WarrantPanel({ current, record }) {
         <span className="wp-label">{wasReaffirmed ? "Last reaffirmed" : "In this state since"}</span>
         <span className="wp-value">{current.date}</span>
       </div>
+      {current.provenanceNote && (
+        <div className="wp-row wp-row-provenance">
+          <span className="wp-label">Assessment provenance</span>
+          <span className="wp-value">{current.provenanceNote}</span>
+        </div>
+      )}
+      {record.reconstruction?.provenanceNote && (
+        <div className="wp-row wp-row-provenance">
+          <span className="wp-label">Record provenance</span>
+          <span className="wp-value">{record.reconstruction.provenanceNote}</span>
+        </div>
+      )}
     </div>
   );
 }
@@ -243,6 +255,7 @@ function getPolarityBadgeClass(polarity) {
 function EvidenceSources({ record }) {
   const [expanded, setExpanded] = useState(false);
   const instances = record.instances ?? [];
+  const showFullS4Content = record.id === "FR-QE-0001";
   return (
     <div>
       <button
@@ -261,8 +274,18 @@ function EvidenceSources({ record }) {
             const polarity = getInstancePolarity(inst);
             return (
               <div key={inst.id} className="evidence-entry" role="listitem">
-                <span className="ev-code">{inst.id}</span>
-                <span className="ev-citation">{inst.qualifiedEvent}</span>
+                <span className="ev-code">
+                  {inst.id}{inst.sourceId ? ` ← ${inst.sourceId}` : ""}
+                </span>
+                <span className="ev-citation">
+                  <span className="ev-title">{inst.qualifiedEvent}</span>
+                  {showFullS4Content && inst.description && (
+                    <span className="ev-description">{inst.description}</span>
+                  )}
+                  {showFullS4Content && inst.sourceReference && (
+                    <span className="ev-source-reference">{inst.sourceReference}</span>
+                  )}
+                </span>
                 <span className={`ev-weight ${getPolarityBadgeClass(polarity)}`}>
                   {polarity}
                 </span>
@@ -404,9 +427,10 @@ function RelatedRecords({ lineage }) {
 // they were before this pilot.
 function getSections(record) {
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
+  const hasGovernedNarrative = isPilot || record.id === "FR-QE-0001";
   const hasRelated = record.lineage?.relatedRecords?.length > 0;
 
-  if (!isPilot) {
+  if (!hasGovernedNarrative) {
     return [
       { id: "s-matrix",    label: "Verification Matrix" },
       { id: "s-warrant",   label: "State Warrant" },
@@ -489,6 +513,7 @@ export default function FrontierRecord() {
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
+  const hasGovernedNarrative = isPilot || record.id === "FR-QE-0001";
   // Cross-highlight between EvidenceTrajectory's ticks and MutationLog's
   // rows only exists where EvidenceTrajectory itself renders (see
   // record-body below) — Fragment elsewhere is a true no-op, not an
@@ -537,13 +562,37 @@ export default function FrontierRecord() {
                 <span className="rp-status-vs">{current.verificationStage}</span>
                 <span className="rp-status-sep">·</span>
                 <span className="rp-status-since">since {current.date}</span>
+                {current.provenanceNote && (
+                  <span className="rp-status-provenance">S4 reconstruction · not reaffirmed by realignment</span>
+                )}
               </div>
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               <div className="rp-meta-row">
                 <span className="rp-status-label">Record Opened</span>
-                <span className="rp-status-value">{record.claim.openedDate}</span>
+                <span className="rp-status-value">
+                  {record.claim.openedDate}
+                  {record.claim.openedDateQualifier ? ` · ${record.claim.openedDateQualifier}` : ""}
+                </span>
               </div>
+              {record.claim.subject && (
+                <div className="rp-meta-row">
+                  <span className="rp-status-label">Claim Subject</span>
+                  <span className="rp-status-value">{record.claim.subject}</span>
+                </div>
+              )}
+              {record.claim.claimClass && (
+                <div className="rp-meta-row">
+                  <span className="rp-status-label">Claim Class</span>
+                  <span className="rp-status-value">{record.claim.claimClass}</span>
+                </div>
+              )}
+              {record.reconstruction?.effectiveCreationDate && (
+                <div className="rp-meta-row">
+                  <span className="rp-status-label">Effective Reconstruction</span>
+                  <span className="rp-status-value">{record.reconstruction.effectiveCreationDate} · S4</span>
+                </div>
+              )}
               <div className="rp-meta-row">
                 <span className="rp-status-label">Last Mutation</span>
                 <span className="rp-status-value">{record.mutationLog[0]?.date ?? "—"}</span>
@@ -599,7 +648,7 @@ export default function FrontierRecord() {
           )}
 
           {/* RENDER-PILOT-001 / ADR-00X. Pilot records only. */}
-          {isPilot && (
+          {hasGovernedNarrative && (
             <section className="record-section-inner" id="s-mechanisms">
               <div className="rs-header">Mechanisms</div>
               <Mechanisms record={record} />
@@ -617,16 +666,16 @@ export default function FrontierRecord() {
               decision informed by this pilot. */}
           <section
             className="record-section-inner"
-            id={isPilot ? "s-assessment-history" : "s-lineage"}
+            id={hasGovernedNarrative ? "s-assessment-history" : "s-lineage"}
           >
             <div className="rs-header">
-              {isPilot ? "Assessment History" : "Record Lineage — Chronological"}
+              {hasGovernedNarrative ? "Assessment History" : "Record Lineage — Chronological"}
             </div>
             <RecordLineage record={record} />
           </section>
 
           {/* RENDER-PILOT-001 / ADR-00Z. Pilot records only. */}
-          {isPilot && (
+          {hasGovernedNarrative && (
             <section className="record-section-inner" id="s-claim-lineage">
               <div className="rs-header">Claim Lineage</div>
               <ClaimLineage record={record} />
@@ -634,7 +683,7 @@ export default function FrontierRecord() {
           )}
 
           {/* RENDER-PILOT-001 / ADR-00Y. Pilot records only. */}
-          {isPilot && (
+          {hasGovernedNarrative && (
             <section className="record-section-inner" id="s-open-questions">
               <div className="rs-header">Open Questions</div>
               <OpenQuestions record={record} />

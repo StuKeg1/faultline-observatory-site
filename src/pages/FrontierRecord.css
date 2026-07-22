@@ -94,6 +94,13 @@
   font-size: 11px;
   color: var(--ink-light);
 }
+.rp-status-provenance {
+  flex-basis: 100%;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--state-audit);
+  letter-spacing: 0.02em;
+}
 .rp-meta-panel {
   font-family: var(--mono);
   font-size: 11px;
@@ -225,6 +232,10 @@
 }
 .wp-row:last-child { border-bottom: none; }
 .wp-row-rationale { align-items: start; }
+.wp-row-provenance {
+  align-items: start;
+  background: var(--state-audit-bg);
+}
 .wp-label {
   font-family: var(--mono);
   font-size: 10px;
@@ -359,7 +370,10 @@
 .evidence-list { display: flex; flex-direction: column; }
 .evidence-entry { display: grid; grid-template-columns: 60px 1fr auto; gap: 1rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--rule-light); }
 .ev-code { font-family: var(--mono); font-size: 10px; color: var(--ink-light); letter-spacing: 0.06em; }
-.ev-citation { font-family: var(--serif); font-size: 0.875rem; color: #3a3a36; font-weight: 300; font-style: italic; }
+.ev-citation { display: flex; flex-direction: column; gap: 0.45rem; font-family: var(--serif); font-size: 0.875rem; color: #3a3a36; font-weight: 300; }
+.ev-title { font-style: italic; }
+.ev-description { font-style: normal; line-height: 1.65; color: var(--ink-mid); }
+.ev-source-reference { font-family: var(--mono); font-size: 9.5px; line-height: 1.5; color: var(--ink-light); }
 .ev-weight { font-family: var(--mono); font-size: 10px; color: var(--ink-light); white-space: nowrap; padding: 1px 5px; border: 1px solid var(--rule-light); }
 .ev-weight.primary { color: var(--state-replication); border-color: #b8c8e0; }
 .ev-weight.counter { color: var(--state-contested); border-color: #d4a0a0; }
