@@ -510,6 +510,9 @@ export default function EvidenceTrajectories() {
                 <li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li>
               </ol>
             </details>
+            <p className="et-instruction" role="note">
+              Verification-stage provenance notice: historical stage assignments remain preserved while a bounded legacy review checks whether each was originally assigned as an evidence-depth judgement.
+            </p>
           </div>
         </header>
 
