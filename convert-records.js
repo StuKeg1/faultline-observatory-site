@@ -138,16 +138,12 @@ function extractAssessments(html) {
     const idMatch = metaLine.match(/ASSESSMENT-(\d+)/i);
     const id = idMatch ? `AS-${String(idMatch[1]).padStart(3, "0")}` : `AS-${String(i + 1).padStart(3, "0")}`;
 
-    // Determine verification stage from pressure state
-    const vsMap = {
-      "emerging":    "VS-01",
-      "escalating":  "VS-02",
-      "stabilising": "VS-03",
-      "fragmenting": "VS-03",
-      "resolving":   "VS-04",
-      "collapsed":   "VS-05",
-    };
-    const verificationStage = vsMap[pressureState] || "VS-02";
+    // Verification Stage is an independent evidence-depth axis. Never infer it
+    // from Pressure State; require the source assessment to state it explicitly.
+    const verificationStage = block.match(/\bVS-0[1-5]\b/i)?.[0]?.toUpperCase();
+    if (!verificationStage) {
+      throw new Error(`Assessment ${id} is missing an explicit Verification Stage`);
+    }
 
     if (texts) {
       assessments.push({ id, date, pressureState, verificationStage, summary: texts.substring(0, 500), assessorNote: null });
