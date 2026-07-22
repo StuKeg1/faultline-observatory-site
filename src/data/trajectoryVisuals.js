@@ -11,6 +11,14 @@
 
 export const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
 
+export const VS_STAGE_LABELS = Object.freeze({
+  "VS-01": "Assertion",
+  "VS-02": "Published",
+  "VS-03": "Audit",
+  "VS-04": "Replication",
+  "VS-05": "Operation",
+});
+
 const STATE_COLOR_VAR = {
   assertion: "--state-assertion",
   published: "--state-published",
