@@ -142,6 +142,22 @@ export const FR_QE_0001 = {
       provenanceNote:
         "Transcribed from S4's reconstruction assessment, issued 2026-06-11 by Observatory Floor (Reconstruction). The 2026-07-22 canonical realignment represents that historical reconstruction content; it does not newly review, reaffirm or ratify FRAGMENTING, and it makes no finding on the assessment's correctness.",
     },
+    {
+      id: "AS-002",
+      sourceId: "GOV-FR-QE-0001-2026-07-22",
+      date: "2026-07-22",
+      pressureState: "stabilising",
+      verificationStage: "VS-04",
+      authority: "Operator-ratified governed reassessment",
+      triggeringInstance: null,
+      summary:
+        "Institutional verdict: UNRESOLVED AT THE ORIGINAL COMPARISON POINT; LATER SUPERSEDED. The admitted claim is a time-indexed comparative-performance claim concerning Sycamore's 2019 Random Circuit Sampling demonstration. The experiment and task performance are supported, but the constitutive claim that the task was beyond practical classical reach was not established at the original comparison point because IBM's contemporaneous days-scale analysis left that threshold unresolved. Later classical work, culminating in Zhao et al. (2024), reproduced and surpassed the benchmark comparator. That later result supersedes the demonstrated advantage without automatically proving that the time-indexed 2019 claim was false when made.\n\n" +
+        "Pressure State is STABILISING. The uncertainty is now bounded and durable rather than fragmenting: Willow and other successor claims are outside this claim's material commitments, and the original comparison can reopen only through evidence showing that the 2019 comparator was already unsound. Verification Stage is VS-04 — Replication because independent classical work progressed beyond audit to direct reproduction and eventual counter-performance of the claim's constitutive comparator. This is claim-level, adversarial replication; it does not assert independent reproduction of Sycamore hardware or favourable confirmation of the original advantage.",
+      assessorNote:
+        "Append-only reassessment following the ratified FR-QE-0001 governance inquiry. AS-001 remains preserved as the 2026-06-11 reconstruction assessment and is not rewritten.",
+      provenanceNote:
+        "Ratified by Stuart Kegg on 2026-07-22 through the Claim-Type Determination, Material-Commitment Reconstruction, Temporality-and-Evidence Application, Institutional Verdict Determination, and Assessment-State Determination. VS-04 was assigned afresh under the canonical evidence-depth semantics and does not rely on the provenance-suspect legacy Pressure-State-to-VS alias.",
+    },
   ],
 
   mechanisms: [
@@ -210,6 +226,15 @@ export const FR_QE_0001 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-006",
+      date: "2026-07-22",
+      field: "assessment_issued",
+      from: "AS-001",
+      to: "AS-002",
+      note:
+        "Append-only canonical reassessment issued after completion of the governed FR-QE-0001 inquiry. Institutional verdict: UNRESOLVED AT THE ORIGINAL COMPARISON POINT; LATER SUPERSEDED. Pressure State changed from FRAGMENTING to STABILISING because successor claims, including Willow, are outside the admitted claim's material commitments and the remaining uncertainty is bounded. Verification Stage changed from VS-03 to VS-04 under the canonical evidence-depth semantics because independent classical work directly reproduced and ultimately counter-performed the constitutive benchmark comparator. VS-04 is claim-level adversarial replication, not independent reproduction of Sycamore hardware. AS-001 and all earlier history remain preserved.",
+    },
     {
       id: "M-005",
       date: "2026-07-22",
