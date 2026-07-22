@@ -12,39 +12,6 @@ import "./Home.css";
 // (21 July 2026). Route role: question-first routing layer.
 // Home → Question → Record → Explore.
 //
-<<<<<<< HEAD
-<<<<<<< HEAD
-// This page intentionally does not reproduce institutional
-// introduction, the Programme catalogue, full corpus statistics or
-// Latest Developments — those now belong to /public-record/. See the
-// spec's Phase 1 audit and §4.3 "Stop consuming on Home".
-//
-// Locked-copy exception (2026-07-21, operator decision): the hero's
-// required copy is fixed by spec §2.3 Section 2 / §4.2 E-01 to the
-// identity statement and CTA only, with no institutional explanation.
-// The operator explicitly requested a single bridging sentence between
-// them, declining to restore the full three-paragraph "Opening"
-// narrative the Phase 1 audit identifies as superseded. This is
-// the E-01 "explicit editorial review approves a replacement" case,
-// not a reversal of the architecture decision — the long-form
-// explanation stays off the homepage.
-=======
-// This page intentionally does not reproduce institutional
-// introduction, the Programme catalogue, full corpus statistics or
-// Latest Developments — those now belong to /public-record/. See the
-// spec's Phase 1 audit and §4.3 "Stop consuming on Home".
-//
-// Locked-copy exception (2026-07-21, operator decision): the hero's
-// required copy is fixed by spec §2.3 Section 2 / §4.2 E-01 to the
-// identity statement and CTA only, with no institutional explanation.
-// The operator explicitly requested a single bridging sentence between
-// them, declining to restore the full three-paragraph "Opening"
-// narrative the spec's Phase 1 audit identifies as superseded. This is
-// the E-01 "explicit editorial review approves a replacement" case,
-// not a reversal of the architecture decision — the long-form
-// explanation stays off the homepage.
->>>>>>> 33e2bd2 (Homepage vNext: question-first architecture (spec v1.0, 21 Jul 2026))
-=======
 // This page intentionally does not reproduce the Programme catalogue,
 // full corpus statistics or Latest Developments — those now belong to
 // /public-record/. See the spec's Phase 1 audit and §4.3 "Stop
@@ -64,7 +31,6 @@ import "./Home.css";
 // separated ones — per operator's reference screenshot, the three
 // sentences read as one flowing block, not stacked paragraphs with gaps
 // between them.
->>>>>>> 7fff896 (Update homepage copy)
 
 // ─── LOCAL ICONS ─────────────────────────────────────────────
 // Illustrative navigation aids only — controlled local SVGs, single
