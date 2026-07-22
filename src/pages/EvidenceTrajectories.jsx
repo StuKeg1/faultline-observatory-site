@@ -19,18 +19,10 @@ import {
   calculateStageRegisterGroups,
   phaseDateSummaries,
 } from "./evidenceTrajectoryLayout.js";
+import { VS_STAGE_LABELS } from "../data/trajectoryVisuals.js";
 import "./EvidenceTrajectories.css";
 
 const STAGE_ORDER = ["VS-05", "VS-04", "VS-03", "VS-02", "VS-01"];
-
-const STAGE_LABELS = {
-  "VS-05": "Stable",
-  "VS-04": "Audit",
-  "VS-03": "Converging",
-  "VS-02": "Fragmenting",
-  "VS-01": "Emerging",
-};
-
 
 const STATE_TONES = {
   audit: "audit",
@@ -101,7 +93,7 @@ function footerCaptionLines(label) {
     "Initial evaluations & early evidence": ["Initial evaluations", "& early evidence"],
     "Evidence accumulation & reassessments": ["Evidence accumulation", "& reassessments"],
     "Final evaluation & convergence": ["Final evaluation", "& convergence"],
-    "Current institutional assessment": ["Current institutional", "assessment"],
+    "Current verification stage": ["Current verification", "stage"],
   };
   return fixedLines[label] ?? [label];
 }
@@ -220,17 +212,17 @@ function EvidenceChart({
             );
           })}
           <text className="et-phase-heading" x={geometry.registerX + 146} y="26">Current Register</text>
-          <text className="et-phase-subheading" x={geometry.registerX + 146} y="43">Assessment : today</text>
+          <text className="et-phase-subheading" x={geometry.registerX + 146} y="43">Verification stage : today</text>
         </g>
 
         <g className="et-grid" aria-hidden="true">
-          <text className="et-axis-title" x={geometry.axisLeft} y="68">Institutional assessment</text>
+          <text className="et-axis-title" x={geometry.axisLeft} y="68">Verification stage</text>
           {STAGE_ORDER.map((stage) => {
             const y = geometry.yForStage(stage);
             return (
               <g key={stage}>
                 <line x1={geometry.plotLeft} x2={geometry.todayX + 38} y1={y} y2={y} />
-                <text className="et-stage-name" x={geometry.axisLeft} y={y + 4}>{STAGE_LABELS[stage]}</text>
+                <text className="et-stage-name" x={geometry.axisLeft} y={y + 4}>{VS_STAGE_LABELS[stage]}</text>
                 <text className="et-stage-code" x={geometry.plotLeft - 18} y={y + 4}>{stage}</text>
               </g>
             );
@@ -341,7 +333,7 @@ function EvidenceChart({
                   d={`M ${geometry.todayX + 10} ${group.trueY} H ${geometry.registerX - 24} V ${bridgeY} H ${geometry.registerX - 8}`}
                   aria-hidden="true"
                 />
-                <text className="et-register-stage-name" x={geometry.registerColumns.stageX} y={group.groupTop + 10}>{STAGE_LABELS[group.stage]}</text>
+                <text className="et-register-stage-name" x={geometry.registerColumns.stageX} y={group.groupTop + 10}>{VS_STAGE_LABELS[group.stage]}</text>
                 <text className="et-register-stage-code" x={geometry.registerColumns.stageX + 86} y={group.groupTop + 10}>{group.stage}</text>
                 {group.rows.length === 0 && (
                   <text className="et-register-empty" x={geometry.registerColumns.idX} y={group.emptyLabelY + 3}>No current records</text>
@@ -365,7 +357,7 @@ function EvidenceChart({
                       ].join(" ")}
                       tabIndex={0}
                       role="button"
-                      aria-label={`${record.id}: ${record.claim.shortLabel}. Current assessment ${group.stage} ${STAGE_LABELS[group.stage]}.`}
+                      aria-label={`${record.id}: ${record.claim.shortLabel}. Current verification stage ${group.stage} ${VS_STAGE_LABELS[group.stage]}.`}
                       onMouseEnter={() => onHover(record.id)}
                       onMouseLeave={() => onHover(null)}
                       onClick={() => onSelect(record.id)}
@@ -405,7 +397,7 @@ function EvidenceChart({
           })}
           <text className="et-phase-range" x={geometry.todayX} y={geometry.height - 46}>Today</text>
           <text className="et-phase-footer" x={geometry.todayX} y={geometry.height - 30}>
-            {footerCaptionLines("Current institutional assessment").map((line, lineIndex) => (
+            {footerCaptionLines("Current verification stage").map((line, lineIndex) => (
               <tspan key={line} x={geometry.todayX} dy={lineIndex === 0 ? 0 : 12}>{line}</tspan>
             ))}
           </text>
@@ -513,8 +505,8 @@ export default function EvidenceTrajectories() {
               <summary>How to read this page</summary>
               <ol>
                 <li><b>Read across</b> - time moves from left to right.</li>
-                <li><b>Read vertically</b> - position indicates the Observatory's assessment at that moment.</li>
-                <li><b>Read the register</b> - the right column names the current assessment at Today.</li>
+                <li><b>Read vertically</b> - position indicates verification depth at that moment.</li>
+                <li><b>Read the register</b> - the right column names each record's current Verification Stage at Today.</li>
                 <li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li>
               </ol>
             </details>

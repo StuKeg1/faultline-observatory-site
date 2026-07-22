@@ -169,26 +169,6 @@ export function getVerificationStages(record) {
   });
 }
 
-/** Maps original FCIF pressureState to a VS code for display purposes */
-export function getPressureStateVS(pressureState) {
-  const map = {
-    emerging:    "VS-01",
-    escalating:  "VS-02",
-    stabilising: "VS-03",
-    fragmenting: "VS-03",
-    resolving:   "VS-04",
-    collapsed:   "VS-05",
-    assertion:   "VS-01",
-    published:   "VS-02",
-    audit:       "VS-03",
-    replication: "VS-04",
-    operation:   "VS-04",
-    validated:   "VS-05",
-    contested:   "VS-03",
-  };
-  return map[pressureState] ?? "VS-01";
-}
-
 // ─── CORPUS ACCESSORS ───────────────────────────────────────
 
 /**
