@@ -13,9 +13,10 @@
     "prebuild": "npm run validate:all && npm run generate:redirects && npm run generate:sitemap",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "preview": "npm run build && wrangler dev",
     "test": "node --test src/data/recordDirectory.test.js src/data/trajectoryVisuals.test.js src/data/verificationStageReviews.test.js src/pages/evidenceTrajectoryLayout.test.js src/pages/publicRecordPreview.test.js src/pages/homeQuestions.test.js scripts/redirects.test.js scripts/sitemap.test.js",
-    "smoke:live": "node scripts/smoke-live.js"
+    "smoke:live": "node scripts/smoke-live.js",
+    "deploy": "npm run build && wrangler deploy"
   },
   "engines": {
     "node": ">=18"
@@ -27,6 +28,7 @@
     "react-router-dom": "^7.17.0"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.46.0",
     "@eslint/js": "^10.0.1",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "@types/react": "^19.2.14",
@@ -36,6 +38,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "wrangler": "^4.113.0"
   }
 }
