@@ -24,7 +24,7 @@ test("all current pressure states are supported and selectable", () => {
   for (const state of currentStates) {
     assert.ok(applyRecordDirectoryView(ALL_RECORDS, { state }).length > 0, state);
   }
-  assert.ok(applyRecordDirectoryView(ALL_RECORDS, { state: "fragmenting" })
+  assert.ok(applyRecordDirectoryView(ALL_RECORDS, { state: "stabilising" })
     .some(({ id }) => id === "FR-QE-0001"));
   assert.equal(PRESSURE_STATE_FILTERS.some(({ value }) => value === "contested"), false);
 });
@@ -44,7 +44,7 @@ test("updated sort is descending by the newest mutation date", () => {
   assert.deepEqual(dates, [...dates].sort().reverse());
 });
 
-test("FR-QE-0001 conforms to its governed S4 reconstruction baseline", () => {
+test("FR-QE-0001 preserves its governed S4 baseline and append-only reassessment", () => {
   const record = ALL_RECORDS.find(({ id }) => id === "FR-QE-0001");
   assert.ok(record);
   assert.equal(
@@ -63,10 +63,14 @@ test("FR-QE-0001 conforms to its governed S4 reconstruction baseline", () => {
   assert.deepEqual(record.instances.map(({ sourceId }) => sourceId), [
     "INST-001", "INST-002", "INST-003", "INST-004", "INST-005", "INST-006",
   ]);
-  assert.equal(record.assessments.length, 1);
+  assert.equal(record.assessments.length, 2);
   assert.equal(record.assessments[0].sourceId, "ASSESSMENT-001");
   assert.equal(record.assessments[0].pressureState, "fragmenting");
   assert.match(record.assessments[0].provenanceNote, /does not newly review, reaffirm or ratify FRAGMENTING/);
+  assert.equal(record.assessments[1].sourceId, "GOV-FR-QE-0001-2026-07-22");
+  assert.equal(record.assessments[1].pressureState, "stabilising");
+  assert.equal(record.assessments[1].verificationStage, "VS-04");
+  assert.match(record.assessments[1].assessorNote, /AS-001 remains preserved/);
   assert.deepEqual(record.mechanisms.map(({ id }) => id), [
     "RM-001", "RM-002", "RM-003", "BN-001", "BN-002", "AT-001",
   ]);
@@ -77,7 +81,8 @@ test("FR-QE-0001 conforms to its governed S4 reconstruction baseline", () => {
   assert.deepEqual(record.openQuestions.map(({ sourceId }) => sourceId), [
     "OQ-1", "OQ-2", "OQ-3", "OQ-4", "OQ-5",
   ]);
-  assert.equal(record.mutationLog[0].field, "canonical_baseline_realigned");
+  assert.equal(record.mutationLog[0].field, "assessment_issued");
+  assert.equal(record.mutationLog[1].field, "canonical_baseline_realigned");
 
   const operativeText = JSON.stringify({
     claim: record.claim,
