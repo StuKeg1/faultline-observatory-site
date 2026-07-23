@@ -1,4 +1,5 @@
 import { applyRecordDirectoryView, getRecordUpdatedDate } from "../data/recordDirectory.js";
+import { getAssessmentHistory } from "../data/derive.js";
 import { VS_STAGES } from "../data/trajectoryVisuals.js";
 
 const PROGRAMME_ID = /^PROG-[A-Z0-9]+$/;
@@ -27,7 +28,7 @@ export function selectProgrammePreview(programmes, limit = 3) {
 export function getValidTrajectoryEvents(record) {
   if (!hasPublicRecordIdentity(record) || !Array.isArray(record.assessments)) return [];
 
-  return record.assessments.filter((assessment) =>
+  return getAssessmentHistory(record).filter((assessment) =>
     isValidDate(assessment?.date) && VS_STAGES.includes(assessment?.verificationStage)
   );
 }

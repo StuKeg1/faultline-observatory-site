@@ -10,6 +10,7 @@
  */
 
 import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.js";
+import { applyVerificationStageReview } from "./verificationStageReviews.js";
 
 // ─── RECORD ACCESSORS ───────────────────────────────────────
 
@@ -21,7 +22,10 @@ export function getCurrentAssessment(record) {
   if (!record.assessments || record.assessments.length === 0) {
     throw new Error(`Record ${record.id} has no assessments — structurally invalid.`);
   }
-  return record.assessments[record.assessments.length - 1];
+  return applyVerificationStageReview(
+    record.id,
+    record.assessments[record.assessments.length - 1],
+  );
 }
 
 /**
@@ -137,7 +141,9 @@ export function getAssessmentHistory(record) {
   if (!record.assessments || record.assessments.length === 0) {
     throw new Error(`Record ${record.id} has no assessments — structurally invalid.`);
   }
-  return [...record.assessments]; // chronological; assessments[] is already oldest-first
+  return record.assessments.map((assessment) =>
+    applyVerificationStageReview(record.id, assessment),
+  ); // chronological; assessments[] is already oldest-first
 }
 
 /**
@@ -148,10 +154,11 @@ export function getAssessmentHistory(record) {
 export function getVerificationStages(record) {
   const ALL_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
   const current = getCurrentAssessment(record);
+  const history = getAssessmentHistory(record);
 
   // Build a map of vsCode → first date reached
   const reachedDates = {};
-  for (const a of record.assessments) {
+  for (const a of history) {
     if (a.verificationStage && !reachedDates[a.verificationStage]) {
       reachedDates[a.verificationStage] = a.date;
     }

@@ -511,7 +511,10 @@ export default function EvidenceTrajectories() {
               </ol>
             </details>
             <p className="et-instruction" role="note">
-              Verification-stage provenance notice: historical stage assignments remain preserved while a bounded legacy review checks whether each was originally assigned as an evidence-depth judgement.
+              Verification-stage provenance notice: the legacy review is complete. Historical
+              codes remain preserved; trajectories apply the ratified evidence-depth review
+              overlay. Assignments that could not be reliably reconstructed remain marked
+              historically unverified.
             </p>
           </div>
         </header>

@@ -69,6 +69,20 @@ function WarrantPanel({ current, record }) {
           <span className="wp-value">{current.provenanceNote}</span>
         </div>
       )}
+      {current.verificationStageProvenance && (
+        <div className="wp-row wp-row-provenance">
+          <span className="wp-label">Stage provenance</span>
+          <span className="wp-value">
+            {current.verificationStageProvenance.disposition === "historically-unverified"
+              ? `Stored ${current.verificationStageProvenance.storedStage}; historically unverified after legacy review.`
+              : `Ratified ${current.verificationStageProvenance.effectiveStage}; stored historical code ${current.verificationStageProvenance.storedStage} preserved.`}
+            {" "}
+            <a href={current.verificationStageProvenance.authorityUrl}>
+              Review authority
+            </a>
+          </span>
+        </div>
+      )}
       {record.reconstruction?.provenanceNote && (
         <div className="wp-row wp-row-provenance">
           <span className="wp-label">Record provenance</span>
@@ -171,6 +185,16 @@ function RecordLineage({ record }) {
               <div className="tl-detail">{a.summary}</div>
               {a.assessorNote && (
                 <div className="tl-assessor-note">{a.assessorNote}</div>
+              )}
+              {a.verificationStageProvenance && (
+                <div className="tl-assessor-note">
+                  Verification Stage:{" "}
+                  {a.verificationStageProvenance.disposition === "historically-unverified"
+                    ? `${a.verificationStageProvenance.storedStage} preserved — historically unverified`
+                    : `${a.verificationStageProvenance.effectiveStage} after ratified review (stored code ${a.verificationStageProvenance.storedStage} preserved)`}
+                  .{" "}
+                  <a href={a.verificationStageProvenance.authorityUrl}>Review authority</a>
+                </div>
               )}
             </div>
           </div>
