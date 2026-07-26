@@ -66,6 +66,14 @@ export const FR_QE_0002 = {
       verificationStage: "VS-03",
       summary: "The evidence trail for this claim is fragmented across distinct problem domains and claim interpretations. On commercially motivated optimisation tasks (scheduling, routing, combinatorial problems of practical scale), no published evidence has established durable advantage over state-of-the-art classical methods. The contested Denchev et al. (2016) result represents the strongest performance claim in this domain; it was substantially undermined by subsequent classical algorithm improvements and the benchmark's structural dependence on hardware-favourable problem instances (RM-002). In the separate domain of scientific simulation, the evidence is stronger: King et al. (2022, 2023) report computational advantage in simulating quantum magnetism, though critics dispute the comparison class used. The claim spans two domains accruing evidence asymmetrically and has not been decomposed into separate records (BN-001), and no agreed classical comparison class exists (BN-002). The pressure state is FRAGMENTING: the claim is not converging toward a single assessment but splitting along domain lines that may require separate evaluation.",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-07-26",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "The Pressure State is unchanged. Its governing rationale is not. The prior domain-split explanation (AS-001) is retired following the ratified Identity and Continuity Review, which found IDENTITY PRESERVED AS A COMPOUND CLAIM: a single recoverable kernel — quantum annealing, practical computational advantage, a classical comparator, optimisation-task class, commercial-or-scientific relevance — is engaged by evidence from both relevance routes. IN-004 is adjacent simulation evidence and does not bear on this claim. Among the remaining instances, IN-001 through IN-003 read negative-to-contested on the commercial route across eight years, and IN-005 provides a single, contemporaneously-grounded positive instance whose own comparator (quantum Monte Carlo) is disputed (BN-002). FRAGMENTING is warranted not because the claim splits along commercial or scientific lines, but because this same kernel-corrected evidence supports incompatible trajectory interpretations under unresolved competing meanings of 'practical advantage' — whether that standard requires real-world deployability or a rigorous demonstration of speedup on a well-posed instance (OQ-6, proposed). This is interpretive, not referential, non-convergence: no identity fracture, no decomposition, no admission-scope defect.",
+      assessorNote: "Reissued per ratified Terminal Identity and Continuity Finding and Pressure State Reassessment Decision, 2026-07-26. Continuity of state (FRAGMENTING unchanged); replacement of warrant only.",
     }
   ],
 
@@ -135,6 +143,7 @@ export const FR_QE_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-005", date: "2026-07-26T00:00:00Z", field: "assessment_reissued", from: "AS-001 (domain-split warrant)", to: "AS-002 (kernel-level warrant, OQ-6)", note: "AS-002 appended following ratified Identity and Continuity Finding (IDENTITY PRESERVED AS A COMPOUND CLAIM) and Pressure State Reassessment (FRAGMENTING REMAINS WARRANTED — RE-GROUNDED). AS-001 preserved unchanged." },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "RM-001, RM-002 (Resistance); BN-001, BN-002 (Bottleneck) added." },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-001 issued. Pressure state: FRAGMENTING." },
     { id: "M-002", date: "2024-01-15", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "INST-001 through INST-005 added." },
