@@ -143,7 +143,7 @@ export const FR_QE_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
-    { id: "M-005", date: "2026-07-26T00:00:00Z", field: "assessment_reissued", from: "AS-001 (domain-split warrant)", to: "AS-002 (kernel-level warrant, OQ-6)", note: "AS-002 appended following ratified Identity and Continuity Finding (IDENTITY PRESERVED AS A COMPOUND CLAIM) and Pressure State Reassessment (FRAGMENTING REMAINS WARRANTED — RE-GROUNDED). AS-001 preserved unchanged." },
+    { id: "M-005", date: "2026-07-26", field: "assessment_reissued", from: "AS-001 (domain-split warrant)", to: "AS-002 (kernel-level warrant, OQ-6)", note: "AS-002 appended following ratified Identity and Continuity Finding (IDENTITY PRESERVED AS A COMPOUND CLAIM) and Pressure State Reassessment (FRAGMENTING REMAINS WARRANTED — RE-GROUNDED). AS-001 preserved unchanged." },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "RM-001, RM-002 (Resistance); BN-001, BN-002 (Bottleneck) added." },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-001 issued. Pressure state: FRAGMENTING." },
     { id: "M-002", date: "2024-01-15", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "INST-001 through INST-005 added." },
