@@ -138,11 +138,17 @@ export const FR_QE_0002 = {
       id: "OQ-005",
       question: "Does the Fragmenting pressure state represent a temporary epistemic condition resolvable by further evidence, or a structural property of a claim whose scope is too broad to admit a unified assessment?",
       raisedDate: "2024-01-15",
+    },
+    {
+      id: "OQ-006",
+      question: "Does \"practical advantage\" require real-world deployability, or is a rigorous demonstration of speedup on a well-posed instance sufficient regardless of scale? The commercial and scientific-relevant routes may be operating under different implicit standards for the same word. This question concerns the evaluative standard applied to an already-settled kernel element, not the kernel's composition — see Terminal Identity and Continuity Finding, §C–D.",
+      raisedDate: "2026-07-26",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-07-26", field: "open_question_added", from: "—", to: "OQ-006", note: "OQ-006 formally entered per Terminal Identity and Continuity Finding §C precision requirement (whether \"practical\" is part of the identity-bearing kernel or only an evaluative standard applied to it). Resolved: element of the settled kernel (Terminal Finding §A.2), with the standard for operationalising it left open — an evaluative-standard question, not an identity question. Does not reopen or alter the ratified Terminal Identity and Continuity Finding or Pressure State Reassessment." },
     { id: "M-005", date: "2026-07-26", field: "assessment_reissued", from: "AS-001 (domain-split warrant)", to: "AS-002 (kernel-level warrant, OQ-6)", note: "AS-002 appended following ratified Identity and Continuity Finding (IDENTITY PRESERVED AS A COMPOUND CLAIM) and Pressure State Reassessment (FRAGMENTING REMAINS WARRANTED — RE-GROUNDED). AS-001 preserved unchanged." },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "RM-001, RM-002 (Resistance); BN-001, BN-002 (Bottleneck) added." },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-001 issued. Pressure state: FRAGMENTING." },
