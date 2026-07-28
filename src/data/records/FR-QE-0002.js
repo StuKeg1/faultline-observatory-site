@@ -30,14 +30,14 @@ export const FR_QE_0002 = {
     {
       id: "IN-002",
       qualifiedEvent: "Google / D-Wave 108-qubit benchmark study",
-      description: "A Google-led study (Denchev et al. 2016, Physical Review X ) reports D-Wave 2X achieves speedup of up to 100 million times over a single-core classical solver on specific quantum simulation instances. Immediate challenge from the community: the benchmark problem was specially structured to favour quantum annealing; state-of-the-art classical solvers (e.g. Hamze-de Freitas-Selby) match or exceed D-Wave performance when applied to the same instances.",
+      description: "A Google-led study (Denchev et al. 2016, Physical Review X ) reports D-Wave 2X achieves speedup of up to 100 million times over a single-core classical solver on specific combinatorial optimisation instances. Immediate challenge from the community: the benchmark problem was specially structured to favour quantum annealing; state-of-the-art classical solvers (e.g. Hamze-de Freitas-Selby) match or exceed D-Wave performance when applied to the same instances.",
       vectors: ["partial--benchmark-contested"],
       date: "2015–2016",
     },
     {
       id: "IN-003",
       qualifiedEvent: "D-Wave Advantage launch — 5000+ qubit system",
-      description: "D-Wave releases the Advantage system with over 5,000 qubits and a new Pegasus topology. D-Wave publishes case studies claiming practical advantage in vehicle routing, scheduling, and financial optimisation. Academic evaluation (Yarkoni et al. 2022, EPJ Quantum Technology ) finds that for most real-world problem instances tested, hybrid classical-quantum solvers outperform pure quantum annealing, and classical-only solvers remain competitive or superior on commercially sized problems.",
+      description: "D-Wave releases the Advantage system with over 5,000 qubits and a new Pegasus topology. D-Wave publishes case studies claiming practical advantage in vehicle routing, scheduling, and financial optimisation. Academic evaluation (Yarkoni et al. 2022, Reports on Progress in Physics ) finds that for most real-world problem instances tested, hybrid classical-quantum solvers outperform pure quantum annealing, and classical-only solvers remain competitive or superior on commercially sized problems.",
       vectors: ["partial--hybrid-dependency"],
       date: "2019–2020",
     },
@@ -148,6 +148,11 @@ export const FR_QE_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+<<<<<<< HEAD
+=======
+    { id: "M-008", date: "2026-07-28", field: "reference_corrected", from: "IN-003: \"Yarkoni et al. 2022, EPJ Quantum Technology\"", to: "IN-003: \"Yarkoni et al. 2022, Reports on Progress in Physics\"", note: "GP-001 Editorial Correction. Incorrect publication metadata — IN-003 cited the wrong journal for Yarkoni et al. 2022; correct journal is Reports on Progress in Physics. Surfaced during FR-QE-0002 Identity and Continuity Review, Revision 3 (Baseline Sufficiency Assessment), confirmed as an admission-era error present verbatim in the recovered pre-deployment source. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
+    { id: "M-007", date: "2026-07-28", field: "description_corrected", from: "IN-002: \"...on specific quantum simulation instances.\"", to: "IN-002: \"...on specific combinatorial optimisation instances.\"", note: "GP-001 Editorial Correction. IN-002's description mischaracterised the Denchev et al. 2016 benchmark as simulation-task evidence; the contemporaneous source frames it as a \"quantum enhanced optimization heuristic\" tested on a crafted combinatorial problem. Corrected to restore the contemporaneous framing. This wording error was cosmetic to the record's own task-class kernel analysis (Terminal Identity and Continuity Finding, §B), which already classified IN-002 as engaging the optimisation-task kernel using the correct framing — this correction does not alter that finding. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
+>>>>>>> a02178a (GP-001 Editorial Correction: FR-QE-0002 instance text integrity (IN-002 wording, IN-003 citation))
     { id: "M-006", date: "2026-07-26", field: "open_question_added", from: "—", to: "OQ-006", note: "OQ-006 formally entered per Terminal Identity and Continuity Finding §C precision requirement (whether \"practical\" is part of the identity-bearing kernel or only an evaluative standard applied to it). Resolved: element of the settled kernel (Terminal Finding §A.2), with the standard for operationalising it left open — an evaluative-standard question, not an identity question. Does not reopen or alter the ratified Terminal Identity and Continuity Finding or Pressure State Reassessment." },
     { id: "M-005", date: "2026-07-26", field: "assessment_reissued", from: "AS-001 (domain-split warrant)", to: "AS-002 (kernel-level warrant, OQ-6)", note: "AS-002 appended following ratified Identity and Continuity Finding (IDENTITY PRESERVED AS A COMPOUND CLAIM) and Pressure State Reassessment (FRAGMENTING REMAINS WARRANTED — RE-GROUNDED). AS-001 preserved unchanged." },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "RM-001, RM-002 (Resistance); BN-001, BN-002 (Bottleneck) added." },
