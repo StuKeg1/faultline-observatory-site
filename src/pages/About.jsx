@@ -85,6 +85,17 @@ export default function About() {
  )}
  </div>
  ))}
+ <aside className="inst-about-accountability" aria-labelledby="public-accountability-heading">
+ <div id="public-accountability-heading" className="inst-about-heading">Public accountability</div>
+ <p className="inst-about-body">
+ The Observatory publishes weekly visitor and page-view statistics as part of its commitment to transparent institutional development.
+ </p>
+ <p className="inst-about-body inst-about-accountability__link">
+ <Link className="inst-about-link" to="/institutional-health/">
+ View Institutional Health →
+ </Link>
+ </p>
+ </aside>
  </div>
  </InstitutionalPage>
  );
