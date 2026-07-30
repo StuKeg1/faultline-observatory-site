@@ -488,8 +488,6 @@
 }
 .inst-about-accountability {
   margin-top: 0.25rem;
-  padding-left: 1rem;
-  border-left: 2px solid var(--accent-dim);
 }
 .inst-about-accountability__link {
   margin-top: 0.75rem;
