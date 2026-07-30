@@ -112,10 +112,10 @@ function TrajectoryPreview({ selection }) {
 
   return (
     <div className="pr-preview pr-trajectory-preview">
-      <div className="pr-trajectory-record">
+      <Link className="pr-trajectory-record" to={getRecordUrl(record)}>
         <span>{record.id}</span>
         <strong>{record.claim.shortLabel}</strong>
-      </div>
+      </Link>
       <svg
         className="pr-trajectory-graphic"
         viewBox="0 0 360 124"
