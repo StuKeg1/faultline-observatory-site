@@ -72,6 +72,25 @@ await check("robots.txt returns 200", async () => {
   assert(res.status === 200, `expected 200, got ${res.status}`);
 });
 
+await check("sitemap.xml returns the modular sitemap index", async () => {
+  const res = await fetchNoRedirect("/sitemap.xml");
+  assert(res.status === 200, `expected 200, got ${res.status}`);
+  const body = await res.text();
+  assert(body.includes("<sitemapindex"), "response is not a sitemap index");
+  for (const filename of ["sitemap-records.xml", "sitemap-notes.xml", "sitemap-pages.xml"]) {
+    assert(body.includes(`${BASE_URL}/${filename}`), `index is missing ${filename}`);
+  }
+});
+
+for (const filename of ["sitemap-records.xml", "sitemap-notes.xml", "sitemap-pages.xml"]) {
+  await check(`${filename} returns an XML urlset`, async () => {
+    const res = await fetchNoRedirect(`/${filename}`);
+    assert(res.status === 200, `expected 200, got ${res.status}`);
+    const body = await res.text();
+    assert(body.includes("<urlset"), "response is not a sitemap urlset");
+  });
+}
+
 for (const route of sampleRecordRoutes) {
   await check(`known record ${route} returns 200`, async () => {
     const res = await fetchNoRedirect(route);

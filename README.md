@@ -76,6 +76,8 @@ public/
   _redirects        SPA routing for Cloudflare Pages
   favicon.ico       Mark C — converted from SVG
   robots.txt
+  sitemap.xml       Generated sitemap index
+  sitemap-*.xml     Generated records, notes, and pages sitemaps
 ```
 
 ---

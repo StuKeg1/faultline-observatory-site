@@ -1,64 +1,104 @@
 /**
- * sitemap.test.js — structural tests for the generated public/sitemap.xml.
- * Same principle as redirects.test.js: run the real generator against the
- * real corpus/notes/events data and assert on what it writes.
+ * Structural and semantic tests for the generated sitemap index and children.
  */
-import { test } from "node:test";
+import { test, before } from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { getSitemapRoutes, SITEMAP_EXCLUDED_ROUTES } from "./route-manifest.js";
+import { createServer } from "vite";
+import { SITEMAP_PAGE_ROUTES } from "./route-manifest.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
-const SITEMAP_PATH = path.join(ROOT, "public", "sitemap.xml");
+const PUBLIC_DIR = path.join(ROOT, "public");
+const BASE_URL = "https://faultlinewatch.com";
+const CHILDREN = ["sitemap-records.xml", "sitemap-notes.xml", "sitemap-pages.xml"];
 
-test("generator runs clean and regenerates public/sitemap.xml", () => {
+function read(filename) {
+  return fs.readFileSync(path.join(PUBLIC_DIR, filename), "utf8");
+}
+
+function locs(contents) {
+  return [...contents.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
+}
+
+before(() => {
   execFileSync("node", ["scripts/generate-sitemap.js"], { cwd: ROOT, stdio: "pipe" });
-  assert.ok(fs.existsSync(SITEMAP_PATH), "public/sitemap.xml was not written");
 });
 
-test("sitemap is well-formed enough to parse: one <loc> per listed route, no duplicates", async () => {
-  const contents = fs.readFileSync(SITEMAP_PATH, "utf8");
-  assert.match(contents, /^<\?xml/, "missing XML declaration");
-  assert.match(contents, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+test("sitemap.xml is an index referencing exactly the three structured sitemaps", () => {
+  const contents = read("sitemap.xml");
+  assert.match(contents, /^<\?xml/);
+  assert.match(contents, /<sitemapindex xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+  assert.deepEqual(locs(contents), CHILDREN.map((filename) => `${BASE_URL}/${filename}`));
+});
 
-  const locs = [...contents.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-  const seen = new Set();
-  for (const loc of locs) {
-    assert.ok(!seen.has(loc), `duplicate <loc> in sitemap: ${loc}`);
-    seen.add(loc);
+test("every child is a duplicate-free XML urlset", () => {
+  for (const filename of CHILDREN) {
+    const contents = read(filename);
+    assert.match(contents, /^<\?xml/, `${filename} is missing its XML declaration`);
+    assert.match(contents, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+    const urls = locs(contents);
+    assert.equal(new Set(urls).size, urls.length, `${filename} contains duplicate URLs`);
   }
 });
 
-test("every sitemap-eligible manifest route appears in the sitemap", async () => {
-  const contents = fs.readFileSync(SITEMAP_PATH, "utf8");
-  const routes = await getSitemapRoutes();
-  assert.ok(routes.length > 20, "suspiciously few sitemap routes resolved — manifest import likely failed");
+test("sitemap-records.xml contains every FR record and lastmod is its latest evidence-entry date", async () => {
+  const server = await createServer({
+    root: ROOT,
+    server: { middlewareMode: true },
+    appType: "custom",
+    logLevel: "silent",
+  });
+  try {
+    const { ALL_RECORDS } = await server.ssrLoadModule("/src/data/corpus.js");
+    const contents = read("sitemap-records.xml");
+    const entries = [...contents.matchAll(/<url>\s*<loc>(.*?)<\/loc>\s*<lastmod>(.*?)<\/lastmod>\s*<\/url>/g)];
+    assert.equal(entries.length, ALL_RECORDS.length);
 
-  for (const route of routes) {
-    assert.ok(
-      contents.includes(`<loc>https://faultlinewatch.com${route}</loc>`),
-      `sitemap is missing ${route}`
+    for (const record of ALL_RECORDS) {
+      const evidenceDates = record.mutationLog
+        .filter((entry) => /^(?:instance|instances|evidence)_(?:logged|appended)$/i.test(entry.field))
+        .map((entry) => entry.date)
+        .sort();
+      assert.ok(evidenceDates.length > 0, `${record.id} has no evidence-entry mutation`);
+      const route = `${BASE_URL}/the-record/${record.id.toLowerCase()}/`;
+      const match = entries.find((entry) => entry[1] === route);
+      assert.ok(match, `${record.id} missing from sitemap-records.xml`);
+      assert.equal(match[2], evidenceDates.at(-1), `${record.id} has the wrong lastmod`);
+      assert.match(match[2], /^\d{4}-\d{2}-\d{2}$/);
+    }
+  } finally {
+    await server.close();
+  }
+});
+
+test("sitemap-notes.xml contains all and only PN Programme Notes", async () => {
+  const server = await createServer({
+    root: ROOT,
+    server: { middlewareMode: true },
+    appType: "custom",
+    logLevel: "silent",
+  });
+  try {
+    const { PROGRAMME_NOTES } = await server.ssrLoadModule("/src/data/programmeNotes.js");
+    assert.deepEqual(
+      locs(read("sitemap-notes.xml")),
+      PROGRAMME_NOTES.map((note) => `${BASE_URL}/notes/${note.id.toLowerCase()}/`)
     );
+  } finally {
+    await server.close();
   }
 });
 
-test("excluded routes never appear in the sitemap", () => {
-  const contents = fs.readFileSync(SITEMAP_PATH, "utf8");
-  for (const route of SITEMAP_EXCLUDED_ROUTES) {
-    assert.ok(
-      !contents.includes(`<loc>https://faultlinewatch.com${route}</loc>`),
-      `excluded route ${route} leaked into the sitemap`
-    );
-  }
+test("sitemap-pages.xml contains the approved core static routes", () => {
+  assert.deepEqual(
+    locs(read("sitemap-pages.xml")),
+    SITEMAP_PAGE_ROUTES.map((route) => `${BASE_URL}${route}`)
+  );
 });
 
-test("previously-missing routes (the reason this generator exists) are present", async () => {
-  const routes = await getSitemapRoutes();
-  assert.ok(routes.includes("/events/"), "/events/ missing — this was the original hand-maintained-sitemap gap");
-  assert.ok(routes.includes("/institutional-changelog/"), "/institutional-changelog/ missing — same gap");
-  assert.ok(routes.includes("/public-record/"), "/public-record/ missing — ADR-002 hub must be indexable");
-  assert.ok(routes.includes("/reading-room/"), "/reading-room/ missing — ADR-002 canonical route must be indexable");
+test("robots.txt declares the sitemap index", () => {
+  assert.match(read("robots.txt"), /^Sitemap: https:\/\/faultlinewatch\.com\/sitemap\.xml$/m);
 });
