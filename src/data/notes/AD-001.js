@@ -91,5 +91,24 @@ export const AD_001 = {
         "React Router route table and data model, so it did not create a parallel content " +
         "representation or require a framework migration.",
     },
+    {
+      id: "B-008",
+      heading: "Resolution Reconciliation",
+      text:
+        "The architecture selected by RENDER-STATIC-001 is a reasoned departure from " +
+        "the implementation guidance in B-003 and B-006. B-006 rejected adding " +
+        "prerendering as a short-term mitigation; the shipped implementation instead " +
+        "establishes corpus-wide, deterministic, build-gated prerendering as the permanent " +
+        "rendering architecture. It satisfies the underlying outcome identified in B-003 " +
+        "without Vike or Astro because it reuses the canonical corpus, React components, " +
+        "and shared route table, fails on generation gaps, and is verified through both " +
+        "substantive default-user-agent HTML checks and hydrated-browser checks. This " +
+        "departure should have been stated before implementation: AD-001 was named by the " +
+        "brief but was not read before architecture selection. The defensibility of the " +
+        "result does not cure that governance failure. Named governing documents must be " +
+        "read before selection, and any departure must be reasoned and recorded before " +
+        "execution. This repository object is a non-operative historical mirror; the " +
+        "canonical closure and correction record is the institutional Release Archive.",
+    },
   ],
 };
