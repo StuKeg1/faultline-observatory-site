@@ -28,14 +28,15 @@ export default function PageMeta({ title, description, path }) {
       <title>{fullTitle}</title>
       {!usesStaticHomepageMeta && <meta name="description" content={desc} />}
       <link rel="canonical" href={canonical} />
-      {!usesStaticHomepageMeta && (
-        <>
-          <meta property="og:title"       content={fullTitle} />
-          <meta property="og:description" content={desc} />
-          <meta property="og:url"         content={canonical} />
-          <meta name="twitter:description" content={desc} />
-        </>
-      )}
+      {/* Flat children only. react-helmet-async's React 19 dispatcher maps
+          Helmet's direct children into title/meta/link props; a nested
+          Fragment is not traversed, so tags wrapped in <>...</> were being
+          silently dropped from both the SSR output and the live DOM. */}
+      {!usesStaticHomepageMeta && <meta property="og:title" content={fullTitle} />}
+      {!usesStaticHomepageMeta && <meta property="og:description" content={desc} />}
+      {!usesStaticHomepageMeta && <meta property="og:url" content={canonical} />}
+      {!usesStaticHomepageMeta && <meta name="twitter:title" content={fullTitle} />}
+      {!usesStaticHomepageMeta && <meta name="twitter:description" content={desc} />}
     </Helmet>
   );
 }

@@ -276,23 +276,25 @@ function getPolarityBadgeClass(polarity) {
   return map[polarity] ?? "";
 }
 
+/**
+ * Evidence sources are collapsed by default, as before, but the collapse is
+ * now native <details>/<summary> rather than React state. The entries are
+ * therefore always present in the served HTML — readable by a crawler and
+ * expandable by a reader with JavaScript disabled — while the visible
+ * behaviour for everyone else is unchanged. The open/closed label swap moves
+ * to CSS on [open] for the same reason.
+ */
 function EvidenceSources({ record }) {
-  const [expanded, setExpanded] = useState(false);
   const instances = record.instances ?? [];
   const showFullS4Content = record.id === "FR-QE-0001";
   return (
-    <div>
-      <button
-        className="evidence-toggle-bar"
-        onClick={() => setExpanded(!expanded)}
-        aria-expanded={expanded}
-      >
+    <details className="evidence-sources">
+      <summary className="evidence-toggle-bar">
         <span>{instances.length} instances on record</span>
-        <span className="evidence-toggle-label">
-          {expanded ? "Hide ↑" : "Show sources ↓"}
-        </span>
-      </button>
-      {expanded && (
+        <span className="evidence-toggle-label" data-state="collapsed">Show sources ↓</span>
+        <span className="evidence-toggle-label" data-state="expanded">Hide ↑</span>
+      </summary>
+      {(
         <div className="evidence-list" role="list">
           {instances.map((inst) => {
             const polarity = getInstancePolarity(inst);
@@ -318,7 +320,7 @@ function EvidenceSources({ record }) {
           })}
         </div>
       )}
-    </div>
+    </details>
   );
 }
 

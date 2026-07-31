@@ -90,9 +90,12 @@ function RecordRedirect() {
  );
 }
 
-export default function App() {
+// AppShell holds the entire route table and layout. App wraps it in a
+// BrowserRouter for the browser; the prerenderer wraps the same component in
+// a StaticRouter. One route table, two routers — never a second copy.
+export function AppShell() {
  return (
- <BrowserRouter>
+ <>
  <ScrollToTop />
  <SiteNav />
  <Suspense fallback={null}>
@@ -142,6 +145,14 @@ export default function App() {
  <Route path="*" element={<NotFound />} />
  </Routes>
  </Suspense>
+ </>
+ );
+}
+
+export default function App() {
+ return (
+ <BrowserRouter>
+ <AppShell />
  </BrowserRouter>
  );
 }

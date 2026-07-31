@@ -13,55 +13,22 @@
  *   - no id segment (bare /the-record, /the-record/)      -> SPA shell, 200
  *   - fr-mf-* legacy id (Release 006)                     -> 301, one hop, straight to canonical
  *   - known record id, non-canonical path (case/slash)    -> 301 to canonical
- *   - known record id, canonical path                     -> SPA shell, 200
- *     (crawler UAs additionally get server-rewritten OG/Twitter tags,
- *     sourced live from the same corpus/derive modules the app itself
- *     uses — never a second copy of record data)
+ *   - known record id, canonical path                     -> generated static page, 200
  *   - unknown id                                          -> real 404
+ *
+ * Record pages are prerendered at build time by scripts/prerender.js, so the
+ * response body is complete indexable HTML for every user agent alike. The
+ * previous crawler-user-agent OG/Twitter rewriting is gone: it existed only to
+ * compensate for an empty shell, and serving different substantive content by
+ * user agent is not something this Function does.
  */
 import { ALL_RECORDS } from "../../src/data/corpus.js";
-import { getRecordMetaDescription } from "../../src/data/derive.js";
 
-const SITE_NAME = "Faultline Observatory";
 const BASE_URL = "https://faultlinewatch.com";
-
-const CRAWLER_UA = /facebookexternalhit|Facebot|Twitterbot|LinkedInBot|Slackbot|WhatsApp|TelegramBot|Discordbot|Googlebot|Google-InspectionTool|bingbot|Applebot|redditbot|Pinterest|SkypeUriPreview|vkShare|Embedly|Iframely/i;
-
-function isCrawler(userAgent) {
-  return CRAWLER_UA.test(userAgent || "");
-}
 
 function findRecord(segment) {
   const id = segment.toLowerCase();
   return ALL_RECORDS.find((r) => r.id.toLowerCase() === id) ?? null;
-}
-
-class AttrRewriter {
-  constructor(attr, value) {
-    this.attr = attr;
-    this.value = value;
-  }
-  element(element) {
-    element.setAttribute(this.attr, this.value);
-  }
-}
-
-class TextRewriter {
-  constructor(content) {
-    this.content = content;
-  }
-  element(element) {
-    element.setInnerContent(this.content);
-  }
-}
-
-class HeadAppender {
-  constructor(html) {
-    this.html = html;
-  }
-  element(element) {
-    element.append(this.html, { html: true });
-  }
 }
 
 /** Fetches a literal static asset from the deployed build, regardless of the request's own path. */
@@ -103,24 +70,11 @@ export async function onRequest(context) {
     return Response.redirect(`${BASE_URL}${canonicalPath}${url.search}`, 301);
   }
 
-  const response = await fetchAsset(context, "/");
+  // Every record in the corpus has a generated static page (scripts/prerender.js
+  // fails the build otherwise), so serve that page directly. The SPA shell is
+  // kept only as a defensive fallback if an asset is somehow missing.
+  const prerendered = await fetchAsset(context, canonicalPath);
+  if (prerendered.ok) return prerendered;
 
-  const userAgent = context.request.headers.get("user-agent") || "";
-  if (!isCrawler(userAgent)) return response;
-
-  const ogTitle = `${record.id} — ${record.claim.shortLabel}`;
-  const pageTitle = `${ogTitle} | ${SITE_NAME}`;
-  const description = getRecordMetaDescription(record);
-  const canonicalHtml = `<link rel="canonical" href="${(`${BASE_URL}${canonicalPath}`).replace(/"/g, "&quot;")}">`;
-
-  return new HTMLRewriter()
-    .on("title", new TextRewriter(pageTitle))
-    .on('meta[name="description"]', new AttrRewriter("content", description))
-    .on('meta[property="og:title"]', new AttrRewriter("content", ogTitle))
-    .on('meta[property="og:description"]', new AttrRewriter("content", description))
-    .on('meta[property="og:url"]', new AttrRewriter("content", `${BASE_URL}${canonicalPath}`))
-    .on('meta[name="twitter:title"]', new AttrRewriter("content", ogTitle))
-    .on('meta[name="twitter:description"]', new AttrRewriter("content", description))
-    .on("head", new HeadAppender(canonicalHtml))
-    .transform(response);
+  return fetchAsset(context, "/");
 }

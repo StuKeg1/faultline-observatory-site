@@ -7,6 +7,9 @@
  * routes. A matched Function has a reliable asset binding, so this boundary
  * resolves canonical routes explicitly while preserving genuine 404s for
  * unknown paths. /the-record/* remains owned by its more-specific Function.
+ *
+ * Where a canonical route has a build-time generated static page (Programme
+ * Notes — see scripts/prerender.js), that page is served instead of the shell.
  */
 import { CANONICAL_ROUTES, LEGACY_REDIRECTS } from "./generated-routes.js";
 
@@ -51,7 +54,14 @@ export async function onRequest(context) {
   const canonicalTarget = canonicalByAlias.get(pathname);
   if (canonicalTarget) return redirect(context.request.url, canonicalTarget);
 
-  if (canonicalRoutes.has(pathname)) return fetchAsset(context, "/");
+  if (canonicalRoutes.has(pathname)) {
+    // Programme Note routes are prerendered to static HTML at build time
+    // (scripts/prerender.js). Serve the generated page when one exists; every
+    // other canonical route still resolves to the SPA shell as before.
+    const prerendered = await fetchAsset(context, pathname);
+    if (prerendered.ok) return prerendered;
+    return fetchAsset(context, "/");
+  }
 
   // Static assets and unknown paths both remain asset-server concerns. Known
   // assets are returned normally; unknown paths retain the real 404 response.

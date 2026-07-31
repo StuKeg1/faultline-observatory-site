@@ -367,6 +367,14 @@
 }
 .evidence-toggle-bar:hover { background: var(--accent-dim); }
 .evidence-toggle-label { color: var(--accent); letter-spacing: 0.06em; }
+/* Native <details> collapse — see EvidenceSources in FrontierRecord.jsx.
+   The marker is suppressed so <summary> keeps the original bar appearance,
+   and the label swap is driven by [open] rather than React state. */
+.evidence-sources > summary { list-style: none; }
+.evidence-sources > summary::-webkit-details-marker { display: none; }
+.evidence-sources > summary [data-state="expanded"] { display: none; }
+.evidence-sources[open] > summary [data-state="collapsed"] { display: none; }
+.evidence-sources[open] > summary [data-state="expanded"] { display: inline; }
 .evidence-list { display: flex; flex-direction: column; }
 .evidence-entry { display: grid; grid-template-columns: 60px 1fr auto; gap: 1rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--rule-light); }
 .ev-code { font-family: var(--mono); font-size: 10px; color: var(--ink-light); letter-spacing: 0.06em; }
