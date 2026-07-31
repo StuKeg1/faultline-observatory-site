@@ -1,24 +1,24 @@
 /**
  * AD-001 — Architectural Debt: SPA SEO and Server-Side Rendering
  * Type: architectural-debt
- * Status: INTERNAL — known debt, not published
+ * Status: RESOLVED — closed by RENDER-STATIC-001, not published
  *
  * Recorded: 2026-06-12
- * Priority: Post-launch, v2
+ * Resolved: 2026-07-31
  */
 
 export const AD_001 = {
   id: "AD-001",
   type: "architectural-debt",
-  status: "internal",
+  status: "resolved",
   date: "2026-06-12",
+  resolvedDate: "2026-07-31",
   title: "SPA SEO and Server-Side Rendering",
   relation: "Deployment infrastructure / search indexing",
   summary:
-    "The current React SPA build produces an empty HTML body. Google indexes " +
-    "JavaScript-rendered content but with a delay of days to weeks. Frontier Records, " +
-    "Notes, and Programme pages will be slow to appear in search results. Documented " +
-    "as known architectural debt to be addressed post-launch.",
+    "Resolved by RENDER-STATIC-001. Every Frontier Record and Programme Note is now " +
+    "prerendered as complete static HTML during the governed production build, while " +
+    "the same React components hydrate to preserve interactive behaviour.",
 
   body: [
     {
@@ -78,6 +78,18 @@ export const AD_001 = {
         "it adds complexity without solving the problem properly. Do not migrate to " +
         "Next.js — it would solve the SEO problem but adds significant framework " +
         "dependency and changes the deployment model.",
+    },
+    {
+      id: "B-007",
+      heading: "Resolution",
+      text:
+        "Closed on 2026-07-31 by RENDER-STATIC-001. Native Vite SSR prerendering was " +
+        "selected after the corpus and organic-search thresholds were crossed. The build " +
+        "now deterministically generates complete HTML for all 26 Frontier Records and " +
+        "both Programme Notes, fails on route-generation gaps, and serves those assets " +
+        "through the Cloudflare Pages Functions. The implementation preserved the existing " +
+        "React Router route table and data model, so it did not create a parallel content " +
+        "representation or require a framework migration.",
     },
   ],
 };
