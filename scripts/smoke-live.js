@@ -41,6 +41,37 @@ function pickSampleRecordRoutes(routes) {
   return sample;
 }
 
+function getRecordId(route) {
+  return route.match(RECORD_ROUTE_RE)?.[1].toUpperCase();
+}
+
+function getOgTitle(body) {
+  return body.match(/<meta property="og:title" content="([^"]*)"/i)?.[1];
+}
+
+function assertSubstantiveRecordHtml(route, body) {
+  const expectedId = getRecordId(route);
+  assert(expectedId, `could not derive a record ID from ${route}`);
+  assert(
+    body.includes('class="frontier-record-page"'),
+    "response does not contain the Frontier Record page marker (it may be the SPA shell)"
+  );
+  assert(
+    body.includes(`class="rp-record-id">${expectedId}</div>`),
+    `response does not contain the canonical record ID ${expectedId}`
+  );
+  assert(
+    body.includes(`<link rel="canonical" href="${BASE_URL}${route}"`),
+    `response does not contain the canonical URL ${BASE_URL}${route}`
+  );
+  const ogTitle = getOgTitle(body);
+  assert(ogTitle, "no og:title meta tag found in response");
+  assert(
+    ogTitle.includes(expectedId) && ogTitle !== "Faultline Observatory",
+    `expected a record-specific og:title containing "${expectedId}", got "${ogTitle}"`
+  );
+}
+
 const results = [];
 
 async function check(name, fn) {
@@ -92,9 +123,11 @@ for (const filename of ["sitemap-records.xml", "sitemap-notes.xml", "sitemap-pag
 }
 
 for (const route of sampleRecordRoutes) {
-  await check(`known record ${route} returns 200`, async () => {
+  await check(`known record ${route} returns substantive static HTML to a default user agent`, async () => {
     const res = await fetchNoRedirect(route);
     assert(res.status === 200, `expected 200, got ${res.status}`);
+    const body = await res.text();
+    assertSubstantiveRecordHtml(route, body);
   });
 }
 
@@ -138,16 +171,19 @@ await check("garbage top-level path returns a real 404", async () => {
 
 if (sampleRecordRoutes.length > 0) {
   const target = sampleRecordRoutes[0];
-  const expectedId = target.match(RECORD_ROUTE_RE)[1].toUpperCase();
-  await check(`Googlebot UA gets a record-specific og:title on ${target}`, async () => {
-    const res = await fetch(`${BASE_URL}${target}`, { headers: { "user-agent": "Googlebot" } });
-    assert(res.status === 200, `expected 200, got ${res.status}`);
-    const body = await res.text();
-    const match = body.match(/<meta property="og:title" content="([^"]*)"/i);
-    assert(match, "no og:title meta tag found in response");
+  await check(`record metadata is user-agent independent on ${target}`, async () => {
+    const [defaultRes, crawlerRes] = await Promise.all([
+      fetch(`${BASE_URL}${target}`),
+      fetch(`${BASE_URL}${target}`, { headers: { "user-agent": "Googlebot" } }),
+    ]);
+    assert(defaultRes.status === 200, `default user agent: expected 200, got ${defaultRes.status}`);
+    assert(crawlerRes.status === 200, `Googlebot user agent: expected 200, got ${crawlerRes.status}`);
+    const [defaultBody, crawlerBody] = await Promise.all([defaultRes.text(), crawlerRes.text()]);
+    assertSubstantiveRecordHtml(target, defaultBody);
+    assertSubstantiveRecordHtml(target, crawlerBody);
     assert(
-      match[1].includes(expectedId) && match[1] !== "Faultline Observatory",
-      `expected a record-specific og:title containing "${expectedId}", got "${match[1]}" (this is the check that would have caught the routing bug — a broken response here still carried the generic homepage title)`
+      getOgTitle(crawlerBody) === getOgTitle(defaultBody),
+      "og:title differs between default and Googlebot user agents"
     );
   });
 }
