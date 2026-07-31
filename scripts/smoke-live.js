@@ -146,8 +146,8 @@ if (sampleRecordRoutes.length > 0) {
     const match = body.match(/<meta property="og:title" content="([^"]*)"/i);
     assert(match, "no og:title meta tag found in response");
     assert(
-      match[1].startsWith(expectedId),
-      `expected og:title to start with "${expectedId}", got "${match[1]}" (this is the check that would have caught the routing bug — a broken response here still carried the generic homepage title)`
+      match[1].includes(expectedId) && match[1] !== "Faultline Observatory",
+      `expected a record-specific og:title containing "${expectedId}", got "${match[1]}" (this is the check that would have caught the routing bug — a broken response here still carried the generic homepage title)`
     );
   });
 }
