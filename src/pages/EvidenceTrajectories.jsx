@@ -24,6 +24,23 @@ import "./EvidenceTrajectories.css";
 
 const STAGE_ORDER = ["VS-05", "VS-04", "VS-03", "VS-02", "VS-01"];
 
+/**
+ * Single source of truth for Evidence Trajectories URLs. The card anchor's
+ * href and the URL written by selectRecord() are produced here so they cannot
+ * diverge — in particular, an active lens is preserved rather than dropped.
+ */
+function trajectoryParams(recordId, lensId) {
+  const params = new URLSearchParams();
+  if (lensId && lensId !== "full") params.set("lens", lensId);
+  if (recordId) params.set("record", recordId);
+  return params;
+}
+
+function trajectoryUrl(recordId, lensId) {
+  const query = trajectoryParams(recordId, lensId).toString();
+  return `/evidence-trajectories/${query ? `?${query}` : ""}`;
+}
+
 const STATE_TONES = {
   audit: "audit",
   escalating: "escalating",
@@ -407,10 +424,21 @@ function EvidenceChart({
     </div>
   );
 }
-function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, onSelect }) {
+function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, lensId, onSelect }) {
   const { record, history, current, transitions } = trajectory;
   const programme = getProgramme(record);
   const stateChanges = transitions.length;
+
+  function handleSelectClick(event) {
+    // Modified clicks (new tab, new window, download) keep native anchor
+    // behaviour. Plain left clicks are handled in-page so the selection also
+    // scrolls the card into view.
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    event.preventDefault();
+    onSelect(record.id);
+  }
 
   return (
     <article
@@ -421,11 +449,11 @@ function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, onSelect })
         isLensFocus ? "is-lens-focus" : "",
       ].join(" ")}
     >
-      <button
-        type="button"
+      <Link
+        to={trajectoryUrl(record.id, lensId)}
         className="et-record-select"
-        onClick={() => onSelect(record.id)}
-        aria-pressed={isSelected}
+        aria-current={isSelected ? "true" : undefined}
+        onClick={handleSelectClick}
       >
         <span>{record.id}</span>
         <span>{record.claim.shortLabel}</span>
@@ -433,7 +461,7 @@ function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, onSelect })
         <em>
           {programme?.shortId ?? record.programme} · {history.length} assessments · {stateChanges} documented state change{stateChanges === 1 ? "" : "s"}
         </em>
-      </button>
+      </Link>
       <div className="et-card-current">
         <StateBadge pressureState={current.pressureState} />
         <span>since {current.date}</span>
@@ -452,7 +480,6 @@ function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, onSelect })
       </div>
       <div className="et-card-links">
         <Link to={getRecordUrl(record)}>Read the complete Frontier Record</Link>
-        <Link to={`/evidence-trajectories/?record=${record.id}`}>View this record in Evidence Trajectories</Link>
       </div>
     </article>
   );
@@ -469,10 +496,7 @@ export default function EvidenceTrajectories() {
   const selectedLens = LENSES.find((lens) => lens.id === lensId) ?? LENSES[0];
 
   function selectRecord(recordId) {
-    const next = {};
-    if (lensId !== "full") next.lens = lensId;
-    if (recordId) next.record = recordId;
-    setSearchParams(next, { replace: false });
+    setSearchParams(trajectoryParams(recordId, lensId), { replace: false });
     if (recordId) {
       window.setTimeout(() => {
         document.getElementById(`record-${recordId}`)?.scrollIntoView({
@@ -549,6 +573,7 @@ export default function EvidenceTrajectories() {
                   trajectory={trajectory}
                   isSelected={selectedId === trajectory.record.id}
                   isLensFocus={selectedLens.matches(trajectory.record)}
+                  lensId={lensId}
                   onSelect={selectRecord}
                 />
               ))}

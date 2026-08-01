@@ -352,6 +352,7 @@
   cursor: pointer;
   padding: 1.05rem 1.35rem;
   text-align: left;
+  text-decoration: none;
 }
 
 .et-record-select span:first-child {
