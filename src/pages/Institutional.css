@@ -17,6 +17,15 @@
   max-width: var(--col);
   margin: 0 auto;
 }
+/* Methodology only — the page passes `wide`, which puts .inst-body-inner on
+   --width-wide (1040px) while the header stayed on --col (--width-content,
+   680px). Both are margin: 0 auto, so on any viewport >= 1040px the eyebrow
+   and H1 sat 180px right of the left edge of everything below the header
+   rule. The two columns now share one axis. Scoped via modifier so
+   About / Programmes / Search / Institutional Health headers are untouched. */
+.inst-header-inner--wide {
+  max-width: var(--width-wide);
+}
 .inst-eyebrow {
   font-family: var(--mono);
   font-size: var(--label-size);
@@ -110,22 +119,35 @@
 /* ── Methodology preface — two layers ──
    1. .inst-method-preface: why the methodology exists (the thesis
       statement), bounded by a bottom rule — a small "cover page" moment.
+      Now a two-column row: the thesis holds the left, capped at a reading
+      measure (it previously ran the full 1040px, ~145ch), and the
+      "New to the Observatory?" signpost — previously a separate full-width
+      prose line stacked beneath — occupies the right. Both sit on the rule
+      (align-items: flex-end). Copy in both is unchanged; only position is.
    2. .inst-method-overview: how it's organised. The orientation sentence
-      itself is the heading now — no separate "Contents" label sitting
-      beside it. Constrained to under half the page width (~46%), so the
-      block visually signals "introductory material" before the full-width
-      Parts below it begin — the width contrast is the signal, not a rule
-      or a label. Entry titles are enlarged/bolder than the previous
-      version so Foundations/Judgement/Record Architecture read as the
-      dominant element, with the subtitle staying secondary. No numbering,
-      still, for the same reason as before: the Part headings below don't
-      carry it either. */
+      is still the heading — no separate "Contents" label. It was previously
+      capped at 46% width and stacked vertically, which left roughly
+      560 x 190px of dead area to its right — the largest single void on the
+      page. It is now a full-width three-column band and, more importantly,
+      a functional one: each entry is an anchor into the Part it names,
+      rather than a decorative list of the same words. The 1px-gap-over-rule
+      -background construction is the same idiom as .inst-prog-list above.
+      Part numbering added: the Part headings below DO carry Part I/II/III
+      eyebrows (an earlier comment here asserted otherwise), and the band
+      has to be readable as an index into them, not a restatement. */
 .inst-method-preface {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
   padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   border-bottom: 1px solid var(--rule-light);
 }
 .inst-method-intro {
+  flex: 1 1 24rem;
+  max-width: 34rem;
   font-family: var(--serif);
   font-weight: 300;
   font-style: italic;
@@ -133,9 +155,29 @@
   color: var(--ink-mid);
   line-height: 1.65;
 }
+.inst-method-preface-aside {
+  flex: 0 1 24rem;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--body-text-color);
+}
+.inst-method-preface-aside strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+.inst-method-preface-aside a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-dim);
+}
+.inst-method-preface-aside a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 .inst-method-overview {
-  max-width: 46%;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 .inst-method-overview__heading {
   font-family: var(--serif);
@@ -143,12 +185,52 @@
   font-size: 0.95rem;
   color: var(--ink);
   line-height: 1.5;
-  margin-bottom: 1.35rem;
+  margin-bottom: 1rem;
 }
 .inst-method-overview-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--rule-light);
+  border: 1px solid var(--rule-light);
+}
+.inst-method-overview-entry {
+  display: block;
+  background: var(--paper);
+  padding: 1rem 1.25rem 1.15rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+.inst-method-overview-entry:hover {
+  background: var(--paper-card);
+}
+.inst-method-overview-entry:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.inst-method-overview-entry__top {
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.inst-method-overview-entry__part {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+}
+.inst-method-overview-entry__mark {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  transition: color 0.15s;
+}
+.inst-method-overview-entry:hover .inst-method-overview-entry__mark {
+  color: var(--accent);
 }
 .inst-method-overview-entry__title {
   font-family: var(--mono);
@@ -240,6 +322,10 @@
   padding-top: 2.5rem;
   margin-top: 2.5rem;
   border-top: 1px solid var(--rule-light);
+  /* Targets of the contents band above. #site-nav is position: sticky at
+     var(--nav-height), so an unadjusted anchor jump lands the Part eyebrow
+     underneath it. */
+  scroll-margin-top: calc(var(--nav-height) + 1.5rem);
 }
 .inst-methodology-part:first-of-type {
   margin-top: 0;
@@ -699,7 +785,20 @@
     padding: 0.5rem 0;
     transform: rotate(90deg);
   }
-  .inst-method-overview {
+  /* The preface row and the contents band both collapse to a single
+     column. The old `.inst-method-overview { max-width: 100% }` override
+     is gone with the 46% desktop cap it existed to undo. */
+  .inst-method-preface {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+  .inst-method-intro,
+  .inst-method-preface-aside {
+    flex: 1 1 auto;
     max-width: 100%;
+  }
+  .inst-method-overview-list {
+    grid-template-columns: 1fr;
   }
 }

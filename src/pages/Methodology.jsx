@@ -18,12 +18,19 @@ import "./Institutional.css";
 // if needed") — scoped to this page only via the modifier class, so the
 // shared .inst-body-inner max-width used by Programmes/About/Search/etc. is
 // untouched.
+//
+// `wide` now also applies to the header column. It previously did not: the
+// header stayed on --col (--width-content, 680px) while the body ran at
+// --width-wide (1040px), and both are centred, so the eyebrow and H1 were
+// indented 180px from the left edge of every element below the header rule
+// on any viewport >= 1040px. Same modifier pattern, same scoping — the
+// shared .inst-header-inner is unchanged for every other institutional page.
 function InstitutionalPage({ eyebrow, title, wide, children }) {
   return (
     <>
       <div className="inst-page">
         <header className="inst-header">
-          <div className="inst-header-inner">
+          <div className={wide ? "inst-header-inner inst-header-inner--wide" : "inst-header-inner"}>
             {eyebrow && <div className="inst-eyebrow">{eyebrow}</div>}
             <h1 className="inst-title">{title}</h1>
           </div>
@@ -67,6 +74,27 @@ function EditIcon() {
   );
 }
 const STEP_ICONS = [SearchIcon, ReviewIcon, EditIcon];
+
+// ─── PART ANCHORS ────────────────────────────────────────────────
+// Single source for the three Part element ids. Consumed twice: by the
+// contents band in the preface (as href targets) and by the Part sections
+// themselves (as id attributes). Defined once so the two cannot drift.
+const PART_IDS = {
+  foundations: "part-foundations",
+  judgement: "part-judgement",
+  architecture: "part-architecture",
+};
+
+// The contents band's own copy. Deliberately NOT unified with the Part
+// heading copy below — the two differ and are meant to: the band's subtitle
+// for Part I is "Constitutional principles", the Part heading's description
+// is "Foundational principles." Collapsing them into one source would be a
+// copy change disguised as a refactor.
+const METHOD_PARTS = [
+  { part: "Part I",   id: PART_IDS.foundations,  title: "Foundations",         sub: "Constitutional principles" },
+  { part: "Part II",  id: PART_IDS.judgement,    title: "Judgement",           sub: "Institutional judgement" },
+  { part: "Part III", id: PART_IDS.architecture, title: "Record Architecture", sub: "Institutional memory" },
+];
 
 // ─── EPISTEMIC FOUNDATION ───────────────────────────────────────
 // Unchanged from RELEASE-029 — plain term/def rows remain the right
@@ -129,41 +157,45 @@ export default function Methodology() {
         description="The Frontier Claim Intelligence Framework. How Faultline Observatory identifies, assesses, and tracks scientific and technology claims through evidence over time. Observation before interpretation."
         path="/methodology/"
       />
+      {/* The thesis statement and the Welcome signpost now share one row
+          rather than stacking as two full-width single-line blocks. Copy in
+          both is verbatim from the previous version. The signpost moved out
+          of .inst-methodology-prose because that class carries no measure
+          cap — it was setting one sentence across the full 1040px. */}
       <div className="inst-method-preface">
         <p className="inst-method-intro">
           The methodology sits behind the archive. Records justify the methodology;
           the methodology does not justify the records.
         </p>
-      </div>
-
-      <div className="inst-methodology-prose">
-        <p>
+        <p className="inst-method-preface-aside">
           <strong>New to the Observatory?</strong>{" "}
           Start with the{" "}
           <a href="/welcome">short introduction to Frontier Records and how the Observatory works →</a>
         </p>
       </div>
 
+      {/* Contents band. Plain <a href="#..."> rather than react-router
+          <Link>: the browser's native anchor jump is wanted here, and
+          ScrollToTop keys on `pathname` only, so a hash change does not
+          trip its window.scrollTo(0, 0). */}
       <div className="inst-method-overview">
         <p className="inst-method-overview__heading">This methodology is organised into three parts.</p>
         <div className="inst-method-overview-list">
-          <div className="inst-method-overview-entry">
-            <div className="inst-method-overview-entry__title">Foundations</div>
-            <div className="inst-method-overview-entry__sub">Constitutional principles</div>
-          </div>
-          <div className="inst-method-overview-entry">
-            <div className="inst-method-overview-entry__title">Judgement</div>
-            <div className="inst-method-overview-entry__sub">Institutional judgement</div>
-          </div>
-          <div className="inst-method-overview-entry">
-            <div className="inst-method-overview-entry__title">Record Architecture</div>
-            <div className="inst-method-overview-entry__sub">Institutional memory</div>
-          </div>
+          {METHOD_PARTS.map((p) => (
+            <a key={p.id} className="inst-method-overview-entry" href={`#${p.id}`}>
+              <div className="inst-method-overview-entry__top">
+                <span className="inst-method-overview-entry__part">{p.part}</span>
+                <span className="inst-method-overview-entry__mark" aria-hidden="true">↓</span>
+              </div>
+              <div className="inst-method-overview-entry__title">{p.title}</div>
+              <div className="inst-method-overview-entry__sub">{p.sub}</div>
+            </a>
+          ))}
         </div>
       </div>
 
       {/* ── Part I — Foundations ── */}
-      <div className="inst-methodology-part inst-methodology-part--foundations">
+      <div id={PART_IDS.foundations} className="inst-methodology-part inst-methodology-part--foundations">
         <div className="inst-methodology-part-label">
           <div className="inst-methodology-part-eyebrow">Part I</div>
           <div className="inst-methodology-part-title">Foundations</div>
@@ -184,7 +216,7 @@ export default function Methodology() {
       </div>
 
       {/* ── Part II — Judgement (Pressure State, Evidence Review) ── */}
-      <div className="inst-methodology-part inst-methodology-part--judgement">
+      <div id={PART_IDS.judgement} className="inst-methodology-part inst-methodology-part--judgement">
         <div className="inst-methodology-part-label">
           <div className="inst-methodology-part-eyebrow">Part II</div>
           <div className="inst-methodology-part-title">Judgement</div>
@@ -273,7 +305,7 @@ export default function Methodology() {
       </div>
 
       {/* ── Part III — Record Architecture ── */}
-      <div className="inst-methodology-part inst-methodology-part--architecture">
+      <div id={PART_IDS.architecture} className="inst-methodology-part inst-methodology-part--architecture">
         <div className="inst-methodology-part-label">
           <div className="inst-methodology-part-eyebrow">Part III</div>
           <div className="inst-methodology-part-title">Record Architecture</div>
