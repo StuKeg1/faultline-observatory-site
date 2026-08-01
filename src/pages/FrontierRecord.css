@@ -547,3 +547,53 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+/* Legacy Verification Stage review disclosure. Multiple assessment-level
+   markers intentionally resolve to one record-level availability note. */
+.stage-provenance-ref {
+  font-family: var(--mono);
+  font-size: 0.72em;
+  line-height: 0;
+  vertical-align: super;
+}
+.stage-provenance-ref a {
+  color: var(--accent);
+  display: inline-block;
+  min-width: 1.25rem;
+  padding: 0.3rem 0.25rem;
+  text-align: center;
+  text-decoration: none;
+}
+.stage-provenance-ref a:hover { text-decoration: underline; }
+.stage-provenance-ref a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.stage-provenance-disclosure {
+  background: var(--paper-card);
+  border-left: 2px solid var(--accent);
+  color: var(--ink-mid);
+  font-family: var(--serif);
+  font-size: 0.8125rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 0 auto 3rem;
+  max-width: var(--col);
+  padding: 1rem 1.25rem;
+  scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+}
+.stage-provenance-disclosure a {
+  border-bottom: 1px solid var(--accent-dim);
+  color: var(--accent);
+  text-decoration: none;
+}
+.stage-provenance-disclosure:target,
+.stage-provenance-disclosure:focus {
+  background: var(--accent-dim);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .stage-provenance-disclosure { margin: 0 1rem 2.5rem; }
+}

@@ -18,6 +18,19 @@ import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
 
+function StageProvenanceMarker() {
+  return (
+    <sup className="stage-provenance-ref">
+      <a
+        href="#stage-provenance-documentation"
+        aria-label="Stage provenance documentation availability note"
+      >
+        <span aria-hidden="true">*</span>
+      </a>
+    </sup>
+  );
+}
+
 // ─── WARRANT PANEL ───────────────────────────────────────────
 // Driven entirely by getCurrentAssessment(record) and
 // getStateEnteredDate(record). No schema additions.
@@ -76,10 +89,7 @@ function WarrantPanel({ current, record }) {
             {current.verificationStageProvenance.disposition === "historically-unverified"
               ? `Stored ${current.verificationStageProvenance.storedStage}; historically unverified after legacy review.`
               : `Ratified ${current.verificationStageProvenance.effectiveStage}; stored historical code ${current.verificationStageProvenance.storedStage} preserved.`}
-            {" "}
-            <a href={current.verificationStageProvenance.authorityUrl}>
-              Review authority
-            </a>
+            <StageProvenanceMarker />
           </span>
         </div>
       )}
@@ -192,8 +202,7 @@ function RecordLineage({ record }) {
                   {a.verificationStageProvenance.disposition === "historically-unverified"
                     ? `${a.verificationStageProvenance.storedStage} preserved — historically unverified`
                     : `${a.verificationStageProvenance.effectiveStage} after ratified review (stored code ${a.verificationStageProvenance.storedStage} preserved)`}
-                  .{" "}
-                  <a href={a.verificationStageProvenance.authorityUrl}>Review authority</a>
+                  .<StageProvenanceMarker />
                 </div>
               )}
             </div>
@@ -540,6 +549,9 @@ export default function FrontierRecord() {
   const sections = getSections(record);
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
   const hasGovernedNarrative = isPilot || record.id === "FR-QE-0001";
+  const hasStageProvenance = getAssessmentHistory(record).some(
+    (assessment) => assessment.verificationStageProvenance,
+  );
   // Cross-highlight between EvidenceTrajectory's ticks and MutationLog's
   // rows only exists where EvidenceTrajectory itself renders (see
   // record-body below) — Fragment elsewhere is a true no-op, not an
@@ -735,6 +747,18 @@ export default function FrontierRecord() {
 
         </div>
         </MutationHighlightWrapper>
+        {hasStageProvenance && (
+          <aside
+            id="stage-provenance-documentation"
+            className="stage-provenance-disclosure"
+            role="note"
+            tabIndex="-1"
+          >
+            <span aria-hidden="true">* </span>
+            The underlying review and ratification documentation is not currently published on this website. It is available through the Observatory’s{" "}
+            <Link to="/documentation-requests/">documented request process</Link>.
+          </aside>
+        )}
       </div>
       <SiteFooter />
     </>

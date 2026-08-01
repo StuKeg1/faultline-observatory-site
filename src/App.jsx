@@ -61,6 +61,7 @@ const InstitutionalChangelog = lazyRoute(() => import("./pages/InstitutionalChan
 const EvidenceTrajectories = lazyRoute(() => import("./pages/EvidenceTrajectories.jsx"));
 const PublicRecord = lazyRoute(() => import("./pages/PublicRecord.jsx"));
 const ReadingRoom = lazyRoute(() => import("./pages/ReadingRoom.jsx"));
+const DocumentationRequests = lazyRoute(() => import("./pages/DocumentationRequests.jsx"));
 
 function NotFound() {
  return (
@@ -141,6 +142,8 @@ export function AppShell() {
  <Route path="/guides/mcp-access" element={<MCPAccess />} />
  <Route path="/institutional-health" element={<InstitutionalHealth />} />
  <Route path="/institutional-changelog" element={<InstitutionalChangelog />} />
+ <Route path="/documentation-requests" element={<DocumentationRequests />} />
+ <Route path="/documentation-requests/" element={<DocumentationRequests />} />
  <Route path="/tokens" element={<TokenPreview />} />
  <Route path="*" element={<NotFound />} />
  </Routes>

@@ -20,6 +20,7 @@
 /guides/mcp-access /guides/mcp-access/ 301
 /institutional-health /institutional-health/ 301
 /institutional-changelog /institutional-changelog/ 301
+/documentation-requests /documentation-requests/ 301
 /tokens /tokens/ 301
 /programmes/prog-qe /programmes/prog-qe/ 301
 /programmes/prog-ai /programmes/prog-ai/ 301
@@ -50,6 +51,7 @@
 /guides/mcp-access/ /index.html 200
 /institutional-health/ /index.html 200
 /institutional-changelog/ /index.html 200
+/documentation-requests/ /index.html 200
 /tokens/ /index.html 200
 /programmes/prog-qe/ /index.html 200
 /programmes/prog-ai/ /index.html 200

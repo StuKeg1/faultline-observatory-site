@@ -1,0 +1,94 @@
+.documentation-requests-page {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.documentation-requests-header {
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+  padding: 2.25rem 2rem 1.75rem;
+}
+
+.documentation-requests-inner {
+  margin: 0 auto;
+  max-width: var(--col);
+}
+
+.documentation-requests-eyebrow {
+  color: var(--ink-mid);
+  font-family: var(--mono);
+  font-size: var(--label-size);
+  letter-spacing: var(--label-tracking);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.documentation-requests-header h1 {
+  font-family: var(--serif);
+  font-size: var(--page-title-size);
+  font-weight: var(--page-title-weight);
+  letter-spacing: var(--page-title-tracking);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.documentation-requests-header p {
+  color: var(--ink-mid);
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 1rem 0 0;
+}
+
+.documentation-requests-body {
+  padding: 0 2rem;
+}
+
+.documentation-requests-body .documentation-requests-inner {
+  padding: 1.75rem 0 4rem;
+}
+
+.documentation-requests-body section {
+  border-bottom: 1px solid var(--rule-light);
+  padding: 0 0 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.documentation-requests-body h2 {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.documentation-requests-body p {
+  color: var(--body-text-color);
+  font-family: var(--serif);
+  font-size: var(--body-text-size);
+  font-weight: 300;
+  line-height: var(--body-line-height);
+  margin: 0;
+}
+
+.documentation-request-action {
+  background: var(--ink);
+  color: var(--paper);
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  margin: 0 0 1.75rem;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.documentation-request-action:hover { background: var(--accent); }
+.documentation-request-action:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}

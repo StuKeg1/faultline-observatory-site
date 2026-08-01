@@ -159,6 +159,7 @@ test("known static routes are present in the full manifest", async () => {
     "/", "/public-record/", "/reading-room/", "/the-record/", "/programmes/", "/notes/", "/events/",
     "/methodology/", "/welcome/", "/about/", "/about/origins/",
     "/institutional-health/", "/institutional-changelog/", "/evidence-trajectories/",
+    "/documentation-requests/",
   ]) {
     assert.ok(routes.includes(expected), `expected static route missing from manifest: ${expected}`);
   }

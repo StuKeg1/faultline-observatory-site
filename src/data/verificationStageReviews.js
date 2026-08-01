@@ -9,9 +9,6 @@
  * Ratified by the operator on 2026-07-23.
  */
 
-export const LEGACY_VS_REVIEW_AUTHORITY =
-  "https://docs.google.com/document/d/1aDpuzdV01cWV9ZOZ17r_R1UbrUDJqUPoKH6b359kJhA/edit";
-
 const REVIEW_DATE = "2026-07-23";
 
 const reviewed = (recordId, assessmentId, storedStage, disposition, reconstructedStage, confidence) => ({
@@ -23,7 +20,6 @@ const reviewed = (recordId, assessmentId, storedStage, disposition, reconstructe
   reconstructedStage,
   confidence,
   reviewDate: REVIEW_DATE,
-  authorityUrl: LEGACY_VS_REVIEW_AUTHORITY,
   note:
     disposition === "historically-unverified"
       ? "The converter-flattened date prevents a reliable historical reconstruction. The stored code is preserved but remains historically unverified."
@@ -92,7 +88,6 @@ export function applyVerificationStageReview(recordId, assessment) {
       disposition: review.disposition,
       confidence: review.confidence,
       reviewDate: review.reviewDate,
-      authorityUrl: review.authorityUrl,
     },
   };
 }

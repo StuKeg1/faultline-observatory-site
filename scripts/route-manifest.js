@@ -55,6 +55,7 @@ export const STATIC_ROUTES = [
   "/guides/mcp-access/",
   "/institutional-health/",
   "/institutional-changelog/",
+  "/documentation-requests/",
   "/tokens/",
 ];
 
@@ -141,4 +142,9 @@ export async function getRedirectsManagedRoutes() {
 // Static routes intentionally admitted to sitemap-pages.xml. Dynamic Frontier
 // Records and Programme Notes are sourced directly from their canonical data
 // registries by generate-sitemap.js.
-export const SITEMAP_PAGE_ROUTES = ["/about/", "/methodology/", "/reading-room/"];
+export const SITEMAP_PAGE_ROUTES = [
+  "/about/",
+  "/documentation-requests/",
+  "/methodology/",
+  "/reading-room/",
+];

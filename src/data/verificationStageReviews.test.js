@@ -16,6 +16,7 @@ test("ratified overlay covers 34 unique assignments with preserved stored codes"
   );
 
   for (const review of VERIFICATION_STAGE_REVIEWS) {
+    assert.equal("authorityUrl" in review, false, `${review.id} exposes authorityUrl`);
     const record = ALL_RECORDS.find((candidate) => candidate.id === review.recordId);
     assert.ok(record, review.recordId);
     const stored = record.assessments.find(
@@ -36,6 +37,7 @@ test("corrections affect derived interpretation without mutating assessments", (
   assert.equal(stored.verificationStage, "VS-05");
   assert.equal(derived.verificationStage, "VS-04");
   assert.equal(derived.verificationStageProvenance.storedStage, "VS-05");
+  assert.equal("authorityUrl" in derived.verificationStageProvenance, false);
   assert.equal(getCurrentAssessment(record).verificationStage, "VS-04");
 });
 

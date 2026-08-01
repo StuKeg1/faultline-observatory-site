@@ -44,6 +44,19 @@ function sitemapRoutes(filename) {
   );
 }
 
+function count(haystack, needle) {
+  return haystack.split(needle).length - 1;
+}
+
+function readDistTextFiles(dir = DIST) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const target = path.join(dir, entry.name);
+    if (entry.isDirectory()) return readDistTextFiles(target);
+    if (!entry.isFile()) return [];
+    return [fs.readFileSync(target, "utf8")];
+  });
+}
+
 // ─── PURE UNITS ──────────────────────────────────────────────
 // These need no build and always run.
 
@@ -196,4 +209,40 @@ test("generation is deterministic for a fixed corpus", { skip }, () => {
   const first = read("/the-record/fr-qe-0001/");
   const second = read("/the-record/fr-qe-0001/");
   assert.equal(first, second);
+});
+
+test("legacy Verification Stage provenance is disclosed without exposing its restricted authority", { skip }, () => {
+  const recordPages = sitemapRoutes("sitemap-records.xml").map((route) => ({
+    route,
+    rendered: body(read(route)),
+  }));
+
+  const markerNeedle = 'class="stage-provenance-ref"';
+  const noteNeedle = 'id="stage-provenance-documentation"';
+  const affected = recordPages.filter(({ rendered }) => rendered.includes(markerNeedle));
+  const multiMarker = affected.filter(({ rendered }) => count(rendered, markerNeedle) > 1);
+
+  assert.equal(
+    recordPages.reduce((total, { rendered }) => total + count(rendered, markerNeedle), 0),
+    53,
+    "unexpected provenance marker count",
+  );
+  assert.equal(affected.length, 25, "unexpected affected-record count");
+  assert.equal(multiMarker.length, 19, "unexpected multi-marker record count");
+
+  for (const { route, rendered } of affected) {
+    assert.equal(count(rendered, noteNeedle), 1, `${route} must carry exactly one disclosure note`);
+    assert.ok(
+      rendered.includes('href="/documentation-requests/"'),
+      `${route} disclosure does not link to the documented request process`,
+    );
+  }
+
+  const unaffected = body(read("/the-record/fr-qe-0001/"));
+  assert.equal(count(unaffected, markerNeedle), 0, "FR-QE-0001 must not carry a provenance marker");
+  assert.equal(count(unaffected, noteNeedle), 0, "FR-QE-0001 must not carry a disclosure note");
+
+  const deployableText = readDistTextFiles().join("\n");
+  assert.equal(deployableText.includes("1aDpuzdV01cWV9ZOZ17r_R1UbrUDJqUPoKH6b359kJhA"), false);
+  assert.equal(deployableText.includes("Review authority"), false);
 });
