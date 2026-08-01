@@ -61,6 +61,13 @@ export const FR_AI_0002 = {
       description: "Multiple reports emerge of LLM-based autonomous agents — systems operating with minimal human supervision over extended task sequences — producing failures not observed in single-turn interactions. Documented failure modes include task drift, compounding errors across multi-step workflows, inappropriate escalation of actions, and inability to recognise when a task exceeds model competence. Evaluations of autonomous coding agents (SWE-bench, 2024) show performance well below human developer capability on complex, multi-file software engineering tasks despite strong single-turn performance. The evidence is specifically relevant to the \"limited human supervision\" condition in the claim: it suggests the supervision threshold required for reliable performance is lower for extended autonomous tasks than for supervised single-turn assistance. This is a domain-boundary contesting instance rather than a general refutation.",
       vectors: ["partial--agentic-boundary"],
       date: "2024",
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "ORCA-bench — live-system root-cause analysis under limited supervision",
+      description: "ORCA-bench provides bounded CONTESTING evidence at the record's established agentic frontier by testing general-purpose coding agents on root-cause analysis in a live OpenTelemetry microservice environment (arXiv:2607.28545v1, submitted July 2026). The benchmark contains 1,079 tasks varying report specificity, detection delay, and concurrent incidents; its ground truth was curated with site-reliability-engineering input, and its automated judge achieved weighted Cohen's kappa of 0.90 against human rescoring. The best reported root-cause-analysis accuracy was 25.3% on realistic medium tasks and 10% on hard tasks. Hallucinated root causes appeared in 7%–40% of non-empty reports, while removing source-code access reduced accuracy by 9–16 percentage points. Agents made partial diagnostic progress but were distracted by louder signals and frequently missed concurrent causes, leaving performance far below reliable autonomous delegation for production incident diagnosis. The result strengthens rather than redraws AS-001's boundary: economically valuable bounded, human-reviewed assistance remains supported, while extended high-stakes multi-step work under low supervision remains unreliable. It does not measure economic value directly, evaluate actual enterprise deployment, or establish the performance of specialised AI-SRE systems. Generalisation is limited by the benchmark harness, prompt design, preprint status, and relevant vendor interest because several authors are affiliated with Traversal, a company offering AI-SRE systems.",
+      vectors: ["CONTESTING"],
+      date: "2026",
     }
   ],
 
@@ -130,6 +137,7 @@ export const FR_AI_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-08-01", field: "instance_appended", from: "IN-006", to: "IN-007", note: "IN-007 appended — ORCA-bench (arXiv:2607.28545v1), authorised through Post-Scout flag 2026-08-01-02. Bounded CONTESTING evidence strengthens the existing low-supervision agentic boundary with operational root-cause-analysis measurements. Instance only: AS-001 remains current; Pressure State ESCALATING, Verification Stage VS-02, mechanisms, and open questions unchanged. No new assessment issued." },
     { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-004 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
