@@ -233,8 +233,9 @@ export default function Home() {
                 <div className="htc-block-copy">
                   <div className="htc-block-title">Methodology</div>
                   <p className="htc-block-text">
-                    Every update is dated. Earlier assessments remain visible,
-                    and corrections are recorded rather than silently substituted.
+                    Each record tracks a scientific or technology claim over time.
+                    It&apos;s only ever added to, never rewritten — updates are dated,
+                    so the full history of an assessment stays visible.
                   </p>
                 </div>
               </div>
