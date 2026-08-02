@@ -114,11 +114,23 @@ export async function getDynamicRouteGroups() {
       groups.programmes.push(`/programmes/${prog.id.toLowerCase()}/`);
     }
 
-    const { ALL_NOTES } = await server.ssrLoadModule("/src/data/notes.js");
-    const { PROGRAMME_NOTES } = await server.ssrLoadModule("/src/data/programmeNotes.js");
-    const { LANDSCAPE_ESSAYS } = await server.ssrLoadModule("/src/data/landscapeEssays.js");
-    for (const note of [...ALL_NOTES, ...PROGRAMME_NOTES, ...LANDSCAPE_ESSAYS]) {
-      groups.notes.push(`/notes/${note.id.toLowerCase()}/`);
+    // These remain three distinct institutional document classes. Their
+    // aggregation here is transport-only: it tells prerendering and sitemap
+    // generation which public routes to emit, and does not classify Programme
+    // Notes or Landscape Essays as Institutional Notes or resolve IL-003.
+    const { ALL_NOTES: INSTITUTIONAL_NOTES } =
+      await server.ssrLoadModule("/src/data/notes.js");
+    const { PROGRAMME_NOTES } =
+      await server.ssrLoadModule("/src/data/programmeNotes.js");
+    const { LANDSCAPE_ESSAYS } =
+      await server.ssrLoadModule("/src/data/landscapeEssays.js");
+    const INDEXABLE_PUBLICATIONS = [
+      ...INSTITUTIONAL_NOTES,
+      ...PROGRAMME_NOTES,
+      ...LANDSCAPE_ESSAYS,
+    ];
+    for (const publication of INDEXABLE_PUBLICATIONS) {
+      groups.notes.push(`/notes/${publication.id.toLowerCase()}/`);
     }
   } finally {
     await server.close();
