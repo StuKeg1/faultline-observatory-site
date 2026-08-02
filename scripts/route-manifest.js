@@ -51,7 +51,6 @@ export const STATIC_ROUTES = [
   "/notes/",
   "/how-to-read/",
   "/guides/",
-  "/guides/how-to-read/",
   "/guides/mcp-access/",
   "/institutional-health/",
   "/institutional-changelog/",
@@ -67,7 +66,17 @@ export const STATIC_ROUTES = [
 export const LEGACY_REDIRECTS = [
   { from: "/programmes/prog-mf", to: "/programmes/prog-am/" },
   { from: "/programmes/prog-mf/", to: "/programmes/prog-am/" },
+  { from: "/guides/how-to-read", to: "/how-to-read/" },
+  { from: "/guides/how-to-read/", to: "/how-to-read/" },
 ];
+
+// Routes which are intentionally public but are not search surfaces.
+// Keeping this boundary beside the canonical manifest prevents sitemap and
+// prerender eligibility from drifting into separate hand-maintained lists.
+export const NON_INDEXABLE_ROUTES = new Set(["/tokens/"]);
+export const INDEXABLE_STATIC_ROUTES = STATIC_ROUTES.filter(
+  (route) => !NON_INDEXABLE_ROUTES.has(route)
+);
 
 function walkJsonFiles(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -87,8 +96,8 @@ function walkJsonFiles(dir) {
  * Using the same resolution path as the built app avoids this script ever
  * silently diverging from what actually ships.
  */
-export async function getDynamicRoutes() {
-  const routes = [];
+export async function getDynamicRouteGroups() {
+  const groups = { records: [], programmes: [], notes: [], events: [] };
   const server = await createServer({
     root: ROOT,
     server: { middlewareMode: true },
@@ -99,17 +108,17 @@ export async function getDynamicRoutes() {
   try {
     const { ALL_RECORDS, PROGRAMMES } = await server.ssrLoadModule("/src/data/corpus.js");
     for (const record of ALL_RECORDS) {
-      routes.push(`/the-record/${record.id.toLowerCase()}/`);
+      groups.records.push(`/the-record/${record.id.toLowerCase()}/`);
     }
     for (const prog of PROGRAMMES) {
-      routes.push(`/programmes/${prog.id.toLowerCase()}/`);
+      groups.programmes.push(`/programmes/${prog.id.toLowerCase()}/`);
     }
 
     const { ALL_NOTES } = await server.ssrLoadModule("/src/data/notes.js");
     const { PROGRAMME_NOTES } = await server.ssrLoadModule("/src/data/programmeNotes.js");
     const { LANDSCAPE_ESSAYS } = await server.ssrLoadModule("/src/data/landscapeEssays.js");
     for (const note of [...ALL_NOTES, ...PROGRAMME_NOTES, ...LANDSCAPE_ESSAYS]) {
-      routes.push(`/notes/${note.id.toLowerCase()}/`);
+      groups.notes.push(`/notes/${note.id.toLowerCase()}/`);
     }
   } finally {
     await server.close();
@@ -118,15 +127,34 @@ export async function getDynamicRoutes() {
   const eventFiles = walkJsonFiles(path.join(ROOT, "events"));
   for (const filePath of eventFiles) {
     const event = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    if (event?.eventId) routes.push(`/events/${event.eventId}`);
+    if (event?.eventId) groups.events.push(`/events/${event.eventId}`);
   }
 
-  return routes;
+  return groups;
+}
+
+export async function getDynamicRoutes() {
+  const groups = await getDynamicRouteGroups();
+  return Object.values(groups).flat();
 }
 
 export async function getAllCanonicalRoutes() {
   const dynamic = await getDynamicRoutes();
   return [...STATIC_ROUTES, ...dynamic];
+}
+
+export async function getIndexableRouteGroups() {
+  const dynamic = await getDynamicRouteGroups();
+  return {
+    records: dynamic.records,
+    notes: dynamic.notes,
+    pages: [...INDEXABLE_STATIC_ROUTES, ...dynamic.programmes, ...dynamic.events],
+  };
+}
+
+export async function getAllIndexableRoutes() {
+  const groups = await getIndexableRouteGroups();
+  return [...groups.records, ...groups.notes, ...groups.pages];
 }
 
 /**
@@ -138,13 +166,3 @@ export async function getRedirectsManagedRoutes() {
   const all = await getAllCanonicalRoutes();
   return all.filter((route) => !route.startsWith("/the-record/"));
 }
-
-// Static routes intentionally admitted to sitemap-pages.xml. Dynamic Frontier
-// Records and Programme Notes are sourced directly from their canonical data
-// registries by generate-sitemap.js.
-export const SITEMAP_PAGE_ROUTES = [
-  "/about/",
-  "/documentation-requests/",
-  "/methodology/",
-  "/reading-room/",
-];

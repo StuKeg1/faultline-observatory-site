@@ -78,7 +78,11 @@ export function getRecordUrl(record) {
  */
 export function getRecordMetaDescription(record) {
   const current = getCurrentAssessment(record);
-  return `${record.claim.statement.substring(0, 140)} Current state: ${current.pressureState}.`;
+  const statement = record.claim.statement;
+  const excerpt = statement.length <= 140
+    ? statement
+    : `${statement.slice(0, 140).replace(/\s+\S*$/, "").replace(/[\s,;:]+$/, "")}…`;
+  return `${excerpt} Current state: ${current.pressureState}.`;
 }
 
 function collectSearchParts(value, parts = []) {

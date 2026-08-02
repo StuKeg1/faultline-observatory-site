@@ -108,21 +108,14 @@ test("composePage mounts the rendered body inside the root element", () => {
 
 // ─── GENERATED OUTPUT ────────────────────────────────────────
 
-test("every sitemap record has a generated HTML page", { skip }, () => {
-  for (const route of sitemapRoutes("sitemap-records.xml")) {
+test("every sitemap URL has a generated HTML page", { skip }, () => {
+  for (const filename of ["sitemap-records.xml", "sitemap-notes.xml", "sitemap-pages.xml"]) {
+    for (const route of sitemapRoutes(filename)) {
     assert.ok(
       fs.existsSync(path.join(DIST, route, "index.html")),
       `missing generated page for ${route}`
     );
-  }
-});
-
-test("every sitemap Programme Note has a generated HTML page", { skip }, () => {
-  for (const route of sitemapRoutes("sitemap-notes.xml")) {
-    assert.ok(
-      fs.existsSync(path.join(DIST, route, "index.html")),
-      `missing generated page for ${route}`
-    );
+    }
   }
 });
 
@@ -153,7 +146,7 @@ test("evidence entries are present without JavaScript", { skip }, () => {
   }
 });
 
-test("Programme Note pages carry their content before JavaScript runs", { skip }, () => {
+test("note pages carry their content before JavaScript runs", { skip }, () => {
   for (const route of sitemapRoutes("sitemap-notes.xml")) {
     const id = route.split("/").filter(Boolean).at(-1).toUpperCase();
     const rendered = body(read(route));
@@ -163,7 +156,11 @@ test("Programme Note pages carry their content before JavaScript runs", { skip }
 });
 
 test("titles, descriptions and canonical links are page-specific", { skip }, () => {
-  const routes = [...sitemapRoutes("sitemap-records.xml"), ...sitemapRoutes("sitemap-notes.xml")];
+  const routes = [
+    ...sitemapRoutes("sitemap-records.xml"),
+    ...sitemapRoutes("sitemap-notes.xml"),
+    ...sitemapRoutes("sitemap-pages.xml"),
+  ];
   const titles = new Set();
 
   for (const route of routes) {
@@ -177,7 +174,7 @@ test("titles, descriptions and canonical links are page-specific", { skip }, () 
     assert.equal(canonical[1], `${BASE_URL}${route}`, `${route} canonical link points elsewhere`);
 
     const title = /<title>([\s\S]*?)<\/title>/.exec(h)[1];
-    assert.notEqual(title, "Faultline Observatory", `${route} still carries the default title`);
+    if (route !== "/") assert.notEqual(title, "Faultline Observatory", `${route} still carries the default title`);
     titles.add(title);
 
     for (const key of ["og:title", "og:description", "og:url", "twitter:title", "twitter:description", 'name="description"']) {

@@ -20,7 +20,7 @@ export default function Origins() {
  <main className="origins-body">
  <div className="origins-body-inner">
  <PageMeta
- title="Before the Observatory Had a Name | Faultline Observatory"
+ title="Before the Observatory Had a Name"
  description="The founding history of the Faultline Observatory, preserved as an institutional historical document."
  path="/about/origins/"
  />

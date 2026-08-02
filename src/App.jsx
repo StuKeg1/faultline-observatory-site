@@ -138,7 +138,7 @@ export function AppShell() {
  <Route path="/notes/:noteId" element={<NoteDetail />} />
  <Route path="/how-to-read" element={<HowToRead />} />
  <Route path="/guides" element={<GuidesIndex />} />
- <Route path="/guides/how-to-read" element={<HowToRead />} />
+ <Route path="/guides/how-to-read" element={<Navigate to="/how-to-read/" replace />} />
  <Route path="/guides/mcp-access" element={<MCPAccess />} />
  <Route path="/institutional-health" element={<InstitutionalHealth />} />
  <Route path="/institutional-changelog" element={<InstitutionalChangelog />} />

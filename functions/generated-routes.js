@@ -16,7 +16,6 @@ export const CANONICAL_ROUTES = [
   "/notes/",
   "/how-to-read/",
   "/guides/",
-  "/guides/how-to-read/",
   "/guides/mcp-access/",
   "/institutional-health/",
   "/institutional-changelog/",
@@ -42,5 +41,13 @@ export const LEGACY_REDIRECTS = [
   {
     "from": "/programmes/prog-mf/",
     "to": "/programmes/prog-am/"
+  },
+  {
+    "from": "/guides/how-to-read",
+    "to": "/how-to-read/"
+  },
+  {
+    "from": "/guides/how-to-read/",
+    "to": "/how-to-read/"
   }
 ];

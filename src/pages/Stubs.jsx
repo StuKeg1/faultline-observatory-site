@@ -38,7 +38,7 @@ export function Programmes() {
     <InstitutionalPage eyebrow="Faultline Observatory" title="Programmes">
       <PageMeta
         title="Programmes"
-        description="Four observation programmes tracking frontier claims in Quantum Engineering, Artificial Intelligence, Advanced Materials, Physics & Energy, and Biotechnology & Life Sciences."
+        description="Five observation programmes tracking frontier claims in Quantum Engineering, Artificial Intelligence, Advanced Materials, Physics & Energy, and Biotechnology & Life Sciences."
         path="/programmes/"
       />
       <p className="inst-intro">

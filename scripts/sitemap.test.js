@@ -8,7 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { SITEMAP_PAGE_ROUTES } from "./route-manifest.js";
+import { getIndexableRouteGroups, getAllIndexableRoutes } from "./route-manifest.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const PUBLIC_DIR = path.join(ROOT, "public");
@@ -74,29 +74,26 @@ test("sitemap-records.xml contains every FR record and lastmod is its latest evi
   }
 });
 
-test("sitemap-notes.xml contains all and only PN Programme Notes", async () => {
-  const server = await createServer({
-    root: ROOT,
-    server: { middlewareMode: true },
-    appType: "custom",
-    logLevel: "silent",
-  });
-  try {
-    const { PROGRAMME_NOTES } = await server.ssrLoadModule("/src/data/programmeNotes.js");
-    assert.deepEqual(
-      locs(read("sitemap-notes.xml")),
-      PROGRAMME_NOTES.map((note) => `${BASE_URL}/notes/${note.id.toLowerCase()}/`)
-    );
-  } finally {
-    await server.close();
-  }
+test("sitemap-notes.xml contains every indexable note", async () => {
+  const { notes } = await getIndexableRouteGroups();
+  assert.deepEqual(locs(read("sitemap-notes.xml")), notes.map((route) => `${BASE_URL}${route}`));
 });
 
-test("sitemap-pages.xml contains the approved core static routes", () => {
+test("sitemap-pages.xml contains every other indexable public route", async () => {
+  const { pages } = await getIndexableRouteGroups();
   assert.deepEqual(
     locs(read("sitemap-pages.xml")),
-    SITEMAP_PAGE_ROUTES.map((route) => `${BASE_URL}${route}`)
+    pages.map((route) => `${BASE_URL}${route}`)
   );
+});
+
+test("the sitemap children together equal the indexable-route manifest", async () => {
+  const sitemapRoutes = CHILDREN.flatMap((filename) =>
+    locs(read(filename)).map((url) => url.replace(BASE_URL, ""))
+  );
+  assert.deepEqual(new Set(sitemapRoutes), new Set(await getAllIndexableRoutes()));
+  assert.ok(!sitemapRoutes.includes("/tokens/"));
+  assert.ok(!sitemapRoutes.includes("/guides/how-to-read/"));
 });
 
 test("robots.txt declares the sitemap index", () => {

@@ -8,7 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { SITEMAP_PAGE_ROUTES } from "./route-manifest.js";
+import { getIndexableRouteGroups } from "./route-manifest.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const PUBLIC_DIR = path.join(ROOT, "public");
@@ -97,15 +97,13 @@ const server = await createServer({
 });
 
 let records;
-let programmeNotes;
 try {
   ({ ALL_RECORDS: records } = await server.ssrLoadModule("/src/data/corpus.js"));
-  ({ PROGRAMME_NOTES: programmeNotes } = await server.ssrLoadModule(
-    "/src/data/programmeNotes.js"
-  ));
 } finally {
   await server.close();
 }
+
+const indexable = await getIndexableRouteGroups();
 
 const sitemapFiles = {
   "sitemap-records.xml": buildUrlset(
@@ -115,13 +113,13 @@ const sitemapFiles = {
     }))
   ),
   "sitemap-notes.xml": buildUrlset(
-    programmeNotes.map((note) => ({ route: `/notes/${note.id.toLowerCase()}/` }))
+    indexable.notes.map((route) => ({ route }))
   ),
-  "sitemap-pages.xml": buildUrlset(SITEMAP_PAGE_ROUTES.map((route) => ({ route }))),
+  "sitemap-pages.xml": buildUrlset(indexable.pages.map((route) => ({ route }))),
 };
 
 if (records.length === 0) fail("resolved zero Frontier Records");
-if (programmeNotes.length === 0) fail("resolved zero Programme Notes");
+if (indexable.notes.length === 0) fail("resolved zero indexable notes");
 
 fs.mkdirSync(PUBLIC_DIR, { recursive: true });
 for (const [filename, contents] of Object.entries(sitemapFiles)) {
@@ -134,5 +132,5 @@ fs.writeFileSync(
 );
 
 console.log(
-  `Sitemap index generated (${records.length} records, ${programmeNotes.length} notes, ${SITEMAP_PAGE_ROUTES.length} pages) -> public/sitemap.xml`
+  `Sitemap index generated (${records.length} records, ${indexable.notes.length} notes, ${indexable.pages.length} pages) -> public/sitemap.xml`
 );

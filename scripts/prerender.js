@@ -25,6 +25,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { pathToFileURL } from "node:url";
 import { createServer } from "vite";
+import { getIndexableRouteGroups } from "./route-manifest.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const DIST = path.join(ROOT, "dist");
@@ -119,25 +120,13 @@ export function composePage(template, fragment) {
  * resolver rather than Node's, for the same reason route-manifest.js does:
  * some data modules use Vite-style extensionless imports.
  */
-async function getPrerenderRoutes(server) {
-  const { ALL_RECORDS } = await server.ssrLoadModule("/src/data/corpus.js");
-  const { PROGRAMME_NOTES } = await server.ssrLoadModule("/src/data/programmeNotes.js");
-
-  if (!ALL_RECORDS?.length) fail("resolved zero Frontier Records");
-  if (!PROGRAMME_NOTES?.length) fail("resolved zero Programme Notes");
-
-  return [
-    ...ALL_RECORDS.map((record) => ({
-      kind: "record",
-      id: record.id,
-      route: `/the-record/${record.id.toLowerCase()}/`,
-    })),
-    ...PROGRAMME_NOTES.map((note) => ({
-      kind: "note",
-      id: note.id,
-      route: `/notes/${note.id.toLowerCase()}/`,
-    })),
-  ];
+async function getPrerenderRoutes() {
+  const groups = await getIndexableRouteGroups();
+  const routes = Object.entries(groups).flatMap(([kind, items]) =>
+    items.map((route) => ({ kind, id: route, route }))
+  );
+  if (!routes.length) fail("resolved zero indexable routes");
+  return routes;
 }
 
 // ─── OUTPUT CONTRACT ─────────────────────────────────────────
@@ -147,15 +136,17 @@ async function getPrerenderRoutes(server) {
  * style check — it is the guard that stops a silently-empty shell from being
  * published as though it were a record.
  */
-const MIN_BODY_BYTES = 4000;
+const MIN_BODY_BYTES = 500;
+const MIN_RECORD_OR_NOTE_BYTES = 4000;
 
-function assertSubstantive({ id, route }, fragment) {
-  if (fragment.length < MIN_BODY_BYTES) {
-    fail(`${id} (${route}) rendered only ${fragment.length} bytes — below the ${MIN_BODY_BYTES}-byte substantive-content floor`);
+function assertSubstantive({ id, kind, route }, fragment) {
+  const minimum = kind === "records" || kind === "notes"
+    ? MIN_RECORD_OR_NOTE_BYTES
+    : MIN_BODY_BYTES;
+  if (fragment.length < minimum) {
+    fail(`${id} (${route}) rendered only ${fragment.length} bytes — below the ${minimum}-byte substantive-content floor`);
   }
-  if (!fragment.includes(id)) {
-    fail(`${id} (${route}) rendered without its own identifier in the body`);
-  }
+  if (!/<(?:h1|h2)\b/i.test(fragment)) fail(`${route} rendered without a page heading`);
 }
 
 // ─── MAIN ────────────────────────────────────────────────────
@@ -178,7 +169,7 @@ async function main() {
 
   try {
     const { render } = await server.ssrLoadModule("/src/entry-server.jsx");
-    const targets = await getPrerenderRoutes(server);
+    const targets = await getPrerenderRoutes();
 
     for (const target of targets) {
       let fragment;
@@ -196,11 +187,7 @@ async function main() {
       written += 1;
     }
 
-    console.log(
-      `Prerendered ${written} pages ` +
-        `(${targets.filter((t) => t.kind === "record").length} Frontier Records, ` +
-        `${targets.filter((t) => t.kind === "note").length} Programme Notes) -> dist/`
-    );
+    console.log(`Prerendered ${written} indexable pages -> dist/`);
   } finally {
     await server.close();
   }

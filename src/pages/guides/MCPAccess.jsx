@@ -31,7 +31,7 @@ export default function MCPAccess() {
   return (
     <>
       <PageMeta
-        title="MCP Access — Faultline Observatory"
+        title="MCP Access"
         description="Connect an AI assistant to the Faultline Observatory and query claim status, lifecycle history, and cross-record patterns in plain language."
         path="/guides/mcp-access/"
       />

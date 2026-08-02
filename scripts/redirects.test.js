@@ -144,6 +144,13 @@ test("legacy redirects are present and resolve in one hop", () => {
   }
 });
 
+test("the duplicate how-to-read route redirects directly to its canonical path", () => {
+  const contents = fs.readFileSync(REDIRECTS_PATH, "utf8");
+  assert.ok(contents.includes("/guides/how-to-read /how-to-read/ 301"));
+  assert.ok(contents.includes("/guides/how-to-read/ /how-to-read/ 301"));
+  assert.doesNotMatch(contents, /^\/guides\/how-to-read\/ \/index\.html 200$/m);
+});
+
 test("manifest has no duplicate routes", async () => {
   const routes = await getAllCanonicalRoutes();
   const seen = new Set();

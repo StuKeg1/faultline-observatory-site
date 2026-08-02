@@ -16,7 +16,6 @@
 /notes /notes/ 301
 /how-to-read /how-to-read/ 301
 /guides /guides/ 301
-/guides/how-to-read /guides/how-to-read/ 301
 /guides/mcp-access /guides/mcp-access/ 301
 /institutional-health /institutional-health/ 301
 /institutional-changelog /institutional-changelog/ 301
@@ -47,7 +46,6 @@
 /notes/ /index.html 200
 /how-to-read/ /index.html 200
 /guides/ /index.html 200
-/guides/how-to-read/ /index.html 200
 /guides/mcp-access/ /index.html 200
 /institutional-health/ /index.html 200
 /institutional-changelog/ /index.html 200
@@ -68,3 +66,5 @@
 # Legacy id migrations (Release 006) — placeholder rules, kept last
 /programmes/prog-mf /programmes/prog-am/ 301
 /programmes/prog-mf/ /programmes/prog-am/ 301
+/guides/how-to-read /how-to-read/ 301
+/guides/how-to-read/ /how-to-read/ 301
