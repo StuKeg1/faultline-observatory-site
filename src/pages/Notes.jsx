@@ -101,6 +101,21 @@ export function NotesIndex() {
 // and Landscape Essays still do not carry a `type` field in their own
 // schema (see programmeNotes.js/landscapeEssays.js — that was a
 // deliberate RELEASE-014 scoping decision, unchanged by this fix).
+// Navigation-fix note: Programme Notes and Landscape Essays (Layer 3/4,
+// registries PROGRAMME_NOTES / LANDSCAPE_ESSAYS) are not members of
+// ALL_NOTES (see notes.js, RELEASE-014 comment) but reuse this shared
+// detail template for rendering. That reuse left two defects: (1) the
+// breadcrumb unconditionally pointed to "Institutional Notes" → /notes,
+// a list that does not contain these items; (2) the page offered no way
+// to reach a sibling essay/note or the Reading Room index that actually
+// lists them. Fixed below by branching on the decorated `type` field.
+// This is template-level navigation correction only — it does not merge
+// the registries, change routes, or resolve IL-003.
+const READING_ROOM_REGISTRIES = {
+  "programme-note": { sectionLabel: "Programme Notes", items: PROGRAMME_NOTES },
+  "landscape-essay": { sectionLabel: "Landscape Essays", items: LANDSCAPE_ESSAYS },
+};
+
 export function NoteDetail() {
   const { noteId } = useParams();
 
@@ -114,6 +129,12 @@ export function NoteDetail() {
   );
 
   if (!note) return <Navigate to="/notes" replace />;
+
+  const readingRoomMeta = READING_ROOM_REGISTRIES[note.type] ?? null;
+  const isReadingRoomItem = readingRoomMeta !== null;
+  const siblings = isReadingRoomItem
+    ? readingRoomMeta.items.filter((n) => n.id !== note.id)
+    : [];
 
   return (
     <>
@@ -129,7 +150,11 @@ export function NoteDetail() {
             <div className="note-breadcrumb">
               <Link to="/">← Observatory</Link>
               <span> › </span>
-              <Link to="/notes">Institutional Notes</Link>
+              {isReadingRoomItem ? (
+                <Link to="/reading-room">Reading Room</Link>
+              ) : (
+                <Link to="/notes">Institutional Notes</Link>
+              )}
               <span> › </span>
               <span className="bc-current">{note.id}</span>
             </div>
@@ -204,6 +229,37 @@ export function NoteDetail() {
             })}
           </div>
         </div>
+
+        {isReadingRoomItem && (
+          <div className="note-related">
+            <div className="note-related-inner">
+              {siblings.length > 0 && (
+                <div className="note-related-siblings">
+                  <div className="note-related-label">
+                    More {readingRoomMeta.sectionLabel}
+                  </div>
+                  <div className="note-related-list">
+                    {siblings.map((sib) => (
+                      <Link
+                        key={sib.id}
+                        to={getNoteUrl(sib)}
+                        className="note-related-row"
+                      >
+                        <div className="note-related-row__id">
+                          {sib.id} · {sib.date}
+                        </div>
+                        <div className="note-related-row__title">{sib.title}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <Link to="/reading-room" className="note-related-rr-link">
+                Explore the Reading Room →
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
       <SiteFooter />
     </>
