@@ -1,6 +1,5 @@
 /**
- * prerender.js — build-time static HTML generation for every Frontier Record
- * and every Programme Note.
+ * prerender.js — build-time static HTML generation for every indexable page.
  *
  * Runs after `vite build`, against dist/index.html (which already carries the
  * hashed asset tags Vite emitted). For each canonical route it renders the
@@ -10,15 +9,14 @@
  *
  * Principles this script is built to honour:
  *
- *  - Route list is derived from the same registries the app and
- *    generate-sitemap.js read (ALL_RECORDS, PROGRAMME_NOTES). There is no
- *    second list of records anywhere.
+ *  - Route list comes from getIndexableRouteGroups(), the same manifest used
+ *    by generate-sitemap.js. There is no second list of indexable routes.
  *  - Page content is rendered from the real components. There is no second
  *    representation of record content.
  *  - Output is deterministic: same corpus in, same bytes out.
- *  - A registered record or Programme Note that fails to produce a page fails
- *    the build. Silent omission is the failure mode this whole exercise exists
- *    to remove, so it is never tolerated.
+ *  - A registered route that fails to produce a page fails the build. Record
+ *    and note pages must also render their own literal identity marker. Silent
+ *    omission or identity substitution is never tolerated.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -139,6 +137,23 @@ async function getPrerenderRoutes() {
 const MIN_BODY_BYTES = 500;
 const MIN_RECORD_OR_NOTE_BYTES = 4000;
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function deriveEntityId(route) {
+  return route.replace(/\/$/, "").split("/").at(-1).toUpperCase();
+}
+
+function hasEntityIdentity(fragment, kind, entityId) {
+  const markerClass = kind === "records" ? "rp-record-id" : "note-passport-id";
+  const marker = new RegExp(
+    `<[^>]+class=["'][^"']*\\b${markerClass}\\b[^"']*["'][^>]*>\\s*${escapeRegExp(entityId)}\\s*</`,
+    "i"
+  );
+  return marker.test(fragment);
+}
+
 function assertSubstantive({ id, kind, route }, fragment) {
   const minimum = kind === "records" || kind === "notes"
     ? MIN_RECORD_OR_NOTE_BYTES
@@ -147,6 +162,12 @@ function assertSubstantive({ id, kind, route }, fragment) {
     fail(`${id} (${route}) rendered only ${fragment.length} bytes — below the ${minimum}-byte substantive-content floor`);
   }
   if (!/<(?:h1|h2)\b/i.test(fragment)) fail(`${route} rendered without a page heading`);
+  if (kind === "records" || kind === "notes") {
+    const entityId = deriveEntityId(route);
+    if (!hasEntityIdentity(fragment, kind, entityId)) {
+      fail(`${id} (${route}) rendered without its own identity marker (${entityId})`);
+    }
+  }
 }
 
 // ─── MAIN ────────────────────────────────────────────────────
