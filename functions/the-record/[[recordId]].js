@@ -10,7 +10,7 @@
  * (scripts/route-manifest.js explicitly excludes /the-record/* from what
  * gets written there). Instead this Function resolves routing itself:
  *
- *   - no id segment (bare /the-record, /the-record/)      -> SPA shell, 200
+ *   - no id segment (bare /the-record, /the-record/)      -> prerendered archive index, 200
  *   - fr-mf-* legacy id (Release 006)                     -> 301, one hop, straight to canonical
  *   - known record id, non-canonical path (case/slash)    -> 301 to canonical
  *   - known record id, canonical path                     -> generated static page, 200
@@ -43,11 +43,10 @@ export async function onRequest(context) {
   const segment = Array.isArray(params) ? params[0] : params;
 
   if (!segment) {
-    // Bare /the-record or /the-record/ — always the SPA shell (archive index).
-    // Fetch "/", not "/index.html" — Cloudflare's asset serving treats the
-    // latter as a non-canonical alias of the former and 308s it back to "/",
-    // which would recurse instead of returning content.
-    return fetchAsset(context, "/");
+    // This Function owns the bare archive index as well as record detail
+    // routes, so it must explicitly serve the generated index page. Fetching
+    // "/" here would discard the index's page-specific HTML and metadata.
+    return fetchAsset(context, "/the-record/");
   }
 
   if (/^fr-mf-/i.test(segment)) {

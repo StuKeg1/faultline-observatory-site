@@ -38,6 +38,11 @@ test("functions/the-record/[[recordId]].js exists (owns /the-record/* routing)",
   assert.ok(fs.existsSync(RECORD_FUNCTION_PATH), "the record-routing Function is missing");
 });
 
+test("the record-routing Function serves the prerendered archive index", () => {
+  const contents = fs.readFileSync(RECORD_FUNCTION_PATH, "utf8");
+  assert.match(contents, /if \(!segment\)[\s\S]*fetchAsset\(context, "\/the-record\/"\)/);
+});
+
 test("catch-all Function and generated route table exist", () => {
   assert.ok(fs.existsSync(CATCH_ALL_FUNCTION_PATH), "catch-all route Function is missing");
   assert.ok(fs.existsSync(FUNCTION_ROUTES_PATH), "generated Function route table is missing");
