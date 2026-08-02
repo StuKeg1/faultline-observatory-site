@@ -87,17 +87,7 @@
 }
 
 .htc-block--stat {
-  align-items: center;
-}
-
-.htc-icon {
-  flex: none;
-  color: var(--ink-mid);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  padding-top: 0.1rem;
+  align-items: flex-start;
 }
 
 .htc-stat-value {
@@ -129,6 +119,31 @@
 
 .htc-divider {
   border-top: 1px solid var(--rule-light);
+}
+
+.htc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.825rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.htc-cta:hover {
+  text-decoration: underline;
+}
+
+.htc-cta:hover .hqc-arrow {
+  transform: translateX(2px);
+}
+
+.htc-cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -203,7 +218,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .home-question-card,
-  .home-question-card .hqc-arrow {
+  .home-question-card .hqc-arrow,
+  .htc-cta .hqc-arrow {
     transition: none;
   }
 }

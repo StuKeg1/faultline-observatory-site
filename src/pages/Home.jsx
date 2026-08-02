@@ -128,14 +128,6 @@ function IconDocument() {
   );
 }
 
-function IconShield() {
-  return (
-    <svg {...ICON_PROPS}>
-      <path d="M12 2.5 19.5 5.5v6c0 5-3.2 8.3-7.5 10-4.3-1.7-7.5-5-7.5-10v-6Z" />
-    </svg>
-  );
-}
-
 function IconInfo() {
   return (
     <svg {...ICON_PROPS} width="16" height="16">
@@ -233,24 +225,31 @@ export default function Home() {
               </p>
             </div>
 
-            <aside className="home-trust-card" aria-label="Evidence practice">
+            <aside
+              className="home-trust-card"
+              aria-label="Methodology and Public Record summary"
+            >
               <div className="htc-block">
-                <span className="htc-icon"><IconShield /></span>
                 <div className="htc-block-copy">
-                  <div className="htc-block-title">Evidence first</div>
-                  <p className="htc-block-text">We follow the evidence, wherever it leads.</p>
+                  <div className="htc-block-title">Methodology</div>
+                  <p className="htc-block-text">
+                    Every update is dated. Earlier assessments remain visible,
+                    and corrections are recorded rather than silently substituted.
+                  </p>
                 </div>
               </div>
               <div className="htc-divider" aria-hidden="true" />
               <div className="htc-block htc-block--stat">
                 <span className="htc-stat-value">{totalRecords}</span>
                 <div className="htc-block-copy">
-                  <div className="htc-block-title">Frontier Records tracked</div>
+                  <div className="htc-block-title">Frontier Records maintained</div>
                   <p className="htc-block-text">
-                    Append-only · Dated evidence
-                    <br />
-                    Transparent corrections
+                    Tracking consequential claims across frontier science and technology.
                   </p>
+                  <Link to="/public-record/" className="htc-cta">
+                    Explore the Public Record
+                    <span className="hqc-arrow" aria-hidden="true">→</span>
+                  </Link>
                 </div>
               </div>
             </aside>
