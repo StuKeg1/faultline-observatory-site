@@ -352,3 +352,74 @@
 .npm-author-link:hover {
   border-bottom-color: var(--accent);
 }
+
+/* ── Related navigation panel (Programme Notes / Landscape Essays only) ── */
+.note-related {
+  border-top: 2px solid var(--ink);
+  background: var(--paper-card);
+  padding: 0 2rem;
+}
+.note-related-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 2.5rem 0 3rem;
+}
+
+.note-related-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 1rem;
+}
+
+.note-related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 1.5rem;
+}
+.note-related-row {
+  display: block;
+  background: var(--paper);
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+.note-related-row:hover { background: var(--accent-dim); }
+.note-related-row__id {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+.note-related-row__title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.note-related-rr-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.note-related-rr-link:hover {
+  background: var(--accent-dim);
+}
