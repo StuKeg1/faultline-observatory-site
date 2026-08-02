@@ -58,6 +58,14 @@ Each Record focuses on a single technological claim — a new quantum computing 
 Many claims simply don't naturally generate the kind of long-lived evidence pressure that makes a Frontier Record valuable. Many claims are scientifically interesting and notable discoveries. But they're simply not part of our set of frontier programmes—where claims evolve over years under sustained technical uncertainty and institutional significance. Even if another paper appears on a claim, it’s likely to be incremental rather than a continuing public claim whose assessment people will want to revisit over a decade. One of the strengths of FCIF is that it doesn’t try to become a catalogue of every fascinating scientific result. Saying “no” to good science is part of maintaining a coherent corpus.`,
   },
   {
+    heading: "How does the Observatory decide which claims become Frontier Records?",
+    body: `A Frontier Record neets to meet specific criteria.
+
+A claim is admitted when it satisfies three conditions: it makes a specific, checkable assertion rather than a general trend; the evidence available today is insufficient to resolve it; and further evidence — a publication, a replication attempt, a deployment, a retraction — can realistically be expected to arrive.
+
+The objective is not to document every news story, but to build a durable public record of developments that matter.`,
+  },
+  {
     heading: "How does evidence change a Frontier Record?",
     body: `A Frontier Record is designed to evolve.
 
@@ -78,14 +86,6 @@ The current assessment is a snapshot of where the claim stands today. The assess
       linkLabel: "Methodology",
       suffix: ".",
     },
-  },
-  {
-    heading: "How does the Observatory decide which claims become Frontier Records?",
-    body: `Not every technology announcement becomes a Frontier Record.
-
-A claim is admitted when it satisfies three conditions: it makes a specific, checkable assertion rather than a general trend; the evidence available today is insufficient to resolve it; and further evidence — a publication, a replication attempt, a deployment, a retraction — can realistically be expected to arrive.
-
-The objective is not to document every news story, but to build a durable public record of developments that matter.`,
   },
   {
     heading: "Why are there four Programmes — not more, not fewer?",
