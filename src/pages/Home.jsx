@@ -202,7 +202,7 @@ export default function Home() {
       <main className="home-page">
 
         {/* ── HERO ── */}
-        <section className="home-hero" aria-label="The Public Record of Technology Claims">
+        <section className="home-hero" aria-label="The Public Record of Science and Technology Claims">
           <div className="home-hero-inner">
 
             <div
@@ -210,7 +210,9 @@ export default function Home() {
               style={headlineWidth ? { "--home-hero-headline-width": `${headlineWidth}px` } : undefined}
             >
               <h1 ref={headlineRef} className="home-hero-headline">
-                The Public Record of Technology Claims.{" "}
+                <span className="home-hero-headline-text">
+                  The Public Record of Science and Technology Claims.
+                </span>
                 <span className="home-hero-headline-accent">
                   Tracked until the evidence decides.
                 </span>

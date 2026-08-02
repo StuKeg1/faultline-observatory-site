@@ -40,10 +40,8 @@
 .home-hero-headline {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2rem, 4.2vw, 3.1rem);
   line-height: 1.1;
   letter-spacing: -0.015em;
-  color: var(--ink);
   margin: 0;
   /* Intrinsically sized (not stretched to the flex column's full width)
      so headlineRef's getBoundingClientRect() in Home.jsx measures the
@@ -55,7 +53,24 @@
   max-width: 100%;
 }
 
+/* Identity statement and tagline are sized independently (operator-approved
+   2026-08-02) so the tagline's line length no longer competes with the
+   identity statement's own wrap point — the two sentences were previously
+   one run at a single font-size, which had no width/font-size combination
+   that could wrap both sentences the way the corpus's actual line lengths
+   required (see Review discussion, same date). Each is still responsive
+   via its own clamp(), and each is a block so the tagline always starts
+   its own line regardless of how the identity statement wraps. */
+.home-hero-headline-text {
+  display: block;
+  font-size: clamp(2rem, 4.2vw, 2.875rem);
+  color: var(--ink);
+}
+
 .home-hero-headline-accent {
+  display: block;
+  margin-top: 0.3em;
+  font-size: clamp(1.5rem, 3.1vw, 2.125rem);
   color: var(--accent);
 }
 
