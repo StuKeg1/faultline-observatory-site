@@ -29,11 +29,9 @@ export default function PoliticalRumourAccuracyPilot() {
               A test of what political reporting knew—and what its sources could actually support.
             </p>
 
-            <div className="rumour-pilot-meta-line" aria-label="Study dates">
-              <span>Research window: 13 June–19 July 2026</span>
-              <span aria-hidden="true">·</span>
-              <span>Resolved: 20 July 2026</span>
-            </div>
+            <p className="rumour-pilot-provenance">
+              Prompted by <a href="https://shkspr.mobi/blog/2026/07/are-political-journalists-always-wrong/" target="_blank" rel="noreferrer">Terence Eden’s challenge</a>, I deliberately narrowed the pilot to one resolvable case: press claims about Andy Burnham’s choice of Chancellor, tested against the eventual appointment. ChatGPT Work (GPT-5.6 Sol, medium reasoning) helped locate, classify and assess the contemporaneous reports.
+            </p>
           </div>
         </header>
 
