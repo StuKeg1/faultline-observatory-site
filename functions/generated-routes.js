@@ -20,6 +20,7 @@ export const CANONICAL_ROUTES = [
   "/institutional-health/",
   "/institutional-changelog/",
   "/documentation-requests/",
+  "/political-rumour-accuracy-pilot/",
   "/tokens/",
   "/programmes/prog-qe/",
   "/programmes/prog-ai/",

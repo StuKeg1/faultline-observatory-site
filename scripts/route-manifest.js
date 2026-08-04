@@ -55,6 +55,7 @@ export const STATIC_ROUTES = [
   "/institutional-health/",
   "/institutional-changelog/",
   "/documentation-requests/",
+  "/political-rumour-accuracy-pilot/",
   "/tokens/",
 ];
 

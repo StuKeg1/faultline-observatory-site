@@ -192,6 +192,21 @@ test("internal navigation is present as real anchors", { skip }, () => {
   assert.ok(/<a [^>]*href="\/"/.test(rendered), "no institutional navigation anchors");
 });
 
+test("political-rumour pilot preserves its scope boundary and Observatory entry path", { skip }, () => {
+  const route = "/political-rumour-accuracy-pilot/";
+  const rendered = body(read(route));
+
+  assert.ok(rendered.length > 12000, "pilot page does not carry the substantive study content");
+  assert.ok(rendered.includes("Independent method pilot"), "pilot identity is missing");
+  assert.ok(
+    rendered.includes("sits outside the Observatory’s scientific and technological record"),
+    "pilot scope boundary is missing",
+  );
+  assert.ok(rendered.includes("Claim register"), "pilot claim register is missing");
+  assert.ok(rendered.includes('href="/"'), "pilot has no entry path to the Observatory homepage");
+  assert.ok(rendered.includes('href="/welcome/"'), "pilot has no entry path to the five-minute primer");
+});
+
 test("generated pages load the same hashed entry bundle as the shell", { skip }, () => {
   const shellScript = /<script type="module"[^>]*src="([^"]+)"/.exec(
     fs.readFileSync(path.join(DIST, "index.html"), "utf8")
