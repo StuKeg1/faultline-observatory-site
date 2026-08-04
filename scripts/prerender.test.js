@@ -203,12 +203,15 @@ test("political-rumour pilot preserves its scope boundary and Observatory entry 
     "pilot scope boundary is missing",
   );
   assert.ok(rendered.includes("Method and sources"), "pilot method disclosure is missing");
+  assert.ok(rendered.includes("What the reporting actually captured"), "pilot interpretation is missing");
+  assert.ok(rendered.includes("The key failure was a collapse of claim types"), "pilot institutional lesson is missing");
+  assert.ok(rendered.includes("Why there is no journalist leaderboard"), "pilot leaderboard limitations are missing");
+  assert.ok(rendered.includes("must not be presented as a publication or journalist accuracy rate"), "pilot rate caveat is missing");
   assert.ok(rendered.includes("Terence Eden’s challenge"), "pilot challenge attribution is missing");
   assert.ok(rendered.includes("GPT-5.6 Sol, medium reasoning"), "pilot model disclosure is missing");
   assert.ok(!rendered.includes("Research window:"), "pilot still exposes the retired research-window metadata");
   assert.ok(!rendered.includes("Resolved: 20 July 2026"), "pilot still exposes the retired resolution metadata");
   assert.ok(!rendered.includes("Claim register"), "pilot still exposes the long claim register");
-  assert.ok(!rendered.includes("Why there is no journalist leaderboard"), "pilot still exposes report-only sections");
   assert.ok(rendered.includes('href="/"'), "pilot has no entry path to the Observatory homepage");
   assert.ok(!rendered.includes('href="/welcome/"'), "pilot still exposes a competing secondary action");
 });
