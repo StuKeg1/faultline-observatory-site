@@ -29,10 +29,10 @@ export default function PoliticalRumourAccuracyPilot() {
               A test of what political reporting knew—and what its sources could actually support.
             </p>
 
-            <div className="rumour-pilot-dates" aria-label="Study dates">
-              <div><span>Research window</span>13 June–19 July 2026</div>
-              <div><span>Resolution event</span>John Healey appointed Chancellor, 20 July 2026</div>
-              <div><span>Completed</span>31 July 2026</div>
+            <div className="rumour-pilot-meta-line" aria-label="Study dates">
+              <span>Research window: 13 June–19 July 2026</span>
+              <span aria-hidden="true">·</span>
+              <span>Resolved: 20 July 2026</span>
             </div>
           </div>
         </header>
@@ -58,7 +58,7 @@ export default function PoliticalRumourAccuracyPilot() {
               </div>
 
               <blockquote>
-                The press accurately detected an organised contest over the Chancellorship, but the strongest reports mistook factional briefing—or a provisional plan—for the final appointment. In this episode, Westminster sources were better evidence of who factions wanted than of what the incoming prime minister would ultimately do.
+                Westminster sources were better evidence of who factions wanted than of what the incoming prime minister would ultimately do.
               </blockquote>
 
               <details className="rumour-method">
@@ -83,12 +83,12 @@ export default function PoliticalRumourAccuracyPilot() {
           </section>
 
           <aside className="rumour-pilot-observatory">
-            <div className="rumour-pilot-inner">
-              <div className="rumour-pilot-eyebrow">Continue into the Observatory</div>
-              <h2>Interested in the other claims the Observatory is tracking?</h2>
-              <p>
-                Faultline Observatory follows consequential scientific and technological claims over time—preserving the history and allowing the evidence to change the assessment.
-              </p>
+            <div className="rumour-pilot-observatory-layout">
+              <div>
+                <div className="rumour-pilot-eyebrow">Continue into the Observatory</div>
+                <h2>Interested in the other claims the Observatory is tracking?</h2>
+                <p>Follow consequential science and technology claims as their evidence develops.</p>
+              </div>
               <Link className="rumour-primary-action" to="/">
                 Explore the Faultline Observatory <span aria-hidden="true">→</span>
               </Link>
