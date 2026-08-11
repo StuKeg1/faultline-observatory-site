@@ -63,6 +63,7 @@ export default function Programme() {
   const hasRecords = records.length > 0;
   const hasProgrammeNotes = programmeNotes.length > 0;
   const hasLandscapeEssays = landscapeEssays.length > 0;
+  const hasDistinctScope = prog.scopeStatement !== prog.thresholdStatement;
 
   return (
     <>
@@ -87,7 +88,14 @@ export default function Programme() {
             <div className="prog-passport">
               <div className="prog-main">
                 <h1 className="prog-name">{prog.name}</h1>
-                <p className="prog-desc">{prog.scopeStatement}</p>
+                <div className="prog-id">The faultline</div>
+                <p className="prog-desc">{prog.thresholdStatement}</p>
+                {hasDistinctScope && (
+                  <>
+                    <div className="prog-id">Programme scope</div>
+                    <p className="prog-desc">{prog.scopeStatement}</p>
+                  </>
+                )}
               </div>
 
               <aside className="prog-stats-panel" aria-label="Programme statistics">
