@@ -114,7 +114,7 @@ export const PROGRAMMES = [
     shortDescription:
       "Claims from physical science where evidence, scalability, or mechanism may reshape energy, materials, or frontier physics.",
     thresholdStatement:
-      "Claims where the contested frontier lies in whether observed material phenomena can be demonstrated, reproduced, and understood under controlled conditions.",
+      "Claims where the contested frontier lies in whether claimed material and physical phenomena are real, correctly understood, reproducible, and capable of scaling.",
     scopeStatement:
       "This programme tracks frontier claims whose central uncertainty concerns the behaviour, mechanism, scalability, or demonstrated viability of materials and physical systems. A claim belongs here when the contested frontier lies in the material or physical phenomenon itself — whether it exists, whether it scales, whether the proposed mechanism is correct. Claims are not excluded because they may later find application in computing, medicine, or energy; nor are they included for that reason. The allocation criterion is the location of the primary contested frontier, not the eventual application of the technology.",
   },
