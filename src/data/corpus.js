@@ -125,8 +125,8 @@ export const PROGRAMMES = [
     shortDescription:
       "Claims about biological systems, therapeutics, biomedical sciences, genomics and life-science frontiers.",
     thresholdStatement:
-      "Claims where the contested frontier lies in whether evidence of efficacy, safety, and scale keeps pace with the deployment of biological interventions.",
+      "Claims where the contested frontier lies in whether claimed biological effects, measurements, and interventions remain reliable when tested in living systems and clinically meaningful settings.",
     scopeStatement:
-      "Claims where the contested frontier lies in whether evidence of efficacy, safety, and scale keeps pace with the deployment of biological interventions.",
+      "This programme tracks frontier claims whose central uncertainty concerns biological effects, relationships, measurements, or interventions. A claim belongs here when the contested frontier lies in whether a claimed biological effect, measurement, predictive relationship, or intervention is real, reliable, and meaningful in living systems or clinically relevant settings. Claims are not excluded because artificial intelligence, materials, or other technologies may be used to discover, measure, or deliver them; nor are they included for that reason. The allocation criterion is the location of the primary contested frontier: biological validity or response belongs here, while AI capability and material properties remain with the programmes that own those frontiers.",
   },
 ];
