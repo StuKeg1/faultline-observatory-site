@@ -75,7 +75,7 @@ export const FR_QE_0004 = {
       description: "A reinforcement-learning controller integrates real-time recalibration into the error-correction cycle, correcting calibration drift from error-syndrome data without pausing computation, and reports a roughly 20% increase in detected and corrected errors relative to static calibration on two logical qubits (Nature, DOI 10.1038/s41586-026-10759-2, peer-reviewed). This is SUPPORTIVE of the scalable-architecture component of the claim: it addresses sustained-operation drift, a practical obstacle to maintaining below-physical operation during real computation. It does not itself establish the below-physical result — that was reached from IN-004 — and the source is explicit that it does not alter the below-threshold finding. It is distinct in kind from IN-007: IN-008 bears on sustained operation, not on the threshold/breakeven result. It does not bear on the d=11-and-above scaling question (OQ-001) or on the record's replication needs. Peer-reviewed; demonstrated on two logical qubits.",
       vectors: ["SUPPORTIVE"],
       date: "2026",
-    ,
+    },
     {
       id: "IN-009",
       qualifiedEvent: "D-Wave — entangling gate for superconducting dual-rail erasure qubits",
