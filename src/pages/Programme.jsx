@@ -63,7 +63,11 @@ export default function Programme() {
   const hasRecords = records.length > 0;
   const hasProgrammeNotes = programmeNotes.length > 0;
   const hasLandscapeEssays = landscapeEssays.length > 0;
-  const hasDistinctScope = prog.scopeStatement !== prog.thresholdStatement;
+  const faultlinePrefix = "Claims where the contested frontier lies in ";
+  const faultlineSource = prog.thresholdStatement.startsWith(faultlinePrefix)
+    ? prog.thresholdStatement.slice(faultlinePrefix.length)
+    : prog.thresholdStatement;
+  const faultlineStatement = `${faultlineSource.charAt(0).toUpperCase()}${faultlineSource.slice(1)}`;
 
   return (
     <>
@@ -89,13 +93,7 @@ export default function Programme() {
               <div className="prog-main">
                 <h1 className="prog-name">{prog.name}</h1>
                 <div className="prog-id">The faultline</div>
-                <p className="prog-desc">{prog.thresholdStatement}</p>
-                {hasDistinctScope && (
-                  <>
-                    <div className="prog-id">Programme scope</div>
-                    <p className="prog-desc">{prog.scopeStatement}</p>
-                  </>
-                )}
+                <p className="prog-desc">{faultlineStatement}</p>
               </div>
 
               <aside className="prog-stats-panel" aria-label="Programme statistics">
