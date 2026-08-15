@@ -6,6 +6,7 @@ import PageMeta from "../components/PageMeta.jsx";
 import EvidenceTrajectory from "../components/trajectory/EvidenceTrajectory.jsx";
 import { MutationHighlightProvider, useMutationHighlight } from "../components/trajectory/MutationHighlightContext.jsx";
 import { ALL_RECORDS } from "../data/corpus.js";
+import { getAssessmentRecency } from "../data/assessmentRecency.js";
 import {
   getCurrentAssessment,
   getTransitionFeed,
@@ -545,6 +546,7 @@ export default function FrontierRecord() {
   if (!record) return <Navigate to="/the-record" replace />;
 
   const current = getCurrentAssessment(record);
+  const assessmentRecency = getAssessmentRecency(record);
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
@@ -631,6 +633,10 @@ export default function FrontierRecord() {
                   <span className="rp-status-value">{record.reconstruction.effectiveCreationDate} · S4</span>
                 </div>
               )}
+              <div className="rp-meta-row">
+                <span className="rp-status-label">Last Assessment</span>
+                <span className="rp-status-value">{assessmentRecency.date}</span>
+              </div>
               <div className="rp-meta-row">
                 <span className="rp-status-label">Last Mutation</span>
                 <span className="rp-status-value">{record.mutationLog[0]?.date ?? "—"}</span>
