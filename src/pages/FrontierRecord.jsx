@@ -180,7 +180,7 @@ function RecordLineage({ record }) {
         const isTransition = transitionIds.has(a.id);
         const dotClass = isFirst ? "major" : isLast ? "current" : "";
         const eventLabel = isFirst
-          ? "Record opened — "
+          ? "Initial assessment — "
           : isTransition
           ? "State changed — "
           : "Reassessed, no change — ";
@@ -608,13 +608,6 @@ export default function FrontierRecord() {
               </div>
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
-              <div className="rp-meta-row">
-                <span className="rp-status-label">Record Opened</span>
-                <span className="rp-status-value">
-                  {record.claim.openedDate}
-                  {record.claim.openedDateQualifier ? ` · ${record.claim.openedDateQualifier}` : ""}
-                </span>
-              </div>
               {record.claim.subject && (
                 <div className="rp-meta-row">
                   <span className="rp-status-label">Claim Subject</span>
