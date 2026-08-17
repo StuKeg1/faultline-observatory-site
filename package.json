@@ -14,7 +14,7 @@
     "build": "vite build && npm run prerender",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "node --test src/data/assessmentRecency.test.js src/data/recordDirectory.test.js src/data/trajectoryVisuals.test.js src/data/verificationStageReviews.test.js src/pages/evidenceTrajectoryLayout.test.js src/pages/publicRecordPreview.test.js src/pages/homeQuestions.test.js src/pages/frontierRecordLegacyDate.test.js scripts/redirects.test.js scripts/sitemap.test.js scripts/prerender.test.js",
+    "test": "node --test src/data/assessmentRecency.test.js src/data/recordDirectory.test.js src/data/trajectoryVisuals.test.js src/data/verificationStageReviews.test.js src/data/institutionalHealthIntegrity.test.js src/pages/evidenceTrajectoryLayout.test.js src/pages/publicRecordPreview.test.js src/pages/homeQuestions.test.js src/pages/frontierRecordLegacyDate.test.js scripts/redirects.test.js scripts/sitemap.test.js scripts/prerender.test.js",
     "smoke:live": "node scripts/smoke-live.js",
     "prerender": "node scripts/prerender.js"
   },
@@ -34,8 +34,8 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^10.6.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.28",
     "globals": "^17.6.0",
     "vite": "^8.0.12"
   }
