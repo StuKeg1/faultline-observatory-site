@@ -80,6 +80,14 @@ export const FR_AI_0002 = {
       verificationStage: "VS-02",
       summary: "The claim is supported by the current evidence in a qualified but meaningful sense. Three independent lines of evidence — controlled experiments (INST-001, INST-002), commercial deployment at scale (INST-003), and natural experiment in deployed settings (INST-005) — all find that LLMs produce measurable economic value in knowledge-work contexts under conditions approximating limited supervision. The effect sizes are not marginal: 14–55% productivity improvements in relevant task domains, with quality improvements accompanying rather than trading off against speed in at least two of the three studies (INST-002, INST-005). Contesting evidence is concentrated at the boundary of the claim rather than at its core: documented hallucination failures in high-stakes domains (INST-004) and agentic multi-step task failures (INST-006) show that the 'limited human supervision' condition holds reliably in single-turn, reviewed contexts but not yet in extended autonomous workflows. The pressure state is ESCALATING: the core claim is well supported within a supervision boundary that has not yet been precisely defined (OQ-001).",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-08-17",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "The claim remains ESCALATING and bounded by the supervision threshold identified in AS-001. IN-007 adds a stronger operational test at that boundary: on live-system root-cause analysis, general-purpose coding agents achieve low accuracy on realistic and hard tasks, hallucinate causes, and often miss concurrent incidents. This is meaningful contesting evidence against reliable delegation of extended, high-stakes multi-step knowledge work under low supervision. It does not overturn the claim's supported core because the record is not a universal claim of autonomous competence: controlled studies and deployed settings continue to show economically valuable performance where humans review outputs and the task is bounded. IN-007 therefore narrows confidence at the agentic frontier rather than reversing the underlying utility finding. Pressure State remains ESCALATING and Verification Stage remains VS-02; OQ-001 remains the decisive unresolved boundary.",
+      assessorNote: "Issued during OHR-2026-09 catch-up review to close the unassessed-evidence gap created by IN-007. The reassessment preserves the distinction between bounded human-reviewed utility and extended low-supervision agentic work.",
     }
   ],
 
@@ -137,6 +145,7 @@ export const FR_AI_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-08-17", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued during OHR-2026-09 catch-up review to close the evidence-assessment gap created by IN-007. ORCA-bench strengthens the existing contesting evidence at the low-supervision agentic boundary but does not overturn bounded, human-reviewed knowledge-work utility. Pressure State remains ESCALATING; Verification Stage remains VS-02; mechanisms and open questions remain unchanged." },
     { id: "M-007", date: "2026-08-01", field: "instance_appended", from: "IN-006", to: "IN-007", note: "IN-007 appended — ORCA-bench (arXiv:2607.28545v1), authorised through Post-Scout flag 2026-08-01-02. Bounded CONTESTING evidence strengthens the existing low-supervision agentic boundary with operational root-cause-analysis measurements. Instance only: AS-001 remains current; Pressure State ESCALATING, Verification Stage VS-02, mechanisms, and open questions unchanged. No new assessment issued." },
     { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-004 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
