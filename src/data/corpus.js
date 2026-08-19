@@ -33,6 +33,7 @@ import { FR_AI_0005 } from "./records/FR-AI-0005.js";
 import { FR_AI_0006 } from "./records/FR-AI-0006.js";
 import { FR_AI_0007 } from "./records/FR-AI-0007.js";
 import { FR_AI_0008 } from "./records/FR-AI-0008.js";
+import { FR_AI_0009 } from "./records/FR-AI-0009.js";
 
 // ─── PROG-AM — Advanced Materials ────────────────────────────
 import { FR_AM_0001 } from "./records/FR-AM-0001.js";
@@ -69,6 +70,7 @@ export const ALL_RECORDS = [
   FR_AI_0006,
   FR_AI_0007,
   FR_AI_0008,
+  FR_AI_0009,
   // PROG-AM
   FR_AM_0001,
   FR_AM_0002,
