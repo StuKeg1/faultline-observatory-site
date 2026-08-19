@@ -114,7 +114,11 @@ export const FR_AI_0009 = {
       { year: "2025", text: "The frontier moves toward observational pretraining and physical planning. V-JEPA 2-AC demonstrates bounded zero-shot planning in new laboratory environments; Genie 3 demonstrates real-time interactive generated worlds. The claim becomes empirically testable beyond passive prediction." },
       { year: "2026", text: "Dedicated causal and embodiment-grounded benchmarks expose a reliability gap. MiraBench, What-If World and RoboWM-Bench show that visual realism does not reliably imply action fidelity, causal correctness or physically executable behaviour. The frontier shifts from generating plausible worlds to predicting consequences that remain useful under intervention and transfer." },
     ],
-    relatedRecords: ["FR-AI-0001", "FR-AI-0005", "FR-AI-0008"],
+    relatedRecords: [
+      { id: "FR-AI-0001", relationship: "Adjacent generalisation claim", note: "LLM Multi-Step Reasoning — tests whether reasoning capability generalises beyond training conditions rather than whether learned physical dynamics transfer under intervention." },
+      { id: "FR-AI-0005", relationship: "Architectural context", note: "AGI Through Scaling — may receive evidence from world-model architectures, but does not own the physical-prediction-and-transfer claim." },
+      { id: "FR-AI-0008", relationship: "Applied transfer analogue", note: "Medical Imaging Deployment — tracks benchmark-to-deployment generalisation in clinical settings rather than embodied prediction and action." },
+    ],
   },
 
   openQuestions: [
