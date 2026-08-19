@@ -17,7 +17,7 @@ export const FRONTIERS = [
     label: "Artificial intelligence",
     recordIds: [
       "FR-AI-0001", "FR-AI-0002", "FR-AI-0003", "FR-AI-0004",
-      "FR-AI-0005", "FR-AI-0006", "FR-AI-0007", "FR-AI-0008",
+      "FR-AI-0005", "FR-AI-0006", "FR-AI-0007", "FR-AI-0008", "FR-AI-0009",
     ],
   },
   {
