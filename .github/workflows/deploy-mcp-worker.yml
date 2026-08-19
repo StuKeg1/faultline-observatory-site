@@ -2,6 +2,14 @@ name: Deploy MCP Worker
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/deploy-mcp-worker.yml'
+      - 'faultline-mcp/**'
+      - 'scripts/validate-mcp-canonical.js'
+      - 'src/data/**'
 
 permissions:
   contents: read
