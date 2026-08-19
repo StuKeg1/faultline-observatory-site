@@ -11,6 +11,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractHeadTags, mergeHead, composePage } from "./prerender.js";
+import { ALL_RECORDS } from "../src/data/corpus.js";
+import { getAssessmentHistory } from "../src/data/derive.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const DIST = path.join(ROOT, "dist");
@@ -242,14 +244,26 @@ test("legacy Verification Stage provenance is disclosed without exposing its res
   const noteNeedle = 'id="stage-provenance-documentation"';
   const affected = recordPages.filter(({ rendered }) => rendered.includes(markerNeedle));
   const multiMarker = affected.filter(({ rendered }) => count(rendered, markerNeedle) > 1);
+  const reviewedHistories = ALL_RECORDS.map((record) => ({
+    assessments: getAssessmentHistory(record),
+  })).filter(({ assessments }) =>
+    assessments.some((assessment) => assessment.verificationStageProvenance)
+  );
+  const markerCount = ({ assessments }) => {
+    const reviewed = assessments.filter((assessment) => assessment.verificationStageProvenance).length;
+    const currentIsReviewed = assessments.at(-1)?.verificationStageProvenance ? 1 : 0;
+    return reviewed + currentIsReviewed;
+  };
+  const expectedMarkers = reviewedHistories.reduce((total, history) => total + markerCount(history), 0);
+  const expectedMultiMarkerRecords = reviewedHistories.filter((history) => markerCount(history) > 1).length;
 
   assert.equal(
     recordPages.reduce((total, { rendered }) => total + count(rendered, markerNeedle), 0),
-    53,
+    expectedMarkers,
     "unexpected provenance marker count",
   );
-  assert.equal(affected.length, 25, "unexpected affected-record count");
-  assert.equal(multiMarker.length, 19, "unexpected multi-marker record count");
+  assert.equal(affected.length, reviewedHistories.length, "unexpected affected-record count");
+  assert.equal(multiMarker.length, expectedMultiMarkerRecords, "unexpected multi-marker record count");
 
   for (const { route, rendered } of affected) {
     assert.equal(count(rendered, noteNeedle), 1, `${route} must carry exactly one disclosure note`);
