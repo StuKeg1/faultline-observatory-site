@@ -32,13 +32,11 @@ export default function MCPAccess() {
     <>
       <PageMeta
         title="MCP Access"
-        description="Connect an AI assistant to the Faultline Observatory and query claim status, lifecycle history, and cross-record patterns in plain language."
+        description="Connect an AI assistant to the canonical Faultline Observatory corpus and inspect records, evidence, assessment history, Pressure States, Verification Stages, and institutional changes."
         path="/guides/mcp-access/"
       />
       <div className="mcp-page">
         <main className="mcp-main">
-
-          {/* Breadcrumb */}
           <div className="mcp-breadcrumb">
             <Link to="/">← Observatory</Link>
             {" › "}
@@ -47,28 +45,23 @@ export default function MCPAccess() {
             <span>MCP Access</span>
           </div>
 
-          {/* Page header */}
           <p className="mcp-eyebrow">Guide — Machine Interface</p>
           <h1 className="mcp-title">Using the Observatory with AI Assistants</h1>
           <p className="mcp-intro">
-            Ask questions across the entire Observatory instead of reading records one
-            at a time. Connect an AI assistant and query claim status, lifecycle history,
-            and cross-record patterns in plain language.
+            Connect an AI assistant directly to the same canonical Frontier Record corpus
+            that powers the website. Agents can inspect claim evidence, assessment history,
+            current Pressure State and Verification Stage, open questions, lineage, and the
+            mutation record without relying on a separate machine-only database.
           </p>
 
-          {/* At a glance */}
           <div className="mcp-glance-card">
             <div className="mcp-glance-item">
               <div className="mcp-glance-label">Endpoint</div>
-              <div className="mcp-glance-value">
-                <code>mcp.faultlinewatch.com/mcp</code>
-              </div>
+              <div className="mcp-glance-value"><code>mcp.faultlinewatch.com/mcp</code></div>
             </div>
             <div className="mcp-glance-item">
               <div className="mcp-glance-label">Status</div>
-              <div className="mcp-glance-value">
-                <span className="mcp-status-dot" />Live
-              </div>
+              <div className="mcp-glance-value"><span className="mcp-status-dot" />Live</div>
             </div>
             <div className="mcp-glance-item">
               <div className="mcp-glance-label">Access</div>
@@ -80,11 +73,10 @@ export default function MCPAccess() {
             </div>
             <div className="mcp-glance-item mcp-glance-full">
               <div className="mcp-glance-label">Current capabilities</div>
-              <div className="mcp-glance-value">Claim status lookup · FCIF lifecycle · Case listing · Observatory metadata</div>
+              <div className="mcp-glance-value">Canonical record listing · Full record retrieval · Corpus search · Programme metadata</div>
             </div>
           </div>
 
-          {/* Connecting */}
           <div className="mcp-section">
             <h2 className="mcp-section-title">Connecting your client</h2>
             <p>
@@ -128,50 +120,46 @@ export default function MCPAccess() {
               particularly for large cross-record queries or automated loops.
             </p>
             <p>
-              Once connected, your client will discover the Observatory tools automatically.
-              Current tools expose capabilities such as record listing, claim lookup,
-              lifecycle inspection, and Observatory metadata retrieval. The exact tool names
-              displayed will depend on the MCP client you are using.
+              Once connected, your client discovers the Observatory tools automatically.
+              The machine interface derives from the canonical corpus rather than maintaining
+              a separate case list, so a governed record change has one institutional source
+              regardless of whether it is read on the website or through MCP.
             </p>
             <p>
               After adding the endpoint, restart your client, confirm that the Faultline
               Observatory tools appear in the available tool list, and begin a new chat
-              session. Start with a simple query to verify the connection before moving to
-              broader corpus-level analysis.
+              session. Start with a simple record lookup before moving to corpus-level analysis.
             </p>
 
             <p className="mcp-try-label">Try</p>
             <ul className="mcp-query-list">
-              <li>What is the current FCIF status of LK-99?</li>
-              <li>Which claims are currently invalidated?</li>
-              <li>Explain the FCIF lifecycle stages.</li>
-              <li>List all tracked cases in Quantum Computing.</li>
+              <li>Read FR-AM-0005 and explain why its current Pressure State remains Collapsed.</li>
+              <li>What evidence instances are recorded for FR-AI-0009?</li>
+              <li>Which PROG-AI records are currently Fragmenting?</li>
+              <li>Search the corpus for records that mention reopening conditions.</li>
             </ul>
           </div>
 
-          {/* Cross-record analysis */}
           <div className="mcp-section">
             <h2 className="mcp-section-title">Cross-record analysis</h2>
             <p>
               Most visitors use the website to read individual Frontier Records. The MCP
-              connection enables a different mode of interaction. Instead of opening one
-              record at a time, an AI assistant can query Observatory tools directly and
-              analyse information across the corpus.
+              connection enables an AI assistant to retrieve and compare canonical records
+              directly, while preserving the distinction between evidence and institutional assessment.
             </p>
             <p>For example:</p>
             <ul className="mcp-cross-query-list">
-              <li>Which claims have accumulated the strongest contradictory evidence?</li>
+              <li>Which records have accumulated the strongest contradictory evidence?</li>
               <li>Which records have remained stable for long periods without reassessment?</li>
               <li>Which programmes contain the largest number of unresolved open questions?</li>
-              <li>How does evidentiary behaviour differ between programmes?</li>
+              <li>Where has new evidence been added without changing the institutional judgment?</li>
             </ul>
             <p style={{ marginTop: "1rem" }}>
-              Questions like these require looking across many records simultaneously.
-              The MCP connection makes that possible.
+              The assistant can inspect the underlying evidence instances, assessment history,
+              and mutation record used to support such comparisons.
             </p>
           </div>
 
-          {/* What the records do not do */}
           <div className="mcp-section">
             <h2 className="mcp-section-title">What the records do not do</h2>
             <div className="mcp-constraints-box">
@@ -200,12 +188,10 @@ export default function MCPAccess() {
             </div>
           </div>
 
-          {/* Page footer */}
           <div className="mcp-page-footer">
             <span className="mcp-footer-note">Route: /guides/mcp-access</span>
             <Link to="/guides" className="mcp-footer-link">← All guides</Link>
           </div>
-
         </main>
       </div>
       <SiteFooter />
