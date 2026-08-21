@@ -38,6 +38,7 @@ export const FRONTIERS = [
     label: "Biotechnology and health",
     recordIds: [
       "FR-AI-0008", "FR-BT-0001", "FR-BT-0002", "FR-BT-0003", "FR-BT-0004",
+      "FR-BT-0005",
     ],
   },
 ];

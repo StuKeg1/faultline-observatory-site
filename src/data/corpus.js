@@ -48,6 +48,7 @@ import { FR_BT_0001 } from "./records/FR-BT-0001.js";
 import { FR_BT_0002 } from "./records/FR-BT-0002.js";
 import { FR_BT_0003 } from "./records/FR-BT-0003.js";
 import { FR_BT_0004 } from "./records/FR-BT-0004.js";
+import { FR_BT_0005 } from "./records/FR-BT-0005.js";
 
 // ─── ALL RECORDS ────────────────────────────────────────────
 // Order: programme, then numeric.
@@ -83,6 +84,7 @@ export const ALL_RECORDS = [
   FR_BT_0002,
   FR_BT_0003,
   FR_BT_0004,
+  FR_BT_0005,
 ];
 
 // ─── PROGRAMME DECLARATIONS ─────────────────────────────────
