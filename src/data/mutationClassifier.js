@@ -90,7 +90,8 @@
 
 // Known field-name synonyms observed in the live QE-programme corpus.
 // FR-QE-0003 uses "instance_logged", FR-QE-0004 uses "instance_appended",
-// the creation batch uses "instances_logged" (plural). All three mean the
+// the creation batch uses "instances_logged" (plural), and FR-AI-0009 uses
+// the canonical mutation type literal "instance_added". All four mean the
 // same governance event. Recorded as an observation, not silently erased —
 // worth a Review Note of its own at some point.
 // Exported (2026-07-07, Metrics Engine build): metrics.js needs to know
@@ -104,6 +105,7 @@ export const INSTANCE_FIELD_SYNONYMS = new Set([
   "instance_logged",
   "instance_appended",
   "instances_logged",
+  "instance_added",
 ]);
 
 // Field-name synonyms for the assessment-issued event, singular and plural.
