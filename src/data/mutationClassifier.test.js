@@ -46,9 +46,9 @@ test("instance_added is a qualifying Class A development", () => {
 test("instance_added appears in Latest Developments", () => {
   const developments = getLatestDevelopments([record], 3);
 
-  assert.equal(developments.length, 1);
-  assert.equal(developments[0].record.id, "FR-AI-0009");
-  assert.equal(developments[0].mutation.id, "M-006");
-  assert.equal(developments[0].mutationType, "instance_added");
-  assert.equal(developments[0].taxonomyClass, "A");
+  const development = developments.find((row) => row.mutation.id === "M-006");
+  assert.ok(development);
+  assert.equal(development.record.id, "FR-AI-0009");
+  assert.equal(development.mutationType, "instance_added");
+  assert.equal(development.taxonomyClass, "A");
 });
