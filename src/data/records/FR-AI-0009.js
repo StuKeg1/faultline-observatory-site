@@ -70,6 +70,13 @@ export const FR_AI_0009 = {
       vectors: ["partial--physical-structure-represented-transfer-unresolved"],
       date: "2026",
     },
+    {
+      id: "IN-008",
+      qualifiedEvent: "CaliBench — stochastic physical outcomes remain systematically miscalibrated",
+      description: "Distributional evaluation adds a distinct reliability failure mode beyond visual plausibility or single-trajectory physical error. CaliBench (arXiv:2608.16829) evaluates six image-to-video models across nine controlled physical scenes with analytically known stochastic outcome distributions, using repeated generations to test whether model output frequencies match those distributions. The study finds widespread significant miscalibration and severe cases of probability-mass concentration or mode collapse, showing that a generated future can look physically plausible while the model represents the range and likelihood of possible physical outcomes incorrectly. This directly contests the record's physical-reliability commitment because planning under uncertainty depends not only on plausible trajectories but on sufficiently faithful outcome probabilities. The evidential boundary is strict: CaliBench tests image-to-video stochastic calibration in controlled scenes, not action-conditioned robot planning, cross-embodiment transfer or successful physical execution, so it adds contesting mass within the existing reliability shape rather than establishing failure of the full transfer claim.",
+      vectors: ["contesting--stochastic-physical-calibration-remains-weak"],
+      date: "2026",
+    },
   ],
 
   assessments: [
@@ -151,6 +158,7 @@ export const FR_AI_0009 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-08-22", field: "instance_added", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "IN-008 CaliBench added following RR-2026-08-22-01 Post-Scout Human Record Review and explicit operator authorization. The approved action was INSTANCE only; AS-001, ESCALATING pressure state and VS-02 verification stage remain unchanged." },
     { id: "M-005", date: "2026-08-19", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "Admission diagnosis: ESCALATING / VS-02. Positive bounded transfer evidence and direct reliability counterevidence are both substantive." },
     { id: "M-004", date: "2026-08-19", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "BN-001, RM-001, RM-002 and AT-001 recorded from the admission evidence package." },
     { id: "M-003", date: "2026-08-19", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "AS-001 issued. Pressure State: ESCALATING. Verification Stage: VS-02." },
