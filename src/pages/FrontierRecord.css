@@ -132,10 +132,6 @@
   background: var(--paper);
   z-index: 50;
   overflow-x: auto;
-  /* On narrow viewports the tab list overflows and scrolls horizontally;
-     this edge fade is the only cue that more tabs exist off-screen. */
-  mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
 }
 .record-tab {
   font-family: var(--mono);
@@ -503,6 +499,13 @@
 
 /* Responsive */
 @media (max-width: 700px) {
+  /* On narrow viewports the tab list overflows and scrolls horizontally;
+     this edge fade is the only cue that more tabs exist off-screen. */
+  .record-tabs {
+    mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+  }
+
   .record-passport { grid-template-columns: 1fr; }
   .rp-meta-panel { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
 
