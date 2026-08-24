@@ -216,7 +216,7 @@
   color: var(--ink-light);
   margin-bottom: 1.5rem;
 }
-.note-breadcrumb a { color: var(--ink-light); text-decoration: none; }
+.note-breadcrumb a { color: var(--ink-light); text-decoration: none; transition: color 0.15s; }
 .note-breadcrumb a:hover { color: var(--accent); }
 .note-breadcrumb .bc-current { color: var(--ink); }
 
@@ -348,6 +348,7 @@
   text-decoration: none;
   border-bottom: 1px solid var(--accent-dim);
   padding-bottom: 1px;
+  transition: border-color 0.15s;
 }
 .npm-author-link:hover {
   border-bottom-color: var(--accent);
