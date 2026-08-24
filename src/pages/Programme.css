@@ -37,7 +37,7 @@
   color: var(--ink-light);
   margin-bottom: 1.5rem;
 }
-.prog-breadcrumb a { color: var(--ink-light); text-decoration: none; }
+.prog-breadcrumb a { color: var(--ink-light); text-decoration: none; transition: color 0.15s; }
 .prog-breadcrumb a:hover { color: var(--accent); }
 .prog-breadcrumb .bc-current { color: var(--ink); }
 
@@ -293,6 +293,13 @@
   .prr-assessments { display: none; }
   .prr-date { display: none; }
   .prog-reading-room-row { flex-direction: column; gap: 0.25rem; }
+
+  /* .prog-activity-row's fixed 110px/90px/1fr/auto grid overflows the
+     viewport on phones (the state badge gets pushed off-screen). Switch to
+     a wrapping flex row: date/id/badge on one line, note below at full width. */
+  .prog-activity-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.75rem; }
+  .prog-activity-row .par-note { flex-basis: 100%; order: 1; }
+  .prog-activity-row .state-badge { margin-left: auto; }
 }
 
 .prog-trajectory-entry {

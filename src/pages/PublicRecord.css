@@ -34,7 +34,7 @@
 .pr-preview { min-width: 0; border-top: 1px solid var(--rule); }
 .pr-programme-entry { display: grid; gap: 0.3rem; padding: 0.8rem 0; border-bottom: 1px solid var(--rule-light); color: var(--ink); text-decoration: none; }
 .pr-programme-entry > span, .pr-record-entry-id, .pr-trajectory-record > span { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; color: var(--accent); }
-.pr-programme-entry strong, .pr-record-entry strong, .pr-trajectory-record strong { font-family: var(--serif); font-size: 0.9rem; font-weight: 400; line-height: 1.25; overflow-wrap: anywhere; }
+.pr-programme-entry strong, .pr-record-entry strong, .pr-trajectory-record strong { font-family: var(--serif); font-size: 0.9rem; font-weight: 400; line-height: 1.25; overflow-wrap: anywhere; transition: color 0.15s; }
 .pr-programme-entry strong { min-height: 2.25rem; }
 .pr-programme-entry small { display: -webkit-box; min-height: 2.25rem; overflow: hidden; font-family: var(--serif); font-size: 0.79rem; font-weight: 300; line-height: 1.45; color: var(--ink-mid); -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .pr-programme-entry:hover strong, .pr-record-entry:hover strong { color: var(--accent); }

@@ -19,7 +19,7 @@
   color: var(--ink-light);
   margin-bottom: 2rem;
 }
-.mcp-breadcrumb a { color: var(--ink-light); text-decoration: none; }
+.mcp-breadcrumb a { color: var(--ink-light); text-decoration: none; transition: color 0.15s; }
 .mcp-breadcrumb a:hover { color: var(--accent); }
 .mcp-breadcrumb span { color: var(--ink); }
 

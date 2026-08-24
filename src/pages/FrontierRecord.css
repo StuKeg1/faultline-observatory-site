@@ -17,7 +17,7 @@
   color: var(--ink-light);
   margin-bottom: 1.25rem;
 }
-.record-breadcrumb a { color: var(--ink-light); text-decoration: none; }
+.record-breadcrumb a { color: var(--ink-light); text-decoration: none; transition: color 0.15s; }
 .record-breadcrumb a:hover { color: var(--accent); }
 .bc-current { color: var(--ink); }
 
@@ -144,7 +144,7 @@
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
   white-space: nowrap;
 }
 .record-tab:hover { color: var(--ink); background: var(--rule-light); }
@@ -499,6 +499,13 @@
 
 /* Responsive */
 @media (max-width: 700px) {
+  /* On narrow viewports the tab list overflows and scrolls horizontally;
+     this edge fade is the only cue that more tabs exist off-screen. */
+  .record-tabs {
+    mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+  }
+
   .record-passport { grid-template-columns: 1fr; }
   .rp-meta-panel { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
 

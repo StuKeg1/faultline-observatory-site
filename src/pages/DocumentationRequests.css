@@ -85,6 +85,7 @@
   padding: 0.85rem 1rem;
   text-decoration: none;
   text-transform: uppercase;
+  transition: background 0.15s;
 }
 
 .documentation-request-action:hover { background: var(--accent); }
