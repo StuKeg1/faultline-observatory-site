@@ -104,7 +104,10 @@ export const FR_AM_0007 = {
       { year: "2025", text: "Bi0.5Sb1.5Te3 demonstrates retention of a pressure-induced superconducting phase at ambient pressure with recovery from the pressure apparatus. The method's scope expands beyond the originating material classes." },
       { year: "2026", text: "Hg1223 pressure quenching retains an enhanced superconducting transition up to 151 K at ambient pressure, setting a new ambient-pressure record and making thermal durability and independent replication the decisive next questions." },
     ],
-    relatedRecords: ["FR-AM-0003", "FR-AM-0005"],
+    relatedRecords: [
+      { id: "FR-AM-0003", relationship: "Mechanism-adjacent", note: "Cuprate Superconductivity — tracks identification of the high-temperature cuprate pairing mechanism, not retention of pressure-enhanced states after decompression." },
+      { id: "FR-AM-0005", relationship: "Threshold-adjacent", note: "Room-Temperature Superconductivity — tracks reproducible superconductivity at the room-temperature threshold, which the 151 K pressure-quenched Hg1223 result does not satisfy." },
+    ],
   },
 
   openQuestions: [
@@ -131,6 +134,14 @@ export const FR_AM_0007 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-003",
+      date: "2026-08-25",
+      field: "related_records_corrected",
+      from: "bare record identifiers",
+      to: "governed related-record objects",
+      note: "Schema-shape correction after prerender validation exposed that relatedRecords requires id, relationship, and note fields. FR-AM-0003 and FR-AM-0005 relationships are preserved; no claim, evidence, assessment, pressure state, or verification stage changed.",
+    },
     {
       id: "M-002",
       date: "2026-08-25",
