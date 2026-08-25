@@ -136,6 +136,14 @@ export const FR_AM_0007 = {
 
   mutationLog: [
     {
+      id: "M-005",
+      date: "2026-08-25",
+      field: "assessment_issued",
+      from: "—",
+      to: "AS-001",
+      note: "Initial governed assessment logged for the admission decision: ESCALATING / VS-03. This mutation records the already-issued AS-001 and does not change its substance, pressure state, or verification stage.",
+    },
+    {
       id: "M-004",
       date: "2026-08-25",
       field: "opened_date_added",
