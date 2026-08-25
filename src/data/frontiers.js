@@ -25,7 +25,7 @@ export const FRONTIERS = [
     label: "Materials and physics",
     recordIds: [
       "FR-AM-0001", "FR-AM-0002", "FR-AM-0003", "FR-AM-0004",
-      "FR-AM-0005", "FR-AM-0006",
+      "FR-AM-0005", "FR-AM-0006", "FR-AM-0007",
     ],
   },
   {
