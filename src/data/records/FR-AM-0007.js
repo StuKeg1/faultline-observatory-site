@@ -132,6 +132,14 @@ export const FR_AM_0007 = {
 
   mutationLog: [
     {
+      id: "M-002",
+      date: "2026-08-25",
+      field: "instances_logged",
+      from: "—",
+      to: "IN-001–IN-004",
+      note: "Initial evidence trail logged at admission following the bounded FCIF Admission Review: IN-001 through IN-004 reconstruct the pressure-quench superconductivity trajectory from the early Sb/FeSe demonstrations through the March 2026 Hg1223 result.",
+    },
+    {
       id: "M-001",
       date: "2026-08-25",
       field: "record_created",
