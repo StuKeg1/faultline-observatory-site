@@ -16,6 +16,7 @@ export const FR_AM_0007 = {
   claim: {
     statement: "Pressure-quench protocols can stabilise pressure-induced or pressure-enhanced superconducting states at ambient pressure.",
     shortLabel: "Pressure-Quenched Superconductivity — Retention of High-Pressure States at Ambient Pressure",
+    openedDate: "2026-08-25",
   },
 
   instances: [
@@ -134,6 +135,14 @@ export const FR_AM_0007 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-004",
+      date: "2026-08-25",
+      field: "opened_date_added",
+      from: "—",
+      to: "2026-08-25",
+      note: "Canonical openedDate added as the actual FCIF admission date. The field remains operationally required for Record Directory sorting even though opened-date display was removed from the public UI. No evidentiary or assessment change.",
+    },
     {
       id: "M-003",
       date: "2026-08-25",
