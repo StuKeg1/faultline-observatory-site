@@ -61,6 +61,14 @@ export const FR_AM_0004 = {
       description: "They are, collectively, the most concentrated burst of engineering-milestone activity since the 2022 NIF/JET results that originally moved this claim into ESCALATING, and none was reflected in the record's evidence trail before this assessment. Multiple private and public fusion programmes pass concrete engineering milestones through 2025. Commonwealth Fusion Systems begins assembly of its SPARC tokamak (Q1 2025), targeting a net-energy demonstration. General Fusion achieves \"first plasma\" on its Lawson Machine 26 demonstration device (February 2025), a magnetised-target-fusion approach distinct from tokamak designs. The U.S. Department of Energy publishes a fusion-commercialisation roadmap (October 2025) coordinating actions across over 600 scientists, 15+ companies, and 10+ national laboratories. None of these is a threshold event under this record's three-threshold structure — no plant-level net electricity has been generated, and SPARC's own net-energy target is for 2026, not yet realised at time of writing.",
       vectors: ["partial--engineering-milestones-no-threshold-met"],
       date: "2025",
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "Helical Fusion / NIFS UROCOIC HTS coil — stellarator-specific high-current magnet engineering enters peer-reviewed literature",
+      description: "A Helical Fusion / National Institute for Fusion Science collaboration reports peer-reviewed testing of a double-pancake coil wound with the UROCOIC high-temperature-superconducting conductor developed for helical-stellarator magnets. The coil operated stably at 40 kA without quench under a 7 T externally applied field, experienced local fields up to 8.9 T, withstood electromagnetic forces of 356 kN/m, and operated for approximately 280 seconds at 10–30 K. The underlying experiment was first announced in 2025; publication in the Journal of Physics: Conference Series in August 2026 is a verification event rather than a second technical milestone. The result is supportive pre-threshold engineering evidence because it extends manufactured, institutionally tested HTS magnet development beyond the tokamak/SPARC pathway into a distinct stellarator architecture. It does not demonstrate a reactor-scale magnet system, fusion gain, plant-level net electricity, grid-scale output, tritium self-sufficiency, neutron-environment durability, or commercial viability.",
+      vectors: ["partial--peer-reviewed-stellarator-hts-magnet-engineering-no-threshold-met"],
+      date: "2025; peer-reviewed 2026-08",
+      sourceReference: "Y. Narushima et al., Journal of Physics: Conference Series 3278 (2026) 012031; Helical Fusion / NIFS UROCOIC double-pancake coil testing",
     }
   ],
 
@@ -155,6 +163,7 @@ export const FR_AM_0004 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-013", date: "2026-08-27", field: "instance_logged", from: "—", to: "IN-007", note: "IN-007 added following bounded FCIF audit: Helical Fusion / NIFS UROCOIC double-pancake HTS coil result, first announced in 2025 and peer-reviewed in August 2026. Classified as supportive pre-threshold engineering evidence; no pressure-state or verification-stage change." },
     { id: "M-012", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-003, IN-006 descriptions reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-011", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001: plant-scale engineering, tritium-breeding infrastructure, and licensing dependencies distinguished from fusion-gain evidence. Corpus Review — Realization Note Candidates (v2)." },
     { id: "M-010", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: SPARC's 2026 net-energy target makes OQ-001's resolution-criteria question time-sensitive rather than hypothetical." },
