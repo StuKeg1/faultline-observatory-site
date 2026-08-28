@@ -27,6 +27,7 @@ export const FR_AI_0009 = {
       description: "World-model-based control generalises across an unusually broad benchmark suite under one algorithmic configuration, establishing that learned latent dynamics can support action across heterogeneous task domains. Hafner et al. report DreamerV3 mastering more than 150 diverse control tasks with a single configuration and outperforming specialised methods across the evaluated benchmarks. This is substantive evidence that world-model planning can support broad control capability, but the evidence is primarily benchmark and simulated-environment generality rather than the record's harder requirement of reliable physical transfer across materially changed real-world objects, environments or embodiments.",
       vectors: ["partial--broad-control-generality-without-real-world-transfer"],
       date: "2023–25",
+      sourceReference: "Hafner et al., 'Mastering diverse control tasks through world models', Nature 640 (2025), doi:10.1038/s41586-025-08744-2",
     },
     {
       id: "IN-002",
@@ -34,6 +35,7 @@ export const FR_AI_0009 = {
       description: "This is the strongest current supportive evidence for bounded physical transfer. Assran et al. pre-train V-JEPA 2 on more than one million hours of video and then post-train an action-conditioned world model using less than 62 hours of unlabeled DROID robot video. V-JEPA 2-AC is deployed zero-shot on Franka arms in two different laboratories for image-goal reaching, grasping and pick-and-place without collecting robot data in the target environments and without task-specific training or reward. The result demonstrates useful action-conditioned prediction surviving a meaningful environment shift. It does not yet establish broad task transfer or cross-embodiment transfer because the deployment remains within a constrained manipulation setting and the same general robot platform family.",
       vectors: ["supportive--bounded-zero-shot-physical-transfer"],
       date: "2025",
+      sourceReference: "Assran et al., 'V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning', arXiv:2506.09985",
     },
     {
       id: "IN-003",
@@ -41,6 +43,7 @@ export const FR_AI_0009 = {
       description: "Interactive world simulation advances materially, but the result is not equivalent to reliable physical transfer. Google DeepMind reports that Genie 3 generates 720p interactive environments at roughly 24 frames per second, responds to user actions and maintains environmental consistency for several minutes. DeepMind also states important limits: agent action space is constrained, multi-agent interaction remains difficult, real-world locations are not represented with perfect accuracy, and continuous interaction lasts minutes rather than hours. The evidence therefore supports increasingly capable action-responsive simulation while leaving the record's physical-fidelity and real-world functional-utility commitments unresolved.",
       vectors: ["partial--interactive-simulation-with-transfer-unproven"],
       date: "2025",
+      sourceReference: "Google DeepMind, 'Genie 3: A new frontier for world models' (2025), corporate research announcement; no DOI",
     },
     {
       id: "IN-004",
@@ -48,6 +51,7 @@ export const FR_AI_0009 = {
       description: "Direct benchmark evidence contests the assumption that realistic generated futures are reliable enough for robot planning. Yang et al. introduce MiraBench with more than 16,000 human judgments across 12 representative world-model configurations, evaluating physics adherence, action-following fidelity and optimism bias under failure-inducing actions. The study reports that visual fidelity is a poor proxy for action fidelity, increasing model scale does not reliably improve action following, and optimism bias is pervasive. This directly pressures intervention fidelity and physical fidelity: a model can generate a convincing future while failing to represent what the commanded action would actually cause.",
       vectors: ["contesting--visual-fidelity-does-not-imply-action-reliability"],
       date: "2026",
+      sourceReference: "Yang et al., 'MiraBench: Evaluating Action-Conditioned Reliability in Robotic World Models', arXiv:2605.29360",
     },
     {
       id: "IN-005",
@@ -55,6 +59,7 @@ export const FR_AI_0009 = {
       description: "State-of-the-art video world models remain brittle when a physically meaningful variable is changed while the rest of a scene is held stable. Cai et al. construct 319 paired interventions from nuScenes and DROID and evaluate whether generated futures diverge in the way the changed physical condition requires. Across nine models, no system exceeds 52% on the paired score and every tested model fails a substantial fraction of causal interventions. The result is important because each individual video may look plausible while the pair reveals that the model did not track the causal consequence of the intervention. This directly contests the claim's intervention-fidelity commitment.",
       vectors: ["contesting--causal-intervention-fidelity-remains-weak"],
       date: "2026",
+      sourceReference: "Cai et al., 'What-If World', arXiv:2605.27589",
     },
     {
       id: "IN-006",
@@ -62,6 +67,7 @@ export const FR_AI_0009 = {
       description: "Embodiment-grounded evaluation shows that visually plausible predicted behaviour still fails at the boundary where an embodied system must execute it. Jiang et al. convert generated human-hand and robotic manipulation videos into embodied action sequences and validate them through robotic execution. Across evaluated world models, reliably generating physically executable behaviour remains an open challenge; reported failure modes include spatial-reasoning errors, unstable contact prediction and non-physical deformation. Fine-tuning on manipulation data improves results but does not remove the physical inconsistencies. This directly contests physical fidelity and functional utility.",
       vectors: ["contesting--physically-executable-behaviour-remains-unreliable"],
       date: "2026",
+      sourceReference: "Jiang et al., 'RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation', arXiv:2604.19092",
     },
     {
       id: "IN-007",
@@ -69,6 +75,7 @@ export const FR_AI_0009 = {
       description: "Mechanistic analysis supplies supportive context for the possibility that useful physical prediction need not resemble an explicit physics engine. Joseph et al. probe large-scale video encoders and report an intermediate-depth transition where speed, acceleration and motion-direction information becomes accessible, with physical variables represented in distributed high-dimensional structures rather than compact factorised state variables. The result bears on mechanism, not transfer: it supports the plausibility that learned representations contain action-relevant physical structure while not establishing that the structure remains sufficiently faithful for reliable planning under changed environments or embodiments.",
       vectors: ["partial--physical-structure-represented-transfer-unresolved"],
       date: "2026",
+      sourceReference: "Joseph et al., 'Interpreting Physics in Video World Models', ICML 2026; arXiv:2602.07050",
     },
     {
       id: "IN-008",
@@ -76,6 +83,7 @@ export const FR_AI_0009 = {
       description: "Distributional evaluation adds a distinct reliability failure mode beyond visual plausibility or single-trajectory physical error. CaliBench (arXiv:2608.16829) evaluates six image-to-video models across nine controlled physical scenes with analytically known stochastic outcome distributions, using repeated generations to test whether model output frequencies match those distributions. The study finds widespread significant miscalibration and severe cases of probability-mass concentration or mode collapse, showing that a generated future can look physically plausible while the model represents the range and likelihood of possible physical outcomes incorrectly. This directly contests the record's physical-reliability commitment because planning under uncertainty depends not only on plausible trajectories but on sufficiently faithful outcome probabilities. The evidential boundary is strict: CaliBench tests image-to-video stochastic calibration in controlled scenes, not action-conditioned robot planning, cross-embodiment transfer or successful physical execution, so it adds contesting mass within the existing reliability shape rather than establishing failure of the full transfer claim.",
       vectors: ["contesting--stochastic-physical-calibration-remains-weak"],
       date: "2026",
+      sourceReference: "Sadeghi et al., 'CaliBench: Are the Stochastic Dynamics of Video World Models Physically Calibrated?', arXiv:2608.16829, doi:10.48550/arXiv.2608.16829",
     },
   ],
 
@@ -158,6 +166,7 @@ export const FR_AI_0009 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-08-28", field: "reference_corrected", from: "Instance-level references absent", to: "IN-001–IN-008 source references recorded", note: "GP-001 provenance correction following the bounded three-record source/DOI audit. Stable publication identifiers were added to every evidence instance. IN-003 is explicitly identified as a corporate research announcement without a DOI; IN-008 carries its own CaliBench reference because it post-dates AS-001. No evidence description, interpretation, assessment, pressureState, verificationStage, mechanism, or open question changed." },
     { id: "M-006", date: "2026-08-22", field: "instance_added", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "IN-008 CaliBench added following RR-2026-08-22-01 Post-Scout Human Record Review and explicit operator authorization. The approved action was INSTANCE only; AS-001, ESCALATING pressure state and VS-02 verification stage remain unchanged." },
     { id: "M-005", date: "2026-08-19", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "Admission diagnosis: ESCALATING / VS-02. Positive bounded transfer evidence and direct reliability counterevidence are both substantive." },
     { id: "M-004", date: "2026-08-19", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "BN-001, RM-001, RM-002 and AT-001 recorded from the admission evidence package." },

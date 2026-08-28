@@ -26,6 +26,7 @@ export const FR_QE_0007 = {
       description: "Arute et al. (Google, 2019, Nature) report that their 53-qubit Sycamore processor completes a random circuit sampling task in 200 seconds that they estimate would require 10,000 years on Summit, the world's fastest supercomputer at the time. They claim this demonstrates \"quantum supremacy.\" IBM immediately contests the 10,000-year estimate, arguing that their classical simulation methods can complete the task in 2.5 days. Subsequent classical algorithm improvements reduce the estimated classical time further; Pan, Chen, and Zhang (2022) demonstrate classical simulation of Sycamore-class circuits in hours on a GPU cluster. Random circuit sampling has no known practical application — it was designed as a demonstration task. For this record: the quantum advantage claim is genuine and was demonstrated at the time of publication; the practical relevance claim is not satisfied — random circuit sampling has no identified application where this speedup produces tangible benefit.",
       vectors: ["partial--advantage-demonstrated-practical-relevance-absent"],
       date: "Oct 2019",
+      sourceReference: "Arute et al., Nature 574 (2019), doi:10.1038/s41586-019-1666-5; Pednault et al., arXiv:1910.09534; Pan, Chen & Zhang, Physical Review Letters 129 (2022), doi:10.1103/PhysRevLett.129.090502",
     },
     {
       id: "IN-002",
@@ -33,6 +34,7 @@ export const FR_QE_0007 = {
       description: "Multiple groups (USTC China with Jiuzhang, Xanadu with Borealis) demonstrate quantum advantage in Gaussian boson sampling — a photonic computational task. USTC reports sampling rates 10^14 times faster than classical simulation. These results claim quantum advantage more robustly than Sycamore: the classical simulation of boson sampling at demonstrated scales is harder and the results have proven more difficult to classically reproduce. However, boson sampling also lacks known practical applications — it was proposed as a demonstration problem. The practical relevance component is again absent. The record notes these as stronger advantage demonstrations than Sycamore but still not satisfying the claim as scoped: advantage without relevant application.",
       vectors: ["partial--stronger-advantage-practical-relevance-still-absent"],
       date: "2020–23",
+      sourceReference: "Zhong et al., Science 370 (2020), doi:10.1126/science.abe8770; Madsen et al., Nature 606 (2022), doi:10.1038/s41586-022-04725-x",
     },
     {
       id: "IN-003",
@@ -40,6 +42,7 @@ export const FR_QE_0007 = {
       description: "Kim et al. (IBM, 2023, Nature) report that a 127-qubit Eagle processor produces results on a kicked Ising model simulation that classical simulation cannot match within a reasonable time budget using standard methods. The paper explicitly uses the term \"quantum utility\" rather than \"quantum advantage,\" acknowledging that the task is not a practical application but claiming it demonstrates quantum computation producing useful results beyond classical reach. The kicked Ising model has connections to quantum many-body physics that give it some scientific relevance, though it is not a directly applied problem. Tindall et al. (2023) and others immediately demonstrate that tensor network methods can classically simulate the same circuits. The dispute is not about whether IBM's measurements were correct but about whether the classical simulation was optimal. The record notes this as the closest to practical relevance in the current evidence, while acknowledging that the dispute is ongoing and the problem's practical value is limited.",
       vectors: ["partial--scientific-relevance-partial-classical-simulation-contested"],
       date: "2023",
+      sourceReference: "Kim et al., Nature 618 (2023), doi:10.1038/s41586-023-06096-3; Tindall et al., PRX Quantum 5 (2024), doi:10.1103/PRXQuantum.5.010308",
     },
     {
       id: "IN-004",
@@ -47,13 +50,15 @@ export const FR_QE_0007 = {
       description: "Google's Willow chip (Nature 2024) demonstrates below-threshold error correction (documented in FR-QE-0004) and also performs a random circuit sampling task at a scale and speed that the Google team claims exceeds any plausible classical simulation. The claim of classical simulation intractability is stronger than for Sycamore: the circuit depth and qubit count are substantially larger. However, random circuit sampling remains a task with no direct practical application. The Willow result is the most technically impressive quantum advantage demonstration to date on a demonstration problem. It does not satisfy the practical relevance component of this record's claim. It does establish that the gap between quantum and classical simulation capacity is widening rather than closing for these demonstration tasks, which is evidence that fault-tolerant practical advantage (FR-QE-0006) is on a credible trajectory.",
       vectors: ["partial--strongest-advantage-demonstration-practical-relevance-still-absent"],
       date: "2024",
+      sourceReference: "Google Quantum AI et al., Nature 638 (2025), doi:10.1038/s41586-024-08449-y; Google Quantum AI, Willow random-circuit-sampling benchmark announcement (2024)",
     },
     {
       id: "IN-005",
       qualifiedEvent: "Quantum simulation of physical systems — approaching practical relevance",
-      description: "Multiple groups demonstrate quantum simulation results on physically motivated systems approaching practical relevance. Google's quantum simulation of a superconducting material phase transition (Mi et al. 2022, Nature), IBM's quantum chemistry calculations on small molecules, and Quantinuum's quantum simulation of hydrogen chain dynamics all produce results that bear on scientifically relevant problems. None unambiguously exceeds classical simulation capability on a problem with direct practical application at the scale demonstrated. The IBM hydrogen chain calculations are classically simulable with modest resources at the demonstrated scale; the Google phase transition simulation provides useful scientific insight but is not clearly beyond classical reach. These are the closest the current evidence base comes to satisfying both components simultaneously — but the conjunction remains unconfirmed.",
+      description: "Multiple groups demonstrate quantum simulation results on physically motivated systems approaching practical relevance. Google Quantum AI's observation of time-crystalline eigenstate order on a quantum processor (Mi et al. 2022), IBM's variational calculations for small molecules and quantum magnets (Kandala et al. 2017), and Quantinuum's hardware calculations for simplified hydrogen-chain and iron-crystal models (Yamamoto et al. 2022) all bear on scientifically relevant problems. None unambiguously exceeds the best classical methods on a directly practical problem at the demonstrated scale. The systems remain deliberately small or simplified and classically checkable; their value is as scientific and algorithmic demonstrations rather than established practical advantage. These are among the closest parts of the pre-2025 evidence base to satisfying both components simultaneously, but the conjunction remains unconfirmed.",
       vectors: ["partial--approaching-both-components-neither-fully-satisfied-simultaneously"],
-      date: "2022–24",
+      date: "2017–22",
+      sourceReference: "Mi et al., Nature 601 (2022), doi:10.1038/s41586-021-04257-w; Kandala et al., Nature 549 (2017), doi:10.1038/nature23879; Yamamoto et al., Physical Review Research 4 (2022), doi:10.1103/PhysRevResearch.4.033110",
     },
     {
       id: "IN-006",
@@ -133,6 +138,7 @@ export const FR_QE_0007 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-08-28", field: "reference_corrected", from: "IN-001–IN-005 lacked instance references; IN-005 misidentified Mi et al. as a superconducting-material phase-transition study", to: "IN-001–IN-006 carry stable references; IN-005 reconstructed from Mi, Kandala and Yamamoto", note: "GP-001 provenance and description correction following the bounded three-record source/DOI audit. IN-005 had conflated the superconducting processor substrate with the simulated phenomenon and incorrectly attributed a superconducting-material phase transition to Mi et al. The instance now states the verified time-crystal, small-molecule/quantum-magnet and simplified hydrogen-chain/iron-crystal results. AS-001 and AS-002 remain preserved; the correction does not alter their conjunction analysis. Pressure State FRAGMENTING and Verification Stage VS-03 are explicitly retained." },
     { id: "M-007", date: "2026-08-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following the bounded FR-QE-0007 impact review. Pressure State FRAGMENTING and Verification Stage VS-03 retained. Quantum Echoes narrows the separation between beyond-classical performance and practical relevance, but the two thresholds remain demonstrated in different experimental regimes; Google-affiliated follow-up analysis is not treated as independent replication. No existing assessment, instance, mechanism, open question, or related record modified." },
     { id: "M-006", date: "2026-08-28", field: "instance_appended", from: "IN-005", to: "IN-006", note: "IN-006 appended — Google Quantum Echoes and the connected molecular-geometry OTOC programme. Classified as partial evidence: reproducible beyond-classical performance and practical application relevance are both present within the programme but not at the same demonstrated scale. Instance logged before AS-002; no state or verification-stage change at this step." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
