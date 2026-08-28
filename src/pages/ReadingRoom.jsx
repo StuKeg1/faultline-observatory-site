@@ -38,15 +38,7 @@ function LandscapeEssayCard({ item }) {
             loading="lazy"
           />
           <div className="reading-room-image-credit">
-            Image: {item.image.credit} · {item.image.licence} ·{" "}
-            <a
-              href={item.image.sourceUrl}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(event) => event.stopPropagation()}
-            >
-              source
-            </a>
+            Image: {item.image.credit} · {item.image.licence}
           </div>
         </>
       ) : null}
