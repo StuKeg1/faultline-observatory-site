@@ -54,6 +54,14 @@ export const FR_QE_0007 = {
       description: "Multiple groups demonstrate quantum simulation results on physically motivated systems approaching practical relevance. Google's quantum simulation of a superconducting material phase transition (Mi et al. 2022, Nature), IBM's quantum chemistry calculations on small molecules, and Quantinuum's quantum simulation of hydrogen chain dynamics all produce results that bear on scientifically relevant problems. None unambiguously exceeds classical simulation capability on a problem with direct practical application at the scale demonstrated. The IBM hydrogen chain calculations are classically simulable with modest resources at the demonstrated scale; the Google phase transition simulation provides useful scientific insight but is not clearly beyond classical reach. These are the closest the current evidence base comes to satisfying both components simultaneously — but the conjunction remains unconfirmed.",
       vectors: ["partial--approaching-both-components-neither-fully-satisfied-simultaneously"],
       date: "2022–24",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Google Quantum Echoes and molecular-geometry OTOC programme",
+      description: "Google Quantum AI's peer-reviewed Quantum Echoes experiment measures a reproducible second-order out-of-time-order correlator (OTOC) on 65 Willow qubits. The reported comparison estimates approximately 3.2 years of Frontier-supercomputer computation for a result collected in 2.1 hours on the quantum processor, about 13,000 times faster. A connected molecular-geometry study demonstrates that OTOC measurements can support a practically relevant structural-learning task: estimating molecular distances and angles with accuracy comparable to independent spectroscopic measurements, with Willow used to simulate the molecular OTOCs. The two components do not yet coincide at the decisive scale. Beyond-classical performance is demonstrated on the large Quantum Echoes circuits, while application utility is demonstrated on smaller systems that do not themselves establish quantum advantage. A 2026 tensor-network analysis reinforces the classical-intractability case for the large circuits but is authored by Google Quantum AI-affiliated researchers and therefore does not constitute independent replication. The programme materially narrows the gap between demonstration advantage and useful computation without satisfying the record's conjunctive claim.",
+      vectors: ["partial--beyond-classical-reproducible-otoc-demonstrated-practical-application-only-at-smaller-scale-independent-replication-absent"],
+      date: "2025–26",
+      sourceReference: "Google Quantum AI et al., Nature 646 (2025) 825–830, doi:10.1038/s41586-025-09526-6; Zhang et al., arXiv:2510.19550; Bermejo et al., arXiv:2604.15427",
     }
   ],
 
@@ -66,6 +74,14 @@ export const FR_QE_0007 = {
       verificationStage: "VS-03",
       summary: "The claim has not been satisfied. No quantum computer has demonstrated advantage on a problem that simultaneously meets both the performance threshold (faster than best classical methods) and the practical relevance threshold (problem has genuine scientific or commercial value at the demonstrated scale). The evidence base contains strong demonstrations of one component without the other — advantage on demonstration problems (INST-001, 002, 004) or near-advantage on relevant problems (INST-005) — but no instance yet satisfies both simultaneously. IBM's quantum utility claim (INST-003) comes closest to bridging the two, reporting results on a problem with some scientific relevance that classical simulation was disputed to match, but the classical-simulation contest remains unresolved. The pressure state is FRAGMENTING: the evidence is splitting along two separate trajectories — demonstration-problem advantage growing stronger (INST-004) and relevant-problem simulation approaching but not reaching classical intractability (INST-005) — without converging on a single instance that would resolve the claim (OQ-001).",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-08-28",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "Quantum Echoes materially narrows the gap between demonstration advantage and useful computation without satisfying the claim. IN-006 connects a reproducible higher-order OTOC result reported as approximately 13,000 times faster than the estimated classical computation with a concrete molecular-structure workflow using related OTOC measurements. The decisive conjunction remains absent: the beyond-classical result is demonstrated on large 65-qubit Quantum Echoes circuits, while practical utility is demonstrated on smaller molecular systems that do not themselves establish advantage over the best classical methods. The 2026 tensor-network analysis further supports the classical-intractability component but is produced by Google Quantum AI-affiliated authors and is not independent replication. The pressure state therefore remains FRAGMENTING: performance and relevance have moved closer within one technical programme but still occupy separate experimental regimes. Verification remains VS-03 because the central result is published and auditable, but neither independently replicated nor operationally demonstrated on a practically relevant beyond-classical task.",
+      assessorNote: "Bounded FR-QE-0007 impact review, 2026-08-28. Primary evidence: Google Quantum AI et al., Nature 646 (2025) 825–830, doi:10.1038/s41586-025-09526-6; Zhang et al., arXiv:2510.19550; Bermejo et al., arXiv:2604.15427. The Bermejo et al. follow-up is explicitly treated as Google-affiliated corroboration, not independent replication.",
     }
   ],
 
@@ -117,6 +133,8 @@ export const FR_QE_0007 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-08-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following the bounded FR-QE-0007 impact review. Pressure State FRAGMENTING and Verification Stage VS-03 retained. Quantum Echoes narrows the separation between beyond-classical performance and practical relevance, but the two thresholds remain demonstrated in different experimental regimes; Google-affiliated follow-up analysis is not treated as independent replication. No existing assessment, instance, mechanism, open question, or related record modified." },
+    { id: "M-006", date: "2026-08-28", field: "instance_appended", from: "IN-005", to: "IN-006", note: "IN-006 appended — Google Quantum Echoes and the connected molecular-geometry OTOC programme. Classified as partial evidence: reproducible beyond-classical performance and practical application relevance are both present within the programme but not at the same demonstrated scale. Instance logged before AS-002; no state or verification-stage change at this step." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "null_condition_met", from: "—", to: "NULL-CONDITION-MET", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
