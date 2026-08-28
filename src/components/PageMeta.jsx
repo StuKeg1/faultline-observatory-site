@@ -16,8 +16,10 @@ const DEFAULT_DESC =
  *     description="..."
  *     path="/the-record/fr-qe-0001/"
  *   />
+ *
+ * Set noindex for deliberately non-discoverable experiment/preview routes.
  */
-export default function PageMeta({ title, description, path }) {
+export default function PageMeta({ title, description, path, noindex = false }) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
   const desc = description || DEFAULT_DESC;
   const canonical = path ? `${BASE_URL}${path}` : BASE_URL;
@@ -27,6 +29,7 @@ export default function PageMeta({ title, description, path }) {
     <Helmet>
       <title>{fullTitle}</title>
       {!usesStaticHomepageMeta && <meta name="description" content={desc} />}
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={canonical} />
       {/* Flat children only. react-helmet-async's React 19 dispatcher maps
           Helmet's direct children into title/meta/link props; a nested
