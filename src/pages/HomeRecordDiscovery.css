@@ -1,0 +1,89 @@
+/* Homepage-only production admission of VD-001A Refined A.
+   Record-target questions use a denser institutional hierarchy; non-record
+   destinations retain the lighter question-card treatment in Home.css. */
+
+.home-question-card--record {
+  position: relative;
+  padding: 1.15rem 1.2rem 1rem;
+  border-top: 2px solid var(--ink);
+}
+
+.hqc-record-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.05rem;
+  font-family: var(--mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-light);
+}
+
+.hqc-record-topline .state-badge {
+  flex: none;
+}
+
+.hqc-question--record {
+  flex-grow: 0;
+  margin-bottom: 0.45rem;
+  font-size: 1.14rem;
+  line-height: 1.28;
+}
+
+.hqc-record-title {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--ink-mid);
+}
+
+.hqc-record-assessment {
+  margin: 0.9rem 0 1rem;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--ink-mid);
+}
+
+.hqc-foot--record {
+  margin-top: auto;
+  padding-top: 0.65rem;
+}
+
+.hqc-record-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.home-question-card--record:hover .hqc-record-action .hqc-arrow {
+  transform: translateX(2px);
+}
+
+@media (max-width: 520px) {
+  .home-question-card--record {
+    padding: 1rem 1.05rem 0.9rem;
+  }
+
+  .hqc-record-topline {
+    margin-bottom: 0.8rem;
+  }
+
+  .hqc-question--record {
+    font-size: 1.08rem;
+  }
+
+  .hqc-record-assessment {
+    margin: 0.75rem 0 0.85rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+}
