@@ -56,6 +56,7 @@ export const STATIC_ROUTES = [
   "/institutional-changelog/",
   "/documentation-requests/",
   "/political-rumour-accuracy-pilot/",
+  "/experiments/vd-001/",
   "/tokens/",
 ];
 
@@ -74,7 +75,10 @@ export const LEGACY_REDIRECTS = [
 // Routes which are intentionally public but are not search surfaces.
 // Keeping this boundary beside the canonical manifest prevents sitemap and
 // prerender eligibility from drifting into separate hand-maintained lists.
-export const NON_INDEXABLE_ROUTES = new Set(["/tokens/"]);
+export const NON_INDEXABLE_ROUTES = new Set([
+  "/experiments/vd-001/",
+  "/tokens/",
+]);
 export const INDEXABLE_STATIC_ROUTES = STATIC_ROUTES.filter(
   (route) => !NON_INDEXABLE_ROUTES.has(route)
 );
