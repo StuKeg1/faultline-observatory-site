@@ -14,6 +14,14 @@ export const LE_QE_001 = {
   version: 1,
   date: "2026-06-28",
   status: "published",
+  image: {
+    src: "https://commons.wikimedia.org/wiki/Special:Redirect/file/IBM_Q_system_(Fraunhofer_2).jpg?width=1200",
+    alt: "IBM Quantum System One installation at Fraunhofer",
+    credit: "IBM Research",
+    licence: "CC BY 2.0",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:IBM_Q_system_(Fraunhofer_2).jpg",
+    role: "contextual",
+  },
   summary:
     "PN-QE-001 observes that Quantum Engineering capabilities are repeatedly " +
     "demonstrated under defined experimental conditions while uncertainty " +
