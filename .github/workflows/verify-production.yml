@@ -1,0 +1,62 @@
+name: Verify Production Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-production
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Wait for exact commit to reach production
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          echo "Waiting for production commit ${EXPECTED_SHA}"
+          for attempt in $(seq 1 72); do
+            body=$(curl --fail --silent --show-error \
+              -H 'Cache-Control: no-cache' \
+              "https://faultlinewatch.com/deployment.json?expected=${EXPECTED_SHA}&attempt=${attempt}" || true)
+            actual=$(printf '%s' "$body" | jq -r '.commit // empty' 2>/dev/null || true)
+
+            if [ "$actual" = "$EXPECTED_SHA" ]; then
+              echo "Production now serves ${EXPECTED_SHA}"
+              exit 0
+            fi
+
+            if [ -n "$actual" ]; then
+              echo "Attempt ${attempt}: production still serves ${actual}"
+            else
+              echo "Attempt ${attempt}: deployment fingerprint not available yet"
+            fi
+
+            sleep 15
+          done
+
+          echo "Production did not reach ${EXPECTED_SHA} within 18 minutes" >&2
+          exit 1
+
+      - name: Checkout deployed commit
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run live smoke gate
+        run: npm run smoke:live
