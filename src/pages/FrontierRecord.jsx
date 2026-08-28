@@ -318,7 +318,7 @@ function EvidenceSources({ record }) {
                   {showFullS4Content && inst.description && (
                     <span className="ev-description">{inst.description}</span>
                   )}
-                  {showFullS4Content && inst.sourceReference && (
+                  {inst.sourceReference && (
                     <span className="ev-source-reference">{inst.sourceReference}</span>
                   )}
                 </span>

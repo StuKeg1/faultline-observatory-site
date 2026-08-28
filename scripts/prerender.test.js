@@ -148,6 +148,20 @@ test("evidence entries are present without JavaScript", { skip }, () => {
   }
 });
 
+test("audited record provenance is present in public static HTML", { skip }, () => {
+  const expected = [
+    ["/the-record/fr-ai-0009/", "10.1038/s41586-025-08744-2"],
+    ["/the-record/fr-qe-0007/", "10.1038/s41586-021-04257-w"],
+    ["/the-record/fr-bt-0004/", "10.1200/JCO.2026.44.17_suppl.LBA100"],
+  ];
+
+  for (const [route, reference] of expected) {
+    const rendered = body(read(route));
+    assert.ok(rendered.includes('class="ev-source-reference"'), `${route} hides source references`);
+    assert.ok(rendered.includes(reference), `${route} omits ${reference}`);
+  }
+});
+
 test("note pages carry their content before JavaScript runs", { skip }, () => {
   for (const route of sitemapRoutes("sitemap-notes.xml")) {
     const id = route.split("/").filter(Boolean).at(-1).toUpperCase();
