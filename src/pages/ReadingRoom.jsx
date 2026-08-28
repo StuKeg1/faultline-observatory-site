@@ -26,6 +26,19 @@ const SECTIONS = [
   },
 ];
 
+function LandscapeEssayCopy({ item }) {
+  return (
+    <div className="reading-room-landscape-copy">
+      <div className="reading-room-landscape-meta">
+        {item.id} · {item.programme} · {item.date}
+      </div>
+      <h3 className="reading-room-landscape-title">{item.title}</h3>
+      <p className="reading-room-landscape-summary">{item.summary}</p>
+      <div className="reading-room-landscape-action">Read essay →</div>
+    </div>
+  );
+}
+
 function LandscapeEssayCard({ item }) {
   const hasImage = Boolean(item.image);
 
@@ -36,25 +49,22 @@ function LandscapeEssayCard({ item }) {
     >
       {hasImage ? (
         <>
-          <img
-            className="reading-room-landscape-image"
-            src={item.image.src}
-            alt={item.image.alt}
-            loading="lazy"
-          />
-          <div className="reading-room-image-credit">
-            Image: {item.image.credit} · {item.image.licence}
+          <LandscapeEssayCopy item={item} />
+          <div className="reading-room-landscape-media">
+            <img
+              className="reading-room-landscape-image"
+              src={item.image.src}
+              alt={item.image.alt}
+              loading="lazy"
+            />
+            <div className="reading-room-image-credit">
+              Image: {item.image.credit} · {item.image.licence}
+            </div>
           </div>
         </>
-      ) : null}
-      <div className="reading-room-landscape-copy">
-        <div className="reading-room-landscape-meta">
-          {item.id} · {item.programme} · {item.date}
-        </div>
-        <h3 className="reading-room-landscape-title">{item.title}</h3>
-        <p className="reading-room-landscape-summary">{item.summary}</p>
-        <div className="reading-room-landscape-action">Read essay →</div>
-      </div>
+      ) : (
+        <LandscapeEssayCopy item={item} />
+      )}
     </Link>
   );
 }
