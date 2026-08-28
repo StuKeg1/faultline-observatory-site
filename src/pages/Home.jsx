@@ -7,6 +7,7 @@ import { ALL_RECORDS } from "../data/corpus.js";
 import { getCorpusSummary, getCurrentAssessment } from "../data/derive.js";
 import { HOME_QUESTIONS, resolveHomeQuestion } from "./homeQuestions.js";
 import "./Home.css";
+import "./HomeRecordDiscovery.css";
 
 // ─── HOMEPAGE vNEXT ──────────────────────────────────────────
 // Homepage vNext Architecture & Implementation Specification v1.0
