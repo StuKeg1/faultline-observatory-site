@@ -5,6 +5,7 @@ import { ALL_NOTES, getNoteUrl } from "../data/notes.js";
 import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
 import { LANDSCAPE_ESSAYS } from "../data/landscapeEssays.js";
 import "./Institutional.css";
+import "./ReadingRoom.css";
 
 const SECTIONS = [
   {
@@ -16,6 +17,7 @@ const SECTIONS = [
     title: "Landscape Essays",
     description: "Interpretive essays that begin where the programme record ends, without introducing new evidence.",
     items: LANDSCAPE_ESSAYS,
+    landscape: true,
   },
   {
     title: "Institutional Notes",
@@ -23,6 +25,34 @@ const SECTIONS = [
     items: ALL_NOTES.filter(({ status }) => status === "published"),
   },
 ];
+
+function LandscapeEssayCard({ item }) {
+  return (
+    <Link className="reading-room-landscape-card" to={getNoteUrl(item)}>
+      {item.image ? (
+        <>
+          <img
+            className="reading-room-landscape-image"
+            src={item.image.src}
+            alt={item.image.alt}
+            loading="lazy"
+          />
+          <div className="reading-room-image-credit">
+            Image: {item.image.credit} · {item.image.licence}
+          </div>
+        </>
+      ) : null}
+      <div className="reading-room-landscape-copy">
+        <div className="reading-room-landscape-meta">
+          {item.id} · {item.programme} · {item.date}
+        </div>
+        <h3 className="reading-room-landscape-title">{item.title}</h3>
+        <p className="reading-room-landscape-summary">{item.summary}</p>
+        <div className="reading-room-landscape-action">Read essay →</div>
+      </div>
+    </Link>
+  );
+}
 
 export default function ReadingRoom() {
   return (
@@ -47,15 +77,23 @@ export default function ReadingRoom() {
                 <section className="inst-about-block" key={section.title}>
                   <h2 className="inst-about-heading">{section.title}</h2>
                   <p className="inst-about-body">{section.description}</p>
-                  <div className="inst-prog-list">
-                    {section.items.map((item) => (
-                      <Link className="inst-prog-row inst-prog-row--filled" to={getNoteUrl(item)} key={item.id}>
-                        <div className="inst-prog-row__id">{item.id} · {item.date}</div>
-                        <div className="inst-prog-row__name">{item.title}</div>
-                        <div className="inst-prog-row__desc">{item.summary}</div>
-                      </Link>
-                    ))}
-                  </div>
+                  {section.landscape ? (
+                    <div className="reading-room-landscape-list">
+                      {section.items.map((item) => (
+                        <LandscapeEssayCard item={item} key={item.id} />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="inst-prog-list">
+                      {section.items.map((item) => (
+                        <Link className="inst-prog-row inst-prog-row--filled" to={getNoteUrl(item)} key={item.id}>
+                          <div className="inst-prog-row__id">{item.id} · {item.date}</div>
+                          <div className="inst-prog-row__name">{item.title}</div>
+                          <div className="inst-prog-row__desc">{item.summary}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </section>
               ))}
             </div>
