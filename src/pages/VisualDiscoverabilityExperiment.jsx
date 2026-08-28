@@ -10,26 +10,23 @@ const CASES = [
   {
     id: "FR-AM-0005",
     question: "Whatever happened to room-temperature superconductors?",
-    visual: "materials",
-    visualLabel: "Schematic crystal lattice and current path",
+    purpose: "Concrete object",
   },
   {
     id: "FR-AI-0007",
     question: "Can AI independently make valid scientific discoveries?",
-    visual: "ai",
-    visualLabel: "Schematic research loop with an unresolved judgment boundary",
+    purpose: "Abstract capability",
   },
   {
     id: "FR-QE-0007",
     question: "Has a quantum computer achieved practical advantage yet?",
-    visual: "quantum",
-    visualLabel: "Schematic comparison between quantum and classical performance",
+    purpose: "Experimental middle case",
   },
 ];
 
 function getRecord(id) {
   const record = ALL_RECORDS.find((candidate) => candidate.id === id);
-  if (!record) throw new Error(`VD-001: representative record ${id} not found`);
+  if (!record) throw new Error(`VD-001A: representative record ${id} not found`);
   return record;
 }
 
@@ -37,52 +34,6 @@ function assessmentExcerpt(summary) {
   if (!summary) return "No current assessment summary available.";
   const firstSentence = summary.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim();
   return firstSentence || summary;
-}
-
-function VisualAnchor({ type, label }) {
-  return (
-    <div className="vd-anchor" role="img" aria-label={label}>
-      {type === "materials" ? (
-        <svg viewBox="0 0 240 150" aria-hidden="true">
-          <g className="vd-anchor-lines">
-            <path d="M30 35h180M30 75h180M30 115h180" />
-            <path d="M55 20v110M100 20v110M145 20v110M190 20v110" />
-          </g>
-          <g className="vd-anchor-nodes">
-            {[55, 100, 145, 190].flatMap((x) => [35, 75, 115].map((y) => <circle key={`${x}-${y}`} cx={x} cy={y} r="5" />))}
-          </g>
-          <path className="vd-anchor-emphasis" d="M32 126c32-18 58-18 86 0s56 18 90-3" />
-        </svg>
-      ) : null}
-      {type === "ai" ? (
-        <svg viewBox="0 0 240 150" aria-hidden="true">
-          <g className="vd-anchor-lines">
-            <circle cx="120" cy="75" r="48" />
-            <path d="M120 27v22M168 75h-22M120 123v-22M72 75h22" />
-          </g>
-          <g className="vd-anchor-nodes">
-            <circle cx="120" cy="27" r="7" />
-            <circle cx="168" cy="75" r="7" />
-            <circle cx="120" cy="123" r="7" />
-            <circle cx="72" cy="75" r="7" />
-          </g>
-          <path className="vd-anchor-emphasis" d="M98 75h44" />
-          <path className="vd-anchor-emphasis" d="m132 65 10 10-10 10" />
-          <path className="vd-anchor-dashed" d="M105 54 90 39M135 96l15 15" />
-        </svg>
-      ) : null}
-      {type === "quantum" ? (
-        <svg viewBox="0 0 240 150" aria-hidden="true">
-          <path className="vd-anchor-lines" d="M25 122h190M42 122V28" />
-          <path className="vd-anchor-muted" d="M42 105c40-10 72-26 98-46 22-17 42-24 67-27" />
-          <path className="vd-anchor-emphasis" d="M42 112c44-4 77-14 105-32 24-16 42-35 60-57" />
-          <circle className="vd-anchor-node-emphasis" cx="174" cy="59" r="6" />
-          <path className="vd-anchor-dashed" d="M174 59v63" />
-        </svg>
-      ) : null}
-      <span className="vd-anchor-caption">Observatory schematic · navigation only</span>
-    </div>
-  );
 }
 
 function CurrentCard({ record, question }) {
@@ -97,14 +48,16 @@ function CurrentCard({ record, question }) {
   );
 }
 
-function DiscoveryCard({ record, question, visual, visualLabel, withVisual }) {
+function DiscoveryCard({ record, question, refined = false }) {
   const current = getCurrentAssessment(record);
   return (
-    <Link to={getRecordUrl(record)} className={`vd-discovery-card${withVisual ? " vd-discovery-card--visual" : ""}`}>
-      {withVisual ? <VisualAnchor type={visual} label={visualLabel} /> : null}
+    <Link
+      to={getRecordUrl(record)}
+      className={refined ? "vd-discovery-card vd-discovery-card--refined" : "vd-discovery-card"}
+    >
       <div className="vd-discovery-copy">
         <div className="vd-card-topline">
-          <span>{record.id}</span>
+          <span className="vd-record-id">{record.id}</span>
           <StateBadge pressureState={current.pressureState} />
         </div>
         <h4>{question}</h4>
@@ -127,12 +80,12 @@ function VariantSet({ item, mobile = false }) {
         <CurrentCard record={record} question={item.question} />
       </section>
       <section>
-        <div className="vd-variant-label"><span>Variant A</span><small>Enhanced text hierarchy</small></div>
+        <div className="vd-variant-label"><span>Variant A</span><small>Initial enhanced hierarchy</small></div>
         <DiscoveryCard record={record} question={item.question} />
       </section>
       <section>
-        <div className="vd-variant-label"><span>Variant B</span><small>Text + visual anchor</small></div>
-        <DiscoveryCard record={record} question={item.question} visual={item.visual} visualLabel={item.visualLabel} withVisual />
+        <div className="vd-variant-label"><span>Refined A</span><small>Candidate discovery card</small></div>
+        <DiscoveryCard record={record} question={item.question} refined />
       </section>
     </div>
   );
@@ -142,17 +95,17 @@ export default function VisualDiscoverabilityExperiment() {
   return (
     <>
       <PageMeta
-        title="VD-001 Visual Discoverability Experiment"
-        description="Internal comparison prototype for Frontier Record discovery cards."
+        title="VD-001A Visual Discoverability Refinement"
+        description="Internal refinement comparison for Frontier Record discovery cards."
         path="/experiments/vd-001/"
         noindex
       />
       <main className="vd-page">
         <header className="vd-header">
-          <p className="vd-eyebrow">Bounded experiment · VD-001</p>
-          <h1>Frontier Record visual discoverability</h1>
-          <p className="vd-intro">Three representative records are shown as the current question-led pattern, an enhanced text hierarchy, and the same hierarchy with a restrained Observatory-created visual anchor. Canonical records are read directly from the corpus; this page does not mutate record data.</p>
-          <div className="vd-guardrail">Prototype only · unlinked · no production rollout decision</div>
+          <p className="vd-eyebrow">Bounded experiment · VD-001A</p>
+          <h1>Frontier Record discovery-card refinement</h1>
+          <p className="vd-intro">VD-001 found that information hierarchy improved discoverability while decorative visual anchors did not generalise. This refinement keeps the same three records and compares the current card, the original text-only Variant A, and a tighter Refined A candidate. Canonical identity, Pressure State and assessment remain corpus-derived.</p>
+          <div className="vd-guardrail">Prototype only · unlinked · Variant B retired from decision surface</div>
         </header>
 
         {CASES.map((item) => {
@@ -164,7 +117,7 @@ export default function VisualDiscoverabilityExperiment() {
                   <span className="vd-case-id">{item.id}</span>
                   <h2>{record.claim.shortLabel}</h2>
                 </div>
-                <span className="vd-case-purpose">{item.visual === "materials" ? "Concrete object" : item.visual === "ai" ? "Abstract capability" : "Experimental middle case"}</span>
+                <span className="vd-case-purpose">{item.purpose}</span>
               </div>
 
               <div className="vd-width-label">Desktop comparison</div>
@@ -177,14 +130,14 @@ export default function VisualDiscoverabilityExperiment() {
         })}
 
         <section className="vd-gates" aria-labelledby="vd-gates-title">
-          <p className="vd-eyebrow">Evaluation frame</p>
-          <h2 id="vd-gates-title">Acceptance gates</h2>
+          <p className="vd-eyebrow">VD-001A evaluation frame</p>
+          <h2 id="vd-gates-title">Refinement gates</h2>
           <ol>
-            <li><strong>Comprehension</strong><span>Question is understandable before canonical terminology.</span></li>
-            <li><strong>Canonical integrity</strong><span>ID, title, state and assessment remain corpus-derived.</span></li>
-            <li><strong>Institutional character</strong><span>Still reads as a maintained public record, not a science magazine.</span></li>
-            <li><strong>Visual utility</strong><span>Variant B must improve recognition or scanning, not merely decoration.</span></li>
-            <li><strong>Generalisability</strong><span>The pattern must survive concrete, abstract and experimental records.</span></li>
+            <li><strong>Hierarchy</strong><span>Question remains the entry point; record identity and state are immediately legible.</span></li>
+            <li><strong>Density</strong><span>Assessment adds value without turning the card into a miniature record page.</span></li>
+            <li><strong>Mobile fit</strong><span>The 390 px card scans as one compact object with no avoidable dead space.</span></li>
+            <li><strong>Institutional character</strong><span>Canonical metadata is visible but does not overpower the reader-facing question.</span></li>
+            <li><strong>Generalisability</strong><span>The same pattern works for AM, AI and QE without record-specific styling.</span></li>
           </ol>
         </section>
       </main>
