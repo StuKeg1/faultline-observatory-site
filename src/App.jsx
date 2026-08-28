@@ -63,6 +63,7 @@ const PublicRecord = lazyRoute(() => import("./pages/PublicRecord.jsx"));
 const ReadingRoom = lazyRoute(() => import("./pages/ReadingRoom.jsx"));
 const DocumentationRequests = lazyRoute(() => import("./pages/DocumentationRequests.jsx"));
 const PoliticalRumourAccuracyPilot = lazyRoute(() => import("./pages/PoliticalRumourAccuracyPilot.jsx"));
+const VisualDiscoverabilityExperiment = lazyRoute(() => import("./pages/VisualDiscoverabilityExperiment.jsx"));
 
 function NotFound() {
  return (
@@ -147,6 +148,12 @@ export function AppShell() {
  <Route path="/documentation-requests/" element={<DocumentationRequests />} />
  <Route path="/political-rumour-accuracy-pilot" element={<PoliticalRumourAccuracyPilot />} />
  <Route path="/political-rumour-accuracy-pilot/" element={<PoliticalRumourAccuracyPilot />} />
+ <Route path="/experiments/vd-001" element={
+ <ErrorBoundary context="VD-001 experiment"><VisualDiscoverabilityExperiment /></ErrorBoundary>
+ } />
+ <Route path="/experiments/vd-001/" element={
+ <ErrorBoundary context="VD-001 experiment"><VisualDiscoverabilityExperiment /></ErrorBoundary>
+ } />
  <Route path="/tokens" element={<TokenPreview />} />
  <Route path="*" element={<NotFound />} />
  </Routes>
