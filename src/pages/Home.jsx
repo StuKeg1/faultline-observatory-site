@@ -2,8 +2,9 @@ import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import StateBadge from "../components/StateBadge.jsx";
 import { ALL_RECORDS } from "../data/corpus.js";
-import { getCorpusSummary } from "../data/derive.js";
+import { getCorpusSummary, getCurrentAssessment } from "../data/derive.js";
 import { HOME_QUESTIONS, resolveHomeQuestion } from "./homeQuestions.js";
 import "./Home.css";
 
@@ -147,6 +148,12 @@ const QUESTION_ICONS = {
   explore: IconExplore,
 };
 
+function assessmentExcerpt(summary) {
+  if (!summary) return "No current assessment summary available.";
+  const firstSentence = summary.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim();
+  return firstSentence || summary;
+}
+
 // ─── HOME ────────────────────────────────────────────────────
 export default function Home() {
   const totalRecords = useMemo(
@@ -194,11 +201,11 @@ export default function Home() {
 
   return (
     <>
-            <PageMeta
+      <PageMeta
         title={null}
         description="Explore the current evidence behind tracked technology claims. Start with a question, open the canonical Frontier Record, and follow how the evidence has changed."
         path="/"
-            />
+      />
       <main className="home-page">
 
         {/* ── HERO ── */}
@@ -261,12 +268,6 @@ export default function Home() {
         </section>
 
         {/* ── START WITH A QUESTION ── */}
-        {/* Section heading (2026-07-21, operator decision): carries the
-            "Choose a question below..." CTA that previously lived in the
-            hero, instead of the eyebrow label "Start with a question" —
-            removes duplicated instruction copy between the two sections.
-            Same locked sentence from spec §2.3 Section 2, relocated, not
-            rewritten. */}
         <section className="home-questions" aria-labelledby="home-questions-heading">
           <div className="home-questions-inner">
             <h2 className="home-questions-heading" id="home-questions-heading">
@@ -277,6 +278,35 @@ export default function Home() {
               {questions.map(({ id, icon, question, target, resolved }) => {
                 const Icon = QUESTION_ICONS[icon];
                 const isFallback = target.type === "public-record";
+                const record = target.type === "record"
+                  ? ALL_RECORDS.find((candidate) => candidate.id === target.id)
+                  : null;
+
+                if (record) {
+                  const current = getCurrentAssessment(record);
+                  return (
+                    <li key={id} className="home-question-item">
+                      <Link
+                        to={resolved.url}
+                        className="home-question-card home-question-card--record"
+                        aria-label={`${question} ${record.id}: ${record.claim.shortLabel}`}
+                      >
+                        <div className="hqc-record-topline">
+                          <span>{record.id}</span>
+                          <StateBadge pressureState={current.pressureState} />
+                        </div>
+                        <h3 className="hqc-question hqc-question--record">{question}</h3>
+                        <p className="hqc-record-title">{record.claim.shortLabel}</p>
+                        <p className="hqc-record-assessment">{assessmentExcerpt(current.summary)}</p>
+                        <div className="hqc-foot hqc-foot--record">
+                          <span className="hqc-meta">{record.programme}</span>
+                          <span className="hqc-record-action">Open record <span className="hqc-arrow" aria-hidden="true">→</span></span>
+                        </div>
+                      </Link>
+                    </li>
+                  );
+                }
+
                 return (
                   <li key={id} className="home-question-item">
                     <Link
@@ -329,7 +359,7 @@ export default function Home() {
           </div>
         </div>
 
-  </main>
+      </main>
       <SiteFooter />
     </>
   );
