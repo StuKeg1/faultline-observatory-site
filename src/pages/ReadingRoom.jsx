@@ -27,9 +27,14 @@ const SECTIONS = [
 ];
 
 function LandscapeEssayCard({ item }) {
+  const hasImage = Boolean(item.image);
+
   return (
-    <Link className="reading-room-landscape-card" to={getNoteUrl(item)}>
-      {item.image ? (
+    <Link
+      className={`reading-room-landscape-card reading-room-landscape-card--${hasImage ? "imaged" : "text"}`}
+      to={getNoteUrl(item)}
+    >
+      {hasImage ? (
         <>
           <img
             className="reading-room-landscape-image"
