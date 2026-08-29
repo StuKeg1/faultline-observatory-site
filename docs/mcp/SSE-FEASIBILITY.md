@@ -10,10 +10,9 @@ finding.
 
 BGPT exposes both `/mcp/sse` and `/mcp/stream`. Faultline's Worker routes only
 `/`, `/health`, and `/mcp` (Streamable HTTP) — there is no `/sse` route
-(`faultline-mcp/src/index.ts`). The current Claude Desktop config
-(`faultline-mcp/README.md`) works around this with a local `npx mcp-remote`
-bridge process rather than a native SSE connection. This reviews what adding an
-`/sse` route would require and whether it's worth doing. No route is added in
+(`faultline-mcp/src/index.ts`). The existing Claude Desktop config-file example
+uses a local `npx mcp-remote` bridge process. This review asks what adding an
+`/sse` route would require and whether it is worth doing. No route is added in
 this pass.
 
 ## Finding 1 — the SDK's SSE transport is deprecated, in favor of the transport this Worker already uses
@@ -90,19 +89,26 @@ whose MCP client library hardcodes the legacy two-endpoint SSE transport (a
 to `/mcp` today. That's a real but smaller population than "clients that want
 streaming."
 
-## Finding 5 — the assumed payoff (dropping `mcp-remote` for Claude Desktop) is not established
+## Finding 5 — the assumed Claude Desktop payoff is resolved without `/sse`
 
-The premise for wanting this is that adding `/sse` would let Claude Desktop
-connect natively without the `npx mcp-remote` bridge. That's plausible but
-unverified: `mcp-remote` bridges a remote HTTP-based MCP server into a local
-stdio process, which is also the shape needed by any client built around
-launching local stdio servers rather than connecting to remote URLs directly —
-a constraint that may be about the client's process model, not about which
-wire transport the remote server speaks. If that's the actual reason the
-bridge is there, adding a legacy `/sse` route changes nothing about Desktop's
-need for it. Confirming this — what specifically makes Desktop unable to hit
-`/mcp` directly today — is a prerequisite for claiming the payoff, and hasn't
-been done as part of this review.
+The motivating assumption was that adding `/sse` might remove Claude Desktop's
+need for the local `mcp-remote` bridge. That assumption has now been resolved:
+Claude Desktop's Custom Connectors path can connect directly to the public
+Streamable HTTP endpoint at `https://mcp.faultlinewatch.com/mcp`, and that path
+was confirmed working without a bridge process.
+
+For the config-file path specifically, `claude_desktop_config.json` does not
+support a `url`-based remote-server entry for the transports checked here
+(Streamable HTTP and legacy SSE); the checked configuration path launches local
+`command`/`args` processes over stdio. `mcp-remote` remains useful as a bridge
+for that config-file-driven setup, but the existence of that fallback is not a
+reason to add `/sse`, because the normal bridge-free connection path already
+exists through Custom Connectors.
+
+This finding strengthens, rather than carries, the verdict below. Findings 1–4
+independently establish that `/sse` would add a deprecated, stateful,
+Workers-unfriendly compatibility surface while Streamable HTTP already provides
+the streaming capability at `/mcp`.
 
 ## Effort estimate
 
@@ -123,22 +129,23 @@ Not a routing-only change. Realistic scope if pursued:
   lifecycle to test.
 
 Rough estimate: several days of implementation and testing, not a small
-addition — and that estimate is before Finding 5 is resolved, which could
-remove the motivating reason to do it at all.
+addition — and the original Claude Desktop motivation is now resolved by an
+existing bridge-free connection path.
 
 ## Verdict
 
-**Do not build `/sse` on the current evidence.** The transport it would serve
-is the one the SDK itself is deprecating in favor of what Faultline already
-runs; building it would require reversing a stateless-architecture migration
-this project already completed deliberately (Finding 3); the SDK offers no
-Workers-native implementation to build on (Finding 2); the streaming capability
-this item is nominally chasing already exists at `/mcp` for `Accept:
-text/event-stream` clients (Finding 4); and the specific payoff motivating this
-— removing Claude Desktop's `mcp-remote` bridge — is unconfirmed and may not
-actually depend on transport choice (Finding 5).
+**Do not build `/sse`.** The transport it would serve is the one the SDK itself
+is deprecating in favor of what Faultline already runs; building it would
+require reversing a stateless-architecture migration this project already
+completed deliberately (Finding 3); the SDK offers no Workers-native
+implementation to build on (Finding 2); the streaming capability nominally
+being chased already exists at `/mcp` for `Accept: text/event-stream` clients
+(Finding 4); and Claude Desktop already has a confirmed bridge-free direct path
+through Custom Connectors (Finding 5).
 
-If a future concrete client is identified that can only speak the legacy
-two-endpoint SSE protocol and cannot be bridged another way, re-open this
-review with that client named and its actual constraint verified, rather than
-building `/sse` speculatively against an assumed compatibility need.
+**Locked disposition:** no `/sse` implementation. Re-opening this review
+requires a concrete client identified by name that (a) can only speak the
+legacy two-endpoint SSE transport, and (b) cannot be connected through
+`mcp-remote`, Custom Connectors, or another existing path. A general desire for
+"native SSE support", a competitor feature comparison, or an assumption about
+client compatibility is not sufficient grounds to re-open this review.
