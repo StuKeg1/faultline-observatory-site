@@ -27,6 +27,22 @@ export const FR_QE_0007 = {
       vectors: ["partial--advantage-demonstrated-practical-relevance-absent"],
       date: "Oct 2019",
       sourceReference: "Arute et al., Nature 574 (2019), doi:10.1038/s41586-019-1666-5; Pednault et al., arXiv:1910.09534; Pan, Chen & Zhang, Physical Review Letters 129 (2022), doi:10.1103/PhysRevLett.129.090502",
+      sources: [
+        {
+          citation: "Arute et al., ‘Quantum supremacy using a programmable superconducting processor’, Nature 574, 505–510 (2019)",
+          url: "https://www.nature.com/articles/s41586-019-1666-5",
+          doi: "10.1038/s41586-019-1666-5",
+          locator: "Abstract and main result",
+        },
+        {
+          citation: "Pednault et al., ‘Leveraging Secondary Storage to Simulate Deep 54-qubit Sycamore Circuits’ (2019)",
+          url: "https://arxiv.org/abs/1910.09534",
+        },
+        {
+          citation: "Pan, Chen & Zhang, ‘Solving the Sampling Problem of the Sycamore Quantum Circuits’, Physical Review Letters 129, 090502 (2022)",
+          doi: "10.1103/PhysRevLett.129.090502",
+        },
+      ],
     },
     {
       id: "IN-002",
@@ -35,6 +51,16 @@ export const FR_QE_0007 = {
       vectors: ["partial--stronger-advantage-practical-relevance-still-absent"],
       date: "2020–23",
       sourceReference: "Zhong et al., Science 370 (2020), doi:10.1126/science.abe8770; Madsen et al., Nature 606 (2022), doi:10.1038/s41586-022-04725-x",
+      sources: [
+        {
+          citation: "Zhong et al., ‘Quantum computational advantage using photons’, Science 370, 1460–1463 (2020)",
+          doi: "10.1126/science.abe8770",
+        },
+        {
+          citation: "Madsen et al., ‘Quantum computational advantage with a programmable photonic processor’, Nature 606 (2022)",
+          doi: "10.1038/s41586-022-04725-x",
+        },
+      ],
     },
     {
       id: "IN-003",
@@ -138,6 +164,7 @@ export const FR_QE_0007 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-08-29", field: "provenance_enriched", from: "—", to: "PROVENANCE-ENRICHED", note: "PA-002 Provenance Enrichment: structured sources[] added to IN-001 and IN-002; evidentiary prose and assessment unchanged." },
     { id: "M-008", date: "2026-08-28", field: "reference_corrected", from: "IN-001–IN-005 lacked instance references; IN-005 misidentified Mi et al. as a superconducting-material phase-transition study", to: "IN-001–IN-006 carry stable references; IN-005 reconstructed from Mi, Kandala and Yamamoto", note: "GP-001 provenance and description correction following the bounded three-record source/DOI audit. IN-005 had conflated the superconducting processor substrate with the simulated phenomenon and incorrectly attributed a superconducting-material phase transition to Mi et al. The instance now states the verified time-crystal, small-molecule/quantum-magnet and simplified hydrogen-chain/iron-crystal results. AS-001 and AS-002 remain preserved; the correction does not alter their conjunction analysis. Pressure State FRAGMENTING and Verification Stage VS-03 are explicitly retained." },
     { id: "M-007", date: "2026-08-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following the bounded FR-QE-0007 impact review. Pressure State FRAGMENTING and Verification Stage VS-03 retained. Quantum Echoes narrows the separation between beyond-classical performance and practical relevance, but the two thresholds remain demonstrated in different experimental regimes; Google-affiliated follow-up analysis is not treated as independent replication. No existing assessment, instance, mechanism, open question, or related record modified." },
     { id: "M-006", date: "2026-08-28", field: "instance_appended", from: "IN-005", to: "IN-006", note: "IN-006 appended — Google Quantum Echoes and the connected molecular-geometry OTOC programme. Classified as partial evidence: reproducible beyond-classical performance and practical application relevance are both present within the programme but not at the same demonstrated scale. Instance logged before AS-002; no state or verification-stage change at this step." },

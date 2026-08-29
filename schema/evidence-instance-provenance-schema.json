@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://faultlinewatch.com/schema/evidence-instance-provenance-schema.json",
+  "title": "Faultline Evidence Instance Provenance",
+  "description": "Canonical structured provenance fragment for Frontier Record evidence instances. Legacy instances may omit sources; when present it must be meaningful.",
+  "type": "object",
+  "properties": {
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "citation"
+        ],
+        "properties": {
+          "citation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 1
+          },
+          "doi": {
+            "type": "string",
+            "pattern": "^10\\.\\d{4,9}/\\S+$"
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

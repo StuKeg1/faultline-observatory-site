@@ -58,6 +58,13 @@ export const FR_AI_0001 = {
       description: "OpenAI releases o1 (September 2024) and o3 (December 2024), models trained explicitly to produce extended internal reasoning chains prior to output. o3 achieves 87.5% on ARC-AGI (a benchmark specifically designed to test novel generalisation resistant to training contamination), surpassing prior LLM performance and approaching human-level. o3 also achieves frontier-level performance on the FrontierMath benchmark (novel research-level mathematics). The ARC-AGI score is particularly significant because the benchmark was constructed specifically to prevent memorisation. Dispute: o3's reasoning process is not publicly documented; whether the extended chain-of-thought constitutes generalised reasoning or a learned meta-pattern for benchmark problem classes remains an open research question.",
       vectors: ["supportive--strongest-instance-to-date"],
       date: "2024",
+      sources: [
+        {
+          citation: "ARC Prize, ‘OpenAI o3 Breakthrough High Score on ARC-AGI-Pub’ (20 Dec 2024)",
+          url: "https://arcprize.org/blog/oai-o3-pub-breakthrough",
+          locator: "OpenAI o3 ARC-AGI Results",
+        },
+      ],
     },
     {
       id: "IN-006",
@@ -65,6 +72,30 @@ export const FR_AI_0001 = {
       description: "This body of work does not resolve OQ-002 toward either pole — it does not show the mechanism is mere pattern-matching, nor that it is genuine step-by-step reasoning — but it discloses that the mechanism is more decoupled from its own narration than the framing in AT-001 assumed, adding a third axis of dispute (faithfulness) alongside contamination (RM-001) and distribution-shift sensitivity (RM-002). A substantial body of interpretability research published since AS-001 directly addresses OQ-002 — whether the extended chain-of-thought mechanism in o1/o3-class models constitutes genuinely different computation or a scaled version of prior pattern-matching behaviour — by examining the mechanism's actual relationship to its own verbalised output. Anthropic's 'Reasoning Models Don't Always Say What They Think' (Chen et al., 2025) and independent work including Arcuschin et al., 'Chain-of-thought reasoning in the wild is not always faithful' (2025), and earlier foundational studies (Turpin et al. 2023; Lanham et al. 2023) establish that chain-of-thought traces frequently do not reflect the computation actually producing a model's answer: models can reach correct answers via paths not represented in their stated reasoning, and can produce plausible post-hoc rationalisations for answers reached by other means. Mechanistic interpretability work (Lindsey et al., 2025) identifies concrete cases in which a model derives its answer directly from the prompt rather than from its own intermediate reasoning text.",
       vectors: ["contesting--mechanism-disclosed-partially-decoupled-from-verbalised-reasoning"],
       date: "2025–26",
+      sources: [
+        {
+          citation: "Chen et al., ‘Reasoning Models Don't Always Say What They Think’ (Anthropic, 2025)",
+          url: "https://www.anthropic.com/research/reasoning-models-dont-say-think",
+        },
+        {
+          citation: "Arcuschin et al., ‘Chain-of-Thought Reasoning In The Wild Is Not Always Faithful’ (2025)",
+          url: "https://arxiv.org/abs/2503.08679",
+        },
+        {
+          citation: "Lanham et al., ‘Measuring Faithfulness in Chain-of-Thought Reasoning’ (2023)",
+          url: "https://arxiv.org/abs/2307.13702",
+        },
+        {
+          citation: "Turpin et al., ‘Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting’ (NeurIPS 2023)",
+          url: "https://proceedings.neurips.cc/paper_files/paper/2023/hash/ed3fea9033a80fea1376299fa7863f4a-Abstract.html",
+          doi: "10.52202/075280-3275",
+        },
+        {
+          citation: "Lindsey et al., ‘On the Biology of a Large Language Model’ (Transformer Circuits, 2025)",
+          url: "https://transformer-circuits.pub/2025/attribution-graphs/biology.html",
+          locator: "Chain-of-thought Faithfulness",
+        },
+      ],
     }
   ],
 
@@ -77,6 +108,30 @@ export const FR_AI_0001 = {
       verificationStage: "VS-02",
       summary: "The evidence trail shows a claim under genuine escalating pressure. Early evidence (INST-001 through INST-004) produced a contested picture: demonstrations of multi-step performance on established benchmarks were met with systematic evidence that performance degraded under surface modification and compositional novelty, suggesting distribution-matching rather than generalised reasoning. That picture was the dominant assessment context through 2023. INST-005 materially shifts the evidentiary state. o3's 87.5% score on ARC-AGI (INST-005) — a benchmark specifically constructed to resist memorisation — is the strongest single result yet for genuine generalisation, and the transition from contested to ESCALATING reflects that shift. The claim is not yet confirmed: whether the extended chain-of-thought mechanism underlying o3's performance constitutes genuine step-by-step reasoning or a more sophisticated pattern-matching process remains unresolved (OQ-002), and the benchmark contamination and distribution-shift concerns documented in earlier instances (RM-001, RM-002) have not been retested against the new architecture.",
       assessorNote: null,
+      sources: [
+        {
+          citation: "Chen et al., ‘Reasoning Models Don't Always Say What They Think’ (Anthropic, 2025)",
+          url: "https://www.anthropic.com/research/reasoning-models-dont-say-think",
+        },
+        {
+          citation: "Arcuschin et al., ‘Chain-of-Thought Reasoning In The Wild Is Not Always Faithful’ (2025)",
+          url: "https://arxiv.org/abs/2503.08679",
+        },
+        {
+          citation: "Lanham et al., ‘Measuring Faithfulness in Chain-of-Thought Reasoning’ (2023)",
+          url: "https://arxiv.org/abs/2307.13702",
+        },
+        {
+          citation: "Turpin et al., ‘Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting’ (NeurIPS 2023)",
+          url: "https://proceedings.neurips.cc/paper_files/paper/2023/hash/ed3fea9033a80fea1376299fa7863f4a-Abstract.html",
+          doi: "10.52202/075280-3275",
+        },
+        {
+          citation: "Lindsey et al., ‘On the Biology of a Large Language Model’ (Transformer Circuits, 2025)",
+          url: "https://transformer-circuits.pub/2025/attribution-graphs/biology.html",
+          locator: "Chain-of-thought Faithfulness",
+        },
+      ],
     },
     {
       id: "AS-002",
@@ -153,6 +208,7 @@ export const FR_AI_0001 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-08-29", field: "provenance_enriched", from: "—", to: "PROVENANCE-ENRICHED", note: "PA-002 Provenance Enrichment: structured sources[] added to IN-005 and IN-006; evidentiary prose and assessment unchanged." },
     { id: "M-008", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-006 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-007", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: ESCALATING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
     { id: "M-006", date: "2026-06-27", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "INST-006 added (chain-of-thought faithfulness research; OQ-002 sharpened, not closed)." },

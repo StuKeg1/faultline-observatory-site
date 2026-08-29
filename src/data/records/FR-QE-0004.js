@@ -75,6 +75,14 @@ export const FR_QE_0004 = {
       description: "A reinforcement-learning controller integrates real-time recalibration into the error-correction cycle, correcting calibration drift from error-syndrome data without pausing computation, and reports a roughly 20% increase in detected and corrected errors relative to static calibration on two logical qubits (Nature, DOI 10.1038/s41586-026-10759-2, peer-reviewed). This is SUPPORTIVE of the scalable-architecture component of the claim: it addresses sustained-operation drift, a practical obstacle to maintaining below-physical operation during real computation. It does not itself establish the below-physical result — that was reached from IN-004 — and the source is explicit that it does not alter the below-threshold finding. It is distinct in kind from IN-007: IN-008 bears on sustained operation, not on the threshold/breakeven result. It does not bear on the d=11-and-above scaling question (OQ-001) or on the record's replication needs. Peer-reviewed; demonstrated on two logical qubits.",
       vectors: ["SUPPORTIVE"],
       date: "2026",
+      sources: [
+        {
+          citation: "Sivak et al., ‘Reinforcement learning control of quantum error correction’, Nature 655, 879–884 (2026)",
+          url: "https://www.nature.com/articles/s41586-026-10759-2",
+          doi: "10.1038/s41586-026-10759-2",
+          locator: "Main text; reinforcement-learning control and error-correction results",
+        },
+      ],
     },
     {
       id: "IN-009",
@@ -148,6 +156,7 @@ export const FR_QE_0004 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-014", date: "2026-08-29", field: "provenance_enriched", from: "—", to: "PROVENANCE-ENRICHED", note: "PA-002 Provenance Enrichment: structured sources[] added to IN-008; evidentiary prose and assessment unchanged." },
     { id: "M-013", date: "2026-08-17", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued during OHR-2026-09 catch-up review to close the evidence-assessment gap through IN-009. IN-007, IN-008, and IN-009 strengthen the engineering and architectural evidence but do not resolve the decisive d=11-and-above scaling question. Pressure State remains RESOLVING; Verification Stage remains VS-04; mechanisms and open questions remain unchanged." },
     { id: "M-012", date: "2026-08-08", field: "instance_appended", from: "—", to: "IN-009", note: "IN-009 appended following operator approval of Post-Scout Human Record Review flag 2026-08-08-01. The D-Wave dual-rail entangling-gate result (Nature, DOI 10.1038/s41586-026-10822-y) is logged as bounded SUPPORTIVE component-level evidence for the scalable-architecture element of the claim. It preserves a favourable erasure-biased error hierarchy during an essential two-qubit operation, but does not demonstrate a logical qubit, integrated below-threshold error correction, measured logical suppression with increasing code distance, d=11-and-above scaling, or realistic full-system operation; favourable code-distance behaviour remains simulation-derived. Instance-level append only; no assessment issued; pressureState RESOLVING, verificationStage VS-04, mechanisms, openQuestions, and new-record disposition unchanged." },
     { id: "M-011", date: "2026-07-14", field: "instances_appended", from: "—", to: "IN-007 / IN-008", note: "IN-007 and IN-008 appended, both SUPPORTIVE, from Frontline Scout reports 2026-07-03 (IN-007 — qLDPC breakeven on trapped-ion, arXiv:2606.06455, IonQ-affiliated, interested party) and 2026-07-11 (IN-008 — real-time RL recalibration, Nature, peer-reviewed). Surfaced during evidence-gap review as non-duplicate evidence stranded in the Scout archive. The two supportive contributions are distinct in kind and the distinction is preserved in prose: IN-007 bears on the threshold/breakeven result; IN-008 bears on sustained operation within the scalable-architecture component. Together they enrich the record without resolving its remaining scale (d=11 and above, OQ-001) and replication questions. Instance-level append only; no assessment issued; pressureState RESOLVING, verificationStage VS-04, mechanisms, and openQuestions unchanged. IN-007's source retains its separate Scout FCIF-candidate status; this instance does not pre-decide that." },
