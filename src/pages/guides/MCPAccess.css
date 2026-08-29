@@ -133,12 +133,20 @@
 }
 
 /* Client tabs */
-.mcp-client-tabs { margin: 1.25rem 0; }
+.mcp-client-tabs {
+  min-width: 0;
+  max-width: 100%;
+  margin: 1.25rem 0;
+}
 
 .mcp-tab-nav {
   display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
   border-bottom: 1px solid var(--rule);
   margin-bottom: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mcp-tab-btn {
@@ -158,11 +166,18 @@
 .mcp-tab-btn:hover { color: var(--ink); }
 .mcp-tab-btn.active { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
 
-.mcp-tab-panel { display: none; }
+.mcp-tab-panel {
+  display: none;
+  min-width: 0;
+  max-width: 100%;
+}
 .mcp-tab-panel.active { display: block; }
 
 /* Code block */
 .mcp-code-block {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   background: var(--paper-warm);
   border: 1px solid var(--rule);
   padding: 1.25rem 1.5rem;
