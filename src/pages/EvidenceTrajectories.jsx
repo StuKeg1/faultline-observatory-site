@@ -91,12 +91,8 @@ function provenanceClasses(provenance) {
 }
 function provenanceDescription(provenance) {
   if (!provenance) return "";
-  if (provenance.disposition === "correction-required") {
-    return ` Legacy review reconstructed the current stage from ${provenance.storedStage} to ${provenance.effectiveStage} with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
-  }
-  if (provenance.disposition === "historically-unverified") {
-    return ` Legacy review marked this stage historically unverified with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
-  }
+  if (provenance.disposition === "correction-required") return ` Legacy review reconstructed the current stage from ${provenance.storedStage} to ${provenance.effectiveStage} with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
+  if (provenance.disposition === "historically-unverified") return ` Legacy review marked this stage historically unverified with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
   return ` Legacy review re-affirmed this stage with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
 }
 
@@ -126,24 +122,8 @@ function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, 
       const safeIndex = index === -1 ? STAGE_ORDER.length - 1 : index;
       return pad.top + (safeIndex / (STAGE_ORDER.length - 1)) * chartHeight;
     };
-    const stageRegister = calculateStageRegisterGroups({
-      records: trajectories,
-      stageOrder: STAGE_ORDER,
-      yForStage,
-      top: pad.top + 4,
-      bottom: plotBottom - 4,
-      rowHeight: 19,
-      headerHeight: 32,
-      groupGap: 12,
-    });
-    const registerColumns = {
-      stageX: registerX,
-      ringX: registerX + 44,
-      idX: registerX + 58,
-      idRightX: registerX + 130,
-      titleX: registerX + 142,
-      rightX: width - 28,
-    };
+    const stageRegister = calculateStageRegisterGroups({ records: trajectories, stageOrder: STAGE_ORDER, yForStage, top: pad.top + 4, bottom: plotBottom - 4, rowHeight: 19, headerHeight: 32, groupGap: 12 });
+    const registerColumns = { stageX: registerX, ringX: registerX + 44, idX: registerX + 58, idRightX: registerX + 130, titleX: registerX + 142, rightX: width - 28 };
     const registerTitleLimit = Math.max(24, Math.floor((registerColumns.rightX - registerColumns.titleX) / 5.2));
     return { width, height, pad, axisLeft, plotLeft, plotBottom, todayX, registerX, registerColumns, registerTitleLimit, phaseCoordinates, phaseSummaries, yForStage, stageRegister };
   }, [trajectories]);
@@ -152,12 +132,14 @@ function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, 
     <div className="et-chart-shell">
       <svg className="et-chart" viewBox={`0 0 ${geometry.width} ${geometry.height}`} role="img" aria-labelledby="et-chart-title et-chart-desc">
         <title id="et-chart-title">Evidence Trajectories</title>
-        <desc id="et-chart-desc">Evidence Trajectories arranges documented assessments across four evidence-history phases. Horizontal spacing represents documentary sequence rather than equal calendar time. Single-assessment records are shown as one historical point rather than a synthetic full-width line. The Current Register is grouped by current verification stage.</desc>
+        <desc id="et-chart-desc">Evidence Trajectories arranges documented assessments across four evidence-history phases. Horizontal spacing represents documentary sequence rather than equal calendar time. Single-assessment records are shown as one historical point rather than a synthetic full-width line. The chart on the left shows documentary history; the separate Current Register on the right groups records by their ratified verification stage today.</desc>
 
         <g className="et-phase-guides" aria-hidden="true">
           {geometry.phaseCoordinates.slice(1).map((phase) => <line key={phase.id} x1={phase.left} x2={phase.left} y1={geometry.pad.top - 48} y2={geometry.plotBottom + 28} />)}
           <line x1={geometry.todayX} x2={geometry.todayX} y1={geometry.pad.top - 34} y2={geometry.plotBottom + 34} />
         </g>
+
+        <line x1={geometry.registerX - 18} x2={geometry.registerX - 18} y1="14" y2={geometry.plotBottom + 24} stroke="var(--rule)" strokeWidth="1" opacity="0.7" aria-hidden="true" />
 
         <g className="et-chart-headings" aria-hidden="true">
           {geometry.phaseCoordinates.map((phase) => {
@@ -187,12 +169,7 @@ function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, 
           const events = trajectory.history.length === 1
             ? [{ assessment: { ...trajectory.history[0], verificationStage: provenance?.storedStage ?? trajectory.history[0].verificationStage }, phaseId: "origins", role: "origin", index: 0 }]
             : assignEventsToDocumentaryPhases(trajectory.history);
-          const eventPoints = events.map((event) => ({
-            ...event,
-            x: calculateEventX({ event, phaseCoordinates: geometry.phaseCoordinates, todayX: geometry.todayX, historyLength: trajectory.history.length }),
-            y: geometry.yForStage(event.assessment.verificationStage),
-            trueY: geometry.yForStage(event.assessment.verificationStage),
-          }));
+          const eventPoints = events.map((event) => ({ ...event, x: calculateEventX({ event, phaseCoordinates: geometry.phaseCoordinates, todayX: geometry.todayX, historyLength: trajectory.history.length }), y: geometry.yForStage(event.assessment.verificationStage), trueY: geometry.yForStage(event.assessment.verificationStage) }));
           const path = eventPoints.length > 1 ? eventPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ") : "";
           return (
             <g key={record.id} className={["et-trajectory", `tone-${tone}`, isContext ? "is-context" : "", isLensFocus ? "is-lens-focus" : "", isHovered ? "is-hovered" : "", isSelected ? "is-selected" : ""].join(" ")} onMouseEnter={() => onHover(record.id)} onMouseLeave={() => onHover(null)}>
@@ -217,11 +194,9 @@ function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, 
               <g key={group.stage} className="et-register-group">
                 {groupIndex > 0 && <line className="et-register-group-separator" x1={geometry.registerColumns.stageX} x2={geometry.registerColumns.rightX} y1={group.groupTop - 6} y2={group.groupTop - 6} aria-hidden="true" />}
                 <path className="et-stage-register-bridge" d={`M ${geometry.todayX + 10} ${group.trueY} H ${geometry.registerX - 24} V ${bridgeY} H ${geometry.registerX - 8}`} aria-hidden="true" />
-                <text className="et-register-stage-name" x={geometry.registerColumns.stageX} y={group.groupTop + 10}>{VS_STAGE_LABELS[group.stage]}</text>
-                <text className="et-register-stage-code" x={geometry.registerColumns.stageX + 86} y={group.groupTop + 10}>{group.stage}</text>
-                {group.stage === "VS-05" && (
-                  <text x={geometry.registerColumns.stageX} y={group.groupTop + 22} fill="var(--ink-light)" fontFamily="var(--serif)" fontSize="9" fontStyle="italic">Demonstrated operation</text>
-                )}
+                <text className="et-register-stage-name" x={geometry.registerColumns.stageX} y={group.groupTop + 10} fontSize="11" fontWeight="700">{VS_STAGE_LABELS[group.stage]}</text>
+                <text className="et-register-stage-code" x={geometry.registerColumns.stageX + 86} y={group.groupTop + 10} opacity="0.82">{group.stage}</text>
+                {group.stage === "VS-05" && <text x={geometry.registerColumns.stageX} y={group.groupTop + 22} fill="var(--ink-light)" fontFamily="var(--serif)" fontSize="9" fontStyle="italic">Demonstrated operation</text>}
                 {group.rows.length === 0 && <text className="et-register-empty" x={geometry.registerColumns.idX} y={group.emptyLabelY + 3}>No current records</text>}
                 {group.rows.map((row) => {
                   const trajectory = trajectoryById.get(row.recordId);
@@ -298,7 +273,7 @@ export default function EvidenceTrajectories() {
     <>
       <PageMeta title="Evidence Trajectories" description="Follow how the Observatory's judgement of technology claims has changed as evidence accumulated." path="/evidence-trajectories/" />
       <div className="evidence-trajectories-page">
-        <header className="et-hero"><div className="et-hero-inner"><div className="et-eyebrow">Faultline Observatory</div><h1>Evidence Trajectories</h1><p className="et-proposition">Follow how the Observatory's judgement of technology claims has changed as evidence accumulated.</p><p className="et-instruction">Each line represents one Frontier Record. Select a reading to bring related trajectories forward; the full archive remains present.</p><details className="et-how-to-read"><summary>How to read this page</summary><ol><li><b>Read across</b> - time moves from left to right.</li><li><b>Read vertically</b> - position indicates verification depth at that moment.</li><li><b>Single-assessment records</b> - one documented assessment is shown as one historical point, not as a synthetic line to Today.</li><li><b>Read provenance</b> - dashed rings mark single-assessment stages touched by the legacy review; finer dotted rings mark historically unverified assignments.</li><li><b>Read the register</b> - the right column names each record's current Verification Stage at Today.</li><li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li></ol></details><p className="et-instruction" role="note">Verification-stage provenance notice: the legacy review is complete. Historical codes remain preserved. For single-assessment records, the historical chart now shows the recorded stage while the Current Register shows the ratified present interpretation. Assignments that could not be reliably reconstructed remain visibly marked historically unverified.</p></div></header>
+        <header className="et-hero"><div className="et-hero-inner"><div className="et-eyebrow">Faultline Observatory</div><h1>Evidence Trajectories</h1><p className="et-proposition">Follow how the Observatory's judgement of technology claims has changed as evidence accumulated.</p><p className="et-instruction">Each line represents one Frontier Record. Select a reading to bring related trajectories forward; the full archive remains present.</p><details className="et-how-to-read"><summary>How to read this page</summary><ol><li><b>Read across</b> - time moves from left to right.</li><li><b>Read vertically</b> - position indicates verification depth at that moment.</li><li><b>Single-assessment records</b> - one documented assessment is shown as one historical point, not as a synthetic line to Today.</li><li><b>Read provenance</b> - dashed rings mark single-assessment stages touched by the legacy review; finer dotted rings mark historically unverified assignments.</li><li><b>Read the register</b> - the chart on the left shows documentary history; the separate Current Register on the right groups records by their ratified Verification Stage today.</li><li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li></ol></details><p className="et-instruction" role="note">Verification-stage provenance notice: the legacy review is complete. Historical codes remain preserved. For single-assessment records, the historical chart now shows the recorded stage while the Current Register shows the ratified present interpretation. Assignments that could not be reliably reconstructed remain visibly marked historically unverified.</p></div></header>
         <main className="et-main">
           <section className="et-reading-field" aria-label="Evidence Trajectories reading field"><EvidenceChart trajectories={trajectories} selectedId={selectedId} hoveredId={hoveredId} lensId={lensId} onSelect={selectRecord} onHover={setHoveredId} /></section>
           <p className="et-transition">The trajectories above are derived from the assessment histories below.</p>
