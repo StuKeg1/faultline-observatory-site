@@ -1,0 +1,37 @@
+name: PA-005 FR-AI-0006 Review
+
+on:
+  push:
+    branches:
+      - pa-005-provenance-review-fr-ai-0006
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: pa-005-provenance-review-fr-ai-0006
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Apply bounded PA-005 review
+        run: node scripts/pa-005-fr-ai-0006.cjs
+      - name: Validate
+        run: |
+          npm ci
+          npm run validate:provenance
+          npm test
+      - name: Commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/records/FR-AI-0006.js docs/provenance/PA-005-PROVENANCE-IN-REVIEW-REPLICATION.md
+          git diff --cached --quiet && exit 0
+          git commit -m "PA-005: execute FR-AI-0006 provenance review"
+          git push
