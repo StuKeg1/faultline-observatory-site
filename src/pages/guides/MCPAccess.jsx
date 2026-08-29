@@ -14,8 +14,10 @@ const TABS = [
   {
     id: "claude",
     label: "Claude Desktop",
-    codeLabel: "claude_desktop_config.json",
-    code: `{\n  "mcpServers": {\n    "faultline": {\n      "command": "npx",\n      "args": ["mcp-remote", "https://mcp.faultlinewatch.com/mcp"]\n    }\n  }\n}`,
+    codeLabel: "Recommended — Custom Connectors",
+    code: `Settings → Connectors → Add custom connector\n\nhttps://mcp.faultlinewatch.com/mcp`,
+    fallbackLabel: "Fallback — claude_desktop_config.json",
+    fallbackCode: `{\n  "mcpServers": {\n    "faultline": {\n      "command": "npx",\n      "args": ["mcp-remote", "https://mcp.faultlinewatch.com/mcp"]\n    }\n  }\n}`,
   },
   {
     id: "inspector",
@@ -145,6 +147,19 @@ export default function MCPAccess() {
                     <div className="mcp-code-label">{tab.codeLabel}</div>
                     <pre>{tab.code}</pre>
                   </div>
+                  {tab.id === "claude" && (
+                    <>
+                      <p>
+                        Custom Connectors is the normal bridge-free setup. No local process or
+                        <code> claude_desktop_config.json</code> edit is required. Use the fallback
+                        below only when you specifically need config-file-based setup.
+                      </p>
+                      <div className="mcp-code-block">
+                        <div className="mcp-code-label">{tab.fallbackLabel}</div>
+                        <pre>{tab.fallbackCode}</pre>
+                      </div>
+                    </>
+                  )}
                   {tab.id === "http" && (
                     <div className="mcp-code-block">
                       <div className="mcp-code-label">Sample response</div>
