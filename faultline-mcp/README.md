@@ -67,6 +67,16 @@ url = "https://mcp.faultlinewatch.com/mcp"
 
 ### Claude Desktop
 
+**Recommended: Custom Connectors (bridge-free).** In Claude Desktop, open **Settings → Connectors → Add custom connector** and paste:
+
+```text
+https://mcp.faultlinewatch.com/mcp
+```
+
+This connects Claude directly to the remote Streamable HTTP endpoint. No local bridge process or `claude_desktop_config.json` edit is required.
+
+**Fallback: config-file-based setup.** If you specifically need a `claude_desktop_config.json` workflow for automation or another local configuration reason, `mcp-remote` can bridge Claude Desktop's local stdio configuration to the remote endpoint:
+
 ```json
 {
   "mcpServers": {
