@@ -1,0 +1,33 @@
+/* ET-PROV-001 — single-assessment trajectory provenance.
+   Historical points remain documentary; the Current Register remains the
+   present derived institutional interpretation. */
+
+.et-trajectory .is-single-reviewed {
+  fill: var(--paper);
+  stroke-dasharray: 2.2 1.4;
+  stroke-width: 2;
+}
+
+.et-trajectory .is-single-reconstructed {
+  stroke-dasharray: 3 1.5;
+}
+
+.et-trajectory .is-single-historically-unverified {
+  stroke-dasharray: 1 1.6;
+  opacity: 0.72;
+}
+
+.et-register-row.is-single-reviewed .et-register-row-ring {
+  fill: var(--paper);
+  stroke-dasharray: 2.2 1.4;
+  stroke-width: 1.8;
+}
+
+.et-register-row.is-single-reconstructed .et-register-row-ring {
+  stroke-dasharray: 3 1.5;
+}
+
+.et-register-row.is-single-historically-unverified .et-register-row-ring {
+  stroke-dasharray: 1 1.6;
+  opacity: 0.72;
+}
