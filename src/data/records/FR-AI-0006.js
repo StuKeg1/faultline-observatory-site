@@ -54,6 +54,20 @@ export const FR_AI_0006 = {
       description: "Multiple mechanistic interpretability papers in 2023–24 (including work from Anthropic's interpretability team and academic groups) find that the geometric structure of internal representations changes qualitatively with scale — not just in size but in organisation. Larger models develop more linearly separable representations, more distinct concept subspaces, and more structured attention patterns than smaller models trained on the same data. These structural changes are consistent with the same architectural mechanisms (attention, MLP layers) operating differently at scale, which could be interpreted as either mechanistic continuity (same type of mechanism) or discontinuity (different computational strategy). The evidence is genuinely ambiguous: the mechanisms are recognisably the same type, but whether they constitute \"the same mechanism\" in the sense the claim requires depends on a definition the field has not settled.",
       vectors: ["partial--ambiguous-at-definitional-boundary"],
       date: "2024",
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Emergent symbolic mechanisms for abstract reasoning — cross-scale circuit evidence",
+      description: "Yang et al. (ICML 2025) identify a three-stage symbolic architecture for abstract rule induction: symbol-abstraction heads, symbolic-induction heads, and retrieval heads. Their experiments span 13 models from four model families and report that the specialized mechanisms become more evident with model capability and scale, while smaller models that perform poorly on the tasks show little evidence of the same specialized mechanism. This is material contesting evidence for a simple continuity claim: for at least one reasoning capability, the evidence is consistent with a structured mechanism becoming established with sufficient scale rather than an unchanged circuit merely strengthening continuously. The result does not settle the record because mechanism identity remains abstraction-dependent and the study covers specific reasoning tasks rather than capabilities generally.",
+      vectors: ["contesting--specialized-symbolic-mechanism-emerges-with-scale"],
+      date: "2025-07-17",
+      sources: [
+        {
+          citation: "Yang, Y. et al. (2025), Emergent Symbolic Mechanisms Support Abstract Reasoning in Large Language Models, Proceedings of Machine Learning Research 267, ICML 2025.",
+          url: "https://proceedings.mlr.press/v267/yang25c.html",
+          locator: "Abstract and model-scale analyses",
+        },
+      ],
     }
   ],
 
@@ -66,6 +80,14 @@ export const FR_AI_0006 = {
       verificationStage: "VS-03",
       summary: "The evidence trail is genuinely mixed and the mixing is interior — it concerns what the mechanisms actually are, not what the claim means or whether it can be assessed. INST-001 provides the strongest positive evidence: induction heads demonstrate that a specific mechanism (pattern-completion circuits) is present and causally responsible for the same capability across a wide range of model sizes. This is mechanistic continuity directly observed. The grokking evidence (INST-004) is consistent with mechanistic continuity — the same type of algorithmic circuit forms across model sizes, though its timing differs with scale. Superposition (INST-003) and representation-geometry research (INST-005) complicate the picture further: larger models appear to organise their internal representations differently, which is consistent with either the same mechanism operating differently at scale or a qualitatively different computational strategy. The pressure state is FRAGMENTING: the dispute is interior and definitional rather than a lack of evidence — what counts as 'the same mechanism' has not been agreed (BN-001), and until it is, further mechanistic interpretability findings will continue to be read differently by researchers with different priors.",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-08-29",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "IN-006 adds direct mechanistic evidence from abstract reasoning that specialized symbolic-processing circuitry is substantially associated with capable larger models and is weak or absent in smaller models that do not perform the task. This increases pressure on a simple cross-scale continuity reading, while not resolving the claim: the result is task-specific, and BN-001 remains decisive because whether an emergent specialized circuit counts as a new mechanism depends on the level of abstraction used for mechanism identity. FRAGMENTING is therefore retained. VS-03 is retained provisionally because the new evidence uses causal mediation and ablation-style mechanistic scrutiny; PA-005 does not reopen the historical stage classification beyond the evidence reviewed here.",
+      assessorNote: "PA-005 provenance-in-review replication trial. New evidence provenance captured at admission. Attempted opportunistic enrichment of IN-001 exposed a material wording/provenance discrepancy and was stopped for separate bounded correction review.",
     }
   ],
 
@@ -117,6 +139,8 @@ export const FR_AI_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-08-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "PA-005 review: FRAGMENTING / VS-03 retained after admission of IN-006." },
+    { id: "M-007", date: "2026-08-29", field: "instance_added", from: "—", to: "IN-006", note: "PA-005: Yang et al. ICML 2025 cross-scale symbolic-mechanism evidence admitted with structured provenance." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
     { id: "M-005", date: "2024-01-15", field: "null_condition_met", from: "—", to: "NULL-CONDITION-MET", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
