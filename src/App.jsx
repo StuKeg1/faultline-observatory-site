@@ -8,7 +8,7 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 import Home from "./pages/Home.jsx";
 import { Programmes, HowToRead, GuidesIndex } from "./pages/Stubs.jsx";
 import About from "./pages/About.jsx";
-import "./pages/EvidenceTrajectoriesOperationHierarchy.css";
+import "./pages/EvidenceTrajectoriesOperationRegister.css";
 
 function lazyRoute(importer) {
  return lazy(() => importer().then((module) => {
