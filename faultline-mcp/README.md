@@ -20,7 +20,7 @@ faultline-mcp/src/index.ts
 MCP clients
 ```
 
-The MCP project must not maintain a second case database, separate lifecycle taxonomy, or independently authored record summaries. New records and governed changes are made in the canonical corpus and become available to the MCP interface through the shared imports.
+The MCP project must not maintain a second case database, separate lifecycle taxonomy, independently authored record summaries, or a second provenance model. New records and governed changes are made in the canonical corpus and become available to the MCP interface through the shared imports.
 
 ## Tools
 
@@ -29,7 +29,7 @@ The MCP project must not maintain a second case database, separate lifecycle tax
 | `faultline_about` | Interface metadata and canonical-source declaration |
 | `faultline_programmes` | Canonical programme metadata and live record counts |
 | `faultline_list_records` | List/filter canonical Frontier Records with current Pressure State and Verification Stage |
-| `faultline_read_record` | Full canonical record, including evidence, assessment history, current assessment, mechanisms, lineage, open questions and mutation history |
+| `faultline_read_record` | Full canonical record, including evidence, structured source provenance where recorded, assessment history, current assessment, mechanisms, lineage, open questions and mutation history |
 | `faultline_search_records` | Search across the complete canonical record objects |
 
 ### `detail` parameter on `faultline_list_records` / `faultline_search_records`
@@ -46,11 +46,51 @@ Both tools accept an optional `detail: "summary" | "full"` parameter.
 
 Existing callers that don't pass `detail` see no change in output shape.
 
+## Structured evidence provenance
+
+PA-002 admits structured source provenance directly on canonical evidence instances as `instances[].sources[]`. The MCP does not transform this into a separate interface-specific model: full-record retrieval exposes the canonical structure as authored.
+
+```js
+sources: [
+  {
+    citation: string,
+    url?: string,
+    doi?: string,
+    locator?: string,
+    quote?: string,
+  }
+]
+```
+
+Semantics:
+
+- `citation` is required whenever a source object is present.
+- `url`, `doi`, `locator`, and `quote` are optional and appear only where recorded.
+- One evidence instance may contain multiple source objects when the instance synthesizes several underlying sources.
+- DOI values are canonical identifiers, not DOI resolver URLs.
+- A locator points to a useful section, figure, table, passage, or equivalent location when appropriate.
+- A quote is an optional short exact passage used as a verification aid.
+
+Structured provenance establishes **traceability, not verification**. A source entry identifies material the evidence instance relies upon; it does not certify that the underlying source is correct or that the Observatory's interpretation of it is independently verified.
+
+Structured provenance is forward-required but legacy-compatible. Older evidence instances may legitimately have no `sources[]` field. Agents MUST interpret that absence as **structured provenance not recorded for this legacy instance**, not as **the evidence has no source**.
+
+A useful agent workflow is:
+
+```text
+retrieve canonical record
+→ inspect evidence instances
+→ inspect sources[] where present
+→ follow URL or DOI where available
+→ independently evaluate the underlying material
+```
+
 Example questions:
 
 ```text
 Read FR-AM-0005 and explain why its current Pressure State remains Collapsed.
 What evidence instances are recorded for FR-AI-0009?
+What sources support the evidence instances in FR-AI-0001, and which can I inspect directly?
 Which PROG-AI records are currently Fragmenting?
 Search the corpus for "reopening".
 What changed in FR-AM-0005 after AS-001?

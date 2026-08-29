@@ -70,7 +70,7 @@ export default function MCPAccess() {
     <>
       <PageMeta
         title="MCP Access"
-        description="Connect an AI assistant to the canonical Faultline Observatory corpus and inspect records, evidence, assessment history, Pressure States, Verification Stages, and institutional changes."
+        description="Connect an AI assistant to the canonical Faultline Observatory corpus and inspect records, evidence, structured source provenance, assessment history, Pressure States, Verification Stages, and institutional changes."
         path="/guides/mcp-access/"
       />
       <div className="mcp-page">
@@ -87,9 +87,10 @@ export default function MCPAccess() {
           <h1 className="mcp-title">Using the Observatory with AI Assistants</h1>
           <p className="mcp-intro">
             Connect an AI assistant directly to the same canonical Frontier Record corpus
-            that powers the website. Agents can inspect claim evidence, assessment history,
-            current Pressure State and Verification Stage, open questions, lineage, and the
-            mutation record without relying on a separate machine-only database.
+            that powers the website. Agents can inspect claim evidence, the underlying sources
+            recorded for evidence instances, assessment history, current Pressure State and
+            Verification Stage, open questions, lineage, and the mutation record without relying
+            on a separate machine-only database.
           </p>
 
           <div className="mcp-glance-card">
@@ -111,7 +112,7 @@ export default function MCPAccess() {
             </div>
             <div className="mcp-glance-item mcp-glance-full">
               <div className="mcp-glance-label">Current capabilities</div>
-              <div className="mcp-glance-value">Canonical record listing · Full record retrieval · Corpus search · Programme metadata</div>
+              <div className="mcp-glance-value">Canonical record listing · Full record retrieval · Corpus search · Programme metadata · Structured source provenance</div>
             </div>
           </div>
 
@@ -193,6 +194,14 @@ export default function MCPAccess() {
               <code>faultline_read_record</code> call per hit.
             </p>
             <p>
+              Where structured provenance has been recorded, an evidence instance can expose
+              a canonical <code>sources[]</code> array. Each source has a citation and may also
+              provide a URL, DOI, locator, or short exact quote. One instance may cite several
+              sources. Legacy instances may legitimately have no <code>sources[]</code>; that
+              means structured provenance has not yet been recorded for that instance, not that
+              the evidence has no source.
+            </p>
+            <p>
               Once connected, your client discovers the Observatory tools automatically.
               The machine interface derives from the canonical corpus rather than maintaining
               a separate case list, so a governed record change has one institutional source
@@ -208,6 +217,7 @@ export default function MCPAccess() {
             <ul className="mcp-query-list">
               <li>Read FR-AM-0005 and explain why its current Pressure State remains Collapsed.</li>
               <li>What evidence instances are recorded for FR-AI-0009?</li>
+              <li>What sources support the evidence instances in FR-AI-0001, and which can I inspect directly?</li>
               <li>Which PROG-AI records are currently Fragmenting?</li>
               <li>Search the corpus for records that mention reopening conditions.</li>
             </ul>
@@ -228,8 +238,9 @@ export default function MCPAccess() {
               <li>Where has new evidence been added without changing the institutional judgment?</li>
             </ul>
             <p style={{ marginTop: "1rem" }}>
-              The assistant can inspect the underlying evidence instances, assessment history,
-              and mutation record used to support such comparisons.
+              The assistant can inspect the underlying evidence instances, their recorded source
+              provenance where available, assessment history, and mutation record used to support
+              such comparisons.
             </p>
           </div>
 
@@ -249,6 +260,14 @@ export default function MCPAccess() {
                 <span className="mcp-constraint-text">
                   The Observatory is selective rather than exhaustive. Absence from the corpus
                   should not be interpreted as evidence for or against a claim.
+                </span>
+              </div>
+              <div className="mcp-constraint-item">
+                <span className="mcp-constraint-icon">traceable ≠ verified</span>
+                <span className="mcp-constraint-text">
+                  Structured provenance identifies the source material recorded for an evidence
+                  instance. It does not certify that the source, or the Observatory's interpretation
+                  of it, is independently verified or correct.
                 </span>
               </div>
               <div className="mcp-constraint-item">
