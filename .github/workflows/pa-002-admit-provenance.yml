@@ -26,7 +26,9 @@ jobs:
           python3 scripts/pa002-admit.py
           python3 scripts/pa002-repair-last-instance.py
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm --prefix faultline-mcp ci
       - name: Validate corpus
         run: npm run validate:all
       - name: Test
