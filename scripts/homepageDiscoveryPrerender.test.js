@@ -18,6 +18,15 @@ function firstSentence(summary) {
   return match || summary;
 }
 
+function escapeHtmlText(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("<", "&lt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#x27;");
+}
+
 test("homepage prerender preserves Refined A for every direct Frontier Record question", { skip }, () => {
   const html = fs.readFileSync(INDEX, "utf8");
   const recordEntries = HOME_QUESTIONS.filter((entry) => entry.target.type === "record");
@@ -32,7 +41,7 @@ test("homepage prerender preserves Refined A for every direct Frontier Record qu
     assert.ok(html.includes(record.id), `${record.id} missing from homepage prerender`);
     assert.ok(html.includes(entry.question), `${record.id} question missing from homepage prerender`);
     assert.ok(html.includes(record.claim.shortLabel), `${record.id} canonical title missing from homepage prerender`);
-    assert.ok(html.includes(firstSentence(current.summary)), `${record.id} assessment excerpt missing from homepage prerender`);
+    assert.ok(html.includes(escapeHtmlText(firstSentence(current.summary))), `${record.id} assessment excerpt missing from homepage prerender`);
     assert.ok(html.toLowerCase().includes(current.pressureState.toLowerCase()), `${record.id} Pressure State missing from homepage prerender`);
   }
 
