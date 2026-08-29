@@ -3,8 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "npm@10.9.9",
   "scripts": {
     "dev": "vite",
+    "verify:dependencies": "npm install --package-lock-only --ignore-scripts --dry-run",
     "validate:events": "node scripts/validate-events.js",
     "validate:mutations": "node scripts/validate-mutations.js",
     "validate:mcp": "node scripts/validate-mcp-canonical.js",
@@ -12,7 +14,7 @@
     "generate:redirects": "node scripts/generate-redirects.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "generate:deployment": "node scripts/generate-deployment-meta.js",
-    "prebuild": "npm run validate:all && npm run generate:redirects && npm run generate:sitemap && npm run generate:deployment",
+    "prebuild": "npm run verify:dependencies && npm run validate:all && npm run generate:redirects && npm run generate:sitemap && npm run generate:deployment",
     "build": "vite build && npm run prerender",
     "lint": "eslint .",
     "typecheck:mcp": "npm --prefix faultline-mcp run typecheck",
@@ -22,7 +24,8 @@
     "prerender": "node scripts/prerender.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22 <23",
+    "npm": ">=10 <11"
   },
   "dependencies": {
     "react": "^19.2.6",

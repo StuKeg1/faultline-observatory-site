@@ -9,9 +9,10 @@ Faultline Observatory — a Vite + React SPA that publishes a public record of f
 ## Commands
 
 ```bash
-npm install          # install deps (Node >=18; CI uses Node 20)
-npm run dev          # dev server at localhost:5173, hot reload
-npm run build        # prebuild (validate:all, generate:redirects, generate:sitemap), then vite build -> dist/
+npm ci                     # install deps exactly as locked (Node 22.x, npm 10.x — see .nvmrc / engines)
+npm run dev                # dev server at localhost:5173, hot reload
+npm run verify:dependencies # dependency-coherence gate — npm install --package-lock-only --ignore-scripts --dry-run
+npm run build               # prebuild (verify:dependencies, validate:all, generate:redirects, generate:sitemap, generate:deployment), then vite build -> dist/
 npm run preview      # serve the production build at localhost:4173
 npm run lint         # eslint .
 npm run test         # node --test — structural tests for redirects/sitemap generation + evidence trajectory layout
@@ -19,7 +20,11 @@ npm run smoke:live   # live HTTP check against a deployed URL (defaults to produ
 npm run validate:events   # validates events/**/*.json against schema/event-schema.json
 ```
 
-CI (`.github/workflows/ci.yml`) runs `npm run lint` and `npm run build` on push/PR to `main`; it does not currently run `npm test` or `npm run smoke:live`. Treat a clean lint + build as the CI correctness bar, but for routing/Function changes specifically, `npm run smoke:live` against the live deploy is a required manual gate before the release is closed (OPERATIONS.md).
+### Dependency-coherence gate
+
+`package.json` and `package-lock.json` must agree on every dependency's version range. `npm ci` alone is not a sufficient check for this: it trusts the committed lockfile and will happily install even when the lockfile has silently drifted from a stale `package.json` declaration — the exact failure mode that caused a production ESLint breakage (`eslint-plugin-react-hooks` declared as `^6.x` in `package.json` while the lockfile carried `^7.1.1`, incompatible with ESLint 10). `npm run verify:dependencies` (`npm install --package-lock-only --ignore-scripts --dry-run`) is the actual coherence check — it resolves `package.json` against the lockfile without touching `node_modules` or running scripts, and fails on drift. It runs first in `prebuild`, before corpus validation and generated build work, and is also the first step of CI. The engine contract (`.nvmrc`, `package.json#engines`, `.npmrc`'s `engine-strict=true`, and the mirrored `engines` block in `package-lock.json`'s root package entry) pins Node 22.x / npm 10.x so local, CI, and Cloudflare Pages builds resolve dependencies identically.
+
+CI (`.github/workflows/ci.yml`) runs under `.nvmrc`'s Node version (via `actions/setup-node`'s `node-version-file`) and executes, in order: verify manifest-lock dependency graph (`npm run verify:dependencies`) → `npm ci` → `npm ci --prefix faultline-mcp` → canonical corpus validation (`npm run validate:all`) → lint → unit/structural tests (`npm test`) → production build (`npm run build`) → built-output tests (`npm test`) → MCP type-check (`npm run typecheck:mcp`). `.github/workflows/verify-production.yml` (the exact-SHA/live smoke gate) uses the same `.nvmrc` Node contract. For routing/Function changes specifically, `npm run smoke:live` against the live deploy is a required manual gate before the release is closed (OPERATIONS.md).
 
 There is no `dist/` deploy step to run locally — Cloudflare Pages builds and deploys automatically on push to `main`.
 

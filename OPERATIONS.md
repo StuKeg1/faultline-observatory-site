@@ -257,6 +257,21 @@ It asserts real HTTP status codes (known routes, unknown routes, legacy redirect
 
 ---
 
+## Deployment Status Vocabulary
+
+A release's state is one of the following. Use this vocabulary verbatim when reporting release status — don't invent synonyms.
+
+| Status | Meaning |
+|---|---|
+| **MERGED — PRODUCTION VERIFICATION PENDING** | On `main`; exact production SHA not yet verified. |
+| **DEPLOYING** | Cloudflare Pages building/propagating. |
+| **DEPLOYMENT FAILED — PLATFORM BUILD FAILURE** | Cloudflare could not install or build the revision. |
+| **LIVE — VERIFIED** | `deployment.json` matches current `main` SHA and live smoke passes. |
+
+A release closes only as **LIVE — VERIFIED**.
+
+---
+
 ## After Every Release
 
 After a release ships:

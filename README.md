@@ -8,11 +8,11 @@ A permanent public record of frontier claims and how evidence changes their asse
 
 ## Local Development
 
-**Requirements:** Node.js 18 or later.
+**Requirements:** Node.js 22.x, npm 10.x (see `.nvmrc` / `package.json#engines`).
 
 ```bash
-# Install dependencies (once)
-npm install
+# Install dependencies (once) — use npm ci to install exactly what's locked
+npm ci
 
 # Start local dev server
 npm run dev
@@ -48,7 +48,7 @@ Opens at **http://localhost:4173**
 |---|---|
 | Build command | `npm run build` |
 | Build output directory | `dist` |
-| Node.js version | 18 |
+| Node.js version | 22.x |
 
 SPA routing is handled by `public/_redirects`. All routes resolve to `index.html`.
 
