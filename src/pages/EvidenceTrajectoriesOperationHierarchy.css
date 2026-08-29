@@ -1,0 +1,33 @@
+/* ET-UI-001 — distinguish VS-05 Operation as the culmination of the verification ladder.
+   This is deliberately restrained: no new semantic colour, box, badge, or data treatment. */
+
+/* Operation is the first stage group emitted by STAGE_ORDER. Give its runway a
+   continuous, slightly stronger rule instead of the dotted ladder treatment. */
+.et-grid > g:first-of-type > line {
+  stroke: var(--ink-mid);
+  stroke-dasharray: none;
+  stroke-width: 1.35;
+  opacity: 0.72;
+}
+
+.et-grid > g:first-of-type .et-stage-name {
+  font-weight: 900;
+  letter-spacing: 0.015em;
+}
+
+.et-grid > g:first-of-type .et-stage-code {
+  fill: var(--ink-mid);
+}
+
+/* The separator immediately before Replication is stronger than the ordinary
+   register group separators, visually closing the Operation group. */
+.et-stage-register > .et-register-group:nth-child(2) .et-register-group-separator {
+  stroke: var(--ink-mid);
+  stroke-width: 1.35;
+  opacity: 0.72;
+}
+
+.et-stage-register > .et-register-group:first-child .et-register-stage-name {
+  font-weight: 900;
+  letter-spacing: 0.015em;
+}
