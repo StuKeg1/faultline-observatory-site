@@ -25,11 +25,6 @@ import "./EvidenceTrajectoriesProvenance.css";
 
 const STAGE_ORDER = ["VS-05", "VS-04", "VS-03", "VS-02", "VS-01"];
 
-/**
- * Single source of truth for Evidence Trajectories URLs. The card anchor's
- * href and the URL written by selectRecord() are produced here so they cannot
- * diverge — in particular, an active lens is preserved rather than dropped.
- */
 function trajectoryParams(recordId, lensId) {
   const params = new URLSearchParams();
   if (lensId && lensId !== "full") params.set("lens", lensId);
@@ -51,24 +46,9 @@ const STATE_TONES = {
 };
 
 const LENSES = [
-  {
-    id: "full",
-    label: "Full archive",
-    description: "All Frontier Records remain present.",
-    matches: () => true,
-  },
-  {
-    id: "changed",
-    label: "Changed assessments",
-    description: "Records whose institutional assessment changed at least once.",
-    matches: (record) => getTransitionFeed(record).length > 0,
-  },
-  {
-    id: "audit",
-    label: "Current audit records",
-    description: "Records now held in Audit, with the archive still visible around them.",
-    matches: (record) => getCurrentAssessment(record).pressureState === "audit",
-  },
+  { id: "full", label: "Full archive", description: "All Frontier Records remain present.", matches: () => true },
+  { id: "changed", label: "Changed assessments", description: "Records whose institutional assessment changed at least once.", matches: (record) => getTransitionFeed(record).length > 0 },
+  { id: "audit", label: "Current audit records", description: "Records now held in Audit, with the archive still visible around them.", matches: (record) => getCurrentAssessment(record).pressureState === "audit" },
   ...PROGRAMMES.map((programme) => ({
     id: programme.id,
     label: programme.name,
@@ -77,33 +57,17 @@ const LENSES = [
   })),
 ];
 
-function formatState(state) {
-  return getPressureStateLabel(state);
-}
-
-function getProgramme(record) {
-  return PROGRAMMES.find((programme) => programme.id === record.programme);
-}
-
+function formatState(state) { return getPressureStateLabel(state); }
+function getProgramme(record) { return PROGRAMMES.find((programme) => programme.id === record.programme); }
 function buildTrajectory(record) {
   const history = getAssessmentHistory(record);
-  return {
-    record,
-    history,
-    transitions: getTransitionFeed(record),
-    current: getCurrentAssessment(record),
-  };
+  return { record, history, transitions: getTransitionFeed(record), current: getCurrentAssessment(record) };
 }
-
-function getTone(pressureState) {
-  return STATE_TONES[pressureState] ?? "neutral";
-}
-
+function getTone(pressureState) { return STATE_TONES[pressureState] ?? "neutral"; }
 function shortRegisterTitle(label, limit = 48) {
   const primary = label.split(/\s+[—-]\s+/)[0] || label;
   return primary.length > limit ? `${primary.slice(0, limit - 3).trimEnd()}...` : primary;
 }
-
 function footerCaptionLines(label) {
   const fixedLines = {
     "Earliest recorded assessments": ["Earliest recorded", "assessments"],
@@ -114,12 +78,10 @@ function footerCaptionLines(label) {
   };
   return fixedLines[label] ?? [label];
 }
-
 function singleAssessmentProvenance(trajectory) {
   if (trajectory.history.length !== 1) return null;
   return trajectory.history[0].verificationStageProvenance ?? null;
 }
-
 function provenanceClasses(provenance) {
   if (!provenance) return [];
   const classes = ["is-single-reviewed"];
@@ -127,7 +89,6 @@ function provenanceClasses(provenance) {
   if (provenance.disposition === "historically-unverified") classes.push("is-single-historically-unverified");
   return classes;
 }
-
 function provenanceDescription(provenance) {
   if (!provenance) return "";
   if (provenance.disposition === "correction-required") {
@@ -139,28 +100,14 @@ function provenanceDescription(provenance) {
   return ` Legacy review re-affirmed this stage with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
 }
 
-function EvidenceChart({
-  trajectories,
-  selectedId,
-  hoveredId,
-  lensId,
-  onSelect,
-  onHover,
-}) {
+function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, onHover }) {
   const selectedLens = LENSES.find((lens) => lens.id === lensId) ?? LENSES[0];
   const focusIds = useMemo(() => {
     if (selectedId) return new Set([selectedId]);
     if (lensId === "full") return new Set();
-    return new Set(
-      trajectories
-        .filter((trajectory) => selectedLens.matches(trajectory.record))
-        .map((trajectory) => trajectory.record.id)
-    );
+    return new Set(trajectories.filter((trajectory) => selectedLens.matches(trajectory.record)).map((trajectory) => trajectory.record.id));
   }, [lensId, selectedId, selectedLens, trajectories]);
-  const trajectoryById = useMemo(
-    () => new Map(trajectories.map((trajectory) => [trajectory.record.id, trajectory])),
-    [trajectories]
-  );
+  const trajectoryById = useMemo(() => new Map(trajectories.map((trajectory) => [trajectory.record.id, trajectory])), [trajectories]);
 
   const geometry = useMemo(() => {
     const width = 1360;
@@ -174,13 +121,11 @@ function EvidenceChart({
     const chartHeight = plotBottom - pad.top;
     const phaseCoordinates = calculatePhaseCoordinates({ left: plotLeft, right: todayX });
     const phaseSummaries = phaseDateSummaries(trajectories);
-
     const yForStage = (stage) => {
       const index = STAGE_ORDER.indexOf(stage);
       const safeIndex = index === -1 ? STAGE_ORDER.length - 1 : index;
       return pad.top + (safeIndex / (STAGE_ORDER.length - 1)) * chartHeight;
     };
-
     const stageRegister = calculateStageRegisterGroups({
       records: trajectories,
       stageOrder: STAGE_ORDER,
@@ -191,7 +136,6 @@ function EvidenceChart({
       headerHeight: 32,
       groupGap: 12,
     });
-
     const registerColumns = {
       stageX: registerX,
       ringX: registerX + 44,
@@ -200,58 +144,25 @@ function EvidenceChart({
       titleX: registerX + 142,
       rightX: width - 28,
     };
-    const registerTitleLimit = Math.max(
-      24,
-      Math.floor((registerColumns.rightX - registerColumns.titleX) / 5.2),
-    );
-
-    return {
-      width,
-      height,
-      pad,
-      axisLeft,
-      plotLeft,
-      plotBottom,
-      todayX,
-      registerX,
-      registerColumns,
-      registerTitleLimit,
-      phaseCoordinates,
-      phaseSummaries,
-      yForStage,
-      stageRegister,
-    };
+    const registerTitleLimit = Math.max(24, Math.floor((registerColumns.rightX - registerColumns.titleX) / 5.2));
+    return { width, height, pad, axisLeft, plotLeft, plotBottom, todayX, registerX, registerColumns, registerTitleLimit, phaseCoordinates, phaseSummaries, yForStage, stageRegister };
   }, [trajectories]);
 
   return (
     <div className="et-chart-shell">
-      <svg
-        className="et-chart"
-        viewBox={`0 0 ${geometry.width} ${geometry.height}`}
-        role="img"
-        aria-labelledby="et-chart-title et-chart-desc"
-      >
+      <svg className="et-chart" viewBox={`0 0 ${geometry.width} ${geometry.height}`} role="img" aria-labelledby="et-chart-title et-chart-desc">
         <title id="et-chart-title">Evidence Trajectories</title>
-        <desc id="et-chart-desc">
-          Evidence Trajectories arranges documented assessments across four evidence-history phases. Horizontal spacing represents documentary sequence rather than equal calendar time. Single-assessment records are shown as one historical point rather than a synthetic full-width line. The Current Register is grouped by current verification stage.
-        </desc>
+        <desc id="et-chart-desc">Evidence Trajectories arranges documented assessments across four evidence-history phases. Horizontal spacing represents documentary sequence rather than equal calendar time. Single-assessment records are shown as one historical point rather than a synthetic full-width line. The Current Register is grouped by current verification stage.</desc>
 
         <g className="et-phase-guides" aria-hidden="true">
-          {geometry.phaseCoordinates.slice(1).map((phase) => (
-            <line key={phase.id} x1={phase.left} x2={phase.left} y1={geometry.pad.top - 48} y2={geometry.plotBottom + 28} />
-          ))}
+          {geometry.phaseCoordinates.slice(1).map((phase) => <line key={phase.id} x1={phase.left} x2={phase.left} y1={geometry.pad.top - 48} y2={geometry.plotBottom + 28} />)}
           <line x1={geometry.todayX} x2={geometry.todayX} y1={geometry.pad.top - 34} y2={geometry.plotBottom + 34} />
         </g>
 
         <g className="et-chart-headings" aria-hidden="true">
           {geometry.phaseCoordinates.map((phase) => {
             const headingX = phase.id === "origins" ? phase.center + 42 : phase.center;
-            return (
-              <g key={phase.id}>
-                <text className="et-phase-heading" x={headingX} y="26">{phase.heading}</text>
-                <text className="et-phase-subheading" x={headingX} y="43">{phase.subheading}</text>
-              </g>
-            );
+            return <g key={phase.id}><text className="et-phase-heading" x={headingX} y="26">{phase.heading}</text><text className="et-phase-subheading" x={headingX} y="43">{phase.subheading}</text></g>;
           })}
           <text className="et-phase-heading" x={geometry.registerX + 146} y="26">Current Register</text>
           <text className="et-phase-subheading" x={geometry.registerX + 146} y="43">Verification stage : today</text>
@@ -261,13 +172,7 @@ function EvidenceChart({
           <text className="et-axis-title" x={geometry.axisLeft} y="68">Verification stage</text>
           {STAGE_ORDER.map((stage) => {
             const y = geometry.yForStage(stage);
-            return (
-              <g key={stage}>
-                <line x1={geometry.plotLeft} x2={geometry.todayX + 38} y1={y} y2={y} />
-                <text className="et-stage-name" x={geometry.axisLeft} y={y + 4}>{VS_STAGE_LABELS[stage]}</text>
-                <text className="et-stage-code" x={geometry.plotLeft - 18} y={y + 4}>{stage}</text>
-              </g>
-            );
+            return <g key={stage}><line x1={geometry.plotLeft} x2={geometry.todayX + 38} y1={y} y2={y} /><text className="et-stage-name" x={geometry.axisLeft} y={y + 4}>{VS_STAGE_LABELS[stage]}</text><text className="et-stage-code" x={geometry.plotLeft - 18} y={y + 4}>{stage}</text></g>;
           })}
         </g>
 
@@ -280,97 +185,26 @@ function EvidenceChart({
           const tone = getTone(trajectory.current.pressureState);
           const provenance = singleAssessmentProvenance(trajectory);
           const events = trajectory.history.length === 1
-            ? [{
-                assessment: {
-                  ...trajectory.history[0],
-                  verificationStage: provenance?.storedStage ?? trajectory.history[0].verificationStage,
-                },
-                phaseId: "origins",
-                role: "origin",
-                index: 0,
-              }]
+            ? [{ assessment: { ...trajectory.history[0], verificationStage: provenance?.storedStage ?? trajectory.history[0].verificationStage }, phaseId: "origins", role: "origin", index: 0 }]
             : assignEventsToDocumentaryPhases(trajectory.history);
           const eventPoints = events.map((event) => ({
             ...event,
-            x: calculateEventX({
-              event,
-              phaseCoordinates: geometry.phaseCoordinates,
-              todayX: geometry.todayX,
-              historyLength: trajectory.history.length,
-            }),
+            x: calculateEventX({ event, phaseCoordinates: geometry.phaseCoordinates, todayX: geometry.todayX, historyLength: trajectory.history.length }),
             y: geometry.yForStage(event.assessment.verificationStage),
             trueY: geometry.yForStage(event.assessment.verificationStage),
           }));
-          const path = eventPoints.length > 1
-            ? eventPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ")
-            : "";
-
+          const path = eventPoints.length > 1 ? eventPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ") : "";
           return (
-            <g
-              key={record.id}
-              className={[
-                "et-trajectory",
-                `tone-${tone}`,
-                isContext ? "is-context" : "",
-                isLensFocus ? "is-lens-focus" : "",
-                isHovered ? "is-hovered" : "",
-                isSelected ? "is-selected" : "",
-              ].join(" ")}
-              onMouseEnter={() => onHover(record.id)}
-              onMouseLeave={() => onHover(null)}
-            >
-              {path && (
-                <path
-                  className="et-semantic-path"
-                  d={path}
-                  tabIndex={0}
-                  role="button"
-                  aria-pressed={isSelected}
-                  aria-label={`${record.id}: ${record.claim.shortLabel}. Documentary trajectory through ${trajectory.history.length} actual assessments. Press Enter to hold this trajectory for reading.`}
-                  onClick={() => onSelect(record.id)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      onSelect(record.id);
-                    }
-                    if (event.key === "Escape") onSelect(null);
-                  }}
-                />
-              )}
+            <g key={record.id} className={["et-trajectory", `tone-${tone}`, isContext ? "is-context" : "", isLensFocus ? "is-lens-focus" : "", isHovered ? "is-hovered" : "", isSelected ? "is-selected" : ""].join(" ")} onMouseEnter={() => onHover(record.id)} onMouseLeave={() => onHover(null)}>
+              {path && <path className="et-semantic-path" d={path} tabIndex={0} role="button" aria-pressed={isSelected} aria-label={`${record.id}: ${record.claim.shortLabel}. Documentary trajectory through ${trajectory.history.length} actual assessments. Press Enter to hold this trajectory for reading.`} onClick={() => onSelect(record.id)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onSelect(record.id); } if (event.key === "Escape") onSelect(null); }} />}
               {eventPoints.map((point, index) => {
                 const isCurrent = point.phaseId === "today";
                 const previous = index > 0 ? eventPoints[index - 1] : null;
                 const isTransition = !previous || previous.assessment.pressureState !== point.assessment.pressureState;
                 const pointProvenance = trajectory.history.length === 1 ? provenance : null;
-                const pointClass = [
-                  isCurrent ? "is-current-ring" : isTransition ? "is-transition" : "is-reaffirmation",
-                  ...provenanceClasses(pointProvenance),
-                ].join(" ");
+                const pointClass = [isCurrent ? "is-current-ring" : isTransition ? "is-transition" : "is-reaffirmation", ...provenanceClasses(pointProvenance)].join(" ");
                 const aria = `${record.id}, ${point.assessment.date}, recorded stage ${point.assessment.verificationStage}, ${formatState(point.assessment.pressureState)}.${provenanceDescription(pointProvenance)}`;
-                return (
-                  <circle
-                    key={`${record.id}-${point.assessment.id}-${point.phaseId}`}
-                    className={pointClass}
-                    cx={point.x}
-                    cy={point.y}
-                    r={isCurrent ? 4.2 : isLensFocus || isSelected || isHovered ? 4.8 : 3.6}
-                    tabIndex={isLensFocus || isSelected ? 0 : -1}
-                    role="button"
-                    aria-label={aria}
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      onSelect(record.id);
-                    }}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter" || event.key === " ") {
-                        event.preventDefault();
-                        onSelect(record.id);
-                      }
-                    }}
-                  >
-                    <title>{aria}</title>
-                  </circle>
-                );
+                return <circle key={`${record.id}-${point.assessment.id}-${point.phaseId}`} className={pointClass} cx={point.x} cy={point.y} r={isCurrent ? 4.2 : isLensFocus || isSelected || isHovered ? 4.8 : 3.6} tabIndex={isLensFocus || isSelected ? 0 : -1} role="button" aria-label={aria} onClick={(event) => { event.stopPropagation(); onSelect(record.id); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onSelect(record.id); } }}><title>{aria}</title></circle>;
               })}
             </g>
           );
@@ -381,26 +215,14 @@ function EvidenceChart({
             const bridgeY = group.groupTop + 14;
             return (
               <g key={group.stage} className="et-register-group">
-                {groupIndex > 0 && (
-                  <line
-                    className="et-register-group-separator"
-                    x1={geometry.registerColumns.stageX}
-                    x2={geometry.registerColumns.rightX}
-                    y1={group.groupTop - 6}
-                    y2={group.groupTop - 6}
-                    aria-hidden="true"
-                  />
-                )}
-                <path
-                  className="et-stage-register-bridge"
-                  d={`M ${geometry.todayX + 10} ${group.trueY} H ${geometry.registerX - 24} V ${bridgeY} H ${geometry.registerX - 8}`}
-                  aria-hidden="true"
-                />
+                {groupIndex > 0 && <line className="et-register-group-separator" x1={geometry.registerColumns.stageX} x2={geometry.registerColumns.rightX} y1={group.groupTop - 6} y2={group.groupTop - 6} aria-hidden="true" />}
+                <path className="et-stage-register-bridge" d={`M ${geometry.todayX + 10} ${group.trueY} H ${geometry.registerX - 24} V ${bridgeY} H ${geometry.registerX - 8}`} aria-hidden="true" />
                 <text className="et-register-stage-name" x={geometry.registerColumns.stageX} y={group.groupTop + 10}>{VS_STAGE_LABELS[group.stage]}</text>
                 <text className="et-register-stage-code" x={geometry.registerColumns.stageX + 86} y={group.groupTop + 10}>{group.stage}</text>
-                {group.rows.length === 0 && (
-                  <text className="et-register-empty" x={geometry.registerColumns.idX} y={group.emptyLabelY + 3}>No current records</text>
+                {group.stage === "VS-05" && (
+                  <text x={geometry.registerColumns.stageX} y={group.groupTop + 22} fill="var(--ink-light)" fontFamily="var(--serif)" fontSize="9" fontStyle="italic">Demonstrated operation</text>
                 )}
+                {group.rows.length === 0 && <text className="et-register-empty" x={geometry.registerColumns.idX} y={group.emptyLabelY + 3}>No current records</text>}
                 {group.rows.map((row) => {
                   const trajectory = trajectoryById.get(row.recordId);
                   const record = trajectory.record;
@@ -411,29 +233,7 @@ function EvidenceChart({
                   const provenance = singleAssessmentProvenance(trajectory);
                   const registerAria = `${record.id}: ${record.claim.shortLabel}. Current verification stage ${group.stage} ${VS_STAGE_LABELS[group.stage]}.${provenanceDescription(provenance)}`;
                   return (
-                    <g
-                      key={record.id}
-                      className={[
-                        "et-register-row",
-                        `tone-${tone}`,
-                        ...provenanceClasses(provenance),
-                        isContext ? "is-context" : "",
-                        isHovered ? "is-hovered" : "",
-                        isSelected ? "is-selected" : "",
-                      ].join(" ")}
-                      tabIndex={0}
-                      role="button"
-                      aria-label={registerAria}
-                      onMouseEnter={() => onHover(record.id)}
-                      onMouseLeave={() => onHover(null)}
-                      onClick={() => onSelect(record.id)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault();
-                          onSelect(record.id);
-                        }
-                      }}
-                    >
+                    <g key={record.id} className={["et-register-row", `tone-${tone}`, ...provenanceClasses(provenance), isContext ? "is-context" : "", isHovered ? "is-hovered" : "", isSelected ? "is-selected" : ""].join(" ")} tabIndex={0} role="button" aria-label={registerAria} onMouseEnter={() => onHover(record.id)} onMouseLeave={() => onHover(null)} onClick={() => onSelect(record.id)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onSelect(record.id); } }}>
                       <title>{registerAria}</title>
                       <circle className="et-register-row-ring" cx={geometry.registerColumns.ringX} cy={row.labelY} r="4.4" />
                       <text className="et-register-id" x={geometry.registerColumns.idX} y={row.labelY + 3}>{record.id}</text>
@@ -449,24 +249,10 @@ function EvidenceChart({
         <g className="et-phase-footers" aria-hidden="true">
           {geometry.phaseCoordinates.map((phase, index) => {
             const summary = geometry.phaseSummaries.find((item) => item.phaseId === phase.id)?.summary;
-            return (
-              <g key={phase.id}>
-                <text className="et-phase-range" x={phase.center} y={geometry.height - 46}>{summary}</text>
-                <text className="et-phase-footer" x={phase.center} y={geometry.height - 30}>
-                  {footerCaptionLines(phase.footer).map((line, lineIndex) => (
-                    <tspan key={line} x={phase.center} dy={lineIndex === 0 ? 0 : 12}>{line}</tspan>
-                  ))}
-                </text>
-                {index < DOCUMENTARY_PHASES.length - 1 && <text className="et-phase-arrow" x={phase.right} y={geometry.height - 36}>{"->"}</text>}
-              </g>
-            );
+            return <g key={phase.id}><text className="et-phase-range" x={phase.center} y={geometry.height - 46}>{summary}</text><text className="et-phase-footer" x={phase.center} y={geometry.height - 30}>{footerCaptionLines(phase.footer).map((line, lineIndex) => <tspan key={line} x={phase.center} dy={lineIndex === 0 ? 0 : 12}>{line}</tspan>)}</text>{index < DOCUMENTARY_PHASES.length - 1 && <text className="et-phase-arrow" x={phase.right} y={geometry.height - 36}>{"->"}</text>}</g>;
           })}
           <text className="et-phase-range" x={geometry.todayX} y={geometry.height - 46}>Today</text>
-          <text className="et-phase-footer" x={geometry.todayX} y={geometry.height - 30}>
-            {footerCaptionLines("Current verification stage").map((line, lineIndex) => (
-              <tspan key={line} x={geometry.todayX} dy={lineIndex === 0 ? 0 : 12}>{line}</tspan>
-            ))}
-          </text>
+          <text className="et-phase-footer" x={geometry.todayX} y={geometry.height - 30}>{footerCaptionLines("Current verification stage").map((line, lineIndex) => <tspan key={line} x={geometry.todayX} dy={lineIndex === 0 ? 0 : 12}>{line}</tspan>)}</text>
           <text className="et-history-axis" x={(geometry.plotLeft + geometry.todayX) / 2} y={geometry.height - 8}>{"Evidence history ->"}</text>
         </g>
       </svg>
@@ -478,56 +264,18 @@ function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, lensId, onS
   const { record, history, current, transitions } = trajectory;
   const programme = getProgramme(record);
   const stateChanges = transitions.length;
-
   function handleSelectClick(event) {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-      return;
-    }
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     onSelect(record.id);
   }
-
   return (
-    <article
-      id={`record-${record.id}`}
-      className={[
-        "et-record-card",
-        isSelected ? "is-selected" : "",
-        isLensFocus ? "is-lens-focus" : "",
-      ].join(" ")}
-    >
-      <Link
-        to={trajectoryUrl(record.id, lensId)}
-        className="et-record-select"
-        aria-current={isSelected ? "true" : undefined}
-        onClick={handleSelectClick}
-      >
-        <span>{record.id}</span>
-        <span>{record.claim.shortLabel}</span>
-        <small>{record.claim.statement}</small>
-        <em>
-          {programme?.shortId ?? record.programme} · {history.length} assessments · {stateChanges} documented state change{stateChanges === 1 ? "" : "s"}
-        </em>
+    <article id={`record-${record.id}`} className={["et-record-card", isSelected ? "is-selected" : "", isLensFocus ? "is-lens-focus" : ""].join(" ")}>
+      <Link to={trajectoryUrl(record.id, lensId)} className="et-record-select" aria-current={isSelected ? "true" : undefined} onClick={handleSelectClick}>
+        <span>{record.id}</span><span>{record.claim.shortLabel}</span><small>{record.claim.statement}</small><em>{programme?.shortId ?? record.programme} · {history.length} assessments · {stateChanges} documented state change{stateChanges === 1 ? "" : "s"}</em>
       </Link>
-      <div className="et-card-current">
-        <StateBadge pressureState={current.pressureState} />
-        <span>since {current.date}</span>
-        <details>
-          <summary>Assessment history</summary>
-          <ol className="et-history-list">
-            {history.map((assessment) => (
-              <li key={assessment.id}>
-                <span>{assessment.date}</span>
-                <span>{formatState(assessment.pressureState)}</span>
-                <p>{assessment.summary}</p>
-              </li>
-            ))}
-          </ol>
-        </details>
-      </div>
-      <div className="et-card-links">
-        <Link to={getRecordUrl(record)}>Read the complete Frontier Record</Link>
-      </div>
+      <div className="et-card-current"><StateBadge pressureState={current.pressureState} /><span>since {current.date}</span><details><summary>Assessment history</summary><ol className="et-history-list">{history.map((assessment) => <li key={assessment.id}><span>{assessment.date}</span><span>{formatState(assessment.pressureState)}</span><p>{assessment.summary}</p></li>)}</ol></details></div>
+      <div className="et-card-links"><Link to={getRecordUrl(record)}>Read the complete Frontier Record</Link></div>
     </article>
   );
 }
@@ -538,124 +286,24 @@ export default function EvidenceTrajectories() {
   const lensId = LENSES.some((lens) => lens.id === requestedLens) ? requestedLens : "full";
   const selectedId = searchParams.get("record");
   const [hoveredId, setHoveredId] = useState(null);
-
   const trajectories = useMemo(() => ALL_RECORDS.map(buildTrajectory), []);
   const selectedLens = LENSES.find((lens) => lens.id === lensId) ?? LENSES[0];
 
   function selectRecord(recordId) {
     setSearchParams(trajectoryParams(recordId, lensId), { replace: false });
-    if (recordId) {
-      window.setTimeout(() => {
-        document.getElementById(`record-${recordId}`)?.scrollIntoView({
-          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-          block: "nearest",
-        });
-      }, 0);
-    }
+    if (recordId) window.setTimeout(() => document.getElementById(`record-${recordId}`)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" }), 0);
   }
 
   return (
     <>
-      <PageMeta
-        title="Evidence Trajectories"
-        description="Follow how the Observatory's judgement of technology claims has changed as evidence accumulated."
-        path="/evidence-trajectories/"
-      />
+      <PageMeta title="Evidence Trajectories" description="Follow how the Observatory's judgement of technology claims has changed as evidence accumulated." path="/evidence-trajectories/" />
       <div className="evidence-trajectories-page">
-        <header className="et-hero">
-          <div className="et-hero-inner">
-            <div className="et-eyebrow">Faultline Observatory</div>
-            <h1>Evidence Trajectories</h1>
-            <p className="et-proposition">
-              Follow how the Observatory's judgement of technology claims has changed as evidence accumulated.
-            </p>
-            <p className="et-instruction">
-              Each line represents one Frontier Record. Select a reading to bring related trajectories forward; the full archive remains present.
-            </p>
-            <details className="et-how-to-read">
-              <summary>How to read this page</summary>
-              <ol>
-                <li><b>Read across</b> - time moves from left to right.</li>
-                <li><b>Read vertically</b> - position indicates verification depth at that moment.</li>
-                <li><b>Single-assessment records</b> - one documented assessment is shown as one historical point, not as a synthetic line to Today.</li>
-                <li><b>Read provenance</b> - dashed rings mark single-assessment stages touched by the legacy review; finer dotted rings mark historically unverified assignments.</li>
-                <li><b>Read the register</b> - the right column names each record's current Verification Stage at Today.</li>
-                <li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li>
-              </ol>
-            </details>
-            <p className="et-instruction" role="note">
-              Verification-stage provenance notice: the legacy review is complete. Historical
-              codes remain preserved. For single-assessment records, the historical chart now
-              shows the recorded stage while the Current Register shows the ratified present
-              interpretation. Assignments that could not be reliably reconstructed remain
-              visibly marked historically unverified.
-            </p>
-          </div>
-        </header>
-
+        <header className="et-hero"><div className="et-hero-inner"><div className="et-eyebrow">Faultline Observatory</div><h1>Evidence Trajectories</h1><p className="et-proposition">Follow how the Observatory's judgement of technology claims has changed as evidence accumulated.</p><p className="et-instruction">Each line represents one Frontier Record. Select a reading to bring related trajectories forward; the full archive remains present.</p><details className="et-how-to-read"><summary>How to read this page</summary><ol><li><b>Read across</b> - time moves from left to right.</li><li><b>Read vertically</b> - position indicates verification depth at that moment.</li><li><b>Single-assessment records</b> - one documented assessment is shown as one historical point, not as a synthetic line to Today.</li><li><b>Read provenance</b> - dashed rings mark single-assessment stages touched by the legacy review; finer dotted rings mark historically unverified assignments.</li><li><b>Read the register</b> - the right column names each record's current Verification Stage at Today.</li><li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li></ol></details><p className="et-instruction" role="note">Verification-stage provenance notice: the legacy review is complete. Historical codes remain preserved. For single-assessment records, the historical chart now shows the recorded stage while the Current Register shows the ratified present interpretation. Assignments that could not be reliably reconstructed remain visibly marked historically unverified.</p></div></header>
         <main className="et-main">
-          <section className="et-reading-field" aria-label="Evidence Trajectories reading field">
-            <EvidenceChart
-              trajectories={trajectories}
-              selectedId={selectedId}
-              hoveredId={hoveredId}
-              lensId={lensId}
-              onSelect={selectRecord}
-              onHover={setHoveredId}
-            />
-          </section>
-
-          <p className="et-transition">
-            The trajectories above are derived from the assessment histories below.
-          </p>
-
-          <section className="et-records" aria-labelledby="et-records-title">
-            <div className="et-section-heading">
-              <h2 id="et-records-title">Trajectory records</h2>
-              <p>
-                SHOWING THE FULL ARCHIVE · {selectedLens.label !== "Full archive" ? `${selectedLens.label} records are emphasised.` : "NO READING IS PRESELECTED."}
-              </p>
-            </div>
-            <div className="et-record-list">
-              {trajectories.map((trajectory) => (
-                <TrajectoryRecordCard
-                  key={trajectory.record.id}
-                  trajectory={trajectory}
-                  isSelected={selectedId === trajectory.record.id}
-                  isLensFocus={selectedLens.matches(trajectory.record)}
-                  lensId={lensId}
-                  onSelect={selectRecord}
-                />
-              ))}
-            </div>
-          </section>
-
-          <section className="et-accessible" aria-labelledby="et-accessible-title">
-            <h2 id="et-accessible-title">Chronological record of trajectories</h2>
-            <p>
-              A text-based equivalent of the visual reading above, preserving each record's assessment history without requiring the chart.
-            </p>
-            <details className="et-text-index">
-              <summary>{"View the full chronological trajectory index ->"}</summary>
-              <div>
-                {trajectories.map(({ record, history }) => (
-                  <details key={record.id}>
-                    <summary>{record.id} - {record.claim.shortLabel}</summary>
-                    <ol>
-                      {history.map((assessment) => (
-                        <li key={assessment.id}>
-                          <span>{assessment.date}</span>{" "}
-                          <strong>{formatState(assessment.pressureState)}</strong>{" "}
-                          {assessment.summary}
-                        </li>
-                      ))}
-                    </ol>
-                    <Link to={getRecordUrl(record)}>Read complete Frontier Record</Link>
-                  </details>
-                ))}
-              </div>
-            </details>
-          </section>
+          <section className="et-reading-field" aria-label="Evidence Trajectories reading field"><EvidenceChart trajectories={trajectories} selectedId={selectedId} hoveredId={hoveredId} lensId={lensId} onSelect={selectRecord} onHover={setHoveredId} /></section>
+          <p className="et-transition">The trajectories above are derived from the assessment histories below.</p>
+          <section className="et-records" aria-labelledby="et-records-title"><div className="et-section-heading"><h2 id="et-records-title">Trajectory records</h2><p>SHOWING THE FULL ARCHIVE · {selectedLens.label !== "Full archive" ? `${selectedLens.label} records are emphasised.` : "NO READING IS PRESELECTED."}</p></div><div className="et-record-list">{trajectories.map((trajectory) => <TrajectoryRecordCard key={trajectory.record.id} trajectory={trajectory} isSelected={selectedId === trajectory.record.id} isLensFocus={selectedLens.matches(trajectory.record)} lensId={lensId} onSelect={selectRecord} />)}</div></section>
+          <section className="et-accessible" aria-labelledby="et-accessible-title"><h2 id="et-accessible-title">Chronological record of trajectories</h2><p>A text-based equivalent of the visual reading above, preserving each record's assessment history without requiring the chart.</p><details className="et-text-index"><summary>{"View the full chronological trajectory index ->"}</summary><div>{trajectories.map(({ record, history }) => <details key={record.id}><summary>{record.id} - {record.claim.shortLabel}</summary><ol>{history.map((assessment) => <li key={assessment.id}><span>{assessment.date}</span>{" "}<strong>{formatState(assessment.pressureState)}</strong>{" "}{assessment.summary}</li>)}</ol><Link to={getRecordUrl(record)}>Read complete Frontier Record</Link></details>)}</div></details></section>
         </main>
       </div>
       <SiteFooter />
