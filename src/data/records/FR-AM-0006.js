@@ -65,6 +65,30 @@ export const FR_AM_0006 = {
       description: "This is the fourth distinct timeline point in this record's lineage (2020 → 2023 → 2026 → 2027–28) and the first occasion on which a previously-set target date (2025) has fully elapsed within the corpus's observation window without resolution either way. Toyota's solid-state battery EV timeline, already revised from 2025 to 2027–28 by IN-003, reaches its original 2025 target date in 2026 with no commercial solid-state EV delivered. Toyota receives Japanese government production approval for its sulfide-electrolyte solid-state battery technology (October 7, 2025) and announces a joint development agreement with Sumitomo Metal Mining for cathode material mass production (October 8, 2025), alongside a planned lithium-sulfide facility with Idemitsu Kosan targeted to start in 2027. At the Japan Mobility Show (late October 2025), Toyota executive Keiji Kaita reaffirms the 2027–28 production target for battery electric vehicles, citing 1,000 km-plus range and rapid charging as design goals. Within days, however, industry reporting (Electrek) describes Toyota again delaying elements of its broader EV battery plans, citing slowing EV demand even as global EV sales pass two million units monthly for the first time (September 2025). Separately, Chinese manufacturers continue parallel progress: pilot-scale all-solid-state lines report energy densities above 400 Wh/kg in early 2026, and material suppliers announce large sulfide-electrolyte production contracts.",
       vectors: ["partial--timeline-elapsed-without-delivery-genuine-progress-continues"],
       date: "2025–26",
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "QuantumScape automated pilot-line ramp and milestone-based PowerCo scale-up programme",
+      description: "QuantumScape's 2026 Eagle Line evidence materially advances the manufacturing-scale-up side of the record without satisfying the commercial-viability claim. The company reports that its automated pilot line is producing initial QSE-5 volumes, shipping samples to customers, and achieving greater than 90% uptime on core tools while it works to improve process stability, throughput, quality, and reliability. A July 2026 amendment with Volkswagen's PowerCo restructures the joint programme around milestone-based payments tied to delivery and validation of cells over the following two years. At the same time, QuantumScape's Q2 2026 Form 10-Q continues to describe the company as pre-revenue and explicitly states that commercial success still requires substantial improvements in quality, consistency, reliability, throughput, safety, and cost. This is genuine movement from laboratory demonstration toward repeatable pilot manufacture, but not evidence that solid-state batteries have yet achieved the record's three-threshold conjunction at automotive production scale and commercial cost.",
+      vectors: ["partial--automated-pilot-scale-up-progress-commercial-threshold-unmet"],
+      date: "2026",
+      sources: [
+        {
+          citation: "QuantumScape Corporation, Form 10-Q for the quarter ended June 30, 2026",
+          url: "https://www.sec.gov/Archives/edgar/data/1811414/000119312526316073/qs-20260630.htm",
+          locator: "Product Development; Commercialization and Market Focus",
+        },
+        {
+          citation: "QuantumScape Corporation, Form 8-K, July 16, 2026",
+          url: "https://www.sec.gov/Archives/edgar/data/1811414/000119312526312381/qs-20260716.htm",
+          locator: "Item 1.01 — PowerCo collaboration amendment",
+        },
+        {
+          citation: "QuantumScape, Q2 2026 shareholder letter — Eagle Line Update",
+          url: "https://www.sec.gov/Archives/edgar/data/1811414/000119312526312423/qs-ex99_1.htm",
+          locator: "Eagle Line Update",
+        },
+      ],
     }
   ],
 
@@ -85,6 +109,14 @@ export const FR_AM_0006 = {
       verificationStage: "VS-03",
       summary: "INST-006 sustains the ESCALATING state identified at AS-001 rather than advancing or collapsing it. The 2025 commercial target already flagged as superseded at IN-003 has now genuinely elapsed without a solid-state EV reaching production, which removes any ambiguity about whether that particular date might still be met. At the same time, the evidence does not support reclassifying this record toward the PROG-AM collapse dynamic (CM-001 elsewhere in the corpus): government production approval for the underlying technology, a named material-supply joint venture with a defined 2027 facility start date, and continuing — if uneven — progress from Chinese manufacturers are all genuine engineering and industrial advances, not disputed physics or failed replication. The pattern remains exactly what RM-001 describes: laboratory and component-level milestones continue to be met while full commercial-scale, three-threshold delivery continues to recede. Verification stage advances to VS-03 (Audit): the underlying technology has now cleared a formal government regulatory/production-approval review, the first independent scrutiny event in this record's history — though this is approval of the technology rather than independent replication of Toyota's specific performance claims (IN-004), which remains unverified in peer-reviewed form. OQ-002's procedural question (whether dated attractors warrant scheduled re-entry) is now reinforced by direct example: this record's own dated attractor target has elapsed.",
       assessorNote: "Sources: Toyota Motor Corporation newsroom (Oct 8, 2025); Electrek (Oct 30, 2025); evxl.co reporting on the Japan Mobility Show (Nov 9, 2025); Shanghai Metals Market solid-state battery industry tracking (Nov 2025); Solid-State Battery Scoreboard 2025–2026 (Feb 2026). Verified directly via web search during RELEASE-004 / TRIAL-001, 2026-06-27.",
+    },
+    {
+      id: "AS-003",
+      date: "2026-08-29",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      summary: "IN-007 sustains ESCALATING / VS-03. QuantumScape's automated Eagle Line, customer sample shipments, and milestone-based PowerCo programme are stronger evidence of industrialization than the earlier single-layer and prototype milestones in this record. They directly bear on RM-001 because the work is now testing repeatable manufacturing processes rather than only electrochemical performance. But the same primary filings explicitly preserve the unresolved commercial gap: QuantumScape remains pre-revenue, the line is still a pilot facility, and quality, consistency, reliability, throughput, safety, and cost remain development requirements. No evidence reviewed in this pass demonstrates a production EV battery meeting energy density, safety, and cycle-life requirements simultaneously at commercial manufacturing yield and cost. The attractor therefore remains future operational deployment rather than pilot-line progress.",
+      assessorNote: "Record Review 2026-08-29. Primary evidence: QuantumScape Q2 2026 Form 10-Q; July 16, 2026 Form 8-K covering the PowerCo amendment; Q2 2026 shareholder letter Eagle Line update. Provenance captured directly on IN-007 under PA-004.",
     }
   ],
 
@@ -149,6 +181,8 @@ export const FR_AM_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-013", date: "2026-08-29", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "AS-003 issued after bounded FR-AM-0006 Record Review. Pressure state ESCALATING and VS-03 sustained; IN-007 does not meet the commercial-operation attractor." },
+    { id: "M-012", date: "2026-08-29", field: "instance_added", from: "—", to: "IN-007", note: "PA-004 operational provenance trial: QuantumScape automated pilot-line scale-up evidence admitted with canonical sources[] captured at admission." },
     { id: "M-011", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-001, IN-003, IN-006 descriptions reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-010", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001: manufacturing-process scale-up distinguished from underlying electrolyte/cell-chemistry evidence. Corpus Review — Realization Note Candidates (v2)." },
     { id: "M-009", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: ESCALATING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
