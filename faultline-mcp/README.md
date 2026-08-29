@@ -32,6 +32,20 @@ The MCP project must not maintain a second case database, separate lifecycle tax
 | `faultline_read_record` | Full canonical record, including evidence, assessment history, current assessment, mechanisms, lineage, open questions and mutation history |
 | `faultline_search_records` | Search across the complete canonical record objects |
 
+### `detail` parameter on `faultline_list_records` / `faultline_search_records`
+
+Both tools accept an optional `detail: "summary" | "full"` parameter.
+
+- `"summary"` (default, unchanged behavior) — one thin projection per record: id, programme,
+  claim, status, current Pressure State/Verification Stage, and counts of instances/assessments/
+  open questions. No corpus fields beyond that projection.
+- `"full"` — the same complete canonical view `faultline_read_record` returns
+  (`instances`, `mechanisms`, `openQuestions`, full `assessments` history, `transitionFeed`,
+  `mutationLog`, `programmeMetadata`) for every matched record, instead of one
+  `faultline_read_record` call per hit.
+
+Existing callers that don't pass `detail` see no change in output shape.
+
 Example questions:
 
 ```text
@@ -70,6 +84,54 @@ Use transport `Streamable HTTP` and endpoint:
 
 ```text
 https://mcp.faultlinewatch.com/mcp
+```
+
+### Claude Code
+
+```bash
+claude mcp add --transport http faultline https://mcp.faultlinewatch.com/mcp
+```
+
+`--transport http` is Claude Code's flag for Streamable HTTP (as opposed to `--transport sse`),
+confirmed against `claude mcp add --help` on Claude Code 2.1.251.
+
+### Raw HTTP
+
+`/mcp` is a single stateless POST endpoint (`sessionIdGenerator: undefined` — no session
+handshake or cookie state between calls), so a plain JSON-RPC request works without an MCP
+client library:
+
+```bash
+curl -s https://mcp.faultlinewatch.com/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "faultline_search_records",
+      "arguments": { "query": "room-temperature superconductivity", "limit": 1 }
+    }
+  }'
+```
+
+Response (generated from the live corpus data, not fabricated — the tool's
+`recordSummary()` projection for `FR-AM-0005`):
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"room-temperature superconductivity\",\n  \"count\": 1,\n  \"records\": [\n    {\n      \"id\": \"FR-AM-0005\",\n      \"programme\": \"PROG-AM\",\n      \"programmeName\": \"Advanced Materials, Physics & Energy\",\n      \"claim\": \"Room-Temperature Superconductivity — Reproducibility Under Laboratory Conditions\",\n      \"status\": \"closed\",\n      \"pressureState\": \"collapsed\",\n      \"verificationStage\": \"VS-04\",\n      \"assessmentDate\": \"2026-06-29\",\n      \"openedDate\": \"2024-01-15\",\n      \"lastMutationDate\": \"2026-07-09\",\n      \"evidenceInstances\": 6,\n      \"assessments\": 2,\n      \"openQuestions\": 4,\n      \"canonicalUrl\": \"https://faultlinewatch.com/the-record/fr-am-0005/\"\n    }\n  ]\n}"
+      }
+    ]
+  }
+}
 ```
 
 ## Local development and deployment
