@@ -17,7 +17,7 @@ export default function TheRecord() {
   const filterFrontier = searchParams.get("frontier") || "all";
   const filterState = searchParams.get("state") || "all";
   const filterStatus = searchParams.get("status") || "all";
-  const sortBy = searchParams.get("sort") || "opened-desc";
+  const sortBy = searchParams.get("sort") || "updated";
   const query = searchParams.get("q") || "";
 
   // Filter/sort state lives in the URL (not component state) so it survives
@@ -41,7 +41,7 @@ export default function TheRecord() {
   const setFilterFrontier = (v) => updateParam("frontier", v, "all");
   const setFilterState = (v) => updateParam("state", v, "all");
   const setFilterStatus = (v) => updateParam("status", v, "all");
-  const setSortBy = (v) => updateParam("sort", v, "opened-desc");
+  const setSortBy = (v) => updateParam("sort", v, "updated");
   const setQuery = (v) => updateParam("q", v, "");
 
   const summary = useMemo(() => getCorpusSummary(ALL_RECORDS), []);
@@ -189,9 +189,7 @@ export default function TheRecord() {
                   onChange={(e) => setSortBy(e.target.value)}
                   aria-label="Sort records"
                 >
-                  <option value="opened-desc">Opened — newest first</option>
                   <option value="updated">Updated — newest first</option>
-                  <option value="opened-asc">Opened — oldest first</option>
                   <option value="mutations-desc">Most mutations</option>
                   <option value="id-asc">Record ID</option>
                 </select>
