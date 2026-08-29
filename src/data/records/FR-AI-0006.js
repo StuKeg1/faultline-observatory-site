@@ -23,9 +23,21 @@ export const FR_AI_0006 = {
     {
       id: "IN-001",
       qualifiedEvent: "Anthropic mechanistic interpretability — induction heads and in-context learning",
-      description: "Olsson et al. (Anthropic, 2022) identify \"induction heads\" — specific attention head circuits that implement a form of pattern completion — as a mechanistic explanation for in-context learning across model sizes from small (tens of millions of parameters) to large (billions). The paper demonstrates that the same circuit type, performing the same computational operation, is present and causally responsible for in-context learning across a range of model sizes. This is direct supportive evidence for the claim: a specific capability (in-context learning) is explained by the same mechanism (induction head circuits) across model sizes. The paper is the strongest single piece of mechanistic continuity evidence in the record.",
+      description: "Olsson et al. (Anthropic, 2022) identify \"induction heads\" — attention-head circuits that implement a form of pattern completion — as a candidate mechanism for in-context learning across transformer sizes. The paper provides strong causal evidence in small attention-only models, including ablation and mechanistic reverse engineering, while evidence in larger models with MLPs is mainly correlational and partly extrapolative. Induction heads recur across the model sweep and are associated with the onset of in-context learning, supporting mechanistic continuity, but the paper does not causally establish that induction heads explain in-context learning across the full model-size range. This remains important supportive evidence for the claim, with the strength of causal attribution decreasing at larger scale.",
       vectors: ["supportive--mechanistic-continuity-demonstrated"],
       date: "2022",
+      sources: [
+        {
+          citation: "Olsson, C. et al. (2022), In-context Learning and Induction Heads, Transformer Circuits Thread.",
+          url: "https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html",
+          locator: "Summary of Evidence for Sub-Claims; Arguments 1–6; Model Analysis Table",
+        },
+        {
+          citation: "Olsson, C. et al. (2022), In-context Learning and Induction Heads, arXiv:2209.11895.",
+          url: "https://arxiv.org/abs/2209.11895",
+          locator: "Abstract",
+        },
+      ],
     },
     {
       id: "IN-002",
@@ -112,7 +124,7 @@ export const FR_AI_0006 = {
   lineage: {
     items: [
     { year: "2020–21", text: "Scaling laws assume mechanistic continuity implicitly. Kaplan et al. scaling laws treat capability as a smooth function of scale, implicitly assuming continuous underlying mechanisms. The mechanistic question is not asked." },
-    { year: "2022", text: "Mechanistic interpretability identifies specific circuits. Elhage et al. and Olsson et al. establish that specific circuit types are causally responsible for specific capabilities. The mechanistic continuity question becomes empirically tractable for the first time." },
+    { year: "2022", text: "Mechanistic interpretability identifies specific circuits. Elhage et al. and Olsson et al. provide causal circuit evidence in small models and cross-scale correlational evidence in larger models, making the mechanistic continuity question empirically tractable for the first time." },
     { year: "2022–23", text: "Emergent abilities and superposition raise discontinuity concerns. Wei et al. and Elhage et al. superposition work suggest mechanisms may differ qualitatively with scale. The claim enters ESCALATING then transitions to FRAGMENTING as the definitional question sharpens." },
     { year: "2023–24", text: "Representation geometry research deepens the question. Evidence accumulates that large models organise representations differently than small models. Whether this is mechanistic continuity or discontinuity remains contested at the definitional level." }
     ],
@@ -139,6 +151,8 @@ export const FR_AI_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-010", date: "2026-08-29", field: "provenance_enriched", from: "IN-001 without structured provenance", to: "IN-001 sources[] added", note: "Added primary Transformer Circuits and arXiv provenance for Olsson et al. (2022) after bounded source review." },
+    { id: "M-009", date: "2026-08-29", field: "editorial_correction", from: "IN-001 described causal responsibility across the full model-size range", to: "IN-001 distinguishes causal small-model evidence from mainly correlational larger-model evidence", note: "Editorial Correction: aligned IN-001 and matching 2022 lineage wording with Olsson et al.'s stated evidence strength. No new evidence instance and no reassessment; FRAGMENTING / VS-03 remains current under AS-002." },
     { id: "M-008", date: "2026-08-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "PA-005 review: FRAGMENTING / VS-03 retained after admission of IN-006." },
     { id: "M-007", date: "2026-08-29", field: "instance_added", from: "—", to: "IN-006", note: "PA-005: Yang et al. ICML 2025 cross-scale symbolic-mechanism evidence admitted with structured provenance." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },
