@@ -21,6 +21,7 @@ import {
 } from "./evidenceTrajectoryLayout.js";
 import { VS_STAGE_LABELS } from "../data/trajectoryVisuals.js";
 import "./EvidenceTrajectories.css";
+import "./EvidenceTrajectoriesProvenance.css";
 
 const STAGE_ORDER = ["VS-05", "VS-04", "VS-03", "VS-02", "VS-01"];
 
@@ -76,7 +77,6 @@ const LENSES = [
   })),
 ];
 
-
 function formatState(state) {
   return getPressureStateLabel(state);
 }
@@ -114,6 +114,31 @@ function footerCaptionLines(label) {
   };
   return fixedLines[label] ?? [label];
 }
+
+function singleAssessmentProvenance(trajectory) {
+  if (trajectory.history.length !== 1) return null;
+  return trajectory.history[0].verificationStageProvenance ?? null;
+}
+
+function provenanceClasses(provenance) {
+  if (!provenance) return [];
+  const classes = ["is-single-reviewed"];
+  if (provenance.disposition === "correction-required") classes.push("is-single-reconstructed");
+  if (provenance.disposition === "historically-unverified") classes.push("is-single-historically-unverified");
+  return classes;
+}
+
+function provenanceDescription(provenance) {
+  if (!provenance) return "";
+  if (provenance.disposition === "correction-required") {
+    return ` Legacy review reconstructed the current stage from ${provenance.storedStage} to ${provenance.effectiveStage} with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
+  }
+  if (provenance.disposition === "historically-unverified") {
+    return ` Legacy review marked this stage historically unverified with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
+  }
+  return ` Legacy review re-affirmed this stage with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
+}
+
 function EvidenceChart({
   trajectories,
   selectedId,
@@ -208,7 +233,7 @@ function EvidenceChart({
       >
         <title id="et-chart-title">Evidence Trajectories</title>
         <desc id="et-chart-desc">
-          Evidence Trajectories arranges documented assessments across four evidence-history phases. Horizontal spacing represents documentary sequence rather than equal calendar time. The Current Register is grouped by current verification stage.
+          Evidence Trajectories arranges documented assessments across four evidence-history phases. Horizontal spacing represents documentary sequence rather than equal calendar time. Single-assessment records are shown as one historical point rather than a synthetic full-width line. The Current Register is grouped by current verification stage.
         </desc>
 
         <g className="et-phase-guides" aria-hidden="true">
@@ -253,7 +278,18 @@ function EvidenceChart({
           const isLensFocus = focusIds.has(record.id);
           const isContext = Boolean(selectedId || lensId !== "full") && !isLensFocus;
           const tone = getTone(trajectory.current.pressureState);
-          const events = assignEventsToDocumentaryPhases(trajectory.history);
+          const provenance = singleAssessmentProvenance(trajectory);
+          const events = trajectory.history.length === 1
+            ? [{
+                assessment: {
+                  ...trajectory.history[0],
+                  verificationStage: provenance?.storedStage ?? trajectory.history[0].verificationStage,
+                },
+                phaseId: "origins",
+                role: "origin",
+                index: 0,
+              }]
+            : assignEventsToDocumentaryPhases(trajectory.history);
           const eventPoints = events.map((event) => ({
             ...event,
             x: calculateEventX({
@@ -265,9 +301,9 @@ function EvidenceChart({
             y: geometry.yForStage(event.assessment.verificationStage),
             trueY: geometry.yForStage(event.assessment.verificationStage),
           }));
-          const path = eventPoints
-            .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`)
-            .join(" ");
+          const path = eventPoints.length > 1
+            ? eventPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ")
+            : "";
 
           return (
             <g
@@ -283,36 +319,44 @@ function EvidenceChart({
               onMouseEnter={() => onHover(record.id)}
               onMouseLeave={() => onHover(null)}
             >
-              <path
-                className="et-semantic-path"
-                d={path}
-                tabIndex={0}
-                role="button"
-                aria-pressed={isSelected}
-                aria-label={`${record.id}: ${record.claim.shortLabel}. Documentary trajectory through ${trajectory.history.length} actual assessment${trajectory.history.length === 1 ? "" : "s"}. Press Enter to hold this trajectory for reading.`}
-                onClick={() => onSelect(record.id)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    onSelect(record.id);
-                  }
-                  if (event.key === "Escape") onSelect(null);
-                }}
-              />
+              {path && (
+                <path
+                  className="et-semantic-path"
+                  d={path}
+                  tabIndex={0}
+                  role="button"
+                  aria-pressed={isSelected}
+                  aria-label={`${record.id}: ${record.claim.shortLabel}. Documentary trajectory through ${trajectory.history.length} actual assessments. Press Enter to hold this trajectory for reading.`}
+                  onClick={() => onSelect(record.id)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      onSelect(record.id);
+                    }
+                    if (event.key === "Escape") onSelect(null);
+                  }}
+                />
+              )}
               {eventPoints.map((point, index) => {
                 const isCurrent = point.phaseId === "today";
                 const previous = index > 0 ? eventPoints[index - 1] : null;
                 const isTransition = !previous || previous.assessment.pressureState !== point.assessment.pressureState;
+                const pointProvenance = trajectory.history.length === 1 ? provenance : null;
+                const pointClass = [
+                  isCurrent ? "is-current-ring" : isTransition ? "is-transition" : "is-reaffirmation",
+                  ...provenanceClasses(pointProvenance),
+                ].join(" ");
+                const aria = `${record.id}, ${point.assessment.date}, recorded stage ${point.assessment.verificationStage}, ${formatState(point.assessment.pressureState)}.${provenanceDescription(pointProvenance)}`;
                 return (
                   <circle
                     key={`${record.id}-${point.assessment.id}-${point.phaseId}`}
-                    className={isCurrent ? "is-current-ring" : isTransition ? "is-transition" : "is-reaffirmation"}
+                    className={pointClass}
                     cx={point.x}
                     cy={point.y}
                     r={isCurrent ? 4.2 : isLensFocus || isSelected || isHovered ? 4.8 : 3.6}
                     tabIndex={isLensFocus || isSelected ? 0 : -1}
                     role="button"
-                    aria-label={`${record.id}, ${point.assessment.date}, true stage ${point.assessment.verificationStage}, ${formatState(point.assessment.pressureState)}.`}
+                    aria-label={aria}
                     onClick={(event) => {
                       event.stopPropagation();
                       onSelect(record.id);
@@ -323,7 +367,9 @@ function EvidenceChart({
                         onSelect(record.id);
                       }
                     }}
-                  />
+                  >
+                    <title>{aria}</title>
+                  </circle>
                 );
               })}
             </g>
@@ -362,19 +408,22 @@ function EvidenceChart({
                   const isSelected = selectedId === record.id;
                   const isHovered = hoveredId === record.id;
                   const isContext = Boolean(selectedId || lensId !== "full") && !focusIds.has(record.id);
+                  const provenance = singleAssessmentProvenance(trajectory);
+                  const registerAria = `${record.id}: ${record.claim.shortLabel}. Current verification stage ${group.stage} ${VS_STAGE_LABELS[group.stage]}.${provenanceDescription(provenance)}`;
                   return (
                     <g
                       key={record.id}
                       className={[
                         "et-register-row",
                         `tone-${tone}`,
+                        ...provenanceClasses(provenance),
                         isContext ? "is-context" : "",
                         isHovered ? "is-hovered" : "",
                         isSelected ? "is-selected" : "",
                       ].join(" ")}
                       tabIndex={0}
                       role="button"
-                      aria-label={`${record.id}: ${record.claim.shortLabel}. Current verification stage ${group.stage} ${VS_STAGE_LABELS[group.stage]}.`}
+                      aria-label={registerAria}
                       onMouseEnter={() => onHover(record.id)}
                       onMouseLeave={() => onHover(null)}
                       onClick={() => onSelect(record.id)}
@@ -385,7 +434,7 @@ function EvidenceChart({
                         }
                       }}
                     >
-                      <title>{record.claim.shortLabel}</title>
+                      <title>{registerAria}</title>
                       <circle className="et-register-row-ring" cx={geometry.registerColumns.ringX} cy={row.labelY} r="4.4" />
                       <text className="et-register-id" x={geometry.registerColumns.idX} y={row.labelY + 3}>{record.id}</text>
                       <text className="et-register-title" x={geometry.registerColumns.titleX} y={row.labelY + 3}>{shortRegisterTitle(record.claim.shortLabel, geometry.registerTitleLimit)}</text>
@@ -424,15 +473,13 @@ function EvidenceChart({
     </div>
   );
 }
+
 function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, lensId, onSelect }) {
   const { record, history, current, transitions } = trajectory;
   const programme = getProgramme(record);
   const stateChanges = transitions.length;
 
   function handleSelectClick(event) {
-    // Modified clicks (new tab, new window, download) keep native anchor
-    // behaviour. Plain left clicks are handled in-page so the selection also
-    // scrolls the card into view.
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
       return;
     }
@@ -530,15 +577,18 @@ export default function EvidenceTrajectories() {
               <ol>
                 <li><b>Read across</b> - time moves from left to right.</li>
                 <li><b>Read vertically</b> - position indicates verification depth at that moment.</li>
+                <li><b>Single-assessment records</b> - one documented assessment is shown as one historical point, not as a synthetic line to Today.</li>
+                <li><b>Read provenance</b> - dashed rings mark single-assessment stages touched by the legacy review; finer dotted rings mark historically unverified assignments.</li>
                 <li><b>Read the register</b> - the right column names each record's current Verification Stage at Today.</li>
                 <li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li>
               </ol>
             </details>
             <p className="et-instruction" role="note">
               Verification-stage provenance notice: the legacy review is complete. Historical
-              codes remain preserved; trajectories apply the ratified evidence-depth review
-              overlay. Assignments that could not be reliably reconstructed remain marked
-              historically unverified.
+              codes remain preserved. For single-assessment records, the historical chart now
+              shows the recorded stage while the Current Register shows the ratified present
+              interpretation. Assignments that could not be reliably reconstructed remain
+              visibly marked historically unverified.
             </p>
           </div>
         </header>
