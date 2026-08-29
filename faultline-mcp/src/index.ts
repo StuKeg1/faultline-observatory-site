@@ -149,13 +149,15 @@ function buildServer(): McpServer {
       status: z.string().optional().describe("Record status, normally open or closed"),
       pressureState: z.string().optional().describe("Current canonical Pressure State, e.g. escalating, fragmenting, resolving, collapsed"),
       verificationStage: z.string().optional().describe("Current Verification Stage, e.g. VS-02 or VS-04"),
+      detail: z.enum(["summary", "full"]).optional().describe("\"summary\" (default) returns one thin projection per record; \"full\" returns the same full canonical view as faultline_read_record for every matched record"),
     },
-    async (filters) => {
+    async ({ detail, ...filters }) => {
       const records = filterRecords(filters);
+      const project = detail === "full" ? canonicalRecordView : recordSummary;
       return {
         content: [{
           type: "text" as const,
-          text: jsonText({ count: records.length, records: records.map(recordSummary) }),
+          text: jsonText({ count: records.length, records: records.map(project) }),
         }],
       };
     },
@@ -192,8 +194,9 @@ function buildServer(): McpServer {
       query: z.string().min(1).describe("Search text"),
       programme: z.string().optional().describe("Optional canonical programme ID"),
       limit: z.number().int().min(1).max(50).optional().describe("Maximum records returned; defaults to 20"),
+      detail: z.enum(["summary", "full"]).optional().describe("\"summary\" (default) returns one thin projection per record; \"full\" returns the same full canonical view as faultline_read_record for every matched record"),
     },
-    async ({ query, programme, limit }) => {
+    async ({ query, programme, limit, detail }) => {
       const needle = query.trim().toLowerCase();
       const max = limit ?? 20;
       const records = ALL_RECORDS
@@ -203,11 +206,12 @@ function buildServer(): McpServer {
           return jsonText({ record, programmeMetadata }).toLowerCase().includes(needle);
         })
         .slice(0, max);
+      const project = detail === "full" ? canonicalRecordView : recordSummary;
 
       return {
         content: [{
           type: "text" as const,
-          text: jsonText({ query, count: records.length, records: records.map(recordSummary) }),
+          text: jsonText({ query, count: records.length, records: records.map(project) }),
         }],
       };
     },

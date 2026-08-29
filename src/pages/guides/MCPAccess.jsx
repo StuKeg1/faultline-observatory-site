@@ -14,8 +14,10 @@ const TABS = [
   {
     id: "claude",
     label: "Claude Desktop",
-    codeLabel: "claude_desktop_config.json",
-    code: `{\n  "mcpServers": {\n    "faultline": {\n      "command": "npx",\n      "args": ["mcp-remote", "https://mcp.faultlinewatch.com/mcp"]\n    }\n  }\n}`,
+    codeLabel: "Recommended — Custom Connectors",
+    code: `Settings → Connectors → Add custom connector\n\nhttps://mcp.faultlinewatch.com/mcp`,
+    fallbackLabel: "Fallback — claude_desktop_config.json",
+    fallbackCode: `{\n  "mcpServers": {\n    "faultline": {\n      "command": "npx",\n      "args": ["mcp-remote", "https://mcp.faultlinewatch.com/mcp"]\n    }\n  }\n}`,
   },
   {
     id: "inspector",
@@ -23,7 +25,43 @@ const TABS = [
     codeLabel: "MCP Inspector",
     code: `# Transport Type: Streamable HTTP\n# URL:\nhttps://mcp.faultlinewatch.com/mcp`,
   },
+  {
+    id: "claude-code",
+    label: "Claude Code",
+    codeLabel: "shell",
+    code: `claude mcp add --transport http faultline https://mcp.faultlinewatch.com/mcp`,
+  },
+  {
+    id: "http",
+    label: "Raw HTTP",
+    codeLabel: "curl",
+    code: `curl -s https://mcp.faultlinewatch.com/mcp \\
+  -H "Content-Type: application/json" \\
+  -H "Accept: application/json, text/event-stream" \\
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "faultline_search_records",
+      "arguments": { "query": "room-temperature superconductivity", "limit": 1 }
+    }
+  }'`,
+  },
 ];
+
+const HTTP_SAMPLE_RESPONSE = `{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\\n  \\"query\\": \\"room-temperature superconductivity\\",\\n  \\"count\\": 1,\\n  \\"records\\": [\\n    {\\n      \\"id\\": \\"FR-AM-0005\\",\\n      \\"programme\\": \\"PROG-AM\\",\\n      \\"programmeName\\": \\"Advanced Materials, Physics & Energy\\",\\n      \\"claim\\": \\"Room-Temperature Superconductivity — Reproducibility Under Laboratory Conditions\\",\\n      \\"status\\": \\"closed\\",\\n      \\"pressureState\\": \\"collapsed\\",\\n      \\"verificationStage\\": \\"VS-04\\",\\n      \\"assessmentDate\\": \\"2026-06-29\\",\\n      \\"openedDate\\": \\"2024-01-15\\",\\n      \\"lastMutationDate\\": \\"2026-07-09\\",\\n      \\"evidenceInstances\\": 6,\\n      \\"assessments\\": 2,\\n      \\"openQuestions\\": 4,\\n      \\"canonicalUrl\\": \\"https://faultlinewatch.com/the-record/fr-am-0005/\\"\\n    }\\n  ]\\n}"
+      }
+    ]
+  }
+}`;
 
 export default function MCPAccess() {
   const [activeTab, setActiveTab] = useState("codex");
@@ -69,7 +107,7 @@ export default function MCPAccess() {
             </div>
             <div className="mcp-glance-item">
               <div className="mcp-glance-label">Compatible clients</div>
-              <div className="mcp-glance-value">Codex, Claude Desktop, MCP Inspector, and other MCP-compatible clients</div>
+              <div className="mcp-glance-value">Codex, Claude Desktop, Claude Code, MCP Inspector, raw HTTP, and other MCP-compatible clients</div>
             </div>
             <div className="mcp-glance-item mcp-glance-full">
               <div className="mcp-glance-label">Current capabilities</div>
@@ -109,6 +147,25 @@ export default function MCPAccess() {
                     <div className="mcp-code-label">{tab.codeLabel}</div>
                     <pre>{tab.code}</pre>
                   </div>
+                  {tab.id === "claude" && (
+                    <>
+                      <p>
+                        Custom Connectors is the normal bridge-free setup. No local process or
+                        <code> claude_desktop_config.json</code> edit is required. Use the fallback
+                        below only when you specifically need config-file-based setup.
+                      </p>
+                      <div className="mcp-code-block">
+                        <div className="mcp-code-label">{tab.fallbackLabel}</div>
+                        <pre>{tab.fallbackCode}</pre>
+                      </div>
+                    </>
+                  )}
+                  {tab.id === "http" && (
+                    <div className="mcp-code-block">
+                      <div className="mcp-code-label">Sample response</div>
+                      <pre>{HTTP_SAMPLE_RESPONSE}</pre>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -118,6 +175,22 @@ export default function MCPAccess() {
               is currently required. Most users can connect directly using the endpoint
               shown above. Reasonable rate limits may apply to protect service availability,
               particularly for large cross-record queries or automated loops.
+            </p>
+            <p>
+              The <code>/mcp</code> endpoint is a single stateless POST route — every call
+              is a self-contained JSON-RPC request (no session handshake or cookie state is
+              kept between calls), which is what makes the raw HTTP example above work
+              without an MCP client library.
+            </p>
+            <p>
+              <code>faultline_list_records</code> and <code>faultline_search_records</code>{" "}
+              both accept an optional <code>detail</code> parameter: <code>"summary"</code>{" "}
+              (default, unchanged) returns one thin projection per record — the same shape
+              always returned before this parameter existed — while <code>"full"</code>{" "}
+              returns the same complete canonical view as <code>faultline_read_record</code>{" "}
+              for every matched record, so a cross-record query can retrieve evidence
+              instances, mechanisms, and open questions in a single call instead of one
+              <code>faultline_read_record</code> call per hit.
             </p>
             <p>
               Once connected, your client discovers the Observatory tools automatically.
