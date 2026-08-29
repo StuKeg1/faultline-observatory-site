@@ -19,14 +19,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: Apply bounded classification correction
         run: node scripts/ec-fr-am-0006-vs03.cjs
       - name: Validate focused record
         run: |
           npm ci
           npm run validate:provenance
-          npm test -- --runInBand || npm test
+          npm test
       - name: Commit bounded result
         run: |
           git config user.name "github-actions[bot]"
