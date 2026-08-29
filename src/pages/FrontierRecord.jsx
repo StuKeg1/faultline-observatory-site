@@ -318,7 +318,22 @@ function EvidenceSources({ record }) {
                   {showFullS4Content && inst.description && (
                     <span className="ev-description">{inst.description}</span>
                   )}
-                  {inst.sourceReference && (
+                  {inst.sources?.length > 0 ? (
+                    <span className="ev-structured-sources" aria-label={`${inst.sources.length} structured source${inst.sources.length === 1 ? "" : "s"}`}>
+                      {inst.sources.map((source, index) => {
+                        const href = source.url || (source.doi ? `https://doi.org/${source.doi}` : null);
+                        return (
+                          <span key={`${inst.id}-source-${index}`} className="ev-structured-source">
+                            <span className="ev-source-index">{index + 1}.</span>{" "}
+                            {href ? <a href={href} target="_blank" rel="noreferrer">{source.citation}</a> : source.citation}
+                            {source.doi && <span className="ev-source-meta"> DOI {source.doi}</span>}
+                            {source.locator && <span className="ev-source-meta"> · {source.locator}</span>}
+                            {source.quote && <q className="ev-source-quote">{source.quote}</q>}
+                          </span>
+                        );
+                      })}
+                    </span>
+                  ) : inst.sourceReference && (
                     <span className="ev-source-reference">{inst.sourceReference}</span>
                   )}
                 </span>

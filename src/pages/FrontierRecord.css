@@ -604,3 +604,25 @@
 @media (max-width: 700px) {
   .stage-provenance-disclosure { margin: 0 1rem 2.5rem; }
 }
+
+
+/* PA-002 structured evidence provenance */
+.ev-structured-sources {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+.ev-structured-source {
+  display: block;
+  margin-top: 0.18rem;
+}
+.ev-source-index,
+.ev-source-meta {
+  opacity: 0.72;
+}
+.ev-source-quote {
+  display: block;
+  margin-top: 0.15rem;
+  opacity: 0.82;
+}

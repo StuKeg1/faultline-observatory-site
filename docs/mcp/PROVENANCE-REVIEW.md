@@ -1,5 +1,7 @@
 # Source-Level Provenance — Architecture Review
 
+> **Superseded architecture note (PA-002, 2026-08-29):** the singular `instance.source` proposal below was tested in PA-001 and replaced by the admitted canonical primitive `instance.sources[]`. This file is retained as decision history.
+
 Status: Review — no implementation, no schema change
 Layer: Canonical corpus (`src/data/records/FR-*.js`)
 Source: Item 3 of `MCP Capability Repair` ticket, itself following up on

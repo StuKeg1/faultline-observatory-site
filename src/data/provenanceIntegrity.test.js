@@ -47,9 +47,11 @@ test("FR-BT-0004 distinguishes late-stage incidence, mortality and publication c
   assert.equal(current.verificationStage, "VS-04");
 });
 
-test("each audited record logs the provenance repair as an editorial correction", () => {
+test("each audited record retains the provenance repair as an editorial correction", () => {
   for (const record of AUDITED_RECORDS) {
-    assert.equal(record.mutationLog[0].date, "2026-08-28");
-    assert.equal(record.mutationLog[0].field, "reference_corrected");
+    const repair = record.mutationLog.find(
+      ({ date, field }) => date === "2026-08-28" && field === "reference_corrected",
+    );
+    assert.ok(repair, `${record.id} has lost its 2026-08-28 reference correction`);
   }
 });
