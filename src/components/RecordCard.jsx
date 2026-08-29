@@ -17,7 +17,6 @@ export default function RecordCard({ record }) {
       <div className="rc-claim">{record.claim.statement}</div>
       <div className="rc-meta">
         <span className="rc-programme">{record.programme}</span>
-        <span className="rc-date">Opened {record.claim.openedDate}</span>
         <span className="rc-assessments">
           {record.assessments.length} assessment{record.assessments.length !== 1 ? "s" : ""}
         </span>
