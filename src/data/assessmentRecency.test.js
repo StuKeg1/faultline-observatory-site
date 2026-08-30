@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { getAssessmentRecency } from "./assessmentRecency.js";
+import { ALL_RECORDS } from "./corpus.js";
 
 test("initial assessment is reported as initial recency", () => {
   const recency = getAssessmentRecency({
@@ -54,4 +55,11 @@ test("records without assessments remain structurally invalid", () => {
     () => getAssessmentRecency({ id: "FR-TEST-0004", assessments: [] }),
     /has no assessments — structurally invalid/,
   );
+});
+
+test("LAD-001 historical display dates are used by assessment recency", () => {
+  const coldFusion = ALL_RECORDS.find((record) => record.id === "FR-AM-0001");
+  const recency = getAssessmentRecency(coldFusion);
+  assert.equal(recency.date, "2004 or earlier");
+  assert.equal(coldFusion.assessments.at(-1).date, "2024-01-15");
 });
