@@ -165,7 +165,7 @@ function buildServer(): McpServer {
 
   server.tool(
     "faultline_read_record",
-    "Return a full canonical Frontier Record by ID, including evidence instances, governed assessment history, current assessment, mechanisms, lineage, open questions, mutation history and canonical URL.",
+    "Return a full canonical Frontier Record by ID, including evidence instances and structured source provenance where recorded, governed assessment history, current assessment, mechanisms, lineage, open questions, mutation history and canonical URL.",
     {
       id: z.string().describe("Canonical Frontier Record ID, e.g. FR-AM-0005 or FR-AI-0009"),
     },
