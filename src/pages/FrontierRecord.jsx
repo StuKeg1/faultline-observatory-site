@@ -18,11 +18,6 @@ import {
 } from "../data/derive.js";
 import "./FrontierRecord.css";
 
-// VD-003 / Test B remains an experiment, not a badge-system rollout. Test A
-// (the assessment trajectory) is independently admitted for every eligible
-// record below; these three records retain the non-colour badge treatment.
-const VD_003_BADGE_RECORDS = new Set(["FR-AM-0001", "FR-AM-0006", "FR-AI-0009"]);
-
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
 
 function StageProvenanceMarker() {
@@ -50,7 +45,7 @@ function StageProvenanceMarker() {
 // date the state was entered — showing only current.date as "in this
 // state since" reads as if the state just changed. The entered-date row
 // is only shown when it differs from the last-verified date.
-function WarrantPanel({ current, record, isVD003 }) {
+function WarrantPanel({ current, record }) {
   const rationale = current.assessorNote || current.summary;
   const enteredDate = getStateEnteredDate(record);
   const wasReaffirmed = enteredDate !== current.date;
@@ -59,7 +54,7 @@ function WarrantPanel({ current, record, isVD003 }) {
       <div className="wp-row">
         <span className="wp-label">Current state</span>
         <span className="wp-value wp-state">
-          <StateBadge pressureState={current.pressureState} variant={isVD003 ? "vd-003" : "default"} />
+          <StateBadge pressureState={current.pressureState} />
           <span className="wp-vs-code">{current.verificationStage}</span>
         </span>
       </div>
@@ -622,7 +617,6 @@ export default function FrontierRecord() {
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
-  const isVD003Badge = VD_003_BADGE_RECORDS.has(record.id);
   const assessmentTrajectory = record.assessments.length > 1
     ? getCompactAssessmentTrajectory(record)
     : null;
@@ -674,7 +668,7 @@ export default function FrontierRecord() {
                   appears exactly once, in the State Warrant section below,
                   instead of being duplicated here as well. */}
               <div className="rp-status-row" role="status" aria-label="Current record state">
-                <StateBadge pressureState={current.pressureState} variant={isVD003Badge ? "vd-003" : "default"} />
+                <StateBadge pressureState={current.pressureState} />
                 <span className="rp-status-vs">{current.verificationStage}</span>
                 <span className="rp-status-sep">·</span>
                 <span className="rp-status-since">since {current.date}</span>
@@ -743,7 +737,7 @@ export default function FrontierRecord() {
 
           <section className="record-section-inner" id="s-warrant">
             <div className="rs-header">State Warrant</div>
-            <WarrantPanel current={current} record={record} isVD003={isVD003Badge} />
+            <WarrantPanel current={current} record={record} />
             <ExperimentalAnnotations record={record} />
           </section>
 

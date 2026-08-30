@@ -101,17 +101,6 @@ button { cursor: pointer; }
 .sb-resolving   { color: var(--state-resolving);   background: var(--state-resolving-bg);   border-color: #b8a0d4; }
 .sb-collapsed   { color: var(--state-collapsed);   background: var(--state-collapsed-bg);   border-color: var(--state-collapsed-rule); }
 
-/* VD-003 / Test B — a deliberately local badge variant. The distinctions
-   are border treatments, not state-direction glyphs: their only job is to
-   make already-written state names easier to scan without colour. */
-.state-badge--vd-003 { border-width: 1px; }
-.state-badge--vd-003.sb-emerging { border-style: solid; }
-.state-badge--vd-003.sb-escalating { border-style: double; }
-.state-badge--vd-003.sb-stabilising { border-style: dashed; }
-.state-badge--vd-003.sb-fragmenting { border-style: dotted; }
-.state-badge--vd-003.sb-resolving { border-width: 2px; padding: 1px 6px 1px 4px; }
-.state-badge--vd-003.sb-collapsed { border-width: 2px 1px 1px; padding: 1px 7px 2px 5px; }
-
 /* ─── FOOTER ──────────────────────────────────────────────── */
 .site-footer {
   padding: 2rem;
