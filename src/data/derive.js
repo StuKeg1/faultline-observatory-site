@@ -64,6 +64,53 @@ export function getStateEnteredDate(record) {
 }
 
 /**
+ * Returns the compact, assessment-only trajectory used by VD-003.
+ *
+ * This is deliberately narrower than the full Assessment History: it
+ * compresses consecutive reaffirmations into one state entry, while keeping
+ * the date of the most recent canonical assessment separately. It therefore
+ * describes assessment movement, never evidence-update frequency.
+ *
+ * A malformed or non-chronological assessment date makes the projection
+ * unreliable. In that case callers receive null and must render nothing.
+ */
+export function getCompactAssessmentTrajectory(record) {
+  const history = getAssessmentHistory(record);
+  const canonicalHistory = record.assessments;
+  const isCanonicalDate = (date) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
+    const parsed = new Date(`${date}T00:00:00Z`);
+    return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === date;
+  };
+
+  // Validate the append-only canonical dates, rather than the public display
+  // dates. LAD-001 may legitimately replace a legacy flattened date with a
+  // governed range or upper-bound expression such as "2004 or earlier".
+  if (!canonicalHistory.every((assessment) => isCanonicalDate(assessment.date))) return null;
+  if (canonicalHistory.some((assessment, index) => index > 0 && assessment.date < canonicalHistory[index - 1].date)) {
+    return null;
+  }
+
+  const steps = [];
+  for (const assessment of history) {
+    const previous = steps[steps.length - 1];
+    if (!previous || previous.pressureState !== assessment.pressureState) {
+      steps.push({
+        pressureState: assessment.pressureState,
+        enteredDate: assessment.date,
+      });
+    }
+  }
+
+  const current = history[history.length - 1];
+  return {
+    steps,
+    currentAssessmentDate: current.date,
+    currentStateEnteredDate: steps[steps.length - 1].enteredDate,
+  };
+}
+
+/**
  * Returns the canonical public URL for a record.
  */
 export function getRecordUrl(record) {

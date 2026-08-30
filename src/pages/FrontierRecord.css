@@ -101,6 +101,36 @@
   color: var(--state-audit);
   letter-spacing: 0.02em;
 }
+.assessment-trajectory {
+  border-top: 1px solid var(--rule-light);
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+}
+.assessment-trajectory-label {
+  color: var(--ink-light);
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+.assessment-trajectory-steps {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+.assessment-trajectory-step { align-items: center; display: inline-flex; gap: 0.4rem; }
+.assessment-trajectory-date,
+.assessment-trajectory-current {
+  color: var(--ink-light);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.4;
+}
+.assessment-trajectory-arrow { color: var(--ink-faint); font-family: var(--mono); font-size: 12px; }
+.assessment-trajectory-current { border-left: 1px solid var(--rule); margin-left: 0.15rem; padding-left: 0.6rem; }
 .rp-meta-panel {
   font-family: var(--mono);
   font-size: 11px;
@@ -508,6 +538,8 @@
 
   .record-passport { grid-template-columns: 1fr; }
   .rp-meta-panel { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
+  .assessment-trajectory-steps { align-items: flex-start; }
+  .assessment-trajectory-current { flex-basis: 100%; border-left: none; margin-left: 0; padding-left: 0; }
 
   /* Keep the 5 stages in a single scrollable row instead of reflowing
      into an uneven 3+2 grid — preserves stage order and equal widths. */
