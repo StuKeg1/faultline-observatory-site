@@ -18,9 +18,10 @@ import {
 } from "../data/derive.js";
 import "./FrontierRecord.css";
 
-// VD-003 is an experiment, not a badge-system rollout. These three records
-// intentionally exercise change, stable reassessment, and sparse history.
-const VD_003_RECORDS = new Set(["FR-AM-0001", "FR-AM-0006", "FR-AI-0009"]);
+// VD-003 / Test B remains an experiment, not a badge-system rollout. Test A
+// (the assessment trajectory) is independently admitted for every eligible
+// record below; these three records retain the non-colour badge treatment.
+const VD_003_BADGE_RECORDS = new Set(["FR-AM-0001", "FR-AM-0006", "FR-AI-0009"]);
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
 
@@ -109,9 +110,7 @@ function WarrantPanel({ current, record, isVD003 }) {
   );
 }
 
-function CompactAssessmentTrajectory({ record }) {
-  const trajectory = getCompactAssessmentTrajectory(record);
-  if (!trajectory) return null;
+function CompactAssessmentTrajectory({ trajectory }) {
 
   const hasMovement = trajectory.steps.length > 1;
   const isReaffirmed = trajectory.currentStateEnteredDate !== trajectory.currentAssessmentDate;
@@ -124,7 +123,7 @@ function CompactAssessmentTrajectory({ record }) {
           <Fragment key={`${step.pressureState}-${step.enteredDate}`}>
             {index > 0 && <span className="assessment-trajectory-arrow" aria-hidden="true">→</span>}
             <span className="assessment-trajectory-step">
-              <StateBadge pressureState={step.pressureState} variant="vd-003" />
+              <StateBadge pressureState={step.pressureState} />
               <span className="assessment-trajectory-date">
                 {index === trajectory.steps.length - 1 && isReaffirmed ? `entered ${step.enteredDate}` : step.enteredDate}
               </span>
@@ -605,7 +604,10 @@ export default function FrontierRecord() {
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
-  const isVD003 = VD_003_RECORDS.has(record.id);
+  const isVD003Badge = VD_003_BADGE_RECORDS.has(record.id);
+  const assessmentTrajectory = record.assessments.length > 1
+    ? getCompactAssessmentTrajectory(record)
+    : null;
   const hasGovernedNarrative = isPilot || record.id === "FR-QE-0001";
   const hasStageProvenance = getAssessmentHistory(record).some(
     (assessment) => assessment.verificationStageProvenance,
@@ -654,7 +656,7 @@ export default function FrontierRecord() {
                   appears exactly once, in the State Warrant section below,
                   instead of being duplicated here as well. */}
               <div className="rp-status-row" role="status" aria-label="Current record state">
-                <StateBadge pressureState={current.pressureState} variant={isVD003 ? "vd-003" : "default"} />
+                <StateBadge pressureState={current.pressureState} variant={isVD003Badge ? "vd-003" : "default"} />
                 <span className="rp-status-vs">{current.verificationStage}</span>
                 <span className="rp-status-sep">·</span>
                 <span className="rp-status-since">since {current.date}</span>
@@ -662,7 +664,7 @@ export default function FrontierRecord() {
                   <span className="rp-status-provenance">S4 reconstruction · not reaffirmed by realignment</span>
                 )}
               </div>
-              {isVD003 && <CompactAssessmentTrajectory record={record} />}
+              {assessmentTrajectory && <CompactAssessmentTrajectory trajectory={assessmentTrajectory} />}
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               {record.claim.subject && (
@@ -722,7 +724,7 @@ export default function FrontierRecord() {
 
           <section className="record-section-inner" id="s-warrant">
             <div className="rs-header">State Warrant</div>
-            <WarrantPanel current={current} record={record} isVD003={isVD003} />
+            <WarrantPanel current={current} record={record} isVD003={isVD003Badge} />
             <ExperimentalAnnotations record={record} />
           </section>
 
