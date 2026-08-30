@@ -183,29 +183,38 @@ function VerificationMatrix({ record }) {
  
   const stages = getVerificationStages(record);
 
+  // Verification stages are record positions, not another assessment
+  // trajectory. Keep the governed stage codes unchanged, but make the
+  // display wording explicit where the bare label could be read as a
+  // real-world publication event.
+  const displayStageLabel = (vsCode, label) =>
+    vsCode === "VS-02" ? "Published evidence" : label;
+
   return (
     <div>
-      <div className="verification-matrix" role="list" aria-label="Verification stages">
+      <div className="verification-matrix" role="list" aria-label="Verification positions recorded in assessments">
         {stages.map(({ vsCode, label, date, status }) => {
           const stageClass = status === "current" ? "current" : status === "reached" ? "reached" : "";
+          const stageLabel = displayStageLabel(vsCode, label);
           return (
             <div key={vsCode} className={`vm-stage ${stageClass}`} role="listitem"
-              aria-label={`${vsCode} ${label}: ${status}`}
+              aria-label={`${vsCode} ${stageLabel}: ${status}${date ? `, ${status === "current" ? "current from" : "first recorded"} ${date}` : ""}`}
               aria-current={status === "current" ? "true" : undefined}>
               <div className="vm-indicator" aria-hidden="true" />
               <div className="vm-stage-code" title={`Verification Stage ${vsCode.slice(3)}`}>{vsCode}</div>
-              <div className="vm-stage-name">{label}</div>
+              <div className="vm-stage-name">{stageLabel}</div>
               <div className="vm-stage-date">
-                {status === "current" ? `${date} — present` : date ?? "—"}
+                {status === "current" ? <><span>Current from</span> {date} — present</> :
+                  status === "reached" ? <><span>First recorded</span> {date}</> : "—"}
               </div>
             </div>
           );
         })}
       </div>
       <div className="vm-legend" aria-label="Matrix legend">
-        <span><span className="dot dot-reached" aria-hidden="true" /> State reached</span>
-        <span><span className="dot dot-current" aria-hidden="true" /> Current state</span>
-        <span><span className="dot dot-pending" aria-hidden="true" /> Not yet reached</span>
+        <span><span className="dot dot-reached" aria-hidden="true" /> Stage first recorded</span>
+        <span><span className="dot dot-current" aria-hidden="true" /> Current verification position</span>
+        <span><span className="dot dot-pending" aria-hidden="true" /> Not yet recorded</span>
       </div>
     </div>
   );
@@ -728,6 +737,7 @@ export default function FrontierRecord() {
 
           <section className="record-section-inner" id="s-matrix">
             <div className="rs-header">Verification Matrix</div>
+            <p className="vm-context">Verification position derived from the record’s assessments; dates show when Faultline first recorded each stage.</p>
             <VerificationMatrix record={record} />
           </section>
 

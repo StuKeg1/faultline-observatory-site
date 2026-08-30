@@ -233,13 +233,15 @@
 .vm-stage.reached .vm-stage-name { color: var(--ink-mid); }
 .vm-stage.current .vm-stage-name { color: var(--ink); }
 .vm-stage-date { font-family: var(--mono); font-size: 9px; color: var(--ink-faint); }
+.vm-stage-date span { text-transform: uppercase; letter-spacing: 0.04em; }
 .vm-stage.reached .vm-stage-date { color: var(--ink-light); }
 .vm-stage.current .vm-stage-date { color: var(--state-audit); }
 .vm-indicator { width: 6px; height: 6px; border-radius: 50%; background: var(--rule); margin-bottom: 0.5rem; }
 .vm-stage.reached .vm-indicator { background: var(--ink-mid); }
 .vm-stage.current .vm-indicator { background: var(--state-audit-rule); }
-.vm-legend { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+.vm-legend { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); display: flex; flex-wrap: wrap; column-gap: 1.5rem; row-gap: 0.45rem; margin-bottom: 1rem; }
 .vm-legend span { display: flex; align-items: center; gap: 0.4rem; }
+.vm-context { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.45; color: var(--ink-light); margin: -0.25rem 0 0.875rem; }
 .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
 .dot-reached { background: var(--ink-mid); }
 .dot-current { background: var(--state-audit-rule); }
