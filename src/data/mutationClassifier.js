@@ -214,6 +214,9 @@ export function detectMutationType(mutation, record) {
   if (mutation.field === "experimental_annotations_added") {
     return "experimental_annotations_added";
   }
+  if (mutation.field === "provenance_review_completed") {
+    return "provenance_review_completed";
+  }
   if (isBootstrapPlaceholder(mutation, creationDate)) {
     return "creation_batch_internal";
   }
@@ -274,6 +277,11 @@ const QUALIFICATION_TABLE = {
     false,
     "D",
     "2026-07 pilot: records that a record gained an experimentalAnnotations[] container — internal pilot infrastructure, not itself a public development. Analogous to creation_batch_internal and legacy_vocabulary_migrated: the mutation documents a structural change to the record's shape, not a new evidentiary or assessment finding. The annotation content itself, if any, is surfaced separately on the record page — this entry governs only whether the mutation-log line qualifies for the activity feed. Retained in full in the Institutional Changelog.",
+  ],
+  provenance_review_completed: [
+    false,
+    "D",
+    "LPR-001 infrastructure: records completion and repair state for deterministic queue selection. The underlying editorial correction, evidence admission or assessment change is classified through its own mutation; the completion marker is institutional housekeeping and remains changelog-only.",
   ],
   record_identifier_migrated: [
     false,

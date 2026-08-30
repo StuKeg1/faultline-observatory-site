@@ -9,6 +9,15 @@ const REQUIRED_PA_002 = new Set([
 ]);
 
 const DOI_RE = /^10\.\d{4,9}\/\S+$/;
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const REVIEW_FIELDS = [
+  "lastProvenanceReview",
+  "provenanceReviewId",
+  "provenanceOutcome",
+  "provenanceRepairStatus",
+];
+const REVIEW_OUTCOMES = new Set(["verified", "discrepancies_found", "discrepancies_corrected"]);
+const REPAIR_STATUSES = new Set(["not_required", "pending", "completed"]);
 
 function nonEmpty(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -38,6 +47,33 @@ export function validateSourceObject(source, label = "source") {
 
 export function validateRecordProvenance(record) {
   const errors = [];
+  const reviewFieldCount = REVIEW_FIELDS.filter((field) => field in record).length;
+  if (reviewFieldCount > 0 && reviewFieldCount !== REVIEW_FIELDS.length) {
+    errors.push(`${record.id} provenance review marker must contain all four governed fields`);
+  }
+  if (reviewFieldCount === REVIEW_FIELDS.length) {
+    if (!DATE_RE.test(record.lastProvenanceReview) || Number.isNaN(Date.parse(record.lastProvenanceReview))) {
+      errors.push(`${record.id}.lastProvenanceReview must be a valid YYYY-MM-DD date`);
+    }
+    if (!/^LPR-\d{3}-D\d{2}$/.test(record.provenanceReviewId)) {
+      errors.push(`${record.id}.provenanceReviewId must match LPR-NNN-DNN`);
+    }
+    if (!REVIEW_OUTCOMES.has(record.provenanceOutcome)) {
+      errors.push(`${record.id}.provenanceOutcome is not a governed value`);
+    }
+    if (!REPAIR_STATUSES.has(record.provenanceRepairStatus)) {
+      errors.push(`${record.id}.provenanceRepairStatus is not a governed value`);
+    }
+    if (record.provenanceOutcome === "verified" && record.provenanceRepairStatus !== "not_required") {
+      errors.push(`${record.id} verified provenance outcome must use repair status not_required`);
+    }
+    if (record.provenanceOutcome === "discrepancies_found" && record.provenanceRepairStatus !== "pending") {
+      errors.push(`${record.id} discrepancies_found outcome must use repair status pending`);
+    }
+    if (record.provenanceOutcome === "discrepancies_corrected" && record.provenanceRepairStatus !== "completed") {
+      errors.push(`${record.id} discrepancies_corrected outcome must use repair status completed`);
+    }
+  }
   for (const instance of record.instances ?? []) {
     const label = `${record.id}/${instance.id}`;
     if (REQUIRED_PA_002.has(label) && !Array.isArray(instance.sources)) errors.push(`${label} must carry PA-002 structured provenance`);

@@ -39,3 +39,32 @@ test("MCP full-record projection inherits canonical sources without a second pro
   assert.match(source, /\.\.\.record,/);
   assert.doesNotMatch(source, /extraction_status|source_hash|provenanceConfidence|machineExtractionConfidence/);
 });
+
+test("LPR completion marker requires a complete and internally consistent state", () => {
+  const valid = validateRecordProvenance({
+    id: "FR-TEST-0001",
+    instances: [],
+    lastProvenanceReview: "2026-08-30",
+    provenanceReviewId: "LPR-001-D01",
+    provenanceOutcome: "discrepancies_corrected",
+    provenanceRepairStatus: "completed",
+  });
+  assert.deepEqual(valid, []);
+
+  const incomplete = validateRecordProvenance({
+    id: "FR-TEST-0002",
+    instances: [],
+    lastProvenanceReview: "2026-08-30",
+  });
+  assert.match(incomplete.join("\n"), /all four governed fields/);
+
+  const inconsistent = validateRecordProvenance({
+    id: "FR-TEST-0003",
+    instances: [],
+    lastProvenanceReview: "2026-08-30",
+    provenanceReviewId: "LPR-001-D01",
+    provenanceOutcome: "discrepancies_found",
+    provenanceRepairStatus: "completed",
+  });
+  assert.match(inconsistent.join("\n"), /must use repair status pending/);
+});

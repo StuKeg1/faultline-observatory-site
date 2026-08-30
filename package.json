@@ -19,7 +19,8 @@
     "lint": "eslint .",
     "typecheck:mcp": "npm --prefix faultline-mcp run typecheck",
     "preview": "vite preview",
-    "test": "node --test src/data/mutationClassifier.test.js src/data/assessmentRecency.test.js src/data/recordDirectory.test.js src/data/trajectoryVisuals.test.js src/data/verificationStageReviews.test.js src/data/institutionalHealthIntegrity.test.js src/data/provenanceIntegrity.test.js src/pages/evidenceTrajectoryLayout.test.js src/pages/publicRecordPreview.test.js src/pages/homeQuestions.test.js src/pages/frontierRecordLegacyDate.test.js src/pages/mcpAccessResponsive.test.js scripts/redirects.test.js scripts/sitemap.test.js scripts/prerender.test.js scripts/homepageDiscoveryPrerender.test.js scripts/validate-mcp-canonical.test.js scripts/validate-provenance.test.js",
+    "test": "node --test src/data/mutationClassifier.test.js src/data/assessmentRecency.test.js src/data/recordDirectory.test.js src/data/trajectoryVisuals.test.js src/data/verificationStageReviews.test.js src/data/institutionalHealthIntegrity.test.js src/data/provenanceIntegrity.test.js src/data/provenanceReviewQueue.test.js src/pages/evidenceTrajectoryLayout.test.js src/pages/publicRecordPreview.test.js src/pages/homeQuestions.test.js src/pages/frontierRecordLegacyDate.test.js src/pages/mcpAccessResponsive.test.js scripts/redirects.test.js scripts/sitemap.test.js scripts/prerender.test.js scripts/homepageDiscoveryPrerender.test.js scripts/validate-mcp-canonical.test.js scripts/validate-provenance.test.js",
+    "provenance:next": "node scripts/select-provenance-review.js",
     "smoke:live": "node scripts/smoke-live.js",
     "prerender": "node scripts/prerender.js",
     "validate:provenance": "node scripts/validate-provenance.js"
