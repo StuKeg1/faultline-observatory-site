@@ -53,3 +53,21 @@ test("LAD-001 display dates flow through the compact trajectory", () => {
   ]);
   assert.equal(trajectory.currentAssessmentDate, "2004 or earlier");
 });
+
+test("every multi-assessment record has a reliable compact trajectory", () => {
+  const eligible = ALL_RECORDS.filter((item) => item.assessments.length > 1);
+  assert.ok(eligible.length > 0);
+  for (const item of eligible) {
+    const trajectory = getCompactAssessmentTrajectory(item);
+    assert.ok(trajectory, `${item.id} must have a reliable trajectory`);
+    assert.ok(trajectory.steps.length > 0, `${item.id} must retain an assessment state`);
+  }
+});
+
+test("single-assessment records remain outside rollout eligibility", () => {
+  const sparseRecords = ALL_RECORDS.filter((item) => item.assessments.length === 1);
+  assert.ok(sparseRecords.length > 0);
+  for (const item of sparseRecords) {
+    assert.equal(item.assessments.length > 1, false, `${item.id} is not eligible for trajectory rendering`);
+  }
+});
