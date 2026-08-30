@@ -27,6 +27,12 @@ export function validateMcpCanonical(workerRoot = DEFAULT_WORKER_ROOT) {
   if (!worker.includes('from "../../src/data/derive.js"')) {
     errors.push("remote MCP must use canonical derived accessors");
   }
+  if (!worker.includes("...record,")) {
+    errors.push("remote MCP full-record projection must preserve canonical instance fields, including sources[]");
+  }
+  if (!worker.includes("structured source provenance where recorded")) {
+    errors.push("faultline_read_record must disclose structured source provenance where recorded");
+  }
   if (files.some((file) => path.resolve(file) !== path.resolve(indexPath))) {
     errors.push("remote MCP source must remain a single derived adapter; additional source modules require canonical review");
   }

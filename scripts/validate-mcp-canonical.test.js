@@ -8,10 +8,12 @@ import { validateMcpCanonical } from "./validate-mcp-canonical.js";
 const canonicalImports = `
 import { ALL_RECORDS, PROGRAMMES } from "../../src/data/corpus.js";
 import { getCurrentAssessment } from "../../src/data/derive.js";
+function canonicalRecordView(record) { return { ...record, currentAssessment: getCurrentAssessment(record) }; }
 "faultline_list_records";
 "faultline_read_record";
 "faultline_search_records";
 "faultline_programmes";
+"structured source provenance where recorded";
 `;
 
 function fixture(indexSource, additionalFiles = {}) {
@@ -40,4 +42,10 @@ test("additional Worker data modules fail the anti-divergence gate", () => {
 test("retired lifecycle tools fail the anti-divergence gate", () => {
   const errors = validateMcpCanonical(fixture(`${canonicalImports}\n"fcif_list_cases";`));
   assert.ok(errors.some((error) => error.includes("retired lifecycle token")));
+});
+
+test("full-record provenance safeguards cannot be removed silently", () => {
+  const noProvenanceDisclosure = canonicalImports.replace('"structured source provenance where recorded";\n', "");
+  const errors = validateMcpCanonical(fixture(noProvenanceDisclosure));
+  assert.ok(errors.some((error) => error.includes("structured source provenance")));
 });

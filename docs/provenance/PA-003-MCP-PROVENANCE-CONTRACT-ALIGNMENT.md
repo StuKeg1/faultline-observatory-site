@@ -1,6 +1,6 @@
 # PA-003 — MCP Provenance Contract & Public Guidance Alignment
 
-Status: EXECUTED — pending CI / deployment verification
+Status: EXECUTED — verified
 Date: 2026-08-29
 Predecessor: PA-002 — Provenance Schema Admission (ADMITTED)
 
@@ -73,3 +73,8 @@ PA-003 does not add source registries, extraction provenance, source hashes, OCR
 ## Closure gates
 
 PA-003 closes PASS only after repository CI confirms the change set and any triggered production deployment is verified against the exact merged commit. Where practical, one external MCP retrieval of a provenance-enriched record should confirm that `sources[]` is visible to an ordinary client.
+
+
+## Verification
+
+On 2026-08-30, the canonical provenance validator and MCP anti-divergence gate passed. An external `faultline_read_record(FR-AI-0001)` call returned the same canonical `instances[].sources[]` entries that the public record renders, including IN-005's single source and IN-006's five recorded sources. Legacy instances remained without synthetic provenance.
