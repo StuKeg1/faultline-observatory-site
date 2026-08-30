@@ -605,6 +605,7 @@ export default function FrontierRecord() {
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
+  const isVD003 = VD_003_RECORDS.has(record.id);
   const hasGovernedNarrative = isPilot || record.id === "FR-QE-0001";
   const hasStageProvenance = getAssessmentHistory(record).some(
     (assessment) => assessment.verificationStageProvenance,
