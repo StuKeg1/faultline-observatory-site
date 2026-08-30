@@ -12,6 +12,10 @@
 export const FR_AI_0002 = {
   id: "FR-AI-0002",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-08-30",
+  provenanceReviewId: "LPR-001-D01",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Large language models can perform economically valuable knowledge-work tasks with limited human supervision.",
@@ -23,16 +27,31 @@ export const FR_AI_0002 = {
     {
       id: "IN-001",
       qualifiedEvent: "GitHub Copilot productivity study — Peng et al. (Microsoft Research)",
-      description: "A controlled experiment published by Microsoft Research (Peng et al. 2023) finds that software developers using GitHub Copilot complete coding tasks 55% faster than a control group without AI assistance. The study involves 95 professional developers on a standardised task set. Code quality as measured by test passage rates is comparable between groups. The result is a direct productivity measurement in a commercial knowledge-work context — software development — under conditions approximating limited supervision: developers use Copilot output with review but without specialist AI intervention. This is the most methodologically rigorous early productivity study in the corpus; it is a randomised controlled experiment rather than a retrospective survey.",
+      description: "Peng et al. (2023) report a controlled experiment in which 95 professional developers recruited through Upwork were randomly assigned to implement a JavaScript HTTP server with or without GitHub Copilot. Conditioning on completing the task, the Copilot group completed it 55.8% faster. Task success was seven percentage points higher in the treatment group, but the difference was not statistically significant. A 12-check test suite defined successful task completion; the authors explicitly state that the study did not examine code quality. The result is a direct productivity measurement in a bounded software-development task under conditions approximating limited supervision. It is a randomised controlled experiment rather than a retrospective survey, but it does not establish effects on code quality or general software-engineering work.",
       vectors: ["supportive"],
       date: "2023",
+      sources: [
+        {
+          citation: "Peng, S., Kalliamvakou, E., Cihon, P., and Demirer, M. (2023), The Impact of AI on Developer Productivity: Evidence from GitHub Copilot, arXiv:2302.06590.",
+          url: "https://arxiv.org/abs/2302.06590",
+          locator: "Study Design; Results; Discussion",
+        },
+      ],
     },
     {
       id: "IN-002",
       qualifiedEvent: "Noy and Zhang — Experimental evidence on productivity effects of generative AI in professional writing",
-      description: "A randomised controlled trial (Noy and Zhang, 2023, Science) assigns mid-career professionals — including marketers, grant writers, consultants, and analysts — to write documents with or without ChatGPT access. The AI-assisted group completes tasks 37% faster; output quality as rated by blinded evaluators improves by 18%. Inequality effects are notable: lower-ability workers benefit more than higher-ability workers, partially compressing the quality distribution. The study directly tests the claim across multiple knowledge-work domains under limited supervision conditions. The task set is representative of white-collar professional work rather than a narrow technical domain.",
+      description: "A preregistered randomised controlled trial (Noy and Zhang, 2023, Science) assigned occupation-specific writing tasks to 453 college-educated professionals, including marketers, grant writers, consultants, data analysts, human-resource professionals, and managers, with half randomly exposed to ChatGPT. The published study reports that average completion time decreased by 40% and output quality as rated by blinded evaluators increased by 18%. Inequality effects were notable: lower-ability workers benefited more, compressing the quality distribution. The study directly tests the claim across several bounded professional-writing domains under limited-supervision conditions; it does not establish the same effect for knowledge work generally.",
       vectors: ["supportive"],
       date: "2023",
+      sources: [
+        {
+          citation: "Noy, S. and Zhang, W. (2023), Experimental evidence on the productivity effects of generative artificial intelligence, Science 381(6654), 187–192.",
+          url: "https://www.science.org/doi/10.1126/science.adh2586",
+          doi: "10.1126/science.adh2586",
+          locator: "Abstract and experimental results",
+        },
+      ],
     },
     {
       id: "IN-003",
@@ -44,9 +63,22 @@ export const FR_AI_0002 = {
     {
       id: "IN-004",
       qualifiedEvent: "Hallucination and reliability failure documentation — legal and medical contexts",
-      description: "These events do not falsify the claim — which does not require error-free performance — but they constitute direct evidence that the \"limited human supervision\" condition is not yet safely achievable in all knowledge-work domains. The instances are contesting evidence against the universal scope of the claim. Multiple documented cases emerge of LLMs producing confidently stated but fabricated outputs in high-stakes knowledge-work contexts. The Mata v. Avianca case (2023) involves attorneys submitting AI-generated legal briefs citing non-existent case law; the presiding judge imposes sanctions. Medical AI systems produce plausible but clinically incorrect recommendations in published evaluations. A systematic review of LLM performance in medical question-answering (Omiye et al. 2023) finds that all tested models produce harmful recommendations in a non-trivial fraction of cases.",
+      description: "These events do not falsify the claim — which does not require error-free performance — but they constitute direct evidence that the \"limited human supervision\" condition is not safely achievable across all knowledge-work domains. Mata v. Avianca (2023) documents attorneys submitting fabricated judicial opinions and citations generated by ChatGPT; the court imposed sanctions after finding that the respondents abandoned their responsibilities when they submitted and then defended the false material. Separately, Omiye et al. (2023) tested four commercial LLMs with nine questions concerning race-based medicine and repeated each question five times. Every model produced some responses that promoted race-based medicine, racist tropes, or unsubstantiated claims, with outputs varying across repeated runs. This was a bounded empirical study of harmful and inaccurate race-based medical content, not a systematic review of general medical question-answering. Together the sources contest reliable low-supervision use in high-stakes legal and clinical contexts without establishing a universal failure rate.",
       vectors: ["contesting--supervision-requirement"],
       date: "2023–24",
+      sources: [
+        {
+          citation: "Mata v. Avianca, Inc., 678 F. Supp. 3d 443 (S.D.N.Y. 2023), Opinion and Order on Sanctions.",
+          url: "https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1%3A2022cv01461/575368/54/",
+          locator: "Opinion and Order on Sanctions, 22 June 2023",
+        },
+        {
+          citation: "Omiye, J. A. et al. (2023), Large language models propagate race-based medicine, npj Digital Medicine 6, 195.",
+          url: "https://www.nature.com/articles/s41746-023-00939-z",
+          doi: "10.1038/s41746-023-00939-z",
+          locator: "Abstract; Results; Discussion",
+        },
+      ],
     },
     {
       id: "IN-005",
@@ -145,6 +177,8 @@ export const FR_AI_0002 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-010", date: "2026-08-30", field: "provenance_review_completed", from: "No governed provenance-review completion marker", to: "LPR-001-D01 completed; discrepancies corrected", note: "LPR-001 Day 1 completion recorded after the bounded correction of IN-001, IN-002 and IN-004. The marker records review completion separately from repair outcome so the deterministic oldest/never-reviewed queue can operate. No evidence instance, assessment, Pressure State or Verification Stage was added or changed by this marker." },
+    { id: "M-009", date: "2026-08-30", field: "reference_corrected", from: "IN-001 inferred comparable code quality; IN-002 used a secondary 37% speed expression; IN-004 misclassified Omiye et al. as a systematic review", to: "IN-001 reports task success and the stated code-quality boundary; IN-002 uses the published 40% time reduction and 18% quality increase; IN-004 accurately describes Mata and the bounded Omiye et al. study; structured sources recorded", note: "LPR-001 Day 1 Editorial Correction. Corrected the three linked legacy evidence descriptions and added canonical structured provenance. IN-001, IN-002 and IN-004 retain their identifiers, dates and vectors. AS-001 and AS-002 remain preserved; current Pressure State ESCALATING and Verification Stage VS-02 are unchanged." },
     { id: "M-008", date: "2026-08-17", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued during OHR-2026-09 catch-up review to close the evidence-assessment gap created by IN-007. ORCA-bench strengthens the existing contesting evidence at the low-supervision agentic boundary but does not overturn bounded, human-reviewed knowledge-work utility. Pressure State remains ESCALATING; Verification Stage remains VS-02; mechanisms and open questions remain unchanged." },
     { id: "M-007", date: "2026-08-01", field: "instance_appended", from: "IN-006", to: "IN-007", note: "IN-007 appended — ORCA-bench (arXiv:2607.28545v1), authorised through Post-Scout flag 2026-08-01-02. Bounded CONTESTING evidence strengthens the existing low-supervision agentic boundary with operational root-cause-analysis measurements. Instance only: AS-001 remains current; Pressure State ESCALATING, Verification Stage VS-02, mechanisms, and open questions unchanged. No new assessment issued." },
     { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-004 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },

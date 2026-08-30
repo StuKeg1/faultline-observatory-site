@@ -52,3 +52,20 @@ test("instance_added appears in Latest Developments", () => {
   assert.equal(development.mutationType, "instance_added");
   assert.equal(development.taxonomyClass, "A");
 });
+
+test("provenance review completion is classified as changelog-only infrastructure", () => {
+  const completion = {
+    id: "M-010",
+    date: "2026-08-30",
+    field: "provenance_review_completed",
+    from: "No governed provenance-review completion marker",
+    to: "LPR-001-D01 completed; discrepancies corrected",
+  };
+
+  const mutationType = detectMutationType(completion, record);
+  const qualification = qualifiesForHomepage(mutationType);
+
+  assert.equal(mutationType, "provenance_review_completed");
+  assert.equal(qualification.qualifies, false);
+  assert.equal(qualification.taxonomyClass, "D");
+});
