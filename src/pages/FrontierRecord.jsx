@@ -114,12 +114,21 @@ function CompactAssessmentTrajectory({ trajectory }) {
 
   const hasMovement = trajectory.steps.length > 1;
   const isReaffirmed = trajectory.currentStateEnteredDate !== trajectory.currentAssessmentDate;
+  const isStableReassessment = !hasMovement && isReaffirmed;
 
   return (
     <div className="assessment-trajectory" aria-label="Assessment trajectory">
       <span className="assessment-trajectory-label">Assessment trajectory</span>
       <div className="assessment-trajectory-steps">
-        {trajectory.steps.map((step, index) => (
+        {isStableReassessment && (
+          <>
+            <StateBadge pressureState={trajectory.steps[0].pressureState} />
+            <span className="assessment-trajectory-current">
+              state held · last assessed {trajectory.currentAssessmentDate}
+            </span>
+          </>
+        )}
+        {!isStableReassessment && trajectory.steps.map((step, index) => (
           <Fragment key={`${step.pressureState}-${step.enteredDate}`}>
             {index > 0 && <span className="assessment-trajectory-arrow" aria-hidden="true">→</span>}
             <span className="assessment-trajectory-step">
@@ -130,7 +139,7 @@ function CompactAssessmentTrajectory({ trajectory }) {
             </span>
           </Fragment>
         ))}
-        {(hasMovement || isReaffirmed) && (
+        {hasMovement && (
           <span className="assessment-trajectory-current">
             current assessment · {trajectory.currentAssessmentDate}
           </span>
