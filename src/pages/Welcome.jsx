@@ -49,7 +49,7 @@ Instead of following the news cycle, it follows the evidence. Every significant 
     heading: "What is a Frontier Record?",
     body: `A Frontier Record is the Observatory's core publication.
 
-Each Record focuses on a single technological claim — a new quantum computing milestone, an AI capability, a medical breakthrough. The Record documents the original claim, the evidence that follows, and every assessment made by the Observatory. Together these create a transparent history that readers can inspect for themselves.`,
+Rather than cataloging every scientific result, the Observatory tracks only claims that evolve over years under sustained technical uncertainty and institutional significance. Each Record focuses on a single technological claim — a new quantum computing milestone, an AI capability, a medical breakthrough. The Record documents the original claim, the evidence that follows, and every assessment made by the Observatory. Together these create a transparent history that readers can inspect for themselves.`,
   },
   {
     heading: "What is not a Frontier Record?",
