@@ -16,6 +16,10 @@
 export const FR_AI_0001 = {
   id: "FR-AI-0001",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-08-31",
+  provenanceReviewId: "LPR-001-D02",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Large language models can perform multi-step reasoning that generalises beyond memorised training examples.",
@@ -27,16 +31,30 @@ export const FR_AI_0001 = {
     {
       id: "IN-001",
       qualifiedEvent: "Chain-of-thought prompting — Wei et al. (Google Brain)",
-      description: "Wei et al. (2022, NeurIPS) demonstrate that prompting large language models with intermediate reasoning steps (\"chain-of-thought\") substantially improves performance on arithmetic, commonsense, and symbolic reasoning benchmarks. Performance on GSM8K (grade school math) improves from near-zero to over 50% with chain-of-thought prompting on PaLM 540B. The paper argues this constitutes emergent multi-step reasoning. Contested framing: critics note that GSM8K problems are widely distributed online, raising the possibility that performance reflects retrieval of near-identical training instances rather than generalised reasoning.",
+      description: "Wei et al. (2022, NeurIPS) demonstrate that prompting large language models with intermediate reasoning steps (\"chain-of-thought\") substantially improves performance on arithmetic, commonsense, and symbolic reasoning benchmarks. On GSM8K, PaLM 540B improves from 17.9% accuracy under standard prompting to 58.1% with chain-of-thought prompting. The paper presents this as evidence that chain-of-thought can elicit multi-step reasoning in sufficiently large language models. The benchmark result does not by itself resolve whether the underlying capability generalises beyond memorised or structurally familiar training examples.",
       vectors: ["partial--memorisation-dispute"],
       date: "2022",
+      sources: [
+        {
+          citation: "Wei, J. et al. (2022), Chain-of-Thought Prompting Elicits Reasoning in Large Language Models, NeurIPS 2022.",
+          url: "https://arxiv.org/abs/2201.11903",
+          locator: "GSM8K results for PaLM 540B",
+        },
+      ],
     },
     {
       id: "IN-002",
-      qualifiedEvent: "GSM8K-symbolic and novel benchmark evaluations",
-      description: "Multiple research groups construct variants of standard reasoning benchmarks with novel surface forms: modified variable names, unfamiliar number ranges, reversed problem structures. Shi et al. (2023, \"Large Language Models Can Be Easily Distracted by Irrelevant Information\") and Patel et al. (2021) find significant performance degradation on structurally identical problems with modified surface presentation. Interpretation: degradation under surface modification is evidence of sensitivity to training distribution rather than abstract generalisation. Counter-interpretation: human performance also degrades under novel surface presentation; the comparison class for \"generalisation\" is underspecified.",
+      qualifiedEvent: "GSM-IC — irrelevant-context robustness evaluation",
+      description: "Shi et al. (2023) introduce GSM-IC, a variant of grade-school mathematics problems that adds irrelevant information to the problem description while preserving the underlying arithmetic task. They find that large-language-model problem-solving accuracy can decrease dramatically when irrelevant context is included, and test mitigation approaches including self-consistency and explicit instructions to ignore irrelevant information. The result is direct evidence of distractibility under a bounded distribution shift; it does not establish that all surface-form changes produce the same degradation or by itself distinguish lack of abstract generalisation from other robustness failures.",
       vectors: ["contesting"],
       date: "2022–23",
+      sources: [
+        {
+          citation: "Shi, F. et al. (2023), Large Language Models Can Be Easily Distracted by Irrelevant Context, arXiv:2302.00093.",
+          url: "https://arxiv.org/abs/2302.00093",
+          locator: "GSM-IC dataset and evaluation results",
+        },
+      ],
     },
     {
       id: "IN-003",
@@ -47,22 +65,29 @@ export const FR_AI_0001 = {
     },
     {
       id: "IN-004",
-      qualifiedEvent: "Counterfactual and compositional generalisation studies",
-      description: "Srivastava et al. (BIG-Bench, 2023) and Dziri et al. (\"Faith and Fate\", 2023, NeurIPS) find that LLM performance degrades sharply on compositional reasoning tasks requiring combination of learned skills in configurations not seen during training. Dziri et al. specifically show that on multi-step graph traversal and multi-digit multiplication, models appear to retrieve pattern-matched sub-solutions rather than execute a generalised algorithm. Performance falls to near-chance on inputs at lengths or depths slightly beyond the training distribution. Authors conclude that current LLMs are fundamentally limited in compositional generalisation.",
+      qualifiedEvent: "Compositional generalisation limits — Dziri et al.",
+      description: "Dziri et al. (2023, NeurIPS) investigate transformer limits across three representative compositional tasks: multi-digit multiplication, logic-grid puzzles, and a classic dynamic-programming problem. They formulate these tasks as computation graphs, decompose them into intermediate sub-procedures, and report empirical results consistent with models reducing multi-step compositional reasoning to linearized subgraph matching rather than developing systematic problem-solving skills. Their theoretical analysis further shows how autoregressive-generation performance can rapidly decay as task complexity increases. This is strong contesting evidence about systematic compositional generalisation, but it is bounded to the studied task families and does not establish a universal inability to generalise.",
       vectors: ["contesting"],
       date: "2023",
+      sources: [
+        {
+          citation: "Dziri, N. et al. (2023), Faith and Fate: Limits of Transformers on Compositionality, NeurIPS 2023, arXiv:2305.18654.",
+          url: "https://arxiv.org/abs/2305.18654",
+          locator: "Compositional tasks; empirical findings; theoretical analysis",
+        },
+      ],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "OpenAI o1 / o3 — chain-of-thought reasoning models",
-      description: "OpenAI releases o1 (September 2024) and o3 (December 2024), models trained explicitly to produce extended internal reasoning chains prior to output. o3 achieves 87.5% on ARC-AGI (a benchmark specifically designed to test novel generalisation resistant to training contamination), surpassing prior LLM performance and approaching human-level. o3 also achieves frontier-level performance on the FrontierMath benchmark (novel research-level mathematics). The ARC-AGI score is particularly significant because the benchmark was constructed specifically to prevent memorisation. Dispute: o3's reasoning process is not publicly documented; whether the extended chain-of-thought constitutes generalised reasoning or a learned meta-pattern for benchmark problem classes remains an open research question.",
+      qualifiedEvent: "OpenAI o3-preview — ARC-AGI-1 generalisation benchmark",
+      description: "ARC Prize reports that OpenAI's December 2024 o3-preview system scored 75.7% on the ARC-AGI-1 Semi-Private Evaluation set under the public-leaderboard compute limit and 87.5% in a low-efficiency configuration using 1,024 samples and roughly 172 times the compute. ARC Prize also reports that OpenAI trained the tested o3-preview system on 75% of the ARC-AGI-1 Public Training set and had not disclosed enough detail to determine how much of the result was attributable to that exposure. The result remains strong supportive evidence of adaptation to novel ARC tasks, but the 87.5% figure should not be read as an efficiency-neutral or contamination-free measure of generalisation. Whether the system's test-time search and extended reasoning constitute a qualitatively different general mechanism remains unresolved.",
       vectors: ["supportive--strongest-instance-to-date"],
       date: "2024",
       sources: [
         {
           citation: "ARC Prize, ‘OpenAI o3 Breakthrough High Score on ARC-AGI-Pub’ (20 Dec 2024)",
           url: "https://arcprize.org/blog/oai-o3-pub-breakthrough",
-          locator: "OpenAI o3 ARC-AGI Results",
+          locator: "OpenAI o3 ARC-AGI Results; note on training exposure and compute",
         },
       ],
     },
@@ -208,6 +233,7 @@ export const FR_AI_0001 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-010", date: "2026-08-31", field: "provenance_review_completed", from: "—", to: "LPR-001-D02", note: "Legacy provenance review completed. IN-001, IN-002, IN-004 and IN-005 corrected for source fidelity and enriched with structured sources[]; IN-003 remains deliberately unenriched because its intended source could not be confidently established. No assessment or evidence-state change." },
     { id: "M-009", date: "2026-08-29", field: "provenance_enriched", from: "—", to: "PROVENANCE-ENRICHED", note: "PA-002 Provenance Enrichment: structured sources[] added to IN-005 and IN-006; evidentiary prose and assessment unchanged." },
     { id: "M-008", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-006 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-007", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: ESCALATING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
