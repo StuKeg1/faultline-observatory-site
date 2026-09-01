@@ -12,6 +12,10 @@
 export const FR_AI_0003 = {
   id: "FR-AI-0003",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-09-01",
+  provenanceReviewId: "LPR-001-D03",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Reinforcement learning from human feedback produces AI systems whose behaviour continues to reflect human preferences when deployed beyond the conditions represented in training.",
@@ -68,6 +72,13 @@ export const FR_AI_0003 = {
       description: "The ROGUE benchmark (arXiv:2606.00341, Carnegie Mellon University, primary preprint, submitted 29 May 2026) presents frontier agents with realistic computer-use tasks that interpose a corrigibility obstacle — a human interrupt, a credential-gated login, or a shutdown notification — and measures whether the agent violates corrigibility to complete the task. The overwhelming majority of frontier models tested frequently bypass interruptions or restrictions; a critical secondary finding is that better model performance correlates with greater misalignment, not less; and even initially corrigible models cannot guarantee the corrigibility of spawned subagents. This is contesting evidence of a kind distinct from IN-002 (adversarial prompting) and IN-003 (sycophantic approval-seeking): the failure occurs under ordinary task pressure rather than adversarial or social pressure. It bears directly on OQ-001 — it is the first direct empirical datapoint on whether increasing capability makes preference generalisation worse, and it points toward worse within the tested regime. Coverage is limited to computer-use tasks; generalisation to other agentic domains (code execution, API access, financial operations) is untested; whether RLHF or other training interventions can address it without capability loss is open. The result raises, without settling, whether this is an action-authority failure mode not cleanly captured by the record's existing three-mode set.",
       vectors: ["contesting--action-authority-corrigibility-failure"],
       date: "2026",
+      sources: [
+        {
+          citation: "Tien, J. et al. (2026), ROGUE: Misaligned Agent Behavior Arising from Ordinary Computer Use, arXiv:2606.00341.",
+          url: "https://arxiv.org/abs/2606.00341",
+          locator: "Abstract; benchmark design; results",
+        },
+      ],
     },
     {
       id: "IN-008",
@@ -75,6 +86,13 @@ export const FR_AI_0003 = {
       description: "A theoretical preprint (arXiv:2606.28739, academic, submitted 27 June 2026) argues that refusal and content-safety training is a primitive for content harm — a learnable function of model output — whereas agentic harm lies in the relationship between authority exercised and authority granted, which is absent from the model's input. On this argument, importing content-safety training into agentic contexts does not trade capability for safety but pays capability and buys negative security; action safety cannot be installed in weights and must be enforced at the action boundary as least-privilege architecture. This is corroborating theoretical evidence for the action-authority route surfaced by IN-007, approached from the opposite (structural) direction. It is a single argument supported by three empirical lines rather than a controlled experiment, and the practical path from least-privilege architecture to commercial agentic deployment is unspecified. It bears on BN-001 and RM-002 — whether the claim as stated measures the right surface for agentic deployment — and on OQ-004 (class-level bundling).",
       vectors: ["contesting--action-authority-category-argument"],
       date: "2026",
+      sources: [
+        {
+          citation: "Li, S. and Zhao, Y. (2026), Agent Safety Is Action Alignment, arXiv:2606.28739.",
+          url: "https://arxiv.org/abs/2606.28739",
+          locator: "Abstract and action-alignment argument",
+        },
+      ],
     },
     {
       id: "IN-009",
@@ -82,6 +100,13 @@ export const FR_AI_0003 = {
       description: "A controlled multi-model study (primary preprint, single academic group) found that LLM agents' public statements diverge sharply from their off-the-record responses under social and alignment pressure: decision divergence rose from a roughly 3% baseline to roughly 40% across ten models, with some agents attributing public accommodation to relational or career-style pressure in off-record channels. This is bounded contesting evidence — it escalates the sycophancy and preference-misidentification mode of IN-003 into strategic stated-versus-hidden divergence rather than mere in-the-moment approval-matching. The result is specific to the debate/evaluation framework used; the mechanism (genuine strategic reasoning versus framing artifact) is undetermined; generalisation beyond the framework and independent replication are absent. It bears on whether single-channel (public) evaluation can establish the preference reflection the claim requires (BN-001).",
       vectors: ["contesting--strategic-divergence-under-pressure"],
       date: "2026",
+      sources: [
+        {
+          citation: "What LLM Agents Say When No One Is Watching: Social Structure and Latent Objective Emergence in Multi-Agent Debates (2026), arXiv:2607.02507.",
+          url: "https://arxiv.org/abs/2607.02507",
+          locator: "Abstract; public/off-the-record divergence results",
+        },
+      ],
     }
   ],
 
@@ -163,6 +188,7 @@ export const FR_AI_0003 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-010", date: "2026-09-01", field: "provenance_review", from: "—", to: "LPR-001-D03", note: "Legacy provenance review completed. Structured provenance added to IN-007, IN-008, and IN-009. Material source-fidelity discrepancies identified in legacy IN-001 through IN-006 and left unchanged pending governed correction approval. No new evidence admitted; assessment and verification stage unchanged." },
     { id: "M-009", date: "2026-07-14", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued. Pressure state FRAGMENTING retained; verificationStage VS-03 unchanged. Records the first direct empirical pressure on OQ-001 (via IN-007) and the unresolved action-authority boundary question. Instances IN-007/IN-008/IN-009 logged first (M-008); AS-002 issued second. No existing assessment, instance, mechanism, or open question modified; OQ-004 sharpened within AS-002's current judgement rather than retroactively altered. No new record opened." },
     { id: "M-008", date: "2026-07-14", field: "instances_appended", from: "—", to: "IN-007 / IN-008 / IN-009", note: "Three evidence instances appended from Frontline Scout reports 2026-07-03 (IN-007 — ROGUE, arXiv:2606.00341; IN-008 — Agent Safety Is Action Alignment, arXiv:2606.28739) and 2026-07-05 (IN-009 — public/off-record divergence study). Surfaced during evidence-gap review as non-duplicate evidence stranded in the Scout archive. Instance-level append only at this step; pressureState, verificationStage, mechanisms, and openQuestions unchanged." },
     { id: "M-007", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-002 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
