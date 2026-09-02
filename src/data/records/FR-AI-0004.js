@@ -14,8 +14,8 @@ export const FR_AI_0004 = {
   programme: "PROG-AI",
   lastProvenanceReview: "2026-09-02",
   provenanceReviewId: "LPR-001-D04",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Scaling language model training increases performance on previously unseen tasks without task-specific optimisation.",
@@ -27,9 +27,16 @@ export const FR_AI_0004 = {
     {
       id: "IN-001",
       qualifiedEvent: "Kaplan et al. — Neural scaling laws for language models",
-      description: "Kaplan et al. (OpenAI, 2020) publish the foundational scaling law paper establishing that language model performance on held-out text prediction improves as a smooth power law with model size, dataset size, and compute. The relationship holds across six orders of magnitude. Critically, the paper establishes that performance improvements on held-out data — tasks the model has not been specifically trained on — follow predictable scaling curves. This is the first systematic quantitative evidence that scaling produces generalisation rather than merely memorisation. The paper does not address task-specific performance directly, but the held-out prediction improvement is the mechanism from which downstream task performance improvements are subsequently attributed.",
-      vectors: ["supportive--foundational-scaling-evidence"],
+      description: "Kaplan et al. (OpenAI, 2020) establish empirical power-law relationships between language-model cross-entropy loss and model size, dataset size, and training compute, with some trends spanning more than seven orders of magnitude. The measurements are on held-out text prediction and therefore demonstrate predictable improvements in language-modelling loss as scale increases. They do not directly test performance on previously unseen tasks, nor do they establish that the observed held-out-loss improvements reflect task generalisation rather than memorisation. This is foundational evidence for the scaling mechanism that later task-level studies build on, but only indirect evidence for this record's task-generalisation claim.",
+      vectors: ["partial--foundational-scaling-evidence"],
       date: "2020",
+      sources: [
+        {
+          citation: "Kaplan, J. et al. (2020), Scaling Laws for Neural Language Models, arXiv:2001.08361.",
+          url: "https://arxiv.org/abs/2001.08361",
+          locator: "Abstract; cross-entropy-loss scaling with model size, dataset size and training compute",
+        },
+      ],
     },
     {
       id: "IN-002",
@@ -62,30 +69,58 @@ export const FR_AI_0004 = {
     {
       id: "IN-004",
       qualifiedEvent: "Schaeffer et al. — Are emergent abilities a mirage?",
-      description: "Schaeffer, Miranda, and Koyejo (2023, NeurIPS) argue that emergent abilities documented by Wei et al. are artefacts of metric choice rather than genuine discontinuities in model capability. When nonlinear metrics (accuracy on multi-step tasks) are replaced by linear metrics (token-level prediction probability), apparent discontinuities smooth out into continuous scaling curves. The paper contends that emergence is a property of measurement, not capability. If correct, this is a significant interior contesting result: it does not deny that scaling improves performance on unseen tasks, but it challenges the discontinuous mechanism and suggests that all scaling improvements are continuous and predictable. The claim's truth is not threatened; its mechanism interpretation is substantially complicated.",
+      description: "Schaeffer, Miranda, and Koyejo (2023, NeurIPS) present an alternative explanation for apparent emergent abilities. For particular tasks and model families, holding model outputs fixed, they show that nonlinear or discontinuous evaluation metrics can produce apparently sharp emergence while linear or continuous metrics yield smoother, more predictable changes with scale. Their experiments include the InstructGPT/GPT-3 family and BIG-Bench tasks. This is contesting evidence against treating every apparent emergence threshold as a fundamental discontinuity in capability. It does not establish that all scaling improvements are continuous and predictable, nor does it deny that larger models can achieve better task performance.",
       vectors: ["contesting--emergence-as-measurement-artefact"],
       date: "2023",
+      sources: [
+        {
+          citation: "Schaeffer, R., Miranda, B. and Koyejo, S. (2023), Are Emergent Abilities of Large Language Models a Mirage?, NeurIPS 2023, arXiv:2304.15004.",
+          url: "https://arxiv.org/abs/2304.15004",
+          locator: "Abstract; metric-choice hypothesis; InstructGPT/GPT-3 and BIG-Bench analyses",
+        },
+      ],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "Scaling law limitations — benchmark saturation and contamination",
-      description: "Multiple papers document that scaling improvements on standard benchmarks (MMLU, HellaSwag, ARC) slow substantially as models approach human-level performance on those benchmarks, and that some apparent improvements may reflect training data contamination rather than genuine generalisation. Golchin and Surdeanu (2023) and related work develop data contamination detection methods, finding evidence that high-profile benchmark performance gains are partially attributable to test-set overlap with training data. This is the strongest interior contesting evidence in the record: if benchmark improvements are contamination-driven, the claim that scaling produces performance on previously unseen tasks is directly challenged. The contamination question is a measurement and evidence quality issue — an interior question — not a claim identity or closure question.",
-      vectors: ["contesting--contamination-and-saturation"],
+      qualifiedEvent: "Benchmark contamination — evidence-quality constraint",
+      description: "Golchin and Surdeanu (2023) develop black-box methods for detecting training-data contamination and report evidence that GPT-4 is contaminated with AG News, WNLI, and XSum. This establishes contamination as a material threat to the evidential value of benchmark results when training corpora are undisclosed. It does not establish the legacy claim that scaling gains on MMLU, HellaSwag, and ARC were partially caused by test-set overlap, nor does this source establish a general benchmark-saturation trend. The instance therefore contests the strength of benchmark-based generalisation evidence, rather than demonstrating that scaling-driven performance gains are themselves contamination-driven.",
+      vectors: ["contesting--benchmark-contamination-risk"],
       date: "2023",
+      sources: [
+        {
+          citation: "Golchin, S. and Surdeanu, M. (2023), Time Travel in LLMs: Tracing Data Contamination in Large Language Models, arXiv:2308.08493.",
+          url: "https://arxiv.org/abs/2308.08493",
+          locator: "Abstract; contamination-detection method; GPT-4 findings for AG News, WNLI and XSum",
+        },
+      ],
     },
     {
       id: "IN-006",
-      qualifiedEvent: "Chinchilla scaling laws and compute-optimal training",
-      description: "Hoffmann et al. (DeepMind, 2022/published impact 2023–24) demonstrate that Kaplan et al.'s scaling laws systematically underweighted data relative to parameters. Chinchilla (70B parameters, trained on 1.4T tokens) outperforms GPT-3 (175B parameters, trained on 300B tokens) across most benchmarks, suggesting that prior large models were substantially undertrained. The result refines rather than refutes scaling: scaling laws hold, but the optimal allocation between parameters and data differs from prior assumptions. For the claim, this is partial-supportive: it strengthens confidence that scaling produces genuine performance improvements, but it complicates which scaling axis is primary. The Chinchilla result is an interior mechanism finding — it updates how scaling should be implemented without challenging whether it works.",
+      qualifiedEvent: "Chinchilla — compute-optimal training",
+      description: "Hoffmann et al. (DeepMind, 2022) study compute-optimal language-model training and find that model size and training-token count should be scaled together under a fixed compute budget. Their 70B-parameter Chinchilla model, trained on substantially more data, outperforms much larger models including Gopher and GPT-3 across a broad range of downstream evaluations. The result refines the allocation of training scale between parameters and data and shows that additional data can materially improve downstream performance at fixed training compute. It does not independently establish that those gains are on genuinely previously unseen tasks or resolve contamination and task-novelty questions central to this record.",
       vectors: ["partial--scaling-confirmed-axis-refined"],
-      date: "2024",
+      date: "2022",
+      sources: [
+        {
+          citation: "Hoffmann, J. et al. (2022), Training Compute-Optimal Large Language Models, arXiv:2203.15556.",
+          url: "https://arxiv.org/abs/2203.15556",
+          locator: "Abstract; compute-optimal scaling; Chinchilla downstream evaluations",
+        },
+      ],
     },
     {
       id: "IN-007",
-      qualifiedEvent: "Test-time compute and reasoning models — a second scaling axis emerges",
-      description: "This does not contest the claim's core assertion, but it means the record's account of *how* scaling produces unseen-task performance is now materially incomplete without it. Through 2024–26, OpenAI's o1/o3, DeepSeek's R1, and comparable reasoning models demonstrate that performance on previously unseen, multi-step reasoning tasks can be improved by scaling compute spent at inference time (extended chain-of-thought, repeated sampling) rather than only by scaling training-time parameters and data — the two axes Kaplan et al. and Chinchilla both addressed. By early 2026, field commentary (Medium's State of LLMs roundup, February 2026) describes a consensus shift: progress through 2026 is expected to come less from raw training-scale increases and more from inference, tooling, and architecture, with smaller models becoming increasingly capable. Separately, multiple 2025–26 analyses (Epoch AI and others, cited in IN from FR-AI-0005) document a \"latent saturation trend\" in training-time scaling returns. For this claim specifically — performance on previously unseen tasks without task-specific optimisation — test-time compute is a genuinely new mechanism, not a refinement of the two already documented (IN-001, IN-006): it improves unseen-task performance through additional inference-time computation per query, which the original claim statement did not anticipate as a scaling dimension.",
-      vectors: ["partial--new-scaling-axis-not-previously-tracked"],
-      date: "2024–26",
+      qualifiedEvent: "Test-time compute scaling — Snell et al.",
+      description: "Snell et al. (2024) study inference-time computation as a distinct scaling axis. They evaluate search with process-based verifier reward models and adaptive modification of a model's response distribution, finding that the effectiveness of test-time compute depends on prompt difficulty. A compute-optimal strategy improves test-time scaling efficiency by more than fourfold relative to a best-of-N baseline, and in FLOPs-matched evaluations a smaller model with additional test-time compute can outperform a model 14 times larger on problems where the smaller model already has non-trivial success. This establishes test-time compute as a real capability-scaling mechanism. It does not establish the broader legacy bundle about o1/o3, DeepSeek-R1, an industry consensus shift, training-scale saturation, or performance specifically on uncontaminated previously unseen tasks. Because this record's claim is explicitly about scaling language-model training, the result also sits partly outside the claim's present scope rather than directly supporting it.",
+      vectors: ["partial--inference-scaling-outside-claim-scope"],
+      date: "2024",
+      sources: [
+        {
+          citation: "Snell, C. et al. (2024), Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters, arXiv:2408.03314.",
+          url: "https://arxiv.org/abs/2408.03314",
+          locator: "Abstract; compute-optimal test-time scaling; FLOPs-matched comparison with a 14x larger model",
+        },
+      ],
     }
   ],
 
@@ -106,6 +141,14 @@ export const FR_AI_0004 = {
       verificationStage: "VS-03",
       summary: "The claim's core assertion remains supported, and the pressure state remains FRAGMENTING — IN-007 adds to the fragmentation rather than resolving it. Test-time compute and reasoning-model architectures (o1/o3, DeepSeek-R1) demonstrate that scaling inference-time computation, not only training-time parameters and data, improves performance on previously unseen reasoning tasks. This is a genuinely new mechanism for the claim's core phenomenon, not merely a third data point alongside Kaplan et al. and Chinchilla: the original claim statement (\"scaling language model training\") describes training-time scaling specifically, and IN-007's mechanism operates at inference time. By early 2026, field commentary describes a broader shift in where capability gains are expected to come from — inference and tooling rather than raw training-scale increases — which bears directly on BN-001 (no agreed definition of \"previously unseen\") and on the record's account of what \"scaling\" means well past the boundary AS-001 anticipated. This assessment does not propose a reclassification; it records that the claim's mechanism account is now materially incomplete without IN-007, two years into the record's life, in a field moving fast enough that the gap itself is notable.",
       assessorNote: "Sourced from: Medium, \"The State of Large Language Models: Latest Updates & Trends (2025–2026)\" (Feb 2026) for the inference/tooling consensus-shift framing; general field knowledge of o1 (Sept 2024), o3 (Dec 2024), and DeepSeek-R1 (Jan 2025) release timing and capability framing. The Medium source is a secondary roundup, not a primary research paper — adequate for establishing that a shift occurred, not for citing specific benchmark figures. Primary literature (e.g. the test-time-compute scaling papers referenced in FR-AI-0005's evidence trail) should be consulted before this assessment is extended with specific numbers.",
+    },
+    {
+      id: "AS-003",
+      date: "2026-09-02",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "LPR-001-D04 corrects the source interpretation underlying parts of AS-001 and AS-002 without rewriting those historical assessments. The task-level core remains supported, principally by GPT-3 few-shot evaluations (IN-002) and the documented emergence literature (IN-003), but the evidence is narrower than AS-001 stated: Kaplan et al. (IN-001) establish predictable scaling of held-out language-model loss rather than unseen-task performance; Chinchilla (IN-006) establishes compute-optimal training and broad downstream gains rather than independently proving task novelty; and the contamination evidence (IN-005) establishes a serious measurement risk without showing that the record's cited benchmark gains were themselves contamination-driven. Schaeffer et al. (IN-004) narrow the emergence dispute to metric-dependent apparent discontinuities in particular evaluated settings, not a universal proof that scaling is continuous. Test-time compute (IN-007) is now anchored to primary evidence from Snell et al.; it is a genuine scaling mechanism but operates at inference time and therefore sits partly outside the claim's explicit training-scaling scope. The corrected evidence still does not converge on a clean account of what counts as a previously unseen task, how much benchmark evidence is contamination-free, or whether inference scaling belongs inside this claim. FRAGMENTING / VS-03 is therefore retained, with lower confidence in the stronger historical formulations but no basis for a state or stage change.",
+      assessorNote: "Governed assessment correction following LPR-001-D04. AS-001 and AS-002 are preserved append-only as historical judgements; AS-003 supersedes only the source-fidelity claims identified by the provenance review. No new evidence instance was admitted through LPR-001.",
     }
   ],
 
@@ -167,6 +210,8 @@ export const FR_AI_0004 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-013", date: "2026-09-02", field: "assessment_issued", from: "AS-002", to: "AS-003", note: "AS-003 issued as the governed append-only assessment correction after LPR-001-D04. It narrows historical source interpretations while retaining FRAGMENTING / VS-03. AS-001 and AS-002 remain unchanged as historical judgements; no new evidence admitted." },
+    { id: "M-012", date: "2026-09-02", field: "provenance_correction", from: "LPR-001-D04 discrepancies_found", to: "DISCREPANCIES-CORRECTED", note: "Governed bounded correction applied to IN-001, IN-004, IN-005, IN-006, and IN-007. Structured primary-source provenance added; unsupported claims about unseen-task proof, universal continuity, benchmark-specific contamination/saturation, 2024 dating of Chinchilla, and bundled test-time-compute consensus/saturation claims were removed or bounded. IN-002 and IN-003 remain as verified during the original provenance pass." },
     { id: "M-011", date: "2026-09-02", field: "provenance_review", from: "—", to: "LPR-001-D04", note: "Legacy provenance review completed. Structured provenance added to IN-002 and IN-003. Material source-fidelity discrepancies identified in IN-001, IN-004, IN-005, IN-006, and IN-007 and left unchanged pending governed correction approval. No new scientific evidence admitted; assessments, pressure state, and verification stage unchanged." },
     { id: "M-010", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-007 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-009", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: whether the claim statement's scope should be revisited now that a second scaling axis (test-time compute) has emerged." },
