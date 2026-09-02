@@ -12,6 +12,10 @@
 export const FR_AI_0004 = {
   id: "FR-AI-0004",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-09-02",
+  provenanceReviewId: "LPR-001-D04",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Scaling language model training increases performance on previously unseen tasks without task-specific optimisation.",
@@ -33,6 +37,13 @@ export const FR_AI_0004 = {
       description: "Brown et al. (2020) demonstrate that GPT-3 (175B parameters) performs a wide range of tasks from few examples without gradient updates — in-context learning. Crucially, many of these tasks were not represented in training as explicit tasks. Performance on translation, arithmetic, and commonsense reasoning emerges without task-specific training at a scale where smaller models show near-zero performance. This is direct evidence for the claim: scaling produced performance on previously unseen tasks. The mechanism is debated — whether in-context learning constitutes task performance or sophisticated pattern matching is contested — but the performance itself is documented across diverse task types.",
       vectors: ["supportive--emergent-task-performance"],
       date: "2020–22",
+      sources: [
+        {
+          citation: "Brown, T. B. et al. (2020), Language Models are Few-Shot Learners, NeurIPS 2020, arXiv:2005.14165.",
+          url: "https://arxiv.org/abs/2005.14165",
+          locator: "Abstract; few-shot evaluation without gradient updates; translation, arithmetic and reasoning tasks",
+        },
+      ],
     },
     {
       id: "IN-003",
@@ -40,6 +51,13 @@ export const FR_AI_0004 = {
       description: "Wei et al. (2022, TMLR) document that certain capabilities appear discontinuously as model scale increases — absent below a threshold, present above it. Examples include multi-step arithmetic, word unscrambling, and chain-of-thought reasoning. These emergent abilities are not predictable from the smooth scaling curves documented by Kaplan et al.; they appear as sharp transitions. The paper strengthens the claim that scaling produces performance on unseen tasks, but introduces a complication: if emergence is discontinuous, scaling law extrapolation cannot reliably predict when new task performance will appear. This is an interior mechanism question — it does not threaten the claim's truth, but it constrains the predictive power of scaling as a mechanism.",
       vectors: ["partial--supportive-but-mechanism-complicates"],
       date: "2022",
+      sources: [
+        {
+          citation: "Wei, J. et al. (2022), Emergent Abilities of Large Language Models, Transactions on Machine Learning Research, arXiv:2206.07682.",
+          url: "https://arxiv.org/abs/2206.07682",
+          locator: "Definition of emergent abilities; examples and scaling discussion",
+        },
+      ],
     },
     {
       id: "IN-004",
@@ -149,6 +167,7 @@ export const FR_AI_0004 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-011", date: "2026-09-02", field: "provenance_review", from: "—", to: "LPR-001-D04", note: "Legacy provenance review completed. Structured provenance added to IN-002 and IN-003. Material source-fidelity discrepancies identified in IN-001, IN-004, IN-005, IN-006, and IN-007 and left unchanged pending governed correction approval. No new scientific evidence admitted; assessments, pressure state, and verification stage unchanged." },
     { id: "M-010", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-007 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-009", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: whether the claim statement's scope should be revisited now that a second scaling axis (test-time compute) has emerged." },
     { id: "M-008", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: FRAGMENTING. New evidence (IN-007) adds a genuinely new mechanism (test-time compute) not anticipated by the original claim statement." },
