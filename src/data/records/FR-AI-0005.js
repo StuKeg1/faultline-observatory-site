@@ -12,6 +12,10 @@
 export const FR_AI_0005 = {
   id: "FR-AI-0005",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-09-03",
+  provenanceReviewId: "LPR-001-D05",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Artificial General Intelligence will be achieved through scaling current large-language-model architectures.",
@@ -149,6 +153,7 @@ export const FR_AI_0005 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-09-03", field: "provenance_review", from: "—", to: "LPR-001-D05", note: "Legacy provenance review completed. All seven evidence instances examined. Material source-fidelity discrepancies identified across the legacy evidence trail; no factual or interpretive wording silently repaired and no new scientific evidence admitted. Review marked pending governed correction." },
     { id: "M-008", date: "2026-06-29", field: "open_question_raised", from: "—", to: "OQ-RAISED", note: "OQ-004 added: whether sustained multi-year fragmentation without convergence should itself be treated as evidence toward dissolution." },
     { id: "M-007", date: "2026-06-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: FRAGMENTING. New evidence (IN-007) confirms continuation of the three-way fragmentation rather than resolving it in either direction." },
     { id: "M-006", date: "2026-06-29", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "IN-007 added: 2025–26 maturation of the scaling-plateau debate and continued frontier-lab capital commitment to the original training-scale path." },
