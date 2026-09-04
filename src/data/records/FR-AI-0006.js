@@ -14,8 +14,8 @@ export const FR_AI_0006 = {
   programme: "PROG-AI",
   lastProvenanceReview: "2026-09-04",
   provenanceReviewId: "LPR-001-D06",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Capabilities that emerge through scaling language models are explained by the same underlying mechanism across model sizes.",
@@ -45,30 +45,61 @@ export const FR_AI_0006 = {
     },
     {
       id: "IN-002",
-      qualifiedEvent: "Emergent abilities as phase transitions — discontinuity evidence",
-      description: "Wei et al. (2022) document emergent abilities appearing discontinuously at scale — absent below a threshold, present above it. If emergence is genuinely discontinuous, it is difficult to explain by a mechanism that is simply amplified across scale; a new mechanism would be implied. Michaud et al. (2023) propose that emergent abilities reflect the learning of discrete \"quanta\" of knowledge during training, consistent with a continuous underlying learning mechanism producing discontinuous-appearing outputs. The dispute remains unresolved: genuine discontinuity (new mechanism) versus continuous mechanism producing threshold-crossing outputs. The Schaeffer et al. (2023) metric-artefact argument (documented in FR-AI-0004) is relevant here — if apparent discontinuities are metric artefacts, the continuity case is stronger; if they are real, the case for mechanistic discontinuity strengthens.",
-      vectors: ["contesting--discontinuity-implies-mechanism-change"],
+      qualifiedEvent: "Emergent abilities and the quantization hypothesis — mechanism identity remains underdetermined",
+      description: "Wei et al. (2022) define emergent abilities as abilities absent in smaller models but present in larger models and document behavioural transitions that are not predictable by straightforward extrapolation from smaller-model performance. That result concerns observed capability, not the identity of the underlying mechanism, so behavioural discontinuity does not by itself establish that a new mechanism has appeared. Michaud et al. (2023) propose the Quantization Model, in which knowledge and skills are learned as discrete quanta; the model is intended to reconcile power-law scaling with sudden capability emergence and is supported by toy-data tests plus tentative language-model analyses. It is a mechanistic hypothesis rather than a demonstration that the same mechanism operates across model sizes. Together these sources show that emergence can be modelled without assuming a wholly new mechanism, while leaving the record's cross-scale mechanism-identity claim unresolved.",
+      vectors: ["partial--emergence-mechanism-underdetermined"],
       date: "2022–23",
+      sources: [
+        {
+          citation: "Wei, J. et al. (2022), Emergent Abilities of Large Language Models, Transactions on Machine Learning Research, arXiv:2206.07682.",
+          url: "https://arxiv.org/abs/2206.07682",
+          locator: "Definition of emergent abilities; scaling discussion",
+        },
+        {
+          citation: "Michaud, E. J. et al. (2023), The Quantization Model of Neural Scaling, NeurIPS 2023, arXiv:2303.13506.",
+          url: "https://arxiv.org/abs/2303.13506",
+          locator: "Abstract; Quantization Hypothesis; toy-data validation and language-model decomposition",
+        },
+      ],
     },
     {
       id: "IN-003",
-      qualifiedEvent: "Superposition and polysemanticity — mechanism complexity increases with scale",
-      description: "Elhage et al. (Anthropic, 2022/2023) document that larger models encode more concepts per neuron through superposition — a single neuron activates for multiple unrelated features simultaneously. Smaller models exhibit less superposition. This is a mechanistic difference between model sizes: larger models use their representational capacity differently, not just more of the same. The finding is partial rather than directly contesting: superposition may be a quantitative difference in how the same underlying attention and MLP mechanisms are used, rather than a qualitatively different mechanism. Whether the difference in superposition degree constitutes a mechanistic change depends on how \"same mechanism\" is defined — which points toward the boundary of the Scope Note.",
-      vectors: ["partial--mechanistic-complexity-increases-with-scale"],
-      date: "2023",
+      qualifiedEvent: "Toy models of superposition — representational compression mechanism",
+      description: "Elhage et al. (2022) use deliberately simplified toy neural networks to show how sparse features can be represented in superposition, allowing a model to encode more features than it has available dimensions and producing polysemantic neurons. The work demonstrates a concrete representational mechanism and phase changes within the toy setting. It does not compare language models across scale and therefore does not establish the legacy claim that larger language models encode more concepts per neuron while smaller models exhibit less superposition. The result is relevant background for how representation can change as capacity pressure changes, but it provides no direct positive or negative evidence about cross-scale mechanism identity in deployed language models.",
+      vectors: ["partial--representational-mechanism-not-cross-scale"],
+      date: "2022",
+      sources: [
+        {
+          citation: "Elhage, N. et al. (2022), Toy Models of Superposition, Transformer Circuits Thread, arXiv:2209.10652.",
+          url: "https://arxiv.org/abs/2209.10652",
+          locator: "Abstract; toy-model superposition and polysemanticity results",
+        },
+      ],
     },
     {
       id: "IN-004",
-      qualifiedEvent: "Grokking and delayed generalisation — mechanism timing differs across scales",
-      description: "Power et al. (2022) document \"grokking\" — models that memorise training data initially and then, after extended training, suddenly generalise. The phenomenon is more pronounced at smaller model sizes. Nanda et al. (2023) provide a mechanistic explanation: grokking represents the formation of a compact algorithmic circuit that replaces memorisation. Larger models appear to form similar circuits earlier and more reliably, suggesting the mechanism is the same but its dynamics differ with scale. This is partial supportive evidence: the same type of mechanism (algorithmic circuit formation) appears across scales, but the conditions and timing under which it activates differ. The finding is consistent with mechanistic continuity while noting that scale changes the dynamics of the same mechanism.",
-      vectors: ["partial--same-mechanism-type-different-dynamics"],
-      date: "2023–24",
+      qualifiedEvent: "Grokking — gradual circuit formation behind delayed generalisation",
+      description: "Power et al. (2022) document grokking on small algorithmic datasets: networks can reach near-perfect training performance and only much later transition from chance-level to strong generalisation. Nanda et al. (2023) then reverse-engineer grokking in small transformers trained on modular addition, identifying a Fourier-based algorithm and three continuous training phases — memorisation, circuit formation, and cleanup. This is strong mechanistic evidence that an apparently sudden behavioural transition can arise from gradual internal circuit development in the studied small-model setting. Neither paper performs the cross-model-size comparison needed to support the legacy claim that larger models form the same circuits earlier or more reliably. The evidence therefore informs how emergence can occur without demonstrating continuity across model sizes.",
+      vectors: ["partial--mechanistic-emergence-not-cross-scale"],
+      date: "2022–23",
+      sources: [
+        {
+          citation: "Power, A. et al. (2022), Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets, arXiv:2201.02177.",
+          url: "https://arxiv.org/abs/2201.02177",
+          locator: "Abstract; delayed generalisation after overfitting",
+        },
+        {
+          citation: "Nanda, N. et al. (2023), Progress Measures for Grokking via Mechanistic Interpretability, ICLR 2023, arXiv:2301.05217.",
+          url: "https://arxiv.org/abs/2301.05217",
+          locator: "Abstract; reverse-engineered modular-addition circuit; memorisation, circuit formation and cleanup phases",
+        },
+      ],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "Scaling and representation geometry — qualitative changes in internal structure",
-      description: "Multiple mechanistic interpretability papers in 2023–24 (including work from Anthropic's interpretability team and academic groups) find that the geometric structure of internal representations changes qualitatively with scale — not just in size but in organisation. Larger models develop more linearly separable representations, more distinct concept subspaces, and more structured attention patterns than smaller models trained on the same data. These structural changes are consistent with the same architectural mechanisms (attention, MLP layers) operating differently at scale, which could be interpreted as either mechanistic continuity (same type of mechanism) or discontinuity (different computational strategy). The evidence is genuinely ambiguous: the mechanisms are recognisably the same type, but whether they constitute \"the same mechanism\" in the sense the claim requires depends on a definition the field has not settled.",
-      vectors: ["partial--ambiguous-at-definitional-boundary"],
+      qualifiedEvent: "Legacy representation-geometry attribution — provenance unresolved",
+      description: "The legacy instance attributed a specific bundle of cross-scale representation-geometry findings — greater linear separability, more distinct concept subspaces, and more structured attention in larger models — to unspecified 2023–24 mechanistic-interpretability work. LPR-001-D06 could not confidently reconstruct a source set supporting that exact historical representation. Those claims are therefore withdrawn from the current evidential basis rather than retrofitted to a substitute source. IN-005 remains visible as explicit legacy provenance debt and contributes no substantive evidence for or against cross-scale mechanism continuity pending a normal governed Record Review.",
+      vectors: ["partial--legacy-provenance-unresolved"],
       date: "2024",
     },
     {
@@ -104,6 +135,14 @@ export const FR_AI_0006 = {
       verificationStage: "VS-03",
       summary: "IN-006 adds direct mechanistic evidence from abstract reasoning that specialized symbolic-processing circuitry is substantially associated with capable larger models and is weak or absent in smaller models that do not perform the task. This increases pressure on a simple cross-scale continuity reading, while not resolving the claim: the result is task-specific, and BN-001 remains decisive because whether an emergent specialized circuit counts as a new mechanism depends on the level of abstraction used for mechanism identity. FRAGMENTING is therefore retained. VS-03 is retained provisionally because the new evidence uses causal mediation and ablation-style mechanistic scrutiny; PA-005 does not reopen the historical stage classification beyond the evidence reviewed here.",
       assessorNote: "PA-005 provenance-in-review replication trial. New evidence provenance captured at admission. Attempted opportunistic enrichment of IN-001 exposed a material wording/provenance discrepancy and was stopped for separate bounded correction review.",
+    },
+    {
+      id: "AS-003",
+      date: "2026-09-04",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "LPR-001-D06 narrows the historical evidence underlying AS-001 without rewriting that assessment. Olsson et al. (IN-001) remain the strongest continuity evidence, but causal support is strongest in small attention-only models and becomes mainly correlational in larger models; the record therefore cannot describe cross-scale causal continuity as directly established. Wei and Michaud (IN-002) address behavioural emergence and a proposed quantized scaling model without determining mechanism identity across model sizes. Elhage et al. (IN-003) establish superposition in toy networks, and the grokking literature (IN-004) reverse-engineers gradual circuit formation in small transformers; neither supplies the cross-scale comparisons AS-001 previously inferred. The legacy representation-geometry bundle in IN-005 is withdrawn from the current evidential basis because its provenance could not be reconstructed. IN-006 remains direct cross-model evidence that specialized symbolic circuitry becomes more evident in capable larger models, increasing pressure on a simple continuity reading. FRAGMENTING / VS-03 is retained on this narrower basis: some continuity evidence exists, some task-specific evidence points toward scale-associated mechanistic specialization, and the governing definition of 'same mechanism' remains unresolved.",
+      assessorNote: "Governed assessment correction following LPR-001-D06. AS-001 and AS-002 remain visible append-only as historical judgements. No new evidence instance was admitted through LPR-001; the separately identified 2026 representation-geometry preprint remains a normal Record Review candidate.",
     }
   ],
 
@@ -128,9 +167,9 @@ export const FR_AI_0006 = {
   lineage: {
     items: [
     { year: "2020–21", text: "Scaling laws assume mechanistic continuity implicitly. Kaplan et al. scaling laws treat capability as a smooth function of scale, implicitly assuming continuous underlying mechanisms. The mechanistic question is not asked." },
-    { year: "2022", text: "Mechanistic interpretability identifies specific circuits. Elhage et al. and Olsson et al. provide causal circuit evidence in small models and cross-scale correlational evidence in larger models, making the mechanistic continuity question empirically tractable for the first time." },
-    { year: "2022–23", text: "Emergent abilities and superposition raise discontinuity concerns. Wei et al. and Elhage et al. superposition work suggest mechanisms may differ qualitatively with scale. The claim enters ESCALATING then transitions to FRAGMENTING as the definitional question sharpens." },
-    { year: "2023–24", text: "Representation geometry research deepens the question. Evidence accumulates that large models organise representations differently than small models. Whether this is mechanistic continuity or discontinuity remains contested at the definitional level." }
+    { year: "2022", text: "Mechanistic interpretability makes parts of the continuity question empirically tractable. Olsson et al. identify induction heads with strong causal evidence in small attention-only models and mainly correlational evidence in larger models. Elhage et al. provide a toy-model account of superposition, relevant to representational mechanism but not a cross-scale language-model comparison." },
+    { year: "2022–23", text: "Emergent abilities and mechanistic explanations separate. Wei et al. document behavioural emergence with scale; Michaud et al. propose quantized skill acquisition as one explanation; grokking work shows apparently sudden behavioural transitions can arise from gradual circuit formation in small transformers. None of these results alone determines whether the same mechanism persists across model sizes." },
+    { year: "2024–25", text: "The legacy 2024 representation-geometry attribution cannot be confidently reconstructed and is withdrawn from the current evidential basis. In 2025, Yang et al. provide direct cross-model evidence that specialized symbolic mechanisms are associated with capable larger models, sharpening rather than resolving the continuity question." }
     ],
     relatedRecords: [],
   },
@@ -155,6 +194,8 @@ export const FR_AI_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-013", date: "2026-09-04", field: "assessment_correction", from: "AS-002", to: "AS-003", note: "AS-003 appended after the approved LPR-001-D06 bounded correction. Historical AS-001/AS-002 preserved. Current judgement retains FRAGMENTING / VS-03 on the narrower source-faithful basis established by corrected IN-001 through IN-006. Affected lineage wording was aligned to the corrected historical evidence; no new evidence instance admitted." },
+    { id: "M-012", date: "2026-09-04", field: "provenance_correction", from: "LPR-001-D06 discrepancies_found", to: "LEGACY-INSTANCES-CORRECTED", note: "Governed bounded correction applied to IN-002 through IN-005. IN-002 aligned to Wei et al. and Michaud et al.; IN-003 bounded to Elhage et al.'s toy-model superposition evidence; IN-004 bounded to Power et al. and Nanda et al.'s small-model grokking evidence; unsupported IN-005 cross-scale geometry claims withdrawn and retained as explicit provenance debt without retrofitted source. No new evidence admitted." },
     { id: "M-011", date: "2026-09-04", field: "provenance_review", from: "—", to: "LPR-001-D06", note: "Legacy provenance review completed. All six evidence instances examined. IN-001 and IN-006 structured provenance verified. Material source-fidelity discrepancies identified in IN-002, IN-003, and IN-004; IN-005 legacy attribution could not be confidently reconstructed and was left unchanged. No new scientific evidence admitted and no assessment, pressure-state, or verification-stage changes made. Review marked pending governed correction." },
     { id: "M-010", date: "2026-08-29", field: "provenance_enriched", from: "IN-001 without structured provenance", to: "IN-001 sources[] added", note: "Added primary Transformer Circuits and arXiv provenance for Olsson et al. (2022) after bounded source review." },
     { id: "M-009", date: "2026-08-29", field: "editorial_correction", from: "IN-001 described causal responsibility across the full model-size range", to: "IN-001 distinguishes causal small-model evidence from mainly correlational larger-model evidence", note: "Editorial Correction: aligned IN-001 and matching 2022 lineage wording with Olsson et al.'s stated evidence strength. No new evidence instance and no reassessment; FRAGMENTING / VS-03 remains current under AS-002." },
