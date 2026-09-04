@@ -115,6 +115,20 @@ export const FR_AI_0006 = {
           locator: "Abstract and model-scale analyses",
         },
       ],
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "Scale-dependent predictive representation geometry — Xu preprint",
+      description: "Xu (2026) introduces Subspace PGA to test whether the geometry of intermediate hidden representations is organised around the unembedding readout subspace used for next-token prediction. Across seven Pythia models from 70M to 6.9B, trained on the same data and tokenizer, the study reports a scale-dependent regime: smaller models (hidden dimension at or below 1024) progressively lose predictive alignment in late layers during training, while larger models (dimension at or above 2048) preserve it across intermediate layers. Cross-family checks on Phi-1.5, OLMo-1B, and Gemma-2-2B broadly support the capacity interpretation while also showing architecture-specific variation. The paper attributes the small-model effect to a capacity trade-off in which dominant directions move away from the readout subspace; importantly, removing those directions restores alignment, so the predictive structure is described as masked rather than destroyed. This is direct cross-scale evidence that models of different sizes can organise internal geometry differently while retaining related underlying predictive structure. It therefore pressures a simple 'same mechanism means same organisation' reading, but does not establish a wholly different computational mechanism at larger scale. The result is a 2026 preprint under review and the proposed metric has not yet received independent replication.",
+      vectors: ["partial--scale-dependent-predictive-geometry"],
+      date: "2026-05-16",
+      sources: [
+        {
+          citation: "Xu, W. (2026), Scale Determines Whether Language Models Organize Representation Geometry for Prediction, arXiv:2605.17084v1.",
+          url: "https://arxiv.org/abs/2605.17084",
+          locator: "Abstract; §§4–5; seven-model Pythia scale sweep; cross-architecture validation; limitations",
+        },
+      ],
     }
   ],
 
@@ -143,6 +157,14 @@ export const FR_AI_0006 = {
       verificationStage: "VS-03",
       summary: "LPR-001-D06 narrows the historical evidence underlying AS-001 without rewriting that assessment. Olsson et al. (IN-001) remain the strongest continuity evidence, but causal support is strongest in small attention-only models and becomes mainly correlational in larger models; the record therefore cannot describe cross-scale causal continuity as directly established. Wei and Michaud (IN-002) address behavioural emergence and a proposed quantized scaling model without determining mechanism identity across model sizes. Elhage et al. (IN-003) establish superposition in toy networks, and the grokking literature (IN-004) reverse-engineers gradual circuit formation in small transformers; neither supplies the cross-scale comparisons AS-001 previously inferred. The legacy representation-geometry bundle in IN-005 is withdrawn from the current evidential basis because its provenance could not be reconstructed. IN-006 remains direct cross-model evidence that specialized symbolic circuitry becomes more evident in capable larger models, increasing pressure on a simple continuity reading. FRAGMENTING / VS-03 is retained on this narrower basis: some continuity evidence exists, some task-specific evidence points toward scale-associated mechanistic specialization, and the governing definition of 'same mechanism' remains unresolved.",
       assessorNote: "Governed assessment correction following LPR-001-D06. AS-001 and AS-002 remain visible append-only as historical judgements. No new evidence instance was admitted through LPR-001; the separately identified 2026 representation-geometry preprint remains a normal Record Review candidate.",
+    },
+    {
+      id: "AS-004",
+      date: "2026-09-04",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "Normal Record Review admits IN-007 as genuinely new cross-scale representation evidence. Xu's scale sweep supplies the type of direct small-versus-large comparison that the corrected legacy IN-003 through IN-005 lacked: predictive representation geometry follows different late-layer regimes in smaller and larger models. That result increases pressure on a strong continuity reading if mechanism identity is defined at the level of internal organisation. At the same time, the paper's own masking result cuts against treating the regime shift as proof of a wholly new mechanism: predictive structure remains recoverable beneath the dominant off-readout directions. IN-007 therefore deepens rather than resolves the record's central ambiguity. Together with IN-001 and IN-006, the evidence now contains meaningful support for both recurring structure and scale-associated specialisation, while BN-001 still prevents a stable answer to whether those observations count as the 'same underlying mechanism.' FRAGMENTING / VS-03 is retained. The evidential weight is moderated because IN-007 is a single-author preprint, introduces a new metric, and is not yet independently replicated.",
+      assessorNote: "Bounded Record Review of Xu (2026), arXiv:2605.17084v1, originally surfaced as an LPR-001-D06 Record Review candidate. IN-007 is admitted as new evidence with primary provenance. It does not retroactively repair or replace unresolved legacy IN-005.",
     }
   ],
 
@@ -169,7 +191,8 @@ export const FR_AI_0006 = {
     { year: "2020–21", text: "Scaling laws assume mechanistic continuity implicitly. Kaplan et al. scaling laws treat capability as a smooth function of scale, implicitly assuming continuous underlying mechanisms. The mechanistic question is not asked." },
     { year: "2022", text: "Mechanistic interpretability makes parts of the continuity question empirically tractable. Olsson et al. identify induction heads with strong causal evidence in small attention-only models and mainly correlational evidence in larger models. Elhage et al. provide a toy-model account of superposition, relevant to representational mechanism but not a cross-scale language-model comparison." },
     { year: "2022–23", text: "Emergent abilities and mechanistic explanations separate. Wei et al. document behavioural emergence with scale; Michaud et al. propose quantized skill acquisition as one explanation; grokking work shows apparently sudden behavioural transitions can arise from gradual circuit formation in small transformers. None of these results alone determines whether the same mechanism persists across model sizes." },
-    { year: "2024–25", text: "The legacy 2024 representation-geometry attribution cannot be confidently reconstructed and is withdrawn from the current evidential basis. In 2025, Yang et al. provide direct cross-model evidence that specialized symbolic mechanisms are associated with capable larger models, sharpening rather than resolving the continuity question." }
+    { year: "2024–25", text: "The legacy 2024 representation-geometry attribution cannot be confidently reconstructed and is withdrawn from the current evidential basis. In 2025, Yang et al. provide direct cross-model evidence that specialized symbolic mechanisms are associated with capable larger models, sharpening rather than resolving the continuity question." },
+    { year: "2026", text: "Xu introduces Subspace PGA and reports a scale-dependent regime in predictive representation geometry across seven Pythia models, with cross-family checks. Smaller models lose late-layer predictive alignment while larger models preserve it, yet the underlying predictive structure can be recovered after removing dominant off-readout directions. The result supplies direct cross-scale representation evidence while preserving the mechanism-identity ambiguity." }
     ],
     relatedRecords: [],
   },
@@ -194,6 +217,8 @@ export const FR_AI_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-015", date: "2026-09-04", field: "assessment_issued", from: "AS-003", to: "AS-004", note: "Normal Record Review reassessed FR-AI-0006 after admission of IN-007. Xu's 2026 cross-scale representation-geometry result deepens the continuity/discontinuity ambiguity but does not resolve mechanism identity. FRAGMENTING / VS-03 retained; preprint and replication limitations recorded." },
+    { id: "M-014", date: "2026-09-04", field: "instance_added", from: "—", to: "IN-007", note: "Normal Record Review admitted Xu (2026), arXiv:2605.17084v1: Subspace PGA evidence of scale-dependent predictive representation geometry across seven Pythia models with three cross-family checks. Admitted as new evidence with primary provenance; not used to retrofit unresolved legacy IN-005." },
     { id: "M-013", date: "2026-09-04", field: "assessment_correction", from: "AS-002", to: "AS-003", note: "AS-003 appended after the approved LPR-001-D06 bounded correction. Historical AS-001/AS-002 preserved. Current judgement retains FRAGMENTING / VS-03 on the narrower source-faithful basis established by corrected IN-001 through IN-006. Affected lineage wording was aligned to the corrected historical evidence; no new evidence instance admitted." },
     { id: "M-012", date: "2026-09-04", field: "provenance_correction", from: "LPR-001-D06 discrepancies_found", to: "LEGACY-INSTANCES-CORRECTED", note: "Governed bounded correction applied to IN-002 through IN-005. IN-002 aligned to Wei et al. and Michaud et al.; IN-003 bounded to Elhage et al.'s toy-model superposition evidence; IN-004 bounded to Power et al. and Nanda et al.'s small-model grokking evidence; unsupported IN-005 cross-scale geometry claims withdrawn and retained as explicit provenance debt without retrofitted source. No new evidence admitted." },
     { id: "M-011", date: "2026-09-04", field: "provenance_review", from: "—", to: "LPR-001-D06", note: "Legacy provenance review completed. All six evidence instances examined. IN-001 and IN-006 structured provenance verified. Material source-fidelity discrepancies identified in IN-002, IN-003, and IN-004; IN-005 legacy attribution could not be confidently reconstructed and was left unchanged. No new scientific evidence admitted and no assessment, pressure-state, or verification-stage changes made. Review marked pending governed correction." },
