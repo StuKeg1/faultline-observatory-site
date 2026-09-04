@@ -12,6 +12,10 @@
 export const FR_AI_0006 = {
   id: "FR-AI-0006",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-09-04",
+  provenanceReviewId: "LPR-001-D06",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Capabilities that emerge through scaling language models are explained by the same underlying mechanism across model sizes.",
@@ -151,6 +155,7 @@ export const FR_AI_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-011", date: "2026-09-04", field: "provenance_review", from: "—", to: "LPR-001-D06", note: "Legacy provenance review completed. All six evidence instances examined. IN-001 and IN-006 structured provenance verified. Material source-fidelity discrepancies identified in IN-002, IN-003, and IN-004; IN-005 legacy attribution could not be confidently reconstructed and was left unchanged. No new scientific evidence admitted and no assessment, pressure-state, or verification-stage changes made. Review marked pending governed correction." },
     { id: "M-010", date: "2026-08-29", field: "provenance_enriched", from: "IN-001 without structured provenance", to: "IN-001 sources[] added", note: "Added primary Transformer Circuits and arXiv provenance for Olsson et al. (2022) after bounded source review." },
     { id: "M-009", date: "2026-08-29", field: "editorial_correction", from: "IN-001 described causal responsibility across the full model-size range", to: "IN-001 distinguishes causal small-model evidence from mainly correlational larger-model evidence", note: "Editorial Correction: aligned IN-001 and matching 2022 lineage wording with Olsson et al.'s stated evidence strength. No new evidence instance and no reassessment; FRAGMENTING / VS-03 remains current under AS-002." },
     { id: "M-008", date: "2026-08-29", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "PA-005 review: FRAGMENTING / VS-03 retained after admission of IN-006." },
