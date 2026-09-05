@@ -14,8 +14,8 @@ export const FR_AI_0007 = {
   programme: "PROG-AI",
   lastProvenanceReview: "2026-09-05",
   provenanceReviewId: "LPR-001-D07",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "AI systems can autonomously conduct scientific research that produces novel, correct discoveries.",
@@ -26,37 +26,70 @@ export const FR_AI_0007 = {
   instances: [
     {
       id: "IN-001",
-      qualifiedEvent: "AlphaFold2 — protein structure prediction at scale",
-      description: "DeepMind's AlphaFold2 (Jumper et al. 2021, Nature) achieves near-experimental-accuracy protein structure prediction across the proteome, solving a fifty-year grand challenge in structural biology. The system is trained on known structures and predicts novel structures without human direction of individual predictions. Structures predicted by AlphaFold have been independently verified experimentally and have enabled downstream biological discoveries. The autonomy component is partially satisfied: the system is autonomous at the level of individual predictions, but the research framing (predict structures from sequences) is human-set. The novelty component is strongly supported for structures of previously uncharacterised proteins. The correctness component is well-evidenced by experimental validation. Characterisation: correct and novel at the prediction level; autonomy limited to execution rather than research direction.",
-      vectors: ["partial--correct-and-novel-autonomy-at-execution-level-only"],
-      date: "2020–22",
+      qualifiedEvent: "AlphaFold2 — highly accurate blind protein-structure prediction",
+      description: "Jumper et al. (2021) report AlphaFold2's performance in CASP14, a blind structure-prediction assessment using experimentally solved structures that had not yet been publicly released. AlphaFold achieved accuracy competitive with experimental structures in a majority of cases and substantially outperformed other methods. This is strong evidence that an AI system can autonomously execute highly accurate scientific prediction once the task and inputs are specified. The Nature paper does not by itself establish proteome-scale discovery, independent experimental confirmation of newly discovered structures, or autonomous selection of scientific questions. For this record it is therefore bounded background evidence on correctness and autonomous execution, not a demonstration of autonomous scientific discovery in the full sense of the claim.",
+      vectors: ["partial--high-accuracy-prediction-not-autonomous-discovery"],
+      date: "2021",
+      sources: [
+        {
+          citation: "Jumper, J. et al. (2021), Highly accurate protein structure prediction with AlphaFold, Nature 596, 583–589.",
+          url: "https://www.nature.com/articles/s41586-021-03819-2",
+          locator: "Abstract; CASP14 blind assessment; accuracy results",
+        },
+      ],
     },
     {
       id: "IN-002",
-      qualifiedEvent: "GNoME — graph neural network materials discovery",
-      description: "Merchant et al. (DeepMind, 2023, Nature) report GNoME, a graph neural network that predicts the stability of novel inorganic crystal structures, identifying approximately 2.2 million new stable materials — including 380,000 structures considered stable enough for experimental synthesis, of which 736 were subsequently synthesised in collaboration with a robotic laboratory. The system autonomously explores chemical space beyond human-curated hypotheses. Novel, stable materials were predicted and then confirmed experimentally. The autonomy component is stronger here than in AlphaFold: the system generates candidate structures rather than merely predicting properties of human-specified inputs. However, the research question (find stable inorganic crystals) was human-framed. Correctness is directly evidenced by successful synthesis. This is the strongest instance in the record: autonomous generation of novel, experimentally confirmed scientific results across a domain the humans did not individually direct.",
-      vectors: ["supportive--autonomous-generation-novel-experimentally-confirmed"],
+      qualifiedEvent: "GNoME and A-Lab — computational materials discovery and autonomous synthesis are distinct results",
+      description: "Merchant et al. (2023) report GNoME, a graph-network materials-exploration system that identified more than 2.2 million crystal structures stable relative to prior work, with 381,000 new entries on the updated convex hull. The paper notes that 736 structures had been independently experimentally verified, but these were not 736 materials subsequently synthesised by a robotic laboratory. A separate Nature study by Szymanski et al. reports the A-Lab autonomous synthesis platform, which realised 36 of 57 human-selected target compounds over 17 days and used robotics, literature-derived synthesis models, machine-learning interpretation, and active learning. The two studies jointly provide substantial evidence for AI-enabled generation and autonomous experimental execution in materials science, but they do not constitute one end-to-end system that autonomously chose a scientific problem and then discovered and experimentally validated 736 materials. The research objective and A-Lab target set remained human-defined.",
+      vectors: ["supportive--bounded-materials-generation-and-autonomous-synthesis"],
       date: "2023",
+      sources: [
+        {
+          citation: "Merchant, A. et al. (2023), Scaling deep learning for materials discovery, Nature 624, 80–85.",
+          url: "https://www.nature.com/articles/s41586-023-06735-9",
+          locator: "Abstract; 2.2 million stable structures; 381,000 new convex-hull entries; 736 independently experimentally verified structures",
+        },
+        {
+          citation: "Szymanski, N. J. et al. (2023), An autonomous laboratory for the accelerated synthesis of inorganic materials, Nature 624, 86–91.",
+          url: "https://www.nature.com/articles/s41586-023-06734-w",
+          locator: "Abstract; 36 of 57 targets realised; autonomous synthesis workflow; target-selection limitations",
+        },
+      ],
     },
     {
       id: "IN-003",
-      qualifiedEvent: "AI Scientist (Sakana AI) and early autonomous research systems",
-      description: "Sakana AI publishes \"The AI Scientist\" (Lu et al. 2024), a system that autonomously generates research ideas, writes code to test them, runs experiments, and writes papers reporting results — the full scientific loop without human direction at each stage. Evaluation shows the system produces papers that pass automated review at machine learning conferences. The system's outputs contain errors and the autonomy is within a narrow domain (machine learning experiments), but the structure of the claim is satisfied at small scale: autonomous hypothesis generation, experimental execution, and result reporting. Immediate critique: the results are not independently verified, many contain errors detectable by expert review, and the \"novelty\" is contested — the system recombines existing ideas rather than making genuinely unprecedented leaps. The transition to ESCALATING is triggered by the first systems demonstrating the full autonomous research loop, even if output quality is limited.",
-      vectors: ["partial--full-loop-demonstrated-correctness-and-novelty-contested"],
-      date: "2023–24",
+      qualifiedEvent: "The AI Scientist — automated research loop with automated evaluation",
+      description: "Lu et al. (2024) present The AI Scientist, a framework that generates research ideas, writes and executes code, runs experiments, visualises results, writes a paper, and then subjects that paper to a simulated review process. The authors apply it to three machine-learning subfields and report that some generated papers exceed a top-conference acceptance threshold as judged by their own validated automated reviewer. This is evidence that a substantial research loop can be automated inside a narrow, human-defined domain. It is not evidence that the papers were accepted by or passed review at an actual machine-learning conference, and the source does not independently establish the correctness or genuine novelty of the generated scientific claims. The instance therefore supports autonomy of process more strongly than correctness or novelty.",
+      vectors: ["partial--automated-research-loop-independent-validation-limited"],
+      date: "2024",
+      sources: [
+        {
+          citation: "Lu, C. et al. (2024), The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery, arXiv:2408.06292.",
+          url: "https://arxiv.org/abs/2408.06292",
+          locator: "Abstract; automated idea-to-paper workflow; simulated review; automated-reviewer acceptance threshold",
+        },
+      ],
     },
     {
       id: "IN-004",
-      qualifiedEvent: "FunSearch and mathematical discovery — verified novel results in combinatorics",
-      description: "Romera-Paredes et al. (DeepMind, 2023/2024, Nature) report FunSearch, a system combining large language models with evolutionary search that discovers new solutions to mathematical problems including the cap set problem and bin packing. The cap set result is a genuinely novel advance: it improves on the best known human construction and has been verified by the mathematics community. FunSearch operates with human-specified objectives but generates the actual mathematical content autonomously — the system discovers the solution, not merely validates a human hypothesis. The correctness of the mathematical result is absolute (mathematical proof). The novelty is established (it improves on a decades-long open problem). The autonomy is at the solution-finding level within a human-framed problem. This is arguably the clearest current demonstration of the claim: a verified novel correct result produced by autonomous AI process.",
-      vectors: ["supportive--verified-novel-correct-mathematical-result"],
-      date: "2024",
+      qualifiedEvent: "FunSearch — novel cap-set constructions and improved bin-packing heuristics",
+      description: "Romera-Paredes et al. (2023) introduce FunSearch, which pairs a pretrained large language model with an evolutionary search procedure and a human-specified evaluator. Applied to the cap-set problem, FunSearch produced previously unknown constructions that improved the best-known results, including the largest improvement in 20 years to the asymptotic lower bound reported by the authors; it also discovered improved heuristics for online bin packing. This is meaningful evidence that an AI-centred search process can produce novel, verifiable mathematical or algorithmic content inside a human-framed problem. The system does not autonomously choose the problem: researchers supply the evaluator, program skeleton and problem specification, and domain experts analyse and interpret the resulting programs. The primary paper supports novel constructions and verifiable results, but not the stronger legacy description of an autonomous absolute proof independently certified by the mathematics community.",
+      vectors: ["supportive--novel-verifiable-results-with-human-framed-search"],
+      date: "2023",
+      sources: [
+        {
+          citation: "Romera-Paredes, B. et al. (2023), Mathematical discoveries from program search with large language models, Nature 625, 468–475.",
+          url: "https://www.nature.com/articles/s41586-023-06924-6",
+          locator: "Abstract; cap-set constructions; bin-packing heuristics; FunSearch specification and evaluator",
+        },
+      ],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "Major lab restructuring around AI researchers — anticipatory institutional evidence",
-      description: "These are anticipatory institutional acts — serious institutions reorganising in advance of the claim being satisfied. The acts constitute the sixth occurrence of anticipatory institutional evidence in the corpus, this time within PROG-AI — the first occurrence inside the AI programme itself. Multiple major research institutions begin restructuring scientific workflows around AI tools: the Broad Institute, EMBL, and several pharmaceutical companies announce AI-first research programmes; Nature and Science publish editorials on AI's role in scientific discovery; multiple Nobel laureates comment on AI's emerging role in their fields. OpenAI, Anthropic, and Google DeepMind each announce internal research programmes treating AI-assisted discovery as a near-term capability.",
-      vectors: ["partial--anticipatory-institutional-evidence-sixth-occurrence-first-in-prog-ai"],
+      qualifiedEvent: "Legacy institutional-restructuring attribution — provenance unresolved",
+      description: "The legacy instance bundled the Broad Institute, EMBL, pharmaceutical companies, Nature and Science editorials, Nobel-laureate commentary, and internal programmes at OpenAI, Anthropic, and Google DeepMind into a single claim that major institutions were reorganising scientific workflows in anticipation of autonomous AI discovery. LPR-001-D07 could not confidently reconstruct a source chain supporting that exact historical bundle or its stronger institutional-restructuring interpretation. The bundled claim is therefore withdrawn from the current evidential basis rather than retrofitted to substitute sources. IN-005 remains visible as explicit legacy provenance debt and contributes no substantive evidence for the record's current assessment or for the anticipatory-institutional-evidence taxonomy pending a separately governed review.",
+      vectors: ["partial--legacy-provenance-unresolved"],
       date: "2024",
     },
     {
@@ -134,6 +167,14 @@ export const FR_AI_0007 = {
       verificationStage: "VS-03",
       summary: "FRAGMENTING remains the correct pressure state, but the reason for fragmentation is now more precisely described. AS-001 treated autonomous problem identification as the decisive missing component because the strongest supportive examples — GNoME and FunSearch — solve human-framed problems. IN-008 shows that supplying the problem does not isolate the remaining difficulty: frontier agents can execute substantial literature review, coding, debugging, and experimentation while still failing at scientific judgment, including evidential prioritisation, abandonment of weak approaches, project-level backtracking, and recognition of publishable progress. The autonomy boundary therefore has at least two separable dimensions: who identifies the research problem, and whether the system can exercise adequate scientific judgment after the problem is specified. This new contesting evidence does not reverse the existential support supplied by IN-002 and IN-004, and its two-case preprint design is too bounded to justify a stronger negative state. It nevertheless changes the assessment's structure because autonomous research engineering can no longer be treated as evidence that only autonomous problem identification remains unresolved. IN-007 separately shows that correctness can fail through compromised evidential provenance. Together the 2026 evidence deepens fragmentation across autonomy and correctness while preserving the record's verified bounded discoveries. Pressure State and Verification Stage remain FRAGMENTING and VS-03.",
       assessorNote: "AS-002 was issued following the operator-approved Post-Scout review of flag 2026-08-01-01. It is triggered by IN-008 (arXiv:2607.27191v1) and updates the current autonomy-boundary rationale without modifying AS-001, BN-001, OQ-001, AT-001, or any prior instance. The source is a primary preprint with two principal case studies and five total runs; its limits are preserved in IN-008.",
+    },
+    {
+      id: "AS-003",
+      date: "2026-09-05",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "LPR-001-D07 materially narrows the historical basis of AS-001 and the GNoME/FunSearch shorthand inherited by AS-002 without rewriting those assessments. Corrected IN-002 separates GNoME's large-scale computational materials discovery from the distinct A-Lab autonomous-synthesis experiment; together they support bounded generation and experimental autonomy, but not a single end-to-end system that autonomously selected a problem and experimentally confirmed 736 discoveries. Corrected IN-004 still supplies strong evidence of novel, verifiable mathematical and algorithmic results from an AI-centred search process, but within a human-specified evaluator, program skeleton and problem. IN-001 is now correctly bounded to blind high-accuracy prediction, and IN-003 demonstrates an automated research loop evaluated by an automated reviewer rather than external conference acceptance. IN-005 is withdrawn from the current evidential basis because its institutional-restructuring provenance could not be reconstructed. The later evidence remains mixed: IN-007 and IN-008 expose provenance and scientific-judgment failure modes, while IN-009 provides supportive preprint evidence for autonomous research direction within a human-defined shared goal. FRAGMENTING / VS-03 is retained. The current record supports meaningful autonomous scientific work in bounded human-framed settings, but it does not yet converge on autonomous problem identification, robust scientific judgment, and independently verified novelty/correctness as a single general capability.",
+      assessorNote: "Governed assessment correction following LPR-001-D07. AS-001 and AS-002 remain visible append-only as historical judgements. IN-001 through IN-005 were corrected or bounded; no new evidence instance was admitted through LPR-001 and no verification-stage change was made.",
     }
   ],
 
@@ -141,7 +182,7 @@ export const FR_AI_0007 = {
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "\"Autonomously conduct\" lacks an agreed boundary. The claim requires autonomous research conduct, but the boundary between autonomous AI research and AI-assisted human research is contested. All current leading examples involve human-framed problems solved autonomously. Whether the claim requires only autonomous problem-solving (satisfied by GNoME and FunSearch) or also autonomous problem-identification (not yet demonstrated) is the critical definitional gap. This is the fifth lexical bottleneck in the corpus — and notably the second in PROG-AI within two records, following the same pattern identified at FR-AI-0006.",
+      description: "\"Autonomously conduct\" lacks an agreed boundary. The claim requires autonomous research conduct, but the boundary between autonomous AI research and AI-assisted human research is contested. Current leading examples demonstrate substantial autonomous problem-solving, generation, experimentation, or research direction inside human-framed objectives. GNoME/A-Lab and FunSearch no longer support the stronger shorthand that the full autonomy component is satisfied; IN-009 extends autonomy toward research-direction choice while retaining a human-defined shared goal. Whether the claim requires only autonomous problem-solving within a supplied domain or also autonomous identification of the scientific problem remains a critical definitional gap. IN-008 further shows that scientific judgment after a problem is supplied is a separable autonomy constraint.",
     },
     {
       id: "BN-002",
@@ -151,16 +192,17 @@ export const FR_AI_0007 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Autonomous problem identification with verified novel correct results. The resolution path is a demonstration where an AI system identifies a previously unrecognised scientific problem, generates hypotheses about it, designs or conducts experiments, and produces results that are independently verified as correct and novel — without a human specifying the problem space. FunSearch and GNoME satisfy part of this; the problem-identification component is the remaining gap. Several AI research systems in development are explicitly targeting this boundary. The attractor is clearly defined and closer than analogous attractors in other records — the current evidence is within one component of satisfaction.",
+      description: "Autonomous problem identification with verified novel correct results. The resolution path is a demonstration where an AI system identifies a previously unrecognised scientific problem, generates hypotheses about it, designs or conducts experiments, and produces results that are independently verified as correct and novel — without a human specifying the problem space. GNoME/A-Lab and FunSearch demonstrate important but bounded pieces of this path inside human-framed objectives; IN-009 adds evidence of research-direction choice within a human-defined shared goal. No current instance establishes the full attractor. The remaining gap includes both autonomous problem identification and sufficiently robust scientific judgment and validation once research is underway.",
     }
   ],
 
   lineage: {
     items: [
     { year: "1955–90", text: "Early AI discovery systems. DENDRAL (1965) and AM (1976) demonstrate early AI systems generating hypotheses in chemistry and mathematics. The claim's aspirational form is established; the capability is far from practical demonstration." },
-    { year: "2020–22", text: "AlphaFold and domain-specific breakthroughs. AlphaFold demonstrates AI-enabled discovery at unprecedented scale in structural biology. The claim transitions from aspiration to active frontier. Autonomy remains limited to execution within human-framed problems." },
-    { year: "2023", text: "GNoME, FunSearch, and generative discovery. Systems demonstrating autonomous generation of novel, experimentally verified results in materials science and mathematics. The correctness and novelty components are strongly evidenced in constrained domains. Autonomy at the problem-generation level remains partial." },
-    { year: "2024", text: "End-to-end autonomous systems and institutional restructuring. AI Scientist demonstrates the full research loop; major institutions begin restructuring around AI-assisted discovery. The claim enters FRAGMENTING as component claims diverge in evidential strength." }
+    { year: "2020–22", text: "AlphaFold2 establishes blind, near-experimental-accuracy protein-structure prediction as a major AI-for-science capability. The source supports autonomous execution of a human-defined prediction task, not autonomous selection of scientific questions or a full discovery loop." },
+    { year: "2023", text: "GNoME expands computational materials exploration while the distinct A-Lab platform demonstrates autonomous synthesis of human-selected targets; FunSearch produces novel cap-set constructions and improved bin-packing heuristics inside human-specified problem definitions. Novel generation and experimental or mathematical verification strengthen, but the evidence remains modular rather than one end-to-end autonomous scientist." },
+    { year: "2024", text: "The AI Scientist demonstrates an automated idea-to-paper research loop in machine learning, with evaluation by an automated reviewer rather than independent conference acceptance. The legacy institutional-restructuring bundle cannot be confidently sourced and is withdrawn from the current evidential basis. The claim remains FRAGMENTING as autonomy, scientific judgment, novelty and correctness diverge in evidential strength." },
+    { year: "2026", text: "New agent evidence deepens both sides of the record: data-poisoning and open-ended-research evaluations expose correctness and scientific-judgment failure modes, while the Station reports autonomous research-direction choice and novel mathematical results within a human-defined shared goal. The evidence moves beyond execution alone without yet demonstrating autonomous problem identification plus independently verified correctness and novelty as a general capability." }
     ],
     relatedRecords: [],
   },
@@ -173,7 +215,7 @@ export const FR_AI_0007 = {
     },
     {
       id: "OQ-002",
-      question: "INST-005 is the sixth occurrence of anticipatory institutional evidence and the first within PROG-AI. Does it fit the existing taxonomy of act types (commercial commitment, regulatory preparation, community standards tightening), or does institutional reorganisation constitute a fourth act type? The Broad Institute and EMBL restructuring is neither a commercial contract nor a regulatory act — it is a scientific workflow redesign. This may be relevant to a fourth act-type option within that developing taxonomy.",
+      question: "The legacy IN-005 institutional-restructuring bundle could not be source-verified under LPR-001-D07 and is no longer part of the current evidential basis. The earlier question of whether institutional reorganisation constitutes a distinct anticipatory-act type therefore remains ungrounded for this record and should not be elevated from FR-AI-0007 unless a separately governed review establishes a source-faithful institutional evidence set.",
       raisedDate: "2024-01-15",
     },
     {
@@ -185,6 +227,8 @@ export const FR_AI_0007 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-017", date: "2026-09-05", field: "assessment_correction", from: "AS-002", to: "AS-003", note: "AS-003 appended after the approved LPR-001-D07 bounded correction. Historical AS-001/AS-002 preserved. Current judgement retains FRAGMENTING / VS-03 on the narrower source-faithful basis established by corrected IN-001 through IN-005 and verified IN-006 through IN-009. BN-001, AT-001, lineage, and OQ-002 were aligned to remove dependencies on superseded legacy interpretations." },
+    { id: "M-016", date: "2026-09-05", field: "provenance_correction", from: "LPR-001-D07 discrepancies_found", to: "LEGACY-INSTANCES-CORRECTED", note: "Governed bounded correction applied to IN-001 through IN-005. AlphaFold2 bounded to CASP14 prediction evidence; GNoME separated from the distinct A-Lab synthesis study; AI Scientist conference-review overstatement removed; FunSearch bounded to human-framed program search and verifiable reported results; unsupported IN-005 institutional-restructuring bundle withdrawn and retained as explicit provenance debt. Structured primary sources added where attribution is secure. No new evidence admitted." },
     { id: "M-015", date: "2026-09-05", field: "provenance_review", from: "—", to: "LPR-001-D07", note: "Legacy provenance review completed. All nine evidence instances examined. Structured primary-source provenance added to source-faithful IN-006 through IN-009. Material source-fidelity discrepancies identified in IN-001 through IN-004; IN-005's bundled institutional attribution could not be confidently reconstructed as written. No factual or interpretive wording silently repaired, no new scientific evidence admitted, and no assessment, pressure-state, or verification-stage changes made. Review marked pending governed correction." },
     { id: "M-014", date: "2026-08-29", field: "instance_appended", from: "IN-008", to: "IN-009", note: "IN-009 appended — The Station autonomous mathematical discovery study (arXiv:2608.23691v1), authorised through Post-Scout flag RR-2026-08-29-01. SUPPORTIVE instance evidence for autonomous research direction and scientific judgment within a human-defined shared goal. Independent validation remains incomplete; the autonomous problem-identification boundary (BN-001/OQ-001/AT-001) is unchanged. No assessment issued; pressureState FRAGMENTING, verificationStage VS-03, mechanisms, and openQuestions unchanged." },
     { id: "M-013", date: "2026-08-01", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following operator-approved Post-Scout flag 2026-08-01-01. Pressure State FRAGMENTING and Verification Stage VS-03 retained. The assessment now distinguishes autonomous problem identification from scientific judgment after a problem is supplied; IN-008 establishes bounded contesting evidence on the latter. No existing assessment, instance, mechanism, or open question modified." },
