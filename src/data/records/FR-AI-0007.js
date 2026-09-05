@@ -12,6 +12,10 @@
 export const FR_AI_0007 = {
   id: "FR-AI-0007",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-09-05",
+  provenanceReviewId: "LPR-001-D07",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "AI systems can autonomously conduct scientific research that produces novel, correct discoveries.",
@@ -61,6 +65,13 @@ export const FR_AI_0007 = {
       description: "A Structured Concept Evolution (SCE) framework pairing a large language model with an algebraic mutation grammar discovers competitive qLDPC code families, including non-abelian group constructions beyond standard bivariate-bicycle codes, using only lightweight models (arXiv:2606.24808, Max Planck Institute, primary preprint, submitted 23 June 2026). The result demonstrates constrained autonomous generation within a human-framed, human-prior-encoded search space: the problem (find high-performance qLDPC code families) is human-set and the mutation grammar itself encodes algebraic prior knowledge, so the system is not discovering code theory from scratch. It supplies no evidence on autonomous problem-identification, which remains the record's decisive unresolved boundary (BN-001, OQ-001, AT-001); competitive performance has not yet been independently established as superior — whether the discovered families outperform state-of-the-art codes under circuit-level (as opposed to code-capacity) noise is unestablished. In relation to the whole claim this is a third constrained-domain example of the same autonomous-generation pattern as IN-002 (materials) and IN-004 (mathematics), on the already-evidenced novelty/correctness side, and weaker than both on correctness. It is classified NEUTRAL because it neither advances nor contests the record's load-bearing boundary.",
       vectors: ["NEUTRAL"],
       date: "2026",
+      sources: [
+        {
+          citation: "Liu, Z. & Marquardt, F. (2026), Large-Language-Model Discovery of Quantum LDPC Codes through Structured Concept Evolution, arXiv:2606.24808v1.",
+          url: "https://arxiv.org/abs/2606.24808",
+          locator: "Abstract; structured concept evolution framework; code-capacity evaluation",
+        },
+      ],
     },
     {
       id: "IN-007",
@@ -68,6 +79,13 @@ export const FR_AI_0007 = {
       description: "Gyevnár, Kasirzadeh, and Shah (arXiv:2607.10712v1, submitted 12 July 2026) test indirect data poisoning against autonomous scientific workflows using three frontier AI agent systems across five socially salient topics and 450 ethically contained runs. Poisoned datasets were retrieved in 84.22% of runs; 49.56% ended with a poisoned conclusion without detection or caveat, while poisoning was detected in 6.0%. In the mitigation evaluation, a structured five-check provenance audit reduced full attack success to 0.0% in the tested setting. This is a bounded contesting instance on the correctness component: it establishes that correctness in autonomous scientific workflows can be conditional on evidential provenance under adversarial retrieval. The canonical claim is existential, so this result does not negate the correct discoveries demonstrated by IN-002 and IN-004. It supplies no evidence on autonomous problem-identification and leaves BN-001, OQ-001, and AT-001 unchanged. The experiment used ethically contained private repositories made operationally indistinguishable from public repositories, five selected topics, and three specified agent configurations; generalisation beyond this controlled setting is unestablished.",
       vectors: ["CONTESTING"],
       date: "2026",
+      sources: [
+        {
+          citation: "Gyevnár, B., Kasirzadeh, A. & Shah, N. B. (2026), Distributed Denial of Science: How Indirect Data Poisoning of AI Systems Can Industrialize Scientific Fraud, arXiv:2607.10712v1.",
+          url: "https://arxiv.org/abs/2607.10712",
+          locator: "Abstract; five topics, three frontier systems, 450 runs; poisoning and mitigation results",
+        },
+      ],
     },
     {
       id: "IN-008",
@@ -75,6 +93,13 @@ export const FR_AI_0007 = {
       description: "A shadow evaluation of frontier research agents finds that substantial autonomous research engineering did not produce successful open-ended AI research in the tested cases (arXiv:2607.27191v1, submitted 29 July 2026). Agents were given the central question from each of two unpublished NeurIPS submissions, but not the authors' answer, and received multi-day access to compute, web search, coding tools, subagents, and review tools. The two principal outputs received overall expert scores of 2/6 and 1/6 and were judged unambiguous rejections. The agents completed literature review, coding, environment debugging, and extensive experimentation, but failed at evidential prioritisation, project-level backtracking, creative response to criticism, and recognition of publishable progress; a robustness run using a different model and scaffold reproduced most of these judgment failures. This is bounded CONTESTING evidence on the autonomy component. It shows that autonomous execution of research engineering can coexist with failure of scientific judgment even after humans specify the research problem, so the record's unresolved autonomy boundary is not exhausted by problem identification versus problem solving. It does not negate verified bounded discoveries in IN-002 and IN-004, test autonomous problem identification, or establish general failure across fields. Generalisation is limited by two research questions, five total runs, non-blind expert reviewers, scaffold defects, and the source's preprint status.",
       vectors: ["CONTESTING"],
       date: "2026",
+      sources: [
+        {
+          citation: "Kirgis, P. et al. (2026), Can AI agents conduct open-ended AI research? Early evidence from two case studies, arXiv:2607.27191v1.",
+          url: "https://arxiv.org/abs/2607.27191",
+          locator: "Abstract; shadow-evaluation design; two unpublished NeurIPS 2026 research questions; robustness check",
+        },
+      ],
     },
     {
       id: "IN-009",
@@ -82,6 +107,13 @@ export const FR_AI_0007 = {
       description: "Chung, Du, and Wesley (arXiv:2608.23691v1, submitted 24 August 2026) report the Station, an open-world multi-agent environment in which agents from different model families choose research directions, conduct experiments, collaborate, and build a shared scientific literature without a central coordinator or scripted pipeline. Across twelve construction problems from the AlphaEvolve catalogue and two additional case studies, the authors report results novel relative to prior literature on five problems, including a new infinite family of finite-field Kakeya sets, exact 604-point kissing configurations in dimension 11, new records for two optimisation problems, and an improved lower bound for Erdős's minimum-overlap problem; they also report novel infinite families for Book Ramsey numbers. Raw agent dialogues, proofs, source code, and verification artifacts were released. This is SUPPORTIVE instance evidence for autonomous research direction and scientific judgment within a human-defined shared goal, and it counterbalances IN-008's bounded failure cases without negating them. The source remains a primary preprint authored by the system's creators: independent expert validation of the claimed novelty, proofs, and reproducibility is incomplete. The system did not identify the overarching research domain or shared goal, so it does not satisfy the autonomous problem-identification boundary in BN-001, OQ-001, and AT-001. Instance only: AS-002, FRAGMENTING, VS-03, mechanisms, and open questions remain unchanged.",
       vectors: ["SUPPORTIVE"],
       date: "2026",
+      sources: [
+        {
+          citation: "Chung, S., Du, W. & Wesley, W. J. (2026), Autonomous Mathematical Discovery in an Open-World Multi-Agent Environment, arXiv:2608.23691v1.",
+          url: "https://arxiv.org/abs/2608.23691",
+          locator: "Abstract; open-world multi-agent environment; reported novel results; released dialogues, proofs and verification code",
+        },
+      ],
     },
   ],
 
@@ -153,6 +185,7 @@ export const FR_AI_0007 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-015", date: "2026-09-05", field: "provenance_review", from: "—", to: "LPR-001-D07", note: "Legacy provenance review completed. All nine evidence instances examined. Structured primary-source provenance added to source-faithful IN-006 through IN-009. Material source-fidelity discrepancies identified in IN-001 through IN-004; IN-005's bundled institutional attribution could not be confidently reconstructed as written. No factual or interpretive wording silently repaired, no new scientific evidence admitted, and no assessment, pressure-state, or verification-stage changes made. Review marked pending governed correction." },
     { id: "M-014", date: "2026-08-29", field: "instance_appended", from: "IN-008", to: "IN-009", note: "IN-009 appended — The Station autonomous mathematical discovery study (arXiv:2608.23691v1), authorised through Post-Scout flag RR-2026-08-29-01. SUPPORTIVE instance evidence for autonomous research direction and scientific judgment within a human-defined shared goal. Independent validation remains incomplete; the autonomous problem-identification boundary (BN-001/OQ-001/AT-001) is unchanged. No assessment issued; pressureState FRAGMENTING, verificationStage VS-03, mechanisms, and openQuestions unchanged." },
     { id: "M-013", date: "2026-08-01", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following operator-approved Post-Scout flag 2026-08-01-01. Pressure State FRAGMENTING and Verification Stage VS-03 retained. The assessment now distinguishes autonomous problem identification from scientific judgment after a problem is supplied; IN-008 establishes bounded contesting evidence on the latter. No existing assessment, instance, mechanism, or open question modified." },
     { id: "M-012", date: "2026-08-01", field: "instance_appended", from: "IN-007", to: "IN-008", note: "IN-008 appended — open-ended AI research shadow evaluation (arXiv:2607.27191v1), authorised through Post-Scout flag 2026-08-01-01. Bounded CONTESTING evidence: agents completed substantial research engineering but failed the tested open-ended scientific-judgment task. Instance logged before AS-002; no prior corpus content modified." },
