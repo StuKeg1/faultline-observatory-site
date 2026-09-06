@@ -14,8 +14,8 @@ export const FR_AI_0008 = {
   programme: "PROG-AI",
   lastProvenanceReview: "2026-09-06",
   provenanceReviewId: "LPR-001-D08",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "AI-assisted medical diagnosis achieves specialist-level accuracy on defined imaging tasks.",
@@ -26,37 +26,54 @@ export const FR_AI_0008 = {
   instances: [
     {
       id: "IN-001",
-      qualifiedEvent: "Landmark studies — dermatology, diabetic retinopathy, chest X-ray",
-      description: "Esteva et al. (2017, Nature) demonstrate dermatology AI matching board-certified dermatologist performance on skin lesion classification. Gulshan et al. (2016, JAMA) demonstrate diabetic retinopathy screening AI exceeding specialist sensitivity at high specificity. Rajpurkar et al. (CheXNet, 2017) report chest X-ray pneumonia detection exceeding radiologist performance on a defined benchmark. These studies are the canonical positive evidence for the claim: on defined imaging tasks using curated research datasets, AI systems achieve or exceed specialist-level accuracy. The claim's surface assertion — specialist-level accuracy on defined tasks — is confirmed in multiple imaging domains simultaneously. All three studies use retrospective single-site datasets; the deployment question is explicitly not addressed.",
-      vectors: ["supportive--specialist-level-accuracy-on-research-datasets-confirmed"],
-      date: "2017–19",
+      qualifiedEvent: "Landmark studies — specialist-level performance on bounded imaging benchmarks",
+      description: "Three landmark studies establish strong performance on defined medical-imaging tasks, but under different datasets and comparator designs. Esteva et al. (2017) trained a skin-lesion classifier on 129,450 images and tested it against 21 board-certified dermatologists on two binary classification tasks, reporting dermatologist-level performance. Gulshan et al. (2016) validated a diabetic-retinopathy algorithm on the EyePACS-1 and Messidor-2 datasets, reporting AUCs of 0.991 and 0.990 and high sensitivity/specificity at prespecified operating points against expert-derived reference standards. Rajpurkar et al. (2017) trained CheXNet on ChestX-ray14 and reported F1 performance above the average of four radiologists on a pneumonia test set. Together these studies support the record's surface claim in bounded research evaluations. They do not establish uniform real-world deployment performance, and the legacy statement that all three used retrospective single-site datasets is withdrawn.",
+      vectors: ["supportive--specialist-level-performance-on-bounded-research-tasks"],
+      date: "2016–17",
+      sources: [
+        { citation: "Esteva, A. et al. (2017), Dermatologist-level classification of skin cancer with deep neural networks, Nature 542, 115–118.", url: "https://www.nature.com/articles/nature21056", locator: "Abstract; training set; dermatologist comparison" },
+        { citation: "Gulshan, V. et al. (2016), Development and Validation of a Deep Learning Algorithm for Detection of Diabetic Retinopathy in Retinal Fundus Photographs, JAMA 316(22), 2402–2410.", url: "https://jamanetwork.com/journals/jama/fullarticle/2588763", locator: "Results; EyePACS-1 and Messidor-2 validation; sensitivity and specificity" },
+        { citation: "Rajpurkar, P. et al. (2017), CheXNet: Radiologist-Level Pneumonia Detection on Chest X-Rays with Deep Learning, arXiv:1711.05225.", url: "https://arxiv.org/abs/1711.05225", locator: "Abstract; ChestX-ray14; four-radiologist comparison; F1 metric" },
+      ],
     },
     {
       id: "IN-002",
-      qualifiedEvent: "FDA clearances and real-world deployment — regulatory validation",
-      description: "The claim's surface assertion is confirmed by regulatory authority in multiple imaging domains. The FDA clears multiple AI imaging devices: IDx-DR for autonomous diabetic retinopathy screening (2018, first autonomous AI diagnostic device cleared), Viz.ai for large vessel occlusion detection (2018), Aidoc and similar tools for triage prioritisation. By 2023, over 500 AI/ML-based medical devices have received FDA 510(k) clearance or De Novo authorisation in the imaging space. These clearances require demonstration of performance meeting specified accuracy thresholds, providing regulatory-validated evidence that the claim's accuracy standard is achievable in prospective settings. The clearances represent a significant evidential upgrade from research datasets: FDA requires prospective or analytically validated performance data.",
-      vectors: ["supportive--regulatory-validation-in-prospective-settings"],
-      date: "2019–21",
+      qualifiedEvent: "FDA authorisations — clinical-use evidence with device-specific validation",
+      description: "FDA authorisation establishes that AI imaging systems can satisfy device-specific regulatory requirements, but it is not equivalent to universal prospective clinical validation. IDx-DR received De Novo authorisation in April 2018 as a diabetic-retinopathy detection device. Viz.ai Contact was authorised in February 2018 as clinical decision-support software that analyses CT images and alerts specialists to potential large-vessel occlusion; FDA explicitly states that it is not a replacement for full patient evaluation or a standalone diagnosis. Viz.ai's submission included a retrospective study of 300 CT images plus real-world evidence concerning notification time. The large number of later FDA-authorised AI/ML devices, many in radiology, demonstrates regulatory adoption across defined intended uses, but authorisation pathways and evidentiary designs vary. The legacy inference that clearance itself proves prospective specialist-level accuracy is withdrawn.",
+      vectors: ["supportive--device-specific-regulatory-authorisation-not-uniform-prospective-validation"],
+      date: "2018–23",
+      sources: [
+        { citation: "U.S. FDA (2018), De Novo classification record DEN180001 — IDx-DR.", url: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/denovo.cfm?id=DEN180001", locator: "Decision date 11 April 2018; diabetic retinopathy detection device" },
+        { citation: "U.S. FDA (2018), FDA permits marketing of clinical decision support software for alerting providers of a potential stroke in patients.", url: "https://www.fda.gov/news-events/press-announcements/fda-permits-marketing-clinical-decision-support-software-alerting-providers-potential-stroke", locator: "Intended use; retrospective 300-CT study; real-world notification evidence; diagnostic limitation" },
+      ],
     },
     {
       id: "IN-003",
-      qualifiedEvent: "Deployment gap studies — research accuracy fails to generalise",
-      description: "The deployment gap is not a research quality problem — it is a structural feature of deep learning systems that learn dataset-specific features rather than task-relevant features. This is the transition event: accuracy on defined tasks is confirmed; whether \"defined tasks\" in research settings corresponds to \"defined tasks\" in deployment is contested. A body of research emerges documenting systematic performance gaps between research-dataset accuracy and real-world clinical deployment. Zech et al. (2018) demonstrate that chest X-ray AI models trained on one hospital's data perform poorly on another hospital's data due to spurious correlations (e.g. metal tokens placed on patients for site identification). Pooch et al. (2020) and subsequent work demonstrate consistent performance degradation across scanner manufacturers, acquisition protocols, and patient demographics. Nagendran et al. (2020, BMJ) publish a systematic review finding that most published AI imaging studies have methodological limitations and few demonstrate improved patient outcomes.",
-      vectors: ["contesting--deployment-gap-research-accuracy-does-not-generalise"],
-      date: "2021–23",
+      qualifiedEvent: "External validation and evidence-quality limits — deployment generalisation remains conditional",
+      description: "Evidence predating the legacy 2021–23 dating already showed that strong internal benchmark performance need not transfer unchanged across clinical environments. Zech et al. (2018) evaluated pneumonia models across three hospital systems and found variable cross-site generalisation; the models could identify acquisition site with high accuracy and exploit confounding information. Pooch et al. (2019) evaluated domain shift across major chest-radiograph datasets and found substantial performance degradation when training and testing distributions differed. Nagendran et al. (2020) systematically reviewed 81 non-randomised medical-imaging studies comparing deep-learning systems with clinicians and found few prospective studies or randomised trials, high risk of bias, and limited real-world evidence. These sources support a deployment-generalisation and evidence-quality problem. They do not establish that every failure is caused by a single structural property of deep learning or that all models necessarily learn dataset-specific rather than task-relevant features.",
+      vectors: ["contesting--external-validation-and-evidence-quality-limit-generalisation-claims"],
+      date: "2018–20",
+      sources: [
+        { citation: "Zech, J. R. et al. (2018), Variable generalization performance of a deep learning model to detect pneumonia in chest radiographs: A cross-sectional study, PLOS Medicine 15(11):e1002683.", url: "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683", locator: "Abstract; three-hospital cross-site evaluation; confounding/site detection" },
+        { citation: "Pooch, E. H. P., Ballester, P. L. & Barros, R. C. (2019), Can we trust deep learning models diagnosis? The impact of domain shift in chest radiograph classification, arXiv:1909.01940.", url: "https://arxiv.org/abs/1909.01940", locator: "Abstract; cross-dataset domain-shift evaluation" },
+        { citation: "Nagendran, M. et al. (2020), Artificial intelligence versus clinicians: systematic review of design, reporting standards, and claims of deep learning studies, BMJ 368:m689.", url: "https://www.bmj.com/content/368/bmj.m689", locator: "Methods; principal findings; prospective and randomised-study limitations" },
+      ],
     },
     {
       id: "IN-004",
-      qualifiedEvent: "Prospective deployment studies — mixed real-world performance",
-      description: "The picture is heterogeneous: some systems generalise successfully, others do not. The claim's \"defined tasks\" qualifier is doing significant work — whether the task is sufficiently defined to make accuracy reproducible varies by system and clinical context. Prospective studies of deployed AI imaging systems show mixed results. The STHLM3 trial (prostate cancer MRI) and MASAI trial (mammography AI triage) in Sweden demonstrate genuine clinical utility — AI-assisted screening detects more cancers with fewer false positives in prospective clinical settings. The NHS mammography AI trial shows AI performance matching radiologist consensus in a prospective setting. However, multiple deployed systems perform substantially below their research benchmarks in independent validation: AI-assisted chest X-ray triage shows variable performance across sites; skin lesion AI shows significant performance drop in diverse skin-tone populations.",
-      vectors: ["partial--some-prospective-success-systematic-generalisation-gaps-persist"],
-      date: "2022–24",
+      qualifiedEvent: "MASAI — prospective randomised AI-supported mammography screening",
+      description: "MASAI supplies prospective randomised evidence for AI-supported mammography screening in the Swedish national screening programme. In the protocol-defined screening-performance analysis of 105,915 analysed participants, AI-supported screening detected 338 cancers versus 262 under standard double reading, corresponding to 6.4 versus 5.0 cancers per 1,000 screened. Recall and false-positive rates were not significantly higher, while screen-reading workload was reduced by 44.2%. This is strong evidence that an AI-supported workflow can improve a defined imaging-screening process in a real clinical programme. It does not establish that all medical-imaging AI generalises successfully, and it is an AI-supported screening workflow rather than autonomous replacement of specialist diagnosis. The legacy STHLM3-MRI and unspecified NHS-trial attributions are withdrawn because they do not support the instance as written. The separately identified 2026 final MASAI interval-cancer analysis remains outside this LPR repair pending normal Record Review.",
+      vectors: ["supportive--prospective-randomised-ai-supported-mammography-benefit"],
+      date: "2021–25",
+      sources: [
+        { citation: "Dembrower, K. et al. (2025), Screening performance and characteristics of breast cancer detected in the Mammography Screening with Artificial Intelligence trial (MASAI), The Lancet Digital Health.", url: "https://doi.org/10.1016/S2589-7500(24)00267-X", locator: "Randomised screening design; cancer detection; false positives; 44.2% workload reduction" },
+      ],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "GPT-4V and foundation models — generalisation capability shift",
-      description: "Whether this represents a qualitative shift in the claim's evidential status or merely an incremental improvement is contested — foundation model medical imaging AI is still undergoing prospective clinical validation. Large vision-language foundation models (GPT-4V, Med-PaLM 2, BioMedCLIP) demonstrate substantially better cross-domain generalisation than task-specific imaging AI. Singhal et al. (2023, Nature Medicine) show Med-PaLM 2 achieving expert-level performance on medical question answering including radiology. Foundation model-based medical imaging AI shows reduced distribution shift sensitivity and better performance on out-of-distribution cases than task-specific predecessors. This is a partial supportive update: the deployment gap documented in INST-003 may be a property of task-specific AI rather than of AI medical imaging in general. Foundation models appear to address some generalisation limitations.",
-      vectors: ["partial--foundation-models-reduce-deployment-gap-prospective-validation-ongoing"],
+      qualifiedEvent: "Legacy foundation-model generalisation attribution — unsupported as written",
+      description: "The legacy instance grouped GPT-4V, Med-PaLM 2 and BioMedCLIP as evidence that medical-imaging foundation models had already demonstrated substantially better cross-domain generalisation and reduced distribution-shift sensitivity than task-specific predecessors. LPR-001-D08 could not verify that bundled claim from the cited evidence. In particular, Singhal et al.'s Med-PaLM 2 work evaluates medical question answering rather than establishing cross-site medical-imaging generalisation. The stronger imaging-generalisation inference is therefore withdrawn from the current evidential basis rather than retrofitted to different studies. IN-005 remains visible as legacy provenance debt and contributes no substantive evidence that foundation models have resolved the deployment-generalisation problem pending separately governed evidence review.",
+      vectors: ["partial--legacy-foundation-model-generalisation-claim-unsupported"],
       date: "2023–24",
     }
   ],
@@ -70,6 +87,14 @@ export const FR_AI_0008 = {
       verificationStage: "VS-03",
       summary: "The claim's surface assertion — specialist-level accuracy on defined imaging tasks — is confirmed on curated research datasets across multiple imaging domains and by regulatory validation in prospective settings for specific cleared devices. The surface layer is advancing: AI medical imaging achieves specialist-level performance on well-defined tasks under controlled conditions. The surface claim is in ESCALATING territory. The claim fragments at the depth layer — specifically, at the boundary between research-dataset accuracy and real-world clinical deployment. Systematic deployment-gap studies (INST-003) document that accuracy measured on curated, single-site datasets does not reliably generalise across scanners, acquisition protocols, or patient demographics, and prospective trials (INST-004) show a heterogeneous picture — some deployed systems retain specialist-level accuracy, others do not. The pressure state is FRAGMENTING: the surface claim is confirmed and advancing, but the depth question — whether research-dataset accuracy is a valid proxy for clinical deployment accuracy — remains open (BN-001), pending further validation of the foundation-model generalisation trend (INST-005).",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-09-06",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "LPR-001-D08 materially narrows the evidential basis without reversing the record. IN-001 still supports specialist-level performance on bounded research tasks across dermatology, diabetic-retinopathy screening and chest-radiograph pneumonia detection. IN-002 establishes device-specific regulatory authorisation, but the legacy inference that FDA clearance itself demonstrates prospective specialist-level clinical performance is withdrawn. IN-003 supports a real external-validation and evidence-quality problem, but not a universal causal claim that deep learning necessarily learns only dataset-specific features. IN-004 now supplies the strongest prospective clinical evidence in the record: the randomised MASAI mammography trial shows improved cancer detection with substantially reduced reading workload and no significant increase in false positives. IN-005 no longer supports the proposition that foundation models have already reduced medical-imaging distribution shift. The evidence therefore remains fragmented between strong bounded-task performance and heterogeneous evidence about transfer into clinical environments. FRAGMENTING / VS-03 is retained.",
+      assessorNote: "Append-only correction following LPR-001-D08. AS-001 is preserved as historical assessment. This assessment removes reliance on the unsupported prospective-clearance and foundation-model-generalisation premises while retaining the benchmark-to-deployment boundary on narrower evidence. The 2026 final MASAI interval-cancer analysis is not admitted here and remains a separate Record Review candidate.",
     }
   ],
 
@@ -77,26 +102,26 @@ export const FR_AI_0008 = {
     {
       id: "BN-001",
       type: "BOTTLENECK — MEASUREMENT VALIDITY (RN-005)",
-      description: "Research dataset AUC as proxy for clinical deployment accuracy. The primary measurement tool for the claim — AUC on curated research datasets — is a proxy for the asserted object: specialist-level accuracy on imaging tasks as encountered in clinical practice. The proxy gap is the deployment generalisation problem: research datasets are curated, single-site, controlled acquisitions; clinical deploy",
+      description: "Research-dataset performance is an imperfect proxy for clinical deployment performance. The claim is defined around accuracy on imaging tasks, but the evidential meaning of an AUC, sensitivity, specificity or F1 result depends on the population, acquisition environment, reference standard and workflow in which it is measured. Cross-site studies show that performance can change under distribution shift, while prospective trials such as MASAI show that some AI-supported workflows can succeed clinically. The bottleneck is therefore not that research metrics are intrinsically invalid, but whether a given bounded evaluation transfers to the intended clinical setting.",
     },
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Distribution shift from spurious correlations. Deep learning imaging systems learn features that correlate with the target label in training data, including features that are spurious artefacts of data collection (acquisition site markers, demographic patterns, equipment signatures). When deployed in new clinical environments, these spurious correlations break, producing accuracy degradation. The ",
+      description: "Distribution shift and confounding can degrade transfer. Medical-imaging models may exploit correlations associated with acquisition site, equipment, population or workflow that do not remain stable elsewhere. Zech et al. directly demonstrate site-associated confounding in chest radiography, and cross-dataset work shows domain shift can reduce performance. This is a documented resistance mechanism, not a claim that every deep-learning imaging system necessarily fails for the same reason.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Foundation model generalisation at clinical scale. The INST-005 evidence suggests foundation model-based medical imaging AI substantially reduces distribution shift sensitivity. If prospective multi-site trials demonstrate that foundation model-based systems maintain specialist-level accuracy across diverse clinical environments — without the performance degradation documented for task-specific AI",
+      description: "Prospective multi-site clinical performance with stable accuracy and patient-relevant outcomes. Resolution requires evidence that AI-assisted imaging systems maintain clinically meaningful performance across diverse deployment environments, populations and workflows rather than only on curated research benchmarks. MASAI moves toward this attractor for mammography, but one successful workflow cannot resolve cross-domain generalisation for medical imaging as a whole. The previous foundation-model-specific attractor is withdrawn because IN-005 does not establish that foundation models have already solved distribution shift.",
     }
   ],
 
   lineage: {
     items: [
-    { year: "2016–17", text: "Landmark accuracy studies. Dermatology, diabetic retinopathy, chest X-ray studies establish specialist-level accuracy on research datasets. The surface claim is confirmed in the literature." },
-    { year: "2018–21", text: "FDA clearances and early deployment. First autonomous AI diagnostic devices cleared. Regulatory validation provides prospective evidence. The claim escalates." },
-    { year: "2021–23", text: "Deployment gap systematically documented. Research accuracy fails to generalise across sites, demographics, equipment. The claim fragments at the benchmark-to-deployment boundary." },
-    { year: "2023–24", text: "Foundation models partially address generalisation. Vision-language foundation models show reduced distribution shift. Prospective validation ongoing. The attractor shifts toward foundation model multi-site trials." }
+      { year: "2016–17", text: "Landmark bounded-task studies. Dermatology, diabetic-retinopathy and chest-radiograph studies establish specialist-level or specialist-comparable performance under defined research evaluations. They do not by themselves establish deployment generalisation." },
+      { year: "2018–20", text: "Regulatory adoption and generalisation scrutiny develop in parallel. IDx-DR and Viz.ai demonstrate device-specific FDA authorisation, while Zech, Pooch and the Nagendran review show why internal performance and regulatory status should not be conflated with uniform real-world generalisation." },
+      { year: "2021–25", text: "Prospective clinical evidence strengthens unevenly. MASAI provides randomised evidence that an AI-supported mammography workflow can increase cancer detection while reducing reading workload without a significant false-positive increase. The broader cross-domain deployment question remains open." },
+      { year: "2023–24", text: "Foundation-model generalisation remains unestablished in this legacy evidence set. The former IN-005 bundle is withdrawn from the current evidential basis because its cited sources do not establish improved cross-site medical-imaging generalisation." }
     ],
     relatedRecords: [],
   },
@@ -114,13 +139,15 @@ export const FR_AI_0008 = {
     },
     {
       id: "OQ-003",
-      question: "INST-005 (foundation model generalisation) is potentially an attractor that also bears on the measurement validity bottleneck: if foundation models generalise across clinical environments, research dataset AUC becomes a more reliable proxy for clinical deployment accuracy. Does resolving the deployment gap simultaneously resolve BN-001?",
+      question: "The legacy hypothesis that foundation models would resolve BN-001 is no longer supported by IN-005. What evidential package would justify closure instead: prospective multi-site performance, stability across populations and acquisition environments, and patient-relevant clinical outcomes? MASAI provides one strong domain-specific example, but whether that pattern generalises beyond mammography remains unresolved.",
       raisedDate: "2024-01-15",
     }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-09-06", field: "assessment_and_dependencies_corrected", from: "AS-001 / legacy BN-RM-AT-lineage-OQ wording", to: "AS-002 / corrected dependencies", note: "Append-only AS-002 issued after the operator-approved LPR-001-D08 repair. FRAGMENTING / VS-03 retained on a narrower evidential basis. BN-001, RM-001, AT-001, lineage and OQ-003 aligned to the corrected evidence: regulatory authorisation is not treated as uniform prospective validation; distribution shift is documented but not universalised; foundation-model resolution is no longer presumed. Historical AS-001 preserved. The 2026 final MASAI interval-cancer analysis remains outside this repair as a normal Record Review candidate." },
+    { id: "M-008", date: "2026-09-06", field: "provenance_correction", from: "LPR-001-D08 discrepancies_found", to: "LPR-001-D08 discrepancies_corrected", note: "Operator-approved correction of IN-001 through IN-005. Primary structured provenance added where source fidelity was established. IN-001 bounded to the actual landmark benchmark designs; IN-002 separates device-specific FDA authorisation from prospective-validation claims; IN-003 corrects chronology and bounds the generalisation inference; IN-004 replaces conflated STHLM3/NHS wording with verified MASAI prospective randomised evidence; IN-005 is retained as explicit unsupported legacy provenance rather than retrofitted to substitute evidence. No new scientific evidence admitted through LPR-001." },
     { id: "M-007", date: "2026-09-06", field: "provenance_review", from: "—", to: "LPR-001-D08", note: "Legacy provenance review completed. All five evidence instances examined. Material source-fidelity discrepancies identified in IN-001 through IN-005, so no structured provenance was silently added to those instances. One genuinely new scientific result — the 2026 final MASAI interval-cancer analysis — was identified and held out for normal Record Review rather than admitted through LPR-001. No factual, interpretive, assessment, pressure-state, or verification-stage wording changed. Review marked pending governed correction." },
     { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-002, IN-003, IN-004, IN-005 descriptions reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-005", date: "2024-01-15", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "" },
