@@ -73,9 +73,13 @@ There are 10 **Hold**, 14 **Qualify**, and 5 **Compatible** record-level finding
 
 ## Consequences for the pilot and derived briefs
 
-`FrontierRecord.jsx` currently enables the governed narrative for the two scoped pilot records, QE-0004 and AI-0007, plus the separate QE-0001 exception. None of these three records required cutoff restoration; all three are byte-for-byte preserved. QE-0001 nevertheless has an existing scope conflict that the compatibility review exposes. Pilot closure should address that discrepancy as well as assessing the two named pilot records.
+### Pilot conclusion — 2026-09-06
 
-Before an attractor or open question is used as current guidance, its relationship to the latest assessment must be explicit. Already-adjudicated questions and retired rationales cannot be recycled as unresolved questions. Historical lineage needs temporal context, especially when it retrospectively assigns institutional actions or states to dates preceding the site's current governance records.
+RENDER-PILOT-001 is concluded. The fixed record-ID gate is retired. Existing mechanisms, assessment history, claim lineage and open questions render for every record that contains the corresponding canonical field; no empty section or placeholder is introduced. On this corpus, all 29 records contain all three narrative fields.
+
+The earlier Hold/Qualify/Compatible findings remain content-quality priorities, not a reason to conceal already-published record history. The rollout makes the relationship explicit in the interface: the State Warrant is the authoritative current assessment; mechanisms, lineage and questions document the causal and historical account and may include matter subsequently narrowed, reframed or resolved. This changes presentation only—no assessment, evidence, pressure state, verification stage, claim or record narrative is rewritten.
+
+Before an attractor or open question is used as current guidance outside its record page, its relationship to the latest assessment must be explicit. Already-adjudicated questions and retired rationales cannot be recycled as unresolved questions. Historical lineage needs temporal context, especially when it retrospectively assigns institutional actions or states to dates preceding the site's current governance records.
 
 Evidence Briefs should remain downstream. Derivation from canonical structure can prevent duplicate-authoring drift, but it also propagates any stale canonical field. The brief must select the latest assessment, compatible mechanisms, genuinely unresolved questions and admitted evidence. A single attractor cannot always populate all forward-looking fields: AM-0007 has two, three records have none, and several attractors provide enablers rather than complete resolution criteria. This review records those limits without creating a new public surface or schema.
 
