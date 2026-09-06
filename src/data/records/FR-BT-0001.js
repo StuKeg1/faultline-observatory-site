@@ -73,22 +73,22 @@ export const FR_BT_0001 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Surrogate-to-clinical translation gap. Senolytic therapies demonstrably reduce surrogate markers of senescence (p16, SASP cytokines, senescent cell counts) in humans. What remains undemonstrated is that these surrogate reductions produce clinically meaningful improvements in healthspan outcomes. The translation gap between surrogate biomarkers and clinical endpoints is a well-characterised problem",
+      description: "Surrogate-to-clinical translation gap. Senolytic therapies demonstrably reduce surrogate markers of senescence (p16, SASP cytokines, senescent cell counts) in humans. What remains undemonstrated is that these surrogate reductions produce clinically meaningful improvements in healthspan outcomes. The translation gap between surrogate biomarkers and clinical endpoints is a well-characterised problem in drug development — many interventions that improve surrogate markers fail to demonstrate clinical benefit. For senolytics, this gap is compounded by the long timescales required for clinical endpoint measurement. The resistance mechanism is structural: surrogate evidence accumulates on timescales of months; clinical evidence requires years to decades.",
     },
     {
       id: "RM-002",
       type: "RESISTANCE MECHANISM",
-      description: "Biological variability and patient heterogeneity. Senescent cell burden, SASP composition, and tissue-specific effects vary substantially across individuals, ages, and disease states. The optimal senolytic drug, dose, frequency, and target population for healthspan extension in healthy humans has not been identified. Clinical trials in specific disease populations (osteoarthritis, diabetic kidney ",
+      description: "Biological variability and patient heterogeneity. Senescent cell burden, SASP composition, and tissue-specific effects vary substantially across individuals, ages, and disease states. The optimal senolytic drug, dose, frequency, and target population for healthspan extension in healthy humans has not been identified. Clinical trials in specific disease populations (osteoarthritis, diabetic kidney disease, pulmonary fibrosis) may not generalise to healthy aging prevention. The heterogeneity means that a null result in one population and indication does not cleanly contest the claim for other populations and indications — but it also means the claim requires evidence across multiple settings before it can be confirmed.",
     },
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "\"Meaningfully extend\" lacks an agreed threshold. The claim requires meaningful extension of healthy lifespan, but no agreed clinical threshold defines what \"meaningful\" means. Is one year of additional healthy function meaningful? Five years? A 10% reduction in age-related disease incidence? The FDA has not approved any intervention for the indication of \"aging\" or \"healthspan extension\" — the reg",
+      description: "\"Meaningfully extend\" lacks an agreed threshold. The claim requires meaningful extension of healthy lifespan, but no agreed clinical threshold defines what \"meaningful\" means. Is one year of additional healthy function meaningful? Five years? A 10% reduction in age-related disease incidence? The FDA has not approved any intervention for the indication of \"aging\" or \"healthspan extension\" — the regulatory framework does not currently accommodate such claims, meaning clinical trials cannot be powered against a standard threshold. This is a lexical and regulatory bottleneck of the same type as FR-AI-0004 (\"previously unseen\") and FR-AI-0006 (\"same mechanism\") — the fourth such bottleneck in the corpus. Without an agreed threshold, the claim cannot transition to any resolved state regardless of evidence accumulation.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "FDA \"geroscience\" indication and validated biomarker panel. Two developments would materially advance this record: first, FDA regulatory framework for aging as an indication (currently under discussion through the TAME trial — Targeting Aging with Metformin — and geroscience initiatives), which would create a governed clinical endpoint for healthspan extension; second, a validated biomarker panel ",
+      description: "FDA \"geroscience\" indication and validated biomarker panel. Two developments would materially advance this record: first, FDA regulatory framework for aging as an indication (currently under discussion through the TAME trial — Targeting Aging with Metformin — and geroscience initiatives), which would create a governed clinical endpoint for healthspan extension; second, a validated biomarker panel that correlates with subsequent healthspan outcomes, providing a surrogate endpoint that is accepted as predictive. Both developments are in progress. If achieved, they would resolve BN-001 by providing an agreed threshold and make Phase III trials of senolytics tractable on five-to-ten year rather than twenty-to-thirty year timescales.",
     }
   ],
 
@@ -97,7 +97,7 @@ export const FR_BT_0001 = {
     { year: "2008–11", text: "Cellular senescence linked to aging phenotypes. van Deursen, Campisi, and Kirkland labs establish that senescent cell accumulation drives age-related pathology. The causal direction is established: senescence contributes to aging, not merely correlates with it." },
     { year: "2015–18", text: "Senolytic drugs identified; mouse healthspan extended. Zhu et al. identify dasatinib and quercetin as senolytics. Baker et al. demonstrate healthspan extension in mice. The pharmacological claim becomes experimentally tractable." },
     { year: "2018–21", text: "First human trials; longevity industry emerges. Mayo Clinic pilot trials show surrogate endpoint responses in humans. Unity Biotechnology, Calico, and others raise substantial capital. The claim enters ESCALATING as the biological plausibility is established and human evidence begins accumulating." },
-    { year: "2021–24", text: "Phase II failures and continued surrogate progress. Unity Phase II failures demonstrate that surrogate-to-clinical translation is the primary obstacle. Surrogate biomarker trials continue producing positive signals. The claim remains ESCALATING with a quantified evidence gap: surrogate evidence posi" }
+    { year: "2021–24", text: "Phase II failures and continued surrogate progress. Unity Phase II failures demonstrate that surrogate-to-clinical translation is the primary obstacle. Surrogate biomarker trials continue producing positive signals. The claim remains ESCALATING with a quantified evidence gap: surrogate evidence positive, clinical endpoints unmeasured." }
     ],
     relatedRecords: [],
   },
@@ -121,6 +121,7 @@ export const FR_BT_0001 = {
   ],
 
   mutationLog: [
+    {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2021–24","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2021–24 from FR_BT_0001_senolytics_lifespan_extension.html (Drive file 1YxRAM6C_mRMC7AbG5C_cM18zujArQxhl). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-004, IN-005 descriptions reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-005", date: "2024-01-15", field: "null_condition_partial", from: "—", to: "NULL-CONDITION-PARTIAL", note: "" },

@@ -73,17 +73,17 @@ export const FR_BT_0003 = {
     {
       id: "BN-001",
       type: "BOTTLENECK — MEASUREMENT VALIDITY",
-      description: "Blood panel as proxy for organ-specific decline. A blood-based panel captures circulating signals from multiple organ systems simultaneously. Whether this composite signal reliably predicts the specific organ system or biological process that will decline in a specific individual is contested. Blood panels demonstrate population-level predictive validity (on average, higher scores predict faster d",
+      description: "Blood panel as proxy for organ-specific decline. A blood-based panel captures circulating signals from multiple organ systems simultaneously. Whether this composite signal reliably predicts the specific organ system or biological process that will decline in a specific individual is contested. Blood panels demonstrate population-level predictive validity (on average, higher scores predict faster decline) but may not capture individual-level divergence in organ aging trajectories. This is a measurement validity bottleneck in the sense of RN-005: the measurement tool (blood panel) is an indirect proxy for the asserted object (organ-specific decline in this individual), and the relationship between the proxy and the phenomenon requires independent validation — longitudinal studies demonstrating that blood panel readings predict which specific decline will occur, not merely that some decline is accelerated. The bottleneck is explicitly a proxy-measurement failure mode as characterised in RN-005.",
     },
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Validation requires longitudinal follow-up at scale. Demonstrating predictive validity requires measuring the panel at baseline and following participants until decline occurs — which for pre-symptomatic prediction may take years to decades. The biological-time validation lag identified as a PROG-BT structural tension is directly operative here: the primary evidence required to fully validate the ",
+      description: "Validation requires longitudinal follow-up at scale. Demonstrating predictive validity requires measuring the panel at baseline and following participants until decline occurs — which for pre-symptomatic prediction may take years to decades. The biological-time validation lag identified as a PROG-BT structural tension is directly operative here: the primary evidence required to fully validate the panel's predictive accuracy cannot be obtained on timescales shorter than years to decades. This resistance mechanism compounds with BN-001: not only is the proxy relationship contested, it can only be validated through long-horizon cohort studies.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Organ-specific panel integration with individual trajectory modelling. The resolution path requires developing panels that either measure organ-specific signals in blood with sufficient specificity to predict organ-level decline pathways, or integrating multi-omic measurements (methylation + proteomics + metabolomics + imaging) with individual trajectory modelling. Several groups are pursuing this",
+      description: "Organ-specific panel integration with individual trajectory modelling. The resolution path requires developing panels that either measure organ-specific signals in blood with sufficient specificity to predict organ-level decline pathways, or integrating multi-omic measurements (methylation + proteomics + metabolomics + imaging) with individual trajectory modelling. Several groups are pursuing this; the UK Biobank and similar population biobanks are accumulating the longitudinal data needed to validate individual-level predictions. The attractor is a validated panel demonstrating that its readings predict specific decline pathways in individuals, not merely population-level aging trajectories.",
     }
   ],
 
@@ -116,6 +116,7 @@ export const FR_BT_0003 = {
   ],
 
   mutationLog: [
+    {"id":"M-006","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:BN-001, mechanisms:RM-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored BN-001, RM-001, AT-001 from FR_BT_0003_biological_age_biomarker_prediction.html (Drive file 1JK_i4ftSrQ5UtZWm2Ncv8sd8wykgIaC0). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-005", date: "2024-01-15", field: "rn_005_condition_confirmed", from: "—", to: "RN-005-CONDITION-CONFIRMED", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },

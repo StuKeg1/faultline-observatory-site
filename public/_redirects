@@ -21,6 +21,8 @@
 /institutional-changelog /institutional-changelog/ 301
 /documentation-requests /documentation-requests/ 301
 /political-rumour-accuracy-pilot /political-rumour-accuracy-pilot/ 301
+/experiments/vd-001 /experiments/vd-001/ 301
+/experiments/vd-002 /experiments/vd-002/ 301
 /tokens /tokens/ 301
 /programmes/prog-qe /programmes/prog-qe/ 301
 /programmes/prog-ai /programmes/prog-ai/ 301
@@ -52,6 +54,8 @@
 /institutional-changelog/ /index.html 200
 /documentation-requests/ /index.html 200
 /political-rumour-accuracy-pilot/ /index.html 200
+/experiments/vd-001/ /index.html 200
+/experiments/vd-002/ /index.html 200
 /tokens/ /index.html 200
 /programmes/prog-qe/ /index.html 200
 /programmes/prog-ai/ /index.html 200

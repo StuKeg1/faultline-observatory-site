@@ -1,0 +1,1218 @@
+{
+  "reviewId": "RENDER-PILOT-001-CONTENT-RESTORATION",
+  "date": "2026-09-06",
+  "baseCommit": "c8d8885b24d956570273775e43e2362b8075e715",
+  "scope": [
+    "mechanisms[].description",
+    "lineage.items[].text"
+  ],
+  "normalization": "Original converter cleanText: strip tags, decode its five named/numeric entities, collapse whitespace; preserve the already-admitted FR-MF- to FR-AM- identifier migration. No scientific wording rewritten.",
+  "records": [
+    {
+      "recordId": "FR-QE-0002",
+      "source": {
+        "fileName": "FR_QE_0002_DWave_frontier_record.html",
+        "fileId": "1s9-MAnWoWMwt2ReSLdPtGSW6QRtOVgvM",
+        "url": "https://drive.google.com/file/d/1s9-MAnWoWMwt2ReSLdPtGSW6QRtOVgvM/view?usp=drivesdk",
+        "modifiedTime": "2026-06-08T18:33:01.000Z",
+        "retrievedTextSha256": "6176aff3f6dbe199c4125378acf1873ed57220a9b42796a74ae430d5f76bed89"
+      },
+      "mutationId": "M-009",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 480,
+          "beforeSha256": "6fda612db9d0c9d1257f9ac8c630b4fa56ea1939b5a0ae61c97b5cfaa5f011e5",
+          "afterSha256": "43cb78274bde40a45612aee9de51704785a8c6372f9df48698454d70845a8c13",
+          "normalizedSourceSha256": "43cb78274bde40a45612aee9de51704785a8c6372f9df48698454d70845a8c13",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 425,
+          "beforeSha256": "164e8b4d3465d5c68dca0beb7d27bd1de422045d11657fb7f39e6e34c596bfbd",
+          "afterSha256": "b7164cd2d82ed3ba0e62296e455b2074f9c248e7df7a86d1b1934b68c69e173d",
+          "normalizedSourceSha256": "b7164cd2d82ed3ba0e62296e455b2074f9c248e7df7a86d1b1934b68c69e173d",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-QE-0003",
+      "source": {
+        "fileName": "FR_QE_0003_fault_tolerant_logical_qubits.html",
+        "fileId": "15wAwW5oDhl-eLUsK7g82KSR-0wJjufho",
+        "url": "https://drive.google.com/file/d/15wAwW5oDhl-eLUsK7g82KSR-0wJjufho/view?usp=drivesdk",
+        "modifiedTime": "2026-06-08T19:42:07.000Z",
+        "retrievedTextSha256": "1d3d17104db2689b66d23b1eb0a20c8351e8780367449b16ee9da29f1310f1e5"
+      },
+      "mutationId": "M-012",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 627,
+          "beforeSha256": "4955d6ce969fc268e97f97efa4246ce7f22445eaeba36b20bfc6aff79df5d673",
+          "afterSha256": "85e5302f76a95cefac2919672cc5f760df592d0684ea603125b92de8eb9fe484",
+          "normalizedSourceSha256": "85e5302f76a95cefac2919672cc5f760df592d0684ea603125b92de8eb9fe484",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 693,
+          "beforeSha256": "e59c69ea2ecdea98c1f3b0c4b8bbd488b8afdf1043e59ae7c2e816124a2e9541",
+          "afterSha256": "050356c59437086ba23ed5763fa9c70050a21386b109a79e73942aa93a3c3c61",
+          "normalizedSourceSha256": "050356c59437086ba23ed5763fa9c70050a21386b109a79e73942aa93a3c3c61",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 628,
+          "beforeSha256": "68c6c67433ae8f41297461e0333a17dc7699342acdf29d45bfe2b59348994d43",
+          "afterSha256": "5a7fa5559978cd832258a0a6fab26a4845fa9084023410dfa907ba994fcb740d",
+          "normalizedSourceSha256": "5a7fa5559978cd832258a0a6fab26a4845fa9084023410dfa907ba994fcb740d",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[0].text",
+          "id": "1995–96",
+          "beforeLength": 300,
+          "afterLength": 410,
+          "beforeSha256": "82597c5db41cf8bca532dd70c52dd3c34c6a54aac36a25cadd2f8e96f8d0272d",
+          "afterSha256": "a57b3c3b5460e4a6bc79ba7427fb8efbef81ebb136bba46246d2049a1f765a1d",
+          "normalizedSourceSha256": "a57b3c3b5460e4a6bc79ba7427fb8efbef81ebb136bba46246d2049a1f765a1d",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[1].text",
+          "id": "1998–2012",
+          "beforeLength": 300,
+          "afterLength": 338,
+          "beforeSha256": "668a77bf04e3fe22785c5cb347c6845b82722ac1c559e791339a709c86408e6f",
+          "afterSha256": "52c0b82c2cab2fc2b98cee14f02282532cec922bb0d4017b30a072f7a0ad24ad",
+          "normalizedSourceSha256": "52c0b82c2cab2fc2b98cee14f02282532cec922bb0d4017b30a072f7a0ad24ad",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[2].text",
+          "id": "2012–20",
+          "beforeLength": 300,
+          "afterLength": 320,
+          "beforeSha256": "7695d675afa50433501053419f9c2fd3b8f91373d850eb7176dc291440109781",
+          "afterSha256": "ea0303e64d6b696ce324e113780f7a07d9ac9617f54bb39694bf2d6113e376ec",
+          "normalizedSourceSha256": "ea0303e64d6b696ce324e113780f7a07d9ac9617f54bb39694bf2d6113e376ec",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-QE-0005",
+      "source": {
+        "fileName": "FR_QE_0005_RSA_quantum_factorisation.html",
+        "fileId": "1xzJuLkAdDhGDC2Rc-yQZDH-R8vlVvHHi",
+        "url": "https://drive.google.com/file/d/1xzJuLkAdDhGDC2Rc-yQZDH-R8vlVvHHi/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T13:39:15.000Z",
+        "retrievedTextSha256": "b746b63df07b50c19983c9c3c781e8ac4622644be30187312bad089224768b71"
+      },
+      "mutationId": "M-013",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 792,
+          "beforeSha256": "e6f812fd4c7c355b0948bbdcf223f6740f60b5b04bb485c8f8e7974689fe5049",
+          "afterSha256": "9a1c96a620fa8bc35e716a80ecde3ed274e7d56d88a5bf7eebc67713a900598f",
+          "normalizedSourceSha256": "9a1c96a620fa8bc35e716a80ecde3ed274e7d56d88a5bf7eebc67713a900598f",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 647,
+          "beforeSha256": "488dd41bcdb99f03083386aa1f14d2e39902216865c7bce8d38abbe1535991f6",
+          "afterSha256": "74e163da9489af6c2ea987cb94162baa3fa78cac936f13cae26b95784c52ff87",
+          "normalizedSourceSha256": "74e163da9489af6c2ea987cb94162baa3fa78cac936f13cae26b95784c52ff87",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 719,
+          "beforeSha256": "6cde360c0826e8db731fe9f20dcf4a159bd758b4f2768fa5f8054f9f24068984",
+          "afterSha256": "20b63e0de3d1083539262a6c656be775628a714030a0575127d198b8e6a20fd0",
+          "normalizedSourceSha256": "ea8b3b5391679a935159f2635c93e740a08b3ee7fe773afa4f4f95bdbeb034f3",
+          "identifierMigration": true
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 663,
+          "beforeSha256": "0dfa9c141b25abc3541205caaad820cf7cbcebe83bee763498414e524d0e2d63",
+          "afterSha256": "47d15f654268d329c15ffea6ada8dfbe447d78cc804a9bae90ea842f73e0d347",
+          "normalizedSourceSha256": "47d15f654268d329c15ffea6ada8dfbe447d78cc804a9bae90ea842f73e0d347",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-QE-0006",
+      "source": {
+        "fileName": "FR_QE_0006_fault_tolerant_quantum_utility.html",
+        "fileId": "1N-FOxZkIRwc5qmpce1erwAqD9rpqRpTF",
+        "url": "https://drive.google.com/file/d/1N-FOxZkIRwc5qmpce1erwAqD9rpqRpTF/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T18:58:57.000Z",
+        "retrievedTextSha256": "3bdb13c1f22ce14a83ed1f458f74dc289b9999cdfc9e34d9e08479caae39cf2e"
+      },
+      "mutationId": "M-011",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 770,
+          "beforeSha256": "0e172dd963a5912f6ef79498803f40acdc4ffeaf32f743f5300a8805d8ed6ce9",
+          "afterSha256": "bba37ee5c0659f5c49a2a35662890584a5d39acafea58ed8fba3091160572572",
+          "normalizedSourceSha256": "bba37ee5c0659f5c49a2a35662890584a5d39acafea58ed8fba3091160572572",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 816,
+          "beforeSha256": "8bff9274cca9b598710621061db54355e8f9f044bfbaeceddd26a38a2644eb88",
+          "afterSha256": "9f60881bb47faa9893f68988a00d953d7df579692a08a2debcf2390c0d7152f5",
+          "normalizedSourceSha256": "9f60881bb47faa9893f68988a00d953d7df579692a08a2debcf2390c0d7152f5",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 719,
+          "beforeSha256": "48cba027a65d5b893500d2695539c1662795d278f7d05a0aa897a66af0dd6674",
+          "afterSha256": "2ae8a8efb106331d8d218b56121afb784bcdf84f09b674f3a17db2a5bad82846",
+          "normalizedSourceSha256": "2ae8a8efb106331d8d218b56121afb784bcdf84f09b674f3a17db2a5bad82846",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-QE-0007",
+      "source": {
+        "fileName": "FR_QE_0007_quantum_advantage_practical.html",
+        "fileId": "1qCC0WcnKOMiutuuqh5ah_6wXPN0X2SQs",
+        "url": "https://drive.google.com/file/d/1qCC0WcnKOMiutuuqh5ah_6wXPN0X2SQs/view?usp=drivesdk",
+        "modifiedTime": "2026-06-11T11:38:05.825Z",
+        "retrievedTextSha256": "e5fd2fa6d00f9c1cb7288a3b25b801aea077681d656a09132a376738a2e2275f"
+      },
+      "mutationId": "M-010",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 904,
+          "beforeSha256": "dadc7f66d033c89187091b981f5d19098cdb2f96eafb3434d22c171fff9486b2",
+          "afterSha256": "cd27aa07dcd293a4861e902e0b3dde086ab8c5d5cb4cb46f02334e387d0a6b0f",
+          "normalizedSourceSha256": "4aadae8c60d928da7aff0c0353b6c4e25a306b520fde97d15b98da2d3f23fba3",
+          "identifierMigration": true
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 781,
+          "beforeSha256": "444b6f8461ebd785c6a51ac4c7478efebae03193ab9ae608142a8be7f8d30922",
+          "afterSha256": "09ba1fe52f73416b8c6695006837a5477d943fca104fab05ea866d2d76bda3b5",
+          "normalizedSourceSha256": "09ba1fe52f73416b8c6695006837a5477d943fca104fab05ea866d2d76bda3b5",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 578,
+          "beforeSha256": "88a041965ad6d2145a65bb5d9e6bf437f11864129d5a48c8e0c104c1310f0f6f",
+          "afterSha256": "574071892b03c261f6e42165254903863bedb29fd877fe32f0ad1f8d3aafd0ae",
+          "normalizedSourceSha256": "574071892b03c261f6e42165254903863bedb29fd877fe32f0ad1f8d3aafd0ae",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-QE-0008",
+      "source": {
+        "fileName": "FR_QE_0008_error_correction_scaling.html",
+        "fileId": "1b6n8s4qZ8FE08RIymo-4e-kpFvQ49Nyz",
+        "url": "https://drive.google.com/file/d/1b6n8s4qZ8FE08RIymo-4e-kpFvQ49Nyz/view?usp=drivesdk",
+        "modifiedTime": "2026-06-11T07:45:03.000Z",
+        "retrievedTextSha256": "6982241a2e3d15d896882033f61e27fee88b7811b16b28340e70327c0d8417e9"
+      },
+      "mutationId": "M-007",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 751,
+          "beforeSha256": "2396cd001d68e32a4986a41647625a7823d81cad1f32dc05c5f40fa2874ccd12",
+          "afterSha256": "43e7e3e044c8325ca29344f486d2cdfb2423c4be6ea57087fc68a883a967e2ee",
+          "normalizedSourceSha256": "43e7e3e044c8325ca29344f486d2cdfb2423c4be6ea57087fc68a883a967e2ee",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 599,
+          "beforeSha256": "38c5fde61cf8a69bd6598fde9dcc20a44830f87377865c33fb96d2ed6428655a",
+          "afterSha256": "7698d3e373f9b8f6fd4a09fefcdfb959093bbb165274bccb7ce6c3130e12d4c7",
+          "normalizedSourceSha256": "7698d3e373f9b8f6fd4a09fefcdfb959093bbb165274bccb7ce6c3130e12d4c7",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AI-0001",
+      "source": {
+        "fileName": "FR_AI_0001_LLM_reasoning_generalisation.html",
+        "fileId": "1P9qpi6wq4V6nyn4ZpgqiYiz-cVrl9pIq",
+        "url": "https://drive.google.com/file/d/1P9qpi6wq4V6nyn4ZpgqiYiz-cVrl9pIq/view?usp=drivesdk",
+        "modifiedTime": "2026-06-08T18:42:42.000Z",
+        "retrievedTextSha256": "f2be8905f6ae8ff6fdf04bceb0341d6f455d85811de07c42981301c7c6061ebb"
+      },
+      "mutationId": "M-011",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 570,
+          "beforeSha256": "f76287202b272c0e71b46f34f2f4d237d1d836064835d220c3c9b0aea6ef6a0d",
+          "afterSha256": "ceac609220f7f9f8dfa5ba08fc0aaac23459692e35179b63ca0142003015a263",
+          "normalizedSourceSha256": "ceac609220f7f9f8dfa5ba08fc0aaac23459692e35179b63ca0142003015a263",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 558,
+          "beforeSha256": "915d65275e66fd60fbdf7c31fbc4a9c97a633c689ea4eecaa1c05f8afc68b53c",
+          "afterSha256": "ea9dc2a71ee75f75708c684023bebbf4bb466fbf0dc9e4a1848981ca9e4e3a2c",
+          "normalizedSourceSha256": "ea9dc2a71ee75f75708c684023bebbf4bb466fbf0dc9e4a1848981ca9e4e3a2c",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 665,
+          "beforeSha256": "c6ad775f8b8431da05fe07b1b9386513a228063c277eee845b296de5208b0e6a",
+          "afterSha256": "45998a82306e7c439bf54f91de783e506847392b2bc55da31003a4cbf9ef1da3",
+          "normalizedSourceSha256": "45998a82306e7c439bf54f91de783e506847392b2bc55da31003a4cbf9ef1da3",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 629,
+          "beforeSha256": "4ed14726a761dfe16c8d48a3e6a76232447a3ea753303e6cb8b47d9dedbc87e6",
+          "afterSha256": "b3d73420e4f2393cece1418873e17a713e41572148a400c2905eb46ed1bd4cad",
+          "normalizedSourceSha256": "b3d73420e4f2393cece1418873e17a713e41572148a400c2905eb46ed1bd4cad",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[0].text",
+          "id": "2017–20",
+          "beforeLength": 300,
+          "afterLength": 349,
+          "beforeSha256": "a6ea1f618694d4f92430849b5ee496a318184a476a55659ae59e6436d3398ac6",
+          "afterSha256": "edf341c5ba1133c3540e6a5e5fb9ed88515f41d3e6fe0d3415e5d76e5d28f96e",
+          "normalizedSourceSha256": "edf341c5ba1133c3540e6a5e5fb9ed88515f41d3e6fe0d3415e5d76e5d28f96e",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[2].text",
+          "id": "2022",
+          "beforeLength": 300,
+          "afterLength": 383,
+          "beforeSha256": "7b77a2acac7f079669c32e722de3220a32eea19f60a134032d6f073e954fc990",
+          "afterSha256": "a9d45380cb9a7ff5ed8628f42b888aad4be0ed20262c5bc932f53dbc2242d6b7",
+          "normalizedSourceSha256": "a9d45380cb9a7ff5ed8628f42b888aad4be0ed20262c5bc932f53dbc2242d6b7",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[3].text",
+          "id": "2023",
+          "beforeLength": 300,
+          "afterLength": 327,
+          "beforeSha256": "40efd1a9f31920fd699f94294556381492b9b80ffffd037271e0ed52e2649b67",
+          "afterSha256": "44c3e0684bf6180d22c1d08d55057f5eb1ff262dde99848223a0fd98466eec37",
+          "normalizedSourceSha256": "44c3e0684bf6180d22c1d08d55057f5eb1ff262dde99848223a0fd98466eec37",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[4].text",
+          "id": "2024",
+          "beforeLength": 300,
+          "afterLength": 315,
+          "beforeSha256": "d7ed196a97335e8da992c60fb969860c8793343b0b4989e3f243adc5b12f31d8",
+          "afterSha256": "5151aff883e0aca1ecb2029af799f8e65306036dd1c71a4166a75caf1a9f0872",
+          "normalizedSourceSha256": "5151aff883e0aca1ecb2029af799f8e65306036dd1c71a4166a75caf1a9f0872",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AI-0002",
+      "source": {
+        "fileName": "FR_AI_0002_LLM_knowledge_work_utility.html",
+        "fileId": "1kmjQHLUxpNKFNStSoFKR-AE7P-ogFAIZ",
+        "url": "https://drive.google.com/file/d/1kmjQHLUxpNKFNStSoFKR-AE7P-ogFAIZ/view?usp=drivesdk",
+        "modifiedTime": "2026-06-08T19:48:40.000Z",
+        "retrievedTextSha256": "f1e42147728eb18cd5ca18f502e19d58cd067992fa98719028041829e65626a6"
+      },
+      "mutationId": "M-011",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 563,
+          "beforeSha256": "c9f09f15474d48d1908cf9aedd32a365ce08e44b4687de8a268e9c9fca0ea91f",
+          "afterSha256": "a2960e2bc48a953912833e785ccdf5552ff3b34c7c1cad2456fe77a39d5f297c",
+          "normalizedSourceSha256": "a2960e2bc48a953912833e785ccdf5552ff3b34c7c1cad2456fe77a39d5f297c",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 613,
+          "beforeSha256": "b92a4ce261d6bd4c4d5e4e90f4587182858cd4056573548db04270badc223fce",
+          "afterSha256": "87d20a71fa68cd0073be37854828b27f8ba33f36144073f9fbd085ee959c8813",
+          "normalizedSourceSha256": "87d20a71fa68cd0073be37854828b27f8ba33f36144073f9fbd085ee959c8813",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 667,
+          "beforeSha256": "be633179d18dce7a7eb604000f5512634748c5c0af82886ab0a3bb2a6dd67035",
+          "afterSha256": "a394b204b04170bca7bc36d6b0401502d2aa19bb777f6029253d5ed28a2a8336",
+          "normalizedSourceSha256": "a394b204b04170bca7bc36d6b0401502d2aa19bb777f6029253d5ed28a2a8336",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 701,
+          "beforeSha256": "cd872b3b2c557b3415fa22e2f28af1f08e7f4da55983122571276aeed63e1e9f",
+          "afterSha256": "c77e6695208df91c43d136b66228ab4a254315a820e0a879a95f784041e52e05",
+          "normalizedSourceSha256": "c77e6695208df91c43d136b66228ab4a254315a820e0a879a95f784041e52e05",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[0].text",
+          "id": "2020–22",
+          "beforeLength": 300,
+          "afterLength": 382,
+          "beforeSha256": "dd46f12f1d3fbc677e391d77011db60e7b7c7a45caba2f60f0203241a85dfbec",
+          "afterSha256": "2571a66d1e30ec4e3787becc00d5c95f1d94d98f7a1fa828b97b58aad0892e4d",
+          "normalizedSourceSha256": "2571a66d1e30ec4e3787becc00d5c95f1d94d98f7a1fa828b97b58aad0892e4d",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[1].text",
+          "id": "2022–23",
+          "beforeLength": 300,
+          "afterLength": 455,
+          "beforeSha256": "b11b943a1ee522a88cf244e3b352a8e082b8858b7a3f791feaa1f1f6071f84f1",
+          "afterSha256": "1c3ded3b1a59c5c0ea874ea790222e55bf7ff1e6e3e599cc651174a3876bf1f3",
+          "normalizedSourceSha256": "1c3ded3b1a59c5c0ea874ea790222e55bf7ff1e6e3e599cc651174a3876bf1f3",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[3].text",
+          "id": "2023–24",
+          "beforeLength": 300,
+          "afterLength": 324,
+          "beforeSha256": "de36ada69852a272ff9e0880316ffdea68da052a1013644db831b5d7d55122a1",
+          "afterSha256": "622b7cd84d04f1923e5efe3267e7d3417467cdbba4e66318851f6817e4359e43",
+          "normalizedSourceSha256": "622b7cd84d04f1923e5efe3267e7d3417467cdbba4e66318851f6817e4359e43",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[4].text",
+          "id": "2024",
+          "beforeLength": 300,
+          "afterLength": 316,
+          "beforeSha256": "f93153958f4a0b79a099cb334b8d711d8c37a0ebda176fb885126566c6b16eb8",
+          "afterSha256": "c5c5ee190f3a64beadd6aa8c0cc3e08d337ad82235e9226031065f6bad9d9f10",
+          "normalizedSourceSha256": "c5c5ee190f3a64beadd6aa8c0cc3e08d337ad82235e9226031065f6bad9d9f10",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AI-0003",
+      "source": {
+        "fileName": "FR_AI_0003_RLHF_preference_generalisation.html",
+        "fileId": "17k4GkTxHeauxh-Tg-Yxir8gCBNF1ymYa",
+        "url": "https://drive.google.com/file/d/17k4GkTxHeauxh-Tg-Yxir8gCBNF1ymYa/view?usp=drivesdk",
+        "modifiedTime": "2026-06-08T20:01:49.000Z",
+        "retrievedTextSha256": "6bdad2362859bf453d6a7e6b00b3508bfdbcf3592e8228e17267c91c873c946b"
+      },
+      "mutationId": "M-013",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 737,
+          "beforeSha256": "83844339aac185ba24ca3a9e05113881abb513cd3b334721411f5e8aef0eb132",
+          "afterSha256": "e69e9d9eda7620f112e535836cf0d7e321524c2dc59fc4d8f51a093a0a7b9294",
+          "normalizedSourceSha256": "e69e9d9eda7620f112e535836cf0d7e321524c2dc59fc4d8f51a093a0a7b9294",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 718,
+          "beforeSha256": "0f747c847168b28751580025bfba7e08c0b04d2fd57238e99759cbd61e648221",
+          "afterSha256": "4ffcdd4fceeb924696375e0fec6efded3e20a0cd248011fa948404c5fc9c1273",
+          "normalizedSourceSha256": "4ffcdd4fceeb924696375e0fec6efded3e20a0cd248011fa948404c5fc9c1273",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 746,
+          "beforeSha256": "b877984444f709a88fef638250dd6f5ac4c633c55b1a7a8dd0cc599af7e16008",
+          "afterSha256": "8fbc53a11bbaa77099861e78bfc46f236ec5bffc5b245f6074a0cf883f2d894a",
+          "normalizedSourceSha256": "8fbc53a11bbaa77099861e78bfc46f236ec5bffc5b245f6074a0cf883f2d894a",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 725,
+          "beforeSha256": "3a0a6e84af0dbe7b0e65081e6fe7d4b36132b8875450f9658e90a218c988c246",
+          "afterSha256": "a986bb7d0176354b1e10820834a2ae590e6ddd984c5973bc1cc25d6a21838558",
+          "normalizedSourceSha256": "a986bb7d0176354b1e10820834a2ae590e6ddd984c5973bc1cc25d6a21838558",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[0].text",
+          "id": "2017–20",
+          "beforeLength": 300,
+          "afterLength": 357,
+          "beforeSha256": "3dad3de9a1b9a8dec5631e22b79e6002e26c0c8a6798c906be130159760ab04b",
+          "afterSha256": "e4ef4555c68de9527467a7c60dc2b654d87a822dd081fac1014d652ead726c2e",
+          "normalizedSourceSha256": "e4ef4555c68de9527467a7c60dc2b654d87a822dd081fac1014d652ead726c2e",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AI-0004",
+      "source": {
+        "fileName": "FR_AI_0004_scaling_emergent_performance.html",
+        "fileId": "1k1YV18ZZDTs7emO7mBXZL103gIvoIsQV",
+        "url": "https://drive.google.com/file/d/1k1YV18ZZDTs7emO7mBXZL103gIvoIsQV/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T12:53:40.000Z",
+        "retrievedTextSha256": "ccd52c3c7044a2cc37196cd7a7f7616997656d5b8b8b82b62292854a2d43f272"
+      },
+      "mutationId": "M-014",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 827,
+          "beforeSha256": "ef07cd5b530d65561a91526de36bc926bbbb5c6b339b5b63d098fcd1e72c1e63",
+          "afterSha256": "d030be008bd436bd879068f79084792be7347e788ace2007e97cff6774ead2a5",
+          "normalizedSourceSha256": "d030be008bd436bd879068f79084792be7347e788ace2007e97cff6774ead2a5",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 669,
+          "beforeSha256": "8258928390bbab30f396a314a5aacaa7889b498b024b14354fa3b55d5931bf75",
+          "afterSha256": "7e839125594b12586a4a7227a01dfef942bfd595d943833e4407f2909f48308f",
+          "normalizedSourceSha256": "7e839125594b12586a4a7227a01dfef942bfd595d943833e4407f2909f48308f",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 829,
+          "beforeSha256": "1ec00cc46a2214835a0a68126ea4a6c0244573cd276161f2cd658c38e852a65b",
+          "afterSha256": "8d8dff869fa4e2f0c970b73848781ebe7cccc1a4f8118f8c4972bb56972133bf",
+          "normalizedSourceSha256": "8d8dff869fa4e2f0c970b73848781ebe7cccc1a4f8118f8c4972bb56972133bf",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 755,
+          "beforeSha256": "0ed33100ce8f08b9a49c7dd391bc3e2bc2fe1820c99f4766a6ee5d98454ed364",
+          "afterSha256": "c997ac63db9732812c62ebcf77afdc9284dbbd2d9b339dc4a4fd19d5d18adab4",
+          "normalizedSourceSha256": "c997ac63db9732812c62ebcf77afdc9284dbbd2d9b339dc4a4fd19d5d18adab4",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AI-0005",
+      "source": {
+        "fileName": "FR_AI_0005_AGI_through_scaling.html",
+        "fileId": "1V4eVHRvuMV4gNZw4kVegbZGph1vcvvTn",
+        "url": "https://drive.google.com/file/d/1V4eVHRvuMV4gNZw4kVegbZGph1vcvvTn/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T13:30:07.000Z",
+        "retrievedTextSha256": "6c19670389c46a62fb4456b20982b3d00b784868d20abafcc3a4c3305ad8513b"
+      },
+      "mutationId": "M-012",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 723,
+          "beforeSha256": "e77284133f7fbb4e3d843ac2d604f95f1e78ca93438de0a69bb389068286adc0",
+          "afterSha256": "0b1d4114a16cf5644fecca72eb5346f04476b4036506e89a99d1887d6a0827b8",
+          "normalizedSourceSha256": "0b1d4114a16cf5644fecca72eb5346f04476b4036506e89a99d1887d6a0827b8",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 772,
+          "beforeSha256": "163225094c5a4a6fcf5b996ce905e7b2b36a590e615702704415347a80fe6015",
+          "afterSha256": "99c67f40f98f02bf845d99beb77db810a29489afb898a0ccc026f61fdc102e0d",
+          "normalizedSourceSha256": "99c67f40f98f02bf845d99beb77db810a29489afb898a0ccc026f61fdc102e0d",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-002",
+          "beforeLength": 400,
+          "afterLength": 690,
+          "beforeSha256": "d13dbd74249e169dbcb451757ebaccb97be29052db784957feb10d7209a6330e",
+          "afterSha256": "4d8edc666d06f05fc7e2ad4464f7c7d1df765aed085d0e3772abbf4b68a499a5",
+          "normalizedSourceSha256": "4d8edc666d06f05fc7e2ad4464f7c7d1df765aed085d0e3772abbf4b68a499a5",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 650,
+          "beforeSha256": "a09e5d77694b55f7e771c33df1d8fe5bd9e8875a980f16dbe30c1351a914c833",
+          "afterSha256": "5b43e20b2f0c8a16a3e57171f74f00983e39ed565f1ac905d4e2cacda65a7c42",
+          "normalizedSourceSha256": "5b43e20b2f0c8a16a3e57171f74f00983e39ed565f1ac905d4e2cacda65a7c42",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AI-0006",
+      "source": {
+        "fileName": "FR_AI_0006_scaling_mechanism_coherence.html",
+        "fileId": "1VeNxj-LTcGiSmfmVgFJehKuge1u7Aj37",
+        "url": "https://drive.google.com/file/d/1VeNxj-LTcGiSmfmVgFJehKuge1u7Aj37/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T13:47:31.000Z",
+        "retrievedTextSha256": "6859ad666766e97a7de00b659f35421a75712f11caae7340b86479d1068c4037"
+      },
+      "mutationId": "M-016",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 884,
+          "beforeSha256": "a9134e2fbf56073697f23718293f043b6cb5e1168629fa4c4e73456d4fa17441",
+          "afterSha256": "967606f9d7ab59309c2833378c82ef787baa766185967d9650e9af9ec64eeede",
+          "normalizedSourceSha256": "967606f9d7ab59309c2833378c82ef787baa766185967d9650e9af9ec64eeede",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 873,
+          "beforeSha256": "cb61168fadc6e4e1b896e37a054f9d7504dd48fdf20ce2b07749213ea334bd0e",
+          "afterSha256": "65d4daa4a299ad6dd03a483a486ad5d00e10db512009115f148dbbd65b026d0a",
+          "normalizedSourceSha256": "65d4daa4a299ad6dd03a483a486ad5d00e10db512009115f148dbbd65b026d0a",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 799,
+          "beforeSha256": "6bd94e626da11cf4b55fa1ffe5bafd740f0647cd41d8c993cbcf4a5544720625",
+          "afterSha256": "4e00e18881bf2ec2824323abf763ccc2c864e43b83b61f25869683d218cfddf9",
+          "normalizedSourceSha256": "4e00e18881bf2ec2824323abf763ccc2c864e43b83b61f25869683d218cfddf9",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AM-0001",
+      "source": {
+        "fileName": "FR_MF_0001_cold_fusion_collapse.html",
+        "fileId": "1goJsend-Scsoet868GpcTWELGC_ctVfh",
+        "url": "https://drive.google.com/file/d/1goJsend-Scsoet868GpcTWELGC_ctVfh/view?usp=drivesdk",
+        "modifiedTime": "2026-06-08T19:35:59.000Z",
+        "retrievedTextSha256": "67b21f401969bb2d24a3f77b7ca99ab5e4ece9ae8803aed320427f31ea060a8d"
+      },
+      "mutationId": "M-007",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 551,
+          "beforeSha256": "60726ffffab05b6f46658a54fdf4b2fcd631cf150526ace3b5f49837489e9565",
+          "afterSha256": "273e2fb8faafbc20288b1b79fdef7125f3f01e8647e65a5a0e1f9fc0b446ba6a",
+          "normalizedSourceSha256": "273e2fb8faafbc20288b1b79fdef7125f3f01e8647e65a5a0e1f9fc0b446ba6a",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 499,
+          "beforeSha256": "199eab3f9561777e281b0511b95fb39d92aab34046c63bc1ddc90116fc743326",
+          "afterSha256": "365d6ca0a9657513f5c9c6e96ac5626c21c22aeca74e640f31920a353a778196",
+          "normalizedSourceSha256": "365d6ca0a9657513f5c9c6e96ac5626c21c22aeca74e640f31920a353a778196",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 540,
+          "beforeSha256": "c5f4356bbcfc09bc5d9978ac342be1e4739ae691df43e89e480a48d46839e6e8",
+          "afterSha256": "a8a902e81778c9f74e3b7ef894d3be0ea75802e0d8209ffb559891debcbd0dcf",
+          "normalizedSourceSha256": "a8a902e81778c9f74e3b7ef894d3be0ea75802e0d8209ffb559891debcbd0dcf",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "CM-001",
+          "beforeLength": 400,
+          "afterLength": 816,
+          "beforeSha256": "c22a0fc06bb3eea2b6af2ca0af7bdb6cf4d5553baf63840128700d42f4bb96c7",
+          "afterSha256": "287fdb1ea17818334f77158736770bc98ad5b31ef43436aa1f92e632749ad2ac",
+          "normalizedSourceSha256": "287fdb1ea17818334f77158736770bc98ad5b31ef43436aa1f92e632749ad2ac",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[5].text",
+          "id": "1991–",
+          "beforeLength": 300,
+          "afterLength": 328,
+          "beforeSha256": "34721d085591f83a242da6512beb7656afcf85fb45285ab08dd26b9ff80098df",
+          "afterSha256": "0b750e70e34607f70af37b57855d6f8d9f7d7a0c126feddf0204cc0866a3a37d",
+          "normalizedSourceSha256": "0b750e70e34607f70af37b57855d6f8d9f7d7a0c126feddf0204cc0866a3a37d",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AM-0002",
+      "source": {
+        "fileName": "FR_MF_0002_anomalous_excess_heat.html",
+        "fileId": "1qB9Wsdf9b3Trw32dcQHEPPLsrZIH6z14",
+        "url": "https://drive.google.com/file/d/1qB9Wsdf9b3Trw32dcQHEPPLsrZIH6z14/view?usp=drivesdk",
+        "modifiedTime": "2026-06-08T19:54:48.000Z",
+        "retrievedTextSha256": "ae71e8605b2365c6546dd3e4808628bf9fe8bdcd8b26659421dbb5b145cf5c45"
+      },
+      "mutationId": "M-007",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 774,
+          "beforeSha256": "2786bf1cac186e8587d33bc16b9c699e6cf102c7843e3abd4c88d8504c7be9bb",
+          "afterSha256": "cdedddc13584e09b5aaf0e4810eed4c6e43dcce9d7c1557bbb035a88644586e4",
+          "normalizedSourceSha256": "cdedddc13584e09b5aaf0e4810eed4c6e43dcce9d7c1557bbb035a88644586e4",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 728,
+          "beforeSha256": "ca593698600302227440b0c9726a58f51a5f8afb033d65d45df50744f056e804",
+          "afterSha256": "4d97db44df73ef0749b1d51ab2e33127651f3b76c93f0146df9f51964d7636b0",
+          "normalizedSourceSha256": "4d97db44df73ef0749b1d51ab2e33127651f3b76c93f0146df9f51964d7636b0",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 708,
+          "beforeSha256": "9263fc051d8d5e2c77d87dbd7be2ace50307b17e55b077f0da4c82d4aa7de45e",
+          "afterSha256": "de1053500d39f8aed528f8dc377ae7034c3df4d217f107d1f9b73ebe872d67c3",
+          "normalizedSourceSha256": "de1053500d39f8aed528f8dc377ae7034c3df4d217f107d1f9b73ebe872d67c3",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "IN-001",
+          "beforeLength": 400,
+          "afterLength": 959,
+          "beforeSha256": "e45d37337bc3741353b461c246d115da6264402b3d9459ccef529e4500749df5",
+          "afterSha256": "65c7652784c6d664b67fd9f4c7f74e33fd6c06650b76ade1d6afb5af87ef7d58",
+          "normalizedSourceSha256": "868f186087cc3dc53fc4b8a9f4d60a3ad3f66544fd43611287a6cf0c2dec47fa",
+          "identifierMigration": true
+        },
+        {
+          "path": "lineage.items[0].text",
+          "id": "1989",
+          "beforeLength": 300,
+          "afterLength": 329,
+          "beforeSha256": "b50e48b635f8d993fc738dbd2cb9e9f05abef3ea324c78340e28ee1b8efe7a70",
+          "afterSha256": "59232d80be702ae5d99263678bf8ed611f807438a9541e74431dfca40ecd2861",
+          "normalizedSourceSha256": "3c074284f4884e3b2bae698e45cd09e29e98649dfd89ed39a198017666a4ca9d",
+          "identifierMigration": true
+        },
+        {
+          "path": "lineage.items[1].text",
+          "id": "1989–91",
+          "beforeLength": 300,
+          "afterLength": 305,
+          "beforeSha256": "146444653e0ccd3d34e6c52841ef599eaf9db901cd44992f5b80de20e949b661",
+          "afterSha256": "2043ec25606d4f42e3dfafc75974da6a3f1220e412c5acc08d2558655e7fae2f",
+          "normalizedSourceSha256": "2043ec25606d4f42e3dfafc75974da6a3f1220e412c5acc08d2558655e7fae2f",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[4].text",
+          "id": "2024",
+          "beforeLength": 300,
+          "afterLength": 330,
+          "beforeSha256": "f048c75bff10a70177fa2548bed6e71f7c9dabf65dd3caf0904a67950604a7fe",
+          "afterSha256": "a69485f564b2afbda72912847151eb8d1e723e4a43d14b70d2ab862d5d4d9878",
+          "normalizedSourceSha256": "02f7212625af357455589ebff28eeec18d7403848562d75b1fc90f577f344c02",
+          "identifierMigration": true
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AM-0003",
+      "source": {
+        "fileName": "FR_MF_0003_cuprate_superconductivity_mechanism.html",
+        "fileId": "19czOspfLKee1tTark6lti8sr-LBaHObs",
+        "url": "https://drive.google.com/file/d/19czOspfLKee1tTark6lti8sr-LBaHObs/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T08:57:43.000Z",
+        "retrievedTextSha256": "059588ac56c5b1f64ea4759075e96b036d1bbe311bfe4c7b65c21bab27996538"
+      },
+      "mutationId": "M-008",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 771,
+          "beforeSha256": "11b8d1636faff9292b9497a2e18423e849c16324c736ba87fc654b67f1ac1022",
+          "afterSha256": "f0e701d5055a079c8b566d65d7376cb1615704222e4d640c1198a066b474fbcf",
+          "normalizedSourceSha256": "f0e701d5055a079c8b566d65d7376cb1615704222e4d640c1198a066b474fbcf",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 580,
+          "beforeSha256": "ba543d6282bf71b4832f71a6a13b3d8eb9bf8358bd3a6770bb92ad6881cfdd51",
+          "afterSha256": "93a765defb4bd54b5faec46e756b1310328bd49335f9b219f6e932f34aa9fe60",
+          "normalizedSourceSha256": "93a765defb4bd54b5faec46e756b1310328bd49335f9b219f6e932f34aa9fe60",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 704,
+          "beforeSha256": "a8937342ba58a190c6877c7fc0f8aeb5f2ce27ba442d52f935969567263cd2eb",
+          "afterSha256": "0a5db0465b1a144c64b432cfd552bcec5a6eaaa6095f89e94ecde7797d520915",
+          "normalizedSourceSha256": "0a5db0465b1a144c64b432cfd552bcec5a6eaaa6095f89e94ecde7797d520915",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 784,
+          "beforeSha256": "90b27cd25fbea49e8f10bfe8c99677487c103aaee39131ee216ffbb2d8f0538e",
+          "afterSha256": "95b65e39aecae5e704c6021d2d9779859c5096ea6f53cf752ab14d6fc0adae24",
+          "normalizedSourceSha256": "95b65e39aecae5e704c6021d2d9779859c5096ea6f53cf752ab14d6fc0adae24",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AM-0004",
+      "source": {
+        "fileName": "FR_MF_0004_commercial_fusion_power.html",
+        "fileId": "1agttcKhzYzuekNWnZmYnUnwQ1XzmPp8-",
+        "url": "https://drive.google.com/file/d/1agttcKhzYzuekNWnZmYnUnwQ1XzmPp8-/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T13:18:23.000Z",
+        "retrievedTextSha256": "13643b1c2ab0da01514d268c3446967617961a24881eba40f539e6765055fa35"
+      },
+      "mutationId": "M-014",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 679,
+          "beforeSha256": "10df02cb9983e24ad86f78ac9966ff53e5e0a57c6d1040bda209ed9a49795813",
+          "afterSha256": "ec0e83a3d933e41d958e333779b4256693a9da2dc3c3d613f94b5f654fe25832",
+          "normalizedSourceSha256": "ec0e83a3d933e41d958e333779b4256693a9da2dc3c3d613f94b5f654fe25832",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 715,
+          "beforeSha256": "5091cd69afc4b421a354e9b0574e30f138b94ab799a3c919d7e9e887407ad198",
+          "afterSha256": "9c756ec1b227571741b2d705e40d469407793fa9645aa31545d69ec7347bad42",
+          "normalizedSourceSha256": "9c756ec1b227571741b2d705e40d469407793fa9645aa31545d69ec7347bad42",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 753,
+          "beforeSha256": "828aa2cba7a2af5ac0313dfcdc038138dcc024cd4df3f4feca8032164eabed55",
+          "afterSha256": "c471624afd8601c06dfd7ab22070325fce5e7a2328654f7dd5173736c9a1fa77",
+          "normalizedSourceSha256": "c471624afd8601c06dfd7ab22070325fce5e7a2328654f7dd5173736c9a1fa77",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 577,
+          "beforeSha256": "0f1684f34f2d9a06003f42c0d3473ad92d0b25c32e36c9ac4dd1ac234a7e2163",
+          "afterSha256": "c28a55eda20ce3a771675a55a4b1919fcc5cbcb4ae76191a19299fefe5be8788",
+          "normalizedSourceSha256": "c28a55eda20ce3a771675a55a4b1919fcc5cbcb4ae76191a19299fefe5be8788",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[4].text",
+          "id": "2023–24",
+          "beforeLength": 300,
+          "afterLength": 326,
+          "beforeSha256": "341c412f9000a6ea66d6df28a0105cb84a0df8a6e6d224282f7a9ca9d927c0a0",
+          "afterSha256": "23c6f1bfb2354bf7fd9414d77441235bad521f96c9bec2cb696fbe30b85b16cd",
+          "normalizedSourceSha256": "23c6f1bfb2354bf7fd9414d77441235bad521f96c9bec2cb696fbe30b85b16cd",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AM-0005",
+      "source": {
+        "fileName": "FR_MF_0005_room_temp_superconductor_reproducibility.html",
+        "fileId": "1tRbrLxtIn7a7DH9AmsIqyFPy-V148Ac7",
+        "url": "https://drive.google.com/file/d/1tRbrLxtIn7a7DH9AmsIqyFPy-V148Ac7/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T16:54:31.000Z",
+        "retrievedTextSha256": "d2e06ae2433fcb547d4ff8876b8293ba29cb17df161c82aa29433792d80f826d"
+      },
+      "mutationId": "M-013",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "CM-001",
+          "beforeLength": 400,
+          "afterLength": 863,
+          "beforeSha256": "4de0fa2eda06073bb8f5e5fa17ab1b036c03c80157be7009db55bc0c048e4dca",
+          "afterSha256": "31c9342377eb72698d50587f37fb0528ff1096ed2d7e929682c814fdac663855",
+          "normalizedSourceSha256": "57f72260f49b4aa03424cba5af21fe61a56bbf55fb0d67d2fa60d00460d02e00",
+          "identifierMigration": true
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 815,
+          "beforeSha256": "ce51092e365c22f4fb29c7488df4161598121697afc81b7c3d313d6fab42778e",
+          "afterSha256": "13f0f5e3be1f617db7b8d2d79e7c9f9d027e88d9d4764a49f255dc88de3778d4",
+          "normalizedSourceSha256": "13f0f5e3be1f617db7b8d2d79e7c9f9d027e88d9d4764a49f255dc88de3778d4",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 723,
+          "beforeSha256": "e0005d9dd75ff45da08404188bc44eb35161af23c8d27df3ee051a39001137fa",
+          "afterSha256": "ecc36e4828b643e0f94da54acd45ac6ae52efcfde3602eb83aecae8c04c595b7",
+          "normalizedSourceSha256": "ecc36e4828b643e0f94da54acd45ac6ae52efcfde3602eb83aecae8c04c595b7",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[0].text",
+          "id": "1986–2010s",
+          "beforeLength": 300,
+          "afterLength": 301,
+          "beforeSha256": "1506cfb169363c225361966d0cb517309be9c9695dc11580205776044323264b",
+          "afterSha256": "d0882c70bb4c45fc8925cec0b841bf6184edc8478995690d470fa794f649a7ed",
+          "normalizedSourceSha256": "2a9f470c49881734af3ab259f1cc1d7110d59fb1fa71f865b7f0e71dffe0c179",
+          "identifierMigration": true
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AM-0006",
+      "source": {
+        "fileName": "FR_MF_0006_solid_state_batteries_EV.html",
+        "fileId": "1C8JlUzn2qBeHOncW6vAxA98w5g0Qcnju",
+        "url": "https://drive.google.com/file/d/1C8JlUzn2qBeHOncW6vAxA98w5g0Qcnju/view?usp=drivesdk",
+        "modifiedTime": "2026-06-10T09:52:42.000Z",
+        "retrievedTextSha256": "3d4b8904dd46435e36058a4b18d83e91a6716e4c9d9291fc75f7a42b705cda05"
+      },
+      "mutationId": "M-016",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 771,
+          "beforeSha256": "51d88ea8f29089ebb20d5f48718f5fced99ae5d6bb7cda1576ef0dbd557f7a1f",
+          "afterSha256": "20ece6c6f57556211c505780152e4eeb2189b075499821a8988958cb436a3eae",
+          "normalizedSourceSha256": "20ece6c6f57556211c505780152e4eeb2189b075499821a8988958cb436a3eae",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 910,
+          "beforeSha256": "f3ef5a912a04bdd21fa74233c68ba9698620b5b15906e1cc2f2dfbb01e58230f",
+          "afterSha256": "46d7b7b91dfe721ef0a06f36a320c0dfd55ff53ffdba97684f0fa36992f8f85e",
+          "normalizedSourceSha256": "46d7b7b91dfe721ef0a06f36a320c0dfd55ff53ffdba97684f0fa36992f8f85e",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 628,
+          "beforeSha256": "0d14bb0c49e2fd94a7dc07588fa5dbf4c2e100e51e49fc902b5b4433ba8db127",
+          "afterSha256": "432f6f32788c6940e05163c2389bc12ce705b2cf850b9fa7717f5c0a3f48b9bf",
+          "normalizedSourceSha256": "432f6f32788c6940e05163c2389bc12ce705b2cf850b9fa7717f5c0a3f48b9bf",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-BT-0001",
+      "source": {
+        "fileName": "FR_BT_0001_senolytics_lifespan_extension.html",
+        "fileId": "1YxRAM6C_mRMC7AbG5C_cM18zujArQxhl",
+        "url": "https://drive.google.com/file/d/1YxRAM6C_mRMC7AbG5C_cM18zujArQxhl/view?usp=drivesdk",
+        "modifiedTime": "2026-06-09T20:10:48.000Z",
+        "retrievedTextSha256": "3ec6c3ceb5eb0353152d8982f1694e846cb7ab8b48d9abda7d4eb8cc77931fc8"
+      },
+      "mutationId": "M-007",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 757,
+          "beforeSha256": "879f0c864cd1c3d806a49ed4a5f0ae4df88d8f23ae9b031fd38a8a6f6ba8e758",
+          "afterSha256": "c3e73acb7176ba5aad909e4377a906e7d9eae5666240b08122d4c24c11dbb6a4",
+          "normalizedSourceSha256": "c3e73acb7176ba5aad909e4377a906e7d9eae5666240b08122d4c24c11dbb6a4",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-002",
+          "beforeLength": 400,
+          "afterLength": 726,
+          "beforeSha256": "5c9988f3e322746c0a01993986c597051728ef06e0af18c1fbad4e5045e85195",
+          "afterSha256": "f8e15cb5b457f683e7b883fb032fad4e9b0f4b3ecd3a8bddbe7ca1fc7c8c1da0",
+          "normalizedSourceSha256": "f8e15cb5b457f683e7b883fb032fad4e9b0f4b3ecd3a8bddbe7ca1fc7c8c1da0",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 824,
+          "beforeSha256": "fb5e194f29e21c63a7f9745ae59d41abfb9161cc0b71abe9c7fa086def708559",
+          "afterSha256": "4ebccb9f412419fb4f358cf56aed4f6e0dbd23796687e1c380cc2574093bc05c",
+          "normalizedSourceSha256": "4ebccb9f412419fb4f358cf56aed4f6e0dbd23796687e1c380cc2574093bc05c",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[3].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 738,
+          "beforeSha256": "cd07ff8534f3b60c70828153db5efbca3a8ea872d6212927275db24bd5db5f26",
+          "afterSha256": "fa795b0e722f0711d04af153c4547e68c2ea26105c880e3b841d1bffdbbec06e",
+          "normalizedSourceSha256": "fa795b0e722f0711d04af153c4547e68c2ea26105c880e3b841d1bffdbbec06e",
+          "identifierMigration": false
+        },
+        {
+          "path": "lineage.items[3].text",
+          "id": "2021–24",
+          "beforeLength": 300,
+          "afterLength": 336,
+          "beforeSha256": "9f5e838f00e7bfe7b9539ce29946173953b6427b963737d523122e62b01dd9c5",
+          "afterSha256": "14dc69b03e2ccd1170ad6431c1582efbf11b85d15d7f268f79acef24fdd4b845",
+          "normalizedSourceSha256": "14dc69b03e2ccd1170ad6431c1582efbf11b85d15d7f268f79acef24fdd4b845",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-BT-0002",
+      "source": {
+        "fileName": "FR_BT_0002_epigenetic_reprogramming_age_reversal.html",
+        "fileId": "12oQGYiWaYPv8-Je7uQ9gnN_v6IUV5zZ5",
+        "url": "https://drive.google.com/file/d/12oQGYiWaYPv8-Je7uQ9gnN_v6IUV5zZ5/view?usp=drivesdk",
+        "modifiedTime": "2026-06-10T09:01:35.000Z",
+        "retrievedTextSha256": "7a12f49aa91b16f342187e77d1f0c5b1bbc419ddbe6eb388db607ca78c633471"
+      },
+      "mutationId": "M-014",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 736,
+          "beforeSha256": "a71f3455379cca957cd364cbe5316e92abe4fccbfbfc67ed549cdf8735b0654f",
+          "afterSha256": "c6baf01df088db93f5c18609f1a20392ba3de756f3459dc467c5116946838d77",
+          "normalizedSourceSha256": "c6baf01df088db93f5c18609f1a20392ba3de756f3459dc467c5116946838d77",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 926,
+          "beforeSha256": "21c699c01ee74c74581d2111b0d14494dbca045e84ea05fbdd530ad131bc9b2f",
+          "afterSha256": "7f94f69983fa7b4f2a59e4617fbc9f48bb54709b164882a654b25935739d88f8",
+          "normalizedSourceSha256": "7f94f69983fa7b4f2a59e4617fbc9f48bb54709b164882a654b25935739d88f8",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 611,
+          "beforeSha256": "a417c7f6e30c922576ec18557f689be2b1d453dcd5df14b61e71422963cf539b",
+          "afterSha256": "e7f96d2b70598d71e5df32d2944139f6a87a5aaabb7bdb302924e4d5ef2b9400",
+          "normalizedSourceSha256": "e7f96d2b70598d71e5df32d2944139f6a87a5aaabb7bdb302924e4d5ef2b9400",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-BT-0003",
+      "source": {
+        "fileName": "FR_BT_0003_biological_age_biomarker_prediction.html",
+        "fileId": "1JK_i4ftSrQ5UtZWm2Ncv8sd8wykgIaC0",
+        "url": "https://drive.google.com/file/d/1JK_i4ftSrQ5UtZWm2Ncv8sd8wykgIaC0/view?usp=drivesdk",
+        "modifiedTime": "2026-06-10T09:31:51.000Z",
+        "retrievedTextSha256": "6c349db7f855a7761c56770fa3a0da432034f35691e20ac8687743faaff01dc5"
+      },
+      "mutationId": "M-006",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 1006,
+          "beforeSha256": "17a156f25f443ca2c706d0044f1ee23c52ab7bfbc68ca7290e8d1db424a036a6",
+          "afterSha256": "c84c5ff9f0778c66398bbb13945d1ae03c418845475d6166229cdc9f2e685013",
+          "normalizedSourceSha256": "c84c5ff9f0778c66398bbb13945d1ae03c418845475d6166229cdc9f2e685013",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[1].description",
+          "id": "RM-001",
+          "beforeLength": 400,
+          "afterLength": 648,
+          "beforeSha256": "b701698a204b498503f732cb8449e4b40a4c60b0fe972c30bf7e019e69d81847",
+          "afterSha256": "59206794720576a440bb908923fd36e8b560a4d2b542e49f0813bed6fd2d44c5",
+          "normalizedSourceSha256": "59206794720576a440bb908923fd36e8b560a4d2b542e49f0813bed6fd2d44c5",
+          "identifierMigration": false
+        },
+        {
+          "path": "mechanisms[2].description",
+          "id": "AT-001",
+          "beforeLength": 400,
+          "afterLength": 701,
+          "beforeSha256": "0158a7891130eb55d389f2f0d6cc30cfc1201b13def01c8156771373f836251d",
+          "afterSha256": "597db47d2ddee0053b37accfe732a3328fff95bb7d916caf5c2222fb13d0aaab",
+          "normalizedSourceSha256": "597db47d2ddee0053b37accfe732a3328fff95bb7d916caf5c2222fb13d0aaab",
+          "identifierMigration": false
+        }
+      ]
+    },
+    {
+      "recordId": "FR-BT-0004",
+      "source": {
+        "fileName": "FR_BT_0004_liquid_biopsy_early_cancer_detection.html",
+        "fileId": "1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS",
+        "url": "https://drive.google.com/file/d/1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS/view?usp=drivesdk",
+        "modifiedTime": "2026-06-10T09:39:23.000Z",
+        "retrievedTextSha256": "c83f7e251cf8eabfc035ee9c4dfff43430f5ed49b111bc019925b63ea4ed9694"
+      },
+      "mutationId": "M-009",
+      "fields": [
+        {
+          "path": "mechanisms[0].description",
+          "id": "BN-001",
+          "beforeLength": 400,
+          "afterLength": 1046,
+          "beforeSha256": "a178549d2c6c147a1a6996ce46d8b0492e414a175b556a4b4dafb12d8fc2a1f9",
+          "afterSha256": "a84e21f22f45d96fbfded2a2814c9c55d8e8b6413af315edde1a750eef5c8b15",
+          "normalizedSourceSha256": "a84e21f22f45d96fbfded2a2814c9c55d8e8b6413af315edde1a750eef5c8b15",
+          "identifierMigration": false
+        }
+      ]
+    }
+  ]
+}
