@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 import { extractHeadTags, mergeHead, composePage } from "./prerender.js";
 import { ALL_RECORDS } from "../src/data/corpus.js";
 import { getAssessmentHistory } from "../src/data/derive.js";
+import { EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS } from "../src/data/evidenceBrief.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const DIST = path.join(ROOT, "dist");
@@ -136,6 +137,18 @@ test("record pages carry substantive content before JavaScript runs", { skip }, 
     if (record.mechanisms?.length) assert.ok(rendered.includes("Mechanisms"), `${id} body omits mechanisms`);
     if (record.lineage?.items?.length) assert.ok(rendered.includes("Claim Lineage"), `${id} body omits claim lineage`);
     if (record.openQuestions?.length) assert.ok(rendered.includes("Open Questions"), `${id} body omits open questions`);
+  }
+});
+
+test("Evidence Brief prototype is prerendered only for reviewed Compatible records", { skip }, () => {
+  for (const route of sitemapRoutes("sitemap-records.xml")) {
+    const id = route.split("/").filter(Boolean).at(-1).toUpperCase();
+    const rendered = body(read(route));
+    assert.equal(
+      rendered.includes('data-evidence-brief-prototype="compatible"'),
+      EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id),
+      `${id}: Evidence Brief eligibility`,
+    );
   }
 });
 
