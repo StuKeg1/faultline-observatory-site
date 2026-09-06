@@ -69,3 +69,39 @@ test("provenance review completion is classified as changelog-only infrastructur
   assert.equal(qualification.qualifies, false);
   assert.equal(qualification.taxonomyClass, "D");
 });
+
+test("description restoration is classified as a changelog-only editorial correction", () => {
+  const restoration = {
+    id: "M-011",
+    date: "2026-09-06",
+    field: "description_restored",
+    from: "Legacy ingestion cutoff",
+    to: "Source-restored complete description",
+  };
+
+  const mutationType = detectMutationType(restoration, record);
+  const qualification = qualifiesForHomepage(mutationType);
+
+  assert.equal(mutationType, "editorial_correction");
+  assert.equal(qualification.qualifies, false);
+  assert.equal(qualification.taxonomyClass, "D");
+});
+
+test("assessment correction variants retain assessment trajectory classification", () => {
+  const correction = {
+    id: "M-012",
+    date: "2026-09-06",
+    field: "assessment_correction",
+    from: "AS-001",
+    to: "AS-002",
+  };
+  const correctionRecord = {
+    ...record,
+    assessments: [
+      { id: "AS-001", pressureState: "FRAGMENTING", verificationStage: "VS-03" },
+      { id: "AS-002", pressureState: "FRAGMENTING", verificationStage: "VS-03" },
+    ],
+  };
+
+  assert.equal(detectMutationType(correction, correctionRecord), "assessment_reissued_no_state_change");
+});

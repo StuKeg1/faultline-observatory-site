@@ -15,14 +15,12 @@ function record(id) {
 
 test("institutional health: silent-mutation proxy deviations are fully explained by explicit log variants", () => {
   // The current generic proxy counts assessment-log rows rather than the
-  // assessments represented by each row. Two governed schema variants are
-  // therefore expected and must remain explicitly evidenced here:
-  // - FR-QE-0002 logs AS-002 as `assessment_reissued`.
-  // - FR-AM-0001 batches its three founding assessments in one
+  // assessments represented by each row. FR-AM-0001 batches its three
+  // founding assessments in one
   //   `assessments_issued` entry.
-  // Any additional proxy deviation fails this standing control.
+  // Reissues and provenance-led assessment corrections are recognised by the
+  // shared assessment-field taxonomy. Any additional proxy deviation fails.
   assert.deepEqual(getSilentMutationFindings(ALL_RECORDS), [
-    { recordId: "FR-QE-0002", assessmentCount: 2, assessmentLogEntries: 1 },
     { recordId: "FR-AM-0001", assessmentCount: 3, assessmentLogEntries: 1 },
   ]);
 

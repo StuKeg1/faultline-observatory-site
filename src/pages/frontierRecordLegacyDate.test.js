@@ -21,3 +21,9 @@ test("legacy provenance remains preserved outside the public opening label", () 
   assert.match(legacyRecordSource, /openedDate:\s*["']2024-01-15["']/);
   assert.match(frontierRecordSource, /<MutationLog record=\{record\} \/>/);
 });
+
+test("RENDER-PILOT-001 no longer uses a fixed record gate", () => {
+  assert.doesNotMatch(frontierRecordSource, /RENDER_PILOT_001_RECORDS/);
+  assert.match(frontierRecordSource, /getNarrativeAvailability/);
+  assert.match(frontierRecordSource, /State Warrant above remains the authoritative current assessment/);
+});

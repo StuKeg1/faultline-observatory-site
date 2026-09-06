@@ -88,22 +88,22 @@ export const FR_QE_0005 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "The engineering gap — three to four orders of magnitude. The Gidney-Ekerå estimate requires approximately 20 million physical qubits for 2048-bit RSA factorisation. Current systems have hundreds to low thousands. The gap is not merely quantitative — scaling by three to four orders of magnitude in qubit count while maintaining below-threshold error rates and the necessary connectivity involves engi",
+      description: "The engineering gap — three to four orders of magnitude. The Gidney-Ekerå estimate requires approximately 20 million physical qubits for 2048-bit RSA factorisation. Current systems have hundreds to low thousands. The gap is not merely quantitative — scaling by three to four orders of magnitude in qubit count while maintaining below-threshold error rates and the necessary connectivity involves engineering challenges that are not simply extensions of current work. Crosstalk, control complexity, fabrication yield, and classical control overhead all scale non-linearly. The resistance mechanism is not that the gap is unbridgeable in principle, but that it is not bridgeable on any near-term timescale without engineering advances that have not yet been demonstrated even in prototype form.",
     },
     {
       id: "RM-002",
       type: "RESISTANCE MECHANISM",
-      description: "Classical algorithm improvement. The claim requires factoring RSA keys faster than any classical computer. Classical factorisation algorithms continue to improve. The general number field sieve has been optimised continuously since 1990. If classical algorithms improve substantially — through better mathematical insights, specialised hardware, or distributed computing advances — the bar for quantu",
+      description: "Classical algorithm improvement. The claim requires factoring RSA keys faster than any classical computer. Classical factorisation algorithms continue to improve. The general number field sieve has been optimised continuously since 1990. If classical algorithms improve substantially — through better mathematical insights, specialised hardware, or distributed computing advances — the bar for quantum advantage in this specific application rises. The claim is a race; the classical side of the race is not standing still. The resistance mechanism is therefore not just about quantum hardware but about the relative improvement rate of both sides.",
     },
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "Sequential substrate dependency. This claim cannot be satisfied until FR-QE-0003 (scaling behaviour) and FR-QE-0004 (below-threshold operation) are not merely demonstrated but extended to the scale required. The claim sits at the top of the PROG-QE capability stack; it is the last claim to be satisfiable, dependent on all substrate claims being satisfied first at sufficient scale. This is a sequen",
+      description: "Sequential substrate dependency. This claim cannot be satisfied until FR-QE-0003 (scaling behaviour) and FR-QE-0004 (below-threshold operation) are not merely demonstrated but extended to the scale required. The claim sits at the top of the PROG-QE capability stack; it is the last claim to be satisfiable, dependent on all substrate claims being satisfied first at sufficient scale. This is a sequential dependency bottleneck similar to FR-AM-0004's BN-001, but with a higher and more precisely quantified requirement. The bottleneck is not ambiguous — the Gidney-Ekerå estimate provides a specific qubit and error rate target — but the engineering path to that target is long and undemonstrated at the required scale.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Demonstration of fault-tolerant logical qubit count at hundreds, then thousands. The specific milestones that would move this record from ESCALATING toward RESOLVING are stepwise: demonstration of 100 fault-tolerant logical qubits at below-threshold error rates, then 1000, then 10,000. Each milestone narrows the engineering gap by approximately one order of magnitude. No single experiment resolves",
+      description: "Demonstration of fault-tolerant logical qubit count at hundreds, then thousands. The specific milestones that would move this record from ESCALATING toward RESOLVING are stepwise: demonstration of 100 fault-tolerant logical qubits at below-threshold error rates, then 1000, then 10,000. Each milestone narrows the engineering gap by approximately one order of magnitude. No single experiment resolves the claim; it resolves through a series of engineering milestones, each of which is a necessary but not sufficient condition. The attractor is therefore a progression rather than a single event, distinguishing it from the attractors in FR-QE-0003 and FR-QE-0004.",
     }
   ],
 
@@ -154,6 +154,7 @@ export const FR_QE_0005 = {
   ],
 
   mutationLog: [
+    {"id":"M-013","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_QE_0005_RSA_quantum_factorisation.html (Drive file 1xzJuLkAdDhGDC2Rc-yQZDH-R8vlVvHHi). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-012", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-006 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-011", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): IN-004 and OQ-002 referred to the stale identifier FR-MF-0004 for the Helion/Microsoft fusion contract. Corrected to FR-AM-0004 following the FR-MF-* → FR-AM-* programme identifier migration (see FR-AM-0004 M-007). No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },

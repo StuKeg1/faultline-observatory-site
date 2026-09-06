@@ -103,22 +103,22 @@ export const FR_AM_0001 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Nuclear byproduct inconsistency. Known deuterium-deuterium fusion pathways produce neutrons, tritium, and helium-3 in predictable ratios. Cold fusion experiments that reported excess heat did not report nuclear products at the ratios required by these pathways. The absence of expected byproducts at appropriate levels constitutes a structural resistance mechanism: if the heat is from fusion, the nu",
+      description: "Nuclear byproduct inconsistency. Known deuterium-deuterium fusion pathways produce neutrons, tritium, and helium-3 in predictable ratios. Cold fusion experiments that reported excess heat did not report nuclear products at the ratios required by these pathways. The absence of expected byproducts at appropriate levels constitutes a structural resistance mechanism: if the heat is from fusion, the nuclear signatures must follow. They did not. This inconsistency was identified in the 1989 DOE review and was never resolved by the proponent community.",
     },
     {
       id: "RM-002",
       type: "RESISTANCE MECHANISM",
-      description: "Irreproducibility on demand. No proponent laboratory ever demonstrated a protocol that produced the claimed effect reliably on demand. Positive results were sporadic and dependent on material preparation variables that were not fully characterised or controlled. This is structurally fatal for a physical phenomenon claim: a phenomenon that cannot be reproduced on demand cannot be studied, confirmed",
+      description: "Irreproducibility on demand. No proponent laboratory ever demonstrated a protocol that produced the claimed effect reliably on demand. Positive results were sporadic and dependent on material preparation variables that were not fully characterised or controlled. This is structurally fatal for a physical phenomenon claim: a phenomenon that cannot be reproduced on demand cannot be studied, confirmed, or applied. The irreproducibility was documented across the full thirty-five year evidence trail.",
     },
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "No theoretical mechanism consistent with known physics. No mechanism was proposed that explained how Coulomb barrier penetration could occur at the energies available in an electrochemical cell. Proponents invoked lattice confinement effects and surface phenomena, but no quantitative theory was produced that predicted the observed effects and was consistent with established nuclear and condensed m",
+      description: "No theoretical mechanism consistent with known physics. No mechanism was proposed that explained how Coulomb barrier penetration could occur at the energies available in an electrochemical cell. Proponents invoked lattice confinement effects and surface phenomena, but no quantitative theory was produced that predicted the observed effects and was consistent with established nuclear and condensed matter physics. Without a theoretical framework, experimental anomalies cannot be systematically investigated or distinguished from artefact.",
     },
     {
       id: "CM-001",
       type: "COLLAPSE MECHANISM",
-      description: "Pre-peer-review announcement under institutional pressure. The original announcement was made at a press conference before peer review, under pressure from the University of Utah to establish priority. This created a situation in which the claim was in the public domain and subject to immediate replication attempts before it had undergone methodological scrutiny. The rapid replication attempts tha",
+      description: "Pre-peer-review announcement under institutional pressure. The original announcement was made at a press conference before peer review, under pressure from the University of Utah to establish priority. This created a situation in which the claim was in the public domain and subject to immediate replication attempts before it had undergone methodological scrutiny. The rapid replication attempts that followed — many of them under-resourced or insufficiently controlled — generated noisy results that obscured the signal. The pre-announcement did not cause the claim to be false, but it caused the evidence trail to accumulate in an unusually disordered way, accelerating the fragmentation phase and making the eventual collapse more public and damaging than a conventional publication sequence would have produced.",
     }
   ],
 
@@ -129,7 +129,7 @@ export const FR_AM_0001 = {
     { year: "Mar 1989", text: "Simultaneous announcement with Jones et al. Steven Jones at BYU is working independently on muon-catalysed fusion in similar systems. The University of Utah and BYU negotiate a simultaneous submission. Utah breaks the agreement and announces first via press conference." },
     { year: "Apr 1989", text: "American Physical Society meeting. A special session at APS Baltimore draws major replication reports. The session is widely reported as marking the turning point — negative results dominate, and prominent physicists publicly characterise the claim as unsupported." },
     { year: "1989–91", text: "Pons and Fleischmann relocate to France (IMRA Europe). Toyota funds continued research at a dedicated facility. No replication is produced. The facility closes in 1998 without confirming the original results." },
-    { year: "1991–", text: "LENR community formation. Researchers unwilling to accept the consensus negative finding rebrand the field as Low Energy Nuclear Reactions. The rebranding is partly terminological — distancing from \"cold fusion\" — and partly substantive, broadening the claim to include any anomalous nuclear effects " },
+    { year: "1991–", text: "LENR community formation. Researchers unwilling to accept the consensus negative finding rebrand the field as Low Energy Nuclear Reactions. The rebranding is partly terminological — distancing from \"cold fusion\" — and partly substantive, broadening the claim to include any anomalous nuclear effects in condensed matter systems." },
     { year: "2019", text: "Google systematic study. The most methodologically rigorous replication attempt to date. Null result for fusion. Anomalous electrochemical effects noted as a separate research question." }
     ],
     relatedRecords: [],
@@ -154,6 +154,7 @@ export const FR_AM_0001 = {
   ],
 
   mutationLog: [
+    {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:CM-001, lineage:1991–","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, CM-001; lineage 1991– from FR_MF_0001_cold_fusion_collapse.html (Drive file 1goJsend-Scsoet868GpcTWELGC_ctVfh). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0001", to: "FR-AM-0001", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-005", date: "2024-01-15", field: "collapsed_state_notice_added", from: "—", to: "COLLAPSED-STATE-NOTICE-ADDED", note: "Observatory note added per collapsed pressure state." },

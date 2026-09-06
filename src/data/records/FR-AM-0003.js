@@ -73,22 +73,22 @@ export const FR_AM_0003 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Strong correlation intractability. Cuprate superconductors are strongly correlated electron systems: the interactions between electrons are large enough that they cannot be treated as small perturbations to a non-interacting system. This makes exact theoretical treatment computationally intractable for systems of realistic size. Every theoretical framework for cuprate superconductivity is therefor",
+      description: "Strong correlation intractability. Cuprate superconductors are strongly correlated electron systems: the interactions between electrons are large enough that they cannot be treated as small perturbations to a non-interacting system. This makes exact theoretical treatment computationally intractable for systems of realistic size. Every theoretical framework for cuprate superconductivity is therefore an approximation, and different approximation schemes produce different predictions. The identification problem is partly a computational problem: even if the correct microscopic Hamiltonian is known, extracting predictions from it is not straightforward. This is a structural resistance mechanism — it is not specific to any proposed theory, it constrains all of them.",
     },
     {
       id: "RM-002",
       type: "RESISTANCE MECHANISM",
-      description: "Absence of a decisive distinguishing experiment. The competing theoretical frameworks — spin fluctuations, RVB, charge density wave coupling — make overlapping predictions for most measurable quantities. Identifying an experiment whose outcome would clearly favour one framework over all others has proved difficult. The d-wave symmetry confirmation (INST-003) constrained the mechanism class but did",
+      description: "Absence of a decisive distinguishing experiment. The competing theoretical frameworks — spin fluctuations, RVB, charge density wave coupling — make overlapping predictions for most measurable quantities. Identifying an experiment whose outcome would clearly favour one framework over all others has proved difficult. The d-wave symmetry confirmation (INST-003) constrained the mechanism class but did not distinguish among compatible theories. Without a decisive experiment, the field cannot converge on identification regardless of how sophisticated individual frameworks become.",
     },
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "Identification requires community consensus, not individual proposal. The claim requires that a mechanism has been identified — not merely proposed, not merely consistent with some evidence, but accepted by the research community as the explanation. Community consensus in this field has never been achieved for any single framework. The bottleneck is sociological as well as scientific: even if a fr",
+      description: "Identification requires community consensus, not individual proposal. The claim requires that a mechanism has been identified — not merely proposed, not merely consistent with some evidence, but accepted by the research community as the explanation. Community consensus in this field has never been achieved for any single framework. The bottleneck is sociological as well as scientific: even if a framework were computationally tractable and experimentally distinguished, consensus requires the community to stop pursuing alternatives. That process has no defined threshold. The bottleneck cannot be closed by a single paper or experiment; it requires a sustained convergence process that has not begun.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Quantum simulation as potential resolution path. Quantum computers and cold-atom simulators capable of exactly simulating the Hubbard model at relevant system sizes represent the clearest resolution path visible in the current evidence trail. If exact Hubbard model simulation demonstrates unambiguously that the model reproduces all cuprate phenomenology, this would constitute strong evidence that ",
+      description: "Quantum simulation as potential resolution path. Quantum computers and cold-atom simulators capable of exactly simulating the Hubbard model at relevant system sizes represent the clearest resolution path visible in the current evidence trail. If exact Hubbard model simulation demonstrates unambiguously that the model reproduces all cuprate phenomenology, this would constitute strong evidence that the mechanism is captured by the Hubbard model's physics — even without specifying which analytical framework correctly describes that physics. The attractor is not a specific theory; it is a computational capability that would resolve the strong correlation intractability problem. This is the first attractor in the corpus that is defined by a tool rather than a theoretical result.",
     }
   ],
 
@@ -122,6 +122,7 @@ export const FR_AM_0003 = {
   ],
 
   mutationLog: [
+    {"id":"M-008","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_MF_0003_cuprate_superconductivity_mechanism.html (Drive file 19czOspfLKee1tTark6lti8sr-LBaHObs). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0003", to: "FR-AM-0003", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
     { id: "M-006", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },

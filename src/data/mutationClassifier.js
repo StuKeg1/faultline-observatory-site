@@ -108,16 +108,19 @@ export const INSTANCE_FIELD_SYNONYMS = new Set([
   "instance_added",
 ]);
 
-// Field-name synonyms for the assessment-issued event, singular and plural.
-// FR-AM-0001 batches multiple notional assessments into a single log line
-// under "assessments_issued" rather than one entry per assessment — same
-// governance event, same creation-batch slot, same placeholder shape.
-// Row 5 Audit, 2026-07-05.
-// Exported (2026-07-07, Metrics Engine build) — same reasoning as
-// INSTANCE_FIELD_SYNONYMS above.
+// Field-name variants for an assessment appended to the record. Most use
+// assessment_issued / assessments_issued. The corpus also has explicit,
+// append-only variants for a ratified reissue, a provenance-led assessment
+// correction, and a correction with dependent fields. Each names its actual
+// assessment through mutation.to and must receive the same trajectory and
+// metrics treatment. FR-AM-0001's founding batch remains the one documented
+// multi-assessment exception.
 export const ASSESSMENT_ISSUED_FIELD_SYNONYMS = new Set([
   "assessment_issued",
   "assessments_issued",
+  "assessment_reissued",
+  "assessment_correction",
+  "assessment_and_dependencies_corrected",
 ]);
 
 function findCreationDate(record) {
@@ -153,7 +156,7 @@ function isBootstrapPlaceholder(mutation, creationDate) {
 }
 
 /**
- * Determines whether an assessment_issued (or assessments_issued) mutation
+ * Determines whether an assessment-log mutation
  * actually changed the record's trajectory, and if so, which axis. This
  * cannot be read off the mutationLog entry alone — mutation.to is just an
  * assessment ID (e.g. "AS-002") for real assessments, or a placeholder
@@ -203,6 +206,9 @@ export function detectMutationType(mutation, record) {
     return "open_question_added";
   }
   if (mutation.field === "reference_corrected") {
+    return "editorial_correction";
+  }
+  if (mutation.field === "description_restored") {
     return "editorial_correction";
   }
   if (mutation.field === "claim_scope_narrowed") {

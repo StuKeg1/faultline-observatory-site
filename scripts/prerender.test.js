@@ -124,17 +124,18 @@ test("every sitemap URL has a generated HTML page", { skip }, () => {
 test("record pages carry substantive content before JavaScript runs", { skip }, () => {
   for (const route of sitemapRoutes("sitemap-records.xml")) {
     const id = route.split("/").filter(Boolean).at(-1).toUpperCase();
+    const record = ALL_RECORDS.find((item) => item.id === id);
     const rendered = body(read(route));
 
+    assert.ok(record, `${id} is missing from ALL_RECORDS`);
     assert.ok(rendered.length > 4000, `${id} body is only ${rendered.length} bytes`);
     assert.ok(rendered.includes(id), `${id} body omits its own identifier`);
-    // Only the sections every record renders. Assessment History, Claim
-    // Lineage and Open Questions are gated by RENDER_PILOT_001_RECORDS in
-    // FrontierRecord.jsx and are absent from most records by design — static
-    // rendering reproduces the page as it is, it does not add sections.
-    for (const section of ["Verification Matrix", "State Warrant", "Mutation Log", "Evidence Sources"]) {
+    for (const section of ["Verification Matrix", "State Warrant", "Assessment History", "Mutation Log", "Evidence Sources"]) {
       assert.ok(rendered.includes(section), `${id} body omits ${section}`);
     }
+    if (record.mechanisms?.length) assert.ok(rendered.includes("Mechanisms"), `${id} body omits mechanisms`);
+    if (record.lineage?.items?.length) assert.ok(rendered.includes("Claim Lineage"), `${id} body omits claim lineage`);
+    if (record.openQuestions?.length) assert.ok(rendered.includes("Open Questions"), `${id} body omits open questions`);
   }
 });
 

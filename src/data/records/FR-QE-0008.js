@@ -73,12 +73,12 @@ export const FR_QE_0008 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Correlated error floors at large code distances. The threshold theorem assumes independent errors. Real systems contain correlated errors from crosstalk, cosmic ray impacts, and two-level system defects. At small code distances, these contribute minor corrections to the independent error model. At larger code distances, correlated errors may produce logical error rate floors — minimum achievable l",
+      description: "Correlated error floors at large code distances. The threshold theorem assumes independent errors. Real systems contain correlated errors from crosstalk, cosmic ray impacts, and two-level system defects. At small code distances, these contribute minor corrections to the independent error model. At larger code distances, correlated errors may produce logical error rate floors — minimum achievable logical error rates that resist further suppression by adding physical qubits. The resistance mechanism is a potential breakdown of the theorem's assumptions at scales beyond the currently demonstrated range. The mechanism is real but its magnitude is not yet empirically established — no system has demonstrated a logical error rate floor in practice.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Exponential suppression demonstrated through distance 11 or beyond. The claim would transition from RESOLVING to confirmed if exponential suppression is demonstrated at code distances 9 and 11 — the range required for early fault-tolerant applications. If suppression continues at these distances without evidence of correlated error floors, the claim's validity at practically relevant scales is est",
+      description: "Exponential suppression demonstrated through distance 11 or beyond. The claim would transition from RESOLVING to confirmed if exponential suppression is demonstrated at code distances 9 and 11 — the range required for early fault-tolerant applications. If suppression continues at these distances without evidence of correlated error floors, the claim's validity at practically relevant scales is established. Several hardware roadmaps (Google, IBM, Microsoft) project demonstrations at these distances within two to three years. The attractor is tractable and on a near-term engineering trajectory.",
     }
   ],
 
@@ -110,6 +110,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, AT-001 from FR_QE_0008_error_correction_scaling.html (Drive file 1b6n8s4qZ8FE08RIymo-4e-kpFvQ49Nyz). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): OQ-001 referred to the stale identifier PROG-MF. Corrected to PROG-AM following the FR-MF-* → FR-AM-* programme identifier migration. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-005", date: "2024-01-15", field: "programme_panel_added", from: "—", to: "PROGRAMME-PANEL-ADDED", note: "" },

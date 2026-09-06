@@ -166,7 +166,7 @@ function extractMechanisms(html) {
       mechanisms.push({
         id: idMatch[1].split("·")[0].trim(),
         type: typeMatch ? typeMatch[1].trim() : "resistance",
-        description: cleanText(textMatch[1]).substring(0, 400),
+        description: cleanText(textMatch[1]),
       });
     }
   });
@@ -182,7 +182,7 @@ function extractLineage(html) {
     const year = cleanText(block.match(/class="lin-year">([^<]+)</)?.[1] || "");
     const textMatch = block.match(/class="lin-text">([\s\S]*?)<\/div>/);
     if (year && textMatch) {
-      items.push({ year, text: cleanText(textMatch[1]).substring(0, 300) });
+      items.push({ year, text: cleanText(textMatch[1]) });
     }
   });
 

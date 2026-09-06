@@ -401,19 +401,21 @@ function EvidenceSources({ record }) {
   );
 }
 
-// ─── RENDER-PILOT-001 ────────────────────────────────────────
-// Combined pilot (scope note: RENDER-PILOT-001, 2026-07-09), governing
-// ADR-00X (mechanisms), ADR-00Y (open questions), ADR-00Z (claim lineage
-// narrative). Deliberately scoped to exactly these two records — per the
-// EP-001 precedent, one combined pilot rather than three isolated ones,
-// so interaction effects between the three objects can actually be
-// observed on a real page. NOT a corpus-wide rollout: every other record
-// in the corpus has the same mechanisms[]/openQuestions[]/lineage.items[]
-// data already, but renders none of it until this pilot is reviewed.
-// Removing an ID from this set, or deleting it entirely, fully reverts
-// the affected record(s) to the pre-pilot rendering with no other change
-// required anywhere in this file.
-const RENDER_PILOT_001_RECORDS = new Set(["FR-QE-0004", "FR-AI-0007"]);
+// ─── RENDER-PILOT-001 CONCLUSION ─────────────────────────────
+// The scoped pilot has concluded. Existing canonical mechanisms,
+// lineage.items and openQuestions now render wherever present; a fixed ID
+// gate would conceal the corpus's largest realised-but-unseen asset. These
+// sections document a record's causal and historical account. The State
+// Warrant, derived from the latest assessment, remains the authoritative
+// current judgement when older narrative wording is later narrowed,
+// reframed or superseded. See docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md.
+function getNarrativeAvailability(record) {
+  return {
+    hasMechanisms: (record.mechanisms?.length ?? 0) > 0,
+    hasClaimLineage: (record.lineage?.items?.length ?? 0) > 0,
+    hasOpenQuestions: (record.openQuestions?.length ?? 0) > 0,
+  };
+}
 
 // ─── MECHANISMS ──────────────────────────────────────────────
 // ADR-00X. Renders record.mechanisms[] — Resistance Mechanisms, Bottlenecks,
@@ -522,35 +524,20 @@ function RelatedRecords({ lineage }) {
 }
 
 // ─── SCROLLSPY TABS ──────────────────────────────────────────
-// getSections branches per-record rather than using one static list, so
-// that RENDER-PILOT-001's three additions (and the "Record Lineage" →
-// "Assessment History" relabel that resolving RN-02 required — see
-// ClaimLineage above) apply only to the two pilot records. Every other
-// record's tab list, section order, and labels are byte-for-byte what
-// they were before this pilot.
+// Assessment History always derives from assessments[]. Claim Lineage is
+// the distinct historical narrative in lineage.items[]. The latter three
+// sections appear only when their canonical fields exist, so a future record
+// with a deliberately absent field does not receive an empty shell.
 function getSections(record) {
-  const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
-  const hasGovernedNarrative = isPilot || record.id === "FR-QE-0001";
+  const { hasMechanisms, hasClaimLineage, hasOpenQuestions } = getNarrativeAvailability(record);
   const hasRelated = record.lineage?.relatedRecords?.length > 0;
-
-  if (!hasGovernedNarrative) {
-    return [
-      { id: "s-matrix",    label: "Verification Matrix" },
-      { id: "s-warrant",   label: "State Warrant" },
-      { id: "s-lineage",   label: "Record Lineage" },
-      { id: "s-mutations", label: "Mutation Log" },
-      { id: "s-evidence",  label: "Evidence Sources" },
-      ...(hasRelated ? [{ id: "s-related", label: "Related Records" }] : []),
-    ];
-  }
-
   return [
     { id: "s-matrix",             label: "Verification Matrix" },
     { id: "s-warrant",            label: "State Warrant" },
-    { id: "s-mechanisms",         label: "Mechanisms" },
+    ...(hasMechanisms ? [{ id: "s-mechanisms", label: "Mechanisms" }] : []),
     { id: "s-assessment-history", label: "Assessment History" },
-    { id: "s-claim-lineage",      label: "Claim Lineage" },
-    { id: "s-open-questions",     label: "Open Questions" },
+    ...(hasClaimLineage ? [{ id: "s-claim-lineage", label: "Claim Lineage" }] : []),
+    ...(hasOpenQuestions ? [{ id: "s-open-questions", label: "Open Questions" }] : []),
     { id: "s-mutations",          label: "Mutation Log" },
     { id: "s-evidence",           label: "Evidence Sources" },
     ...(hasRelated ? [{ id: "s-related", label: "Related Records" }] : []),
@@ -616,11 +603,10 @@ export default function FrontierRecord() {
   const assessmentRecency = getAssessmentRecency(record);
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
-  const isPilot = RENDER_PILOT_001_RECORDS.has(record.id);
+  const { hasMechanisms, hasClaimLineage, hasOpenQuestions } = getNarrativeAvailability(record);
   const assessmentTrajectory = record.assessments.length > 1
     ? getCompactAssessmentTrajectory(record)
     : null;
-  const hasGovernedNarrative = isPilot || record.id === "FR-QE-0001";
   const hasStageProvenance = getAssessmentHistory(record).some(
     (assessment) => assessment.verificationStageProvenance,
   );
@@ -756,45 +742,31 @@ export default function FrontierRecord() {
             </section>
           )}
 
-          {/* RENDER-PILOT-001 / ADR-00X. Pilot records only. */}
-          {hasGovernedNarrative && (
+          {hasMechanisms && (
             <section className="record-section-inner" id="s-mechanisms">
               <div className="rs-header">Mechanisms</div>
+              <p className="narrative-context">Causal mechanisms recorded for this claim. The State Warrant above remains the authoritative current assessment.</p>
               <Mechanisms record={record} />
             </section>
           )}
 
-          {/* RN-00X Finding RN-02: this section is sourced from
-              assessments[] (a state-change log), not record.lineage.items[]
-              — it was labeled "Record Lineage" corpus-wide despite that.
-              For pilot records, it is relabeled "Assessment History" (its
-              accurate name) and the actual lineage narrative is rendered
-              separately just below, resolving the label/source mismatch.
-              Every non-pilot record keeps the original id, label, and
-              content exactly as before — unchanged pending a corpus-wide
-              decision informed by this pilot. */}
-          <section
-            className="record-section-inner"
-            id={hasGovernedNarrative ? "s-assessment-history" : "s-lineage"}
-          >
-            <div className="rs-header">
-              {hasGovernedNarrative ? "Assessment History" : "Record Lineage — Chronological"}
-            </div>
+          <section className="record-section-inner" id="s-assessment-history">
+            <div className="rs-header">Assessment History</div>
             <RecordLineage record={record} />
           </section>
 
-          {/* RENDER-PILOT-001 / ADR-00Z. Pilot records only. */}
-          {hasGovernedNarrative && (
+          {hasClaimLineage && (
             <section className="record-section-inner" id="s-claim-lineage">
               <div className="rs-header">Claim Lineage</div>
+              <p className="narrative-context">Historical narrative recorded for this claim. It does not override the current State Warrant.</p>
               <ClaimLineage record={record} />
             </section>
           )}
 
-          {/* RENDER-PILOT-001 / ADR-00Y. Pilot records only. */}
-          {hasGovernedNarrative && (
+          {hasOpenQuestions && (
             <section className="record-section-inner" id="s-open-questions">
               <div className="rs-header">Open Questions</div>
+              <p className="narrative-context">Questions retained in this record. The current State Warrant may have narrowed or reframed earlier questions.</p>
               <OpenQuestions record={record} />
             </section>
           )}

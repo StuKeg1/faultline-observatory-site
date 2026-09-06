@@ -111,17 +111,17 @@ export const FR_BT_0002 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Safety window for partial reprogramming in humans. OSKM expression is potently oncogenic at high doses or sustained expression. The therapeutic window — sufficient expression to reverse epigenetic aging marks without inducing dedifferentiation or tumour formation — has been demonstrated in mice but not characterised in humans or non-human primates at clinically relevant doses. The safety constrain",
+      description: "Safety window for partial reprogramming in humans. OSKM expression is potently oncogenic at high doses or sustained expression. The therapeutic window — sufficient expression to reverse epigenetic aging marks without inducing dedifferentiation or tumour formation — has been demonstrated in mice but not characterised in humans or non-human primates at clinically relevant doses. The safety constraint is the primary obstacle to human trials: no regulatory agency will approve a Phase I trial without substantially more NHP safety data. The resistance mechanism is not that partial reprogramming is impossible but that establishing the safety window in humans requires a multi-year preclinical programme before human exposure can begin.",
     },
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "Biological age measurement validity. The claim requires that biological age be reversed. The primary measurement tool — epigenetic clocks — is contested as a surrogate for genuine rejuvenation. Clocks can be reset by interventions that may not produce functional benefit. If clock reversal and functional rejuvenation are dissociable — if the clock can be moved without changing organismal biology in",
+      description: "Biological age measurement validity. The claim requires that biological age be reversed. The primary measurement tool — epigenetic clocks — is contested as a surrogate for genuine rejuvenation. Clocks can be reset by interventions that may not produce functional benefit. If clock reversal and functional rejuvenation are dissociable — if the clock can be moved without changing organismal biology in ways that matter — then the claim's satisfaction conditions are ambiguous. This is a measurement validity bottleneck: the claim cannot be confirmed or contested cleanly until the relationship between clock readings and functional outcomes is established. This is structurally distinct from FR-BT-0001's lexical bottleneck (\"meaningfully extend\"): that was a threshold dispute; this is a measurement validity dispute. Both are bottlenecks from absence of an agreed measurement framework, as the verdict on FR-BT-0001 observed.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "First human safety data and validated functional outcome biomarkers. Two developments would materially advance this record: first, Phase I human trials demonstrating safe OSKM induction at partial reprogramming doses with measurable epigenetic clock reversal and no adverse dedifferentiation signals; second, validated functional outcome biomarkers that correlate with clock reversal and demonstrate ",
+      description: "First human safety data and validated functional outcome biomarkers. Two developments would materially advance this record: first, Phase I human trials demonstrating safe OSKM induction at partial reprogramming doses with measurable epigenetic clock reversal and no adverse dedifferentiation signals; second, validated functional outcome biomarkers that correlate with clock reversal and demonstrate that clock reduction predicts downstream health benefits. The first would open the human evidence path; the second would resolve BN-001. Neither is present; both are on active development timelines in the field.",
     }
   ],
 
@@ -161,6 +161,7 @@ export const FR_BT_0002 = {
   ],
 
   mutationLog: [
+    {"id":"M-014","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_BT_0002_epigenetic_reprogramming_age_reversal.html (Drive file 12oQGYiWaYPv8-Je7uQ9gnN_v6IUV5zZ5). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-013", date: "2026-08-29", field: "provenance_enriched", from: "IN-006 without structured provenance", to: "IN-006 sources[] added", note: "PA-006 opportunistic legacy provenance enrichment. Primary Life Biosciences IND announcement and ClinicalTrials.gov registration verified the existing IN-006 event; description and evidentiary interpretation unchanged." },
     { id: "M-012", date: "2026-08-29", field: "assessment_issued", from: "AS-002", to: "AS-003", note: "PA-006 reassessment after first human dosing. ESCALATING / VS-02 retained: human testing is operational, but no human outcome evidence has been reported." },

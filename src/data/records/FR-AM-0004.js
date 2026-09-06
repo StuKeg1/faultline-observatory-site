@@ -96,22 +96,22 @@ export const FR_AM_0004 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Engineering Q gap. The NIF result achieves Q > 1 relative to laser-on-target energy but Q ≈ 0.004 relative to total electrical input. Crossing the engineering Q gap — achieving plant-level net electricity — requires improvements in driver efficiency and fusion gain by orders of magnitude beyond current demonstration. For inertial confinement (NIF's approach), this gap may be insurmountable at comm",
+      description: "Engineering Q gap. The NIF result achieves Q > 1 relative to laser-on-target energy but Q ≈ 0.004 relative to total electrical input. Crossing the engineering Q gap — achieving plant-level net electricity — requires improvements in driver efficiency and fusion gain by orders of magnitude beyond current demonstration. For inertial confinement (NIF's approach), this gap may be insurmountable at commercial scale; the private and public tokamak programmes represent a different path. The resistance mechanism is not that the physics is wrong but that the engineering chain from laboratory demonstration to plant-level net electricity involves multiple unsolved problems at scale.",
     },
     {
       id: "RM-002",
       type: "RESISTANCE MECHANISM",
-      description: "Materials and tritium breeding. A commercial fusion plant requires plasma-facing materials that survive neutron bombardment at intensities not yet tested at relevant fluence levels, and must breed its own tritium fuel from lithium blankets at breeding ratios sufficient to sustain operation. Neither materials performance at commercial fluence nor tritium breeding at the required ratio has been demo",
+      description: "Materials and tritium breeding. A commercial fusion plant requires plasma-facing materials that survive neutron bombardment at intensities not yet tested at relevant fluence levels, and must breed its own tritium fuel from lithium blankets at breeding ratios sufficient to sustain operation. Neither materials performance at commercial fluence nor tritium breeding at the required ratio has been demonstrated in a fusion environment. These are threshold 2 problems — they must be solved before grid-scale operation is achievable. They are not currently active research frontiers in the same sense as plasma physics; they are known engineering gaps that will become critical as the field advances toward threshold 2.",
     },
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "Three-threshold sequential dependency. The claim's three thresholds are ordered and each is necessary for the next. Demonstrating threshold 1 does not demonstrate the claim; it removes one obstacle to demonstrating threshold 2, which in turn removes one obstacle to demonstrating threshold 3. This creates a sequential dependency bottleneck: evidence on threshold 2 cannot be gathered until threshold",
+      description: "Three-threshold sequential dependency. The claim's three thresholds are ordered and each is necessary for the next. Demonstrating threshold 1 does not demonstrate the claim; it removes one obstacle to demonstrating threshold 2, which in turn removes one obstacle to demonstrating threshold 3. This creates a sequential dependency bottleneck: evidence on threshold 2 cannot be gathered until threshold 1 is achieved; evidence on threshold 3 cannot be gathered until threshold 2 is achieved. The record will therefore remain in ESCALATING for threshold-1 evidence for an extended period before threshold-2 evidence begins to accumulate. The bottleneck is structural — it is a property of the claim's architecture, not of any specific technical difficulty.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "First plant-level net electricity demonstration. The specific event that would transition this record from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid. This is expected to occur, if at all, in a private or public demonstration plant in the 2030s. It would satisfy threshold 1 and op",
+      description: "First plant-level net electricity demonstration. The specific event that would transition this record from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid. This is expected to occur, if at all, in a private or public demonstration plant in the 2030s. It would satisfy threshold 1 and open the evidential path to thresholds 2 and 3. The attractor is clearly defined, practically anticipated, and the primary evidence target for this record's near-term development.",
     }
   ],
 
@@ -121,7 +121,7 @@ export const FR_AM_0004 = {
     { year: "1997", text: "JET achieves highest Q to date in tokamak. Q ≈ 0.67. The engineering gap to Q = 1 is quantified. International consensus forms around ITER as the pathway to Q = 10." },
     { year: "2010s", text: "Private fusion industry emerges. Venture capital begins funding alternative confinement approaches. The timeline compresses in private-sector projections. Commercial viability enters the claim as an explicit criterion rather than an assumed consequence." },
     { year: "2022", text: "NIF ignition and JET energy record. The physics of positive fusion gain is demonstrated in the laboratory. The claim transitions from EMERGING to ESCALATING. The engineering gap to plant-level net electricity is now the primary obstacle rather than the physics." },
-    { year: "2023–24", text: "Private capital commitments and Microsoft agreement. Commercial fusion becomes a target of major investment. Helion's revenue-guarantee agreement with Microsoft places commercial viability on a defined timeline for the first time. The claim is treated as a near-term engineering problem rather than a" }
+    { year: "2023–24", text: "Private capital commitments and Microsoft agreement. Commercial fusion becomes a target of major investment. Helion's revenue-guarantee agreement with Microsoft places commercial viability on a defined timeline for the first time. The claim is treated as a near-term engineering problem rather than a distant physics ambition." }
     ],
     relatedRecords: [],
   },
@@ -162,6 +162,7 @@ export const FR_AM_0004 = {
   ],
 
   mutationLog: [
+    {"id":"M-014","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2023–24","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2023–24 from FR_MF_0004_commercial_fusion_power.html (Drive file 1agttcKhzYzuekNWnZmYnUnwQ1XzmPp8-). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-013", date: "2026-08-27", field: "instance_logged", from: "—", to: "IN-007", note: "IN-007 added following bounded FCIF audit: Helical Fusion / NIFS UROCOIC double-pancake HTS coil result, first announced in 2025 and peer-reviewed in August 2026. Classified as supportive pre-threshold engineering evidence; no pressure-state or verification-stage change." },
     { id: "M-012", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-003, IN-006 descriptions reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
