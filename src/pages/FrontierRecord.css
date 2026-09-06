@@ -471,6 +471,60 @@
   margin: 0;
 }
 
+/* Evidence Brief — bounded, derived-reading-aid prototype. */
+.evidence-brief {
+  margin: 1.75rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  background: var(--paper-card);
+}
+.evidence-brief-kicker {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.45rem;
+}
+.evidence-brief h2 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+}
+.evidence-brief-context {
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin: 0.65rem 0 1.25rem;
+}
+.evidence-brief-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+.evidence-brief-grid h3 {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin: 0 0 0.5rem;
+}
+.evidence-brief-grid p {
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin: 0 0 0.7rem;
+}
+.evidence-brief-grid p:last-child { margin-bottom: 0; }
+.evidence-brief-id {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink-light);
+  letter-spacing: 0.04em;
+}
+
 /* Claim Lineage (narrative) — RENDER-PILOT-001 / ADR-00Z.
    Deliberately reuses the .timeline visual language (year gutter + rule)
    rather than inventing a new pattern, but without the state-dot/assessment
@@ -567,6 +621,8 @@
   .timeline-entry { grid-template-columns: 80px 16px 1fr; }
   .claim-lineage-entry { grid-template-columns: 80px 1fr; }
   .open-question-entry { grid-template-columns: 36px 1fr; }
+  .evidence-brief { padding: 1.1rem; }
+  .evidence-brief-grid { grid-template-columns: 1fr; gap: 1.1rem; }
   .wp-row { grid-template-columns: 1fr; gap: 0.35rem; }
   .wp-label { padding-top: 0; }
 

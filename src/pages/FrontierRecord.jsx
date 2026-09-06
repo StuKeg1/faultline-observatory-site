@@ -16,6 +16,7 @@ import {
   getStateEnteredDate,
   getRecordMetaDescription,
 } from "../data/derive.js";
+import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
@@ -507,6 +508,46 @@ function OpenQuestions({ record }) {
   );
 }
 
+// ─── EVIDENCE BRIEF — BOUNDED PROTOTYPE ─────────────────────
+// A small orientation projection for the five records judged Compatible in
+// RENDER-PILOT-001. It is deliberately derived at render time: no duplicate
+// prose, assessment, evidence classification, or canonical field is created.
+// The complete record and State Warrant retain authority.
+function EvidenceBrief({ brief }) {
+  if (!brief) return null;
+  const state = brief.current.pressureState.toUpperCase();
+  return (
+    <aside className="evidence-brief" aria-labelledby="evidence-brief-title" data-evidence-brief-prototype="compatible">
+      <div className="evidence-brief-kicker">Evidence Brief · Prototype</div>
+      <h2 id="evidence-brief-title">A short reading of this record</h2>
+      <p className="evidence-brief-context">Derived from the record’s current assessment, evidence trail, attractors and open questions. It adds no new assessment; the State Warrant remains authoritative.</p>
+      <div className="evidence-brief-grid">
+        <div>
+          <h3>Current position</h3>
+          <p><strong>{state} · {brief.current.verificationStage}</strong></p>
+          <p>{brief.current.summary}</p>
+        </div>
+        <div>
+          <h3>Evidence trail</h3>
+          <p>{brief.evidenceCount} logged evidence {brief.evidenceCount === 1 ? "entry" : "entries"} inform this record. The complete trail, sources and limits remain below.</p>
+        </div>
+        {brief.attractors.length > 0 && (
+          <div>
+            <h3>What could change it</h3>
+            {brief.attractors.map((attractor) => <p key={attractor.id}><span className="evidence-brief-id">{attractor.id}</span> {attractor.description}</p>)}
+          </div>
+        )}
+        {brief.questions.length > 0 && (
+          <div>
+            <h3>Questions retained</h3>
+            {brief.questions.map((question) => <p key={question.id}><span className="evidence-brief-id">{question.id}</span> {question.question}</p>)}
+          </div>
+        )}
+      </div>
+    </aside>
+  );
+}
+
 // ─── RELATED RECORDS ─────────────────────────────────────────
 function RelatedRecords({ lineage }) {
   if (!lineage.relatedRecords || lineage.relatedRecords.length === 0) return null;
@@ -603,6 +644,7 @@ export default function FrontierRecord() {
   const assessmentRecency = getAssessmentRecency(record);
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
+  const evidenceBrief = getEvidenceBrief(record);
   const { hasMechanisms, hasClaimLineage, hasOpenQuestions } = getNarrativeAvailability(record);
   const assessmentTrajectory = record.assessments.length > 1
     ? getCompactAssessmentTrajectory(record)
@@ -726,6 +768,8 @@ export default function FrontierRecord() {
             <WarrantPanel current={current} record={record} />
             <ExperimentalAnnotations record={record} />
           </section>
+
+          <EvidenceBrief brief={evidenceBrief} />
 
           {/* Evidence Trajectories — Prototype 001. Scoped to FR-QE-0001
               only, the corpus's designated multi-assessment/transition
