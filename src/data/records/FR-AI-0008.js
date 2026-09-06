@@ -12,6 +12,10 @@
 export const FR_AI_0008 = {
   id: "FR-AI-0008",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-09-06",
+  provenanceReviewId: "LPR-001-D08",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "AI-assisted medical diagnosis achieves specialist-level accuracy on defined imaging tasks.",
@@ -117,6 +121,7 @@ export const FR_AI_0008 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-007", date: "2026-09-06", field: "provenance_review", from: "—", to: "LPR-001-D08", note: "Legacy provenance review completed. All five evidence instances examined. Material source-fidelity discrepancies identified in IN-001 through IN-005, so no structured provenance was silently added to those instances. One genuinely new scientific result — the 2026 final MASAI interval-cancer analysis — was identified and held out for normal Record Review rather than admitted through LPR-001. No factual, interpretive, assessment, pressure-state, or verification-stage wording changed. Review marked pending governed correction." },
     { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-002, IN-003, IN-004, IN-005 descriptions reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-005", date: "2024-01-15", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "" },
     { id: "M-004", date: "2024-01-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "" },
