@@ -13,6 +13,10 @@
 export const FR_AI_0009 = {
   id: "FR-AI-0009",
   programme: "PROG-AI",
+  lastProvenanceReview: "2026-09-07",
+  provenanceReviewId: "LPR-001-D09",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "AI systems can learn predictive representations of the physical world that support reliable action when the objects, environment, task, or embodiment differ materially from those encountered during training.",
@@ -28,6 +32,9 @@ export const FR_AI_0009 = {
       vectors: ["partial--broad-control-generality-without-real-world-transfer"],
       date: "2023–25",
       sourceReference: "Hafner et al., 'Mastering diverse control tasks through world models', Nature 640 (2025), doi:10.1038/s41586-025-08744-2",
+      sources: [
+        { citation: "Hafner, D. et al. (2025), Mastering diverse control tasks through world models, Nature 640, 647–653.", url: "https://www.nature.com/articles/s41586-025-08744-2", locator: "Abstract; evaluation across eight domains and more than 150 tasks; fixed-hyperparameter comparison" },
+      ],
     },
     {
       id: "IN-002",
@@ -36,6 +43,9 @@ export const FR_AI_0009 = {
       vectors: ["supportive--bounded-zero-shot-physical-transfer"],
       date: "2025",
       sourceReference: "Assran et al., 'V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning', arXiv:2506.09985",
+      sources: [
+        { citation: "Assran, M. et al. (2025), V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning, arXiv:2506.09985.", url: "https://arxiv.org/abs/2506.09985", locator: "Abstract; >1 million hours pretraining; <62 hours DROID post-training; zero-shot Franka deployment in two labs" },
+      ],
     },
     {
       id: "IN-003",
@@ -44,6 +54,9 @@ export const FR_AI_0009 = {
       vectors: ["partial--interactive-simulation-with-transfer-unproven"],
       date: "2025",
       sourceReference: "Google DeepMind, 'Genie 3: A new frontier for world models' (2025), corporate research announcement; no DOI",
+      sources: [
+        { citation: "Google DeepMind (2025), Genie 3: A new frontier for world models.", url: "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/", locator: "Capabilities; environmental consistency; limitations; 720p, 24 fps, several-minute interaction" },
+      ],
     },
     {
       id: "IN-004",
@@ -52,6 +65,9 @@ export const FR_AI_0009 = {
       vectors: ["contesting--visual-fidelity-does-not-imply-action-reliability"],
       date: "2026",
       sourceReference: "Yang et al., 'MiraBench: Evaluating Action-Conditioned Reliability in Robotic World Models', arXiv:2605.29360",
+      sources: [
+        { citation: "Yang, T. et al. (2026), MiraBench: Evaluating Action-Conditioned Reliability in Robotic World Models, arXiv:2605.29360.", url: "https://arxiv.org/abs/2605.29360", locator: "Abstract; >16,000 judgments; 12 model configurations; three central findings" },
+      ],
     },
     {
       id: "IN-005",
@@ -60,6 +76,9 @@ export const FR_AI_0009 = {
       vectors: ["contesting--causal-intervention-fidelity-remains-weak"],
       date: "2026",
       sourceReference: "Cai et al., 'What-If World', arXiv:2605.27589",
+      sources: [
+        { citation: "Cai, K. et al. (2026), What-If World: A Causal Benchmark for General World Models in Embodied Scenarios, arXiv:2605.27589.", url: "https://arxiv.org/abs/2605.27589", locator: "Abstract; 319 intervention pairs; nuScenes and DROID; nine-model paired-score results" },
+      ],
     },
     {
       id: "IN-006",
@@ -68,6 +87,9 @@ export const FR_AI_0009 = {
       vectors: ["contesting--physically-executable-behaviour-remains-unreliable"],
       date: "2026",
       sourceReference: "Jiang et al., 'RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation', arXiv:2604.19092",
+      sources: [
+        { citation: "Jiang, F. et al. (2026), RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation, arXiv:2604.19092.", url: "https://arxiv.org/abs/2604.19092", locator: "Abstract; embodied-action conversion and execution; failure modes; fine-tuning result" },
+      ],
     },
     {
       id: "IN-007",
@@ -76,6 +98,9 @@ export const FR_AI_0009 = {
       vectors: ["partial--physical-structure-represented-transfer-unresolved"],
       date: "2026",
       sourceReference: "Joseph et al., 'Interpreting Physics in Video World Models', ICML 2026; arXiv:2602.07050",
+      sources: [
+        { citation: "Joseph, S. et al. (2026), Interpreting Physics in Video World Models, arXiv:2602.07050.", url: "https://arxiv.org/abs/2602.07050", locator: "Abstract; Physics Emergence Zone; speed, acceleration and motion-direction probes; distributed representation conclusion" },
+      ],
     },
     {
       id: "IN-008",
@@ -84,6 +109,9 @@ export const FR_AI_0009 = {
       vectors: ["contesting--stochastic-physical-calibration-remains-weak"],
       date: "2026",
       sourceReference: "Sadeghi et al., 'CaliBench: Are the Stochastic Dynamics of Video World Models Physically Calibrated?', arXiv:2608.16829, doi:10.48550/arXiv.2608.16829",
+      sources: [
+        { citation: "Sadeghi, J. et al. (2026), CaliBench: Are the Stochastic Dynamics of Video World Models Physically Calibrated?, arXiv:2608.16829.", url: "https://arxiv.org/abs/2608.16829", locator: "Abstract; nine scenes; six image-to-video models; calibration and probability-mass concentration results" },
+      ],
     },
   ],
 
@@ -166,6 +194,7 @@ export const FR_AI_0009 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-09-07", field: "provenance_review", from: "—", to: "LPR-001-D09", note: "Legacy provenance review completed. All eight evidence instances examined and verified against their stated primary sources. Structured sources[] provenance added to IN-001 through IN-008 without changing evidence descriptions, vectors, assessment, pressure state, verification stage, mechanisms, lineage or open questions. No material discrepancies and no new scientific-evidence candidates were identified. Review outcome verified; repair not required." },
     { id: "M-007", date: "2026-08-28", field: "reference_corrected", from: "Instance-level references absent", to: "IN-001–IN-008 source references recorded", note: "GP-001 provenance correction following the bounded three-record source/DOI audit. Stable publication identifiers were added to every evidence instance. IN-003 is explicitly identified as a corporate research announcement without a DOI; IN-008 carries its own CaliBench reference because it post-dates AS-001. No evidence description, interpretation, assessment, pressureState, verificationStage, mechanism, or open question changed." },
     { id: "M-006", date: "2026-08-22", field: "instance_added", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "IN-008 CaliBench added following RR-2026-08-22-01 Post-Scout Human Record Review and explicit operator authorization. The approved action was INSTANCE only; AS-001, ESCALATING pressure state and VS-02 verification stage remain unchanged." },
     { id: "M-005", date: "2026-08-19", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "Admission diagnosis: ESCALATING / VS-02. Positive bounded transfer evidence and direct reliability counterevidence are both substantive." },
