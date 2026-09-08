@@ -12,6 +12,10 @@
 export const FR_AM_0001 = {
   id: "FR-AM-0001",
   programme: "PROG-AM",
+  lastProvenanceReview: "2026-09-08",
+  provenanceReviewId: "LPR-001-D10",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Electrochemical cells can produce nuclear fusion reactions at or near room temperature.",
@@ -33,6 +37,18 @@ export const FR_AM_0001 = {
       description: "Within weeks of the announcement, several laboratories report partial corroboration. Georgia Tech reports neutron emission (later retracted). Texas A&M reports excess heat. A small number of other groups report anomalous calorimetric effects. These reports circulate rapidly via preprints and informal communication. The apparent early corroboration substantially amplifies the claim's credibility and drives large-scale replication efforts at major institutions worldwide. The reports are not yet subject to full peer review; methodological details are sparse.",
       vectors: ["supportive--early-corroboration"],
       date: "Mar–Apr 1989",
+      sources: [
+        {
+          citation: "U.S. Department of Energy, Energy Research Advisory Board (1989), Cold Fusion Research — Appendix 2.A: Early Chronology of Heat Production.",
+          url: "https://files.ncas.org/erab/apx2a.htm",
+          locator: "April 11 and April 12–30 chronology; Texas A&M excess-heat report and later retraction; other early calorimetric claims",
+        },
+        {
+          citation: "UPI Archives (13 April 1989), Georgia Tech researchers question own duplication of fusion research.",
+          url: "https://www.upi.com/Archives/1989/04/13/Georgia-Tech-researchers-question-own-duplication-of-fusion-research/1107608443200/",
+          locator: "Georgia Tech neutron-counter temperature dependence and reconsideration of the initial neutron claim",
+        },
+      ],
     },
     {
       id: "IN-003",
@@ -40,6 +56,18 @@ export const FR_AM_0001 = {
       description: "MIT's Plasma Fusion Center, Caltech, Harwell Laboratory (UK), and numerous other major institutions report failure to replicate either excess heat or nuclear products under controlled conditions. The MIT group finds no neutron emission above background. Caltech finds no excess heat under careful calorimetric measurement. Georgia Tech retracts its neutron emission report, attributing the signal to temperature sensitivity of their neutron detectors. The Department of Energy convenes a review panel. The replication failure is not uniform — some groups continue to report anomalous effects — but the weight of attempts at well-equipped laboratories is negative. The claim enters a contested and fragmenting state.",
       vectors: ["contesting--systematic-replication-failure"],
       date: "Apr–Jun 1989",
+      sources: [
+        {
+          citation: "U.S. Department of Energy, Energy Research Advisory Board (1989), Cold Fusion Research — Appendix 2.A: Early Chronology of Heat Production.",
+          url: "https://files.ncas.org/erab/apx2a.htm",
+          locator: "May 1 Caltech null calorimetry; May 23–25 Santa Fe workshop reports including negative Caltech and MIT results",
+        },
+        {
+          citation: "Williams, D. E. et al. (1989), Upper bounds on 'cold fusion' in electrolytic cells, Nature 342, 375–384.",
+          url: "https://www.nature.com/articles/342375a0",
+          locator: "Abstract; Harwell calorimetry and nuclear-detection experiments failing to sustain the cold-fusion claims",
+        },
+      ],
     },
     {
       id: "IN-004",
@@ -154,6 +182,7 @@ export const FR_AM_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-008", date: "2026-09-08", field: "provenance_review", from: "—", to: "LPR-001-D10", note: "Legacy provenance review completed. All seven evidence instances examined. Structured provenance added only to source-faithful early-replication instances IN-002 and IN-003. Material or attribution discrepancies identified in IN-001, IN-004, IN-006 and IN-007; IN-005's broad sociological and publication-practice bundle could not be confidently sourced as written. No factual or interpretive wording silently repaired and no assessment, pressure-state or verification-stage changes made. New 2025–26 electrochemically assisted ion-beam fusion results were identified as normal Record Review candidates and were not admitted through LPR-001. Review marked pending governed correction." },
     {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:CM-001, lineage:1991–","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, CM-001; lineage 1991– from FR_MF_0001_cold_fusion_collapse.html (Drive file 1goJsend-Scsoet868GpcTWELGC_ctVfh). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0001", to: "FR-AM-0001", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
