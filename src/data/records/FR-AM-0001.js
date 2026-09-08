@@ -136,6 +136,34 @@ export const FR_AM_0001 = {
           locator: "Abstract; programme scope; no evidence of a cold-fusion effect; materials and low-energy nuclear-reaction insights",
         },
       ],
+    },
+    {
+      id: "IN-008",
+      qualifiedEvent: "Electrochemical loading enhances externally driven D–D fusion in palladium",
+      description: "Chen et al. (2025) report a benchtop system in which deuterium ions are accelerated into a palladium target by plasma immersion ion implantation while the target is simultaneously loaded electrochemically with deuterium. Turning on electrochemical loading increased the measured D–D neutron-production rate by an average of 15(2)% relative to the beam-loaded condition. This is reproducible evidence that electrochemical loading can change the fusion rate of an already externally driven nuclear reaction in a deuterated metal target. It does not satisfy the canonical cold-fusion claim: the fusion reactions require an externally accelerated deuterium-ion population at keV energies, rather than arising from the electrochemical cell itself at room-temperature chemical energies. The experiment is therefore admitted as adjacent mechanistic evidence that narrows the claim boundary, not as a reopening event for the collapsed claim.",
+      vectors: ["partial--electrochemical-loading-enhances-beam-driven-fusion-not-canonical-cold-fusion"],
+      date: "2025-08-20",
+      sources: [
+        {
+          citation: "Chen, K.-Y. et al. (2025), Electrochemical loading enhances deuterium fusion rates in a metal target, Nature 644, 640–645.",
+          url: "https://doi.org/10.1038/s41586-025-09042-7",
+          locator: "Abstract; Thunderbird Reactor design; 15(2)% fusion-rate enhancement; conclusion and energy balance",
+        },
+      ],
+    },
+    {
+      id: "IN-009",
+      qualifiedEvent: "Sub-keV fusion-yield plateau in electrochemically loaded palladium and titanium hydrides",
+      description: "Karahadian et al. (2026) combine electrochemical deuterium loading with low-energy deuteron bombardment and directly measure D–D fusion products in palladium and titanium hydrides. Across centre-of-mass energies from 0.25 to 6.5 keV they report a reproducible fusion-yield plateau below about 2 keV and enhancements exceeding 10^18 relative to bare-nucleus expectations at the lowest measured energies. The result shows that the condensed-matter environment can strongly alter tunnelling probabilities and fusion cross-sections in a regime where standard homogeneous screening models fail. It is materially relevant to the historical mechanism question because it demonstrates a genuine materials-governed low-energy fusion regime. It still does not satisfy the canonical claim: the reactions are initiated by an external deuteron beam, with the electrochemical cell supplying deuterium loading rather than independently producing fusion. The paper therefore strengthens the case for separating condensed-matter-assisted fusion physics from the original room-temperature electrochemical-fusion claim, while leaving the latter collapsed.",
+      vectors: ["partial--materials-enhance-sub-kev-beam-driven-fusion-not-electrochemical-cell-alone"],
+      date: "2026-07-18",
+      sources: [
+        {
+          citation: "Karahadian, M. E. et al. (2026), Enhanced nuclear fusion in the sub-keV energy regime, Nature Communications 17, 8845.",
+          url: "https://doi.org/10.1038/s41467-026-74421-1",
+          locator: "Abstract; dual-chamber electrochemical-loading/ion-beam platform; sub-2-keV yield plateau; enhancement analysis; discussion",
+        },
+      ],
     }
   ],
 
@@ -172,6 +200,14 @@ export const FR_AM_0001 = {
       verificationStage: "VS-05",
       summary: "LPR-001-D10 corrects several historical overstatements without changing the record's terminal judgement. The 1989 DOE review did not prove every anomalous heat report to be an artefact; rather, it found no convincing association between reported heat and a nuclear process, found the evidence for a new cold-fusion process unpersuasive, and highlighted severe reproducibility and fusion-product inconsistencies. The 2004 DOE review likewise did not produce a positive reversal: reviewer views on excess power were mixed, while most reviewers did not find the evidence for low-energy nuclear reactions conclusive and none recommended a focused federal programme. Berlinguette et al. (2019), correctly attributed here, then conducted a modern multi-institution re-evaluation that yielded no evidence of the cold-fusion effect. Continued LENR research and unresolved anomalous-effect claims remain historically relevant, but they do not supply reproducible evidence that an electrochemical cell itself produces nuclear fusion at or near room temperature. COLLAPSED / VS-05 is retained on this narrower, source-faithful basis.",
       assessorNote: "Append-only assessment correction following the operator-approved LPR-001-D10 repair. AS-001 through AS-003 remain visible as historical judgements. No 2025–26 electrochemically assisted ion-beam fusion evidence is admitted here; those results remain normal Record Review candidates because they involve externally driven ion bombardment and require a separate claim-boundary review.",
+    },
+    {
+      id: "AS-005",
+      date: "2026-09-08",
+      pressureState: "collapsed",
+      verificationStage: "VS-05",
+      summary: "Normal Record Review admits IN-008 and IN-009 as materially relevant new evidence at the boundary of the cold-fusion claim. The 2025 Nature result establishes that electrochemical deuterium loading can reproducibly increase the rate of D–D fusion in palladium when fusion is already being driven by externally accelerated deuterium ions. The 2026 Nature Communications result goes further mechanistically, showing a reproducible sub-keV fusion-yield plateau in electrochemically loaded palladium and titanium hydrides and a very large enhancement over bare-nucleus expectations, indicating that the condensed-matter environment can materially reshape low-energy fusion probabilities. These results are scientifically important and directly rehabilitate part of the broader question that survived the 2019 Google programme: materials can influence low-energy nuclear reaction rates in ways that merit study. They do not, however, reproduce the canonical claim recorded here. In both experiments an external ion beam supplies the kinetic energy that initiates fusion; electrochemistry loads or modifies the target rather than independently producing nuclear fusion at room-temperature chemical energies. The evidential boundary is therefore sharper, not weaker: condensed-matter-assisted beam-driven fusion is now positively demonstrated, while autonomous fusion generated by an electrochemical cell remains unconfirmed. COLLAPSED / VS-05 is retained. Reopening would require evidence that crosses that boundary rather than evidence of externally driven fusion enhanced by electrochemical loading.",
+      assessorNote: "Bounded Record Review of Chen et al. (2025), Nature, DOI 10.1038/s41586-025-09042-7, and Karahadian et al. (2026), Nature Communications, DOI 10.1038/s41467-026-74421-1. Both are admitted as new adjacent evidence with primary provenance. Neither is treated as satisfying OQ-002's reopening condition because both depend on externally driven ion bombardment.",
     }
   ],
 
@@ -206,7 +242,8 @@ export const FR_AM_0001 = {
     { year: "Apr 1989", text: "American Physical Society meeting. A special session at APS Baltimore draws major replication reports. The session is widely reported as marking the turning point — negative results dominate, and prominent physicists publicly characterise the claim as unsupported." },
     { year: "1989–91", text: "Pons and Fleischmann relocate to France (IMRA Europe). Toyota funds continued research at a dedicated facility. No replication is produced. The facility closes in 1998 without confirming the original results." },
     { year: "1991–", text: "LENR community formation. Research continues under the broader Low Energy Nuclear Reactions label, extending beyond the original electrochemical-fusion formulation to anomalous heat and possible nuclear effects in condensed matter. Continued activity does not by itself resolve the reproducibility or nuclear-attribution problems identified by the DOE reviews." },
-    { year: "2019", text: "Google-funded multi-institution re-evaluation. Berlinguette et al. report no evidence of a cold-fusion effect while identifying useful materials and low-energy nuclear-reaction questions in the explored parameter space." }
+    { year: "2019", text: "Google-funded multi-institution re-evaluation. Berlinguette et al. report no evidence of a cold-fusion effect while identifying useful materials and low-energy nuclear-reaction questions in the explored parameter space." },
+    { year: "2025–26", text: "Condensed-matter-assisted beam-driven fusion becomes reproducible. Chen et al. show that electrochemical loading of palladium increases externally driven D–D fusion rates by about 15%; Karahadian et al. then report a sub-keV fusion-yield plateau and very large materials-dependent enhancement in electrochemically loaded Pd and Ti hydrides under low-energy ion bombardment. These results establish a genuine materials effect on fusion without reproducing electrochemical-cell-driven cold fusion." }
     ],
     relatedRecords: [],
   },
@@ -219,7 +256,7 @@ export const FR_AM_0001 = {
     },
     {
       id: "OQ-002",
-      question: "Under what conditions, if any, would the Observatory reopen a collapsed record? The current assessment holds COLLAPSED as a stable state. If a future experiment produced reproducible nuclear products at predicted ratios from an electrochemical cell, the record would require reopening. No procedure currently governs this.",
+      question: "What evidence would reopen this collapsed record now that condensed-matter-assisted beam-driven fusion is reproducibly demonstrated? IN-008 and IN-009 do not cross the canonical boundary because externally accelerated deuterons initiate the nuclear reactions. Reopening would require reproducible nuclear products attributable to the electrochemical cell itself at or near room temperature, without an external ion beam or equivalent high-energy driver, together with controls that establish the nuclear energy and byproduct balance.",
       raisedDate: "2024-01-15",
     },
     {
@@ -230,6 +267,8 @@ export const FR_AM_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-012", date: "2026-09-08", field: "assessment_issued", from: "AS-004", to: "AS-005", note: "Normal Record Review of IN-008 and IN-009. COLLAPSED / VS-05 retained. The new evidence positively establishes condensed-matter enhancement of externally driven low-energy fusion but does not satisfy the canonical electrochemical-cell-driven cold-fusion claim. OQ-002 and lineage updated to make the reopening boundary explicit; historical assessments and legacy instances preserved." },
+    { id: "M-011", date: "2026-09-08", field: "instances_added", from: "IN-007", to: "IN-008 / IN-009", note: "Normal Record Review admits Chen et al. (2025) and Karahadian et al. (2026) with primary provenance. Both are adjacent mechanistic evidence: electrochemical loading and condensed-matter environment measurably enhance D–D fusion under externally driven ion bombardment. Neither is treated as a qualifying reopening event for the canonical room-temperature electrochemical-fusion claim." },
     { id: "M-010", date: "2026-09-08", field: "assessment_and_dependencies_corrected", from: "AS-003 / legacy CM-001-lineage-OQ wording", to: "AS-004 / corrected dependencies", note: "Append-only AS-004 issued after the operator-approved LPR-001-D10 repair. COLLAPSED / VS-05 retained on a narrower evidential basis. CM-001, affected lineage entries and OQ-001 aligned to the corrected provenance: public announcement timing is retained, unsupported institutional-pressure causation is withdrawn, Berlinguette attribution is corrected, and residual LENR questions are separated from evidence for the canonical fusion claim. Historical assessments preserved. The 2025–26 electrochemically assisted ion-beam fusion papers remain outside LPR-001 as normal Record Review candidates." },
     { id: "M-009", date: "2026-09-08", field: "provenance_correction", from: "LPR-001-D10 discrepancies_found", to: "LPR-001-D10 discrepancies_corrected", note: "Operator-approved correction of IN-001, IN-004, IN-005, IN-006 and IN-007. IN-001 bounded to the verified public-announcement/publication chronology; IN-004 aligned to the 1989 DOE panel's actual conclusions; IN-005 narrowed to documented persistence of LENR research without unsupported publication-practice claims; IN-006 separates the 2004 review's excess-power and nuclear-reaction reviewer distributions; IN-007 corrects Berlinguette et al. and removes the unsupported later NASA-adjacent bundle. Structured provenance added where source fidelity was established. No 2025–26 scientific evidence admitted through LPR-001." },
     { id: "M-008", date: "2026-09-08", field: "provenance_review", from: "—", to: "LPR-001-D10", note: "Legacy provenance review completed. All seven evidence instances examined. Structured provenance added only to source-faithful early-replication instances IN-002 and IN-003. Material or attribution discrepancies identified in IN-001, IN-004, IN-006 and IN-007; IN-005's broad sociological and publication-practice bundle could not be confidently sourced as written. No factual or interpretive wording silently repaired and no assessment, pressure-state or verification-stage changes made. New 2025–26 electrochemically assisted ion-beam fusion results were identified as normal Record Review candidates and were not admitted through LPR-001. Review marked pending governed correction." },
