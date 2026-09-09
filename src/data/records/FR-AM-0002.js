@@ -12,6 +12,10 @@
 export const FR_AM_0002 = {
   id: "FR-AM-0002",
   programme: "PROG-AM",
+  lastProvenanceReview: "2026-09-09",
+  provenanceReviewId: "LPR-001-D11",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Electrochemical cells can produce anomalous excess heat that is not fully explained by conventional chemical processes.",
@@ -127,6 +131,7 @@ export const FR_AM_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-008", date: "2026-09-09", field: "provenance_review", from: "—", to: "LPR-001-D11", note: "Legacy provenance review completed. All five evidence instances examined. Material source-fidelity or attribution discrepancies identified in IN-001 through IN-005, so no structured provenance was silently attached to those instances. IN-001 misattributes the Texas A&M 1989 excess-heat work to McKubre; IN-002's SRI loading-threshold core is sourceable but its decade-long/reproducibility and independent-replication framing requires bounding; IN-003's Storms protocol and comparative-success claims are more specific than the verified review evidence; IN-004 misattributes Berlinguette et al. and overstates the 2019 Google programme as acknowledging unexplained anomalous calorimetry; IN-005 conflates NASA/Navy programmes and incorrectly describes them as institutions with no prior LENR affiliation. No factual, interpretive, assessment, pressure-state or verification-stage wording changed. No sufficiently direct new scientific evidence was admitted; review marked pending governed correction." },
     {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:IN-001, lineage:1989, lineage:1989–91, lineage:2024","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, IN-001; lineage 1989, 1989–91, 2024 from FR_MF_0002_anomalous_excess_heat.html (Drive file 1qB9Wsdf9b3Trw32dcQHEPPLsrZIH6z14). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0002", to: "FR-AM-0002", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
