@@ -14,8 +14,8 @@ export const FR_AM_0002 = {
   programme: "PROG-AM",
   lastProvenanceReview: "2026-09-09",
   provenanceReviewId: "LPR-001-D11",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Electrochemical cells can produce anomalous excess heat that is not fully explained by conventional chemical processes.",
@@ -26,38 +26,78 @@ export const FR_AM_0002 = {
   instances: [
     {
       id: "IN-001",
-      qualifiedEvent: "Early excess heat observations — multiple laboratories",
-      description: "Following the Pons-Fleischmann announcement, a subset of replication attempts reports anomalous heat even when failing to observe nuclear products. Texas A&M (McKubre group) and several European electrochemistry laboratories report calorimetric anomalies in palladium-deuterium cells that exceed estimated chemical energy budgets. These observations are made during the same period as the fusion claim's collapse; they are not separated from it in the contemporary literature. Retrospectively, they constitute the earliest evidence specifically relevant to this record's claim. Methodological concerns are significant: calorimetry in electrochemical cells is technically demanding, and systematic errors in heat accounting are documented in this period.",
-      vectors: ["partial--methodology-contested"],
-      date: "1989–92",
+      qualifiedEvent: "Early excess-heat reports — mixed 1989 replication record",
+      description: "Following the Pons-Fleischmann announcement, several groups reported calorimetric excess heat in palladium-deuterium cells while other laboratories reported null results. The 1989 DOE chronology records an April 11 Texas A&M report by C. R. Martin, B. E. Gammon and K. N. Marsh of 20–80% excess energy, later retracted during the DOE panel's June visit, alongside other positive and negative calorimetry reports during the same period. These early reports establish that anomalous heat was a distinct experimental observation under active investigation, but they do not establish a reproducible phenomenon beyond conventional chemistry. The legacy attribution of the Texas A&M result to Michael McKubre is withdrawn; McKubre's work was at SRI International.",
+      vectors: ["partial--early-heat-reports-mixed-and-methodologically-contested"],
+      date: "1989",
+      sources: [
+        {
+          citation: "U.S. Department of Energy, Energy Research Advisory Board (1989), Cold Fusion Research — Appendix 2.A: Early Chronology of Heat Production.",
+          url: "https://files.ncas.org/erab/apx2a.htm",
+          locator: "April 11 Texas A&M excess-heat report and later retraction; April–May positive and negative calorimetry chronology",
+        },
+      ],
     },
     {
       id: "IN-002",
-      qualifiedEvent: "SRI International systematic calorimetry programme",
-      description: "Michael McKubre and colleagues at SRI International conduct a decade-long programme of palladium-deuterium calorimetry using flow calorimetry methods specifically designed to minimise systematic errors. The programme, partly funded by EPRI (Electric Power Research Institute), produces a series of reports claiming reproducible excess heat correlated with deuterium loading above a threshold fraction. The correlation with loading fraction is the most specific quantitative claim in the anomalous heat literature: heat appears only when deuterium occupancy exceeds approximately 0.9 atoms per palladium atom. This correlation, if real, would constitute evidence for a genuine physical phenomenon rather than random calorimetric error. Independent replication of the loading-fraction correlation has not been achieved under fully controlled conditions.",
-      vectors: ["supportive--loading-correlation"],
-      date: "1993–2002",
+      qualifiedEvent: "SRI International — reported loading dependence in D/Pd calorimetry",
+      description: "McKubre and colleagues at SRI International carried out palladium-deuterium calorimetry and reported excess-power observations as a function of electrochemical current and deuterium loading. Their 1992/93 conference paper identifies attainment of average D/Pd loading of approximately 0.9 or greater as one criterion associated with reported anomalous power generation, and later SRI summaries continued to emphasise high loading as part of the proposed operating parameter space. This is a specific, falsifiable correlation reported by the SRI programme. It is not treated here as an independently established threshold law: the legacy wording that a decade-long programme demonstrated reproducible excess heat above a definitive 0.9 threshold and that the correlation had never been independently replicated under fully controlled conditions was broader than the verified source chain.",
+      vectors: ["supportive--reported-sri-loading-correlation-not-independently-established-law"],
+      date: "1992–2009",
+      sources: [
+        {
+          citation: "McKubre, M. C. H. et al. (1992/1993), Excess Power Observations in Electrochemical Studies of the D/Pd System; the Influence of Loading, Proceedings of the Third International Conference on Cold Fusion.",
+          url: "https://citeseerx.ist.psu.edu/document?doi=b2ab364ef13574f30b41ef87cf8fa69e2c25dcff&repid=rep1&type=pdf",
+          locator: "Abstract; introduction; loading criterion of approximately D/Pd 0.9 or greater",
+        },
+        {
+          citation: "McKubre, M. C. H. (2009), Excess Power Observations in Electrochemical Studies of the D/Pd System; the Operating Parameter Space, ICCF-15 proceedings.",
+          url: "https://www.afs.enea.it/project/webenea/Volumi/V2012-CondensMatter.pdf",
+          locator: "Operating-parameter-space discussion; high deuterium loading and reported excess-power correlation",
+        },
+      ],
     },
     {
       id: "IN-003",
-      qualifiedEvent: "Storms — systematic review and palladium preparation protocol",
-      description: "Edmund Storms, formerly of Los Alamos National Laboratory, publishes a systematic review of the anomalous heat literature and develops specific palladium preparation protocols claimed to increase reproducibility. Storms argues that the irreproducibility characterising most replication attempts is attributable to material variability in palladium samples rather than absence of a real effect. His protocols specify grain size, surface preparation, and loading conditions. Results using these protocols show higher positive rates than random replication attempts. Critics note that the comparison group (uncontrolled replication) is a weak baseline; and that the protocols themselves introduce selection effects that may explain higher positive rates without requiring a real underlying phenomenon.",
-      vectors: ["partial--protocol-dependency"],
-      date: "2002–10",
+      qualifiedEvent: "Storms review — material-dependent interpretation of reproducibility",
+      description: "Edmund Storms' 2010 review surveys the cold-fusion/LENR literature and argues that supporting evidence accumulated in particular materials and under particular preparation and loading conditions. The review presents material dependence and difficult reproducibility as central features of the reported phenomenon and discusses multiple claimed heat-producing systems. It is evidence for a proponent-side synthesis in which materials state is offered as an explanation for inconsistent results; it is not independent validation of a specific Storms preparation protocol. The legacy claims that his protocol specified a verified grain-size/surface-preparation recipe, produced higher positive rates than random replication attempts, and was shown to introduce selection effects are withdrawn because they were not established by the reviewed source as written.",
+      vectors: ["partial--proponent-review-attributes-variability-to-material-state"],
+      date: "2010",
+      sources: [
+        {
+          citation: "Storms, E. (2010), Status of cold fusion (2010), Naturwissenschaften 97, 861–881.",
+          url: "https://doi.org/10.1007/s00114-010-0711-x",
+          locator: "Review abstract and discussion of material-dependent reproducibility and reported heat-producing systems",
+        },
+      ],
     },
     {
       id: "IN-004",
-      qualifiedEvent: "Berliner et al. (Google) — anomalous electrochemical behaviour acknowledged",
-      description: "The Google-funded systematic replication study (Berliner et al. 2019, Nature) returns a null result for nuclear fusion products but explicitly documents anomalous electrochemical behaviour in palladium-deuterium systems that was not fully explained by the study's conventional models. The authors characterise this as a finding of independent scientific interest. Specifically, the calorimetric behaviour of highly loaded palladium-deuterium cells deviates from predictions in ways that warrant further investigation. This is the strongest independent institutional acknowledgement of the anomalous heat phenomenon from a source with no prior investment in the LENR community. The acknowledgement is careful and hedged; it does not assert that the anomaly is real or physically significant. It is, however, a qualified event from a credible source that bears directly on this record's claim.",
-      vectors: ["partial--independent-institutional-acknowledgement"],
+      qualifiedEvent: "Google-funded re-evaluation — no cold-fusion effect observed",
+      description: "Berlinguette et al. (2019) describe a Google-funded multi-institution programme established to re-evaluate cold fusion using modern materials characterisation, calorimetry and nuclear measurements. The programme had not yielded evidence of a cold-fusion effect. Its scientifically useful outputs concerned highly hydrided metals and low-energy nuclear-reaction parameter space, not an independently verified unexplained calorimetric excess in palladium-deuterium cells. The paper therefore bears on this record mainly as a high-quality null/constraint: it shows that a substantial modern programme did not confirm the claimed effect while still finding adjacent materials questions worth studying. The legacy attribution to 'Berliner et al.' and the claim that the study acknowledged unexplained anomalous heat are withdrawn.",
+      vectors: ["contesting--modern-re-evaluation-did-not-confirm-anomalous-heat-effect"],
       date: "2019",
+      sources: [
+        {
+          citation: "Berlinguette, C. P. et al. (2019), Revisiting the cold case of cold fusion, Nature 570, 45–51.",
+          url: "https://doi.org/10.1038/s41586-019-1256-6",
+          locator: "Abstract; multi-institution programme; no evidence of cold-fusion effect; adjacent materials insights",
+        },
+      ],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "NASA LENR programme and US Navy revisitation",
-      description: "NASA's Glenn Research Center and elements of the US Navy research community revisit anomalous heat phenomena in palladium and nickel-hydrogen systems, publishing preliminary findings and funding exploratory research. The institutional engagement is notable: these are mainstream scientific organisations with no prior LENR affiliation choosing to allocate resources to the phenomenon. Published outputs are preliminary and do not constitute replication of specific prior results. The engagement itself is evidence that the phenomenon has not been definitively closed by the scientific community, and that the Berliner et al. (2019) null result for fusion did not terminate interest in the underlying calorimetric observations. No peer-reviewed confirmation of anomalous heat under controlled conditions has emerged from these programmes to date.",
-      vectors: ["neutral--institutional-engagement-no-result"],
-      date: "2021–24",
+      qualifiedEvent: "Legacy NASA/Navy institutional-engagement bundle — not evidence for electrochemical excess heat",
+      description: "The legacy instance treated later NASA Glenn and U.S. Navy activity as a single evidential event for anomalous electrochemical heat. That representation is not source-faithful. NASA Glenn's prominent 2020 lattice-confinement-fusion work used deuterated metals and an externally generated energetic trigger; NASA describes fusion-level kinetic energies being created inside an ambient-temperature lattice. This is adjacent condensed-matter fusion research, not a controlled replication of unexplained excess heat from an electrochemical cell. NASA also had historical involvement in LENR-related work well before 2021, so the claim that it entered the subject with no prior affiliation is withdrawn. The Navy component of the legacy bundle is not retained as substantive evidence here without a specific source chain tied directly to this record's heat claim.",
+      vectors: ["neutral--adjacent-institutional-research-not-direct-excess-heat-evidence"],
+      date: "2020–24",
+      sources: [
+        {
+          citation: "NASA Glenn Research Center, Lattice Confinement Fusion.",
+          url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/lattice-confinement-fusion/",
+          locator: "2020 Physical Review C work; deuterated-metal lattice; externally created energetic conditions for fusion",
+        },
+      ],
     }
   ],
 
@@ -70,6 +110,14 @@ export const FR_AM_0002 = {
       verificationStage: "VS-03",
       summary: "The claim occupies an unusual position in the corpus. The anomalous heat observations have been made by credentialled researchers using dedicated calorimetric equipment over thirty-five years. They have not been definitively refuted — no study has demonstrated that the reported observations are entirely attributable to measurement error, and the Berliner et al. (2019) study explicitly declined to make that claim. At the same time, the observations have not been reproduced on demand by independent laboratories following a shared, agreed protocol. The strongest quantitative claim in the record — SRI International's loading-fraction correlation (INST-002) — has not been independently confirmed under fully controlled conditions, and the Storms preparation protocols (INST-003) that claim to improve reproducibility have not been validated against a rigorous baseline. The pressure state is FRAGMENTING: the phenomenon has neither been confirmed as real nor definitively attributed to measurement artefact, and no agreed controlled protocol yet exists that would let a null result be accepted as meaningful (BN-001).",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-09-09",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "LPR-001-D11 materially narrows the evidence for anomalous electrochemical excess heat without resolving the claim. IN-001 now shows a mixed 1989 calorimetry record, including an initially positive Texas A&M result that was later retracted. IN-002 preserves SRI's reported association between excess power and high D/Pd loading, but treats the approximately 0.9 loading level as a reported programme criterion rather than an independently established threshold law. IN-003 is now correctly framed as a proponent review arguing that material state helps explain variable reproducibility, not as validation of a specific preparation protocol. IN-004 removes the strongest legacy overstatement: Berlinguette et al. did not independently acknowledge unexplained anomalous heat; their modern programme reported no evidence of a cold-fusion effect. IN-005 likewise contributes no direct positive evidence because NASA's lattice-confinement work is an externally driven fusion experiment rather than electrochemical excess-heat replication. The remaining record therefore consists of persistent positive calorimetric claims with sourceable parameter hypotheses, countered by mixed replication, retractions and a major modern null programme. FRAGMENTING / VS-03 is retained because neither a reproducible positive protocol nor a decisive artefact account spans the full historical claim set.",
+      assessorNote: "Append-only correction following the operator-approved LPR-001-D11 repair. AS-001 is preserved as historical assessment. The correction removes reliance on the misattributed Texas A&M/McKubre claim, the overstated Storms protocol claim, the false Berlinguette anomalous-calorimetry attribution and the conflated NASA/Navy institutional-engagement premise.",
     }
   ],
 
@@ -77,32 +125,33 @@ export const FR_AM_0002 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Calorimetric systematic error in electrochemical cells. Heat measurement in electrochemical cells is technically demanding. Joule heating from resistance, recombination of evolved gases, and calibration drift can each produce apparent excess heat at levels comparable to those reported. This mechanism does not assert that all reported observations are artefact — it asserts that the measurement methodology used in most positive reports is insufficiently controlled to exclude artefact as an explanation. The Berliner et al. (2019) study used more rigorous calorimetric methods and found neither excess heat nor a clean null — finding instead anomalous behaviour that could not be fully characterised. This is the most honest available summary of the measurement situation.",
+      description: "Calorimetric systematic error and baseline uncertainty. Electrochemical calorimetry requires accurate accounting for electrical input, recombination, gas handling, calibration stability and changing cell conditions. The historical record contains both positive and null measurements, including retracted results, so measurement artefact remains a live alternative explanation for at least some reported excess heat. Berlinguette et al. (2019) should not be cited as having found unexplained anomalous calorimetry; its relevance is that a modern high-rigour programme did not confirm the claimed cold-fusion effect.",
     },
     {
       id: "RM-002",
       type: "RESISTANCE MECHANISM",
-      description: "Community closure and confirmation bias. The anomalous heat research community has operated in isolation from mainstream electrochemistry and materials science for over thirty years. Shared protocols, shared beliefs, and shared publication venues create conditions for confirmation bias: researchers who obtain positive results publish; those who obtain negative results are less likely to report. This is not a claim of fraud — it is a structural property of a marginalised research community operating without the corrective pressure of external replication. The isolation itself is evidence that the phenomenon has not generated the kind of independent verification that would distinguish real signal from community artefact.",
+      description: "Limited independent replication across heterogeneous protocols. Positive excess-heat claims have been produced under differing materials, loading procedures, calorimeters and analysis choices, while null results have also been reported. This heterogeneity makes comparison difficult and weakens inference from any single programme. The earlier wording that attributed the problem to a structurally isolated community and publication-selection bias is not retained as an established causal finding because LPR-001-D11 did not establish that sociological mechanism directly.",
     },
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "No agreed controlled protocol. The claim cannot be evaluated without a controlled experimental protocol that specifies palladium preparation, loading conditions, calorimetric method, and baseline chemical accounting precisely enough that a null result would be accepted as meaningful by the proponent community. No such protocol currently exists. The Storms protocols (INST-003) are the closest approximation but are contested as selection-biased. Until a protocol is agreed between proponents and independent evaluators, each positive result can be attributed to good protocol execution and each negative result to poor protocol execution — making the claim unresolvable regardless of experimental outcomes.",
+      description: "A discriminating shared protocol is still missing from the evidential record. Resolution requires a protocol that specifies material preparation, deuterium loading measurement, calorimetric calibration, chemical-energy accounting, controls and prespecified analysis closely enough that independent laboratories can test the same proposition and interpret both positive and null outcomes consistently. SRI's loading correlation and Storms' materials interpretation provide hypotheses about necessary conditions, but neither is treated here as an already validated universal protocol.",
     },
     {
       id: "IN-001",
       type: "INHERITED CONDITION",
-      description: "Parent record contamination. The entire evidence trail for this record was accumulated by researchers operating under the belief that they were observing nuclear fusion (FR-AM-0001). This belief shaped experimental design, measurement priorities, and reporting choices at every stage. The claim tracked here — anomalous heat — was never the primary object of investigation; it was a secondary observation made in the course of seeking fusion evidence. This creates a systematic gap: no experiment in this record was designed specifically to test whether anomalous heat exists independent of any nuclear explanation. The cleanest path to resolving this record requires experiments designed from the outset to characterise the heat phenomenon without presupposing its cause. This is a new mechanism type: an Inherited Condition. It is a constraint on the record's evidence trail that originates in a parent record rather than in the physics of the claim itself.",
+      description: "Parent record contamination. The evidence trail for this record largely arose inside attempts to test the nuclear-fusion claim tracked in FR-AM-0001, so heat observations and nuclear interpretation were historically entangled. That inheritance complicates retrospective evaluation of the narrower heat claim. A clean resolution would benefit from experiments designed specifically to test excess heat and its chemical accounting without presupposing a nuclear mechanism.",
     }
   ],
 
   lineage: {
     items: [
-    { year: "1989", text: "Anomalous heat observed, attributed to fusion. Pons and Fleischmann report excess heat and interpret it as nuclear in origin. The heat observation and the fusion interpretation are conflated from the outset. All subsequent research in this area operates under the same conflation until FR-AM-0001 formally separates them in 2024." },
-    { year: "1989–91", text: "Heat observations survive fusion collapse. When major laboratories fail to replicate nuclear products, some continue to report anomalous heat in the absence of nuclear signatures. These reports are dismissed along with the fusion claim by the mainstream community, despite addressing a different question." },
-    { year: "1993–2019", text: "Heat observations persist in marginalised community. The LENR community continues to report excess heat. The loading-fraction correlation (SRI International) is the most specific quantitative result. Mainstream science does not engage; the observations accumulate without independent evaluation." },
-    { year: "2019", text: "Berliner et al. separates heat from fusion implicitly. The Google study does not confirm excess heat but acknowledges anomalous calorimetric behaviour. This is the first mainstream acknowledgement that treats the heat observation as a distinct object from the fusion claim." },
-    { year: "2024", text: "FR-AM-0001 formally separates the claims. The Observatory issues an assessment that explicitly distinguishes the collapsed fusion claim from the unresolved heat observation. FR-AM-0002 is discovered as a consequence. This is the first time in the claim's history that the heat phenomenon has been tracked as an independent object." }
+      { year: "1989", text: "Excess heat is reported within the cold-fusion replication wave. Texas A&M and other groups report positive calorimetry, while other laboratories report null results; the Texas A&M April result is later retracted. Heat and nuclear interpretation are initially entangled." },
+      { year: "1992–2009", text: "SRI develops a parameter-based account of reported excess power. McKubre and colleagues emphasise high deuterium loading, including an approximately 0.9 D/Pd criterion, as associated with positive observations. The correlation remains a programme-reported hypothesis rather than an independently established threshold law." },
+      { year: "2010", text: "Storms publishes a proponent review arguing that material state and preparation help explain difficult reproducibility. The review documents continued positive claims but does not independently validate a universal preparation protocol." },
+      { year: "2019", text: "Google-funded multi-institution re-evaluation. Berlinguette et al. report no evidence of a cold-fusion effect while identifying adjacent questions in highly hydrided metals and low-energy nuclear-reaction parameter space. The paper does not confirm unexplained anomalous calorimetric heat." },
+      { year: "2020–24", text: "Adjacent institutional work continues, including NASA Glenn lattice-confinement fusion, but this research uses externally generated energetic conditions and is not a replication of electrochemical excess heat. Institutional interest is therefore not treated as positive evidence for this claim." },
+      { year: "2026", text: "LPR-001-D11 separates sourceable calorimetric claims from legacy attribution and interpretation errors. The record remains open and fragmented around reproducibility, measurement control and the absence of a shared discriminating protocol." }
     ],
     relatedRecords: [],
   },
@@ -110,12 +159,12 @@ export const FR_AM_0002 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "Can a controlled experimental protocol be agreed between independent evaluators and proponent researchers that would make a null result accepted as meaningful? Without this, BN-001 cannot be closed regardless of experimental activity.",
+      question: "Can independent evaluators and proponents agree a controlled protocol with prespecified material, loading, calorimetric, control and analysis criteria such that both positive and null results are interpretable against the same hypothesis?",
       raisedDate: "2024-01-15",
     },
     {
       id: "OQ-002",
-      question: "The loading-fraction correlation (INST-002) is the most specific quantitative claim in the record. Has it been independently tested under conditions that would falsify it if it were a selection artefact? If not, this is the highest-priority experimental gap in the record.",
+      question: "Does the SRI-reported association between high D/Pd loading and excess power survive a preregistered independent test that measures loading directly, includes hydrogen and blank controls, and prespecifies the calorimetric error model? This is the clearest bounded test of IN-002 without assuming that the approximately 0.9 value is already an established threshold law.",
       raisedDate: "2024-01-15",
     },
     {
@@ -125,12 +174,14 @@ export const FR_AM_0002 = {
     },
     {
       id: "OQ-004",
-      question: "The claim is FRAGMENTING rather than COLLAPSED. What would constitute sufficient evidence to move it toward RESOLVING in the positive direction? An agreed protocol (OQ-1) plus independent replication of the loading-fraction correlation under that protocol would be the minimum. Is that achievable with current materials science tools, or has the relevant experimental expertise dispersed beyond recovery?",
+      question: "What evidence would move the claim toward RESOLVING? At minimum, a shared discriminating protocol plus independent replication of a prespecified excess-heat result with complete chemical-energy accounting would provide positive convergence; repeated high-powered null results under the same agreed conditions would provide negative convergence. Current institutional activity outside that protocol, including adjacent fusion research, is not sufficient by itself.",
       raisedDate: "2024-01-15",
     }
   ],
 
   mutationLog: [
+    { id: "M-010", date: "2026-09-09", field: "assessment_and_dependencies_corrected", from: "AS-001 / legacy RM-BN-lineage-OQ wording", to: "AS-002 / corrected dependencies", note: "Append-only AS-002 issued after the operator-approved LPR-001-D11 repair. FRAGMENTING / VS-03 retained on a narrower evidential basis. RM-001, RM-002, BN-001, the inherited-condition wording, lineage and OQ-001/OQ-002/OQ-004 were aligned to corrected source boundaries. Historical AS-001 preserved." },
+    { id: "M-009", date: "2026-09-09", field: "provenance_correction", from: "LPR-001-D11 discrepancies_found", to: "LPR-001-D11 discrepancies_corrected", note: "Operator-approved correction of IN-001 through IN-005. Texas A&M attribution corrected; SRI loading correlation bounded to the programme's reported criterion; Storms reframed as a proponent review rather than validated protocol evidence; Berlinguette et al. corrected and the unsupported anomalous-calorimetry acknowledgement withdrawn; NASA/Navy bundle separated, with NASA lattice-confinement work treated as adjacent rather than direct excess-heat evidence. Structured provenance added where confidently established." },
     { id: "M-008", date: "2026-09-09", field: "provenance_review", from: "—", to: "LPR-001-D11", note: "Legacy provenance review completed. All five evidence instances examined. Material source-fidelity or attribution discrepancies identified in IN-001 through IN-005, so no structured provenance was silently attached to those instances. IN-001 misattributes the Texas A&M 1989 excess-heat work to McKubre; IN-002's SRI loading-threshold core is sourceable but its decade-long/reproducibility and independent-replication framing requires bounding; IN-003's Storms protocol and comparative-success claims are more specific than the verified review evidence; IN-004 misattributes Berlinguette et al. and overstates the 2019 Google programme as acknowledging unexplained anomalous calorimetry; IN-005 conflates NASA/Navy programmes and incorrectly describes them as institutions with no prior LENR affiliation. No factual, interpretive, assessment, pressure-state or verification-stage wording changed. No sufficiently direct new scientific evidence was admitted; review marked pending governed correction." },
     {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:IN-001, lineage:1989, lineage:1989–91, lineage:2024","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, IN-001; lineage 1989, 1989–91, 2024 from FR_MF_0002_anomalous_excess_heat.html (Drive file 1qB9Wsdf9b3Trw32dcQHEPPLsrZIH6z14). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
