@@ -14,8 +14,8 @@ export const FR_AM_0003 = {
   programme: "PROG-AM",
   lastProvenanceReview: "2026-09-10",
   provenanceReviewId: "LPR-001-D12",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "pass_after_correction",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "The mechanism responsible for high-temperature superconductivity in cuprate materials has been identified.",
@@ -26,38 +26,78 @@ export const FR_AM_0003 = {
   instances: [
     {
       id: "IN-001",
-      qualifiedEvent: "Bednorz and Müller — cuprate superconductivity discovered; BCS inadequacy established",
-      description: "Georg Bednorz and K. Alexander Müller report superconductivity in lanthanum barium copper oxide at 35K — far above the ceiling predicted by BCS theory. The Nobel Prize follows in 1987. The discovery immediately establishes that the conventional BCS phonon-mediated mechanism cannot explain the observed transition temperatures. The mechanism question opens: something other than conventional electron-phonon coupling is responsible. From the first publication, the claim tracked here is in an EMERGING state — the mechanism is unknown, and the field understands it is unknown.",
+      qualifiedEvent: "Bednorz and Müller — high-temperature cuprate superconductivity discovered",
+      description: "J. Georg Bednorz and K. Alex Müller reported an abrupt resistivity decrease in the Ba-La-Cu-O system with the highest onset temperature in the 30 K range, launching the cuprate high-temperature-superconductivity field. The result established a new superconducting materials regime but did not by itself determine the microscopic pairing mechanism or categorically exclude all electron-phonon contributions. The mechanism-identification question therefore opens in an EMERGING state.",
       vectors: ["neutral--mechanism-question-opens"],
-      date: "1986–87",
+      date: "1986",
+      sources: [
+        {
+          citation: "Bednorz, J. G. & Müller, K. A. Possible high Tc superconductivity in the Ba-La-Cu-O system. Z. Phys. B 64, 189–193 (1986).",
+          url: "https://research.ibm.com/publications/possible-high-tlessinfgreaterclessinfgreater-superconductivity-in-the-ba-la-cu-o-system",
+          doi: "10.1007/BF01303701",
+        },
+      ],
     },
     {
       id: "IN-002",
-      qualifiedEvent: "Anderson RVB theory and spin fluctuation models — competing mechanism proposals",
-      description: "Philip Anderson proposes resonating valence bond (RVB) theory (1987), arguing that strong electron correlations in the copper-oxygen planes produce a novel quantum state from which superconductivity emerges. Simultaneously, spin fluctuation models emerge — proposing that magnetic excitations mediate electron pairing in cuprates analogously to how phonons mediate pairing in conventional superconductors. Both frameworks generate large research communities. Neither achieves consensus. The period produces the core theoretical vocabulary still in use: Mott insulator, pseudogap, d-wave symmetry, strange metal. Multiple mechanisms are proposed; none is falsified; none achieves dominance. The claim transitions from EMERGING to FRAGMENTING as the evidence accumulates without converging.",
+      qualifiedEvent: "Anderson RVB proposal and competing electronic pairing frameworks",
+      description: "Philip Anderson proposed in 1987 that the insulating parent state of the cuprates could be a resonating-valence-bond quantum spin liquid and that doping could yield superconductivity from pre-existing magnetic singlet pairs. The proposal was explicitly predominantly electronic and magnetic while allowing that weak phonon interactions might favour the state. RVB became one of several competing strongly correlated-electron frameworks pursued as the field diversified. No single framework achieved mechanism-level consensus, contributing to a FRAGMENTING trajectory rather than resolving the claim.",
       vectors: ["partial--competing-frameworks-no-consensus"],
-      date: "1987–95",
+      date: "1987 onward",
+      sources: [
+        {
+          citation: "Anderson, P. W. The Resonating Valence Bond State in La2CuO4 and Superconductivity. Science 235, 1196–1198 (1987).",
+          url: "https://pubmed.ncbi.nlm.nih.gov/17818979/",
+          doi: "10.1126/science.235.4793.1196",
+        },
+      ],
     },
     {
       id: "IN-003",
-      qualifiedEvent: "d-wave symmetry confirmation — partial mechanistic consensus",
-      description: "A series of experiments — notably angle-resolved photoemission spectroscopy (ARPES) and phase-sensitive Josephson junction measurements by Tsuei, Kirtley, and colleagues — establish that the pairing symmetry in cuprate superconductors is d-wave rather than the s-wave symmetry of conventional superconductors. This is a significant positive result: it rules out phonon-mediated BCS pairing as a direct explanation and constrains the mechanism to those compatible with d-wave symmetry. Spin fluctuation models and RVB theory both accommodate d-wave symmetry; the result advances both but does not distinguish between them. Community convergence on d-wave symmetry is the strongest partial consensus the field achieves in this period.",
+      qualifiedEvent: "d-wave pairing symmetry established — major mechanistic constraint",
+      description: "Phase-sensitive Josephson-junction experiments, including the 1994 tricrystal-ring work by Tsuei, Kirtley, and colleagues, produced direct evidence consistent with d-wave pairing symmetry in YBa2Cu3O7−δ. Together with other measurements, this established d-wave symmetry as a major empirical constraint on viable cuprate theories. The result excludes a simple conventional isotropic s-wave description, but d-wave symmetry alone does not identify the pairing interaction or categorically exclude every phonon contribution. Electronic frameworks including spin-fluctuation and RVB-based approaches can accommodate d-wave pairing, so the result narrows the mechanism space without resolving it.",
       vectors: ["supportive--partial-constraint-on-mechanism"],
-      date: "1993–2000",
+      date: "1994 onward",
+      sources: [
+        {
+          citation: "Tsuei, C. C. et al. Pairing Symmetry and Flux Quantization in a Tricrystal Superconducting Ring of YBa2Cu3O7−δ. Phys. Rev. Lett. 73, 593–596 (1994).",
+          url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.73.593",
+          doi: "10.1103/PhysRevLett.73.593",
+        },
+      ],
     },
     {
       id: "IN-004",
-      qualifiedEvent: "Pseudogap problem and charge density wave discovery — mechanism complexity deepens",
-      description: "Advanced spectroscopic techniques — scanning tunnelling microscopy, resonant X-ray scattering — reveal the pseudogap phase and charge density wave order as features of underdoped cuprates. These discoveries complicate the mechanism picture: the pseudogap is not predicted by simple spin fluctuation models and is not straightforwardly accommodated by RVB theory either. Charge density wave order competes with superconductivity rather than supporting it, suggesting the mechanism must account for multiple competing ordered states. Keimer et al. (2015, Nature) publish an influential review concluding that no single theory accounts for all cuprate phenomenology. The complexity does not falsify any specific theory but substantially raises the bar for identification: any claimed mechanism must now explain the pseudogap, charge density wave order, d-wave symmetry, and the strange metal phase simultaneously.",
+      qualifiedEvent: "Pseudogap, competing orders, and phase-diagram complexity deepen the mechanism problem",
+      description: "Experiments across the cuprate phase diagram revealed a pseudogap regime, charge-density-wave order, and other intertwined or competing phenomena in addition to d-wave superconductivity. These observations increased the explanatory burden on candidate mechanisms without providing a clean elimination of either spin-fluctuation or RVB-based approaches. Keimer et al. (2015) described a qualitative understanding of the superconducting state alongside major unresolved issues, including the complexity of the phase diagram, collective fluctuations, and anomalous normal-state behaviour. The evidence therefore strengthens the conclusion that mechanism identification remains unresolved rather than establishing a single theory as complete.",
       vectors: ["contesting--mechanism-complexity-exceeds-theories"],
-      date: "2005–18",
+      date: "2005–15",
+      sources: [
+        {
+          citation: "Keimer, B., Kivelson, S. A., Norman, M. R., Uchida, S. & Zaanen, J. From quantum matter to high-temperature superconductivity in copper oxides. Nature 518, 179–186 (2015).",
+          url: "https://www.nature.com/articles/nature14165",
+          doi: "10.1038/nature14165",
+        },
+      ],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "Hubbard model quantum simulation and computational advances — renewed mechanism pressure",
-      description: "Quantum simulation experiments using cold atoms in optical lattices (Mazurenko et al. 2017; subsequent work) and large-scale numerical simulations of the Hubbard model — long believed to capture essential cuprate physics — begin producing results that can be compared directly to cuprate phenomenology. Simons Collaboration on the Many Electron Problem publishes systematic benchmarking of computational methods against the Hubbard model (2020–24). Results are mixed: the Hubbard model reproduces some cuprate features (antiferromagnetism, d-wave pairing tendency) but debates persist about whether it fully captures the pseudogap and strange metal behaviour. The period produces no consensus mechanism identification but substantially improves the theoretical tools available. No leading candidate mechanism has been falsified; none has achieved community identification in the sense the claim requires.",
+      qualifiedEvent: "Hubbard-model benchmarking and cold-atom simulation improve tests of strongly correlated physics",
+      description: "From 2015 onward, coordinated numerical benchmarking and cold-atom quantum simulation materially improved the field's ability to test strongly correlated models relevant to cuprates. The Simons Collaboration compared a wide range of numerical methods on the two-dimensional Hubbard model, while Mazurenko et al. (2017) demonstrated long-range antiferromagnetic correlations in a cold-atom Fermi-Hubbard system and framed access to doped regimes as a route toward open questions associated with high-temperature superconductivity. These advances strengthen computational control over candidate models, but neither result directly reproduces cuprate superconductivity or identifies its microscopic pairing mechanism. The record therefore remains unresolved while the available resolution tools improve.",
       vectors: ["partial--improved-tools-unresolved-identification"],
-      date: "2019–24",
+      date: "2015–24",
+      sources: [
+        {
+          citation: "LeBlanc, J. P. F. et al. (Simons Collaboration on the Many-Electron Problem). Solutions of the Two-Dimensional Hubbard Model: Benchmarks and Results from a Wide Range of Numerical Algorithms. Phys. Rev. X 5, 041041 (2015).",
+          url: "https://journals.aps.org/prx/abstract/10.1103/PhysRevX.5.041041",
+          doi: "10.1103/PhysRevX.5.041041",
+        },
+        {
+          citation: "Mazurenko, A. et al. A cold-atom Fermi-Hubbard antiferromagnet. Nature 545, 462–466 (2017).",
+          url: "https://www.nature.com/articles/nature22362",
+          doi: "10.1038/nature22362",
+        },
+      ],
     }
   ],
 
@@ -70,6 +110,14 @@ export const FR_AM_0003 = {
       verificationStage: "VS-03",
       summary: "The mechanism responsible for cuprate superconductivity has not been identified in the sense the claim requires. After nearly four decades of intensive research, the field possesses several well-developed theoretical frameworks — spin fluctuation models, RVB and related strongly-correlated electron theories, charge density wave coupling proposals — none of which has achieved sufficient community consensus, predictive completeness, or experimental confirmation to constitute identification. The 2015 Keimer et al. review formally acknowledged that no single theory accounts for all cuprate phenomenology, and that conclusion has not been overturned by subsequent work. The pressure state is FRAGMENTING: this is not fragmentation from diverging evidence across domains, but from genuine theoretical plurality — multiple frameworks that are each partially correct and none of which has been falsified or achieved consensus (BN-001). Quantum simulation of the Hubbard model (AT-001) is the clearest visible resolution path, though it has not yet been executed at a scale sufficient to settle the question.",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-09-10",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "Editorial consistency assessment following LPR-001-D12. The mechanism responsible for cuprate superconductivity remains unidentified at the level required by the claim. Empirical constraints such as d-wave pairing symmetry are strong, while the pseudogap, competing and intertwined orders, anomalous normal-state behaviour, and strongly correlated modelling remain incompletely unified. RVB-based, spin-fluctuation, Hubbard-model and related approaches remain active without a decisive community-wide mechanism identification. Numerical benchmarking and cold-atom simulation have improved the ability to test candidate models but have not themselves reproduced the full cuprate problem or settled the microscopic pairing interaction. FRAGMENTING / VS-03 is therefore reaffirmed without a status transition.",
+      assessorNote: "Append-only replacement rationale for source-fidelity corrections approved after LPR-001-D12; AS-001 retained as historical assessment and not silently rewritten.",
     }
   ],
 
@@ -82,27 +130,27 @@ export const FR_AM_0003 = {
     {
       id: "RM-002",
       type: "RESISTANCE MECHANISM",
-      description: "Absence of a decisive distinguishing experiment. The competing theoretical frameworks — spin fluctuations, RVB, charge density wave coupling — make overlapping predictions for most measurable quantities. Identifying an experiment whose outcome would clearly favour one framework over all others has proved difficult. The d-wave symmetry confirmation (INST-003) constrained the mechanism class but did not distinguish among compatible theories. Without a decisive experiment, the field cannot converge on identification regardless of how sophisticated individual frameworks become.",
+      description: "Absence of a decisive distinguishing experiment. Competing theoretical frameworks often make overlapping predictions for measurable quantities, making clean discrimination difficult. The d-wave symmetry evidence (IN-003) strongly constrained viable descriptions but did not identify the microscopic pairing interaction. The field therefore still lacks a single experimental result whose interpretation has produced broad mechanism-level convergence.",
     },
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "Identification requires community consensus, not individual proposal. The claim requires that a mechanism has been identified — not merely proposed, not merely consistent with some evidence, but accepted by the research community as the explanation. Community consensus in this field has never been achieved for any single framework. The bottleneck is sociological as well as scientific: even if a framework were computationally tractable and experimentally distinguished, consensus requires the community to stop pursuing alternatives. That process has no defined threshold. The bottleneck cannot be closed by a single paper or experiment; it requires a sustained convergence process that has not begun.",
+      description: "Identification requires convergence across theory and experiment, not the existence of an individual proposal. The claim requires a mechanism to be accepted as explaining the relevant superconducting behaviour with sufficient predictive and experimental support. No single framework has yet reached that threshold across the cuprate evidence base. The bottleneck is therefore evidential convergence: candidate descriptions must survive discriminating tests and account for the major empirical constraints well enough to support stable community identification.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Quantum simulation as potential resolution path. Quantum computers and cold-atom simulators capable of exactly simulating the Hubbard model at relevant system sizes represent the clearest resolution path visible in the current evidence trail. If exact Hubbard model simulation demonstrates unambiguously that the model reproduces all cuprate phenomenology, this would constitute strong evidence that the mechanism is captured by the Hubbard model's physics — even without specifying which analytical framework correctly describes that physics. The attractor is not a specific theory; it is a computational capability that would resolve the strong correlation intractability problem. This is the first attractor in the corpus that is defined by a tool rather than a theoretical result.",
+      description: "Controlled simulation as a potential resolution path. More accurate classical calculations, cold-atom simulators, and future quantum simulations of Hubbard-type models at experimentally relevant parameters could test whether those models reproduce the key cuprate phenomena and distinguish among proposed microscopic explanations. Such capability would reduce the strong-correlation modelling bottleneck, but reproducing a model's behaviour would not by itself prove that one analytical mechanism uniquely explains real cuprate materials. The attractor is therefore a discriminating computational capability rather than a predetermined theoretical outcome.",
     }
   ],
 
   lineage: {
     items: [
-    { year: "1986", text: "Discovery establishes the mechanism question. Bednorz and Müller's result immediately demonstrates that BCS theory is insufficient. The mechanism question is opened as a genuine scientific frontier from the first publication." },
-    { year: "1987–90", text: "Theoretical proliferation. RVB theory, spin fluctuation models, and numerous variants are proposed in rapid succession. The field is briefly optimistic that identification is imminent. Optimism fades as predictions diverge and experiments fail to distinguish between frameworks." },
-    { year: "1990–2005", text: "Experimental constraint accumulates. d-wave symmetry confirmed. Pseudogap discovered. Phase diagram mapped in detail. Each result constrains the mechanism without identifying it. The field acquires detailed phenomenological knowledge without mechanistic understanding." },
-    { year: "2005–15", text: "Complexity deepens. Charge density wave order, pair density waves, and other competing orders discovered. The Keimer et al. review (2015) formally acknowledges that no theory accounts for all cuprate phenomenology. The identification claim is explicitly unmet by field consensus." },
-    { year: "2015–24", text: "Computational approaches mature. Quantum simulation and large-scale numerical methods begin producing results comparable to experiments. The Hubbard model is partially validated. The resolution path through computational physics becomes visible without being reached." }
+    { year: "1986", text: "Bednorz and Müller report superconducting behaviour in Ba-La-Cu-O with an onset in the 30 K range, opening the cuprate high-temperature-superconductivity field. The microscopic pairing mechanism is not determined by the discovery paper." },
+    { year: "1987–90", text: "Theoretical proliferation. Anderson's RVB proposal and multiple other strongly correlated-electron approaches are advanced as possible explanations. Competing frameworks develop without mechanism-level convergence." },
+    { year: "1990–2005", text: "Experimental constraint accumulates. d-wave pairing symmetry becomes strongly established and the pseudogap and phase diagram are mapped in increasing detail. These results constrain viable theories without identifying the microscopic pairing interaction." },
+    { year: "2005–15", text: "Phase-diagram complexity deepens as charge order and other intertwined phenomena become prominent. By 2015, major reviews describe substantial qualitative understanding alongside unresolved questions about the phase diagram, fluctuations, and anomalous normal-state behaviour." },
+    { year: "2015–24", text: "Computational control improves through cross-method Hubbard-model benchmarking and cold-atom simulation. These tools strengthen tests of strongly correlated models but do not yet constitute identification of the cuprate pairing mechanism." }
     ],
     relatedRecords: [],
   },
@@ -110,7 +158,7 @@ export const FR_AM_0003 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "Can exact Hubbard model simulation at relevant system sizes be achieved — by quantum computers, cold atom simulators, or improved classical methods — within a timescale that would constitute a resolution event for this record? If so, AT-001 becomes the primary evidence trajectory to watch.",
+      question: "Can sufficiently controlled Hubbard-model calculations or analogue/quantum simulations at experimentally relevant regimes reproduce the key cuprate constraints and provide a discriminating test among candidate microscopic mechanisms? If so, AT-001 becomes the primary evidence trajectory to watch.",
       raisedDate: "2024-01-15",
     },
     {
@@ -126,6 +174,7 @@ export const FR_AM_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-010", date: "2026-09-10", field: "provenance_correction", from: "LPR-001-D12 discrepancies pending", to: "LPR-001-D12 repaired", note: "Approved bounded provenance repair. Corrected IN-001 through IN-005 for source fidelity, chronology and mechanistic scope; added structured sources[] only for confidently established primary/review sources. Removed the categorical BCS/phonon exclusion from IN-001 and IN-003; narrowed IN-002 to Anderson's source-supported RVB proposal; removed categorical theory-exclusion claims from IN-004; corrected IN-005 chronology to 2015–24 and distinguished Hubbard-model benchmarking and cold-atom antiferromagnetism from direct reproduction of cuprate superconductivity. Append-only AS-002 reaffirms FRAGMENTING / VS-03 with corrected rationale; AS-001 remains intact as historical assessment. RM-002, BN-001, AT-001, lineage and OQ-001 were aligned to the corrected evidence semantics. No 2026 scientific evidence was admitted through this repair; previously flagged 2026 items remain normal Record Review candidates." },
     { id: "M-009", date: "2026-09-10", field: "provenance_review", from: "—", to: "LPR-001-D12", note: "Legacy provenance review completed. All five evidence instances examined. Material source-fidelity or interpretive discrepancies identified in IN-001 through IN-005, so no structured sources were attached in a way that would endorse the legacy wording. IN-001 overstates the 1986 discovery as being above a defined BCS ceiling and as immediately excluding conventional electron-phonon physics; IN-002 mixes sourceable Anderson RVB history with broader unsourced chronology and vocabulary claims; IN-003 correctly records d-wave pairing symmetry but overstates it as ruling out phonon-mediated BCS pairing categorically; IN-004 combines sourceable pseudogap/CDW complexity and the Keimer review with overly categorical statements about what spin-fluctuation and RVB theories can accommodate; IN-005 misdates the Mazurenko 2017 cold-atom result inside a 2019–24 frame and overcompresses Simons/Hubbard benchmarking and what those studies establish about cuprate phenomenology. No factual, interpretive, assessment, pressure-state or verification-stage wording was silently changed. New 2026 work on critical spin fluctuations across LSCO and Hubbard-model pairing dynamics was flagged for normal Record Review and not admitted through LPR-001. Review marked pending governed correction." },
     {"id":"M-008","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_MF_0003_cuprate_superconductivity_mechanism.html (Drive file 19czOspfLKee1tTark6lti8sr-LBaHObs). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
