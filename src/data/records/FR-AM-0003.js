@@ -12,6 +12,10 @@
 export const FR_AM_0003 = {
   id: "FR-AM-0003",
   programme: "PROG-AM",
+  lastProvenanceReview: "2026-09-10",
+  provenanceReviewId: "LPR-001-D12",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "The mechanism responsible for high-temperature superconductivity in cuprate materials has been identified.",
@@ -122,6 +126,7 @@ export const FR_AM_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-009", date: "2026-09-10", field: "provenance_review", from: "—", to: "LPR-001-D12", note: "Legacy provenance review completed. All five evidence instances examined. Material source-fidelity or interpretive discrepancies identified in IN-001 through IN-005, so no structured sources were attached in a way that would endorse the legacy wording. IN-001 overstates the 1986 discovery as being above a defined BCS ceiling and as immediately excluding conventional electron-phonon physics; IN-002 mixes sourceable Anderson RVB history with broader unsourced chronology and vocabulary claims; IN-003 correctly records d-wave pairing symmetry but overstates it as ruling out phonon-mediated BCS pairing categorically; IN-004 combines sourceable pseudogap/CDW complexity and the Keimer review with overly categorical statements about what spin-fluctuation and RVB theories can accommodate; IN-005 misdates the Mazurenko 2017 cold-atom result inside a 2019–24 frame and overcompresses Simons/Hubbard benchmarking and what those studies establish about cuprate phenomenology. No factual, interpretive, assessment, pressure-state or verification-stage wording was silently changed. New 2026 work on critical spin fluctuations across LSCO and Hubbard-model pairing dynamics was flagged for normal Record Review and not admitted through LPR-001. Review marked pending governed correction." },
     {"id":"M-008","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_MF_0003_cuprate_superconductivity_mechanism.html (Drive file 19czOspfLKee1tTark6lti8sr-LBaHObs). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-007", date: "2026-06-18", field: "record_id_migrated", from: "FR-MF-0003", to: "FR-AM-0003", note: "Programme identity changed. Record identifier migrated to preserve constitutional consistency. FR-MF-* → FR-AM-*. 2026-06-18." },
