@@ -11,6 +11,10 @@
 export const FR_QE_0001 = {
   id: "FR-QE-0001",
   programme: "PROG-QE",
+  lastProvenanceReview: "2026-09-11",
+  provenanceReviewId: "LPR-001-D13",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement:
@@ -72,6 +76,13 @@ export const FR_QE_0001 = {
       vectors: ["supportive"],
       date: "2019-10",
       sourceReference: "QE: Arute et al. 2019, Nature 574",
+      sources: [
+        {
+          citation: "Arute, F. et al. Quantum supremacy using a programmable superconducting processor. Nature 574, 505–510 (2019).",
+          url: "https://www.nature.com/articles/s41586-019-1666-5",
+          doi: "10.1038/s41586-019-1666-5",
+        },
+      ],
     },
     {
       id: "IN-002",
@@ -82,6 +93,16 @@ export const FR_QE_0001 = {
       vectors: ["contesting"],
       date: "2019-10",
       sourceReference: "QE: Pednault et al. 2019, arXiv:1910.09534",
+      sources: [
+        {
+          citation: "Pednault, E. et al. Leveraging Secondary Storage to Simulate Deep 54-qubit Sycamore Circuits. arXiv:1910.09534 (2019).",
+          url: "https://arxiv.org/abs/1910.09534",
+        },
+        {
+          citation: "Pednault, E., Maslov, D., Gunnels, J. & Gambetta, J. On ‘quantum supremacy’. IBM Quantum Computing Blog (22 October 2019).",
+          url: "https://www.ibm.com/quantum/blog/on-quantum-supremacy",
+        },
+      ],
     },
     {
       id: "IN-003",
@@ -92,6 +113,17 @@ export const FR_QE_0001 = {
       vectors: ["contesting"],
       date: "2021–2022",
       sourceReference: "QE: Pan & Zhang 2021; Pan, Chen & Zhang 2022, PRL 129",
+      sources: [
+        {
+          citation: "Pan, F. & Zhang, P. Simulating the Sycamore quantum supremacy circuits. arXiv:2103.03074 (2021).",
+          url: "https://arxiv.org/abs/2103.03074",
+        },
+        {
+          citation: "Pan, F., Chen, K. & Zhang, P. Solving the Sampling Problem of the Sycamore Quantum Circuits. Phys. Rev. Lett. 129, 090502 (2022).",
+          url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.129.090502",
+          doi: "10.1103/PhysRevLett.129.090502",
+        },
+      ],
     },
     {
       id: "IN-004",
@@ -102,6 +134,13 @@ export const FR_QE_0001 = {
       vectors: ["contesting--supersession"],
       date: "2024-06",
       sourceReference: "QE: Zhao et al. 2024, arXiv:2406.18889",
+      sources: [
+        {
+          citation: "Zhao, X.-H. et al. Leapfrogging Sycamore: Harnessing 1432 GPUs for 7× Faster Quantum Random Circuit Sampling. arXiv:2406.18889 (2024).",
+          url: "https://arxiv.org/abs/2406.18889",
+          locator: "Abstract; reported 1,432-GPU simulation, uncorrelated samples and sevenfold time-to-solution advantage over Sycamore",
+        },
+      ],
     },
     {
       id: "IN-005",
@@ -112,6 +151,13 @@ export const FR_QE_0001 = {
       vectors: ["partial--claim-migration"],
       date: "2024-12",
       sourceReference: "QE: Google Quantum AI 2024, Nature 638",
+      sources: [
+        {
+          citation: "Google Quantum AI and Collaborators. Quantum error correction below the surface code threshold. Nature 638, 920–926 (2025); published online 9 December 2024.",
+          url: "https://www.nature.com/articles/s41586-024-08449-y",
+          doi: "10.1038/s41586-024-08449-y",
+        },
+      ],
     },
     {
       id: "IN-006",
@@ -122,6 +168,13 @@ export const FR_QE_0001 = {
       vectors: ["supportive--inherited-vulnerability"],
       date: "2024-12",
       sourceReference: "QE: Google Quantum AI, Willow RCS benchmark 2024",
+      sources: [
+        {
+          citation: "Neven, H. Meet Willow, our state-of-the-art quantum chip. Google Quantum AI (9 December 2024).",
+          url: "https://blog.google/innovation-and-ai/technology/research/google-willow-quantum-chip/",
+          locator: "RCS benchmark: under five minutes; claimant estimate of 10^25 years on a leading classical supercomputer",
+        },
+      ],
     },
   ],
 
@@ -226,6 +279,15 @@ export const FR_QE_0001 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-007",
+      date: "2026-09-11",
+      field: "provenance_review",
+      from: "—",
+      to: "LPR-001-D13",
+      note:
+        "Legacy Provenance Review completed. All six evidence instances were audited against identifiable underlying sources and found materially faithful to those sources. Structured PA-002 sources[] were added for Arute et al. 2019, the contemporaneous IBM/Pednault rebuttal, Pan & Zhang 2021, Pan/Chen/Zhang 2022, Zhao et al. 2024, Google's Willow below-threshold error-correction paper, and Google's December 2024 Willow RCS announcement. No factual, interpretive, attribution, pressure-state or verification-stage discrepancy requiring governed correction was identified. The Willow 10^25-year classical estimate remains a claimant-produced estimate and, as represented in IN-006, has not been independently reproduced by a matching classical simulation. No new evidence was admitted and no normal Record Review candidate was generated by this provenance pass.",
+    },
     {
       id: "M-006",
       date: "2026-07-22",
