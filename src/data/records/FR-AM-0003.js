@@ -14,7 +14,7 @@ export const FR_AM_0003 = {
   programme: "PROG-AM",
   lastProvenanceReview: "2026-09-10",
   provenanceReviewId: "LPR-001-D12",
-  provenanceOutcome: "pass_after_correction",
+  provenanceOutcome: "discrepancies_corrected",
   provenanceRepairStatus: "completed",
 
   claim: {
