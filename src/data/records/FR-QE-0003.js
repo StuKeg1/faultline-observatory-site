@@ -12,6 +12,10 @@
 export const FR_QE_0003 = {
   id: "FR-QE-0003",
   programme: "PROG-QE",
+  lastProvenanceReview: "2026-09-13",
+  provenanceReviewId: "LPR-001-D15",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Fault-tolerant logical qubits can be demonstrated with logical error rates that improve as error-correcting code distance increases.",
@@ -54,6 +58,13 @@ export const FR_QE_0003 = {
       description: "Google releases the Willow chip (105 qubits) and publishes results demonstrating below-threshold error correction: logical error rates decrease exponentially with code distance across d=3, d=5, and d=7 surface codes, with performance improving faster than the overhead of additional physical qubits. This is the first demonstration of below-threshold operation — the regime where adding more qubits to the code actively reduces logical error rates, making the system scalable in principle. Note: FR-QE-0001 logged the Willow chip's quantum simulation result as a separate instance relevant to the quantum advantage claim. The error correction result logged here is a distinct measurement from the same hardware, relevant to this record's specific claim.",
       vectors: ["supportive--below-threshold-operation"],
       date: "2024",
+      sources: [
+        {
+          citation: "Google Quantum AI and Collaborators. Quantum error correction below the surface code threshold. Nature 638, 920–926 (2025); published online 9 December 2024.",
+          url: "https://www.nature.com/articles/s41586-024-08449-y",
+          doi: "10.1038/s41586-024-08449-y",
+        },
+      ],
     },
     {
       id: "IN-006",
@@ -61,6 +72,13 @@ export const FR_QE_0003 = {
       description: "The Willow below-threshold result is independently verifiable as a Nature/arXiv publication and materially strengthens the record's core empirical signature: the larger distance-7 logical memory suppresses error relative to distance-5, reaches approximately 0.143% error per cycle, and exceeds break-even against the best physical-qubit lifetime. The same evidence also defines the remaining constraint. The reported surface-code memories are still distance-5 and distance-7, with real-time decoding demonstrated at distance-5; the record's own OQ-001 asks whether below-threshold scaling holds at d=11 and above. No verified d=11+ below-threshold surface-code result was found in this review. This instance therefore supports sustained escalation but does not close the resolution bottleneck.",
       vectors: ["supportive--peer-reviewed-below-threshold", "constraint--d11-plus-unresolved"],
       date: "2024-12-09",
+      sources: [
+        {
+          citation: "Google Quantum AI and Collaborators. Quantum error correction below the surface code threshold. Nature 638, 920–926 (2025); published online 9 December 2024.",
+          url: "https://www.nature.com/articles/s41586-024-08449-y",
+          doi: "10.1038/s41586-024-08449-y",
+        },
+      ],
     }
   ],
 
@@ -144,6 +162,7 @@ export const FR_QE_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-013", date: "2026-09-13", field: "provenance_review", from: "—", to: "LPR-001-D15", note: "Legacy provenance review completed. All six evidence instances examined. IN-005 and IN-006 were cleanly provenance-enriched with the peer-reviewed Willow Nature source. Four material discrepancy candidates require governed correction before provenance can be attached without endorsing legacy wording. IN-001 incorrectly describes the 2021 repetition-code experiment as a surface-code implementation and confuses physical-qubit count with code distance: the experiment used repetition codes from d=3 to d=11, corresponding to 5 to 21 qubits, while the surface-code test was only d=2. IN-002 appears to conflate Quantinuum/Honeywell's 2021 real-time [[7,1,3]] colour-code QEC result with later fault-tolerant gate demonstrations; the 2021 experiment reported logical SPAM below physical SPAM but explicitly had not reached the overall error-correction threshold, so the present 2022 gate-level below-physical claim is not source-faithful as written. IN-003 overstates the 2023 Google Nature result: that experiment compared d=3 with d=5 on a 72-qubit device and achieved only a modest roughly 4% relative logical-error reduction, not d=3/d=5/d=7 with roughly halving at each step; d=7 and >2x suppression arrived with Willow. IN-004 misstates the Microsoft/Quantinuum 2024 result as approximately 10^-4 per two-qubit logical gate. The contemporaneous work reported circuit-level logical error reductions, including Bell-state preparation down to about 10^-5 with post-selection and repeated-error-correction comparisons, not a generic per-two-qubit-logical-gate 10^-4 metric; its broader claim that the result was below thresholds generally required for useful FTQC is also not directly established by that source. No historical wording, assessment, pressure state, verification stage, mechanism, lineage, or open question was silently changed. No verified experimental d=11+ below-threshold surface-code result was found. The 28 April 2026 Nature Author Correction to the Willow paper changes figure labelling only and does not alter the evidence interpretation." },
     {"id":"M-012","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001, lineage:1995–96, lineage:1998–2012, lineage:2012–20","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001; lineage 1995–96, 1998–2012, 2012–20 from FR_QE_0003_fault_tolerant_logical_qubits.html (Drive file 15wAwW5oDhl-eLUsK7g82KSR-0wJjufho). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-011", date: "2026-07-08", field: "experimental_annotations_retired", from: "EXPERIMENTAL-ANNOTATIONS-ADDED", to: "RETIRED", note: "Per Stuart's confirmation, the experimentalAnnotations[] pilot container (M-009) is retired and removed from this record. Its content is fully superseded by REN-001 (M-010), which formalises the same observation as a mature FCIF object. Removal carries zero migration cost, as documented in the pilot's own code comment (see FrontierRecord.jsx, record.experimentalAnnotations ?? []); no other record or component depends on this field. This is a deletion of pilot scaffolding, not an editorial correction under GP-001 and not a removal of assessments[] or other append-only evidentiary history." },
