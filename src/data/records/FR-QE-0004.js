@@ -52,12 +52,7 @@ export const FR_QE_0004 = {
       vectors: ["supportive--scalable-below-threshold-confirmed"],
       date: "2024",
       sources: [
-        {
-          citation: "Google Quantum AI and Collaborators. Quantum error correction below the surface code threshold. Nature 638, 920–926 (2025).",
-          url: "https://www.nature.com/articles/s41586-024-08449-y",
-          doi: "10.1038/s41586-024-08449-y",
-          locator: "Abstract, Fig. 1 and Outlook; published online 9 December 2024",
-        },
+        { citation: "Google Quantum AI and Collaborators. Quantum error correction below the surface code threshold. Nature 638, 920–926 (2025).", url: "https://www.nature.com/articles/s41586-024-08449-y", doi: "10.1038/s41586-024-08449-y", locator: "Abstract, Fig. 1 and Outlook; published online 9 December 2024" },
       ],
     },
     {
@@ -74,16 +69,8 @@ export const FR_QE_0004 = {
       vectors: ["contesting--pending-verification-now-actively-disputed"],
       date: "2026",
       sources: [
-        {
-          citation: "Legg, H. F. On the robustness of topological gap detection via transport. Nature 654, E22–E26 (2026).",
-          url: "https://www.nature.com/articles/s41586-026-10567-8",
-          doi: "10.1038/s41586-026-10567-8",
-        },
-        {
-          citation: "Microsoft Quantum et al. Reply to: On the robustness of topological gap detection via transport. Nature 654, E27–E28 (2026).",
-          url: "https://www.nature.com/articles/s41586-026-10568-7",
-          doi: "10.1038/s41586-026-10568-7",
-        },
+        { citation: "Legg, H. F. On the robustness of topological gap detection via transport. Nature 654, E22–E26 (2026).", url: "https://www.nature.com/articles/s41586-026-10567-8", doi: "10.1038/s41586-026-10567-8" },
+        { citation: "Microsoft Quantum et al. Reply to: On the robustness of topological gap detection via transport. Nature 654, E27–E28 (2026).", url: "https://www.nature.com/articles/s41586-026-10568-7", doi: "10.1038/s41586-026-10568-7" },
       ],
     },
     {
@@ -92,13 +79,7 @@ export const FR_QE_0004 = {
       description: "A trapped-ion device demonstrates breakeven-level quantum error correction across nine QEC codes spanning three families without hardware reconfiguration, including a qLDPC code encoding 4 logical qubits in 18 physical qubits at breakeven — logical-qubit lifetimes comparable to or slightly exceeding the physical qubits — with a logical error rate reported roughly nine times better than a comparable superconducting demonstration (arXiv:2606.06455, IonQ-affiliated group, primary preprint, submitted 4 June 2026). This bears directly on the below-physical boundary of the claim, extending it to a new code family (qLDPC) and reaffirming the trapped-ion platform, and weakening the connectivity objection to qLDPC deployment. It is SUPPORTIVE but bounded: the result is breakeven rather than a decisive scalable-threshold demonstration; it is at small scale (18 physical qubits); and the source is an interested party with a commercial interest in the conclusion. It does not advance the record's decisive open question — whether below-threshold scaling holds at code distances d=11 and above (OQ-001). It is distinct in kind from IN-008: IN-007 bears on the threshold/breakeven result itself, whereas IN-008 bears on sustained operation.",
       vectors: ["SUPPORTIVE"],
       date: "2026",
-      sources: [
-        {
-          citation: "Tham, E. et al. Breakeven demonstration of quantum low-density parity-check codes. arXiv:2606.06455 (2026).",
-          url: "https://arxiv.org/abs/2606.06455",
-          locator: "Abstract; submitted 4 June 2026",
-        },
-      ],
+      sources: [ { citation: "Tham, E. et al. Breakeven demonstration of quantum low-density parity-check codes. arXiv:2606.06455 (2026).", url: "https://arxiv.org/abs/2606.06455", locator: "Abstract; submitted 4 June 2026" } ],
     },
     {
       id: "IN-008",
@@ -106,14 +87,7 @@ export const FR_QE_0004 = {
       description: "A reinforcement-learning controller integrates real-time recalibration into the error-correction cycle, correcting calibration drift from error-syndrome data without pausing computation, and reports a roughly 20% increase in detected and corrected errors relative to static calibration on two logical qubits (Nature, DOI 10.1038/s41586-026-10759-2, peer-reviewed). This is SUPPORTIVE of the scalable-architecture component of the claim: it addresses sustained-operation drift, a practical obstacle to maintaining below-physical operation during real computation. It does not itself establish the below-physical result — that was reached from IN-004 — and the source is explicit that it does not alter the below-threshold finding. It is distinct in kind from IN-007: IN-008 bears on sustained operation, not on the threshold/breakeven result. It does not bear on the d=11-and-above scaling question (OQ-001) or on the record's replication needs. Peer-reviewed; demonstrated on two logical qubits.",
       vectors: ["SUPPORTIVE"],
       date: "2026",
-      sources: [
-        {
-          citation: "Sivak et al., ‘Reinforcement learning control of quantum error correction’, Nature 655, 879–884 (2026)",
-          url: "https://www.nature.com/articles/s41586-026-10759-2",
-          doi: "10.1038/s41586-026-10759-2",
-          locator: "Main text; reinforcement-learning control and error-correction results",
-        },
-      ],
+      sources: [ { citation: "Sivak et al., ‘Reinforcement learning control of quantum error correction’, Nature 655, 879–884 (2026)", url: "https://www.nature.com/articles/s41586-026-10759-2", doi: "10.1038/s41586-026-10759-2", locator: "Main text; reinforcement-learning control and error-correction results" } ],
     },
     {
       id: "IN-009",
@@ -121,85 +95,57 @@ export const FR_QE_0004 = {
       description: "D-Wave demonstrates an approximately 500-nanosecond controlled-Z gate between two superconducting dual-rail cavity qubits while largely preserving the architecture's favourable erasure-biased error hierarchy (Nature, DOI 10.1038/s41586-026-10822-y, peer-reviewed). The reported gate performance includes approximately 0.5% erasure probability, residual Pauli error below approximately 0.1%, bit-flip error around 10⁻⁶, characterized leakage propagation, and similar behaviour across seven two-qubit systems over periods up to 15 hours. This is SUPPORTIVE but bounded component-level evidence for the scalable-architecture element of the claim: it shows that an essential two-qubit operation need not destroy the structured-noise advantage of dual-rail erasure qubits. It does not demonstrate a logical qubit, measured logical error suppression with increasing code distance, below-threshold operation of an integrated error-correction cycle, code distance d=11 or above, or realistic full-system scaling. The favourable code-distance behaviour remains simulation-derived under simplified noise assumptions. It therefore adds architectural evidence without advancing OQ-001, changing the assessment, or establishing a new record path.",
       vectors: ["SUPPORTIVE"],
       date: "2026",
+      sources: [ { citation: "D-Wave Quantum Inc. An entangling gate for dual-rail erasure qubits. Nature 656, 47–53 (2026).", url: "https://www.nature.com/articles/s41586-026-10822-y", doi: "10.1038/s41586-026-10822-y", locator: "Abstract, gate benchmarking and Discussion" } ],
+    },
+    {
+      id: "IN-010",
+      qualifiedEvent: "Paetznick et al. — fault-tolerant trapped-ion circuits suppress logical errors below physical baselines",
+      description: "Paetznick et al. experimentally demonstrate quantum error correction and error detection with post-selection on a trapped-ion QCCD processor using two code constructions: a 12-qubit code encoding two logical qubits and a 16-qubit tesseract colour code encoding four logical qubits. Across several non-trivial circuit benchmarks, logical error rates improve by factors ranging from 11× to 800× relative to corresponding physical-circuit baselines, including multi-qubit computation. This is strong SUPPORTIVE evidence that fault-tolerant logical processing can deliver substantial error suppression on a trapped-ion architecture. The result broadens and strengthens the multi-platform evidence beyond the earlier small-code trapped-ion demonstrations, but it does not demonstrate surface-code scaling with increasing code distance or resolve OQ-001's governed d=11-and-above criterion. Error detection and post-selection are material components of the demonstrated performance and are retained as part of the evidentiary boundary.",
+      vectors: ["supportive--fault-tolerant-logical-error-suppression"],
+      date: "2026",
       sources: [
-        {
-          citation: "D-Wave Quantum Inc. An entangling gate for dual-rail erasure qubits. Nature 656, 47–53 (2026).",
-          url: "https://www.nature.com/articles/s41586-026-10822-y",
-          doi: "10.1038/s41586-026-10822-y",
-          locator: "Abstract, gate benchmarking and Discussion",
-        },
+        { citation: "Paetznick, A. et al. Improved quantum processor logical error rates via correction and detection. Nature 654, 349–355 (2026).", url: "https://www.nature.com/articles/s41586-026-10628-y", doi: "10.1038/s41586-026-10628-y", locator: "Abstract and main experimental results; published online 10 June 2026" },
       ],
     }
   ],
 
   assessments: [
     // APPEND-ONLY. Do not modify existing entries.
-    {
-      id: "AS-001",
-      date: "2024-01-15",
-      pressureState: "resolving",
-      verificationStage: "VS-04",
-      summary: "The claim has two components: below-physical-rate operation, and scalability of that operation. Both have been demonstrated. INST-002 established that below-physical-rate logical qubits are achievable in principle. INST-003 established that practically useful error rates are achievable on current hardware. INST-004 established that performance improves as the architecture scales — the defining signature of scalable below-threshold operation. No contesting evidence has been published against either component of the claim. The pressure state is RESOLVING: both elements the claim requires have been independently demonstrated and corroborate each other, though confirmation at the code distances required for practical fault-tolerant computation (d=11 and above) remains outstanding (OQ-001), and the claim's architecture-agnosticism has not yet been confirmed across a third hardware platform (OQ-002).",
-      assessorNote: null,
-    },
-    {
-      id: "AS-002",
-      date: "2026-08-17",
-      pressureState: "resolving",
-      verificationStage: "VS-04",
-      summary: "The record remains RESOLVING. The post-AS-001 evidence broadens the engineering case without crossing the remaining resolution boundary. IN-007 extends below-physical or breakeven behaviour to a qLDPC code on trapped-ion hardware; IN-008 demonstrates real-time recalibration that supports sustained error-corrected operation; and IN-009 shows that an essential entangling gate can preserve the favourable erasure-biased error hierarchy of superconducting dual-rail qubits. These are meaningful supportive developments across code family, sustained operation, and architecture. They do not, individually or together, demonstrate logical error suppression continuing at code distances d=11 and above, which remains OQ-001 and the record's decisive attractor. The contested Microsoft topological result remains corroborating rather than foundational. Pressure State therefore remains RESOLVING and Verification Stage remains VS-04; all three open questions remain live.",
-      assessorNote: "Issued during OHR-2026-09 catch-up review to close the unassessed-evidence gap through IN-009. This assessment incorporates IN-007, IN-008, and IN-009 while preserving the d=11-and-above resolution threshold.",
-    }
+    { id: "AS-001", date: "2024-01-15", pressureState: "resolving", verificationStage: "VS-04", summary: "The claim has two components: below-physical-rate operation, and scalability of that operation. Both have been demonstrated. INST-002 established that below-physical-rate logical qubits are achievable in principle. INST-003 established that practically useful error rates are achievable on current hardware. INST-004 established that performance improves as the architecture scales — the defining signature of scalable below-threshold operation. No contesting evidence has been published against either component of the claim. The pressure state is RESOLVING: both elements the claim requires have been independently demonstrated and corroborate each other, though confirmation at the code distances required for practical fault-tolerant computation (d=11 and above) remains outstanding (OQ-001), and the claim's architecture-agnosticism has not yet been confirmed across a third hardware platform (OQ-002).", assessorNote: null },
+    { id: "AS-002", date: "2026-08-17", pressureState: "resolving", verificationStage: "VS-04", summary: "The record remains RESOLVING. The post-AS-001 evidence broadens the engineering case without crossing the remaining resolution boundary. IN-007 extends below-physical or breakeven behaviour to a qLDPC code on trapped-ion hardware; IN-008 demonstrates real-time recalibration that supports sustained error-corrected operation; and IN-009 shows that an essential entangling gate can preserve the favourable erasure-biased error hierarchy of superconducting dual-rail qubits. These are meaningful supportive developments across code family, sustained operation, and architecture. They do not, individually or together, demonstrate logical error suppression continuing at code distances d=11 and above, which remains OQ-001 and the record's decisive attractor. The contested Microsoft topological result remains corroborating rather than foundational. Pressure State therefore remains RESOLVING and Verification Stage remains VS-04; all three open questions remain live.", assessorNote: "Issued during OHR-2026-09 catch-up review to close the unassessed-evidence gap through IN-009. This assessment incorporates IN-007, IN-008, and IN-009 while preserving the d=11-and-above resolution threshold." },
+    { id: "AS-003", date: "2026-09-14", pressureState: "resolving", verificationStage: "VS-04", summary: "Paetznick et al. (IN-010) materially strengthen the trapped-ion leg of the evidence by demonstrating fault-tolerant logical circuits with 11×–800× lower error rates than corresponding physical-circuit baselines across two error-correcting code constructions, including multi-qubit computation. This is stronger than a single small-code breakeven result and supports the proposition that below-physical logical performance is reproducible across distinct architectures and code designs. It does not, however, satisfy the record's governed remaining resolution criterion: sustained below-threshold scaling at code distances d=11 and above. The experiment also uses error detection and post-selection as material parts of the demonstrated suppression. The evidence trajectory therefore strengthens without crossing the resolution boundary. Pressure State remains RESOLVING and Verification Stage remains VS-04; OQ-001 remains decisive.", assessorNote: "Normal Record Review of the candidate flagged by LPR-001-D16. IN-010 admitted with source-supported boundaries; no legacy LPR discrepancy was repaired through this review." }
   ],
 
   mechanisms: [
-    {
-      id: "RM-001",
-      type: "RESISTANCE MECHANISM",
-      description: "Physical qubit error floor at scale. Below-threshold operation at small code distances does not guarantee the behaviour continues as physical qubit count increases. Crosstalk, fabrication variability, and control complexity all tend to increase with system size. The resistance mechanism is not that below-threshold operation is unachievable — INST-004 demonstrates it is achievable — but that sustaining it as qubit count grows from hundreds to thousands to tens of thousands is an unsolved engineering problem. The claim as stated is in RESOLVING because the principle is established; this mechanism constrains how quickly the practical consequence follows.",
-    },
-    {
-      id: "AT-001",
-      type: "ATTRACTOR",
-      description: "Demonstration at d=11 and beyond. The next decisive evidence event for this record is demonstration of below-threshold scaling at code distances d=11 and higher. At d=7, the Willow result establishes the behaviour. At d=11 or d=15, the result would confirm that the scaling continues into regimes relevant for practical fault-tolerant computation. This is the specific experimental milestone that would move the claim from RESOLVING toward a fully confirmed state. The attractor is clearly defined and the trajectory toward it is visible in current hardware development roadmaps.",
-    }
+    { id: "RM-001", type: "RESISTANCE MECHANISM", description: "Physical qubit error floor at scale. Below-threshold operation at small code distances does not guarantee the behaviour continues as physical qubit count increases. Crosstalk, fabrication variability, and control complexity all tend to increase with system size. The resistance mechanism is not that below-threshold operation is unachievable — INST-004 demonstrates it is achievable — but that sustaining it as qubit count grows from hundreds to thousands to tens of thousands is an unsolved engineering problem. The claim as stated is in RESOLVING because the principle is established; this mechanism constrains how quickly the practical consequence follows." },
+    { id: "AT-001", type: "ATTRACTOR", description: "Demonstration at d=11 and beyond. The next decisive evidence event for this record is demonstration of below-threshold scaling at code distances d=11 and higher. At d=7, the Willow result establishes the behaviour. At d=11 or d=15, the result would confirm that the scaling continues into regimes relevant for practical fault-tolerant computation. This is the specific experimental milestone that would move the claim from RESOLVING toward a fully confirmed state. The attractor is clearly defined and the trajectory toward it is visible in current hardware development roadmaps." }
   ],
 
   lineage: {
     items: [
-    { year: "1995–97", text: "Threshold theorem established. Aharonov, Ben-Or, Shor, and others prove that below-threshold physical error rates permit arbitrarily long fault-tolerant computation. The theoretical possibility of the claim is established. The empirical question opens: can physical hardware reach and sustain below-threshold operation?" },
-    { year: "1998–2019", text: "Approach from above. Physical qubit error rates improve steadily across superconducting, trapped-ion, and photonic platforms. Surface code threshold (~1% two-qubit gate error) is approached but not consistently reached across full system operation. The claim remains in EMERGING state: the principle is sound, the hardware is insufficient." },
-    { year: "2022–23", text: "Threshold crossed at small scale. Quantinuum and the Microsoft/Quantinuum collaboration demonstrate below-physical-rate logical qubits and practically useful error rates. The claim enters ESCALATING. The scalability question becomes the active frontier." },
-    { year: "2024", text: "Scalable below-threshold operation demonstrated. Google Willow confirms that adding physical qubits to the code continues to reduce logical error rates — the defining signature of scalable below-threshold operation. The claim enters RESOLVING." }
+      { year: "1995–97", text: "Threshold theorem established. Aharonov, Ben-Or, Shor, and others prove that below-threshold physical error rates permit arbitrarily long fault-tolerant computation. The theoretical possibility of the claim is established. The empirical question opens: can physical hardware reach and sustain below-threshold operation?" },
+      { year: "1998–2019", text: "Approach from above. Physical qubit error rates improve steadily across superconducting, trapped-ion, and photonic platforms. Surface code threshold (~1% two-qubit gate error) is approached but not consistently reached across full system operation. The claim remains in EMERGING state: the principle is sound, the hardware is insufficient." },
+      { year: "2022–23", text: "Threshold crossed at small scale. Quantinuum and the Microsoft/Quantinuum collaboration demonstrate below-physical-rate logical qubits and practically useful error rates. The claim enters ESCALATING. The scalability question becomes the active frontier." },
+      { year: "2024", text: "Scalable below-threshold operation demonstrated. Google Willow confirms that adding physical qubits to the code continues to reduce logical error rates — the defining signature of scalable below-threshold operation. The claim enters RESOLVING." },
+      { year: "2026", text: "The engineering evidence broadens across code families and architectures. Paetznick et al. demonstrate 11×–800× logical error-rate improvements over physical-circuit baselines on trapped-ion hardware using 12- and 16-qubit error-correcting codes, while other 2026 results address qLDPC breakeven, sustained recalibration and erasure-biased gates. These results strengthen the RESOLVING trajectory without yet demonstrating the governed d=11-and-above scaling attractor." }
     ],
     relatedRecords: [],
   },
 
   openQuestions: [
-    {
-      id: "OQ-001",
-      question: "Does below-threshold scaling behaviour hold at code distances d=11 and above? This is the remaining decisive measurement before the claim can transition from RESOLVING to a fully confirmed state. AT-001 names this as the attractor.",
-      raisedDate: "2024-01-15",
-    },
-    {
-      id: "OQ-002",
-      question: "The claim is architecture-agnostic. Current evidence is concentrated in superconducting and trapped-ion systems. If topological qubit architectures — currently tracked only as contextual evidence within the corpus, without a dedicated Frontier Record — achieve confirmed below-threshold operation, this record gains a third platform confirmation. Does architecture-agnosticism require multi-platform demonstration, or is the current two-platform evidence sufficient for the claim as stated?",
-      raisedDate: "2024-01-15",
-    },
-    {
-      id: "OQ-003",
-      question: "What constitutes full confirmation of this claim — the transition from RESOLVING to a closed confirmed state? The corpus has no governed resolution criterion. The claim is precisely scoped and approaching resolution. Before another record reaches this point, the Observatory may need to address OQ-3 from FR-QE-0003: what does confirmation look like and who determines it?",
-      raisedDate: "2024-01-15",
-    }
+    { id: "OQ-001", question: "Does below-threshold scaling behaviour hold at code distances d=11 and above? This is the remaining decisive measurement before the claim can transition from RESOLVING to a fully confirmed state. AT-001 names this as the attractor.", raisedDate: "2024-01-15" },
+    { id: "OQ-002", question: "The claim is architecture-agnostic. Current evidence is concentrated in superconducting and trapped-ion systems. If topological qubit architectures — currently tracked only as contextual evidence within the corpus, without a dedicated Frontier Record — achieve confirmed below-threshold operation, this record gains a third platform confirmation. Does architecture-agnosticism require multi-platform demonstration, or is the current two-platform evidence sufficient for the claim as stated?", raisedDate: "2024-01-15" },
+    { id: "OQ-003", question: "What constitutes full confirmation of this claim — the transition from RESOLVING to a closed confirmed state? The corpus has no governed resolution criterion. The claim is precisely scoped and approaching resolution. Before another record reaches this point, the Observatory may need to address OQ-3 from FR-QE-0003: what does confirmation look like and who determines it?", raisedDate: "2024-01-15" }
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-016", date: "2026-09-14", field: "record_review", from: "LPR-001-D16 Record Review candidate", to: "IN-010 / AS-003", note: "Normal Record Review completed for Paetznick et al., Nature 654, 349–355 (2026), DOI 10.1038/s41586-026-10628-y. IN-010 admitted as strong SUPPORTIVE evidence: trapped-ion fault-tolerant circuits using 12-qubit/two-logical-qubit and 16-qubit/four-logical-qubit code constructions achieved 11x–800x logical error-rate improvements relative to corresponding physical-circuit baselines. The evidentiary boundary explicitly retains the role of error detection and post-selection and does not reinterpret the experiment as code-distance scaling. AS-003 appended: RESOLVING / VS-04 reaffirmed because the result strengthens multi-platform and multi-code evidence but does not satisfy OQ-001's governed d=11-and-above scaling criterion. 2026 lineage extended. LPR-001-D16 discrepancies in IN-001, IN-002, IN-003 and IN-005 remain pending and were not repaired through this Record Review." },
     { id: "M-015", date: "2026-09-14", field: "provenance_review", from: "—", to: "LPR-001-D16", note: "Legacy provenance review completed. All nine evidence instances examined. Structured sources[] were added only to cleanly sourceable IN-004, IN-006, IN-007, and IN-009; IN-008 already carried structured provenance and was verified. Four legacy discrepancy candidates require governed correction before provenance can be attached without endorsing problematic wording: IN-001 compresses heterogeneous 2014–19 QEC work into a broad surface-code/superconducting-and-trapped-ion synthesis that could not be confidently reconstructed from a single contemporaneous source chain; IN-002 is misdated to 2022 and overstates Ryan-Anderson et al. 2021, whose [[7,1,3]] colour-code result achieved logical SPAM below physical SPAM but did not establish that the overall error-correction system had crossed the pseudo-threshold; IN-003 is misdated to 2023 and states an approximately 10^-4 per two-qubit logical-gate metric not supported by the later peer-reviewed Microsoft/Quantinuum evidence; IN-005 is dated 2024 despite describing an early-2025 announcement and overstates Microsoft's 2025 parity-readout/topological programme as demonstrating below-physical-rate logical-qubit operation, whereas the Nature paper explicitly states its measurement does not by itself determine whether the low-energy states are topological. No discrepant wording, assessment, pressureState, verificationStage, mechanisms, lineage, or open questions were silently changed. One normal Record Review candidate was flagged and not admitted through LPR-001: Paetznick et al., Nature 654, 349–355 (2026), DOI 10.1038/s41586-026-10628-y, reporting 11x–800x logical error-rate improvements on Quantinuum trapped-ion hardware relative to physical circuit baselines." },
     { id: "M-014", date: "2026-08-29", field: "provenance_enriched", from: "—", to: "PROVENANCE-ENRICHED", note: "PA-002 Provenance Enrichment: structured sources[] added to IN-008; evidentiary prose and assessment unchanged." },
     { id: "M-013", date: "2026-08-17", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued during OHR-2026-09 catch-up review to close the evidence-assessment gap through IN-009. IN-007, IN-008, and IN-009 strengthen the engineering and architectural evidence but do not resolve the decisive d=11-and-above scaling question. Pressure State remains RESOLVING; Verification Stage remains VS-04; mechanisms and open questions remain unchanged." },
     { id: "M-012", date: "2026-08-08", field: "instance_appended", from: "—", to: "IN-009", note: "IN-009 appended following operator approval of Post-Scout Human Record Review flag 2026-08-08-01. The D-Wave dual-rail entangling-gate result (Nature, DOI 10.1038/s41586-026-10822-y) is logged as bounded SUPPORTIVE component-level evidence for the scalable-architecture element of the claim. It preserves a favourable erasure-biased error hierarchy during an essential two-qubit operation, but does not demonstrate a logical qubit, integrated below-threshold error correction, measured logical suppression with increasing code distance, d=11-and-above scaling, or realistic full-system operation; favourable code-distance behaviour remains simulation-derived. Instance-level append only; no assessment issued; pressureState RESOLVING, verificationStage VS-04, mechanisms, openQuestions, and new-record disposition unchanged." },
-    { id: "M-011", date: "2026-07-14", field: "instances_appended", from: "—", to: "IN-007 / IN-008", note: "IN-007 and IN-008 appended, both SUPPORTIVE, from Frontline Scout reports 2026-07-03 (IN-007 — qLDPC breakeven on trapped-ion, arXiv:2606.06455, IonQ-affiliated, interested party) and 2026-07-11 (IN-008 — real-time RL recalibration, Nature, peer-reviewed). Surfaced during evidence-gap review as non-duplicate evidence stranded in the Scout archive. The two supportive contributions are distinct in kind and the distinction is preserved in prose: IN-007 bears on the threshold/breakeven result; IN-008 bears on sustained operation within the scalable-architecture component. Together they enrich the record without resolving its remaining scale (d=11 and above, OQ-001) and replication questions. Instance-level append only; no assessment issued; pressureState RESOLVING, verificationStage VS-04, mechanisms, and openQuestions unchanged. IN-007's source retains its separate Scout FCIF-candidate status; this instance does not pre-decide that." },
+    { id: "M-011", date: "2026-07-14", field: "instances_appended", from: "—", to: "IN-007 / IN-008", note: "IN-007 and IN-008 appended, both SUPPORTIVE, from Frontline Scout reports 2026-07-03 (IN-007 — qLDPC breakeven on trapped-ion, arXiv:2606.06455, IonQ-affiliated, interested party) and 2026-07-11 (IN-008 — real-time RL recalibration, Nature, peer-reviewed). Surfaced during evidence-gap review as non-duplicate evidence stranded in the Scout archive. The two supportive contributions are distinct in kind and the distinction is preserved in prose: IN-007 bears on the threshold/breakeven result itself; IN-008 bears on sustained operation within the scalable-architecture component. Together they enrich the record without resolving its remaining scale (d=11 and above, OQ-001) and replication questions. Instance-level append only; no assessment issued; pressureState RESOLVING, verificationStage VS-04, mechanisms, and openQuestions unchanged. IN-007's source retains its separate Scout FCIF-candidate status; this instance does not pre-decide that." },
     { id: "M-010", date: "2026-07-09", field: "description_restored", from: "—", to: "DESCRIPTION-RESTORED", note: "Editorial Correction (GP-001): RM-001 and AT-001 mechanism descriptions, and the 1995–97 and 1998–2019 lineage.items entries, were truncated (500-char convert-records.js defect — same defect class as RELEASE-033's AS-001 restorations, which did not cover mechanisms[] or lineage.items[]). Full text restored verbatim from the canonical source HTML (FR_QE_0004_below_threshold_error_correction.html, Drive). No wording added or altered beyond restoring the truncated remainder; no other field changed. Initiated ahead of RENDER-PILOT-001 (public rendering of mechanisms[] and lineage.items[] would otherwise have shipped mid-sentence truncation to the public page)." },
     { id: "M-009", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-006 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-008", date: "2026-07-03", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): IN-005 and OQ-002 incorrectly cited FR-QE-0001 as containing evidence for Microsoft's topological qubit programme. FR-QE-0001 concerns Google Sycamore / random circuit sampling and contains no such content; the corpus currently has no dedicated Frontier Record for this programme. Corrected in both locations to state this accurately. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
