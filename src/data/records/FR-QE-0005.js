@@ -77,6 +77,22 @@ export const FR_QE_0005 = {
       vectors: ["neutral--gap-re-quantified"],
       date: "2025",
       sources: [{ citation: "Gidney, C. How to factor 2048 bit RSA integers with less than a million noisy qubits. arXiv:2505.15917 (2025).", url: "https://arxiv.org/abs/2505.15917", locator: "Abstract; submitted 21 May 2025" }],
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "Pinnacle Architecture — QLDPC RSA-2048 estimate below 100,000 physical qubits",
+      description: "Webster et al. introduce the Pinnacle Architecture, a fault-tolerant architecture based on quantum low-density parity-check codes, and estimate that RSA-2048 factorisation can be performed with fewer than 100,000 physical qubits under stated assumptions of a 10^-3 physical error rate, one-microsecond code cycles and ten-microsecond reaction time. The estimate obtains lower qubit overhead by changing the fault-tolerant architecture relative to the surface-code analyses in IN-002 and IN-006. It is a preprint resource estimate on an unbuilt architecture, not an experimental factorisation result or a like-for-like continuation of the surface-code trend. It materially lowers one modelled resource boundary while shifting weight onto QLDPC implementation, connectivity, decoding and sustained fault-tolerant operation assumptions.",
+      vectors: ["supportive--architecture-dependent-resource-compression"],
+      date: "2026",
+      sources: [{ citation: "Webster, P. et al. The Pinnacle Architecture: Reducing the cost of breaking RSA-2048 to 100 000 physical qubits using quantum LDPC codes. arXiv:2602.11457 (2026).", url: "https://arxiv.org/abs/2602.11457", locator: "Abstract and RSA-2048 resource estimate; v2 May 2026" }],
+    },
+    {
+      id: "IN-008",
+      qualifiedEvent: "Heterogeneous architecture — RSA-2048 estimate with experimentally demonstrated grid connectivity",
+      description: "Mundada et al. present a heterogeneous fault-tolerant architecture and detailed compiler-level resource accounting. For RSA-2048, their configuration using an experimentally demonstrated grid-coupling topology requires approximately 381,000 physical qubits and 9.2 days; adding an algorithm-specific adder accelerator changes the trade-off to approximately 439,000 qubits and 4.9 days. Under a separate hypothetical long-range-coupling assumption with QLDPC quantum memory, the estimate falls to approximately 190,000 physical qubits and under ten days. These are theoretical architecture and compilation estimates rather than an experimental RSA factorisation. The grid-connectivity case is particularly relevant because it provides an independent resource estimate with a more hardware-grounded connectivity assumption than the lowest headline QLDPC figures.",
+      vectors: ["supportive--independent-resource-architecture-estimate"],
+      date: "2026",
+      sources: [{ citation: "Mundada, P. S. et al. Heterogeneous architectures enable a 138x reduction in physical qubit requirements for fault-tolerant quantum computing under detailed accounting. arXiv:2604.06319 (2026).", url: "https://arxiv.org/abs/2604.06319", locator: "Abstract; RSA-2048 resource estimates" }],
     }
   ],
 
@@ -105,6 +121,14 @@ export const FR_QE_0005 = {
       verificationStage: "VS-02",
       summary: "LPR-001-D17 corrected the provenance and representation of all six legacy evidence instances. Shor's 1994 result establishes the algorithmic basis but not an RSA-2048 engineering estimate; Gidney–Ekerå provides the 20-million-qubit resource estimate; the 2022 Yan et al. experiment factored only small integers and proposed, rather than demonstrated, RSA-2048 scaling; and Gidney 2025 reduces the RSA-2048 estimate to fewer than one million noisy qubits without an experimental factorisation. The earlier AS-001/AS-002 wording remains historical and is not silently rewritten. The corrected evidence still supports ESCALATING / VS-02: substrate capability and theoretical resource estimates are advancing, but no commercially relevant RSA key has been factored by a quantum computer. The 2026 QLDPC Pinnacle estimate and other genuinely new resource analyses require normal Record Review before they can affect the canonical evidence state.",
       assessorNote: "Corrective assessment issued after LPR-001-D17. It supersedes provenance-dependent historical characterisations in AS-001/AS-002 without altering their append-only text.",
+    },
+    {
+      id: "AS-004",
+      date: "2026-09-15",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "Normal Record Review admits two independent 2026 RSA-2048 resource analyses. Webster et al.'s Pinnacle Architecture estimates fewer than 100,000 physical qubits under explicit QLDPC and hardware assumptions, while Mundada et al. estimate approximately 381,000 physical qubits and 9.2 days using an experimentally demonstrated grid-coupling topology, with lower or faster alternatives under changed architectural assumptions. Together they strengthen the evidence that theoretical resource requirements can compress substantially through architecture and compilation choices. They do not demonstrate the required fault-tolerant machine, an RSA-2048 factorisation, or a uniform like-for-like trend across architectures. ESCALATING / VS-02 therefore remains appropriate: the modelled engineering boundary has moved materially, but the tracked claim remains experimentally unrealised.",
+      assessorNote: "IN-007 and IN-008 admitted through normal Record Review after LPR-001-D17. Architecture-dependent estimates are kept distinct from experimental capability and from like-for-like surface-code resource reductions.",
     }
   ],
 
@@ -112,7 +136,7 @@ export const FR_QE_0005 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "The engineering gap remains large even after resource-estimate compression. Gidney's 2025 analysis reduces the RSA-2048 estimate from approximately 20 million noisy physical qubits to fewer than one million under stated assumptions, but no machine near that fault-tolerant scale has demonstrated the required computation. The gap is not merely qubit count: error rates, connectivity, sustained operation, control overhead and fault-tolerance resources must all be delivered simultaneously. The resistance mechanism is therefore the absence of experimentally demonstrated cryptographic-scale fault-tolerant hardware, not adherence to any single historical qubit estimate.",
+      description: "The engineering gap remains large even as theoretical resource estimates compress. Gidney 2025 places one surface-code route below one million noisy physical qubits; 2026 architecture studies model lower counts, including below 100,000 under Pinnacle QLDPC assumptions and approximately 381,000 using Mundada et al.'s experimentally demonstrated grid-coupling topology. None corresponds to an existing fault-tolerant machine capable of the computation. Error rates, connectivity, decoding, sustained operation, control overhead and fault-tolerance resources must all be delivered simultaneously. The resistance mechanism is therefore the absence of experimentally demonstrated cryptographic-scale fault-tolerant hardware, not adherence to any single qubit estimate.",
     },
     {
       id: "RM-002",
@@ -122,7 +146,7 @@ export const FR_QE_0005 = {
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "Sequential substrate dependency. This claim cannot be satisfied until the scaling and below-threshold behaviour tracked in FR-QE-0003 and FR-QE-0004 extend to a fault-tolerant machine capable of executing an RSA-scale factoring circuit. Resource estimates provide architecture-dependent targets rather than a single fixed qubit threshold: the 2021 Gidney–Ekerå estimate was approximately 20 million noisy qubits, while Gidney 2025 estimates fewer than one million under updated methods. The bottleneck is therefore demonstrated end-to-end fault-tolerant scale, not attainment of the superseded 20-million-qubit figure itself.",
+      description: "Sequential substrate dependency. This claim cannot be satisfied until the scaling and below-threshold behaviour tracked in FR-QE-0003 and FR-QE-0004 extend to a fault-tolerant machine capable of executing an RSA-scale factoring circuit. Resource estimates now span materially different architectures and assumptions rather than defining one fixed qubit threshold: approximately 20 million noisy qubits in Gidney–Ekerå, below one million in Gidney 2025, below 100,000 in the Pinnacle QLDPC model, and approximately 381,000 in Mundada et al.'s grid-connectivity case. The bottleneck is demonstrated end-to-end fault-tolerant scale under realizable architecture assumptions, not attainment of any single modelled qubit count.",
     },
     {
       id: "AT-001",
@@ -137,7 +161,8 @@ export const FR_QE_0005 = {
       { year: "2019–21", text: "Gidney–Ekerå quantify one fault-tolerant RSA-2048 path at approximately 20 million noisy physical qubits and eight hours under stated assumptions." },
       { year: "2022–23", text: "Yan et al. demonstrate hybrid factorisation only at small integer sizes and estimate a 372-qubit path to challenge RSA-2048; an independent implementation contests the claimed scaling beyond small inputs." },
       { year: "2024", text: "Error-correction substrate evidence strengthens and NIST finalises ML-KEM, ML-DSA and SLH-DSA, while no cryptographically relevant quantum factorisation is demonstrated." },
-      { year: "2025", text: "Gidney reduces the theoretical RSA-2048 estimate to fewer than one million noisy qubits and less than one week under the same headline hardware assumptions as the earlier estimate. The change is theoretical resource compression, not experimental RSA progress." }
+      { year: "2025", text: "Gidney reduces the theoretical RSA-2048 estimate to fewer than one million noisy qubits and less than one week under the same headline hardware assumptions as the earlier estimate. The change is theoretical resource compression, not experimental RSA progress." },
+      { year: "2026", text: "Independent architecture studies widen the feasible resource-estimate envelope: Pinnacle models RSA-2048 below 100,000 physical qubits using QLDPC codes, while Mundada et al. estimate approximately 381,000 physical qubits and 9.2 days with experimentally demonstrated grid connectivity. Neither is an experimental RSA factorisation; architecture assumptions now materially determine the headline resource count." }
     ],
     relatedRecords: [],
   },
@@ -145,7 +170,7 @@ export const FR_QE_0005 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "How quickly can experimentally demonstrated fault-tolerant hardware close the gap to the best primary-source RSA-2048 resource estimates? The canonical estimate moved from approximately 20 million noisy qubits in Gidney–Ekerå to fewer than one million in Gidney 2025, but neither estimate is an experimental roadmap or evidence that the required machine exists.",
+      question: "How quickly can experimentally demonstrated fault-tolerant hardware close the gap to architecture-dependent RSA-2048 resource estimates? Primary-source estimates now range from below one million noisy qubits for Gidney's 2025 surface-code analysis to below 100,000 under Pinnacle's QLDPC assumptions and approximately 381,000 under Mundada et al.'s experimentally demonstrated grid-connectivity case. None is an experimental roadmap or evidence that the required machine exists.",
       raisedDate: "2024-01-15",
     },
     {
@@ -160,7 +185,7 @@ export const FR_QE_0005 = {
     },
     {
       id: "OQ-004",
-      question: "How much evidentiary weight should repeated downward revisions in theoretical RSA resource estimates receive when the architectural assumptions themselves change? LPR-001-D17 confirms the 2025 Gidney reduction but removes unreviewed 2026 estimates from the canonical legacy instance; those estimates must enter through normal Record Review before any trend claim is made.",
+      question: "How much evidentiary weight should repeated downward revisions in theoretical RSA resource estimates receive when architectural assumptions change? The 2026 admissions confirm that lower resource counts are not one uniform trend line: Pinnacle obtains below 100,000 through QLDPC architecture assumptions, while Mundada et al. obtain approximately 381,000 with demonstrated grid connectivity and approximately 190,000 only under hypothetical long-range coupling. Future reviews should distinguish like-for-like algorithmic improvement from resource reductions purchased by new architectural assumptions.",
       raisedDate: "2026-06-29",
     }
   ],
@@ -178,6 +203,7 @@ export const FR_QE_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-015", date: "2026-09-15", field: "instances_logged", from: "IN-006", to: "IN-008", note: "Normal Record Review admitted two 2026 RSA-2048 resource analyses: IN-007 Webster et al. Pinnacle QLDPC architecture and IN-008 Mundada et al. heterogeneous architecture. Appended AS-004 and updated current mechanisms, lineage and open questions to distinguish architecture-dependent theoretical resource compression from demonstrated cryptographic capability. Pressure state remains ESCALATING; verification stage remains VS-02." },
     { id: "M-014", date: "2026-09-15", field: "provenance_corrected", from: "LPR-001-D17 discrepancies", to: "PASS-AFTER-CORRECTION", note: "LPR-001-D17 bounded correction: repaired IN-001 through IN-006, added confidently established structured provenance, corrected dependent mechanisms, lineage and open-question wording, and appended AS-003 rather than rewriting historical assessments. Removed unreviewed 2026 QLDPC/ECC material from legacy IN-006 so it can be handled through normal Record Review. Pressure state remains ESCALATING; verification stage remains VS-02." },
     {"id":"M-013","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_QE_0005_RSA_quantum_factorisation.html (Drive file 1xzJuLkAdDhGDC2Rc-yQZDH-R8vlVvHHi). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     { id: "M-012", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-006 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
