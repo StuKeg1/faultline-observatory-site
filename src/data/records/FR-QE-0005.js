@@ -12,6 +12,10 @@
 export const FR_QE_0005 = {
   id: "FR-QE-0005",
   programme: "PROG-QE",
+  lastProvenanceReview: "2026-09-15",
+  provenanceReviewId: "LPR-001-D17",
+  provenanceOutcome: "pass_after_correction",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "A quantum computer can factor commercially relevant RSA cryptographic keys faster than any classical computer.",
@@ -23,44 +27,56 @@ export const FR_QE_0005 = {
     {
       id: "IN-001",
       qualifiedEvent: "Shor's algorithm — theoretical foundation established",
-      description: "Peter Shor publishes a quantum algorithm for integer factorisation running in polynomial time — exponentially faster than any known classical algorithm. The algorithm requires a fault-tolerant quantum computer with a number of logical qubits proportional to the number of bits in the integer being factored. For 2048-bit RSA, the resource requirement is approximately 4000 logical qubits operating with error rates below the fault-tolerance threshold. The theoretical claim is immediately established and has never been contested: a sufficiently powerful quantum computer can factor RSA keys exponentially faster than classical methods. The practical question — whether such a computer can be built — opens simultaneously. This instance is not supportive or contesting evidence for the practical claim; it establishes the theoretical basis that makes the practical claim worth tracking.",
+      description: "Peter Shor publishes a polynomial-time quantum algorithm for integer factorisation and discrete logarithms. This establishes the algorithmic basis for a future quantum attack on RSA, conditional on a sufficiently capable quantum computer. Shor's 1994 result does not itself provide a physical-resource estimate for factoring RSA-2048; later engineering estimates are recorded separately. This instance therefore establishes the theoretical basis of the tracked claim, not practical cryptographic capability.",
       vectors: ["neutral--theoretical-basis-established"],
       date: "1994",
+      sources: [{ citation: "Shor, P. W. Algorithms for quantum computation: discrete logarithms and factoring. Proceedings of the 35th Annual Symposium on Foundations of Computer Science (1994).", url: "https://ieeexplore.ieee.org/document/365700", doi: "10.1109/SFCS.1994.365700", locator: "Algorithm and complexity result" }],
     },
     {
       id: "IN-002",
-      qualifiedEvent: "Small-scale Shor demonstrations and resource estimate refinements",
-      description: "Multiple groups demonstrate Shor's algorithm on small quantum computers factoring numbers of 15, 21, and 35 — trivially small by RSA standards. These demonstrations confirm the algorithm works but have no bearing on the practical claim; the challenge is entirely one of scale, not of algorithmic correctness. Simultaneously, the quantum computing community refines resource estimates for commercially relevant factorisation. Gidney and Ekerå (2021) publish the most detailed current analysis, estimating that factoring 2048-bit RSA requires approximately 20 million physical qubits running for 8 hours with current error correction overhead. This estimate substantially raises the bar from earlier optimistic projections. The resource estimate is the most important piece of evidence bearing on the claim's timeline: it quantifies the gap between current capability and the claim's satisfaction condition.",
+      qualifiedEvent: "Gidney–Ekerå — RSA-2048 physical-resource estimate",
+      description: "Gidney and Ekerå estimate that a surface-code quantum computer could factor an RSA-2048 integer in about eight hours using approximately 20 million noisy physical qubits under specified hardware assumptions, including a physical gate error rate of 10^-3, a one-microsecond surface-code cycle and a ten-microsecond reaction time. The work was first posted in 2019 and published in Quantum in 2021. It is a resource estimate, not an experimental factorisation result, and it quantifies the engineering gap rather than demonstrating that the required machine exists.",
       vectors: ["neutral--gap-quantified"],
-      date: "2012–22",
+      date: "2019–21",
+      sources: [{ citation: "Gidney, C. & Ekerå, M. How to factor 2048 bit RSA integers in 8 hours using 20 million noisy qubits. Quantum 5, 433 (2021).", url: "https://quantum-journal.org/papers/q-2021-04-15-433/", doi: "10.22331/q-2021-04-15-433", locator: "Abstract and resource estimate" }],
     },
     {
       id: "IN-003",
-      qualifiedEvent: "FR-QE-0003 and FR-QE-0004 substrate progress — engineering gap begins closing",
-      description: "The results documented in FR-QE-0003 (logical error rates improving with code distance) and FR-QE-0004 (below-threshold operation in scalable architectures) represent the substrate advances that are prerequisites for this claim. Google Willow's below-threshold error correction across d=3 to d=7 and Microsoft/Quantinuum's 10⁻⁴ per-gate logical error rates demonstrate that the error correction engineering required for large-scale Shor's algorithm is progressing on a credible trajectory. The gap from current capability (~100 physical qubits, tens of logical qubits) to the Gidney-Ekerå requirement (~20 million physical qubits) remains enormous, but for the first time the engineering path is demonstrated rather than merely theoretical. The claim transitions from EMERGING to ESCALATING: the substrate is advancing; the application claim is on a credible if distant engineering trajectory.",
+      qualifiedEvent: "FR-QE-0003 and FR-QE-0004 substrate progress — engineering prerequisites advance",
+      description: "The error-correction results tracked in FR-QE-0003 and FR-QE-0004 provide relevant substrate evidence for cryptographically relevant quantum computation. In particular, Google's Willow work demonstrates below-threshold surface-code memories with logical error suppression as code distance increases from d=3 to d=5 to d=7, while Microsoft and Quantinuum reported four logical qubits with substantial logical-error suppression on trapped-ion hardware in 2024. These results support a credible engineering trajectory for fault-tolerant computation, but neither demonstrates RSA-scale resources, and the Microsoft/Quantinuum announcement must not be represented as a generic 10^-4 error rate per two-qubit logical gate. The gap to cryptographically relevant factorisation remains large.",
       vectors: ["supportive--substrate-demonstrates-credible-path"],
-      date: "2023–24",
+      date: "2024",
+      sources: [
+        { citation: "Google Quantum AI and Collaborators. Quantum error correction below the surface code threshold. Nature 638, 920–926 (2025).", url: "https://www.nature.com/articles/s41586-024-08449-y", doi: "10.1038/s41586-024-08449-y", locator: "Published online 9 December 2024; d=3, 5 and 7 scaling" },
+        { citation: "Quantinuum and Microsoft. Breakthrough demonstration of reliable logical qubits. 3 April 2024.", url: "https://www.quantinuum.com/press-releases/quantinuum-and-microsoft-announce-new-era-in-quantum-computing-with-breakthrough-demonstration-of-reliable-qubits", locator: "Company announcement; four logical qubits and reported logical-error suppression" }
+      ],
     },
     {
       id: "IN-004",
-      qualifiedEvent: "NIST post-quantum cryptography standards — world prepares for the claim being satisfied",
-      description: "NIST finalises post-quantum cryptographic standards (CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+) in 2024, providing standardised alternatives to RSA that are resistant to quantum attack. The US National Security Agency mandates migration timelines for classified systems. This is a structurally unusual evidence object for the claim: it is not evidence that a quantum computer can factor RSA keys, but it is evidence that serious institutions believe the claim will eventually be satisfied and are acting accordingly. The NIST standards constitute a form of institutional commitment evidence — the world's cryptographic infrastructure is being redesigned in anticipation of the claim's eventual satisfaction. Whether such anticipatory institutional acts constitute evidence for the claim is the same question raised by the Helion/Microsoft contract in FR-AM-0004, now appearing a second time.",
+      qualifiedEvent: "NIST finalises first post-quantum cryptography standards",
+      description: "On 13 August 2024 NIST finalises FIPS 203, FIPS 204 and FIPS 205: ML-KEM, ML-DSA and SLH-DSA, derived respectively from the CRYSTALS-Kyber, CRYSTALS-Dilithium and SPHINCS+ submissions. The standards are designed to resist future quantum-computer attacks on current public-key cryptography. This is anticipatory institutional evidence rather than evidence that a quantum computer can presently factor RSA-2048: it demonstrates migration planning in response to the prospective quantum threat, not satisfaction of the tracked technical claim.",
       vectors: ["partial--anticipatory-institutional-evidence"],
-      date: "2023–24",
+      date: "2024",
+      sources: [{ citation: "NIST. Announcing Approval of Three Federal Information Processing Standards (FIPS) for Post-Quantum Cryptography. 13 August 2024.", url: "https://www.nist.gov/news-events/news/2024/08/announcing-approval-three-federal-information-processing-standards-fips", locator: "FIPS 203, 204 and 205 approval and algorithm names" }],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "Chinese research group factorisation claim — and rapid refutation",
-      description: "A Chinese research group (Bao et al. 2023) publishes a preprint claiming to have factored a 2048-bit RSA integer using a quantum-classical hybrid approach on a small quantum computer. The claim generates significant security community attention. Within weeks, multiple independent analyses demonstrate that the factored number in the paper is not a full 2048-bit RSA modulus and that the method does not scale to commercially relevant key sizes. The claim is effectively refuted by the research community without formal retraction. This instance is the most directly relevant to the claim's satisfaction condition of any instance in the record — and it fails. It is notable as the first direct attempt to demonstrate the claim that has received serious analysis. The refutation is the evidence; the attempt itself is primarily evidence about the current state of the art and the gap remaining.",
-      vectors: ["contesting--direct-attempt-failed"],
-      date: "2023",
+      qualifiedEvent: "Yan et al. hybrid factorisation proposal — small-device demonstration and scaling challenge",
+      description: "Yan et al. post a preprint in December 2022 proposing a hybrid classical–quantum integer-factorisation method based on lattice reduction and QAOA. They experimentally factor integers up to 48 bits using ten superconducting qubits and estimate that a 372-qubit circuit could challenge RSA-2048; they do not factor RSA-2048 experimentally. Khattar and Yosri subsequently implement the proposed approach and report that, even with an idealised quantum optimiser, the claimed sublinear scaling fails to generate enough factoring relations for random 80-bit integers and beyond. The episode is therefore contesting evidence against the proposal's claimed scaling, not a failed experimental RSA-2048 factorisation.",
+      vectors: ["contesting--proposed-scaling-not-reproduced"],
+      date: "2022–23",
+      sources: [
+        { citation: "Yan, B. et al. Factoring integers with sublinear resources on a superconducting quantum processor. arXiv:2212.12372 (2022).", url: "https://arxiv.org/abs/2212.12372", locator: "Abstract; submitted 23 December 2022" },
+        { citation: "Khattar, T. & Yosri, N. A comment on ‘Factoring integers with sublinear resources on a superconducting quantum processor’. arXiv:2307.09651 (2023).", url: "https://arxiv.org/abs/2307.09651", locator: "Abstract and implementation result" }
+      ],
     },
     {
       id: "IN-006",
-      qualifiedEvent: "Gidney (2025) and successive resource-estimate reductions — RSA and elliptic-curve",
-      description: "They are successive theoretical revisions of the same estimate category as IN-002, arriving at a materially faster rate than the original record anticipated — three independent downward revisions within roughly eighteen months, where IN-002 itself represented the only major revision in the preceding decade. Craig Gidney (Google, May 2025) publishes a revised resource analysis reducing the estimated physical-qubit requirement for RSA-2048 factorisation from the Gidney-Ekerå (2021) figure of ~20 million to under 1 million, under broadly comparable fault-tolerance assumptions. The reduction is attributed to improved magic-state distillation and algorithmic refinements, not to any experimental result. A subsequent 2026 proposal applying quantum low-density parity-check (QLDPC) codes — an architecture distinct from the surface codes both prior estimates assumed — suggests the requirement could fall further, toward ~100,000 physical qubits, though this approach remains unvalidated at scale. In March 2026, a joint Google Quantum AI / Stanford / Ethereum Foundation whitepaper extends the same resource-reduction methodology to elliptic-curve cryptography, estimating fewer than 500,000 physical qubits for curves such as secp256k1. None of these are experimental results: no factorisation attempt accompanies any of them.",
-      vectors: ["neutral--gap-re-quantified-faster-than-prior-trend"],
-      date: "2025–26",
+      qualifiedEvent: "Gidney — RSA-2048 estimate falls below one million noisy qubits",
+      description: "Craig Gidney publishes a revised RSA-2048 resource estimate in May 2025. Under the same headline hardware assumptions used in the earlier Gidney–Ekerå estimate, the analysis estimates that RSA-2048 could be factored in less than a week using fewer than one million noisy physical qubits, compared with the earlier approximately 20-million-qubit estimate. The reduction comes from algorithmic and fault-tolerance improvements, including approximate residue arithmetic, denser storage of idle logical qubits and reduced magic-state-factory overhead. This is a theoretical resource estimate, not an experimental factorisation result, and therefore re-quantifies the engineering gap without demonstrating cryptographically relevant quantum capability.",
+      vectors: ["neutral--gap-re-quantified"],
+      date: "2025",
+      sources: [{ citation: "Gidney, C. How to factor 2048 bit RSA integers with less than a million noisy qubits. arXiv:2505.15917 (2025).", url: "https://arxiv.org/abs/2505.15917", locator: "Abstract; submitted 21 May 2025" }],
     }
   ],
 
@@ -81,6 +97,14 @@ export const FR_QE_0005 = {
       verificationStage: "VS-02",
       summary: "No threshold has been crossed since AS-001 — no factorisation of a commercially relevant key has occurred, and none is closer to occurring in any demonstrated sense. What has moved is the resource-estimate trajectory underlying OQ-001. Gidney (Google, May 2025) reduced the estimated physical-qubit requirement for RSA-2048 factorisation from the Gidney-Ekerå (2021) figure of ~20 million to under 1 million, under comparable fault-tolerance assumptions — roughly a 20-fold reduction achieved through improved algorithmic and error-correction engineering rather than any experimental demonstration. A 2026 proposal using QLDPC codes (an architecture distinct from the surface codes assumed in both prior estimates) suggests a further reduction toward ~100,000 physical qubits, though this is unvalidated at scale. A March 2026 Google/Stanford/Ethereum Foundation whitepaper applies the same style of resource-reduction analysis to elliptic-curve cryptography, estimating under 500,000 physical qubits for widely used curves. All three results are theoretical resource estimates — the same evidence category as INST-002's original figure — not experimental progress toward the claim. The pressure state remains ESCALATING; no reclassification is warranted by an estimate revision alone. What is new is the rate: three independent downward revisions within roughly eighteen months is faster compression of the engineering-gap estimate than the original record anticipated, and OQ-001 now has materially fresher input than it did at AS-001.",
       assessorNote: "Sourced from: Gidney, \"How to factor 2048-bit RSA with less than a million noisy qubits\" (May 2025, arXiv); Iceberg Quantum QLDPC architecture proposal (early 2026, unvalidated at scale per secondary reporting); Google Quantum AI / Stanford / Ethereum Foundation whitepaper on elliptic-curve cryptography resource estimates (March 2026). All three accessed via secondary technical reporting (The Quantum Insider, postquantum.com) rather than primary papers in full; primary sourcing should be substituted before this assessment is treated as fully verified.",
+    },
+    {
+      id: "AS-003",
+      date: "2026-09-15",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "LPR-001-D17 corrected the provenance and representation of all six legacy evidence instances. Shor's 1994 result establishes the algorithmic basis but not an RSA-2048 engineering estimate; Gidney–Ekerå provides the 20-million-qubit resource estimate; the 2022 Yan et al. experiment factored only small integers and proposed, rather than demonstrated, RSA-2048 scaling; and Gidney 2025 reduces the RSA-2048 estimate to fewer than one million noisy qubits without an experimental factorisation. The earlier AS-001/AS-002 wording remains historical and is not silently rewritten. The corrected evidence still supports ESCALATING / VS-02: substrate capability and theoretical resource estimates are advancing, but no commercially relevant RSA key has been factored by a quantum computer. The 2026 QLDPC Pinnacle estimate and other genuinely new resource analyses require normal Record Review before they can affect the canonical evidence state.",
+      assessorNote: "Corrective assessment issued after LPR-001-D17. It supersedes provenance-dependent historical characterisations in AS-001/AS-002 without altering their append-only text.",
     }
   ],
 
@@ -88,7 +112,7 @@ export const FR_QE_0005 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "The engineering gap — three to four orders of magnitude. The Gidney-Ekerå estimate requires approximately 20 million physical qubits for 2048-bit RSA factorisation. Current systems have hundreds to low thousands. The gap is not merely quantitative — scaling by three to four orders of magnitude in qubit count while maintaining below-threshold error rates and the necessary connectivity involves engineering challenges that are not simply extensions of current work. Crosstalk, control complexity, fabrication yield, and classical control overhead all scale non-linearly. The resistance mechanism is not that the gap is unbridgeable in principle, but that it is not bridgeable on any near-term timescale without engineering advances that have not yet been demonstrated even in prototype form.",
+      description: "The engineering gap remains large even after resource-estimate compression. Gidney's 2025 analysis reduces the RSA-2048 estimate from approximately 20 million noisy physical qubits to fewer than one million under stated assumptions, but no machine near that fault-tolerant scale has demonstrated the required computation. The gap is not merely qubit count: error rates, connectivity, sustained operation, control overhead and fault-tolerance resources must all be delivered simultaneously. The resistance mechanism is therefore the absence of experimentally demonstrated cryptographic-scale fault-tolerant hardware, not adherence to any single historical qubit estimate.",
     },
     {
       id: "RM-002",
@@ -98,22 +122,22 @@ export const FR_QE_0005 = {
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "Sequential substrate dependency. This claim cannot be satisfied until FR-QE-0003 (scaling behaviour) and FR-QE-0004 (below-threshold operation) are not merely demonstrated but extended to the scale required. The claim sits at the top of the PROG-QE capability stack; it is the last claim to be satisfiable, dependent on all substrate claims being satisfied first at sufficient scale. This is a sequential dependency bottleneck similar to FR-AM-0004's BN-001, but with a higher and more precisely quantified requirement. The bottleneck is not ambiguous — the Gidney-Ekerå estimate provides a specific qubit and error rate target — but the engineering path to that target is long and undemonstrated at the required scale.",
+      description: "Sequential substrate dependency. This claim cannot be satisfied until the scaling and below-threshold behaviour tracked in FR-QE-0003 and FR-QE-0004 extend to a fault-tolerant machine capable of executing an RSA-scale factoring circuit. Resource estimates provide architecture-dependent targets rather than a single fixed qubit threshold: the 2021 Gidney–Ekerå estimate was approximately 20 million noisy qubits, while Gidney 2025 estimates fewer than one million under updated methods. The bottleneck is therefore demonstrated end-to-end fault-tolerant scale, not attainment of the superseded 20-million-qubit figure itself.",
     },
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Demonstration of fault-tolerant logical qubit count at hundreds, then thousands. The specific milestones that would move this record from ESCALATING toward RESOLVING are stepwise: demonstration of 100 fault-tolerant logical qubits at below-threshold error rates, then 1000, then 10,000. Each milestone narrows the engineering gap by approximately one order of magnitude. No single experiment resolves the claim; it resolves through a series of engineering milestones, each of which is a necessary but not sufficient condition. The attractor is therefore a progression rather than a single event, distinguishing it from the attractors in FR-QE-0003 and FR-QE-0004.",
+      description: "Demonstration of increasing fault-tolerant logical scale toward a cryptographically relevant factoring workload. Intermediate milestones at hundreds and then thousands of useful logical qubits would materially narrow the engineering gap, but the decisive attractor is an end-to-end fault-tolerant factorisation experiment at a key size that is commercially cryptographically relevant, with a transparent classical comparator and resource accounting. Resource-estimate reductions alone do not satisfy this attractor.",
     }
   ],
 
   lineage: {
     items: [
-    { year: "1994", text: "Shor's algorithm. The theoretical claim is established immediately and completely. The practical question opens simultaneously. RSA key sizes considered secure against quantum attack are calculated from the algorithm's resource requirements." },
-    { year: "1995–2015", text: "Hardware too small to matter. Quantum computers demonstrate Shor's algorithm on trivial inputs. The gap between demonstrated capability and commercially relevant key sizes is so large that no meaningful engineering progress toward the claim is visible. The claim is in EMERGING." },
-    { year: "2021", text: "Gidney-Ekerå resource estimate. The most detailed published estimate quantifies the engineering gap: approximately 20 million physical qubits for 2048-bit RSA. This estimate is simultaneously sobering (the gap is enormous) and clarifying (the target is now precisely defined)." },
-    { year: "2023–24", text: "Substrate progress makes the trajectory credible. FR-QE-0003 and FR-QE-0004 results demonstrate that the error correction engineering required for the claim's substrate is advancing on a credible path. The claim enters ESCALATING." },
-    { year: "2024", text: "NIST PQC standards finalised. Global cryptographic infrastructure begins migration away from RSA in anticipation of the claim's eventual satisfaction. The world treats the claim as a future certainty even as the engineering gap remains enormous." }
+      { year: "1994", text: "Shor publishes polynomial-time quantum algorithms for factoring and discrete logarithms, establishing the theoretical basis for quantum attacks on RSA." },
+      { year: "2019–21", text: "Gidney–Ekerå quantify one fault-tolerant RSA-2048 path at approximately 20 million noisy physical qubits and eight hours under stated assumptions." },
+      { year: "2022–23", text: "Yan et al. demonstrate hybrid factorisation only at small integer sizes and estimate a 372-qubit path to challenge RSA-2048; an independent implementation contests the claimed scaling beyond small inputs." },
+      { year: "2024", text: "Error-correction substrate evidence strengthens and NIST finalises ML-KEM, ML-DSA and SLH-DSA, while no cryptographically relevant quantum factorisation is demonstrated." },
+      { year: "2025", text: "Gidney reduces the theoretical RSA-2048 estimate to fewer than one million noisy qubits and less than one week under the same headline hardware assumptions as the earlier estimate. The change is theoretical resource compression, not experimental RSA progress." }
     ],
     relatedRecords: [],
   },
@@ -121,12 +145,12 @@ export const FR_QE_0005 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "What is the realistic timeline for reaching the Gidney-Ekerå qubit count? Current hardware roadmaps from IBM, Google, and Microsoft project millions of physical qubits within 10–15 years, but roadmap projections have historically been optimistic. The engineering challenges at 20 million qubits are not simply extensions of current work.",
+      question: "How quickly can experimentally demonstrated fault-tolerant hardware close the gap to the best primary-source RSA-2048 resource estimates? The canonical estimate moved from approximately 20 million noisy qubits in Gidney–Ekerå to fewer than one million in Gidney 2025, but neither estimate is an experimental roadmap or evidence that the required machine exists.",
       raisedDate: "2024-01-15",
     },
     {
       id: "OQ-002",
-      question: "INST-004 (NIST PQC standards) is the second occurrence of anticipatory institutional evidence as an evidence object type (the first was FR-AM-0004 INST-003, the Helion/Microsoft contract). The corpus now has two instances. Whether anticipatory institutional acts constitute evidence for a claim — and at what weight — is a recurring question that may warrant attention before a third occurrence.",
+      question: "IN-004 (NIST PQC standards) is the second occurrence of anticipatory institutional evidence as an evidence object type (the first was FR-AM-0004 INST-003, the Helion/Microsoft contract). The corpus now has two instances. Whether anticipatory institutional acts constitute evidence for a claim — and at what weight — is a recurring question that may warrant attention before a third occurrence.",
       raisedDate: "2024-01-15",
     },
     {
@@ -136,7 +160,7 @@ export const FR_QE_0005 = {
     },
     {
       id: "OQ-004",
-      question: "IN-006 documents three independent downward revisions to the RSA/ECC resource estimate within roughly eighteen months, compared with one major revision in the preceding decade. Is this pace itself evidence of anything — a maturing theoretical toolkit converging on a real figure, or a sequence of estimates each exploiting a different unproven architectural assumption (surface codes, then QLDPC codes, then a third approach not yet proposed)? Until a fourth estimate either confirms or breaks the trend, this question cannot be answered from the evidence available at AS-002.",
+      question: "How much evidentiary weight should repeated downward revisions in theoretical RSA resource estimates receive when the architectural assumptions themselves change? LPR-001-D17 confirms the 2025 Gidney reduction but removes unreviewed 2026 estimates from the canonical legacy instance; those estimates must enter through normal Record Review before any trend claim is made.",
       raisedDate: "2026-06-29",
     }
   ],
@@ -154,8 +178,8 @@ export const FR_QE_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-014", date: "2026-09-15", field: "provenance_corrected", from: "LPR-001-D17 discrepancies", to: "PASS-AFTER-CORRECTION", note: "LPR-001-D17 bounded correction: repaired IN-001 through IN-006, added confidently established structured provenance, corrected dependent mechanisms, lineage and open-question wording, and appended AS-003 rather than rewriting historical assessments. Removed unreviewed 2026 QLDPC/ECC material from legacy IN-006 so it can be handled through normal Record Review. Pressure state remains ESCALATING; verification stage remains VS-02." },
     {"id":"M-013","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_QE_0005_RSA_quantum_factorisation.html (Drive file 1xzJuLkAdDhGDC2Rc-yQZDH-R8vlVvHHi). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
-    // APPEND-ONLY. Newest first.
     { id: "M-012", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-006 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
     { id: "M-011", date: "2026-07-08", field: "reference_corrected", from: "—", to: "REFERENCE-CORRECTED", note: "Editorial Correction (GP-001): IN-004 and OQ-002 referred to the stale identifier FR-MF-0004 for the Helion/Microsoft fusion contract. Corrected to FR-AM-0004 following the FR-MF-* → FR-AM-* programme identifier migration (see FR-AM-0004 M-007). No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed." },
     { id: "M-010", date: "2026-07-08", field: "realization_note_added", from: "—", to: "REN-001", note: "realizationNotes field added to schema. REN-001: fault-tolerant hardware scale/depth/overhead dependency distinguished from algorithmic and resource-estimate evidence. Corpus Review — Realization Note Candidates (v2)." },
