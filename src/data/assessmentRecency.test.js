@@ -60,6 +60,10 @@ test("records without assessments remain structurally invalid", () => {
 test("LAD-001 historical display dates are used by assessment recency", () => {
   const coldFusion = ALL_RECORDS.find((record) => record.id === "FR-AM-0001");
   const recency = getAssessmentRecency(coldFusion);
-  assert.equal(recency.date, "2004 or earlier");
-  assert.equal(coldFusion.assessments.at(-1).date, "2024-01-15");
+  assert.deepEqual(recency, {
+    date: "2026-09-08",
+    type: "reassessment",
+    reaffirmation: true,
+  });
+  assert.equal(coldFusion.assessments.at(-1).date, "2026-09-08");
 });

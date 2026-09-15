@@ -171,7 +171,11 @@ test("audited record provenance is present in public static HTML", { skip }, () 
 
   for (const [route, reference] of expected) {
     const rendered = body(read(route));
-    assert.ok(rendered.includes('class="ev-source-reference"'), `${route} hides source references`);
+    assert.match(
+      rendered,
+      /class="(?:ev-source-reference|ev-structured-source)"/,
+      `${route} hides source provenance`,
+    );
     assert.ok(rendered.includes(reference), `${route} omits ${reference}`);
   }
 });

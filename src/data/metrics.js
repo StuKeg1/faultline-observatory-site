@@ -80,12 +80,55 @@ function mostRecentInstanceLogDate(record) {
  * detectMutationType() classifies it as creation_batch_internal — correct
  * for the homepage feed, wrong for "when was this record last assessed."
  */
+function assessmentLogCoverage(record) {
+  const assessments = record.assessments || [];
+  const mutations = record.mutationLog || [];
+  const represented = new Map();
+
+  // Combined governed mutations do not always use an assessment-specific
+  // field name. When they explicitly say that an assessment was appended,
+  // retain that evidence — but only when the mutation and assessment dates
+  // agree, so a later note that merely cites an older assessment cannot
+  // masquerade as its issuance log.
+  for (const mutation of mutations) {
+    const text = `${mutation.to || ""} ${mutation.note || ""}`;
+    const mentionedAssessmentIds = new Set(text.match(/\bAS-\d+\b/g) || []);
+    for (const assessment of assessments) {
+      if (assessment.date === mutation.date && mentionedAssessmentIds.has(assessment.id)) {
+        represented.set(assessment.id, mutation.date);
+      }
+    }
+  }
+
+  // Founding records often use ASSESSMENT(S)-ISSUED placeholders rather
+  // than canonical AS-* identifiers. Walk oldest-first and associate those
+  // entries with still-unrepresented assessments. The plural founding form
+  // represents the full same-day batch; singular legacy entries represent
+  // one assessment. FR-QE-0001's reconstructed founding log predates its
+  // stored assessment date, so the singular fallback deliberately selects
+  // the earliest remaining assessment when no same-day candidate exists.
+  for (const mutation of [...mutations].reverse()) {
+    if (!ASSESSMENT_ISSUED_FIELD_SYNONYMS.has(mutation.field)) continue;
+
+    const sameDay = assessments.filter(
+      (assessment) => assessment.date === mutation.date && !represented.has(assessment.id),
+    );
+    if (mutation.field === "assessments_issued") {
+      for (const assessment of sameDay) represented.set(assessment.id, mutation.date);
+      continue;
+    }
+
+    const candidate = sameDay[0] || assessments.find((assessment) => !represented.has(assessment.id));
+    if (candidate) represented.set(candidate.id, mutation.date);
+  }
+
+  return represented;
+}
+
 function mostRecentAssessmentLogDate(record) {
   let latest = null;
-  for (const m of record.mutationLog || []) {
-    if (ASSESSMENT_ISSUED_FIELD_SYNONYMS.has(m.field) && (latest === null || m.date > latest)) {
-      latest = m.date;
-    }
+  for (const date of assessmentLogCoverage(record).values()) {
+    if (latest === null || date > latest) latest = date;
   }
   return latest;
 }
@@ -118,13 +161,16 @@ function isInstanceField(mutation) {
  *
  * LIMITATION, stated plainly: this function can only check what a
  * mutation-log-based diff against the CURRENT corpus snapshot can see —
- * whether the count of assessments[] matches the count of
- * assessment-type mutation-log entries. It cannot, by itself, catch a
+ * whether every assessment in assessments[] is represented by a dated
+ * mutation. It cannot, by itself, catch a
  * change with literally zero log entry of any kind; that requires
  * comparing against a prior corpus snapshot (git history). The full
  * historical check was performed directly against git history in the
  * 2026-07-07 Full-Corpus Integrity Sweep (132 commits, all 26 records) and
  * found one historical instance (FR-QE-0001, AS-003), already remediated.
+ * Combined governed mutations are accepted when they explicitly name the
+ * appended assessment on the same date. Founding singular/plural placeholders
+ * are associated with their initial assessment or same-day assessment batch.
  * This function is the repeatable, corpus-only proxy that originally
  * surfaces that class of finding — it should be run every cycle; the full
  * git-history check is a heavier, periodic instrument, not a per-OHR one.
@@ -132,7 +178,7 @@ function isInstanceField(mutation) {
 export function getSilentMutationFindings(records) {
   return records
     .map((record) => {
-      const assessmentLogCount = (record.mutationLog || []).filter(isAssessmentField).length;
+      const assessmentLogCount = assessmentLogCoverage(record).size;
       const assessmentCount = (record.assessments || []).length;
       if (assessmentLogCount === assessmentCount) return null;
       return { recordId: record.id, assessmentCount, assessmentLogEntries: assessmentLogCount };

@@ -45,7 +45,8 @@ test("corrections affect derived interpretation without mutating assessments", (
   assert.equal(derived.verificationStage, "VS-04");
   assert.equal(derived.verificationStageProvenance.storedStage, "VS-05");
   assert.equal("authorityUrl" in derived.verificationStageProvenance, false);
-  assert.equal(getCurrentAssessment(record).verificationStage, "VS-04");
+  assert.equal(getCurrentAssessment(record).id, "AS-005");
+  assert.equal(getCurrentAssessment(record).verificationStage, "VS-05");
 });
 
 test("LAD-001 preserves recorded dates while deriving historical chronology for FR-AM-0001", () => {
@@ -54,21 +55,23 @@ test("LAD-001 preserves recorded dates while deriving historical chronology for 
 
   assert.deepEqual(
     record.assessments.map((assessment) => assessment.date),
-    ["2024-01-15", "2024-01-15", "2024-01-15"],
+    ["2024-01-15", "2024-01-15", "2024-01-15", "2026-09-08", "2026-09-08"],
   );
   assert.deepEqual(
     history.map((assessment) => assessment.recordedDate),
-    ["2024-01-15", "2024-01-15", "2024-01-15"],
+    ["2024-01-15", "2024-01-15", "2024-01-15", undefined, undefined],
   );
   assert.deepEqual(
     history.map((assessment) => assessment.date),
-    ["Mar 1989", "Apr–Nov 1989", "2004 or earlier"],
+    ["Mar 1989", "Apr–Nov 1989", "2004 or earlier", "2026-09-08", "2026-09-08"],
   );
 
   const stages = getVerificationStages(record);
   assert.equal(stages.find((stage) => stage.vsCode === "VS-01").date, "Mar 1989");
   assert.equal(stages.find((stage) => stage.vsCode === "VS-04").date, "Apr–Nov 1989");
-  assert.equal(stages.find((stage) => stage.vsCode === "VS-04").status, "current");
+  assert.equal(stages.find((stage) => stage.vsCode === "VS-04").status, "reached");
+  assert.equal(stages.find((stage) => stage.vsCode === "VS-05").date, "2026-09-08");
+  assert.equal(stages.find((stage) => stage.vsCode === "VS-05").status, "current");
   assert.equal(getStateEnteredDate(record), "2004 or earlier");
 });
 

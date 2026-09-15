@@ -14,7 +14,7 @@ export const FR_QE_0005 = {
   programme: "PROG-QE",
   lastProvenanceReview: "2026-09-15",
   provenanceReviewId: "LPR-001-D17",
-  provenanceOutcome: "pass_after_correction",
+  provenanceOutcome: "discrepancies_corrected",
   provenanceRepairStatus: "completed",
 
   claim: {

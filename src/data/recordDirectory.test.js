@@ -81,8 +81,10 @@ test("FR-QE-0001 preserves its governed S4 baseline and append-only reassessment
   assert.deepEqual(record.openQuestions.map(({ sourceId }) => sourceId), [
     "OQ-1", "OQ-2", "OQ-3", "OQ-4", "OQ-5",
   ]);
-  assert.equal(record.mutationLog[0].field, "assessment_issued");
-  assert.equal(record.mutationLog[1].field, "canonical_baseline_realigned");
+  assert.equal(record.mutationLog[0].field, "provenance_review");
+  assert.equal(record.mutationLog[0].to, "LPR-001-D13");
+  assert.equal(record.mutationLog.find(({ id }) => id === "M-006").field, "assessment_issued");
+  assert.equal(record.mutationLog.find(({ id }) => id === "M-005").field, "canonical_baseline_realigned");
 
   const operativeText = JSON.stringify({
     claim: record.claim,

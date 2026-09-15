@@ -51,7 +51,8 @@ test("LAD-001 display dates flow through the compact trajectory", () => {
     "Apr–Nov 1989",
     "2004 or earlier",
   ]);
-  assert.equal(trajectory.currentAssessmentDate, "2004 or earlier");
+  assert.equal(trajectory.currentAssessmentDate, "2026-09-08");
+  assert.equal(trajectory.currentStateEnteredDate, "2004 or earlier");
 });
 
 test("every multi-assessment record has a reliable compact trajectory", () => {

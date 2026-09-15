@@ -33,7 +33,7 @@ export const FR_AI_0009 = {
       date: "2023–25",
       sourceReference: "Hafner et al., 'Mastering diverse control tasks through world models', Nature 640 (2025), doi:10.1038/s41586-025-08744-2",
       sources: [
-        { citation: "Hafner, D. et al. (2025), Mastering diverse control tasks through world models, Nature 640, 647–653.", url: "https://www.nature.com/articles/s41586-025-08744-2", locator: "Abstract; evaluation across eight domains and more than 150 tasks; fixed-hyperparameter comparison" },
+        { citation: "Hafner, D. et al. (2025), Mastering diverse control tasks through world models, Nature 640, 647–653.", url: "https://www.nature.com/articles/s41586-025-08744-2", doi: "10.1038/s41586-025-08744-2", locator: "Abstract; evaluation across eight domains and more than 150 tasks; fixed-hyperparameter comparison" },
       ],
     },
     {
@@ -194,6 +194,7 @@ export const FR_AI_0009 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-009", date: "2026-09-15", field: "reference_corrected", from: "IN-001 structured source without DOI field", to: "IN-001 structured source with DOI 10.1038/s41586-025-08744-2", note: "Bounded provenance-display correction: the DOI already preserved in IN-001's legacy sourceReference was added to the corresponding structured source so the public Evidence Sources rendering retains it. Citation, URL, locator, evidence wording and assessment are unchanged." },
     { id: "M-008", date: "2026-09-07", field: "provenance_review", from: "—", to: "LPR-001-D09", note: "Legacy provenance review completed. All eight evidence instances examined and verified against their stated primary sources. Structured sources[] provenance added to IN-001 through IN-008 without changing evidence descriptions, vectors, assessment, pressure state, verification stage, mechanisms, lineage or open questions. No material discrepancies and no new scientific-evidence candidates were identified. Review outcome verified; repair not required." },
     { id: "M-007", date: "2026-08-28", field: "reference_corrected", from: "Instance-level references absent", to: "IN-001–IN-008 source references recorded", note: "GP-001 provenance correction following the bounded three-record source/DOI audit. Stable publication identifiers were added to every evidence instance. IN-003 is explicitly identified as a corporate research announcement without a DOI; IN-008 carries its own CaliBench reference because it post-dates AS-001. No evidence description, interpretation, assessment, pressureState, verificationStage, mechanism, or open question changed." },
     { id: "M-006", date: "2026-08-22", field: "instance_added", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "IN-008 CaliBench added following RR-2026-08-22-01 Post-Scout Human Record Review and explicit operator authorization. The approved action was INSTANCE only; AS-001, ESCALATING pressure state and VS-02 verification stage remain unchanged." },

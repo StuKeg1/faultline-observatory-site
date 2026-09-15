@@ -13,16 +13,8 @@ function record(id) {
   return found;
 }
 
-test("institutional health: silent-mutation proxy deviations are fully explained by explicit log variants", () => {
-  // The current generic proxy counts assessment-log rows rather than the
-  // assessments represented by each row. FR-AM-0001 batches its three
-  // founding assessments in one
-  //   `assessments_issued` entry.
-  // Reissues and provenance-led assessment corrections are recognised by the
-  // shared assessment-field taxonomy. Any additional proxy deviation fails.
-  assert.deepEqual(getSilentMutationFindings(ALL_RECORDS), [
-    { recordId: "FR-AM-0001", assessmentCount: 3, assessmentLogEntries: 1 },
-  ]);
+test("institutional health: every assessment is represented by a mutation", () => {
+  assert.deepEqual(getSilentMutationFindings(ALL_RECORDS), []);
 
   const qe0002 = record("FR-QE-0002");
   assert.ok(
@@ -43,6 +35,22 @@ test("institutional health: silent-mutation proxy deviations are fully explained
   assert.match(foundingBatch.note, /ASSESSMENT-001/);
   assert.match(foundingBatch.note, /ASSESSMENT-002/);
   assert.match(foundingBatch.note, /ASSESSMENT-003/);
+
+  const qe0004 = record("FR-QE-0004");
+  assert.ok(
+    qe0004.mutationLog.some(
+      (m) => m.field === "record_review" && m.date === "2026-09-14" && m.to.includes("AS-003"),
+    ),
+    "FR-QE-0004 AS-003 must remain explicitly represented by its combined Record Review mutation",
+  );
+
+  const qe0005 = record("FR-QE-0005");
+  assert.ok(
+    qe0005.mutationLog.some(
+      (m) => m.date === "2026-09-15" && /Appended AS-004/.test(m.note),
+    ),
+    "FR-QE-0005 AS-004 must remain explicitly represented by its combined evidence mutation",
+  );
 });
 
 test("institutional health: no unexplained open-question silent closures", () => {
