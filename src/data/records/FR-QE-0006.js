@@ -12,6 +12,10 @@
 export const FR_QE_0006 = {
   id: "FR-QE-0006",
   programme: "PROG-QE",
+  lastProvenanceReview: "2026-09-16",
+  provenanceReviewId: "LPR-001-D18",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "A fault-tolerant quantum computer can execute a practically useful quantum algorithm beyond classical simulation.",
@@ -61,6 +65,7 @@ export const FR_QE_0006 = {
       description: "A 107-qubit superconducting surface-code processor demonstrates composed logical Clifford operations — lattice-surgery merge/split, patch expansion and shrinkage, and logical CNOT, Hadamard, and phase gates — with multi-round syndrome extraction and neural-network decoding, without post-selection (arXiv:2607.01473, large institutional collaboration, primary preprint, submitted 1 July 2026). This is a meaningful active-computation building block: it moves the fault-tolerant substrate from protected logical memory, and from the application-ready-in-principle status recorded at IN-003, to logical gate operations actually demonstrated. It does not demonstrate a practically useful quantum algorithm beyond classical simulation, which is this record's claim: the demonstrated set is Clifford-only (universal computation still requires magic-state injection for non-Clifford gates), the codes are distance-three, and the work supplies no target problem, leaving BN-001 (no agreed target problem) untouched. It is classified NEUTRAL because it advances the substrate without bearing for or against the useful-algorithm claim itself. No independent replication yet; peer review pending.",
       vectors: ["NEUTRAL"],
       date: "2026",
+      sources: [{ citation: "Lin, W. et al. Surface code logical operations on a superconducting quantum processor. arXiv:2607.01473 (2026).", url: "https://arxiv.org/abs/2607.01473", doi: "10.48550/arXiv.2607.01473", locator: "Abstract; submitted 1 July 2026" }],
     }
   ],
 
@@ -85,64 +90,33 @@ export const FR_QE_0006 = {
   ],
 
   mechanisms: [
-    {
-      id: "RM-001",
-      type: "RESISTANCE MECHANISM",
-      description: "Classical algorithm improvement rate. The claim requires execution beyond classical simulation. Classical quantum chemistry and simulation methods continue to improve. For each proposed quantum advantage problem, the relevant comparison is against the best current classical method — which is itself a moving target. Tensor network methods, DMRG, and ML-augmented classical simulation have already classically solved some problems previously proposed as quantum advantage targets. The resistance mechanism is the same race dynamic as FR-QE-0005 RM-002, but operating on a nearer timescale and on problem classes where the race is currently active. The quantum side must advance faster than the classical side on the specific problem instances where advantage is claimed.",
-    },
-    {
-      id: "BN-001",
-      type: "BOTTLENECK",
-      description: "No agreed quantum advantage target problem. The claim requires a practically useful algorithm beyond classical simulation, but no consensus exists on which specific problem instance will first satisfy both criteria simultaneously. The quantum chemistry community has proposed FeMoco (nitrogen fixation catalyst), ruthenium-based catalysts, and vibrational spectra of small molecules as candidate first-advantage problems — but as classical methods improve, each candidate may become classically tractable before quantum hardware reaches the required scale. The bottleneck is that the first claim satisfaction event requires landing on a specific problem instance where quantum hardware reaches the required scale before classical methods solve it. The problem instance cannot be identified in advance with certainty.",
-    },
-    {
-      id: "AT-001",
-      type: "ATTRACTOR",
-      description: "First 1000-logical-qubit fault-tolerant chemistry demonstration. Resource estimation identifies approximately 1000–4000 logical qubits as sufficient for the first practically useful fault-tolerant quantum chemistry calculations. If a system of this scale is demonstrated with below-threshold error rates and executes a quantum chemistry calculation on a problem instance not tractable classically, the claim would be satisfied. The attractor is more tightly defined and closer in engineering terms than FR-QE-0005's attractor, making this record the most near-term application claim in PROG-QE. Several hardware roadmaps (IBM, Google, Microsoft) project this scale within five to ten years under optimistic assumptions.",
-    }
+    { id: "RM-001", type: "RESISTANCE MECHANISM", description: "Classical algorithm improvement rate. The claim requires execution beyond classical simulation. Classical quantum chemistry and simulation methods continue to improve. For each proposed quantum advantage problem, the relevant comparison is against the best current classical method — which is itself a moving target. Tensor network methods, DMRG, and ML-augmented classical simulation have already classically solved some problems previously proposed as quantum advantage targets. The resistance mechanism is the same race dynamic as FR-QE-0005 RM-002, but operating on a nearer timescale and on problem classes where the race is currently active. The quantum side must advance faster than the classical side on the specific problem instances where advantage is claimed." },
+    { id: "BN-001", type: "BOTTLENECK", description: "No agreed quantum advantage target problem. The claim requires a practically useful algorithm beyond classical simulation, but no consensus exists on which specific problem instance will first satisfy both criteria simultaneously. The quantum chemistry community has proposed FeMoco (nitrogen fixation catalyst), ruthenium-based catalysts, and vibrational spectra of small molecules as candidate first-advantage problems — but as classical methods improve, each candidate may become classically tractable before quantum hardware reaches the required scale. The bottleneck is that the first claim satisfaction event requires landing on a specific problem instance where quantum hardware reaches the required scale before classical methods solve it. The problem instance cannot be identified in advance with certainty." },
+    { id: "AT-001", type: "ATTRACTOR", description: "First 1000-logical-qubit fault-tolerant chemistry demonstration. Resource estimation identifies approximately 1000–4000 logical qubits as sufficient for the first practically useful fault-tolerant quantum chemistry calculations. If a system of this scale is demonstrated with below-threshold error rates and executes a quantum chemistry calculation on a problem instance not tractable classically, the claim would be satisfied. The attractor is more tightly defined and closer in engineering terms than FR-QE-0005's attractor, making this record the most near-term application claim in PROG-QE. Several hardware roadmaps (IBM, Google, Microsoft) project this scale within five to ten years under optimistic assumptions." }
   ],
 
   lineage: {
     items: [
-    { year: "1994–2009", text: "Quantum algorithm portfolio established. Shor, Grover, HHL, and quantum phase estimation demonstrate that fault-tolerant quantum computers could provide speedups on relevant problems. The theoretical utility case is established; the practical case awaits hardware." },
-    { year: "2010–20", text: "NISQ era begins; utility claims emerge and are contested. Noisy intermediate-scale devices are proposed as platforms for near-term quantum advantage. Claims are made and contested; classical simulation methods close many proposed advantage gaps." },
-    { year: "2022–23", text: "Resource estimation matures; targets become quantified. Detailed studies establish that fault-tolerant quantum chemistry advantage requires approximately 1000–4000 logical qubits. The gap is quantified for the first time at useful precision." },
-    { year: "2023–24", text: "Fault-tolerant substrate demonstrated; claim transitions to ESCALATING. Below-threshold error correction at small scale demonstrates that the substrate for executing simple useful circuits now exists in principle. The engineering path to claim satisfaction is credible." }
+      { year: "1994–2009", text: "Quantum algorithm portfolio established. Shor, Grover, HHL, and quantum phase estimation demonstrate that fault-tolerant quantum computers could provide speedups on relevant problems. The theoretical utility case is established; the practical case awaits hardware." },
+      { year: "2010–20", text: "NISQ era begins; utility claims emerge and are contested. Noisy intermediate-scale devices are proposed as platforms for near-term quantum advantage. Claims are made and contested; classical simulation methods close many proposed advantage gaps." },
+      { year: "2022–23", text: "Resource estimation matures; targets become quantified. Detailed studies establish that fault-tolerant quantum chemistry advantage requires approximately 1000–4000 logical qubits. The gap is quantified for the first time at useful precision." },
+      { year: "2023–24", text: "Fault-tolerant substrate demonstrated; claim transitions to ESCALATING. Below-threshold error correction at small scale demonstrates that the substrate for executing simple useful circuits now exists in principle. The engineering path to claim satisfaction is credible." }
     ],
     relatedRecords: [],
   },
 
   openQuestions: [
-    {
-      id: "OQ-001",
-      question: "Which specific molecular or physical system will provide the first unambiguous fault-tolerant quantum advantage? The absence of an agreed target problem (BN-001) means the claim may be satisfied on a problem not currently anticipated. Whether the first advantage demonstration will be accepted as \"practically useful\" by the broader scientific community depends on which problem it solves.",
-      raisedDate: "2024-01-15",
-    },
-    {
-      id: "OQ-002",
-      question: "Does the PROG-QE diagnosis — technically coherent but temporally displaced — create investment sustainability risk? The programme requires years to decades of continued investment before applications are reachable. If investment cycles shorten before the applications arrive, the substrate may stop advancing before the claim is satisfied. This is an institutional question rather than a technical one, but it is now the programme's structural tension.",
-      raisedDate: "2024-01-15",
-    },
-    {
-      id: "OQ-003",
-      question: "All three programme diagnoses are now established. Is there a meta-observation available about what kinds of programmes generate which kinds of diagnoses? PROG-AI: surface/depth inversion (advancing capabilities, contested foundations). PROG-AM: collapse dynamic (competitive pressure, premature announcement). PROG-QE: temporal displacement (coherent foundations, distant applications). Are these diagnosis types a property of the domains, or of the specific claim configurations the Observatory selected?",
-      raisedDate: "2024-01-15",
-    }
+    { id: "OQ-001", question: "Which specific molecular or physical system will provide the first unambiguous fault-tolerant quantum advantage? The absence of an agreed target problem (BN-001) means the claim may be satisfied on a problem not currently anticipated. Whether the first advantage demonstration will be accepted as \"practically useful\" by the broader scientific community depends on which problem it solves.", raisedDate: "2024-01-15" },
+    { id: "OQ-002", question: "Does the PROG-QE diagnosis — technically coherent but temporally displaced — create investment sustainability risk? The programme requires years to decades of continued investment before applications are reachable. If investment cycles shorten before the applications arrive, the substrate may stop advancing before the claim is satisfied. This is an institutional question rather than a technical one, but it is now the programme's structural tension.", raisedDate: "2024-01-15" },
+    { id: "OQ-003", question: "All three programme diagnoses are now established. Is there a meta-observation available about what kinds of programmes generate which kinds of diagnoses? PROG-AI: surface/depth inversion (advancing capabilities, contested foundations). PROG-AM: collapse dynamic (competitive pressure, premature announcement). PROG-QE: temporal displacement (coherent foundations, distant applications). Are these diagnosis types a property of the domains, or of the specific claim configurations the Observatory selected?", raisedDate: "2024-01-15" }
   ],
 
   realizationNotes: [
-    {
-      id: "REN-001",
-      note: "Realization currently depends on fault-tolerant hardware at application-relevant logical-qubit count and sustained circuit depth, distinct from the simple fault-tolerant circuits already demonstrated.",
-      conflation: null,
-      raisedDate: "2026-07-08",
-      status: "open",
-      closedDate: null,
-      closedNote: null,
-    }
+    { id: "REN-001", note: "Realization currently depends on fault-tolerant hardware at application-relevant logical-qubit count and sustained circuit depth, distinct from the simple fault-tolerant circuits already demonstrated.", conflation: null, raisedDate: "2026-07-08", status: "open", closedDate: null, closedNote: null }
   ],
 
   mutationLog: [
+    { id: "M-012", date: "2026-09-16", field: "provenance_review", from: "—", to: "LPR-001-D18 REVIEW REQUIRED", note: "LPR-001-D18 audited all six evidence instances. IN-006 was source-verified and provenance-enriched. IN-001 through IN-005 contain factual, attribution, chronology, metric, or source-chain discrepancies requiring bounded correction and were left substantively untouched. One new normal Record Review candidate was surfaced: Proctor et al., arXiv:2609.12146 (QUOPS benchmark); it was not admitted through LPR-001." },
     {"id":"M-011","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_QE_0006_fault_tolerant_quantum_utility.html (Drive file 1N-FOxZkIRwc5qmpce1erwAqD9rpqRpTF). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-010", date: "2026-08-17", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued during OHR-2026-09 catch-up review to close the evidence-assessment gap created by IN-006. Composed logical Clifford operations are recognised as meaningful substrate progress but do not demonstrate a practically useful algorithm beyond classical simulation. Pressure State remains ESCALATING; Verification Stage remains VS-02; mechanisms and open questions remain unchanged." },
