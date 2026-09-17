@@ -12,6 +12,10 @@
 export const FR_QE_0007 = {
   id: "FR-QE-0007",
   programme: "PROG-QE",
+  lastProvenanceReview: "2026-09-17",
+  provenanceReviewId: "LPR-001-D19",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "A quantum computer has achieved quantum advantage on a practically relevant problem.",
@@ -28,20 +32,9 @@ export const FR_QE_0007 = {
       date: "Oct 2019",
       sourceReference: "Arute et al., Nature 574 (2019), doi:10.1038/s41586-019-1666-5; Pednault et al., arXiv:1910.09534; Pan, Chen & Zhang, Physical Review Letters 129 (2022), doi:10.1103/PhysRevLett.129.090502",
       sources: [
-        {
-          citation: "Arute et al., ‘Quantum supremacy using a programmable superconducting processor’, Nature 574, 505–510 (2019)",
-          url: "https://www.nature.com/articles/s41586-019-1666-5",
-          doi: "10.1038/s41586-019-1666-5",
-          locator: "Abstract and main result",
-        },
-        {
-          citation: "Pednault et al., ‘Leveraging Secondary Storage to Simulate Deep 54-qubit Sycamore Circuits’ (2019)",
-          url: "https://arxiv.org/abs/1910.09534",
-        },
-        {
-          citation: "Pan, Chen & Zhang, ‘Solving the Sampling Problem of the Sycamore Quantum Circuits’, Physical Review Letters 129, 090502 (2022)",
-          doi: "10.1103/PhysRevLett.129.090502",
-        },
+        { citation: "Arute et al., ‘Quantum supremacy using a programmable superconducting processor’, Nature 574, 505–510 (2019)", url: "https://www.nature.com/articles/s41586-019-1666-5", doi: "10.1038/s41586-019-1666-5", locator: "Abstract and main result" },
+        { citation: "Pednault et al., ‘Leveraging Secondary Storage to Simulate Deep 54-qubit Sycamore Circuits’ (2019)", url: "https://arxiv.org/abs/1910.09534" },
+        { citation: "Pan, Chen & Zhang, ‘Solving the Sampling Problem of the Sycamore Quantum Circuits’, Physical Review Letters 129, 090502 (2022)", doi: "10.1103/PhysRevLett.129.090502" },
       ],
     },
     {
@@ -52,14 +45,8 @@ export const FR_QE_0007 = {
       date: "2020–23",
       sourceReference: "Zhong et al., Science 370 (2020), doi:10.1126/science.abe8770; Madsen et al., Nature 606 (2022), doi:10.1038/s41586-022-04725-x",
       sources: [
-        {
-          citation: "Zhong et al., ‘Quantum computational advantage using photons’, Science 370, 1460–1463 (2020)",
-          doi: "10.1126/science.abe8770",
-        },
-        {
-          citation: "Madsen et al., ‘Quantum computational advantage with a programmable photonic processor’, Nature 606 (2022)",
-          doi: "10.1038/s41586-022-04725-x",
-        },
+        { citation: "Zhong et al., ‘Quantum computational advantage using photons’, Science 370, 1460–1463 (2020)", doi: "10.1126/science.abe8770" },
+        { citation: "Madsen et al., ‘Quantum computational advantage with a programmable photonic processor’, Nature 606 (2022)", doi: "10.1038/s41586-022-04725-x" },
       ],
     },
     {
@@ -97,74 +84,32 @@ export const FR_QE_0007 = {
   ],
 
   assessments: [
-    // APPEND-ONLY. Do not modify existing entries.
-    {
-      id: "AS-001",
-      date: "2024-01-15",
-      pressureState: "fragmenting",
-      verificationStage: "VS-03",
-      summary: "The claim has not been satisfied. No quantum computer has demonstrated advantage on a problem that simultaneously meets both the performance threshold (faster than best classical methods) and the practical relevance threshold (problem has genuine scientific or commercial value at the demonstrated scale). The evidence base contains strong demonstrations of one component without the other — advantage on demonstration problems (INST-001, 002, 004) or near-advantage on relevant problems (INST-005) — but no instance yet satisfies both simultaneously. IBM's quantum utility claim (INST-003) comes closest to bridging the two, reporting results on a problem with some scientific relevance that classical simulation was disputed to match, but the classical-simulation contest remains unresolved. The pressure state is FRAGMENTING: the evidence is splitting along two separate trajectories — demonstration-problem advantage growing stronger (INST-004) and relevant-problem simulation approaching but not reaching classical intractability (INST-005) — without converging on a single instance that would resolve the claim (OQ-001).",
-      assessorNote: null,
-    },
-    {
-      id: "AS-002",
-      date: "2026-08-28",
-      pressureState: "fragmenting",
-      verificationStage: "VS-03",
-      summary: "Quantum Echoes materially narrows the gap between demonstration advantage and useful computation without satisfying the claim. IN-006 connects a reproducible higher-order OTOC result reported as approximately 13,000 times faster than the estimated classical computation with a concrete molecular-structure workflow using related OTOC measurements. The decisive conjunction remains absent: the beyond-classical result is demonstrated on large 65-qubit Quantum Echoes circuits, while practical utility is demonstrated on smaller molecular systems that do not themselves establish advantage over the best classical methods. The 2026 tensor-network analysis further supports the classical-intractability component but is produced by Google Quantum AI-affiliated authors and is not independent replication. The pressure state therefore remains FRAGMENTING: performance and relevance have moved closer within one technical programme but still occupy separate experimental regimes. Verification remains VS-03 because the central result is published and auditable, but neither independently replicated nor operationally demonstrated on a practically relevant beyond-classical task.",
-      assessorNote: "Bounded FR-QE-0007 impact review, 2026-08-28. Primary evidence: Google Quantum AI et al., Nature 646 (2025) 825–830, doi:10.1038/s41586-025-09526-6; Zhang et al., arXiv:2510.19550; Bermejo et al., arXiv:2604.15427. The Bermejo et al. follow-up is explicitly treated as Google-affiliated corroboration, not independent replication.",
-    }
+    { id: "AS-001", date: "2024-01-15", pressureState: "fragmenting", verificationStage: "VS-03", summary: "The claim has not been satisfied. No quantum computer has demonstrated advantage on a problem that simultaneously meets both the performance threshold (faster than best classical methods) and the practical relevance threshold (problem has genuine scientific or commercial value at the demonstrated scale). The evidence base contains strong demonstrations of one component without the other — advantage on demonstration problems (INST-001, 002, 004) or near-advantage on relevant problems (INST-005) — but no instance yet satisfies both simultaneously. IBM's quantum utility claim (INST-003) comes closest to bridging the two, reporting results on a problem with some scientific relevance that classical simulation was disputed to match, but the classical-simulation contest remains unresolved. The pressure state is FRAGMENTING: the evidence is splitting along two separate trajectories — demonstration-problem advantage growing stronger (INST-004) and relevant-problem simulation approaching but not reaching classical intractability (INST-005) — without converging on a single instance that would resolve the claim (OQ-001).", assessorNote: null },
+    { id: "AS-002", date: "2026-08-28", pressureState: "fragmenting", verificationStage: "VS-03", summary: "Quantum Echoes materially narrows the gap between demonstration advantage and useful computation without satisfying the claim. IN-006 connects a reproducible higher-order OTOC result reported as approximately 13,000 times faster than the estimated classical computation with a concrete molecular-structure workflow using related OTOC measurements. The decisive conjunction remains absent: the beyond-classical result is demonstrated on large 65-qubit Quantum Echoes circuits, while practical utility is demonstrated on smaller molecular systems that do not themselves establish advantage over the best classical methods. The 2026 tensor-network analysis further supports the classical-intractability component but is produced by Google Quantum AI-affiliated authors and is not independent replication. The pressure state therefore remains FRAGMENTING: performance and relevance have moved closer within one technical programme but still occupy separate experimental regimes. Verification remains VS-03 because the central result is published and auditable, but neither independently replicated nor operationally demonstrated on a practically relevant beyond-classical task.", assessorNote: "Bounded FR-QE-0007 impact review, 2026-08-28. Primary evidence: Google Quantum AI et al., Nature 646 (2025) 825–830, doi:10.1038/s41586-025-09526-6; Zhang et al., arXiv:2510.19550; Bermejo et al., arXiv:2604.15427. The Bermejo et al. follow-up is explicitly treated as Google-affiliated corroboration, not independent replication." },
   ],
 
   mechanisms: [
-    {
-      id: "BN-001",
-      type: "BOTTLENECK",
-      description: "\"Practically relevant\" lacks an agreed operational definition. The claim requires advantage on a practically relevant problem, but no agreed standard specifies what practical relevance requires. Different researchers and communities apply different implicit thresholds: some accept scientific relevance (the problem illuminates physical phenomena); others require commercial relevance (the result has identifiable downstream economic value); others require direct application (the computation produces output usable without further classical processing). Without agreement on this threshold, positive and contesting evidence cannot be cleanly compared — the Sycamore result is supportive under some definitions of relevance and irrelevant under others. This is the same threshold-dispute bottleneck as FR-BT-0001 BN-001 and FR-AM-0004 BN-001: not measurement validity, but an undefined success threshold.",
-    },
-    {
-      id: "RM-001",
-      type: "RESISTANCE MECHANISM",
-      description: "Classical algorithm improvement rate on relevant problems. Classical simulation algorithms continue improving for the specific problem types where quantum advantage is most plausible — quantum chemistry, materials simulation, combinatorial optimisation. For each proposed quantum advantage target on a practically relevant problem, the classical community has typically produced improved classical algorithms that reduce or eliminate the demonstrated gap before it can be confirmed as durable. The resistance mechanism is the same race dynamic as FR-QE-0005 RM-002 and FR-QE-0006 RM-001, operating at a more immediate timescale: quantum hardware reaches near-classical performance on relevant problems, classical methods improve, the gap closes before it is confirmed as advantage.",
-    },
-    {
-      id: "AT-001",
-      type: "ATTRACTOR",
-      description: "First fault-tolerant quantum chemistry calculation beyond classical reach. The resolution path for this record converges with FR-QE-0006's attractor: a fault-tolerant quantum computer solving a practically relevant quantum chemistry problem (FeMoco, ruthenium catalyst, or equivalent) that classical simulation cannot match within a reasonable time budget. This would simultaneously satisfy both the performance component and the practical relevance component. The attractor is shared with FR-QE-0006 — the two records describe different aspects of the same near-term milestone.",
-    }
+    { id: "BN-001", type: "BOTTLENECK", description: "\"Practically relevant\" lacks an agreed operational definition. The claim requires advantage on a practically relevant problem, but no agreed standard specifies what practical relevance requires. Different researchers and communities apply different implicit thresholds: some accept scientific relevance (the problem illuminates physical phenomena); others require commercial relevance (the result has identifiable downstream economic value); others require direct application (the computation produces output usable without further classical processing). Without agreement on this threshold, positive and contesting evidence cannot be cleanly compared — the Sycamore result is supportive under some definitions of relevance and irrelevant under others. This is the same threshold-dispute bottleneck as FR-BT-0001 BN-001 and FR-AM-0004 BN-001: not measurement validity, but an undefined success threshold." },
+    { id: "RM-001", type: "RESISTANCE MECHANISM", description: "Classical algorithm improvement rate on relevant problems. Classical simulation algorithms continue improving for the specific problem types where quantum advantage is most plausible — quantum chemistry, materials simulation, combinatorial optimisation. For each proposed quantum advantage target on a practically relevant problem, the classical community has typically produced improved classical algorithms that reduce or eliminate the demonstrated gap before it can be confirmed as durable. The resistance mechanism is the same race dynamic as FR-QE-0005 RM-002 and FR-QE-0006 RM-001, operating at a more immediate timescale: quantum hardware reaches near-classical performance on relevant problems, classical methods improve, the gap closes before it is confirmed as advantage." },
+    { id: "AT-001", type: "ATTRACTOR", description: "First fault-tolerant quantum chemistry calculation beyond classical reach. The resolution path for this record converges with FR-QE-0006's attractor: a fault-tolerant quantum computer solving a practically relevant quantum chemistry problem (FeMoco, ruthenium catalyst, or equivalent) that classical simulation cannot match within a reasonable time budget. This would simultaneously satisfy both the performance component and the practical relevance component. The attractor is shared with FR-QE-0006 — the two records describe different aspects of the same near-term milestone." },
   ],
 
-  lineage: {
-    items: [
+  lineage: { items: [
     { year: "1994–2012", text: "Theoretical quantum advantage established. Shor, Grover, and related algorithms prove that quantum computers can outperform classical computers on specific problems. The claim is theoretically established; hardware cannot yet demonstrate it." },
     { year: "2019", text: "Google Sycamore — first \"supremacy\" claim. Advantage demonstrated on a demonstration problem; practical relevance contested. The claim enters the ESCALATING phase but the relevance component is immediately challenged." },
     { year: "2020–23", text: "Repeated advantage demonstrations without practical relevance; NISQ-era utility claims. The field consistently demonstrates advantage on problems designed for demonstration. IBM's \"quantum utility\" claim is the first attempt to bridge the gap; it is contested." },
     { year: "2024", text: "Willow and the widening demonstration gap. Google Willow demonstrates stronger, more robust advantage on demonstration problems. The gap between demonstration-problem advantage and relevant-problem advantage remains unclosed. Claim enters FRAGMENTING." }
-    ],
-    relatedRecords: [],
-  },
+  ], relatedRecords: [] },
 
   openQuestions: [
-    {
-      id: "OQ-001",
-      question: "Is there a problem type that is both classically intractable at demonstrated quantum scales and practically relevant? The two trajectories (demonstration advantage, relevant-problem simulation) need to converge on a single instance. Which specific problem will first satisfy both simultaneously?",
-      raisedDate: "2024-01-15",
-    },
-    {
-      id: "OQ-002",
-      question: "The attractor for FR-QE-0007 and FR-QE-0006 appears to be the same event: first fault-tolerant quantum chemistry calculation beyond classical reach. If both records resolve through the same instance, does the Observatory log it as one event serving two records, or two separate instances? The schema has no governed procedure for this.",
-      raisedDate: "2024-01-15",
-    },
-    {
-      id: "OQ-003",
-      question: "The null measurement validity condition held. Does this constitute sufficient evidence to characterise Measurement Validity as a proxy-measurement failure mode specifically, or does the two-occurrence positive evidence (FR-BT-0002, FR-AI-0007) plus one-occurrence negative evidence (FR-QE-0007) constitute a pattern worth a Review Note?",
-      raisedDate: "2024-01-15",
-    }
+    { id: "OQ-001", question: "Is there a problem type that is both classically intractable at demonstrated quantum scales and practically relevant? The two trajectories (demonstration advantage, relevant-problem simulation) need to converge on a single instance. Which specific problem will first satisfy both simultaneously?", raisedDate: "2024-01-15" },
+    { id: "OQ-002", question: "The attractor for FR-QE-0007 and FR-QE-0006 appears to be the same event: first fault-tolerant quantum chemistry calculation beyond classical reach. If both records resolve through the same instance, does the Observatory log it as one event serving two records, or two separate instances? The schema has no governed procedure for this.", raisedDate: "2024-01-15" },
+    { id: "OQ-003", question: "The null measurement validity condition held. Does this constitute sufficient evidence to characterise Measurement Validity as a proxy-measurement failure mode specifically, or does the two-occurrence positive evidence (FR-BT-0002, FR-AI-0007) plus one-occurrence negative evidence (FR-QE-0007) constitute a pattern worth a Review Note?", raisedDate: "2024-01-15" },
   ],
 
   mutationLog: [
+    { id: "M-011", date: "2026-09-17", field: "provenance_review", from: "—", to: "LPR-001-D19 REVIEW REQUIRED", note: "LPR-001-D19 audited all six evidence instances. IN-001, IN-002 and IN-005 were substantially verified against their cited source chains; IN-003 and IN-004 contain overbroad or conflated classical-comparison/Willow representations; IN-006 contains a source-chain and representation package requiring bounded reconstruction before structured provenance is added. One new Normal Record Review candidate was surfaced: IBM and University of Chicago, Sampling hard circuits with verifiably high fidelity (30 July 2026); it was not admitted through LPR-001." },
     {"id":"M-010","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:BN-001, mechanisms:RM-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored BN-001, RM-001, AT-001 from FR_QE_0007_quantum_advantage_practical.html (Drive file 1qCC0WcnKOMiutuuqh5ah_6wXPN0X2SQs). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
-    // APPEND-ONLY. Newest first.
     { id: "M-009", date: "2026-08-29", field: "provenance_enriched", from: "—", to: "PROVENANCE-ENRICHED", note: "PA-002 Provenance Enrichment: structured sources[] added to IN-001 and IN-002; evidentiary prose and assessment unchanged." },
     { id: "M-008", date: "2026-08-28", field: "reference_corrected", from: "IN-001–IN-005 lacked instance references; IN-005 misidentified Mi et al. as a superconducting-material phase-transition study", to: "IN-001–IN-006 carry stable references; IN-005 reconstructed from Mi, Kandala and Yamamoto", note: "GP-001 provenance and description correction following the bounded three-record source/DOI audit. IN-005 had conflated the superconducting processor substrate with the simulated phenomenon and incorrectly attributed a superconducting-material phase transition to Mi et al. The instance now states the verified time-crystal, small-molecule/quantum-magnet and simplified hydrogen-chain/iron-crystal results. AS-001 and AS-002 remain preserved; the correction does not alter their conjunction analysis. Pressure State FRAGMENTING and Verification Stage VS-03 are explicitly retained." },
     { id: "M-007", date: "2026-08-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "AS-002 issued following the bounded FR-QE-0007 impact review. Pressure State FRAGMENTING and Verification Stage VS-03 retained. Quantum Echoes narrows the separation between beyond-classical performance and practical relevance, but the two thresholds remain demonstrated in different experimental regimes; Google-affiliated follow-up analysis is not treated as independent replication. No existing assessment, instance, mechanism, open question, or related record modified." },
@@ -173,7 +118,7 @@ export const FR_QE_0007 = {
     { id: "M-004", date: "2024-01-15", field: "null_condition_met", from: "—", to: "NULL-CONDITION-MET", note: "" },
     { id: "M-003", date: "2024-01-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "" },
     { id: "M-002", date: "2024-01-15", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "" },
-    { id: "M-001", date: "2024-01-15", field: "record_created", from: "—", to: "RECORD-CREATED", note: "" }
+    { id: "M-001", date: "2024-01-15", field: "record_created", from: "—", to: "RECORD-CREATED", note: "" },
   ],
 
   status: "open",
