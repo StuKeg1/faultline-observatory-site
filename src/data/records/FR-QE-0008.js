@@ -14,8 +14,8 @@ export const FR_QE_0008 = {
   programme: "PROG-QE",
   lastProvenanceReview: "2026-09-18",
   provenanceReviewId: "LPR-001-D20",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "pass_after_correction",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Quantum error correction can reduce logical error rates faster than physical error rates increase with system scale.",
@@ -26,43 +26,74 @@ export const FR_QE_0008 = {
   instances: [
     {
       id: "IN-001",
-      qualifiedEvent: "Threshold theorem — theoretical foundation established",
-      description: "The quantum error correction threshold theorem is established by Aharonov and Ben-Or (1997), Knill, Laflamme, and Zurek (1996), and others. The theorem proves that arbitrarily long quantum computations can be performed reliably if the physical error rate per gate is below a threshold value. The surface code (Fowler et al. 2012) establishes a practical code with a threshold of approximately 1% per gate and polynomial overhead — making it the leading candidate for near-term fault-tolerant systems. The theoretical foundation is secure: the mathematics guarantees the scaling relationship exists if the physical assumptions hold. The empirical question is whether real hardware satisfies the physical assumptions well enough for the theorem's predictions to manifest in practice. This instance is neutral: theoretical confirmation of the claim's plausibility without empirical demonstration.",
+      qualifiedEvent: "Threshold theorem and surface-code scaling — theoretical foundation",
+      description: "Fault-tolerance threshold results establish that arbitrarily long quantum computation can in principle be made reliable when physical noise is below a constant threshold, with additional resource overhead determined by the code and noise model. Aharonov and Ben-Or provide a rigorous constant-threshold result with polylogarithmic time and space overhead for their construction. Surface-code work later established a practical two-dimensional nearest-neighbour architecture with comparatively high tolerable physical error rates; Fowler et al. describe surface-code fault tolerance and estimates for large-scale computation, while related surface-code analyses find thresholds approaching 1% under specified circuit-noise assumptions. These results establish the theoretical possibility of logical-error suppression with increasing encoding overhead, but they do not assign a universal 1% threshold to all hardware or noise models. The empirical question is whether real processors remain below their relevant threshold as code distance and runtime increase.",
       vectors: ["neutral--theoretical-foundation-secure"],
       date: "1995–2012",
+      sourceReference: "Aharonov & Ben-Or, SIAM Journal on Computing 38 (2008), doi:10.1137/S0097539799359385; Fowler et al., Physical Review A 86 (2012), doi:10.1103/PhysRevA.86.032324",
+      sources: [
+        { citation: "Aharonov & Ben-Or, ‘Fault-Tolerant Quantum Computation with Constant Error Rate’, SIAM Journal on Computing 38 (2008)", url: "https://epubs.siam.org/doi/10.1137/S0097539799359385", doi: "10.1137/S0097539799359385", locator: "Abstract and threshold result" },
+        { citation: "Fowler et al., ‘Surface codes: Towards practical large-scale quantum computation’, Physical Review A 86, 032324 (2012)", url: "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.86.032324", doi: "10.1103/PhysRevA.86.032324", locator: "Surface-code architecture and fault-tolerance estimates" },
+      ],
     },
     {
       id: "IN-002",
-      qualifiedEvent: "Google — exponential suppression demonstrated in distance-3 to distance-5 surface codes",
-      description: "Acharya et al. (Google, 2023, Nature) demonstrate that increasing surface code distance from 3 to 5 (adding physical qubits per logical qubit) produces exponential suppression of logical error rates — a factor of approximately 2.9× improvement per distance increase, consistent with theoretical predictions. This is the first experimental demonstration of the threshold theorem's scaling prediction operating as expected in a real system. The result is directly relevant to the claim: logical error rates are suppressing faster than physical qubit overhead is increasing. The result is at small code distances (3 and 5) — the question is whether the suppression continues at larger distances (7, 9, 11) where the polynomial overhead becomes more substantial and noise correlations may become more problematic.",
-      vectors: ["supportive--exponential-suppression-demonstrated-at-small-scale"],
+      qualifiedEvent: "Google — distance-5 surface code modestly outperforms distance-3",
+      description: "Acharya et al. (Google Quantum AI, Nature 2023) measure surface-code logical performance across code sizes and show that a distance-5 logical qubit modestly outperforms an ensemble of distance-3 logical qubits. The reported logical error per cycle is 2.914 ± 0.016% at distance 5 versus 3.028 ± 0.023% for the distance-3 ensemble, a relative reduction of about 4% (Λ3,5 ≈ 1.04), not a 2.9× suppression factor. This is an important experimental break-even scaling result: adding physical qubits improved average logical performance. The improvement is small and confined to distances 3 and 5, so it establishes the onset of below-threshold scaling rather than exponential suppression across a practically relevant distance range.",
+      vectors: ["supportive--logical-performance-improves-from-distance-3-to-5"],
       date: "2022–23",
+      sourceReference: "Google Quantum AI, Nature 614 (2023), doi:10.1038/s41586-022-05434-1",
+      sources: [
+        { citation: "Google Quantum AI, ‘Suppressing quantum errors by scaling a surface code logical qubit’, Nature 614, 676–681 (2023)", url: "https://www.nature.com/articles/s41586-022-05434-1", doi: "10.1038/s41586-022-05434-1", locator: "Abstract and logical error per cycle comparison" },
+      ],
     },
     {
       id: "IN-003",
-      qualifiedEvent: "Google Willow — distance-3 to distance-7 scaling, below-threshold confirmed",
-      description: "Acharya et al. (Google, 2024, Nature) extend the surface code scaling demonstration to distance 7 using the Willow chip. The result is significant: logical error rates continue to suppress exponentially from distance 3 through distance 7, with each unit increase in code distance reducing the logical error rate by a factor of approximately 2×. Below-threshold operation is confirmed across three code distances, and the scaling behaviour matches theoretical predictions within experimental uncertainties. The claim transitions from ESCALATING to RESOLVING: the core empirical question — does the threshold theorem hold in practice as systems scale? — is being answered affirmatively across the measured range. The remaining uncertainty is whether the suppression continues at distances 9, 11, and beyond, where noise correlations and crosstalk effects may become more significant. The trajectory is strongly supportive; the claim is not yet confirmed at the scales required for fault-tolerant computation.",
-      vectors: ["supportive--exponential-suppression-confirmed-through-distance-7"],
+      qualifiedEvent: "Google Willow — below-threshold surface-code scaling through distance 7",
+      description: "Google Quantum AI's Willow experiments demonstrate below-threshold surface-code memories at distances 5 and 7. The distance-7 code uses 101 qubits and reaches a logical error per cycle of 0.143 ± 0.003%, while logical error is suppressed by Λ = 2.14 ± 0.02 when code distance increases by two. The result therefore extends experimental below-threshold scaling beyond the earlier distance-3/5 break-even result and shows the characteristic faster reduction of logical error for higher-distance codes. It does not establish a factor-of-two improvement for each single unit of code distance, nor does it by itself demonstrate scaling at the distances and circuit depths required for useful fault-tolerant algorithms.",
+      vectors: ["supportive--below-threshold-suppression-confirmed-through-distance-7"],
       date: "2024",
+      sourceReference: "Google Quantum AI and Collaborators, Nature 638 (2025), doi:10.1038/s41586-024-08449-y",
+      sources: [
+        { citation: "Google Quantum AI and Collaborators, ‘Quantum error correction below the surface code threshold’, Nature 638, 920–926 (2025)", url: "https://www.nature.com/articles/s41586-024-08449-y", doi: "10.1038/s41586-024-08449-y", locator: "Abstract; distance-5 and distance-7 scaling results" },
+      ],
     },
     {
       id: "IN-004",
-      qualifiedEvent: "Microsoft and Quantinuum — logical qubit operations at low error rates",
-      description: "Microsoft (in collaboration with Quantinuum) demonstrates logical qubit operations using their topological qubit approach with error rates below 10⁻³ per operation in small systems. Quantinuum's H2 trapped-ion processor achieves logical error rates of approximately 10⁻⁴ per gate on small logical qubits using post-selected error detection. Multiple hardware platforms are now producing sub-threshold logical qubit operations, providing independent confirmation that the scaling relationship is not specific to Google's superconducting platform. Cross-platform confirmation is important: if the threshold theorem holds across superconducting, trapped-ion, and topological architectures, the result is more likely to reflect the underlying physics than a platform-specific artefact.",
-      vectors: ["supportive--cross-platform-confirmation-of-sub-threshold-operation"],
-      date: "2023–24",
+      qualifiedEvent: "Microsoft and Quantinuum — logical error reduction on trapped-ion hardware",
+      description: "Microsoft and Quantinuum report logical-qubit experiments that apply Microsoft's qubit-virtualization and error-correction protocols to Quantinuum's trapped-ion H-Series hardware. In the April 2024 demonstration, four logical qubits were created from 30 physical qubits; the strongest reported Bell-state circuit comparison showed an approximately 800× reduction in logical circuit error relative to the corresponding physical circuit baseline, alongside active syndrome extraction and more than 14,000 circuit instances without an observed error. Later work expanded to 12 logical qubits and reported a 22× circuit-error improvement for an entangled logical state. This is independent architectural evidence that encoding and error correction can improve logical reliability on trapped-ion hardware. It is not evidence from Microsoft's separate topological-qubit hardware programme, and the reported improvements should not be converted into generic 10⁻³ or 10⁻⁴ per-gate logical error rates.",
+      vectors: ["supportive--trapped-ion-logical-error-reduction"],
+      date: "2024",
+      sourceReference: "Microsoft and Quantinuum logical-qubit demonstrations, 2024",
+      sources: [
+        { citation: "Microsoft, ‘Advancing science: Microsoft and Quantinuum demonstrate the most reliable logical qubits on record with an error rate 800x better than physical qubits’ (3 Apr 2024)", url: "https://blogs.microsoft.com/blog/2024/04/03/advancing-science-microsoft-and-quantinuum-demonstrate-the-most-reliable-logical-qubits-on-record-with-an-error-rate-800x-better-than-physical-qubits/", locator: "Four logical qubits; 800× comparison; active syndrome extraction" },
+        { citation: "Microsoft, ‘Microsoft announces the best performing logical qubits on record…’ (10 Sep 2024)", url: "https://blogs.microsoft.com/blog/2024/09/10/microsoft-announces-the-best-performing-logical-qubits-on-record-and-will-provide-priority-access-to-reliable-quantum-hardware-in-azure-quantum/", locator: "Twelve logical qubits and 22× circuit-error improvement" },
+      ],
     },
     {
       id: "IN-005",
-      qualifiedEvent: "Correlated errors and noise model limitations at larger scales",
-      description: "Theoretical and experimental work identifies limits on the threshold theorem's applicability at larger scales. Correlated errors — noise events that affect multiple qubits simultaneously — are not fully modelled by the independent error assumptions underlying the threshold theorem. At small code distances, correlated errors are a minor correction; at larger distances, they may produce logical error rate floors that resist further suppression. Fowler, Martinis, and others publish analyses suggesting that crosstalk, cosmic ray impacts, and two-level system defects in superconducting qubits produce correlated errors that will eventually limit scaling. The evidence is theoretical and partially experimental: no system has yet demonstrated a logical error rate floor, but the theoretical case for eventual limitations at larger scales is credible. This is contesting evidence against the claim's unlimited applicability while not contesting its near-term demonstrated validity.",
-      vectors: ["partial--correlated-errors-may-limit-suppression-at-larger-scales"],
-      date: "2024",
+      qualifiedEvent: "Correlated-error floors observed in high-distance repetition codes",
+      description: "Google's surface-code experiments directly show that correlated errors are already relevant to QEC scaling rather than merely a theoretical future limitation. In the 2023 work, a distance-25 repetition code exhibited a logical-error-per-cycle floor of 1.7×10⁻⁶ set by a rare high-energy event (1.6×10⁻⁷ when that event was excluded). On Willow-generation hardware, high-distance repetition-code experiments pushed much lower but then deviated from exponential suppression at d≥15, producing an apparent logical-error floor around 10⁻¹⁰ caused by rare correlated bursts occurring roughly once an hour. The Willow surface-code error budget also identifies leakage and stray interactions as correlated contributions. These results do not show that surface-code suppression has already failed at distance 7; they show that correlated mechanisms can create measurable floors and must be mitigated for larger fault-tolerant circuits.",
+      vectors: ["partial--correlated-error-floors-observed-in-repetition-codes"],
+      date: "2023–25",
+      sourceReference: "Google Quantum AI, Nature 614 (2023), doi:10.1038/s41586-022-05434-1; Google Quantum AI and Collaborators, Nature 638 (2025), doi:10.1038/s41586-024-08449-y",
+      sources: [
+        { citation: "Google Quantum AI, ‘Suppressing quantum errors by scaling a surface code logical qubit’, Nature 614, 676–681 (2023)", url: "https://www.nature.com/articles/s41586-022-05434-1", doi: "10.1038/s41586-022-05434-1", locator: "Distance-25 repetition-code logical error floor" },
+        { citation: "Google Quantum AI and Collaborators, ‘Quantum error correction below the surface code threshold’, Nature 638, 920–926 (2025)", url: "https://www.nature.com/articles/s41586-024-08449-y", doi: "10.1038/s41586-024-08449-y", locator: "High-distance repetition-code error floor and correlated-error budget" },
+      ],
     }
   ],
 
   assessments: [
     // APPEND-ONLY. Do not modify existing entries.
+    {
+      id: "AS-002",
+      date: "2026-09-18",
+      pressureState: "resolving",
+      verificationStage: "VS-04",
+      summary: "LPR-001-D20 correction preserves the substantive RESOLVING / VS-04 assessment while narrowing its evidentiary basis. Google's 2023 result established a modest distance-5-over-distance-3 logical improvement, and Willow later demonstrated below-threshold surface-code memories through distance 7 with Λ = 2.14 ± 0.02 per distance increase of two. Microsoft and Quantinuum provide separate trapped-ion evidence that logical encoding and correction can outperform corresponding physical circuit baselines, but not topological-hardware confirmation. Correlated-error floors are no longer hypothetical: Google observed measurable floors in high-distance repetition codes, including an apparent ~10⁻¹⁰ floor on Willow-generation hardware. The record therefore remains RESOLVING because below-threshold scaling is experimentally established over a growing range, while durability across larger code distances, long runtimes and full fault-tolerant circuits remains unresolved.",
+      assessorNote: "Corrective assessment following LPR-001-D20 bounded provenance repair. AS-001 is preserved append-only; IN-001 through IN-005 were source-bounded and representation errors corrected.",
+    },
     {
       id: "AS-001",
       date: "2024-01-15",
@@ -89,8 +120,8 @@ export const FR_QE_0008 = {
   lineage: {
     items: [
     { year: "1995–2012", text: "Threshold theorem established; surface code identified. Theoretical foundation for scalable error correction is secure. The empirical question is whether physical systems satisfy the theorem's assumptions." },
-    { year: "2022–23", text: "Google demonstrates exponential suppression at distance 3–5. First empirical confirmation that the scaling relationship holds in practice. The claim transitions from theoretical to empirical territory." },
-    { year: "2024", text: "Willow extends demonstration to distance 7; cross-platform confirmation. The scaling trajectory is confirmed across a wider range and across hardware platforms. Claim enters RESOLVING." }
+    { year: "2022–23", text: "Google demonstrates the first surface-code scaling break-even: the distance-5 code modestly outperforms the distance-3 ensemble on average. High-distance repetition-code tests also expose rare correlated-error floors." },
+    { year: "2024–25", text: "Willow demonstrates below-threshold surface-code memories through distance 7, with Λ≈2.14 per distance increase of two. Microsoft/Quantinuum provide separate trapped-ion logical-error reduction. Willow high-distance repetition codes reveal an apparent ~10⁻¹⁰ correlated-error floor. Claim remains RESOLVING." }
     ],
     relatedRecords: [],
   },
@@ -114,6 +145,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-009", date: "2026-09-18", field: "provenance_repair", from: "LPR-001-D20 discrepancies_found / pending", to: "LPR-001-D20 pass_after_correction / completed", note: "Bounded correction executed for IN-001 through IN-005. Corrected the 2023 distance-3/5 numerical representation; corrected Willow suppression semantics to Λ per distance increase of two; separated Microsoft/Quantinuum trapped-ion evidence from Microsoft's topological programme; replaced unsupported generic logical-gate rates; and corrected the correlated-error-floor representation using observed repetition-code floors. Structured sources[] added to all repaired instances. AS-001 preserved append-only and corrective AS-002 appended; RM-001, AT-001 and lineage brought into consistency. Pressure State RESOLVING and Verification Stage VS-04 retained. The 2026 reinforcement-learning QEC candidate remains outside this repair for Normal Record Review." },
     { id: "M-008", date: "2026-09-18", field: "provenance_review", from: "—", to: "LPR-001-D20 REVIEW REQUIRED", note: "LPR-001-D20 audited all five evidence instances. Material representation or attribution discrepancies require bounded correction in IN-001 through IN-005; no evidentiary prose was silently repaired and no structured sources were added where the representation itself requires correction. New 2026 QEC work was screened separately and not admitted through LPR-001." },
     {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, AT-001 from FR_QE_0008_error_correction_scaling.html (Drive file 1b6n8s4qZ8FE08RIymo-4e-kpFvQ49Nyz). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
