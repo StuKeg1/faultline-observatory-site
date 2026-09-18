@@ -81,11 +81,31 @@ export const FR_QE_0008 = {
         { citation: "Google Quantum AI, ‘Suppressing quantum errors by scaling a surface code logical qubit’, Nature 614, 676–681 (2023)", url: "https://www.nature.com/articles/s41586-022-05434-1", doi: "10.1038/s41586-022-05434-1", locator: "Distance-25 repetition-code logical error floor" },
         { citation: "Google Quantum AI and Collaborators, ‘Quantum error correction below the surface code threshold’, Nature 638, 920–926 (2025)", url: "https://www.nature.com/articles/s41586-024-08449-y", doi: "10.1038/s41586-024-08449-y", locator: "High-distance repetition-code error floor and correlated-error budget" },
       ],
+    },
+    {
+      id: "IN-006",
+      qualifiedEvent: "Google — reinforcement-learning control stabilizes QEC against drift",
+      description: "Sivak et al. (Nature 2026) integrate reinforcement learning with quantum error correction so that syndrome information is reused as a continuous control signal rather than requiring computation to stop for recalibration. On Google's Willow superconducting processor, the framework is demonstrated on distance-5 and distance-7 surface codes and a distance-5 colour code. Against injected drift, reinforcement-learning control improves surface-code logical-error-rate stability 2.4-fold, increasing to 3.5-fold when combined with decoder steering; fine-tuning an already calibrated processor provides an additional 20% logical-error suppression. The reported average logical error per cycle reaches 7.72(9)×10⁻⁴ for the surface code and 8.19(14)×10⁻³ for the colour code. Numerical simulations extend the control framework to distance-15 surface codes with tens of thousands of control parameters and report optimization speed independent of system size. This is supportive operational evidence that environmental drift can be actively controlled during QEC, addressing one scaling constraint relevant to long computations. It does not experimentally extend surface-code distance scaling beyond distance 7, demonstrate a fault-tolerant application, or show that the correlated-error floors recorded in IN-005 have been eliminated.",
+      vectors: ["supportive--continuous-qec-control-mitigates-drift-without-extending-experimental-distance-scaling"],
+      date: "Jul 2026",
+      sourceReference: "Sivak et al., Nature 655 (2026), doi:10.1038/s41586-026-10759-2",
+      sources: [
+        { citation: "Sivak et al., ‘Reinforcement learning control of quantum error correction’, Nature 655, 879–884 (2026)", url: "https://www.nature.com/articles/s41586-026-10759-2", doi: "10.1038/s41586-026-10759-2", locator: "Abstract, main results and Methods" },
+        { citation: "Google Quantum AI, data for ‘Reinforcement Learning Control of Quantum Error Correction’ (2026)", url: "https://zenodo.org/records/18896801", doi: "10.5281/zenodo.18896801", locator: "Experimental dataset; surface-code data collected 2026" },
+      ],
     }
   ],
 
   assessments: [
     // APPEND-ONLY. Do not modify existing entries.
+    {
+      id: "AS-003",
+      date: "2026-09-18",
+      pressureState: "resolving",
+      verificationStage: "VS-04",
+      summary: "IN-006 strengthens the operational scaling case by demonstrating that QEC syndrome information can continuously steer more than 1,000 control parameters during computation and materially improve logical stability against drift on Willow. This reduces one practical threat to maintaining below-threshold operation over long runtimes, but it does not extend the experimentally demonstrated surface-code distance beyond 7 and does not remove the correlated-error-floor evidence in IN-005. Simulated distance-15 scalability is supportive engineering evidence rather than an experimental scaling result. The claim therefore remains RESOLVING / VS-04: experimental logical-error suppression and active stabilization are both advancing, while durable scaling at application-relevant distances and runtimes remains unconfirmed.",
+      assessorNote: "Normal Record Review of Sivak et al., Nature 655 (2026), doi:10.1038/s41586-026-10759-2. Admitted as IN-006. No claim-resolution or verification-stage transition.",
+    },
     {
       id: "AS-002",
       date: "2026-09-18",
@@ -145,6 +165,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-010", date: "2026-09-18", field: "instance_appended", from: "IN-005", to: "IN-006", note: "Normal Record Review admitted Sivak et al., Nature 655 (2026), reinforcement-learning control of QEC. Experimental Willow results show continuous syndrome-driven control improves logical stability against injected drift and supports uninterrupted calibration; distance-15 evidence is simulation only. AS-003 appended; RESOLVING / VS-04 retained. RM-001 and AT-001 consistency wording completed from the authorised LPR-001-D20 correction and updated to reflect that drift mitigation does not remove correlated-error floors or satisfy the outcome-based attractor." },
     { id: "M-009", date: "2026-09-18", field: "provenance_repair", from: "LPR-001-D20 discrepancies_found / pending", to: "LPR-001-D20 pass_after_correction / completed", note: "Bounded correction executed for IN-001 through IN-005. Corrected the 2023 distance-3/5 numerical representation; corrected Willow suppression semantics to Λ per distance increase of two; separated Microsoft/Quantinuum trapped-ion evidence from Microsoft's topological programme; replaced unsupported generic logical-gate rates; and corrected the correlated-error-floor representation using observed repetition-code floors. Structured sources[] added to all repaired instances. AS-001 preserved append-only and corrective AS-002 appended; RM-001, AT-001 and lineage brought into consistency. Pressure State RESOLVING and Verification Stage VS-04 retained. The 2026 reinforcement-learning QEC candidate remains outside this repair for Normal Record Review." },
     { id: "M-008", date: "2026-09-18", field: "provenance_review", from: "—", to: "LPR-001-D20 REVIEW REQUIRED", note: "LPR-001-D20 audited all five evidence instances. Material representation or attribution discrepancies require bounded correction in IN-001 through IN-005; no evidentiary prose was silently repaired and no structured sources were added where the representation itself requires correction. New 2026 QEC work was screened separately and not admitted through LPR-001." },
     {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, AT-001 from FR_QE_0008_error_correction_scaling.html (Drive file 1b6n8s4qZ8FE08RIymo-4e-kpFvQ49Nyz). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
