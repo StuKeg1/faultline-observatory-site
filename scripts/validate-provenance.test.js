@@ -51,6 +51,16 @@ test("LPR completion marker requires a complete and internally consistent state"
   });
   assert.deepEqual(valid, []);
 
+  const passAfterCorrection = validateRecordProvenance({
+    id: "FR-TEST-0004",
+    instances: [],
+    lastProvenanceReview: "2026-09-18",
+    provenanceReviewId: "LPR-001-D20",
+    provenanceOutcome: "pass_after_correction",
+    provenanceRepairStatus: "completed",
+  });
+  assert.deepEqual(passAfterCorrection, []);
+
   const incomplete = validateRecordProvenance({
     id: "FR-TEST-0002",
     instances: [],
@@ -67,4 +77,14 @@ test("LPR completion marker requires a complete and internally consistent state"
     provenanceRepairStatus: "completed",
   });
   assert.match(inconsistent.join("\n"), /must use repair status pending/);
+
+  const incompletePassAfterCorrection = validateRecordProvenance({
+    id: "FR-TEST-0005",
+    instances: [],
+    lastProvenanceReview: "2026-09-18",
+    provenanceReviewId: "LPR-001-D20",
+    provenanceOutcome: "pass_after_correction",
+    provenanceRepairStatus: "pending",
+  });
+  assert.match(incompletePassAfterCorrection.join("\n"), /pass_after_correction outcome must use repair status completed/);
 });
