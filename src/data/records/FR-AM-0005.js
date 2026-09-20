@@ -12,6 +12,10 @@
 export const FR_AM_0005 = {
   id: "FR-AM-0005",
   programme: "PROG-AM",
+  lastProvenanceReview: "2026-09-20",
+  provenanceReviewId: "LPR-001-D22",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "A room-temperature superconductor can be produced under reproducible laboratory conditions.",
@@ -137,6 +141,7 @@ export const FR_AM_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-014", date: "2026-09-20", field: "provenance_review", from: "—", to: "LPR-001-D22 discrepancies_found / pending", note: "Bounded provenance audit completed for IN-001 through IN-006. Material representation and attribution discrepancies identified; no material corrections applied. Routine structured-source enrichment withheld where the instance itself requires correction. Queue marker recorded so deterministic LPR selection advances. Bounded correction candidate pending operator approval." },
     {"id":"M-013","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:CM-001, mechanisms:RM-001, mechanisms:AT-001, lineage:1986–2010s","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored CM-001, RM-001, AT-001; lineage 1986–2010s from FR_MF_0005_room_temp_superconductor_reproducibility.html (Drive file 1tRbrLxtIn7a7DH9AmsIqyFPy-V148Ac7). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-012", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-006 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
