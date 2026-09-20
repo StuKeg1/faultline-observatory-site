@@ -16,7 +16,7 @@ const REVIEW_FIELDS = [
   "provenanceOutcome",
   "provenanceRepairStatus",
 ];
-const REVIEW_OUTCOMES = new Set(["verified", "discrepancies_found", "discrepancies_corrected"]);
+const REVIEW_OUTCOMES = new Set(["verified", "discrepancies_found", "discrepancies_corrected", "pass_after_correction"]);
 const REPAIR_STATUSES = new Set(["not_required", "pending", "completed"]);
 
 function nonEmpty(value) {
@@ -72,6 +72,9 @@ export function validateRecordProvenance(record) {
     }
     if (record.provenanceOutcome === "discrepancies_corrected" && record.provenanceRepairStatus !== "completed") {
       errors.push(`${record.id} discrepancies_corrected outcome must use repair status completed`);
+    }
+    if (record.provenanceOutcome === "pass_after_correction" && record.provenanceRepairStatus !== "completed") {
+      errors.push(`${record.id} pass_after_correction outcome must use repair status completed`);
     }
   }
   for (const instance of record.instances ?? []) {
