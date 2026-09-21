@@ -15,7 +15,7 @@ const COLOURS = [
   { token: "--ink-light",  label: "Ink Light" },
   { token: "--ink-faint",  label: "Ink Faint" },
   { token: "--paper",      label: "Paper" },
-  { token: "--paper-warm", label: "Paper Warm" },
+  { token: "--paper-warm", label: "Paper Secondary" },
   { token: "--paper-card", label: "Paper Card" },
   { token: "--rule",       label: "Rule" },
   { token: "--accent",     label: "Accent" },
