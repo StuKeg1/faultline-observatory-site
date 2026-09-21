@@ -7,16 +7,16 @@ function MarkB() {
   return (
     <svg viewBox="0 0 420 100" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <g transform="translate(8, 10) scale(0.5)">
-        <rect x="32"  y="22"  width="48" height="58" fill="#f5f3ec"/>
-        <rect x="80"  y="80"  width="48" height="56" fill="#f5f3ec"/>
-        <circle cx="80" cy="80" r="58" stroke="#f5f3ec" strokeWidth="2.2"/>
-        <line x1="16" y1="80" x2="80"  y2="80" stroke="#f5f3ec" strokeWidth="2.2"/>
-        <line x1="80" y1="80" x2="80"  y2="68" stroke="#f5f3ec" strokeWidth="2.2"/>
-        <line x1="80" y1="68" x2="148" y2="68" stroke="#f5f3ec" strokeWidth="2.2"/>
+        <rect x="32"  y="22"  width="48" height="58" fill="#f4f5f7"/>
+        <rect x="80"  y="80"  width="48" height="56" fill="#f4f5f7"/>
+        <circle cx="80" cy="80" r="58" stroke="#f4f5f7" strokeWidth="2.2"/>
+        <line x1="16" y1="80" x2="80"  y2="80" stroke="#f4f5f7" strokeWidth="2.2"/>
+        <line x1="80" y1="80" x2="80"  y2="68" stroke="#f4f5f7" strokeWidth="2.2"/>
+        <line x1="80" y1="68" x2="148" y2="68" stroke="#f4f5f7" strokeWidth="2.2"/>
       </g>
-      <line x1="106" y1="18" x2="106" y2="82" stroke="#f5f3ec" strokeWidth="1" opacity="0.2"/>
-      <text x="122" y="50" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontWeight="700" fontSize="28" letterSpacing="-0.5" fill="#f5f3ec">FAULTLINE</text>
-      <text x="122" y="74" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontWeight="700" fontSize="16" letterSpacing="4" fill="#f5f3ec">OBSERVATORY</text>
+      <line x1="106" y1="18" x2="106" y2="82" stroke="#f4f5f7" strokeWidth="1" opacity="0.2"/>
+      <text x="122" y="50" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontWeight="700" fontSize="28" letterSpacing="-0.5" fill="#f4f5f7">FAULTLINE</text>
+      <text x="122" y="74" fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif" fontWeight="700" fontSize="16" letterSpacing="4" fill="#f4f5f7">OBSERVATORY</text>
     </svg>
   );
 }

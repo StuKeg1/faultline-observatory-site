@@ -13,11 +13,11 @@
   --ink-faint:  #9a9a92;
 
   /* Paper scale */
-  --rule:       #d4d2c8;
-  --rule-light: #e8e6de;
-  --paper:      #f5f3ec;
-  --paper-warm: #ede9df;
-  --paper-card: #f9f7f1;
+  --rule:       #d3d6da;
+  --rule-light: #e6e8eb;
+  --paper:      #f4f5f7;
+  --paper-warm: #e9ebee;
+  --paper-card: #fafbfc;
 
   /* Accent */
   --accent:     #2b4a7a;
