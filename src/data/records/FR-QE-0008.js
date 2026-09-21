@@ -99,12 +99,12 @@ export const FR_QE_0008 = {
   assessments: [
     // APPEND-ONLY. Do not modify existing entries.
     {
-      id: "AS-003",
-      date: "2026-09-18",
+      id: "AS-001",
+      date: "2024-01-15",
       pressureState: "resolving",
       verificationStage: "VS-04",
-      summary: "IN-006 strengthens the operational scaling case by demonstrating that QEC syndrome information can continuously steer more than 1,000 control parameters during computation and materially improve logical stability against drift on Willow. This reduces one practical threat to maintaining below-threshold operation over long runtimes, but it does not extend the experimentally demonstrated surface-code distance beyond 7 and does not remove the correlated-error-floor evidence in IN-005. Simulated distance-15 scalability is supportive engineering evidence rather than an experimental scaling result. The claim therefore remains RESOLVING / VS-04: experimental logical-error suppression and active stabilization are both advancing, while durable scaling at application-relevant distances and runtimes remains unconfirmed.",
-      assessorNote: "Normal Record Review of Sivak et al., Nature 655 (2026), doi:10.1038/s41586-026-10759-2. Admitted as IN-006. No claim-resolution or verification-stage transition.",
+      summary: "The claim is substantially supported and on a trajectory toward confirmation. Google's Willow results (INST-003) demonstrate exponential logical error rate suppression through code distance 7, consistent with the threshold theorem's predictions. Cross-platform confirmation from Microsoft and Quantinuum (INST-004) strengthens the result beyond a single-platform observation. The core scaling relationship — logical error rates suppressing faster than physical overhead increases — is empirically confirmed at the code distances tested. The pressure state is RESOLVING: the theorem's central prediction has been consistently observed across the code distances measured so far (INST-002, INST-003) and across multiple hardware architectures, though correlated-error effects that may limit suppression at larger code distances (INST-005) have not yet been ruled out, and confirmation at the distances required for practical fault tolerance (d=9, d=11) remains the decisive open step (AT-001).",
+      assessorNote: null,
     },
     {
       id: "AS-002",
@@ -115,12 +115,12 @@ export const FR_QE_0008 = {
       assessorNote: "Corrective assessment following LPR-001-D20 bounded provenance repair. AS-001 is preserved append-only; IN-001 through IN-005 were source-bounded and representation errors corrected.",
     },
     {
-      id: "AS-001",
-      date: "2024-01-15",
+      id: "AS-003",
+      date: "2026-09-18",
       pressureState: "resolving",
       verificationStage: "VS-04",
-      summary: "The claim is substantially supported and on a trajectory toward confirmation. Google's Willow results (INST-003) demonstrate exponential logical error rate suppression through code distance 7, consistent with the threshold theorem's predictions. Cross-platform confirmation from Microsoft and Quantinuum (INST-004) strengthens the result beyond a single-platform observation. The core scaling relationship — logical error rates suppressing faster than physical overhead increases — is empirically confirmed at the code distances tested. The pressure state is RESOLVING: the theorem's central prediction has been consistently observed across the code distances measured so far (INST-002, INST-003) and across multiple hardware architectures, though correlated-error effects that may limit suppression at larger code distances (INST-005) have not yet been ruled out, and confirmation at the distances required for practical fault tolerance (d=9, d=11) remains the decisive open step (AT-001).",
-      assessorNote: null,
+      summary: "IN-006 strengthens the operational scaling case by demonstrating that QEC syndrome information can continuously steer more than 1,000 control parameters during computation and materially improve logical stability against drift on Willow. This reduces one practical threat to maintaining below-threshold operation over long runtimes, but it does not extend the experimentally demonstrated surface-code distance beyond 7 and does not remove the correlated-error-floor evidence in IN-005. Simulated distance-15 scalability is supportive engineering evidence rather than an experimental scaling result. The claim therefore remains RESOLVING / VS-04: experimental logical-error suppression and active stabilization are both advancing, while durable scaling at application-relevant distances and runtimes remains unconfirmed.",
+      assessorNote: "Normal Record Review of Sivak et al., Nature 655 (2026), doi:10.1038/s41586-026-10759-2. Admitted as IN-006. No claim-resolution or verification-stage transition.",
     }
   ],
 
@@ -165,6 +165,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-011", date: "2026-09-21", field: "assessment_order_corrected", from: "AS-003 → AS-002 → AS-001", to: "AS-001 → AS-002 → AS-003", note: "Structural chronology repair: restored assessments[] to the canonical oldest-first order after AS-002 and AS-003 were mistakenly prepended on 2026-09-18. Existing assessment objects, dates, wording, pressure states, verification stages and evidentiary judgements are unchanged. This correction restores AS-003 as the derived current assessment and makes the repair explicit in the append-only mutation history." },
     { id: "M-010", date: "2026-09-18", field: "instance_appended", from: "IN-005", to: "IN-006", note: "Normal Record Review admitted Sivak et al., Nature 655 (2026), reinforcement-learning control of QEC. Experimental Willow results show continuous syndrome-driven control improves logical stability against injected drift and supports uninterrupted calibration; distance-15 evidence is simulation only. AS-003 appended; RESOLVING / VS-04 retained. RM-001 and AT-001 consistency wording completed from the authorised LPR-001-D20 correction and updated to reflect that drift mitigation does not remove correlated-error floors or satisfy the outcome-based attractor." },
     { id: "M-009", date: "2026-09-18", field: "provenance_repair", from: "LPR-001-D20 discrepancies_found / pending", to: "LPR-001-D20 pass_after_correction / completed", note: "Bounded correction executed for IN-001 through IN-005. Corrected the 2023 distance-3/5 numerical representation; corrected Willow suppression semantics to Λ per distance increase of two; separated Microsoft/Quantinuum trapped-ion evidence from Microsoft's topological programme; replaced unsupported generic logical-gate rates; and corrected the correlated-error-floor representation using observed repetition-code floors. Structured sources[] added to all repaired instances. AS-001 preserved append-only and corrective AS-002 appended; RM-001, AT-001 and lineage brought into consistency. Pressure State RESOLVING and Verification Stage VS-04 retained. The 2026 reinforcement-learning QEC candidate remains outside this repair for Normal Record Review." },
     { id: "M-008", date: "2026-09-18", field: "provenance_review", from: "—", to: "LPR-001-D20 REVIEW REQUIRED", note: "LPR-001-D20 audited all five evidence instances. Material representation or attribution discrepancies require bounded correction in IN-001 through IN-005; no evidentiary prose was silently repaired and no structured sources were added where the representation itself requires correction. New 2026 QEC work was screened separately and not admitted through LPR-001." },
