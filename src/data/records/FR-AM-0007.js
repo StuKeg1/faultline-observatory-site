@@ -12,6 +12,10 @@
 export const FR_AM_0007 = {
   id: "FR-AM-0007",
   programme: "PROG-AM",
+  lastProvenanceReview: "2026-09-22",
+  provenanceReviewId: "LPR-001-D24",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Pressure-quench protocols can stabilise pressure-induced or pressure-enhanced superconducting states at ambient pressure.",
@@ -27,6 +31,18 @@ export const FR_AM_0007 = {
       vectors: ["supportive--pressure-induced-superconducting-state-retained-after-decompression"],
       date: "2020–22",
       sourceReference: "University of Houston pressure-quench superconductivity programme; peer-reviewed reports in Sb and FeSe",
+      sources: [
+        {
+          citation: "Wu et al., The retention at ambient of the high-pressure-induced metastable superconducting phases in antimony single crystals, Materials Today Physics 15, 100291 (2020)",
+          doi: "10.1016/j.mtphys.2020.100291",
+          locator: "Abstract — pressure-quenched metastable superconducting phases retained at ambient pressure",
+        },
+        {
+          citation: "Deng et al., Pressure-induced high-temperature superconductivity retained without pressure in FeSe single crystals, PNAS 118, e2108938118 (2021)",
+          doi: "10.1073/pnas.2108938118",
+          locator: "Abstract — FeSe and Cu-doped FeSe retained at ambient pressure by pressure quenching",
+        },
+      ],
     },
     {
       id: "IN-002",
@@ -43,6 +59,13 @@ export const FR_AM_0007 = {
       vectors: ["supportive--recoverable-metastable-superconducting-phase-at-ambient-pressure"],
       date: "2025",
       sourceReference: "PNAS — pressure-quench retention in Bi0.5Sb1.5Te3",
+      sources: [
+        {
+          citation: "Deng et al., Creation, stabilization, and investigation at ambient pressure of pressure-induced superconductivity in Bi0.5Sb1.5Te3, PNAS 122, e2423102122 (2025)",
+          doi: "10.1073/pnas.2423102122",
+          locator: "Abstract — retained superconducting phase and recovery from diamond-anvil cell at ambient pressure",
+        },
+      ],
     },
     {
       id: "IN-004",
@@ -51,6 +74,13 @@ export const FR_AM_0007 = {
       vectors: ["supportive--record-temperature-pressure-enhanced-state-retained-at-ambient-pressure"],
       date: "2026-03",
       sourceReference: "PNAS 2026 — Hg1223 pressure-quench superconductivity, ambient-pressure Tc up to 151 K",
+      sources: [
+        {
+          citation: "Deng et al., Ambient-pressure 151-K superconductivity in HgBa2Ca2Cu3O8+δ via pressure quench, PNAS 123, e2536178123 (2026)",
+          doi: "10.1073/pnas.2536178123",
+          locator: "Abstract and experimental figures — ambient-pressure Tc up to 151 K after pressure quench",
+        },
+      ],
     },
   ],
 
@@ -135,6 +165,14 @@ export const FR_AM_0007 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-006",
+      date: "2026-09-22",
+      field: "provenance_review",
+      from: "—",
+      to: "LPR-001-D24 REVIEW REQUIRED",
+      note: "Legacy provenance review completed. IN-001, IN-003 and IN-004 were verified against the named peer-reviewed primary papers and received structured sources[]. IN-002 requires bounded correction before provenance can be attached: its characterisation of Cu-doped FeSe as a subsequent 2022–24 cross-material extension is chronologically inaccurate, because Cu-doped FeSe is reported alongside pure FeSe in the 2021 PNAS pressure-quench paper. The core pressure-quench trajectory and the current AS-001 state are not silently changed. No new evidence admitted through LPR-001.",
+    },
     {
       id: "M-005",
       date: "2026-08-25",
