@@ -16,6 +16,10 @@
 export const FR_AM_0006 = {
   id: "FR-AM-0006",
   programme: "PROG-AM",
+  lastProvenanceReview: "2026-09-21",
+  provenanceReviewId: "LPR-001-D23",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Solid-state batteries can achieve commercially viable energy density, safety, and cycle life for electric vehicles.",
@@ -27,42 +31,42 @@ export const FR_AM_0006 = {
     {
       id: "IN-001",
       qualifiedEvent: "Laboratory demonstrations — oxide, sulfide, and polymer electrolytes",
-      description: "The evidence establishes that the claim is not physically impossible; whether it is industrially achievable is the open question. Academic and industrial laboratories demonstrate solid-state cells with energy densities exceeding conventional lithium-ion at small scale. Three primary electrolyte families emerge: oxide ceramics (LLZO, LATP), sulfide glasses (LGPS, argyrodites), and solid polymers (PEO). Each family demonstrates key advantages — oxides offer highest voltage stability, sulfides offer highest ionic conductivity approaching liquid electrolytes, polymers offer manufacturability — but each faces distinct limitations. No electrolyte family simultaneously achieves all three commercial thresholds at laboratory scale by 2020. Ionic conductivity, mechanical properties, and electrochemical stability remain engineering challenges. The field is not contesting the physics — ion conduction through solid electrolytes is well understood — but is navigating engineering trade-offs between competing material properties.",
+      description: "Laboratory work establishes that solid electrolytes can support lithium-ion transport and solid-state cells across oxide, sulfide, and polymer classes. Those classes have different trade-offs in conductivity, stability, processability, and interface behaviour. This is feasibility context rather than evidence that the commercial claim is satisfied: requirements around interfaces, dendrite control, processing, and scale-up remain relevant. This record does not rely on unspecified institution-level assessments or on the unqualified proposition that every commercial threshold was unmet in every laboratory cell.",
       vectors: ["neutral--laboratory-feasibility-established-no-commercial-threshold-met"],
       date: "2011–20",
     },
     {
       id: "IN-002",
       qualifiedEvent: "Toyota, QuantumScape, Solid Power — industrial commitments and claimed milestones",
-      description: "Toyota announces a solid-state battery target for 2025 hybrid vehicles; QuantumScape (Bill Gates-backed, Volkswagen partnership) reports >1,000 cycle performance at high C-rates in small single-layer pouch cells at 25°C (December 2020, investor day) and publishes peer-reviewed results (Joule, 2021). Solid Power (BMW, Ford partnership) announces pilot line production. These announcements generate substantial investor and media attention. The QuantumScape peer-reviewed result is genuine: single-layer cells demonstrate the cycle life threshold under limited conditions. However, single-layer laboratory cells are not commercially manufactured multi-layer cells — the scale-up challenge from single-layer to multi-layer to pouch to prismatic to manufacturing yield is the primary unresolved engineering problem. The announcement-to-delivery gap opens: ambitious public timelines followed by delayed commercial availability. This is the closest the record comes to the PROG-AM collapse dynamic — but the mechanism is different. No scientific fraud or replication failure is involved; the gap is manufacturing scale-up, not disputed physics.",
+      description: "Toyota, QuantumScape, and Solid Power made industrial commitments and public milestones. QuantumScape's December 2020 investor materials reported more than 1,000 cycles in single-layer cells; a 2021 independent test by Mobile Power Solutions reported 800+ cycles for QuantumScape single-layer cells under its stated conditions. Neither result is a peer-reviewed Joule paper, and neither demonstrates automotive multi-layer commercial manufacture. The distinction between single-layer cell results and repeatable multi-layer, pouch or prismatic production at yield and cost remains material. These announcements show industrial interest and reported cell-level progress, not a resolved commercial-viability claim.",
       vectors: ["partial--laboratory-cycle-life-demonstrated-manufacturing-scale-up-absent"],
       date: "2020–22",
     },
     {
       id: "IN-003",
       qualifiedEvent: "Timeline slippage and manufacturing bottlenecks",
-      description: "The claim transitions from EMERGING to ESCALATING: genuine progress is occurring, but the commercial threshold remains unmet and receding timelines suggest the gap is larger than initially estimated. Toyota revises its solid-state battery EV timeline from 2025 to 2027–28; QuantumScape revises its commercial vehicle delivery timeline multiple times; Solid Power pivots from cell manufacturing to licensing its electrolyte technology to automotive OEMs rather than manufacturing cells directly. The revisions are not retractions — the underlying technology continues to advance — but they reflect a consistent pattern: laboratory performance milestones are achievable; commercial manufacturing at automotive scale is substantially harder and slower than initial estimates. The three-threshold conjunction (energy density + safety + cycle life at commercial manufacturing yield and cost) has not been demonstrated. Several independent technical assessments (Argonne National Laboratory, Fraunhofer Institute) identify dendrite formation, interface resistance, and manufacturing yield as primary remaining obstacles.",
+      description: "Company timetable revisions and manufacturing pivots indicate that commercialisation has taken longer than early public expectations. Toyota moved its public all-solid-state vehicle objective to 2027–28; QuantumScape and Solid Power also changed public manufacturing or commercialisation approaches. These changes are not retractions of the underlying research, but they do not establish commercial manufacture either. Interface stability, dendrite control, cell architecture, processing, and manufacturing yield are relevant scale-up challenges; this record does not attribute a single, broad obstacle finding to Argonne or Fraunhofer without a source-bounded assessment.",
       vectors: ["partial--progress-confirmed-commercial-threshold-receding"],
       date: "2022–24",
     },
     {
       id: "IN-004",
       qualifiedEvent: "Toyota sulfide breakthrough claim and initial independent assessment",
-      description: "Toyota announces in June 2023 a claimed breakthrough in sulfide solid electrolyte formulation enabling all three commercial thresholds simultaneously, with a target of 2027–28 vehicle launch. The claim is made at a press briefing, not through peer-reviewed publication. Initial independent technical assessment is mixed: materials scientists note that the claimed performance parameters (1,200 Wh/L, 1,000+ cycles, 10-minute charging) are within the theoretical range for sulfide electrolytes but have not been independently verified. No peer-reviewed data has been published as of early 2024. This is the closest this record comes to the PROG-AM pattern: an announcement made at a press briefing before peer-reviewed publication, under competitive pressure, generating significant media and investor attention. However, the mechanism is commercial competitive pressure (Toyota competing with Chinese EV manufacturers) rather than scientific priority competition, and the claim is about an engineering milestone rather than a physical discovery. Whether this constitutes the collapse dynamic or a different kind of anticipatory announcement is the question the diagnosis stress condition must evaluate.",
+      description: "Toyota's June 2023 technical roadmap described an approximately 1,200 km battery-electric driving-range target and charging in 10 minutes or less, with a stated commercialisation objective of 2027–28. It did not claim 1,200 Wh/L or 1,000+ cycles. Toyota identified durability as continuing development work. The roadmap is a company target, not independently verified production or performance evidence, and it does not by itself establish the record's simultaneous commercial energy-density, safety, cycle-life, yield, and cost conjunction.",
       vectors: ["partial--claimed-breakthrough-peer-reviewed-verification-absent"],
       date: "2023–24",
     },
     {
       id: "IN-005",
       qualifiedEvent: "Chinese manufacturers — CATL, BYD solid-state programmes",
-      description: "CATL announces a semi-solid-state battery entering production in 2023 (not fully solid-state but higher solid content than conventional lithium-ion) and targets fully solid-state by 2027. BYD announces similar programmes. Chinese manufacturers are operating under different competitive dynamics than Western counterparts: state support, integrated supply chains, and volume production experience in conventional batteries provide manufacturing advantages. The Chinese programmes represent the most credible path to commercial-scale solid-state battery production in the near term, though performance verification is limited in open literature. This is the ninth occurrence of anticipatory institutional evidence: substantial industrial capital is being committed in anticipation of the claim's eventual satisfaction. Unlike previous anticipatory acts, this one involves actual production deployment of transitional technology (semi-solid) while pursuing the claim's full satisfaction.",
+      description: "Chinese companies and suppliers have announced research and pilot initiatives involving semi-solid or all-solid-state battery technologies. The available source chain for this instance is not sufficient to assert 2023 production, a fully solid-state 2027 target, or comparative commercial leadership by CATL, BYD, or any national programme. It is therefore retained only as evidence of industrial activity around adjacent and all-solid-state technologies, not as evidence of commercial deployment or a ranked path to satisfying this claim.",
       vectors: ["partial--transitional-production-full-solid-state-commercial-threshold-not-yet-met"],
       date: "2023–24",
     },
     {
       id: "IN-006",
       qualifiedEvent: "Toyota's 2025 production target elapses; 2027–28 timeline reaffirmed amid renewed delay reports",
-      description: "This is the fourth distinct timeline point in this record's lineage (2020 → 2023 → 2026 → 2027–28) and the first occasion on which a previously-set target date (2025) has fully elapsed within the corpus's observation window without resolution either way. Toyota's solid-state battery EV timeline, already revised from 2025 to 2027–28 by IN-003, reaches its original 2025 target date in 2026 with no commercial solid-state EV delivered. Toyota’s development and production plan for next-generation batteries, including all-solid-state batteries, was certified by Japan’s METI under the Battery Supply Assurance Plan on September 6, 2024. Toyota and Sumitomo Metal Mining then announced a joint development agreement for mass production of cathode materials for all-solid-state batteries on October 8, 2025, while Idemitsu Kosan separately advanced a lithium-sulfide production facility targeted for completion in 2027. At the Japan Mobility Show (late October 2025), Toyota executive Keiji Kaita reaffirms the 2027–28 production target for battery electric vehicles, citing 1,000 km-plus range and rapid charging as design goals. Within days, however, industry reporting (Electrek) describes Toyota again delaying elements of its broader EV battery plans, citing slowing EV demand even as global EV sales pass two million units monthly for the first time (September 2025). Separately, Chinese manufacturers continue parallel progress: pilot-scale all-solid-state lines report energy densities above 400 Wh/kg in early 2026, and material suppliers announce large sulfide-electrolyte production contracts.",
+      description: "Toyota's development and production plan for next-generation batteries, including all-solid-state batteries, received METI certification under the Battery Supply Assurance Plan on September 6, 2024. Toyota and Sumitomo Metal Mining announced a joint development agreement for cathode materials for all-solid-state batteries on October 8, 2025. Toyota continues to state a 2027–28 market-launch objective. These are industrial-policy and supply-chain events, not independent validation of commercial vehicle performance, yield, safety, cycle life, or execution certainty. Earlier claims in this instance about Chinese pilot lines, energy density, and supply contracts are removed because this record does not retain a sufficient source basis for them.",
       vectors: ["partial--timeline-elapsed-without-delivery-genuine-progress-continues"],
       date: "2025–26",
     },
@@ -125,6 +129,14 @@ export const FR_AM_0006 = {
       verificationStage: "VS-02",
       summary: "Classification correction following bounded source review. ESCALATING is retained, but the current Verification Stage returns from VS-03 to VS-02. AS-002 advanced the record to VS-03 because a Japanese government event was characterised as a regulatory/production-approval review providing independent scrutiny of the technology. The underlying event was instead METI certification, on September 6, 2024, of Toyota’s battery development and production plan under the Battery Supply Assurance Plan. That industrial-policy certification supports the reality and seriousness of Toyota’s programme, but it does not independently audit Toyota’s claimed solid-state battery performance, manufacturing yield, safety, cycle life, energy density, or commercial viability. The later Sumitomo Metal Mining agreement and the 2026 QuantumScape pilot-line evidence likewise strengthen the industrialisation trajectory without supplying the independent claim-level scrutiny required for VS-03. This stage correction is epistemic: it corrects the Observatory’s earlier classification rationale and does not represent deterioration in the technology or a change in the ESCALATING pressure state.",
       assessorNote: "Bounded FR-AM-0006 VS-03 Classification Review, 2026-08-29. Primary source basis: Toyota Motor Corporation, Sep. 6, 2024, METI certification of battery development and production plan under the Battery Supply Assurance Plan; Toyota/Sumitomo Metal Mining, Oct. 8, 2025, cathode-material mass-production development agreement. AS-002 and AS-003 are preserved as historical assessments; AS-004 supersedes their current-stage conclusion without rewriting them.",
+    },
+    {
+      id: "AS-005",
+      date: "2026-09-21",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "LPR-001-D23 corrects the source characterisation of IN-001 through IN-006 while preserving IN-007, whose primary-source evidence remains valid. The correction removes the purported QuantumScape Joule paper, unsupported Toyota performance parameters, unbounded institution-level attributions, and unsupported Chinese production, pilot, and supply-chain claims. The surviving evidence still supports ESCALATING: there is continuing laboratory, industrial-policy, supply-chain, and pilot-line activity, but no evidence in this review establishes the claim's simultaneous energy-density, safety, cycle-life, manufacturing-yield, and cost conjunction. VS-02 is retained because the corrected industrial and company evidence does not supply independent claim-level technical scrutiny. Toyota's 2027–28 timing remains a stated company objective, not a verified delivery event.",
+      assessorNote: "Bounded provenance correction, LPR-001-D23, 2026-09-21. IN-001–IN-006 reconstructed to the retained source basis; IN-007 preserved unchanged. This assessment supersedes neither historical entries nor the stated company roadmap; it records the current evidentiary boundary.",
     }
   ],
 
@@ -142,7 +154,7 @@ export const FR_AM_0006 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "First production vehicle with certified solid-state battery meeting all three thresholds. The specific event that would transition this record from ESCALATING toward RESOLVING is the commercial release of an EV with a certified solid-state battery pack meeting energy density, safety, and cycle life requirements under independent third-party testing. Toyota targets 2027–28; Chinese manufacturers target similar timescales. The attractor is defined, timed (approximately), and credibly anticipated. This is the second record in the corpus with an approximately dated attractor, following FR-BT-0004's 2026 NHS-Galleri timeline.",
+      description: "First production vehicle with a solid-state battery meeting the claim's thresholds under independent third-party testing. The specific event that would transition this record from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost. Toyota states a 2027–28 objective; it is a monitored company timetable, not certification or proof of delivery. The attractor remains future operational deployment rather than company roadmaps, policy certification, supply agreements, or pilot-line progress.",
     }
   ],
 
@@ -150,9 +162,9 @@ export const FR_AM_0006 = {
     items: [
     { year: "1990s–2010", text: "Solid-state electrolyte research established. Ceramic, sulfide, and polymer electrolytes demonstrated in laboratory cells. Performance below commercial thresholds; fundamental materials science advanced." },
     { year: "2017–20", text: "Industrial interest intensifies. QuantumScape founded; Toyota, Samsung, and others announce major solid-state programmes. Venture capital and OEM investment grows substantially." },
-    { year: "2020–22", text: "Laboratory milestones and overpromised timelines. QuantumScape demonstrates single-layer cycle performance; OEM partners announce ambitious delivery timelines. The announcement-to-delivery gap opens." },
-    { year: "2022–24", text: "Timeline revision and manufacturing pivot. Commercial timelines extend; companies pivot from vertical integration to licensing or semi-solid intermediate products. Engineering scale-up identified as primary obstacle." },
-    { year: "2025–26", text: "2025 target elapses; 2027–28 reaffirmed. Toyota’s METI-certified battery development and production plan remains in force and material-supply partnerships advance, while Toyota reaffirms a 2027–28 vehicle target and broader EV battery plans continue to show schedule pressure." }
+    { year: "2020–22", text: "Reported single-layer cycle milestones and industrial commitments. QuantumScape reported more than 1,000 cycles in its December 2020 investor materials; Mobile Power Solutions reported 800+ cycles in independent 2021 testing under stated conditions. These did not demonstrate commercial multi-layer manufacture." },
+    { year: "2022–24", text: "Commercialisation targets and manufacturing approaches evolve. Toyota states a 2027–28 all-solid-state vehicle objective; engineering scale-up questions remain open." },
+    { year: "2025–26", text: "METI certification and material-development agreement. Toyota’s development and production plan was METI-certified in 2024, and Toyota/Sumitomo Metal Mining announced cathode-material development in 2025; both indicate programme activity, not claim-level commercial validation." }
     ],
     relatedRecords: [],
   },
@@ -165,12 +177,12 @@ export const FR_AM_0006 = {
     },
     {
       id: "OQ-002",
-      question: "FR-AM-0006 is the second record in the corpus with an approximately dated attractor (Toyota/Chinese 2027–28 target), following FR-BT-0004 (2026 NHS-Galleri). Two occurrences of dated attractors. Does this warrant a procedural note — a way for the Observatory to flag records for scheduled re-entry when a dated evidence event approaches?",
+      question: "FR-AM-0006 has an approximately dated company objective (Toyota 2027–28), following FR-BT-0004's 2026 NHS-Galleri timeline. Does this warrant a procedural note — a way for the Observatory to flag records for scheduled re-entry when a dated evidence event approaches?",
       raisedDate: "2024-01-15",
     },
     {
       id: "OQ-003",
-      question: "INST-004 (Toyota press briefing before peer review) superficially resembles the PROG-AM collapse dynamic but differs in two ways: no disputed physics, and no subsequent replication failure. Is Toyota's pre-publication announcement better classified as commercial anticipatory evidence (RN-004 territory) rather than as the collapse mechanism (CM-001)?",
+      question: "How should company roadmaps and public technical briefings be classified when they supply industrial orientation but not independently verified commercial performance? Is commercial anticipatory evidence the appropriate category rather than a collapse mechanism?",
       raisedDate: "2024-01-15",
     }
   ],
@@ -188,6 +200,7 @@ export const FR_AM_0006 = {
   ],
 
   mutationLog: [
+    { id: "M-017", date: "2026-09-21", field: "provenance_repair", from: "IN-001–IN-006 contained overbroad, misattributed, or insufficiently sourced claims", to: "IN-001–IN-006 reconstructed to a bounded retained-source basis; AS-005 issued; IN-007 preserved", note: "LPR-001-D23 completed. Corrected QuantumScape's 2021 independent-test characterisation, Toyota's June 2023 roadmap parameters, unbounded Argonne/Fraunhofer attribution, and unsupported Chinese production, pilot, and supply-chain assertions. State remains ESCALATING and current verification stage remains VS-02; no new evidence admitted." },
     {"id":"M-016","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_MF_0006_solid_state_batteries_EV.html (Drive file 1C8JlUzn2qBeHOncW6vAxA98w5g0Qcnju). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-015", date: "2026-08-29", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "AS-004 issued after bounded VS-03 Classification Review. Pressure state ESCALATING retained; Verification Stage corrected from VS-03 to VS-02 because METI supply-plan certification is not independent claim-level technical audit." },
