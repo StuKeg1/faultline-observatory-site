@@ -73,6 +73,16 @@ export const FR_BT_0001 = {
       vectors: ["neutral--broader-longevity-interest-not-senolytic-efficacy-evidence"],
       date: "2021–24",
     }
+    {
+      id: "IN-006",
+      qualifiedEvent: "Bian et al. — D+Q reduces diabetic-kidney injury markers in a murine model",
+      description: "Bian et al. (2026) tested a five-day dasatinib-plus-quercetin regimen in streptozotocin-induced diabetic male C57BL/6J mice, with supporting cell-culture experiments. Compared with diabetic controls, the study reported improved kidney-function measures and reduced kidney-injury, fibrosis, p16Ink4a, inflammatory and macrophage-associated markers; it also reported higher α-Klotho and Sirtuin-1 measures. This is supportive preclinical evidence for D+Q activity in a disease-specific mouse model. It does not report a new human trial, a hard human clinical outcome, or meaningful human healthspan extension.",
+      vectors: ["supportive--disease-specific-preclinical-senolytic-evidence"],
+      date: "2026",
+      sources: [
+        { citation: "Bian et al., Senolytics, dasatanib plus quercetin, reduce kidney inflammation, senescent cell abundance, and injury while restoring geroprotective factors in murine diabetic kidney disease, EBioMedicine 124, 106124 (2026)", doi: "10.1016/j.ebiom.2026.106124", locator: "Abstract — STZ-induced male C57BL/6J mouse model, five-day D+Q regimen, kidney-function and molecular-marker findings" },
+      ],
+    }
   ],
 
   assessments: [
@@ -92,6 +102,14 @@ export const FR_BT_0001 = {
       verificationStage: "VS-02",
       summary: "LPR-001-D25 corrects the historical warrant without reversing the record. The strongest retained preclinical evidence is the transgenic INK-ATTAC mouse result, whose lifespan magnitude is now bounded to the reported sex- and background-dependent range. In humans, separate small 2019 D+Q pilots provide early feasibility, exploratory physical-function, and tissue target-engagement signals; they do not demonstrate healthspan extension. Unity's UBX0101 knee-osteoarthritis failure is retained as an indication-specific clinical setback, while company-reported UBX1325 eye-disease results are not treated as healthspan evidence. The former MILES/AFFIRM-NASH biomarker bundle and broad longevity-capital inference no longer support the assessment. ESCALATING / VS-02 remains warranted on the narrower basis of real preclinical causality, preliminary human target engagement, and unresolved clinical translation; no senolytic has demonstrated meaningful human healthspan extension on hard outcomes.",
       assessorNote: "Corrective assessment appended after LPR-001-D25. AS-001 remains historical. The 2026 D+Q diabetic-kidney-disease report remains outside this correction pending Normal Record Review.",
+    }
+    {
+      id: "AS-003",
+      date: "2026-09-23",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "Normal Record Review admits Bian et al. (2026) as additional disease-specific preclinical evidence: D+Q improved kidney-function and injury-related measures in a streptozotocin-induced diabetic mouse model, alongside cell-culture findings. The paper also recites prior human pilot biomarker observations, but it reports no new human intervention results. Accordingly, it modestly strengthens preclinical plausibility in diabetic kidney disease without addressing the record's decisive gap: clinically meaningful human healthspan outcomes. ESCALATING / VS-02 remains unchanged.",
+      assessorNote: "Normal Record Review outcome: evidence admitted as IN-006; no pressure-state or verification-stage transition.",
     }
   ],
 
@@ -123,7 +141,8 @@ export const FR_BT_0001 = {
     { year: "2008–11", text: "Cellular senescence linked to aging phenotypes. van Deursen, Campisi, and Kirkland labs establish that senescent cell accumulation drives age-related pathology. The causal direction is established: senescence contributes to aging, not merely correlates with it." },
     { year: "2015–18", text: "Senolytic candidates identified; transgenic mouse evidence strengthens causal plausibility. Baker et al. report delayed pathology and sex- and background-dependent median-lifespan extension after clearance of p16-positive cells in INK-ATTAC mice." },
     { year: "2018–21", text: "Early human D+Q pilots report feasibility, exploratory physical-function and tissue target-engagement signals, while Unity's knee-osteoarthritis UBX0101 programme fails to show efficacy for its studied dosing and indication." },
-    { year: "2021–24", text: "Clinical translation remains unsettled. Company-reported UBX1325 diabetic-macular-edema data concern a local disease indication, while no verified trial establishes meaningful human healthspan extension." }
+    { year: "2021–24", text: "Clinical translation remains unsettled. Company-reported UBX1325 diabetic-macular-edema data concern a local disease indication, while no verified trial establishes meaningful human healthspan extension." },
+    { year: "2026", text: "Bian et al. report D+Q-associated kidney-function and molecular-marker improvements in a streptozotocin-induced diabetic mouse model. This adds disease-specific preclinical support but does not provide new human healthspan evidence." }
     ],
     relatedRecords: [],
   },
@@ -147,6 +166,7 @@ export const FR_BT_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-010", date: "2026-09-23", field: "instance_added", from: "—", to: "IN-006 ADMITTED / NORMAL RECORD REVIEW", note: "Normal Record Review of Bian et al. (2026), EBioMedicine 124:106124, DOI 10.1016/j.ebiom.2026.106124. The primary study reports D+Q effects in streptozotocin-induced diabetic male C57BL/6J mice and supporting cell models; it is admitted as disease-specific preclinical evidence. It reports no new human intervention result or hard human healthspan outcome. AS-003 is appended with no state change: ESCALATING / VS-02 retained. The review is separate from LPR-001-D25 and does not alter its provenance-correction outcome." },
     { id: "M-009", date: "2026-09-23", field: "provenance_correction", from: "LPR-001-D25 discrepancies_found / pending", to: "LPR-001-D25 discrepancies_corrected / completed", note: "Approved bounded correction of IN-001 through IN-005. IN-001 now states the source-supported, sex- and background-dependent mouse lifespan result; IN-002 separates the 2019 IPF and diabetic-kidney-disease D+Q pilots; IN-003 corrects Unity chronology and distinguishes UBX0101 from company-reported UBX1325 eye-disease evidence; IN-004 withdraws the mismatched MILES/AFFIRM-NASH/Müller trial bundle; and IN-005 bounds broader longevity-sector interest as non-efficacy context. Structured sources[] added only where the reviewed source basis is confident. AS-001 is preserved and AS-002 appended; RM-001, lineage and OQ-001 were aligned. ESCALATING / VS-02 retained. No 2026 evidence admitted; the diabetic-kidney-disease report remains a Normal Record Review candidate." },
     { id: "M-008", date: "2026-09-23", field: "provenance_review", from: "—", to: "LPR-001-D25 REVIEW REQUIRED", note: "Legacy provenance review completed. All five instances require bounded correction before structured sources[] can be attached without endorsing inaccurate or conflated wording. IN-001 overstates Baker et al.'s 2016 median-lifespan result as approximately 25%; the reported extension varies by sex and genetic background. IN-002 conflates the 2019 open-label IPF D+Q pilot (physical-function feasibility signal) with the separate 2019 diabetic-kidney-disease preliminary report (adipose/epidermal senescent-cell measures); it misattributes authorship, study design, tissue measures, and functional outcomes. IN-003 misdates the UBX0101 Phase II result and compresses distinct company-reported UBX1325 outcomes into a mixed 2022–23 clinical-failure narrative. IN-004 relies on a mismatched MILES trial (sirolimus in lymphangioleiomyomatosis, not D+Q senolysis) and cannot establish the claimed AFFIRM-NASH/Müller D+Q biomarker result. IN-005 conflates broad longevity-sector capital, which is not necessarily senolytic investment, with evidence for this claim. No evidence wording, assessment, pressure state, verification stage, mechanisms, lineage, or open questions was silently changed. A 2026 pilot report of D+Q in diabetic kidney disease is held out as a normal Record Review candidate and not admitted through LPR-001." },
     {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2021–24","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2021–24 from FR_BT_0001_senolytics_lifespan_extension.html (Drive file 1YxRAM6C_mRMC7AbG5C_cM18zujArQxhl). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
