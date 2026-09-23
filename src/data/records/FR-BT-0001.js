@@ -72,7 +72,7 @@ export const FR_BT_0001 = {
       description: "Commercial and philanthropic interest in aging biology is real, but broad longevity-sector investment is not equivalent to investment in, or evidence for, senolytic therapies. Calico, Altos Labs, Human Longevity and the National Institute on Aging Interventions Testing Program have wider remits; the ITP evaluates interventions in mice and does not establish human senolytic healthspan benefit. This instance is therefore bounded as context about institutional interest, not as support for the claim or as a comparable measure of anticipatory senolytic commitment.",
       vectors: ["neutral--broader-longevity-interest-not-senolytic-efficacy-evidence"],
       date: "2021–24",
-    }
+    },
     {
       id: "IN-006",
       qualifiedEvent: "Bian et al. — D+Q reduces diabetic-kidney injury markers in a murine model",
