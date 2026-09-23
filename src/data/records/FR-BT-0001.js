@@ -12,6 +12,10 @@
 export const FR_BT_0001 = {
   id: "FR-BT-0001",
   programme: "PROG-BT",
+  lastProvenanceReview: "2026-09-23",
+  provenanceReviewId: "LPR-001-D25",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Senolytic therapies can meaningfully extend healthy human lifespan.",
@@ -121,6 +125,7 @@ export const FR_BT_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-008", date: "2026-09-23", field: "provenance_review", from: "—", to: "LPR-001-D25 REVIEW REQUIRED", note: "Legacy provenance review completed. All five instances require bounded correction before structured sources[] can be attached without endorsing inaccurate or conflated wording. IN-001 overstates Baker et al.'s 2016 median-lifespan result as approximately 25%; the reported extension varies by sex and genetic background. IN-002 conflates the 2019 open-label IPF D+Q pilot (physical-function feasibility signal) with the separate 2019 diabetic-kidney-disease preliminary report (adipose/epidermal senescent-cell measures); it misattributes authorship, study design, tissue measures, and functional outcomes. IN-003 misdates the UBX0101 Phase II result and compresses distinct company-reported UBX1325 outcomes into a mixed 2022–23 clinical-failure narrative. IN-004 relies on a mismatched MILES trial (sirolimus in lymphangioleiomyomatosis, not D+Q senolysis) and cannot establish the claimed AFFIRM-NASH/Müller D+Q biomarker result. IN-005 conflates broad longevity-sector capital, which is not necessarily senolytic investment, with evidence for this claim. No evidence wording, assessment, pressure state, verification stage, mechanisms, lineage, or open questions was silently changed. A 2026 pilot report of D+Q in diabetic kidney disease is held out as a normal Record Review candidate and not admitted through LPR-001." },
     {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2021–24","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2021–24 from FR_BT_0001_senolytics_lifespan_extension.html (Drive file 1YxRAM6C_mRMC7AbG5C_cM18zujArQxhl). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-004, IN-005 descriptions reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
