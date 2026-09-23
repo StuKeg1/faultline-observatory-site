@@ -14,8 +14,8 @@ export const FR_AM_0007 = {
   programme: "PROG-AM",
   lastProvenanceReview: "2026-09-22",
   provenanceReviewId: "LPR-001-D24",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Pressure-quench protocols can stabilise pressure-induced or pressure-enhanced superconducting states at ambient pressure.",
@@ -46,11 +46,18 @@ export const FR_AM_0007 = {
     },
     {
       id: "IN-002",
-      qualifiedEvent: "Cross-material extension — pressure-quench retention reported in additional superconducting systems",
-      description: "Subsequent work extends the pressure-quench method beyond the earliest demonstrations, including Cu-doped FeSe and related systems. The repeated observation across distinct material compositions weakens the interpretation that pressure-quench retention is a single-sample or single-material anomaly and supports the existence of a reusable experimental protocol. However, the evidence remains largely programme-internal: cross-material recurrence is stronger than repeated measurement of one specimen but is not equivalent to independent institutional replication.",
-      vectors: ["supportive--cross-material-extension-with-originating-group-concentration"],
-      date: "2022–24",
-      sourceReference: "Pressure-quench protocol studies cited in subsequent PNAS work",
+      qualifiedEvent: "FeSe and Cu-doped FeSe — same-study composition comparison",
+      description: "The 2021 PNAS pressure-quench study reports retention at ambient pressure in both pure FeSe and Cu-doped FeSe. The Cu-doped result supplies a composition-level comparison within the FeSe material family; it is not a later 2022–24 extension or evidence of a separate material family. It modestly weakens a single-specimen interpretation, but the evidence remains concentrated within the originating research programme and does not constitute independent institutional replication.",
+      vectors: ["supportive--within-material-family-composition-comparison-originating-group-concentration"],
+      date: "2021",
+      sourceReference: "Deng et al., PNAS 2021 — pure and Cu-doped FeSe pressure-quench retention",
+      sources: [
+        {
+          citation: "Deng et al., Pressure-induced high-temperature superconductivity retained without pressure in FeSe single crystals, PNAS 118, e2108938118 (2021)",
+          doi: "10.1073/pnas.2108938118",
+          locator: "Abstract and Figures 4–5 — pure and Cu-doped FeSe retained at ambient pressure after pressure quenching",
+        },
+      ],
     },
     {
       id: "IN-003",
@@ -131,7 +138,7 @@ export const FR_AM_0007 = {
   lineage: {
     items: [
       { year: "2020–22", text: "Pressure quenching emerges as an experimental method for retaining superconducting states after decompression. Early Sb and FeSe demonstrations establish the proposition but remain narrow in material range and institutional origin." },
-      { year: "2022–24", text: "The method is extended across additional superconducting systems. Cross-material recurrence begins to turn pressure quenching from a material-specific observation into a candidate platform technique, while independent replication remains absent." },
+      { year: "2022–24", text: "No unaffiliated replication is established in the record. The early Sb, FeSe, and Cu-doped FeSe reports remain concentrated within the originating research programme; their material range is informative but not independent confirmation." },
       { year: "2025", text: "Bi0.5Sb1.5Te3 demonstrates retention of a pressure-induced superconducting phase at ambient pressure with recovery from the pressure apparatus. The method's scope expands beyond the originating material classes." },
       { year: "2026", text: "Hg1223 pressure quenching retains an enhanced superconducting transition up to 151 K at ambient pressure, setting a new ambient-pressure record and making thermal durability and independent replication the decisive next questions." },
     ],
@@ -165,6 +172,14 @@ export const FR_AM_0007 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-007",
+      date: "2026-09-22",
+      field: "provenance_correction",
+      from: "LPR-001-D24 discrepancies_found / pending",
+      to: "LPR-001-D24 discrepancies_corrected / completed",
+      note: "Approved bounded correction of IN-002. Replaced the unsupported 2022–24 subsequent-extension chronology with the source-faithful 2021 same-study FeSe/Cu-doped-FeSe comparison; added the primary PNAS provenance; and aligned the dependent 2022–24 lineage wording. Consistency review confirms AS-001, ESCALATING / VS-03, mechanisms, attractors, and open questions remain valid because the record's cross-material trajectory is independently carried by Sb, Bi0.5Sb1.5Te3, and Hg1223 evidence. No new evidence admitted.",
+    },
     {
       id: "M-006",
       date: "2026-09-22",
