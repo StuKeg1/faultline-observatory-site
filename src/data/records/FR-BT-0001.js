@@ -102,7 +102,7 @@ export const FR_BT_0001 = {
       verificationStage: "VS-02",
       summary: "LPR-001-D25 corrects the historical warrant without reversing the record. The strongest retained preclinical evidence is the transgenic INK-ATTAC mouse result, whose lifespan magnitude is now bounded to the reported sex- and background-dependent range. In humans, separate small 2019 D+Q pilots provide early feasibility, exploratory physical-function, and tissue target-engagement signals; they do not demonstrate healthspan extension. Unity's UBX0101 knee-osteoarthritis failure is retained as an indication-specific clinical setback, while company-reported UBX1325 eye-disease results are not treated as healthspan evidence. The former MILES/AFFIRM-NASH biomarker bundle and broad longevity-capital inference no longer support the assessment. ESCALATING / VS-02 remains warranted on the narrower basis of real preclinical causality, preliminary human target engagement, and unresolved clinical translation; no senolytic has demonstrated meaningful human healthspan extension on hard outcomes.",
       assessorNote: "Corrective assessment appended after LPR-001-D25. AS-001 remains historical. The 2026 D+Q diabetic-kidney-disease report remains outside this correction pending Normal Record Review.",
-    }
+    },
     {
       id: "AS-003",
       date: "2026-09-23",
