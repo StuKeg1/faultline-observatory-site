@@ -14,8 +14,8 @@ export const FR_BT_0001 = {
   programme: "PROG-BT",
   lastProvenanceReview: "2026-09-23",
   provenanceReviewId: "LPR-001-D25",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Senolytic therapies can meaningfully extend healthy human lifespan.",
@@ -27,36 +27,50 @@ export const FR_BT_0001 = {
     {
       id: "IN-001",
       qualifiedEvent: "Baker et al. and van Deursen lab — senescent cell clearance extends healthspan in mice",
-      description: "Baker et al. (2016, Nature) demonstrate that periodic clearance of p16Ink4a-positive senescent cells in naturally aged mice extends median healthspan by approximately 25% and delays the onset of age-related pathologies including cataracts, muscle wasting, and fat loss. The result uses a transgenic model (INK-ATTAC) that does not directly translate to pharmacological intervention in humans, but establishes the causal principle: senescent cell accumulation contributes to age-related decline, and their removal produces measurable healthspan benefit. This is the foundational preclinical evidence for the claim. It is supportive of the biological plausibility but does not address human clinical outcomes. The 25% healthspan extension in mice is not directly translatable to human benefit estimates.",
+      description: "Baker et al. (2016, Nature) used the INK-ATTAC transgenic system to periodically clear p16Ink4a-positive cells in naturally aged mice. Treatment delayed several age-associated pathologies and extended median lifespan; the reported magnitude varied by sex and genetic background rather than being a single approximately 25% result. The model establishes a causal preclinical principle, but it is not a pharmacological intervention in humans and does not yield a direct human healthspan estimate.",
       vectors: ["supportive--causal-principle-established-in-model-organism"],
-      date: "2015–18",
+      date: "2016",
+      sources: [
+        { citation: "Baker et al., Naturally occurring p16(Ink4a)-positive cells shorten healthy lifespan, Nature 530, 184–189 (2016)", doi: "10.1038/nature16932", locator: "Abstract — median lifespan and age-associated pathology results in two genetic backgrounds" },
+      ],
     },
     {
       id: "IN-002",
       qualifiedEvent: "Dasatinib + Quercetin Phase I/II trials — first human senolytic evidence",
-      description: "Kirkland, Tchkonia, and colleagues at Mayo Clinic conduct the first human senolytic trials using dasatinib (a cancer drug) combined with quercetin (a flavonoid), collectively termed D+Q. A pilot study in idiopathic pulmonary fibrosis patients (Kirkland et al. 2019, EBioMedicine) shows reduction in senescent cell markers (p16, p21) in skin and fat tissue, and exploratory improvements in physical function. A subsequent randomised pilot trial in diabetic kidney disease (Hickson et al. 2019) shows senescent cell burden reduction and improvements in physical function measures. These are small trials (9–20 patients) with surrogate endpoint outcomes, not lifespan or long-term healthspan outcomes. They establish that pharmacological senolytic activity is achievable in humans and that surrogate markers respond. They do not yet demonstrate meaningful healthspan extension.",
+      description: "Two distinct 2019 D+Q pilot studies supply early human evidence. Justice et al. reported feasibility and exploratory physical-function signals in an open-label idiopathic-pulmonary-fibrosis study. Hickson et al. separately reported reduced senescent-cell measures in adipose tissue and epidermis in a small diabetic-kidney-disease study. Neither was a randomised healthspan trial, and the studies should not be combined into one tissue-marker and functional-outcome result. They support early target-engagement and feasibility evidence, not meaningful human healthspan extension.",
       vectors: ["partial--surrogate-endpoint-evidence-in-small-human-trials"],
-      date: "2019–21",
+      date: "2019",
+      sources: [
+        { citation: "Justice et al., Senolytics in idiopathic pulmonary fibrosis: Results from a first-in-human, open-label pilot study, EBioMedicine 40, 554–563 (2019)", doi: "10.1016/j.ebiom.2018.12.052", locator: "Abstract — open-label IPF pilot and physical-function feasibility signal" },
+        { citation: "Hickson et al., Senolytics decrease senescent cells in humans: Preliminary report from a clinical trial of Dasatinib plus Quercetin in individuals with diabetic kidney disease, EBioMedicine 47, 446–456 (2019)", doi: "10.1016/j.ebiom.2019.08.069", locator: "Abstract — adipose and epidermal senescent-cell measures after D+Q" },
+      ],
     },
     {
       id: "IN-003",
       qualifiedEvent: "Unity Biotechnology Phase II failures and NaviFate trial results",
-      description: "Unity Biotechnology, the leading senolytic clinical-stage company, reports Phase II trial failure for UBX0101 (a senolytic targeting the MDM2-p53 interaction) in osteoarthritis of the knee (2021): no significant improvement over placebo on primary pain and function endpoints. A subsequent Phase II for UBX1325 in diabetic macular edema shows initial signals but mixed results on primary endpoints (2022–23). These failures are significant: they are the first adequately powered randomised controlled trials of senolytics in humans, and they failed to demonstrate clinical benefit on their primary endpoints. The stock price of Unity Biotechnology falls more than 90% from its peak. The record transitions from EMERGING to ESCALATING because the biological plausibility remains — the trial failures are attributable partly to drug choice, dosing, and endpoint selection rather than a clean refutation of the senolytic hypothesis — but the first major clinical test has produced null results.",
+      description: "Unity's UBX0101 Phase II knee-osteoarthritis programme reported no efficacy for a single intra-articular dose in 2020; the peer-reviewed Phase II report followed in 2021. This is an indication-specific randomised clinical setback, not a general test of whether senolytics extend human healthspan. UBX1325 is a separate BCL-xL inhibitor programme in diabetic macular edema: Unity reported positive Phase II BEHOLD results in 2022–23, but those company-reported local eye-disease results do not establish healthspan extension. The record does not use later UBX1325 results in this legacy correction.",
       vectors: ["contesting--phase-ii-failures-on-clinical-endpoints"],
-      date: "2022–24",
+      date: "2020–23",
+      sources: [
+        { citation: "Lane et al., A phase 2, randomized, double-blind, placebo-controlled, multi-center study of UBX0101 in patients with painful knee osteoarthritis, Osteoarthritis and Cartilage 29, 1056–1065 (2021)", url: "https://www.oarsijournal.com/article/S1063-4584(21)00114-X/fulltext", locator: "Abstract — single intra-articular dose failed to demonstrate efficacy" },
+        { citation: "UNITY Biotechnology, Phase 2 BEHOLD UBX1325 results (2022)", url: "https://www.sec.gov/Archives/edgar/data/1463361/000119312522219278/d379677dex991.htm", locator: "Company-reported Phase 2 diabetic-macular-edema data" },
+      ],
     },
     {
       id: "IN-004",
       qualifiedEvent: "AFFIRM-NASH and MILES trials — surrogate biomarker progress",
-      description: "The surrogate-to-clinical translation gap is the primary unresolved evidence gap for the claim. Multiple Phase I/II trials of D+Q and novel senolytics (fisetin, navitoclax) report reductions in circulating SASP markers (IL-6, IL-8, MMP-3), p16 expression in peripheral blood mononuclear cells, and improvements in physical performance measures in older adults. The MILES trial (Müller et al. 2023) shows D+Q reduces senescent cell burden in humans measured by multiple biomarkers. These are surrogate endpoint results: they show that senolytics do what they are supposed to do at the cellular level in humans. They do not demonstrate clinical benefit on hard endpoints (mortality, disease incidence, functional independence).",
-      vectors: ["partial--surrogate-biomarker-progress-without-clinical-endpoints"],
+      description: "The source chain reviewed here does not substantiate the named AFFIRM-NASH or Müller D+Q result. The MILES trial was a sirolimus trial in lymphangioleiomyomatosis, not a D+Q senolytic study. Human senolytic studies can assess short-term biomarkers and function, but this instance does not establish the broader claimed bundle of positive D+Q, fisetin, and navitoclax biomarker findings. It is retained as a record of the evidentiary boundary: no hard human healthspan outcome is demonstrated by the studies verified in this review.",
+      vectors: ["neutral--legacy-surrogate-trial-bundle-withdrawn-source-mismatch"],
       date: "2023–24",
+      sources: [
+        { citation: "MILES trial, sirolimus for lymphangioleiomyomatosis", url: "https://clinicaltrials.gov/study/NCT00414648", locator: "Intervention and condition — sirolimus in lymphangioleiomyomatosis" },
+      ],
     },
     {
       id: "IN-005",
       qualifiedEvent: "Longevity industry investment and anticipatory commercial commitments",
-      description: "This is the fourth occurrence of anticipatory institutional evidence in the corpus: serious capital is being committed in anticipation of the claim's eventual satisfaction. Like previous occurrences (Helion/Microsoft, NIST PQC standards, superconductivity community tightening), this constitutes evidence about institutional belief rather than about the claim's current truth. The senolytic and longevity biotechnology sector receives substantial investment: Unity Biotechnology raises over $300M; Calico (Google), Altos Labs (Bezos-funded), and Human Longevity Inc. collectively raise billions targeting age-related disease and lifespan extension. The National Institute on Aging funds the Interventions Testing Programme (ITP), which has evaluated rapamycin, acarbose, and other compounds for lifespan extension in mice. Several of these companies have explicitly positioned themselves around the claim this record tracks.",
-      vectors: ["partial--anticipatory-institutional-evidence-fourth-occurrence"],
+      description: "Commercial and philanthropic interest in aging biology is real, but broad longevity-sector investment is not equivalent to investment in, or evidence for, senolytic therapies. Calico, Altos Labs, Human Longevity and the National Institute on Aging Interventions Testing Program have wider remits; the ITP evaluates interventions in mice and does not establish human senolytic healthspan benefit. This instance is therefore bounded as context about institutional interest, not as support for the claim or as a comparable measure of anticipatory senolytic commitment.",
+      vectors: ["neutral--broader-longevity-interest-not-senolytic-efficacy-evidence"],
       date: "2021–24",
     }
   ],
@@ -70,6 +84,14 @@ export const FR_BT_0001 = {
       verificationStage: "VS-02",
       summary: "The claim has not been satisfied. No senolytic therapy has demonstrated meaningful healthspan extension in humans on clinical endpoints. The foundational preclinical evidence (INST-001) establishes a compelling causal mechanism — senescent cell accumulation contributes to aging, and their removal produces healthspan benefit in mice. The human surrogate evidence (INST-002, INST-004) demonstrates that senolytics reduce senescent cell burden in humans. But the Phase II clinical trial failures (INST-003) — the first adequately powered randomised trials of senolytics in humans — failed to demonstrate benefit on primary clinical endpoints. The pressure state is ESCALATING: the mechanistic and surrogate-marker case remains strong, and the first hard clinical test has returned a null result that is attributable at least partly to drug choice, dosing, and endpoint selection (RM-002) rather than a clean refutation of the underlying hypothesis, but the surrogate-to-clinical translation gap (RM-001) is now the central unresolved obstacle.",
       assessorNote: null,
+    },
+    {
+      id: "AS-002",
+      date: "2026-09-23",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "LPR-001-D25 corrects the historical warrant without reversing the record. The strongest retained preclinical evidence is the transgenic INK-ATTAC mouse result, whose lifespan magnitude is now bounded to the reported sex- and background-dependent range. In humans, separate small 2019 D+Q pilots provide early feasibility, exploratory physical-function, and tissue target-engagement signals; they do not demonstrate healthspan extension. Unity's UBX0101 knee-osteoarthritis failure is retained as an indication-specific clinical setback, while company-reported UBX1325 eye-disease results are not treated as healthspan evidence. The former MILES/AFFIRM-NASH biomarker bundle and broad longevity-capital inference no longer support the assessment. ESCALATING / VS-02 remains warranted on the narrower basis of real preclinical causality, preliminary human target engagement, and unresolved clinical translation; no senolytic has demonstrated meaningful human healthspan extension on hard outcomes.",
+      assessorNote: "Corrective assessment appended after LPR-001-D25. AS-001 remains historical. The 2026 D+Q diabetic-kidney-disease report remains outside this correction pending Normal Record Review.",
     }
   ],
 
@@ -77,7 +99,7 @@ export const FR_BT_0001 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Surrogate-to-clinical translation gap. Senolytic therapies demonstrably reduce surrogate markers of senescence (p16, SASP cytokines, senescent cell counts) in humans. What remains undemonstrated is that these surrogate reductions produce clinically meaningful improvements in healthspan outcomes. The translation gap between surrogate biomarkers and clinical endpoints is a well-characterised problem in drug development — many interventions that improve surrogate markers fail to demonstrate clinical benefit. For senolytics, this gap is compounded by the long timescales required for clinical endpoint measurement. The resistance mechanism is structural: surrogate evidence accumulates on timescales of months; clinical evidence requires years to decades.",
+      description: "Surrogate-to-clinical translation gap. Small human studies report preliminary target-engagement and short-term functional signals, but it remains unproven that those measures produce clinically meaningful healthspan outcomes. The translation gap between biomarkers and clinical endpoints is a structural problem for this claim: early surrogate evidence can accumulate over months while meaningful healthspan outcomes require longer, indication-appropriate follow-up.",
     },
     {
       id: "RM-002",
@@ -99,9 +121,9 @@ export const FR_BT_0001 = {
   lineage: {
     items: [
     { year: "2008–11", text: "Cellular senescence linked to aging phenotypes. van Deursen, Campisi, and Kirkland labs establish that senescent cell accumulation drives age-related pathology. The causal direction is established: senescence contributes to aging, not merely correlates with it." },
-    { year: "2015–18", text: "Senolytic drugs identified; mouse healthspan extended. Zhu et al. identify dasatinib and quercetin as senolytics. Baker et al. demonstrate healthspan extension in mice. The pharmacological claim becomes experimentally tractable." },
-    { year: "2018–21", text: "First human trials; longevity industry emerges. Mayo Clinic pilot trials show surrogate endpoint responses in humans. Unity Biotechnology, Calico, and others raise substantial capital. The claim enters ESCALATING as the biological plausibility is established and human evidence begins accumulating." },
-    { year: "2021–24", text: "Phase II failures and continued surrogate progress. Unity Phase II failures demonstrate that surrogate-to-clinical translation is the primary obstacle. Surrogate biomarker trials continue producing positive signals. The claim remains ESCALATING with a quantified evidence gap: surrogate evidence positive, clinical endpoints unmeasured." }
+    { year: "2015–18", text: "Senolytic candidates identified; transgenic mouse evidence strengthens causal plausibility. Baker et al. report delayed pathology and sex- and background-dependent median-lifespan extension after clearance of p16-positive cells in INK-ATTAC mice." },
+    { year: "2018–21", text: "Early human D+Q pilots report feasibility, exploratory physical-function and tissue target-engagement signals, while Unity's knee-osteoarthritis UBX0101 programme fails to show efficacy for its studied dosing and indication." },
+    { year: "2021–24", text: "Clinical translation remains unsettled. Company-reported UBX1325 diabetic-macular-edema data concern a local disease indication, while no verified trial establishes meaningful human healthspan extension." }
     ],
     relatedRecords: [],
   },
@@ -109,7 +131,7 @@ export const FR_BT_0001 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "INST-005 constitutes the fourth occurrence of anticipatory institutional evidence in the corpus. RN-004 was issued at three occurrences. Does a fourth occurrence warrant an update to RN-004, and does it change the evidential weight assessment? The longevity capital commitments are substantially larger than previous anticipatory acts (billions vs hundreds of millions), which may or may not be relevant to evidential weight.",
+      question: "What kinds of investment or institutional commitment are sufficiently claim-specific to count as anticipatory evidence, rather than as general context about aging biology or biotechnology?",
       raisedDate: "2024-01-15",
     },
     {
@@ -125,6 +147,7 @@ export const FR_BT_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-009", date: "2026-09-23", field: "provenance_correction", from: "LPR-001-D25 discrepancies_found / pending", to: "LPR-001-D25 discrepancies_corrected / completed", note: "Approved bounded correction of IN-001 through IN-005. IN-001 now states the source-supported, sex- and background-dependent mouse lifespan result; IN-002 separates the 2019 IPF and diabetic-kidney-disease D+Q pilots; IN-003 corrects Unity chronology and distinguishes UBX0101 from company-reported UBX1325 eye-disease evidence; IN-004 withdraws the mismatched MILES/AFFIRM-NASH/Müller trial bundle; and IN-005 bounds broader longevity-sector interest as non-efficacy context. Structured sources[] added only where the reviewed source basis is confident. AS-001 is preserved and AS-002 appended; RM-001, lineage and OQ-001 were aligned. ESCALATING / VS-02 retained. No 2026 evidence admitted; the diabetic-kidney-disease report remains a Normal Record Review candidate." },
     { id: "M-008", date: "2026-09-23", field: "provenance_review", from: "—", to: "LPR-001-D25 REVIEW REQUIRED", note: "Legacy provenance review completed. All five instances require bounded correction before structured sources[] can be attached without endorsing inaccurate or conflated wording. IN-001 overstates Baker et al.'s 2016 median-lifespan result as approximately 25%; the reported extension varies by sex and genetic background. IN-002 conflates the 2019 open-label IPF D+Q pilot (physical-function feasibility signal) with the separate 2019 diabetic-kidney-disease preliminary report (adipose/epidermal senescent-cell measures); it misattributes authorship, study design, tissue measures, and functional outcomes. IN-003 misdates the UBX0101 Phase II result and compresses distinct company-reported UBX1325 outcomes into a mixed 2022–23 clinical-failure narrative. IN-004 relies on a mismatched MILES trial (sirolimus in lymphangioleiomyomatosis, not D+Q senolysis) and cannot establish the claimed AFFIRM-NASH/Müller D+Q biomarker result. IN-005 conflates broad longevity-sector capital, which is not necessarily senolytic investment, with evidence for this claim. No evidence wording, assessment, pressure state, verification stage, mechanisms, lineage, or open questions was silently changed. A 2026 pilot report of D+Q in diabetic kidney disease is held out as a normal Record Review candidate and not admitted through LPR-001." },
     {"id":"M-007","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2021–24","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2021–24 from FR_BT_0001_senolytics_lifespan_extension.html (Drive file 1YxRAM6C_mRMC7AbG5C_cM18zujArQxhl). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
