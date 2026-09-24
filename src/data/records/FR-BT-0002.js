@@ -12,6 +12,10 @@
 export const FR_BT_0002 = {
   id: "FR-BT-0002",
   programme: "PROG-BT",
+  lastProvenanceReview: "2026-09-24",
+  provenanceReviewId: "LPR-001-D26",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Epigenetic reprogramming can reverse biological age in living organisms without loss of cellular identity.",
@@ -23,9 +27,13 @@ export const FR_BT_0002 = {
     {
       id: "IN-001",
       qualifiedEvent: "Yamanaka factors and iPSC reprogramming — the theoretical basis and its limits",
-      description: "Takahashi and Yamanaka (2006, Cell) demonstrate that four transcription factors (Oct4, Sox2, Klf4, c-Myc) can reprogram somatic cells to a pluripotent state, resetting epigenetic age to near-zero in the process. The Nobel Prize follows in 2012. This establishes that epigenetic age is not a fixed biological property — it can be reversed. However, full OSKM reprogramming destroys cellular identity: neurons, hepatocytes, and other differentiated cells lose their function when fully reprogrammed. The clinical application (restoring a tissue's function while reversing its epigenetic age) requires partial reprogramming that reverses the clock without completing the pluripotent transition. This is the theoretical boundary the claim straddles. The full reprogramming result is supportive evidence that epigenetic age reversal is physically possible; it is not itself a demonstration of the claim, which requires identity preservation.",
-      vectors: ["supportive--epigenetic-age-reversal-possible-full-reprogramming-excludes-identity"],
-      date: "2006–16",
+      description: "Takahashi and Yamanaka (2006, Cell) induced pluripotent stem cells from mouse fibroblasts using Oct3/4, Sox2, Klf4 and c-Myc. That experiment established a route from differentiated cells to pluripotency; it did not measure an epigenetic ageing clock. Later in-vitro work by Olova et al. measured a decline in DNA-methylation age during human fibroblast reprogramming, reaching approximately zero by day 20 in that time course. Full pluripotency entails loss of the original somatic cell identity. The 2006 result supplies the reprogramming basis, and the later clock result supplies a distinct molecular-age observation; neither establishes reversal of biological age in a living organism while preserving cellular identity.",
+      vectors: ["supportive--reprogramming-basis-and-later-in-vitro-clock-reset"],
+      date: "2006–19",
+      sources: [
+        { citation: "Takahashi and Yamanaka, Induction of pluripotent stem cells from mouse embryonic and adult fibroblast cultures by defined factors, Cell (2006)", doi: "10.1016/j.cell.2006.07.024", locator: "Abstract — four-factor induction of pluripotency in mouse fibroblasts; no epigenetic clock measurement" },
+        { citation: "Olova et al., Partial reprogramming induces a steady decline in epigenetic age before loss of somatic identity, Aging Cell (2019)", doi: "10.1111/acel.12877", locator: "Results — DNA-methylation-age time course in human fibroblasts and distinct kinetics of somatic identity loss" },
+      ],
     },
     {
       id: "IN-002",
@@ -33,27 +41,42 @@ export const FR_BT_0002 = {
       description: "Ocampo et al. (Belmonte lab, Salk Institute, 2016, Cell) demonstrate that cyclic short-term induction of OSKM in a progeria mouse model (expressing a premature aging phenotype) extends lifespan by approximately 30% and reduces aging hallmarks without inducing tumours or loss of cellular identity. The key finding is that intermittent, limited OSKM expression reverses some epigenetic aging marks without completing dedifferentiation. The result is in a disease model (progeria) rather than normal aging, and in mice rather than humans. Lu et al. (Harvard, 2020, Nature) demonstrate partial reprogramming in retinal ganglion cells restores vision in aged mice with optic nerve damage, reducing epigenetic age of the cells and recovering visual function. Both results provide strong preclinical evidence for partial epigenetic reprogramming without identity loss. Both are in mice. Neither addresses the clinical translation question.",
       vectors: ["supportive--partial-reprogramming-without-identity-loss-in-mice"],
       date: "2016–20",
+      sources: [
+        { citation: "Ocampo et al., In Vivo Amelioration of Age-Associated Hallmarks by Partial Reprogramming, Cell (2016)", doi: "10.1016/j.cell.2016.11.052", locator: "Abstract and results — cyclic OSKM in premature-ageing mice" },
+        { citation: "Lu et al., Reprogramming to recover youthful epigenetic information and restore vision, Nature (2020)", doi: "10.1038/s41586-020-2975-4", locator: "Abstract — OSK, mouse retinal ganglion cells, methylation and visual-function findings" },
+      ],
     },
     {
       id: "IN-003",
-      qualifiedEvent: "Altos Labs, Retro Biosciences, and partial reprogramming race — field industrialises",
-      description: "The claim transitions from EMERGING to ESCALATING: the mechanism is established in multiple mouse models, the field is serious and well-funded, and the evidence trajectory toward human trials is credible, though the human clinical evidence gap is complete — no human data exists yet. Altos Labs, founded in 2022 with approximately $3 billion in funding (Bezos, Milner, and others), hires leading reprogramming researchers including Shinya Yamanaka as chairman. Retro Biosciences raises $180M with Sam Altman personally funding. The Belmonte and Sinclair labs publish additional partial reprogramming results in mice showing epigenetic age reduction across multiple tissues. The field transitions from academic curiosity to heavily capitalised research programme. No human trials of partial epigenetic reprogramming have been initiated as of 2024. The capital commitment constitutes the fifth occurrence of anticipatory institutional evidence in the corpus.",
-      vectors: ["partial--strong-mouse-evidence-zero-human-clinical-evidence"],
-      date: "2021–23",
+      qualifiedEvent: "Altos Labs launch — institutional investment in cellular rejuvenation research",
+      description: "Altos Labs launched in January 2022 with $3 billion committed to research on cellular rejuvenation programming. Its launch materials identify Shinya Yamanaka as an unpaid senior scientific adviser overseeing research activities in Japan, not as chairman. This is evidence of substantial institutional commitment to studying the field, not evidence that partial reprogramming reverses biological age without identity loss. Funding amounts and investor identities for other companies are not needed to establish this bounded event.",
+      vectors: ["neutral--institutional-commitment-not-claim-efficacy"],
+      date: "2022",
+      sources: [
+        { citation: "Altos Labs, launch announcement (19 January 2022)", url: "https://www.prnewswire.com/news-releases/altos-labs-launches-with-the-goal-to-transform-medicine-through-cellular-rejuvenation-programming-301463541.html", locator: "Launch funding, mission, board leadership and Yamanaka's senior scientific adviser role" },
+        { citation: "Kyoto University CiRA, Prof. Shinya Yamanaka serves as a senior scientific advisor to Altos Labs (19 January 2022)", url: "https://www.cira.kyoto-u.ac.jp/e/pressrelease/other/220119-160000.html", locator: "Unpaid adviser role and supervision of Japan research" },
+      ],
     },
     {
       id: "IN-004",
       qualifiedEvent: "Clock validity debate — does epigenetic age reversal reflect genuine rejuvenation?",
-      description: "As partial reprogramming evidence accumulates, a methodological dispute intensifies: do epigenetic clocks measure biological age in a way that makes \"reversal\" meaningful, or are they measuring something more limited? Morgan Levine, Jesse Poganik, and colleagues publish work showing that epigenetic clocks can be artificially reset by interventions (including caloric restriction and certain drugs) without clear organismal benefit, raising questions about whether clock reversal is a reliable surrogate for genuine rejuvenation. This is a BN-001-adjacent issue: \"biological age reversal\" may be a well-defined clock measurement without being a well-defined biological state. The dispute is not about whether OSKM reverses clock readings — it does — but about whether clock reversal constitutes the thing the claim asserts. This is the measurement-versus-reality question identified in the pre-production check, appearing in the evidence exactly as predicted.",
-      vectors: ["contesting--clock-validity-as-rejuvenation-surrogate-disputed"],
-      date: "2023–24",
+      description: "Epigenetic-clock change requires careful interpretation. Kriukov et al. (2024) applied uncertainty-aware models to reprogramming datasets and found that some apparent rejuvenation signals depend on the clock and its prediction uncertainty. Separately, Borrus et al. (2024 preprint) compared intervention datasets across clocks and reported that some chronological-age-clock changes were sporadic and did not persist with more reliable clock versions or multiple-testing correction. Neither study establishes that caloric restriction or a named drug resets clocks without organismal benefit. Together they support the narrower measurement question in BN-001: clock movement alone has not validated durable, functional rejuvenation in a living organism.",
+      vectors: ["contesting--clock-uncertainty-and-surrogate-validity"],
+      date: "2024",
+      sources: [
+        { citation: "Kriukov et al., Epistemic uncertainty challenges aging clock reliability in predicting rejuvenation effects, Aging Cell (2024)", doi: "10.1111/acel.14283", locator: "Abstract and reprogramming-dataset analyses — model uncertainty changes interpretation of clock trajectories" },
+        { citation: "Borrus et al., When to Trust Epigenetic Clocks: Avoiding False Positives in Aging Interventions, bioRxiv preprint (2024)", doi: "10.1101/2024.10.22.619720", locator: "Abstract — clock disagreement, reliability and multiple-testing analysis; preprint, not peer reviewed at the time" },
+      ],
     },
     {
       id: "IN-005",
       qualifiedEvent: "Partial reprogramming in non-human primates — bridging toward human evidence",
-      description: "Multiple groups publish or present preliminary results of partial reprogramming in non-human primates (NHPs), primarily cynomolgus macaques. Results show epigenetic age reduction in peripheral blood cells and some tissue samples without obvious toxicity or identity loss at doses tested. NHP results are a meaningful intermediate step between mouse models and human trials — primates share substantially more biology with humans than rodents, and safety signals in NHPs are more predictive. However, NHP epigenetic clock measurements are themselves methodologically contested (the clocks were calibrated on human data), and the functional consequences of clock reversal in NHPs have not been assessed on timescales sufficient to evaluate healthspan effects. The record notes these as partial supportive evidence: the mechanism is extending toward human-relevant biology, but the human clinical evidence gap remains complete.",
-      vectors: ["partial--nhp-evidence-human-clinical-gap-persists"],
+      description: "Life Biosciences reported at the October 2024 AAO meeting that its locally delivered OSK therapy ER-100 improved retinal-function and axon-density measures in a non-human-primate model of optic-nerve injury. The reported experiment used a single intravitreal injection with daily systemic doxycycline. This is company-reported conference evidence in one disease model, not a peer-reviewed demonstration by multiple groups of reduced epigenetic age across primate blood and tissues. The announcement does not establish long-term safety, retained cellular identity across tissues, or organism-wide age reversal. It offers a limited preclinical bridge toward the later ER-100 clinical programme.",
+      vectors: ["partial--company-reported-nhp-ocular-function-not-age-reversal"],
       date: "2024",
+      sources: [
+        { citation: "Life Biosciences, AAO 2024 announcement of non-human-primate ER-100 studies (21 October 2024)", url: "https://www.lifebiosciences.com/life-biosciences-presents-at-aao-on-partial-epigenetic-reprogramming/", locator: "Company-reported NAION-like NHP model, intravitreal OSK, pattern electroretinogram and axon-density measures" },
+      ],
     },
     {
       id: "IN-006",
@@ -104,6 +127,14 @@ export const FR_BT_0002 = {
       verificationStage: "VS-02",
       summary: "PA-006 provenance-in-review final replication confirms that ER-100 has progressed from regulatory clearance to actual human dosing: Life Biosciences reported the first participant dosed on June 9, 2026, and ClinicalTrials.gov lists NCT07290244 as recruiting. This is a substantive operational advance because the claim is now being tested directly in humans rather than only authorised for testing. It does not yet satisfy AT-001 or the governing claim. No results are posted, so there is still no human evidence establishing safety at partial-reprogramming doses, biological-age reversal, preserved cellular identity, or validated functional rejuvenation. BN-001 therefore remains unresolved. ESCALATING / VS-02 is retained pending human outcome evidence.",
       assessorNote: "PA-006 final replication trial. New evidence provenance captured at admission from Life Biosciences' June 9, 2026 first-patient-dosed announcement and ClinicalTrials.gov NCT07290244. Opportunistic legacy enrichment also verified IN-006 against Life Biosciences' January 28, 2026 IND announcement and the trial registry; no factual correction was required.",
+    },
+    {
+      id: "AS-004",
+      date: "2026-09-24",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "LPR-001-D26 narrows the historical evidentiary warrant. The 2006 four-factor iPSC result established pluripotency, while later in-vitro work measured a falling epigenetic clock; those are distinct observations. Altos Labs' capital commitment is institutional context, not efficacy evidence. Clock analyses identify measurement uncertainty, and the 2024 NHP bridge rests on one company-reported ocular injury model rather than multiple published systemic age-reversal studies. Mouse studies remain the strongest functional evidence; ER-100 has entered human dosing but has reported no human outcome results. The claim remains unconfirmed and the measurement and safety questions remain open. ESCALATING / VS-02 is retained on this narrower warrant.",
+      assessorNote: "Corrective assessment appended following LPR-001-D26. AS-001 through AS-003 are preserved as dated historical assessments. No post-record scientific result was admitted through this provenance repair.",
     }
   ],
 
@@ -111,7 +142,7 @@ export const FR_BT_0002 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Safety window for partial reprogramming in humans. OSKM expression is potently oncogenic at high doses or sustained expression. The therapeutic window — sufficient expression to reverse epigenetic aging marks without inducing dedifferentiation or tumour formation — has been demonstrated in mice but not characterised in humans or non-human primates at clinically relevant doses. The safety constraint is the primary obstacle to human trials: no regulatory agency will approve a Phase I trial without substantially more NHP safety data. The resistance mechanism is not that partial reprogramming is impossible but that establishing the safety window in humans requires a multi-year preclinical programme before human exposure can begin.",
+      description: "Safety window for partial reprogramming in humans. Sustained or excessive reprogramming can cause dedifferentiation and tumour risks; limited induction seeks to avoid these outcomes. Mouse work and company-reported NHP ocular data do not define long-term safety at clinically relevant human doses. ER-100 has now received IND clearance and entered Phase 1 dosing, so the earlier prediction that human exposure cannot begin is superseded. Whether partial OSK treatment preserves identity and avoids adverse effects in humans remains unreported and requires trial follow-up.",
     },
     {
       id: "BN-001",
@@ -127,11 +158,11 @@ export const FR_BT_0002 = {
 
   lineage: {
     items: [
-    { year: "2006", text: "Yamanaka reprogramming. Full OSKM reprogramming resets epigenetic age to near-zero. Cellular identity destroyed. The age reversal principle is established; the identity preservation constraint opens as the key unsolved problem." },
+    { year: "2006", text: "Takahashi and Yamanaka induce pluripotency in mouse fibroblasts with four factors. Their study does not measure an epigenetic clock; later in-vitro work tests how clock readings change during reprogramming." },
     { year: "2016", text: "Cyclic partial reprogramming in progeria mice. Ocampo et al. demonstrate lifespan extension without tumour formation through intermittent OSKM. The claim becomes experimentally tractable. Partial reprogramming as a therapeutic concept enters the field." },
     { year: "2019–21", text: "Epigenetic clock reversal demonstrated in multiple tissues. Lu et al. and others demonstrate partial reprogramming in specific tissues (retina, muscle) with functional benefit in aged mice. The claim's mechanistic basis is substantially established in rodent models." },
-    { year: "2022–23", text: "Major capitalisation and NHP extension. Altos Labs, Retro Biosciences, and related companies raise billions. NHP studies begin. The field transitions from academic research to clinical development programme. Human trials remain absent." },
-    { year: "2023–24", text: "Clock validity dispute matures. The measurement validity of epigenetic clocks as rejuvenation surrogates is formally contested. The field must resolve whether clock reversal is sufficient evidence for the claim or whether functional outcomes are required independently." },
+    { year: "2022–23", text: "Altos Labs launches with $3 billion committed to cellular rejuvenation research; this is institutional investment, not evidence that the claim has been met." },
+    { year: "2024", text: "Clock-model uncertainty and intervention-dependent clock disagreement sharpen the measurement question. Life Biosciences reports NHP ocular-function findings at AAO; the single company-reported disease-model result does not establish systemic age reversal." },
     { year: "2026", text: "ER-100 enters human testing. FDA IND clearance is followed by first-participant dosing in the Phase 1 NCT07290244 trial. Human exposure is now established, but no safety, efficacy, age-reversal, identity-preservation, or functional-outcome results have been reported." }
     ],
     relatedRecords: [],
@@ -140,7 +171,7 @@ export const FR_BT_0002 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "INST-003 (Altos Labs capitalisation) constitutes the fifth occurrence of anticipatory institutional evidence. RN-004 was issued at three occurrences and noted that a fourth occurrence would warrant an update. A fifth occurrence in a new programme strengthens the case for RN-004 update further. Is a pattern now visible across three programmes?",
+      question: "What would make Altos Labs' substantial, but broadly targeted, capital commitment claim-specific anticipatory evidence rather than institutional context? The former fifth-occurrence count is not retained without that showing.",
       raisedDate: "2024-01-15",
     },
     {
@@ -161,6 +192,7 @@ export const FR_BT_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-015", date: "2026-09-24", field: "provenance_correction", from: "LPR-001-D26 discrepancies_found / pending", to: "LPR-001-D26 discrepancies_corrected / completed", note: "Approved bounded correction of IN-001, IN-003, IN-004 and IN-005. Separated 2006 iPSC induction from later in-vitro epigenetic-clock findings; corrected Yamanaka's Altos role and limited funding to its sourced commitment; replaced the unsupported clock-intervention attribution with identifiable 2024 studies and their publication class; narrowed the primate evidence to Life Biosciences' 2024 company-reported ocular model. IN-002 was enriched from verified Ocampo and Lu papers. IN-006 and IN-007 were preserved. AS-004 appended; RM-001, lineage and OQ-001 aligned with corrected evidence. ESCALATING / VS-02 retained. No later scientific evidence admitted." },
     {"id":"M-014","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_BT_0002_epigenetic_reprogramming_age_reversal.html (Drive file 12oQGYiWaYPv8-Je7uQ9gnN_v6IUV5zZ5). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-013", date: "2026-08-29", field: "provenance_enriched", from: "IN-006 without structured provenance", to: "IN-006 sources[] added", note: "PA-006 opportunistic legacy provenance enrichment. Primary Life Biosciences IND announcement and ClinicalTrials.gov registration verified the existing IN-006 event; description and evidentiary interpretation unchanged." },
