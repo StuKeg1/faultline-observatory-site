@@ -93,7 +93,7 @@ export const FR_QE_0008 = {
         { citation: "Sivak et al., ‘Reinforcement learning control of quantum error correction’, Nature 655, 879–884 (2026)", url: "https://www.nature.com/articles/s41586-026-10759-2", doi: "10.1038/s41586-026-10759-2", locator: "Abstract, main results and Methods" },
         { citation: "Google Quantum AI, data for ‘Reinforcement Learning Control of Quantum Error Correction’ (2026)", url: "https://zenodo.org/records/18896801", doi: "10.5281/zenodo.18896801", locator: "Experimental dataset; surface-code data collected 2026" },
       ],
-    }
+    },
     {
       id: "IN-007",
       qualifiedEvent: "Quantinuum Helios — C4-Helix repeated correction and logical-operation benchmarks",
