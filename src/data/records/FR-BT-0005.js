@@ -95,7 +95,7 @@ export const FR_BT_0005 = {
       sources: [
         { citation: "US FDA, Source Animal, Product, Preclinical, and Clinical Issues Concerning the Use of Xenotransplantation Products in Humans: Guidance for Industry (2016)", url: "https://www.fda.gov/media/102126/download", locator: "Section on identification of xenogeneic retroviruses in recipients — PERV detection, confirmation, notification, contingency and follow-up requirements" },
       ],
-    },,
+    },
     {
       id: "IN-008",
       qualifiedEvent: "271-day xenokidney — peer-reviewed bridge to successful human allotransplantation",
@@ -118,7 +118,7 @@ export const FR_BT_0005 = {
       verificationStage: "VS-03",
       summary: "The claim enters the corpus under strong two-sided pressure. Living-human xenokidney recipients have demonstrated life-sustaining renal function for weeks and, in a later case, for 271 days, moving the field beyond decedent compatibility and short-lived physiological demonstration. At the same time, acute rejection, persistent innate immune activation, eventual graft dysfunction, proteinuria and the continuing need for intensive immunosuppression and zoonotic surveillance remain material constraints. The EXPAND prospective multicentre study now provides a formal replication pathway with 24-week graft, patient and renal-function endpoints. The Pressure State is ESCALATING because both capability evidence and failure-mechanism evidence are strengthening. Verification Stage is VS-03 because the claim has progressed beyond publication into living-human clinical audit that has exposed real rejection and physiological failure modes, but prospective multi-recipient replication has not yet been established.",
       assessorNote: "Admission evidence basis includes living-recipient clinical reports and contemporary clinical review; Ribas et al., Nature Medicine 32 (2026), 'Immune profiling in a living human recipient of a gene-edited pig kidney'; ClinicalTrials.gov NCT06878560 (EXPAND); United Therapeutics EXPAND trial disclosures; and FDA xenotransplantation guidance on infectious-risk surveillance. The record is deliberately scoped to durable renal replacement in living humans rather than xenotransplantation generally.",
-    },,
+    },
     {
       id: "AS-002",
       date: "2026-09-26",
