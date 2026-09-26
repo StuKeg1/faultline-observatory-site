@@ -101,6 +101,21 @@ export const FR_AI_0002 = {
       vectors: ["CONTESTING"],
       date: "2026",
     }
+    {
+      id: "IN-008",
+      qualifiedEvent: "OSWorld-Pro — process evaluation of computer-use agents",
+      description: "OSWorld-Pro (arXiv:2609.24890v1, submitted 21 September 2026) offers bounded evidence at the low-supervision agentic boundary by evaluating computer-use agents across 305 Linux GUI tasks with 2,814 sequentially dependent subgoals and 67,264 human-annotated step labels. Its reported task metric is the share of tasks completing all subgoals deemed feasible by human annotators: the highest tabulated model scores 77.7% and Claude Opus 5 scores 75.7%. The paper identifies subgoal-irrelevant actions and click errors that final-output scoring alone may obscure. This supports a process-level reliability constraint in extended multi-app workflows and makes RM-002/OQ-001 more observable, but does not measure workplace productivity, economic value, the amount of human supervision actually required, or performance in deployed professional settings. The cited 83.4% OSWorld score concerns a different benchmark and must not be treated as a like-for-like decline. The preprint's automated subgoal judge agrees with human task-level completion labels more closely than with feasibility/progress labels, and task selection includes uncommon applications and Linux environments; independent replication is not established. Authors are affiliated with NVIDIA, an interested AI infrastructure and agent research vendor. This evidence is distinct from IN-007's live-service root-cause analysis. It reinforces the existing boundary without changing AS-002's ESCALATING / VS-02 assessment.",
+      vectors: ["CONTESTING"],
+      date: "2026-09-21",
+      sources: [
+        {
+          citation: "Wang et al. (2026), OSWorld-Pro: Process-based Evaluation for Computer Use Agents, arXiv:2609.24890v1.",
+          url: "https://arxiv.org/abs/2609.24890v1",
+          arxiv: "2609.24890v1",
+          locator: "Sections 2–6; Tables 1–2; action-level failure analysis",
+        },
+      ],
+    },
   ],
 
   assessments: [
@@ -176,6 +191,7 @@ export const FR_AI_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-012", date: "2026-09-26", field: "instance_appended", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "Normal Record Review of Frontline Scout flag 2026-09-26-01 admitted OSWorld-Pro arXiv:2609.24890v1 as bounded process-level contesting evidence at the low-supervision agentic boundary. AS-002 remains current; Pressure State ESCALATING, Verification Stage VS-02, mechanisms and open questions unchanged. The benchmark does not establish economic productivity or real-world supervision cost." },
     {"id":"M-011","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2020–22, lineage:2022–23, lineage:2023–24, lineage:2024","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2020–22, 2022–23, 2023–24, 2024 from FR_AI_0002_LLM_knowledge_work_utility.html (Drive file 1kmjQHLUxpNKFNStSoFKR-AE7P-ogFAIZ). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-010", date: "2026-08-30", field: "provenance_review_completed", from: "No governed provenance-review completion marker", to: "LPR-001-D01 completed; discrepancies corrected", note: "LPR-001 Day 1 completion recorded after the bounded correction of IN-001, IN-002 and IN-004. The marker records review completion separately from repair outcome so the deterministic oldest/never-reviewed queue can operate. No evidence instance, assessment, Pressure State or Verification Stage was added or changed by this marker." },
