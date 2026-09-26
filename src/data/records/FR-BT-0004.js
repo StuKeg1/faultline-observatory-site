@@ -16,6 +16,10 @@
 export const FR_BT_0004 = {
   id: "FR-BT-0004",
   programme: "PROG-BT",
+  lastProvenanceReview: "2026-09-26",
+  provenanceReviewId: "LPR-001-D28",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "A blood-based liquid biopsy can reliably detect cancer before conventional clinical diagnosis.",
@@ -29,7 +33,7 @@ export const FR_BT_0004 = {
       qualifiedEvent: "Cell-free DNA and circulating tumour DNA — technology foundation",
       description: "The detection of circulating tumour DNA (ctDNA) and cell-free DNA (cfDNA) fragments in blood establishes the technological basis for liquid biopsy. Diehl et al. (2008) demonstrate ctDNA detection in colorectal cancer; subsequent work extends detection across cancer types. Key technical advances include digital droplet PCR (ddPCR) for mutation detection and next-generation sequencing for broader genomic profiling. By 2019, several single-cancer liquid biopsy tests have received FDA breakthrough device designation. The technology establishes that tumour-derived nucleic acids are detectable in blood at clinically relevant cancer stages. This is foundational positive evidence: the proxy signal (blood-based ctDNA) does correlate with the presence of cancer, and the biological basis is sound. The question is whether the signal is detectable early enough and reliably enough to satisfy the claim.",
       vectors: ["supportive--proxy-signal-biologically-validated"],
-      date: "2014–19",
+      date: "2008–19",
       sourceReference: "Diehl et al., Nature Medicine 14 (2008), doi:10.1038/nm.1789; Wan et al., Nature Reviews Cancer 17 (2017), doi:10.1038/nrc.2017.7",
     },
     {
@@ -43,7 +47,7 @@ export const FR_BT_0004 = {
     {
       id: "IN-003",
       qualifiedEvent: "NHS-Galleri trial — population-level screening evidence",
-      description: "The NHS-Galleri trial enrolled 142,924 participants in England in a randomised controlled trial of Galleri plus standard care versus standard care alone in an asymptomatic population aged 50–77. Its pre-specified primary objective was a reduction in late-stage (Stage III–IV) cancer incidence, first assessed across twelve pre-specified cancer types; mortality was not the primary endpoint. Randomisation and longer-term linkage can support later mortality comparison, but stage shift and mortality benefit are distinct outcomes. At this point in the record's chronology, the late-stage-incidence result and mortality follow-up were both pending. The claim therefore remained FRAGMENTING: early detection was demonstrably achievable in some contexts, while whether it produces clinically meaningful outcome benefit rather than lead-time or overdiagnosis effects remained unresolved.",
+      description: "The NHS-Galleri trial randomised 142,250 participants in England (71,122 to Galleri plus standard care and 71,128 to standard care alone) in an asymptomatic population aged 50–77. Its pre-specified primary objective was a reduction in late-stage (Stage III–IV) cancer incidence, first assessed across twelve pre-specified cancer types; mortality was not the primary endpoint. Randomisation and longer-term linkage can support later mortality comparison, but stage shift and mortality benefit are distinct outcomes. At this point in the record's chronology, the late-stage-incidence result and mortality follow-up were both pending. The claim therefore remained FRAGMENTING: early detection was demonstrably achievable in some contexts, while whether it produces clinically meaningful outcome benefit rather than lead-time or overdiagnosis effects remained unresolved.",
       vectors: ["neutral--definitive-trial-ongoing-results-pending-2026"],
       date: "2021–23",
       sourceReference: "Neal et al., Journal of Clinical Oncology 40 supplement (2022), NHS-Galleri trial design, doi:10.1200/JCO.2022.40.16_suppl.TPS6606; ISRCTN91431511; NCT05611632",
@@ -143,6 +147,7 @@ export const FR_BT_0004 = {
   mutationLog: [
     {"id":"M-009","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:BN-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored BN-001 from FR_BT_0004_liquid_biopsy_early_cancer_detection.html (Drive file 1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
+    { id: "M-010", date: "2026-09-26", field: "provenance_review_completed", from: "LPR-001-D28 discrepancies_found / pending", to: "LPR-001-D28 discrepancies_corrected / completed", note: "Approved bounded LPR-001 correction. IN-001 date scope corrected from 2014–19 to 2008–19 to include the cited Diehl et al. 2008 foundation. IN-003 participant count corrected from 142,924 enrolled to 142,250 randomised, with arm counts 71,122 and 71,128, matching the peer-reviewed NHS-Galleri result. No new scientific evidence admitted; September 2026 NHS-Galleri publications remain Normal Record Review candidates." },
     { id: "M-008", date: "2026-08-28", field: "reference_corrected", from: "Instance references absent; IN-002 cohort/date imprecise; IN-003/AS-001 derivative frame treated mortality as NHS-Galleri's primary endpoint; IN-005 transaction value and divestment account imprecise; IN-006 described a conference abstract as concurrent JCO publication", to: "IN-001–IN-006 references recorded; cohort, endpoint, transaction and publication-status descriptions corrected", note: "GP-001 provenance and description correction following the bounded three-record source/DOI audit. IN-003, RM-001, AT-001 and OQ-001 now distinguish the trial's actual late-stage-incidence primary endpoint from later mortality evidence. IN-005 records the approximately $7.1bn transaction and both EU and US enforcement history. IN-006 identifies JCO LBA100 as a conference-supplement abstract rather than a full article. AS-001 and AS-002 remain unchanged as append-only historical assessments; their mortality-endpoint wording must be read with this correction. Current Pressure State FRAGMENTING and Verification Stage VS-04 remain unchanged." },
     { id: "M-007", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: FRAGMENTING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
     { id: "M-006", date: "2026-06-27", field: "instances_logged", from: "—", to: "INSTANCES-LOGGED", note: "INST-006 added (NHS-Galleri full trial results, ASCO 2026)." },
