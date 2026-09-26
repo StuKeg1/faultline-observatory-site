@@ -75,6 +75,28 @@ export const FR_BT_0004 = {
       vectors: ["partial--primary-endpoint-missed-stage-shift-observed-mortality-pending"],
       date: "2026",
       sourceReference: "Swanton et al., NHS-Galleri primary results, Journal of Clinical Oncology 44 supplement (2026), abstract LBA100, doi:10.1200/JCO.2026.44.17_suppl.LBA100; GRAIL trial-results release (19 February 2026); Science Media Centre expert reaction (30 May 2026)",
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "NHS-Galleri trial — peer-reviewed primary randomized results",
+      description: "Sasieni et al. publish the NHS-Galleri primary randomized results in the New England Journal of Medicine on 22 September 2026. Among 142,250 randomized participants, the prespecified primary endpoint of Stage III/IV cancer incidence across twelve cancer types is not reduced by MCED screening plus usual care versus usual care alone (incidence-rate ratio 1.03; 95% CI 0.92–1.14; P=0.63). The key Stage IV secondary endpoint has an incidence-rate ratio of 0.86 (95% CI 0.74–1.00). Trial-related adverse events occur in fewer than 1% of participants and none are serious. The peer-reviewed article therefore confirms the mixed evidential state previously represented from ASCO 2026: the primary late-stage endpoint is negative while a Stage IV signal remains compatible with benefit but requires further follow-up. Mortality is not resolved.",
+      vectors: ["partial--peer-reviewed-primary-endpoint-negative-stage-IV-signal-mortality-pending"],
+      date: "2026-09-22",
+      sourceReference: "Sasieni et al., New England Journal of Medicine (2026), doi:10.1056/NEJMoa2505723",
+      sources: [
+        { title: "Effect of Screening with Multicancer Early-Detection Test on Late-Stage Cancer Diagnosis", publisher: "New England Journal of Medicine", date: "2026-09-22", doi: "10.1056/NEJMoa2505723", url: "https://doi.org/10.1056/NEJMoa2505723" }
+      ],
+    },
+    {
+      id: "IN-008",
+      qualifiedEvent: "NHS-Galleri trial — three-round MCED test performance",
+      description: "Neal et al. publish prespecified secondary test-performance endpoints from the NHS-Galleri intervention arm in Nature Medicine on 22 September 2026. Across the three annual screening rounds, positive predictive value is 58.0%, 50.4% and 45.8%; specificity remains 99.50–99.60%; and episode sensitivity for all cancers is 37.2%, 27.1% and 26.7%, respectively. Cancer-signal-origin accuracy remains above 91% by round. These results strengthen evidence that the assay can identify cancer signals with very high specificity in population screening, while also quantifying a substantial sensitivity limitation that persists across repeated annual rounds. The analyses are descriptive and do not establish mortality benefit or resolve overdiagnosis; those outcomes are reserved for future reporting.",
+      vectors: ["partial--high-specificity-persistent-sensitivity-limit-outcome-benefit-unresolved"],
+      date: "2026-09-22",
+      sourceReference: "Neal et al., Nature Medicine (2026), doi:10.1038/s41591-026-04652-8",
+      sources: [
+        { title: "Performance of a multi-cancer early detection test in the randomized controlled NHS-Galleri trial", publisher: "Nature Medicine", date: "2026-09-22", doi: "10.1038/s41591-026-04652-8", url: "https://doi.org/10.1038/s41591-026-04652-8" }
+      ],
     }
   ],
 
@@ -95,6 +117,14 @@ export const FR_BT_0004 = {
       verificationStage: "VS-04",
       summary: "The NHS-Galleri trial's full results (INST-006) sustain rather than resolve the FRAGMENTING state identified at AS-001. The trial delivers exactly the kind of evidence the record's attractor (AT-001) was built to await, and the result is genuinely mixed rather than confirmatory or disconfirming: a real, substantial reduction in late-stage diagnoses coexists with a missed primary endpoint, an unexpected rise in Stage III diagnoses, and no mortality data. This is not a null result — the four-fold detection-rate increase and Stage IV reduction are real signals — but it does not resolve the central contested question (OQ-001): whether earlier detection translates into reduced mortality, or whether it is partially absorbed by stage migration and lead-time effects that RM-001/AT-001 already anticipated. Verification stage advances to VS-04 (Replication): a population-scale randomised trial has now run and reported, the most rigorous test design available short of mortality follow-up itself. The record should be re-entered when GRAIL's extended follow-up data (6–12 months from this release) becomes available, since that data — not this release — is positioned to address OQ-001 directly.",
       assessorNote: "Sources: GRAIL press releases and ASCO 2026 presentation (May 30, 2026); Journal of Clinical Oncology; independent commentary via Science Media Centre. Verified directly via web search during RELEASE-004 / TRIAL-001, 2026-06-27.",
+    },
+    {
+      id: "AS-003",
+      date: "2026-09-26",
+      pressureState: "fragmenting",
+      verificationStage: "VS-04",
+      summary: "Peer-reviewed publication of the NHS-Galleri randomized primary results (IN-007) and three-round test-performance analysis (IN-008) materially strengthens the record's evidence quality without resolving its central fracture. The primary Stage III/IV incidence endpoint remains negative (IRR 1.03; 95% CI 0.92–1.14), while the Stage IV secondary result remains a potentially favorable but not independently resolving signal (IRR 0.86; 95% CI 0.74–1.00). The companion performance analysis shows consistently very high specificity but episode sensitivity of only 26.7–37.2% for all cancers across annual rounds. This combination supports the claim that blood-based MCED can detect otherwise occult cancers in population screening, but it does not establish that screening produces clinically meaningful outcome benefit. Mortality and overdiagnosis remain explicitly outstanding. Pressure State therefore remains FRAGMENTING and Verification Stage remains VS-04; AT-001 is unsatisfied.",
+      assessorNote: "Normal Record Review 2026-09-26. Sources: Sasieni et al., NEJM, doi:10.1056/NEJMoa2505723; Neal et al., Nature Medicine, doi:10.1038/s41591-026-04652-8. Both published 22 September 2026. No mortality or overdiagnosis endpoint admitted.",
     }
   ],
 
@@ -147,6 +177,8 @@ export const FR_BT_0004 = {
   mutationLog: [
     {"id":"M-009","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:BN-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored BN-001 from FR_BT_0004_liquid_biopsy_early_cancer_detection.html (Drive file 1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
+    { id: "M-012", date: "2026-09-26", field: "assessment_issued", from: "AS-002 / FRAGMENTING / VS-04", to: "AS-003 / FRAGMENTING / VS-04", note: "Normal Record Review of the two LPR-001-D28 new-evidence candidates. Peer-reviewed NHS-Galleri primary RCT and three-round performance papers admitted as IN-007 and IN-008. Evidence quality and test-performance characterization strengthened; mortality and overdiagnosis remain unresolved; AT-001 unsatisfied." },
+    { id: "M-011", date: "2026-09-26", field: "instances_logged", from: "IN-001–IN-006", to: "IN-001–IN-008", note: "Normal Record Review admitted Sasieni et al. NEJM doi:10.1056/NEJMoa2505723 as IN-007 and Neal et al. Nature Medicine doi:10.1038/s41591-026-04652-8 as IN-008. These were held outside LPR-001-D28 until normal review." },
     { id: "M-010", date: "2026-09-26", field: "provenance_review_completed", from: "LPR-001-D28 discrepancies_found / pending", to: "LPR-001-D28 discrepancies_corrected / completed", note: "Approved bounded LPR-001 correction. IN-001 date scope corrected from 2014–19 to 2008–19 to include the cited Diehl et al. 2008 foundation. IN-003 participant count corrected from 142,924 enrolled to 142,250 randomised, with arm counts 71,122 and 71,128, matching the peer-reviewed NHS-Galleri result. No new scientific evidence admitted; September 2026 NHS-Galleri publications remain Normal Record Review candidates." },
     { id: "M-008", date: "2026-08-28", field: "reference_corrected", from: "Instance references absent; IN-002 cohort/date imprecise; IN-003/AS-001 derivative frame treated mortality as NHS-Galleri's primary endpoint; IN-005 transaction value and divestment account imprecise; IN-006 described a conference abstract as concurrent JCO publication", to: "IN-001–IN-006 references recorded; cohort, endpoint, transaction and publication-status descriptions corrected", note: "GP-001 provenance and description correction following the bounded three-record source/DOI audit. IN-003, RM-001, AT-001 and OQ-001 now distinguish the trial's actual late-stage-incidence primary endpoint from later mortality evidence. IN-005 records the approximately $7.1bn transaction and both EU and US enforcement history. IN-006 identifies JCO LBA100 as a conference-supplement abstract rather than a full article. AS-001 and AS-002 remain unchanged as append-only historical assessments; their mortality-endpoint wording must be read with this correction. Current Pressure State FRAGMENTING and Verification Stage VS-04 remain unchanged." },
     { id: "M-007", date: "2026-06-27", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "ASSESSMENT-002 issued. Pressure state: FRAGMENTING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001." },
