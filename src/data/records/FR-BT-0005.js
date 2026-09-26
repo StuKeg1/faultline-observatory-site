@@ -95,7 +95,18 @@ export const FR_BT_0005 = {
       sources: [
         { citation: "US FDA, Source Animal, Product, Preclinical, and Clinical Issues Concerning the Use of Xenotransplantation Products in Humans: Guidance for Industry (2016)", url: "https://www.fda.gov/media/102126/download", locator: "Section on identification of xenogeneic retroviruses in recipients — PERV detection, confirmation, notification, contingency and follow-up requirements" },
       ],
-    },
+    },,
+    {
+      id: "IN-008",
+      qualifiedEvent: "271-day xenokidney — peer-reviewed bridge to successful human allotransplantation",
+      description: "Riella et al. report in The Lancet the first recipient in a planned three-patient FDA Expanded Access study using the 69-edit EGEN-2784 porcine kidney. The xenograft functioned immediately and sustained dialysis independence for 271 days. An early T-cell-mediated rejection episode resolved with treatment. After approximately six months of stable function, immunosuppression was reduced during a non-zoonotic bacterial infection; microvascular inflammation and endothelial injury subsequently progressed to thrombotic microangiopathy and graft failure, with macrophage- and natural-killer-cell-predominant infiltration and minimal T-cell involvement. No porcine pathogen transmission was detected and anti-HLA antibodies remained unchanged. Eighty-two days after xenograft explantation, the recipient received a human kidney with immediate graft function and no evidence of sensitisation during 231 days of follow-up. The case therefore strengthens evidence for months-long life-supporting renal replacement and demonstrates feasibility as a bridge to allotransplantation, while directly exposing late microvascular and innate-immune injury as a durability barrier.",
+      vectors: ["partial--271-day-dialysis-independence-bridge-demonstrated-late-microvascular-failure"],
+      date: "2026-09-03",
+      sourceReference: "Riella et al., The Lancet 408 (2026), 1029–1040, doi:10.1016/S0140-6736(26)01295-X",
+      sources: [
+        { citation: "Riella et al., Porcine kidney xenotransplantation as a bridge to allotransplantation: a first-in-human study, The Lancet 408, 1029–1040 (2026)", doi: "10.1016/S0140-6736(26)01295-X", locator: "Findings and Interpretation — immediate function, 271 days dialysis independence, reversible early T-cell rejection, later microvascular injury/TMA, no porcine pathogen transmission, unchanged anti-HLA antibodies, and successful subsequent human allotransplantation" },
+      ],
+    }
   ],
 
   assessments: [
@@ -107,7 +118,15 @@ export const FR_BT_0005 = {
       verificationStage: "VS-03",
       summary: "The claim enters the corpus under strong two-sided pressure. Living-human xenokidney recipients have demonstrated life-sustaining renal function for weeks and, in a later case, for 271 days, moving the field beyond decedent compatibility and short-lived physiological demonstration. At the same time, acute rejection, persistent innate immune activation, eventual graft dysfunction, proteinuria and the continuing need for intensive immunosuppression and zoonotic surveillance remain material constraints. The EXPAND prospective multicentre study now provides a formal replication pathway with 24-week graft, patient and renal-function endpoints. The Pressure State is ESCALATING because both capability evidence and failure-mechanism evidence are strengthening. Verification Stage is VS-03 because the claim has progressed beyond publication into living-human clinical audit that has exposed real rejection and physiological failure modes, but prospective multi-recipient replication has not yet been established.",
       assessorNote: "Admission evidence basis includes living-recipient clinical reports and contemporary clinical review; Ribas et al., Nature Medicine 32 (2026), 'Immune profiling in a living human recipient of a gene-edited pig kidney'; ClinicalTrials.gov NCT06878560 (EXPAND); United Therapeutics EXPAND trial disclosures; and FDA xenotransplantation guidance on infectious-risk surveillance. The record is deliberately scoped to durable renal replacement in living humans rather than xenotransplantation generally.",
-    },
+    },,
+    {
+      id: "AS-002",
+      date: "2026-09-26",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      summary: "Normal Record Review admits the peer-reviewed 271-day living-recipient xenokidney case as IN-008. The report materially strengthens the capability side of the claim: a gene-edited porcine kidney provided immediate function and sustained dialysis independence for nearly nine months, and subsequent human allotransplantation proceeded without detected xenograft-induced HLA sensitisation or porcine pathogen transmission. It also sharpens rather than removes the durability constraint. After immunosuppression was reduced during a bacterial infection, microvascular inflammation and endothelial injury progressed to thrombotic microangiopathy and graft failure, with macrophage- and natural-killer-cell-predominant infiltration. This directly reinforces RM-001 and the distinction between control of acute adaptive rejection and sustained xenogeneic immune/vascular compatibility. Pressure State remains ESCALATING and Verification Stage remains VS-03: durable living-human function is stronger than at admission, but the evidence remains an individual Expanded Access case and prospective multi-recipient replication has not yet been established.",
+      assessorNote: "Normal Record Review of the September 2026 Lancet candidate held outside LPR-001-D29. Source: Riella et al., The Lancet 408 (2026), 1029–1040, doi:10.1016/S0140-6736(26)01295-X. IN-003 remains as earlier chronology; IN-008 records the later peer-reviewed evidence and mechanistic detail.",
+    }
   ],
 
   mechanisms: [
@@ -179,6 +198,8 @@ export const FR_BT_0005 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-008", date: "2026-09-26", field: "assessment_issued", from: "AS-001 / ESCALATING / VS-03", to: "AS-002 / ESCALATING / VS-03", note: "Normal Record Review of the Lancet 271-day xenokidney case. Capability evidence strengthens and late microvascular/innate injury is better resolved, but prospective multi-recipient replication remains outstanding." },
+    { id: "M-007", date: "2026-09-26", field: "instances_logged", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "Riella et al., Lancet 2026, admitted as IN-008 after being held outside LPR-001-D29. IN-003 retained as historical chronology rather than overwritten." },
     { id: "M-006", date: "2026-09-26", field: "provenance_review_completed", from: "—", to: "LPR-001-D29", note: "Legacy provenance review completed. All seven existing instances verified against underlying or authoritative sources; structured sources[] added where attribution was confidently established. No factual, interpretive, attribution or verification-stage discrepancy identified. The September 2026 peer-reviewed Lancet report of the 271-day case was held outside LPR-001 as a Normal Record Review candidate." },
     { id: "M-005", date: "2026-08-21", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "Admission diagnosis: ESCALATING / VS-03. Living-human renal replacement is demonstrated, while durability, rejection control and prospective reproducibility remain unresolved." },
     { id: "M-004", date: "2026-08-21", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "BN-001, RM-001, RM-002, BN-002 and AT-001 recorded from the admission evidence package." },
