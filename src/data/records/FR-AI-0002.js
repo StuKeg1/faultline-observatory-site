@@ -100,7 +100,7 @@ export const FR_AI_0002 = {
       description: "ORCA-bench provides bounded CONTESTING evidence at the record's established agentic frontier by testing general-purpose coding agents on root-cause analysis in a live OpenTelemetry microservice environment (arXiv:2607.28545v1, submitted July 2026). The benchmark contains 1,079 tasks varying report specificity, detection delay, and concurrent incidents; its ground truth was curated with site-reliability-engineering input, and its automated judge achieved weighted Cohen's kappa of 0.90 against human rescoring. The best reported root-cause-analysis accuracy was 25.3% on realistic medium tasks and 10% on hard tasks. Hallucinated root causes appeared in 7%–40% of non-empty reports, while removing source-code access reduced accuracy by 9–16 percentage points. Agents made partial diagnostic progress but were distracted by louder signals and frequently missed concurrent causes, leaving performance far below reliable autonomous delegation for production incident diagnosis. The result strengthens rather than redraws AS-001's boundary: economically valuable bounded, human-reviewed assistance remains supported, while extended high-stakes multi-step work under low supervision remains unreliable. It does not measure economic value directly, evaluate actual enterprise deployment, or establish the performance of specialised AI-SRE systems. Generalisation is limited by the benchmark harness, prompt design, preprint status, and relevant vendor interest because several authors are affiliated with Traversal, a company offering AI-SRE systems.",
       vectors: ["CONTESTING"],
       date: "2026",
-    }
+    },
     {
       id: "IN-008",
       qualifiedEvent: "OSWorld-Pro — process evaluation of computer-use agents",
