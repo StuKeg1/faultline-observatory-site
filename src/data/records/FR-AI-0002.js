@@ -111,7 +111,6 @@ export const FR_AI_0002 = {
         {
           citation: "Wang et al. (2026), OSWorld-Pro: Process-based Evaluation for Computer Use Agents, arXiv:2609.24890v1.",
           url: "https://arxiv.org/abs/2609.24890v1",
-          arxiv: "2609.24890v1",
           locator: "Sections 2–6; Tables 1–2; action-level failure analysis",
         },
       ],
