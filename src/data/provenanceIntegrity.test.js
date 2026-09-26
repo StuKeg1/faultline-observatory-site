@@ -13,7 +13,7 @@ test("audited Frontier Records carry instance-level source provenance", () => {
     record.instances.map((instance) => ({ recordId: record.id, instance }))
   );
 
-  assert.equal(instances.length, 20);
+  assert.equal(instances.length, 22);
   for (const { recordId, instance } of instances) {
     assert.ok(
       typeof instance.sourceReference === "string" && instance.sourceReference.trim().length > 0,

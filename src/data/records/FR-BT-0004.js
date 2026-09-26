@@ -84,7 +84,7 @@ export const FR_BT_0004 = {
       date: "2026-09-22",
       sourceReference: "Sasieni et al., New England Journal of Medicine (2026), doi:10.1056/NEJMoa2505723",
       sources: [
-        { title: "Effect of Screening with Multicancer Early-Detection Test on Late-Stage Cancer Diagnosis", publisher: "New England Journal of Medicine", date: "2026-09-22", doi: "10.1056/NEJMoa2505723", url: "https://doi.org/10.1056/NEJMoa2505723" }
+        { citation: "Sasieni et al. (2026), Effect of Screening with Multicancer Early-Detection Test on Late-Stage Cancer Diagnosis, New England Journal of Medicine, published 22 September 2026.", doi: "10.1056/NEJMoa2505723", url: "https://doi.org/10.1056/NEJMoa2505723" }
       ],
     },
     {
@@ -95,7 +95,7 @@ export const FR_BT_0004 = {
       date: "2026-09-22",
       sourceReference: "Neal et al., Nature Medicine (2026), doi:10.1038/s41591-026-04652-8",
       sources: [
-        { title: "Performance of a multi-cancer early detection test in the randomized controlled NHS-Galleri trial", publisher: "Nature Medicine", date: "2026-09-22", doi: "10.1038/s41591-026-04652-8", url: "https://doi.org/10.1038/s41591-026-04652-8" }
+        { citation: "Neal et al. (2026), Performance of a multi-cancer early detection test in the randomized controlled NHS-Galleri trial, Nature Medicine, published 22 September 2026.", doi: "10.1038/s41591-026-04652-8", url: "https://doi.org/10.1038/s41591-026-04652-8" }
       ],
     }
   ],
