@@ -93,7 +93,18 @@ export const FR_QE_0008 = {
         { citation: "Sivak et al., ‘Reinforcement learning control of quantum error correction’, Nature 655, 879–884 (2026)", url: "https://www.nature.com/articles/s41586-026-10759-2", doi: "10.1038/s41586-026-10759-2", locator: "Abstract, main results and Methods" },
         { citation: "Google Quantum AI, data for ‘Reinforcement Learning Control of Quantum Error Correction’ (2026)", url: "https://zenodo.org/records/18896801", doi: "10.5281/zenodo.18896801", locator: "Experimental dataset; surface-code data collected 2026" },
       ],
-    }
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "Quantinuum Helios — C4-Helix repeated correction and logical-operation benchmarks",
+      description: "Berthusen et al. (arXiv:2609.03194v1) report experimental validation of principal components of a compact trapped-ion fault-tolerant architecture on Quantinuum's 98-qubit Helios processor. Their [[20,2,6]] C4-Helix code reaches a reported logical error of 4.6 (+6.2/−2.6) × 10⁻⁵ per logical qubit per QEC cycle under repeated correction; the two-logical-qubit Clifford benchmark reports 2.8 (+1.0/−1.6) × 10⁻⁴ error per logical Clifford. A chain-map interface to a distance-5 surface code prepares a heterogeneous three-logical-qubit GHZ state with a reported fidelity lower bound of 99.925 (+0.068/−0.245)%. The encoded implementations outperform corresponding unencoded physical baselines without postselection. This adds integrated architecture and logical-operation evidence on trapped-ion hardware beyond IN-004's earlier demonstrations. It does not measure a suppression curve across increasing code distances, independently replicate the result, demonstrate a useful fault-tolerant workload, or establish resource overhead and economics at application scale. Simulated improvements from future physical fidelity are projections, not measured logical performance.",
+      vectors: ["supportive--trapped-ion-integrated-qec-and-logical-operations-without-distance-scaling-closure"],
+      date: "2026-09-02",
+      sourceReference: "Berthusen et al., arXiv:2609.03194v1 (2026), primary preprint",
+      sources: [
+        { citation: "Berthusen et al., ‘Experimental validation of a compact fault-tolerant architecture for trapped ions’, arXiv:2609.03194v1 (2026)", url: "https://arxiv.org/abs/2609.03194v1", locator: "Abstract; repeated QEC, logical-Clifford benchmark and chain-map interface" },
+      ],
+    },
   ],
 
   assessments: [
@@ -165,6 +176,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-012", date: "2026-09-26", field: "instance_appended", from: "IN-006", to: "IN-007", note: "Normal Record Review of RR-2026-09-05-01 admitted Berthusen et al., arXiv:2609.03194v1, as distinct trapped-ion architecture evidence. The reported logical QEC cycle, Clifford benchmark and surface-code interface do not establish increasing-distance suppression, independent replication or useful fault-tolerant economics. AS-003 remains derived current assessment at RESOLVING / VS-04. The retrospectively incomplete Scout stated 4 September as first public date; arXiv v1 was submitted 2 September 2026, inside its review window." },
     { id: "M-011", date: "2026-09-21", field: "assessment_order_corrected", from: "AS-003 → AS-002 → AS-001", to: "AS-001 → AS-002 → AS-003", note: "Structural chronology repair: restored assessments[] to the canonical oldest-first order after AS-002 and AS-003 were mistakenly prepended on 2026-09-18. Existing assessment objects, dates, wording, pressure states, verification stages and evidentiary judgements are unchanged. This correction restores AS-003 as the derived current assessment and makes the repair explicit in the append-only mutation history." },
     { id: "M-010", date: "2026-09-18", field: "instance_appended", from: "IN-005", to: "IN-006", note: "Normal Record Review admitted Sivak et al., Nature 655 (2026), reinforcement-learning control of QEC. Experimental Willow results show continuous syndrome-driven control improves logical stability against injected drift and supports uninterrupted calibration; distance-15 evidence is simulation only. AS-003 appended; RESOLVING / VS-04 retained. RM-001 and AT-001 consistency wording completed from the authorised LPR-001-D20 correction and updated to reflect that drift mitigation does not remove correlated-error floors or satisfy the outcome-based attractor." },
     { id: "M-009", date: "2026-09-18", field: "provenance_repair", from: "LPR-001-D20 discrepancies_found / pending", to: "LPR-001-D20 pass_after_correction / completed", note: "Bounded correction executed for IN-001 through IN-005. Corrected the 2023 distance-3/5 numerical representation; corrected Willow suppression semantics to Λ per distance increase of two; separated Microsoft/Quantinuum trapped-ion evidence from Microsoft's topological programme; replaced unsupported generic logical-gate rates; and corrected the correlated-error-floor representation using observed repetition-code floors. Structured sources[] added to all repaired instances. AS-001 preserved append-only and corrective AS-002 appended; RM-001, AT-001 and lineage brought into consistency. Pressure State RESOLVING and Verification Stage VS-04 retained. The 2026 reinforcement-learning QEC candidate remains outside this repair for Normal Record Review." },
