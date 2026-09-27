@@ -13,6 +13,10 @@
 export const FR_BT_0006 = {
   id: "FR-BT-0006",
   programme: "PROG-BT",
+  lastProvenanceReview: "2026-09-27",
+  provenanceReviewId: "LPR-001-D30",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "A cell assembled bottom-up from non-living molecular components can autonomously sustain repeated cycles of genome replication, growth and division while preserving functional biological information across generations.",
@@ -170,6 +174,7 @@ export const FR_BT_0006 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-09-27", field: "provenance_review_completed", from: "—", to: "LPR-001-D30", note: "Legacy provenance review completed. All four existing instances verified against their structured sources; no provenance enrichment, discrepancy or new-evidence candidate identified. No assessment, interpretation, pressure state, verification stage, mechanism, attractor or claim changed." },
     { id: "M-005", date: "2026-09-12", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "Admission diagnosis: EMERGING / VS-02. Integrated cellular functions are established in peer-reviewed work; autonomous repeated reproduction remains provisional and unreplicated." },
     { id: "M-004", date: "2026-09-12", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "BN-001, RM-001, RM-002, RM-003 and AT-001 recorded from the admission evidence package." },
     { id: "M-003", date: "2026-09-12", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "AS-001 issued. Pressure State: EMERGING. Verification Stage: VS-02." },
