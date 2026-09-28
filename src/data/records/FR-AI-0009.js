@@ -113,6 +113,17 @@ export const FR_AI_0009 = {
         { citation: "Sadeghi, J. et al. (2026), CaliBench: Are the Stochastic Dynamics of Video World Models Physically Calibrated?, arXiv:2608.16829.", url: "https://arxiv.org/abs/2608.16829", locator: "Abstract; nine scenes; six image-to-video models; calibration and probability-mass concentration results" },
       ],
     },
+    {
+      id: "IN-009",
+      qualifiedEvent: "Project Kitchen / Game2Policy — bounded game-to-robot manipulation transfer",
+      description: "Li et al. collect human manipulation trajectories in a purpose-built VR cooking game, extract contact-point and sub-goal affordance cues, pre-train an affordance model on those game-collected data, and adapt downstream robot policies with a small number of real-robot demonstrations. The authors report average success-rate gains of 10.0 percentage points in simulation and 18.3 points on real robots in the few-shot setting against policies without that game-data pretraining. This is a controlled, task-specific supportive result for transferring selected manipulation knowledge from a virtual environment to physical action. It is not evidence that an unrestricted video-game corpus yields a generally reliable action-conditioned world model: the game was designed for data collection, the cues were explicitly extracted, and real-robot adaptation remained necessary. The result is a September 2026 preprint; code and platform release is promised upon acceptance, so independent replication and broader task or embodiment transfer remain open.",
+      vectors: ["partial--task-specific-game-to-robot-affordance-transfer"],
+      date: "2026-09-16",
+      sourceReference: "Li et al., 'From Gameplay to Policy: Towards Scalable Robot Data Collection via Gamified Robot-Free Interaction', arXiv:2609.18650",
+      sources: [
+        { citation: "Li, Z. et al. (2026), From Gameplay to Policy: Towards Scalable Robot Data Collection via Gamified Robot-Free Interaction, arXiv:2609.18650.", url: "https://arxiv.org/abs/2609.18650", locator: "Abstract; Project Kitchen and Game2Policy methods; 10.0-point simulation and 18.3-point real-robot few-shot gains; release statement" },
+      ],
+    },
   ],
 
   assessments: [
@@ -124,6 +135,14 @@ export const FR_AI_0009 = {
       verificationStage: "VS-02",
       summary: "The claim enters the corpus under genuine two-sided pressure. V-JEPA 2-AC (IN-002) is substantive supportive evidence: after large-scale observational pretraining and limited robot-video adaptation, a learned action-conditioned model supported zero-shot planning on Franka arms in two target laboratories without target-environment robot data or task-specific reward. DreamerV3 (IN-001) independently shows broad world-model control generality across more than 150 tasks, and Genie 3 (IN-003) shows that interactive action-responsive simulation has advanced beyond passive video generation. Those results do not settle the class-level claim. MiraBench (IN-004), What-If World (IN-005) and RoboWM-Bench (IN-006) directly expose the central boundary: visually plausible futures can be wrong about commanded actions, causal interventions, contact dynamics and executable behaviour. The Pressure State is ESCALATING because credible positive capability and credible failure evidence are both strengthening. Verification Stage is VS-02 because bounded demonstrations and dedicated challenge benchmarks now exist, but reliable transfer across materially different tasks and embodiments has not yet received sufficiently broad independent audit or operational replication.",
       assessorNote: "Admission evidence basis: Hafner et al., Nature 640 (2025), 'Mastering diverse control tasks through world models'; Assran et al., arXiv:2506.09985 (2025), 'V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning'; Google DeepMind, 'Genie 3: A new frontier for world models' (2025); Yang et al., arXiv:2605.29360 (2026), 'MiraBench'; Cai et al., arXiv:2605.27589 (2026), 'What-If World'; Jiang et al., arXiv:2604.19092 (2026), 'RoboWM-Bench'; Joseph et al., ICML / arXiv:2602.07050 (2026), 'Interpreting Physics in Video World Models'. Formal admission and material commitments recorded in Drive on 2026-08-19.",
+    },
+    {
+      id: "AS-002",
+      date: "2026-09-28",
+      pressureState: "escalating",
+      verificationStage: "VS-02",
+      summary: "IN-009 adds bounded positive evidence that selected affordance knowledge learned from purpose-built VR gameplay can improve few-shot physical robot manipulation. It sharpens the positive side of the record beyond a merely hypothetical game-to-real route, while the result depends on extracted contact and sub-goal cues and further real-robot demonstrations. It does not demonstrate that large volumes of ordinary commercial gameplay train a generally reliable physical world model. The Worldmodeldata–Mila collaboration has announced a 12-month study of game-data scaling and virtual-to-real transfer, but reports no comparative transfer outcome yet; it remains a prospective test, not an additional validated result. The existing action-fidelity, causal-intervention, physical-calibration and execution counterevidence remains material. Pressure State holds ESCALATING and Verification Stage holds VS-02 pending independent replication and wider task, environment and embodiment tests.",
+      assessorNote: "Assessment prompted by the 2026-09-28 review of the WIRED Worldmodeldata report and primary sources. Positive result: Li et al., arXiv:2609.18650 (2026), IN-009. Prospective study only: Mila, 'Worldmodeldata and Mila partner to prove scaling law for world models' (2026-09-11), https://mila.quebec/en/news/worldmodeldata-and-mila-partner-to-prove-scaling-law-for-world-models. A 2020 Doom-to-Turtlebot navigation study (Karttunen et al., arXiv:1905.00741) provides older narrow context but is not separately promoted here. No Worldmodeldata dataset evaluation or independently replicated game-to-physical result was identified in the bounded review.",
     },
   ],
 
@@ -190,10 +209,17 @@ export const FR_AI_0009 = {
       question: "What evidentiary threshold should be required before success in synthetic or generated environments is treated as evidence of reliable action in the corresponding real physical environment?",
       raisedDate: "2026-08-19",
     },
+    {
+      id: "OQ-006",
+      question: "When evaluated against an otherwise matched real-data baseline, does pretraining on diverse commercial game-action data improve held-out physical task performance, and how does the result change with dataset size, game physics, task and robot embodiment?",
+      raisedDate: "2026-09-28",
+    },
   ],
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-011", date: "2026-09-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "Bounded reassessment after IN-009 and Worldmodeldata–Mila research-plan review. Task-specific game-to-robot support is recognized; commercial game-data transfer remains unvalidated. ESCALATING / VS-02 held. OQ-006 records the controlled comparison needed." },
+    { id: "M-010", date: "2026-09-28", field: "instance_added", from: "IN-001–IN-008", to: "IN-001–IN-009", note: "IN-009 Project Kitchen / Game2Policy preprint added as qualified, task-specific game-to-robot transfer evidence. WIRED coverage and the Worldmodeldata–Mila planned study were not treated as demonstrated transfer results." },
     { id: "M-009", date: "2026-09-15", field: "reference_corrected", from: "IN-001 structured source without DOI field", to: "IN-001 structured source with DOI 10.1038/s41586-025-08744-2", note: "Bounded provenance-display correction: the DOI already preserved in IN-001's legacy sourceReference was added to the corresponding structured source so the public Evidence Sources rendering retains it. Citation, URL, locator, evidence wording and assessment are unchanged." },
     { id: "M-008", date: "2026-09-07", field: "provenance_review", from: "—", to: "LPR-001-D09", note: "Legacy provenance review completed. All eight evidence instances examined and verified against their stated primary sources. Structured sources[] provenance added to IN-001 through IN-008 without changing evidence descriptions, vectors, assessment, pressure state, verification stage, mechanisms, lineage or open questions. No material discrepancies and no new scientific-evidence candidates were identified. Review outcome verified; repair not required." },
     { id: "M-007", date: "2026-08-28", field: "reference_corrected", from: "Instance-level references absent", to: "IN-001–IN-008 source references recorded", note: "GP-001 provenance correction following the bounded three-record source/DOI audit. Stable publication identifiers were added to every evidence instance. IN-003 is explicitly identified as a corporate research announcement without a DOI; IN-008 carries its own CaliBench reference because it post-dates AS-001. No evidence description, interpretation, assessment, pressureState, verificationStage, mechanism, or open question changed." },
