@@ -12,6 +12,10 @@
 export const FR_BT_0007 = {
   id: "FR-BT-0007",
   programme: "PROG-BT",
+  lastProvenanceReview: "2026-09-28",
+  provenanceReviewId: "LPR-001-D31",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Chronically implanted brain–computer interfaces can provide people with severe paralysis with reliable, independently usable communication over sustained everyday use.",
@@ -231,6 +235,7 @@ export const FR_BT_0007 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-006", date: "2026-09-28", field: "provenance_review_completed", from: "—", to: "LPR-001-D31", note: "Legacy provenance review completed. All seven existing instances verified against their structured sources; no provenance enrichment, discrepancy or new-evidence candidate identified. No assessment, interpretation, pressure state, verification stage, mechanism, attractor or claim changed." },
     { id: "M-005", date: "2026-09-15", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "Admission diagnosis: EMERGING / VS-03. Communication capability is independently demonstrated and one participant has sustained everyday use; cross-participant operational replication remains absent." },
     { id: "M-004", date: "2026-09-15", field: "mechanisms_recorded", from: "—", to: "MECHANISMS-RECORDED", note: "BN-001, RM-001, RM-002, RM-003 and AT-001 recorded from the admission evidence package." },
     { id: "M-003", date: "2026-09-15", field: "assessment_issued", from: "—", to: "ASSESSMENT-ISSUED", note: "AS-001 issued. Pressure State: EMERGING. Verification Stage: VS-03." },
