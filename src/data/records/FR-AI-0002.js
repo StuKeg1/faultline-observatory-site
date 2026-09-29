@@ -12,8 +12,8 @@
 export const FR_AI_0002 = {
   id: "FR-AI-0002",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-08-30",
-  provenanceReviewId: "LPR-001-D01",
+  lastProvenanceReview: "2026-09-29",
+  provenanceReviewId: "LPR-001-D32",
   provenanceOutcome: "discrepancies_corrected",
   provenanceRepairStatus: "completed",
 
@@ -56,9 +56,21 @@ export const FR_AI_0002 = {
     {
       id: "IN-003",
       qualifiedEvent: "AI in legal practice — contract review and due diligence deployment",
-      description: "Multiple large law firms and legal technology companies deploy LLM-based contract review systems in commercial practice. Harvey AI, CoCounsel (Thomson Reuters), and comparable tools are adopted by firms including Allen and Overy, Paul Weiss, and others for due diligence, contract comparison, and research summarisation tasks. Firms report material reductions in associate time on document review tasks. No peer-reviewed productivity study accompanies these deployments; evidence is commercial and self-reported. The deployments nonetheless represent real economic commitment under conditions of limited supervision — associates review AI output rather than producing documents from scratch. The legal sector is a high-value knowledge-work domain where deployment at this scale constitutes meaningful commercial validation.",
+      description: "Commercial legal use of LLM-based tools was observable in 2023. Allen & Overy said that about 3,500 lawyers had made around 40,000 Harvey queries during its trial and announced a wider launch; the firm explicitly said that lawyers must carefully review the output. Casetext launched CoCounsel for tasks including document review, legal research and contract analysis, and Thomson Reuters acquired Casetext for $650 million in August 2023. These disclosures establish organisational adoption and commercial commitment in a high-value knowledge-work domain, but do not measure associate time saved, net economic return, or safe performance without careful human review. They provide bounded deployment evidence rather than a controlled productivity estimate.",
       vectors: ["supportive--commercial-deployment"],
       date: "2023",
+      sources: [
+        {
+          citation: "Allen & Overy (2023), A&O announces exclusive launch partnership with Harvey.",
+          url: "https://www.aoshearman.com/en/news/ao-announces-exclusive-launch-partnership-with-harvey",
+          locator: "15 February announcement; trial usage and lawyer-review requirement",
+        },
+        {
+          citation: "Thomson Reuters (2023), Thomson Reuters Completes Acquisition of Casetext, Inc.",
+          url: "https://www.thomsonreuters.com/en/press-releases/2023/august/thomson-reuters-completes-acquisition-of-casetext-inc",
+          locator: "17 August announcement; acquisition value and CoCounsel task descriptions",
+        },
+      ],
     },
     {
       id: "IN-004",
@@ -83,16 +95,36 @@ export const FR_AI_0002 = {
     {
       id: "IN-005",
       qualifiedEvent: "Brynjolfsson, Li, and Raymond — Generative AI at work (customer service study)",
-      description: "A large-scale study of AI-assisted customer service agents (Brynjolfsson, Li, and Raymond, 2023/2024, QJE) tracks 5,000 agents at a technology company over 18 months. AI assistance increases average agent productivity by 14%, with largest gains concentrated among novice workers. Customer satisfaction scores improve. The study is notable for its scale, its use of a natural experiment rather than a controlled trial, and its measurement of actual commercial outcomes rather than laboratory task performance. It represents the strongest evidence to date that LLM utility is observable in deployed commercial settings at scale, not merely in experimental conditions. The knowledge-work domain — customer service and technical support — involves diagnosis, communication, and problem resolution: genuine cognitive tasks under limited supervision.",
+      description: "The final peer-reviewed study by Brynjolfsson, Li and Raymond (QJE, 2025) examines the staggered introduction of an AI conversational assistant using data from 5,172 customer-support agents. Access increased issues resolved per hour by 15% on average, with larger gains among less experienced and lower-skilled workers. Transcript-based customer sentiment improved, but the study found no significant overall difference in surveyed customer satisfaction; effects also varied by worker group. This large-scale observational deployment study measures work in an operating company rather than a laboratory task, while its results remain specific to customer support and AI-assisted agents rather than autonomous knowledge work generally. Earlier 2023–24 working-paper versions reported about 14% and a sample of roughly 5,000 agents; those figures must not be presented as the final QJE result.",
       vectors: ["supportive--deployed-scale-evidence"],
-      date: "2024",
+      date: "2025-02-04",
+      sources: [
+        {
+          citation: "Brynjolfsson, E., Li, D. and Raymond, L. (2025), Generative AI at Work, Quarterly Journal of Economics 140(2), 889–942.",
+          url: "https://academic.oup.com/qje/article/140/2/889/7990658",
+          doi: "10.1093/qje/qjae044",
+          locator: "Abstract; Table I; surveyed satisfaction results; Section VII.A customer sentiment",
+        },
+      ],
     },
     {
       id: "IN-006",
-      qualifiedEvent: "Agentic deployment failures — early autonomous task completion attempts",
-      description: "Multiple reports emerge of LLM-based autonomous agents — systems operating with minimal human supervision over extended task sequences — producing failures not observed in single-turn interactions. Documented failure modes include task drift, compounding errors across multi-step workflows, inappropriate escalation of actions, and inability to recognise when a task exceeds model competence. Evaluations of autonomous coding agents (SWE-bench, 2024) show performance well below human developer capability on complex, multi-file software engineering tasks despite strong single-turn performance. The evidence is specifically relevant to the \"limited human supervision\" condition in the claim: it suggests the supervision threshold required for reliable performance is lower for extended autonomous tasks than for supervised single-turn assistance. This is a domain-boundary contesting instance rather than a general refutation.",
+      qualifiedEvent: "SWE-bench and SWE-agent — bounded autonomous software issue resolution",
+      description: "SWE-bench introduced 2,294 real GitHub issues whose resolution can require coordinated edits across functions, classes and files. Its initial language-model evaluations solved only a small fraction of issues. A 2024 agent-system study, SWE-agent, improved performance but resolved about 12.5% of the full SWE-bench test set in its reported setting. This is bounded evidence that autonomous multi-step software repair remained unreliable on that benchmark in 2024, despite substantial improvement from an agent interface. The studies do not measure performance against human developers, document the broader claimed failure modes of task drift or inappropriate escalation, or establish a general supervision threshold across knowledge work. The instance therefore marks a task-specific agentic boundary rather than a general refutation of valuable human-reviewed assistance.",
       vectors: ["partial--agentic-boundary"],
       date: "2024",
+      sources: [
+        {
+          citation: "Jimenez, C. E. et al. (2024), SWE-bench: Can Language Models Resolve Real-World GitHub Issues?, ICLR 2024; arXiv:2310.06770.",
+          url: "https://arxiv.org/abs/2310.06770",
+          locator: "Abstract; benchmark construction and baseline evaluations",
+        },
+        {
+          citation: "Yang, J. et al. (2024), SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering, NeurIPS 2024; arXiv:2405.15793.",
+          url: "https://arxiv.org/abs/2405.15793",
+          locator: "Abstract; full SWE-bench pass@1 result and agent-interface method",
+        },
+      ],
     },
     {
       id: "IN-007",
@@ -173,7 +205,7 @@ export const FR_AI_0002 = {
     { year: "2022–23", text: "ChatGPT release and mass adoption. ChatGPT reaches 100 million users in two months. Spontaneous mass deployment across knowledge-work contexts — drafting, coding, analysis, research — produces an enormous but methodologically uncontrolled evidence trail. Anecdotal reports of value are ubiquitous; systematic measurement is absent. The deployment scale constitutes a form of evidence but is not sufficient for the Observatory to issue a formal assessment." },
     { year: "2023", text: "Controlled studies and commercial deployments. The Peng et al. and Noy and Zhang studies provide the first rigorous experimental evidence. Simultaneously, major professional services firms (law, consulting, finance) begin commercial deployment. The claim transitions to ESCALATING." },
     { year: "2023–24", text: "Hallucination incidents and agentic frontier. High-profile hallucination failures in legal and medical contexts establish the supervision threshold as a genuine constraint. Agentic deployment attempts reveal the compounding error problem as a distinct resistance mechanism. The claim's boundary conditions become observable." },
-    { year: "2024", text: "Natural experiment at deployment scale. Brynjolfsson et al. publish the first large-scale natural experiment confirming productivity gains in deployed commercial settings. The claim's evidential base shifts from experimental to observational — from controlled trials to real economic outcomes in operating companies." }
+    { year: "2023–25", text: "Deployed customer-support study. Brynjolfsson et al. circulate working-paper results in 2023–24 and publish the final peer-reviewed QJE version in 2025. The staggered workplace rollout adds observational evidence of productivity gains in an operating company, with version-specific sample and effect estimates and no significant overall surveyed-satisfaction improvement." }
     ],
     relatedRecords: [],
   },
@@ -197,6 +229,7 @@ export const FR_AI_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-013", date: "2026-09-29", field: "provenance_review_completed", from: "LPR-001-D32 review_required / pending", to: "LPR-001-D32 discrepancies_corrected / completed", note: "Approved bounded correction and closure of the second-cycle provenance review. IN-003 narrowed to attributable 2023 legal deployment without an unmeasured time-saving claim; IN-005 aligned to the 2025 QJE sample, 15% productivity result and distinct sentiment versus surveyed-satisfaction outcomes; IN-006 narrowed to SWE-bench and SWE-agent results without an unsupported human baseline or broad agent-failure claims. Structured primary sources added; lineage date aligned. AS-001 and AS-002 preserved as dated historical assessments, with no new scientific evidence, pressure-state or verification-stage change." },
     { id: "M-012", date: "2026-09-26", field: "instance_appended", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "Normal Record Review of Frontline Scout flag 2026-09-26-01 admitted OSWorld-Pro arXiv:2609.24890v1 as bounded process-level contesting evidence at the low-supervision agentic boundary. AS-002 remains current; Pressure State ESCALATING, Verification Stage VS-02, mechanisms and open questions unchanged. The benchmark does not establish economic productivity or real-world supervision cost." },
     {"id":"M-011","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2020–22, lineage:2022–23, lineage:2023–24, lineage:2024","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2020–22, 2022–23, 2023–24, 2024 from FR_AI_0002_LLM_knowledge_work_utility.html (Drive file 1kmjQHLUxpNKFNStSoFKR-AE7P-ogFAIZ). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
