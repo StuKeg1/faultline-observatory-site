@@ -22,7 +22,7 @@ test("audited Frontier Records carry instance-level source provenance", () => {
   }
 });
 
-test("FR-AI-0002 retains the LPR-001 Day 1 correction without reassessment", () => {
+test("FR-AI-0002 retains the Day 1 correction after D32 without reassessment", () => {
   const copilot = FR_AI_0002.instances.find(({ id }) => id === "IN-001");
   const writing = FR_AI_0002.instances.find(({ id }) => id === "IN-002");
   const failures = FR_AI_0002.instances.find(({ id }) => id === "IN-004");
@@ -34,7 +34,8 @@ test("FR-AI-0002 retains the LPR-001 Day 1 correction without reassessment", () 
   assert.equal(copilot.sources.length, 1);
   assert.equal(writing.sources[0].doi, "10.1126/science.adh2586");
   assert.equal(failures.sources[1].doi, "10.1038/s41746-023-00939-z");
-  assert.equal(FR_AI_0002.provenanceReviewId, "LPR-001-D01");
+  assert.ok(FR_AI_0002.mutationLog.some(({ id, to }) => id === "M-010" && to.includes("LPR-001-D01")));
+  assert.equal(FR_AI_0002.provenanceReviewId, "LPR-001-D32");
   assert.equal(FR_AI_0002.provenanceRepairStatus, "completed");
   assert.equal(current.pressureState, "escalating");
   assert.equal(current.verificationStage, "VS-02");
