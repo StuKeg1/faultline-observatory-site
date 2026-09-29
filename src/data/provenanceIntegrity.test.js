@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { FR_AI_0001 } from "./records/FR-AI-0001.js";
 import { FR_AI_0009 } from "./records/FR-AI-0009.js";
 import { FR_QE_0007 } from "./records/FR-QE-0007.js";
 import { FR_BT_0004 } from "./records/FR-BT-0004.js";
@@ -40,6 +41,29 @@ test("FR-AI-0002 retains the Day 1 correction after D32 without reassessment", (
   assert.equal(current.pressureState, "escalating");
   assert.equal(current.verificationStage, "VS-02");
   assert.equal(FR_AI_0002.assessments.length, 2);
+});
+
+test("FR-AI-0001 closes D33 with bounded provenance corrections and no reassessment", () => {
+  const math = FR_AI_0001.instances.find(({ id }) => id === "IN-003");
+  const faithfulness = FR_AI_0001.instances.find(({ id }) => id === "IN-006");
+  const current = getCurrentAssessment(FR_AI_0001);
+
+  assert.match(math.description, /unverified legacy report/i);
+  assert.doesNotMatch(math.description, /solves a non-trivial fraction/i);
+  assert.equal(math.vectors[0], "partial--legacy-report-unverified");
+  assert.equal("sources" in math, false);
+  assert.match(faithfulness.description, /Only Lindsey et al\. is mechanistic-interpretability research/i);
+  assert.match(faithfulness.description, /do not resolve whether o1\/o3-class models implement/i);
+  assert.equal(faithfulness.sources.length, 5);
+  assert.equal(faithfulness.date, "2023–25");
+  assert.equal(FR_AI_0001.provenanceReviewId, "LPR-001-D33");
+  assert.equal(FR_AI_0001.provenanceOutcome, "discrepancies_corrected");
+  assert.equal(FR_AI_0001.provenanceRepairStatus, "completed");
+  assert.equal(FR_AI_0001.assessments.length, 2);
+  assert.deepEqual(FR_AI_0001.assessments.map(({ id }) => id), ["AS-001", "AS-002"]);
+  assert.equal(current.pressureState, "escalating");
+  assert.equal(current.verificationStage, "VS-03");
+  assert.ok(FR_AI_0001.mutationLog.some(({ id, to }) => id === "M-012" && to.includes("LPR-001-D33 completed")));
 });
 
 test("FR-QE-0007 corrects the IN-005 source conflation without changing its verdict", () => {
