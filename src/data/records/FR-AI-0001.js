@@ -16,8 +16,8 @@
 export const FR_AI_0001 = {
   id: "FR-AI-0001",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-08-31",
-  provenanceReviewId: "LPR-001-D02",
+  lastProvenanceReview: "2026-09-29",
+  provenanceReviewId: "LPR-001-D33",
   provenanceOutcome: "discrepancies_corrected",
   provenanceRepairStatus: "completed",
 
@@ -58,9 +58,9 @@ export const FR_AI_0001 = {
     },
     {
       id: "IN-003",
-      qualifiedEvent: "GPT-4 on novel mathematical competition problems — early evaluation",
-      description: "Independent evaluators test GPT-4 on competition mathematics problems published after its training cutoff (IMO 2023, AIME 2023). GPT-4 solves a non-trivial fraction of problems not plausibly present in training data in solved form. Researchers at MIT and elsewhere publish informal and formal evaluations finding GPT-4 demonstrates multi-step mathematical reasoning on genuinely novel instances. Limitation: competition problems share structural families with training data even when specific instances are new; the degree of true novelty is contested. The contamination problem — determining what was and was not in training data — remains unresolved for closed models.",
-      vectors: ["supportive"],
+      qualifiedEvent: "GPT-4 on 2023 competition-math problems — unattributed legacy report",
+      description: "The earlier record asserted that independent evaluators tested GPT-4 on IMO 2023 and AIME 2023 problems published after its training cutoff and found it solved a non-trivial fraction. The intended evaluations, exact problems, scoring result, and basis for the attribution to researchers at MIT and elsewhere could not be identified from available sources. This is retained as an unverified legacy report, not as attributable evidence that GPT-4 solved post-cutoff problems. Without a traceable source, the claimed novelty and training-contamination status cannot be assessed.",
+      vectors: ["partial--legacy-report-unverified"],
       date: "2023",
     },
     {
@@ -93,10 +93,10 @@ export const FR_AI_0001 = {
     },
     {
       id: "IN-006",
-      qualifiedEvent: "Chain-of-thought faithfulness research — mechanism disclosed as partially decoupled from verbalised reasoning",
-      description: "This body of work does not resolve OQ-002 toward either pole — it does not show the mechanism is mere pattern-matching, nor that it is genuine step-by-step reasoning — but it discloses that the mechanism is more decoupled from its own narration than the framing in AT-001 assumed, adding a third axis of dispute (faithfulness) alongside contamination (RM-001) and distribution-shift sensitivity (RM-002). A substantial body of interpretability research published since AS-001 directly addresses OQ-002 — whether the extended chain-of-thought mechanism in o1/o3-class models constitutes genuinely different computation or a scaled version of prior pattern-matching behaviour — by examining the mechanism's actual relationship to its own verbalised output. Anthropic's 'Reasoning Models Don't Always Say What They Think' (Chen et al., 2025) and independent work including Arcuschin et al., 'Chain-of-thought reasoning in the wild is not always faithful' (2025), and earlier foundational studies (Turpin et al. 2023; Lanham et al. 2023) establish that chain-of-thought traces frequently do not reflect the computation actually producing a model's answer: models can reach correct answers via paths not represented in their stated reasoning, and can produce plausible post-hoc rationalisations for answers reached by other means. Mechanistic interpretability work (Lindsey et al., 2025) identifies concrete cases in which a model derives its answer directly from the prompt rather than from its own intermediate reasoning text.",
+      qualifiedEvent: "Reasoning-trace faithfulness — evidence that chain-of-thought can diverge from answer-producing computation",
+      description: "Studies of chain-of-thought faithfulness identify cases where a stated reasoning trace fails to reflect computation used to produce an answer. Chen et al. (2025) and Arcuschin et al. (2025) examine contemporary reasoning models, while Lanham et al. (2023) and Turpin et al. (2023) provide earlier behavioral evaluations of chain-of-thought faithfulness. Lindsey et al. (2025) use mechanistic interpretability to identify cases in Claude 3.5 Sonnet where answer-relevant information is read directly from the prompt rather than from preceding chain-of-thought text. Together, this work establishes faithfulness as a separate issue when interpreting reasoning traces. Only Lindsey et al. is mechanistic-interpretability research, and these studies do not resolve whether o1/o3-class models implement a qualitatively different reasoning mechanism or scaled pattern matching. The evidence informs OQ-002 without deciding either mechanism hypothesis, and adds faithfulness as a distinct axis alongside contamination (RM-001) and distribution-shift sensitivity (RM-002).",
       vectors: ["contesting--mechanism-disclosed-partially-decoupled-from-verbalised-reasoning"],
-      date: "2025–26",
+      date: "2023–25",
       sources: [
         {
           citation: "Chen et al., ‘Reasoning Models Don't Always Say What They Think’ (Anthropic, 2025)",
@@ -232,8 +232,9 @@ export const FR_AI_0001 = {
   ],
 
   mutationLog: [
-    {"id":"M-011","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2017–20, lineage:2022, lineage:2023, lineage:2024","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2017–20, 2022, 2023, 2024 from FR_AI_0001_LLM_reasoning_generalisation.html (Drive file 1P9qpi6wq4V6nyn4ZpgqiYiz-cVrl9pIq). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
+    { id: "M-012", date: "2026-09-29", field: "provenance_repair", from: "LPR-001-D33 pending", to: "LPR-001-D33 completed", note: "Operator-approved bounded correction completed. IN-003 now labels the unattributed GPT-4/IMO/AIME account as an unverified legacy report and no longer presents it as supportive evidence; no source was inferred. IN-006 now distinguishes behavioral chain-of-thought faithfulness studies from Lindsey et al.'s mechanistic-interpretability analysis, narrows the evidence's relation to OQ-002, and reflects the 2023–25 source chronology. Existing structured sources remain. Historical assessments, pressure state ESCALATING, verification stage VS-03, mechanisms, lineage and open questions remain unchanged. No new evidence was admitted." },
     // APPEND-ONLY. Newest first.
+    {"id":"M-011","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2017–20, lineage:2022, lineage:2023, lineage:2024","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2017–20, 2022, 2023, 2024 from FR_AI_0001_LLM_reasoning_generalisation.html (Drive file 1P9qpi6wq4V6nyn4ZpgqiYiz-cVrl9pIq). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     { id: "M-010", date: "2026-08-31", field: "provenance_review_completed", from: "—", to: "LPR-001-D02", note: "Legacy provenance review completed. IN-001, IN-002, IN-004 and IN-005 corrected for source fidelity and enriched with structured sources[]; IN-003 remains deliberately unenriched because its intended source could not be confidently established. No assessment or evidence-state change." },
     { id: "M-009", date: "2026-08-29", field: "provenance_enriched", from: "—", to: "PROVENANCE-ENRICHED", note: "PA-002 Provenance Enrichment: structured sources[] added to IN-005 and IN-006; evidentiary prose and assessment unchanged." },
     { id: "M-008", date: "2026-07-09", field: "description_reordered", from: "—", to: "DESCRIPTION-REORDERED", note: "Editorial Correction (GP-001): IN-006 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed." },
