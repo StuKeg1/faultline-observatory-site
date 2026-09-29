@@ -121,6 +121,25 @@ export const FR_AI_0001 = {
           locator: "Chain-of-thought Faithfulness",
         },
       ],
+    },
+    {
+      id: "IN-007",
+      qualifiedEvent: "OpenAI-reported gold-medal-level performance at IMO 2025",
+      description: "OpenAI reported on 20 February 2026 that, in July 2025, a general-purpose reasoning model achieved gold-medal-level performance on the International Mathematical Olympiad, scoring 35/42. The official IMO 2025 results set the gold-medal threshold at 35 points. This is bounded supportive evidence of high performance on competition-style mathematics as reported by OpenAI. The sources recorded here do not independently validate a model score or provide enough evaluation detail to assess model identity, training exposure, inference and compute conditions, or scoring and independent grading. The result therefore does not by itself establish generalisation beyond memorised examples or resolve the record's class-level claim.",
+      vectors: ["supportive--bounded-competition-math-performance"],
+      date: "2025",
+      sources: [
+        {
+          citation: "OpenAI, ‘Our First Proof submissions’ (20 February 2026), reporting July 2025 IMO performance of 35/42 by a general-purpose reasoning model.",
+          url: "https://openai.com/index/first-proof-submissions/",
+          locator: "Paragraph beginning ‘This work builds on earlier results’; links to OpenAI’s original July 2025 announcement",
+        },
+        {
+          citation: "International Mathematical Olympiad, ‘IMO 2025 — Results’ (2025).",
+          url: "https://www.imo-official.org/editions/2025/",
+          locator: "Awards: gold medals at scores of 35 points or more",
+        },
+      ],
     }
   ],
 
@@ -232,6 +251,7 @@ export const FR_AI_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-013", date: "2026-09-29", field: "instances_appended", from: "—", to: "IN-007", note: "Normal Record Review, retrospective route authorized by operator. Added OpenAI-reported IMO 2025 gold-medal-level performance as bounded supportive evidence, with first-party retrospective reporting and official IMO gold threshold provenance. Limitations on independent score validation and evaluation detail are explicit. Claim, historical assessments, current ESCALATING / VS-03 state, mechanisms and open questions unchanged." },
     { id: "M-012", date: "2026-09-29", field: "provenance_repair", from: "LPR-001-D33 pending", to: "LPR-001-D33 completed", note: "Operator-approved bounded correction completed. IN-003 now labels the unattributed GPT-4/IMO/AIME account as an unverified legacy report and no longer presents it as supportive evidence; no source was inferred. IN-006 now distinguishes behavioral chain-of-thought faithfulness studies from Lindsey et al.'s mechanistic-interpretability analysis, narrows the evidence's relation to OQ-002, and reflects the 2023–25 source chronology. Existing structured sources remain. Historical assessments, pressure state ESCALATING, verification stage VS-03, mechanisms, lineage and open questions remain unchanged. No new evidence was admitted." },
     // APPEND-ONLY. Newest first.
     {"id":"M-011","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001, lineage:2017–20, lineage:2022, lineage:2023, lineage:2024","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001; lineage 2017–20, 2022, 2023, 2024 from FR_AI_0001_LLM_reasoning_generalisation.html (Drive file 1P9qpi6wq4V6nyn4ZpgqiYiz-cVrl9pIq). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
