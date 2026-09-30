@@ -12,10 +12,10 @@
 export const FR_AI_0004 = {
   id: "FR-AI-0004",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-02",
-  provenanceReviewId: "LPR-001-D04",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-09-30",
+  provenanceReviewId: "LPR-001-D35",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Scaling language model training increases performance on previously unseen tasks without task-specific optimisation.",
@@ -209,6 +209,7 @@ export const FR_AI_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-015", date: "2026-09-30", field: "provenance_review", from: "LPR-001-D04", to: "LPR-001-D35", note: "Legacy provenance review completed across IN-001 through IN-007. Existing structured primary-source provenance was reverified. One bounded source-to-claim discrepancy identified in IN-002: Brown et al. directly establish task-agnostic few-shot performance without gradient updates, but the record overstates this as direct proof that the evaluated tasks were previously unseen in the training corpus. No correction applied pending operator approval. No new scientific evidence admitted; assessments, pressure state and verification stage unchanged." },
     {"id":"M-014","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_AI_0004_scaling_emergent_performance.html (Drive file 1k1YV18ZZDTs7emO7mBXZL103gIvoIsQV). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-013", date: "2026-09-02", field: "assessment_issued", from: "AS-002", to: "AS-003", note: "AS-003 issued as the governed append-only assessment correction after LPR-001-D04. It narrows historical source interpretations while retaining FRAGMENTING / VS-03. AS-001 and AS-002 remain unchanged as historical judgements; no new evidence admitted." },
