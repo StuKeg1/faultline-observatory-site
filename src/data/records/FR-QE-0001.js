@@ -11,10 +11,10 @@
 export const FR_QE_0001 = {
   id: "FR-QE-0001",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-09-11",
-  provenanceReviewId: "LPR-001-D13",
-  provenanceOutcome: "verified",
-  provenanceRepairStatus: "not_required",
+  lastProvenanceReview: "2026-10-01",
+  provenanceReviewId: "LPR-001-D37",
+  provenanceOutcome: "discrepancy_pending",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement:
@@ -279,6 +279,15 @@ export const FR_QE_0001 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-008",
+      date: "2026-10-01",
+      field: "provenance_review",
+      from: "LPR-001-D13",
+      to: "LPR-001-D37",
+      note:
+        "Legacy Provenance Review completed across all six existing evidence instances. IN-001, IN-002, IN-003, IN-005 and IN-006 remain materially source-faithful. IN-004 has a bounded source-representation discrepancy: Zhao et al. directly support 1,432 GPUs, uncorrelated samples, higher XEB and sevenfold faster time-to-solution than Sycamore, but the record additionally states that the comparison used substantially greater energy consumption than the quantum device; the cited paper instead emphasizes improved classical energy efficiency relative to prior classical simulations and does not support that specific quantum-device energy comparison in the represented source text. No silent repair made; correction pending operator approval. A separate 2025 Sycamore-class simulation was surfaced as a Normal Record Review candidate and not admitted through LPR-001. Completion marker recorded so the deterministic queue advances.",
+    },
     {
       id: "M-007",
       date: "2026-09-11",
