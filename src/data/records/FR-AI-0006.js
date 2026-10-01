@@ -12,9 +12,9 @@
 export const FR_AI_0006 = {
   id: "FR-AI-0006",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-04",
-  provenanceReviewId: "LPR-001-D06",
-  provenanceOutcome: "discrepancies_corrected",
+  lastProvenanceReview: "2026-10-01",
+  provenanceReviewId: "LPR-001-D36",
+  provenanceOutcome: "pass",
   provenanceRepairStatus: "completed",
 
   claim: {
@@ -240,6 +240,7 @@ export const FR_AI_0006 = {
   mutationLog: [
     {"id":"M-016","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_AI_0006_scaling_mechanism_coherence.html (Drive file 1VeNxj-LTcGiSmfmVgFJehKuge1u7Aj37). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
+    { id: "M-020", date: "2026-10-01", field: "provenance_review", from: "LPR-001-D06", to: "LPR-001-D36", note: "LPR-001-D36 completed as PASS after bounded re-audit of all seven then-existing evidence instances. Six were source-verifiable; IN-005 remained explicit unresolved legacy provenance debt with no guessed source. No new legacy discrepancy required correction. A genuinely new Keeman (2026) candidate was routed to Normal Record Review rather than admitted through LPR-001 and was subsequently resolved as IN-008 / AS-005. Completion marker advances the deterministic provenance-review queue." },
     { id: "M-019", date: "2026-10-01", field: "assessment_issued", from: "AS-004", to: "AS-005", note: "Normal Record Review reassessed FR-AI-0006 after admission of IN-008. Keeman adds bounded cross-scale continuity evidence but does not resolve mechanism identity. FRAGMENTING / VS-03 retained; preprint, replication, family/training and non-emergence limitations recorded." },
     { id: "M-018", date: "2026-10-01", field: "instance_added", from: "—", to: "IN-008", note: "Normal Record Review admitted Keeman (2026), arXiv:2603.22295v1, as bounded evidence that affect-reception representations recur across six Llama/Gemma base and instruct variants while emotion categorisation improves with scale. Primary provenance recorded; no legacy instance altered." },
     { id: "M-015", date: "2026-09-04", field: "assessment_issued", from: "AS-003", to: "AS-004", note: "Normal Record Review reassessed FR-AI-0006 after admission of IN-007. Xu's 2026 cross-scale representation-geometry result deepens the continuity/discontinuity ambiguity but does not resolve mechanism identity. FRAGMENTING / VS-03 retained; preprint and replication limitations recorded." },
