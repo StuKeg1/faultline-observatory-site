@@ -129,6 +129,20 @@ export const FR_AI_0006 = {
           locator: "Abstract; §§4–5; seven-model Pythia scale sweep; cross-architecture validation; limitations",
         },
       ],
+    },
+    {
+      id: "IN-008",
+      qualifiedEvent: "Cross-scale affect processing — recurrent reception with scale-sensitive categorisation",
+      description: "Keeman (2026) tests emotion-related internal representations across six model variants spanning Llama-3.2-1B, Llama-3-8B, and Gemma-2-9B in base and instruct forms, using linear probing, causal activation patching, knockout experiments, and representational geometry on keyword-free clinical vignettes. The study reports affect reception — detection of emotionally significant content — with near-perfect probe performance and an early-layer pattern replicated across all six variants, while emotion categorisation is partly keyword-dependent and improves with scale. Causal activation patching indicates that keyword-rich and keyword-free stimuli share affective-salience representation rather than emotion-category identity. This is bounded supportive evidence that a mechanistic component can recur across different model sizes while behavioural/category performance changes with scale. It is not a direct demonstration of the record's full claim because the study does not establish an emotion capability that is absent at small scale and emerges only through scaling, and the compared models also differ by family and training regime rather than forming a controlled single-family scale sweep. The result is a single-author 2026 arXiv preprint and should be treated as unreplicated pending independent confirmation.",
+      vectors: ["partial--cross-scale-affect-mechanism-continuity"],
+      date: "2026-03-15",
+      sources: [
+        {
+          citation: "Keeman, M. (2026), Whether, Not Which: Mechanistic Interpretability Reveals Dissociable Affect Reception and Emotion Categorization in LLMs, arXiv:2603.22295v1.",
+          url: "https://arxiv.org/abs/2603.22295",
+          locator: "Abstract; six-model comparison; linear probing, causal activation patching, knockout experiments and representational geometry",
+        },
+      ],
     }
   ],
 
@@ -165,6 +179,14 @@ export const FR_AI_0006 = {
       verificationStage: "VS-03",
       summary: "Normal Record Review admits IN-007 as genuinely new cross-scale representation evidence. Xu's scale sweep supplies the type of direct small-versus-large comparison that the corrected legacy IN-003 through IN-005 lacked: predictive representation geometry follows different late-layer regimes in smaller and larger models. That result increases pressure on a strong continuity reading if mechanism identity is defined at the level of internal organisation. At the same time, the paper's own masking result cuts against treating the regime shift as proof of a wholly new mechanism: predictive structure remains recoverable beneath the dominant off-readout directions. IN-007 therefore deepens rather than resolves the record's central ambiguity. Together with IN-001 and IN-006, the evidence now contains meaningful support for both recurring structure and scale-associated specialisation, while BN-001 still prevents a stable answer to whether those observations count as the 'same underlying mechanism.' FRAGMENTING / VS-03 is retained. The evidential weight is moderated because IN-007 is a single-author preprint, introduces a new metric, and is not yet independently replicated.",
       assessorNote: "Bounded Record Review of Xu (2026), arXiv:2605.17084v1, originally surfaced as an LPR-001-D06 Record Review candidate. IN-007 is admitted as new evidence with primary provenance. It does not retroactively repair or replace unresolved legacy IN-005.",
+    },
+    {
+      id: "AS-005",
+      date: "2026-10-01",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "Normal Record Review admits IN-008 as bounded cross-scale mechanistic evidence. Keeman reports a recurrent early-layer affect-reception pattern across six Llama/Gemma base and instruct variants while emotion-categorisation performance improves with scale. This modestly strengthens the continuity side of the record by showing that a mechanistic component can recur across model sizes even as a related behavioural mapping changes. It does not resolve the claim: the tested affect capability is already present in the smaller models rather than demonstrated to emerge only through scaling; model family and training-regime differences limit controlled scale attribution; and the study is a single-author preprint without independent replication. IN-008 therefore complements IN-001's continuity evidence while IN-006 and IN-007 continue to show scale-associated specialisation and organisational change. BN-001 remains decisive. FRAGMENTING / VS-03 is retained.",
+      assessorNote: "Normal Record Review of Keeman (2026), arXiv:2603.22295v1, surfaced as the LPR-001-D36 Record Review candidate. Admitted as IN-008 with primary provenance. No legacy evidence was altered.",
     }
   ],
 
@@ -192,7 +214,7 @@ export const FR_AI_0006 = {
     { year: "2022", text: "Mechanistic interpretability makes parts of the continuity question empirically tractable. Olsson et al. identify induction heads with strong causal evidence in small attention-only models and mainly correlational evidence in larger models. Elhage et al. provide a toy-model account of superposition, relevant to representational mechanism but not a cross-scale language-model comparison." },
     { year: "2022–23", text: "Emergent abilities and mechanistic explanations separate. Wei et al. document behavioural emergence with scale; Michaud et al. propose quantized skill acquisition as one explanation; grokking work shows apparently sudden behavioural transitions can arise from gradual circuit formation in small transformers. None of these results alone determines whether the same mechanism persists across model sizes." },
     { year: "2024–25", text: "The legacy 2024 representation-geometry attribution cannot be confidently reconstructed and is withdrawn from the current evidential basis. In 2025, Yang et al. provide direct cross-model evidence that specialized symbolic mechanisms are associated with capable larger models, sharpening rather than resolving the continuity question." },
-    { year: "2026", text: "Xu introduces Subspace PGA and reports a scale-dependent regime in predictive representation geometry across seven Pythia models, with cross-family checks. Smaller models lose late-layer predictive alignment while larger models preserve it, yet the underlying predictive structure can be recovered after removing dominant off-readout directions. The result supplies direct cross-scale representation evidence while preserving the mechanism-identity ambiguity." }
+    { year: "2026", text: "Xu reports a scale-dependent regime in predictive representation geometry across a Pythia scale sweep, while recoverable predictive structure preserves mechanism-identity ambiguity. Keeman separately reports a recurrent affect-reception pattern across six Llama/Gemma base and instruct variants while emotion categorisation improves with scale, adding bounded continuity evidence without demonstrating a capability that emerges only at larger scale." }
     ],
     relatedRecords: [],
   },
@@ -218,6 +240,8 @@ export const FR_AI_0006 = {
   mutationLog: [
     {"id":"M-016","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_AI_0006_scaling_mechanism_coherence.html (Drive file 1VeNxj-LTcGiSmfmVgFJehKuge1u7Aj37). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
+    { id: "M-019", date: "2026-10-01", field: "assessment_issued", from: "AS-004", to: "AS-005", note: "Normal Record Review reassessed FR-AI-0006 after admission of IN-008. Keeman adds bounded cross-scale continuity evidence but does not resolve mechanism identity. FRAGMENTING / VS-03 retained; preprint, replication, family/training and non-emergence limitations recorded." },
+    { id: "M-018", date: "2026-10-01", field: "instance_added", from: "—", to: "IN-008", note: "Normal Record Review admitted Keeman (2026), arXiv:2603.22295v1, as bounded evidence that affect-reception representations recur across six Llama/Gemma base and instruct variants while emotion categorisation improves with scale. Primary provenance recorded; no legacy instance altered." },
     { id: "M-015", date: "2026-09-04", field: "assessment_issued", from: "AS-003", to: "AS-004", note: "Normal Record Review reassessed FR-AI-0006 after admission of IN-007. Xu's 2026 cross-scale representation-geometry result deepens the continuity/discontinuity ambiguity but does not resolve mechanism identity. FRAGMENTING / VS-03 retained; preprint and replication limitations recorded." },
     { id: "M-014", date: "2026-09-04", field: "instance_added", from: "—", to: "IN-007", note: "Normal Record Review admitted Xu (2026), arXiv:2605.17084v1: Subspace PGA evidence of scale-dependent predictive representation geometry across seven Pythia models with three cross-family checks. Admitted as new evidence with primary provenance; not used to retrofit unresolved legacy IN-005." },
     { id: "M-013", date: "2026-09-04", field: "assessment_correction", from: "AS-002", to: "AS-003", note: "AS-003 appended after the approved LPR-001-D06 bounded correction. Historical AS-001/AS-002 preserved. Current judgement retains FRAGMENTING / VS-03 on the narrower source-faithful basis established by corrected IN-001 through IN-006. Affected lineage wording was aligned to the corrected historical evidence; no new evidence instance admitted." },
