@@ -12,10 +12,10 @@
 export const FR_AI_0005 = {
   id: "FR-AI-0005",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-03",
-  provenanceReviewId: "LPR-001-D05",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-02",
+  provenanceReviewId: "LPR-001-D38",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Artificial General Intelligence will be achieved through scaling current large-language-model architectures.",
@@ -211,6 +211,7 @@ export const FR_AI_0005 = {
   mutationLog: [
     {"id":"M-012","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:BN-002, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, BN-002, AT-001 from FR_AI_0005_AGI_through_scaling.html (Drive file 1V4eVHRvuMV4gNZw4kVegbZGph1vcvvTn). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
+    { id: "M-013", date: "2026-10-02", field: "provenance_review", from: "LPR-001-D05", to: "LPR-001-D38", note: "Legacy Provenance Review completed as PASS. All seven existing evidence instances were re-audited against their attributed underlying sources and remained materially source-faithful. Verified: 7; enriched: 0; unverifiable: 0; discrepancies: 0; Normal Record Review candidates: 0. No evidence, assessment, pressure-state or verification-stage change made. Canonical governed outcome stored as verified / not_required." },
     { id: "M-011", date: "2026-09-03", field: "assessment_correction", from: "AS-002", to: "AS-003", note: "AS-003 appended after the approved LPR-001-D05 bounded correction. Historical AS-001/AS-002 preserved. The unsupported IN-006 target-migration event is withdrawn from the current evidential basis; FRAGMENTING / VS-03 retained on the narrower basis of continued capability gains plus unresolved path-definition and scaling-regime change. Separate downstream consistency repair remains required for mechanism, lineage, and open-question wording that inherited the target-migration premise." },
     { id: "M-010", date: "2026-09-03", field: "provenance_correction", from: "LPR-001-D05 discrepancies_found", to: "LEGACY-INSTANCES-CORRECTED", note: "Governed bounded correction applied to IN-001 through IN-007. Source representations aligned to Brown et al., GPT-4 Technical Report, Sutskever's 2024 remarks, OpenAI o1, Villalobos et al., OpenAI Charter, and Snell et al. Structured sources[] added; unsupported bundled claims removed or bounded. No new evidence instance admitted." },
     { id: "M-009", date: "2026-09-03", field: "provenance_review", from: "—", to: "LPR-001-D05", note: "Legacy provenance review completed. All seven evidence instances examined. Material source-fidelity discrepancies identified across the legacy evidence trail; no factual or interpretive wording silently repaired and no new scientific evidence admitted. Review marked pending governed correction." },
