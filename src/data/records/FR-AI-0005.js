@@ -209,6 +209,15 @@ export const FR_AI_0005 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-016",
+      date: "2026-10-02",
+      field: "provenance_review",
+      from: "LPR-001-D05",
+      to: "LPR-001-D38",
+      note:
+        "Legacy Provenance Review completed as PASS across all seven existing evidence instances. Seven were source-verifiable; no structured-source enrichment was required; no instance was unverifiable; no factual, interpretive, attribution, or verification-stage discrepancy was identified; and no genuinely new scientific evidence required routing to Normal Record Review. Canonical governed outcome recorded as verified / not_required. Completion marker advances the deterministic provenance-review queue.",
+    },
     {"id":"M-012","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:BN-002, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, BN-002, AT-001 from FR_AI_0005_AGI_through_scaling.html (Drive file 1V4eVHRvuMV4gNZw4kVegbZGph1vcvvTn). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-013", date: "2026-10-02", field: "provenance_review", from: "LPR-001-D05", to: "LPR-001-D38", note: "Legacy Provenance Review completed as PASS. All seven existing evidence instances were re-audited against their attributed underlying sources and remained materially source-faithful. Verified: 7; enriched: 0; unverifiable: 0; discrepancies: 0; Normal Record Review candidates: 0. No evidence, assessment, pressure-state or verification-stage change made. Canonical governed outcome stored as verified / not_required." },
