@@ -14,8 +14,8 @@ export const FR_QE_0002 = {
   programme: "PROG-QE",
   lastProvenanceReview: "2026-10-03",
   provenanceReviewId: "LPR-001-D39",
-  provenanceOutcome: "discrepancies_found",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Quantum annealing systems have demonstrated practical computational advantage over classical methods on commercially or scientifically relevant optimisation tasks.",
@@ -27,37 +27,76 @@ export const FR_QE_0002 = {
     {
       id: "IN-001",
       qualifiedEvent: "D-Wave One / Two — Initial commercial deployments",
-      description: "D-Wave sells the first commercial quantum systems to Lockheed Martin (2011) and Google/NASA/USRA (2013). D-Wave claims systems can solve certain combinatorial problems faster than classical alternatives. Independent benchmarking by Matthias Troyer and collaborators (2014) finds no evidence of quantum speedup over classical simulated annealing on the tested problem instances.",
+      description: "D-Wave's early commercial deployment included the 2011 Lockheed Martin system. In 2013, NASA, USRA and Google announced a collaboration using a D-Wave Two installed at NASA Ames; contemporaneous NASA reporting states that USRA leased the computer from D-Wave, rather than describing a collective Google/NASA/USRA purchase. Rønnow et al. (2014) subsequently benchmarked a D-Wave Two on random spin-glass instances and found no evidence of quantum speedup across the full data set, with instance-level subset results inconclusive.",
       vectors: ["contesting"],
       date: "2011–2013",
+      sources: [
+        {
+          citation: "NASA Advanced Supercomputing Division. Quantum Computing Collaboration Announced (17 May 2013).",
+          url: "https://www.nas.nasa.gov/pubs/news/2013/05-17-13.html",
+        },
+        {
+          citation: "Rønnow, T. F. et al. Defining and detecting quantum speedup. Science 345, 420–424 (2014).",
+          url: "https://pubmed.ncbi.nlm.nih.gov/25061205/",
+          doi: "10.1126/science.1252319",
+        },
+      ],
     },
     {
       id: "IN-002",
-      qualifiedEvent: "Google / D-Wave 108-qubit benchmark study",
-      description: "A Google-led study (Denchev et al. 2016, Physical Review X ) reports D-Wave 2X achieves speedup of up to 100 million times over a single-core classical solver on specific combinatorial optimisation instances. Immediate challenge from the community: the benchmark problem was specially structured to favour quantum annealing; state-of-the-art classical solvers (e.g. Hamze-de Freitas-Selby) match or exceed D-Wave performance when applied to the same instances.",
+      qualifiedEvent: "Google / D-Wave 2X finite-range tunnelling benchmark",
+      description: "Denchev et al. (2016, Physical Review X) report that the D-Wave 2X achieved runtime advantages of up to about 100 million times over single-core simulated annealing and an optimized single-core quantum Monte Carlo implementation on a crafted weak-strong-cluster benchmark, using instances up to 945 variables. The authors also note that heuristic classical algorithms can solve most Chimera-structured instances on timescales comparable to the D-Wave 2X, bounding the demonstrated advantage to the specified benchmark and comparator classes.",
       vectors: ["partial--benchmark-contested"],
       date: "2015–2016",
+      sources: [
+        {
+          citation: "Denchev, V. S. et al. What is the Computational Value of Finite-Range Tunneling? Physical Review X 6, 031015 (2016).",
+          url: "https://journals.aps.org/prx/abstract/10.1103/PhysRevX.6.031015",
+          doi: "10.1103/PhysRevX.6.031015",
+        },
+      ],
     },
     {
       id: "IN-003",
       qualifiedEvent: "D-Wave Advantage launch — 5000+ qubit system",
-      description: "D-Wave releases the Advantage system with over 5,000 qubits and a new Pegasus topology. D-Wave publishes case studies claiming practical advantage in vehicle routing, scheduling, and financial optimisation. Academic evaluation (Yarkoni et al. 2022, Reports on Progress in Physics ) finds that for most real-world problem instances tested, hybrid classical-quantum solvers outperform pure quantum annealing, and classical-only solvers remain competitive or superior on commercially sized problems.",
+      description: "D-Wave releases the Advantage system with over 5,000 qubits and a new Pegasus topology. D-Wave publishes case studies concerning applications including routing, scheduling and financial optimisation. Yarkoni et al. (2022, Reports on Progress in Physics) is a review of quantum annealing for industry applications that surveys application methods, opportunities and limitations; it does not establish the categorical cross-instance performance conclusion previously attributed to it in this record.",
       vectors: ["partial--hybrid-dependency"],
       date: "2019–2020",
+      sources: [
+        {
+          citation: "Yarkoni, S., Raponi, E., Bäck, T. & Schmitt, S. Quantum annealing for industry applications: introduction and review. Reports on Progress in Physics 85 (2022).",
+          url: "https://pubmed.ncbi.nlm.nih.gov/36001953/",
+          doi: "10.1088/1361-6633/ac8c54",
+        },
+      ],
     },
     {
       id: "IN-004",
-      qualifiedEvent: "King et al. — Coherent quantum annealing on a 2000-qubit Ising spin glass",
-      description: "A D-Wave-affiliated team publishes in Nature (King et al. 2022) reporting observation of coherent quantum annealing dynamics on a frustrated Ising model. Authors claim the system simulates quantum spin glass physics inaccessible to classical simulation in the thermodynamic regime studied. This is a scientific relevance claim (not a commercial optimisation claim). Independent commentary notes the result demonstrates quantum simulation capacity but does not directly establish practical computational advantage on optimisation tasks as typically framed.",
+      qualifiedEvent: "King et al. — Coherent quantum annealing in a programmable 2,000-qubit Ising chain",
+      description: "King et al. (2022, Nature Physics) demonstrate coherent evolution through a quantum phase transition in a one-dimensional transverse-field Ising chain using up to 2,000 superconducting flux qubits. The results agree quantitatively with analytical solutions of the closed-system quantum model and establish coherent large-scale annealing dynamics. The paper presents this capability as a path toward quantum optimisation, machine learning and simulation tasks; it does not itself establish practical computational advantage on optimisation tasks.",
       vectors: ["supportive--scientific-relevance"],
       date: "2022",
+      sources: [
+        {
+          citation: "King, A. D. et al. Coherent quantum annealing in a programmable 2,000 qubit Ising chain. Nature Physics 18, 1324–1328 (2022).",
+          url: "https://www.nature.com/articles/s41567-022-01741-6",
+          doi: "10.1038/s41567-022-01741-6",
+        },
+      ],
     },
     {
       id: "IN-005",
       qualifiedEvent: "King et al. — Computational advantage in quantum simulation of magnetic materials",
-      description: "A follow-up D-Wave-affiliated study (King et al. 2023, Nature ) reports that the Advantage system demonstrates computational advantage in simulating quantum magnetic materials, outperforming classical methods including quantum Monte Carlo for the specific frustrated systems tested. Dispute: critics argue the comparison class excludes the most capable classical simulation algorithms and that the problem domain (quantum magnetism simulation) is adjacent to but distinct from the commercially motivated optimisation tasks the utility claim is primarily understood to concern.",
+      description: "King et al. (2023, Nature) realize quantum-critical dynamics in three-dimensional spin glasses on thousands of qubits. The authors report critical exponents distinguishing quantum annealing from the slower stochastic dynamics of analogous Monte Carlo algorithms, supporting large-scale quantum simulation and a scaling advantage in energy optimization for the studied systems. The result is therefore bounded to the paper's spin-glass setting and analogous Monte Carlo comparators rather than establishing unrestricted advantage over classical methods.",
       vectors: ["partial--domain-scope-disputed"],
       date: "2023",
+      sources: [
+        {
+          citation: "King, A. D. et al. Quantum critical dynamics in a 5,000-qubit programmable spin glass. Nature 617, 61–66 (2023).",
+          url: "https://www.nature.com/articles/s41586-023-05867-2",
+          doi: "10.1038/s41586-023-05867-2",
+        },
+      ],
     },
     {
       id: "IN-006",
@@ -174,6 +213,7 @@ export const FR_QE_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-013", date: "2026-10-03", field: "provenance_correction", from: "LPR-001-D39 discrepancies_found / pending", to: "LPR-001-D39 discrepancies_corrected / completed", note: "Operator-approved bounded correction of the five legacy source-representation discrepancies carried from D14 and reconfirmed by D39. IN-001 corrects the 2013 transaction to USRA leasing the D-Wave system within the NASA/Google/USRA collaboration and bounds the 2014 benchmark conclusion. IN-002 replaces the erroneous 108-qubit framing with the D-Wave 2X weak-strong-cluster benchmark up to 945 variables and preserves the source's comparator limits. IN-003 removes the categorical performance conclusion not established by Yarkoni et al. and represents that work as an industry-applications review. IN-004 corrects Nature to Nature Physics, the model to a one-dimensional transverse-field Ising chain, and removes the unsupported classical-inaccessibility claim. IN-005 bounds the 2023 result to 3D spin-glass dynamics and analogous Monte Carlo comparators and removes the unsourced critics assertion. Structured sources added where attribution is established. IN-006, assessments, Pressure State and Verification Stage unchanged." },
     { id: "M-012", date: "2026-10-03", field: "provenance_review", from: "LPR-001-D14", to: "LPR-001-D39", note: "Second-cycle Legacy Provenance Review completed. Six current instances examined. IN-006 verified. Five previously identified D14 representation discrepancies remain pending governed correction; no discrepant wording was changed and no provenance was attached where that would endorse the current representation. No instance was provenance-unverifiable. No new scientific evidence was admitted or flagged for Normal Record Review. Outcome remains discrepancies_found / pending; Pressure State and Verification Stage unchanged." },
     { id: "M-011", date: "2026-09-12", field: "record_review", from: "Two 2025 Record Review candidates", to: "Quinton et al. admitted as IN-006; King et al. not admitted", note: "Governed normal Record Review completed for the two candidates surfaced by LPR-001-D14. Quinton et al., Scientific Reports 2025 (DOI 10.1038/s41598-025-96220-2), is admitted as IN-006 because it directly benchmarks a D-Wave hybrid quantum-annealing workflow against CPLEX, Gurobi and IPOPT on optimisation tasks. Its result is mixed and bounded: advantage for the studied BQP cases, but no general advantage across tested classes and no superiority over Gurobi on the unit-commitment case. King et al., Science 2025 (DOI 10.1126/science.ado6285), is not admitted as an evidence instance: despite strong beyond-classical quantum-simulation results, it studies dynamical quantum simulation rather than an optimisation task and therefore fails the settled optimisation-task element of this record's identity-bearing kernel. AS-003 appended; FRAGMENTING / VS-03 reaffirmed; lineage extended. LPR-001-D14 legacy discrepancies remain pending and were not altered by this Record Review." },
     { id: "M-010", date: "2026-09-12", field: "provenance_review", from: "—", to: "LPR-001-D14", note: "Legacy provenance review completed. All five evidence instances examined and each contains at least one source-fidelity, attribution, chronology, or interpretive issue requiring governed correction before structured sources[] can be attached without endorsing legacy wording. IN-001 inaccurately frames the 2013 D-Wave Two transaction as a sale to Google/NASA/USRA collectively; contemporaneous reporting identifies USRA as purchaser with Google and NASA collaborators. IN-002's qualified event incorrectly says 108-qubit while Denchev et al. studied D-Wave 2X instances up to 945 variables, and the legacy wording strengthens the source-supported claim that specialist classical heuristics are comparable into a broader match-or-exceed assertion. IN-003 attributes a categorical cross-instance performance conclusion to Yarkoni et al. 2022 that the review does not state in that form. IN-004 misidentifies the journal as Nature rather than Nature Physics, describes the system as a frustrated Ising spin glass rather than a one-dimensional transverse-field Ising chain, and attributes an inaccessibility claim not made by the paper. IN-005 overgeneralises the 2023 Nature result from scaling advantage against analogous Monte Carlo dynamics into a broader all-classical computational-advantage formulation and carries an unsourced critic-comparison assertion. No historical wording, assessment, pressure state, or verification stage was silently changed. Two post-baseline items were flagged for normal Record Review only: King et al., Science 2025, Beyond-classical computation in quantum simulation (DOI 10.1126/science.ado6285), and Quinton et al., Scientific Reports 2025, benchmarking D-Wave hybrid optimisation against CPLEX, Gurobi and IPOPT (DOI 10.1038/s41598-025-96220-2)." },
