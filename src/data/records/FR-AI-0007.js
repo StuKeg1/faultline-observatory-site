@@ -12,10 +12,10 @@
 export const FR_AI_0007 = {
   id: "FR-AI-0007",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-05",
-  provenanceReviewId: "LPR-001-D07",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-03",
+  provenanceReviewId: "LPR-001-D40",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "AI systems can autonomously conduct scientific research that produces novel, correct discoveries.",
@@ -34,6 +34,7 @@ export const FR_AI_0007 = {
         {
           citation: "Jumper, J. et al. (2021), Highly accurate protein structure prediction with AlphaFold, Nature 596, 583–589.",
           url: "https://www.nature.com/articles/s41586-021-03819-2",
+          doi: "10.1038/s41586-021-03819-2",
           locator: "Abstract; CASP14 blind assessment; accuracy results",
         },
       ],
@@ -48,11 +49,13 @@ export const FR_AI_0007 = {
         {
           citation: "Merchant, A. et al. (2023), Scaling deep learning for materials discovery, Nature 624, 80–85.",
           url: "https://www.nature.com/articles/s41586-023-06735-9",
+          doi: "10.1038/s41586-023-06735-9",
           locator: "Abstract; 2.2 million stable structures; 381,000 new convex-hull entries; 736 independently experimentally verified structures",
         },
         {
           citation: "Szymanski, N. J. et al. (2023), An autonomous laboratory for the accelerated synthesis of inorganic materials, Nature 624, 86–91.",
           url: "https://www.nature.com/articles/s41586-023-06734-w",
+          doi: "10.1038/s41586-023-06734-w",
           locator: "Abstract; 36 of 57 targets realised; autonomous synthesis workflow; target-selection limitations",
         },
       ],
@@ -81,6 +84,7 @@ export const FR_AI_0007 = {
         {
           citation: "Romera-Paredes, B. et al. (2023), Mathematical discoveries from program search with large language models, Nature 625, 468–475.",
           url: "https://www.nature.com/articles/s41586-023-06924-6",
+          doi: "10.1038/s41586-023-06924-6",
           locator: "Abstract; cap-set constructions; bin-packing heuristics; FunSearch specification and evaluator",
         },
       ],
@@ -226,6 +230,7 @@ export const FR_AI_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-018", date: "2026-10-03", field: "provenance_review", from: "LPR-001-D07", to: "LPR-001-D40", note: "Second-cycle Legacy Provenance Review completed as PASS across all nine existing evidence instances. IN-001 through IN-004 and IN-006 through IN-009 remain source-faithful; DOI metadata was added to the four already-structured Nature sources where canonical identifiers are confidently established. IN-005 remains explicit unresolved legacy provenance debt and is already withdrawn from the current evidential basis, so no source was guessed or retrofitted. No factual, interpretive, attribution, or verification-stage discrepancy was identified; no genuinely new scientific evidence was admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     // APPEND-ONLY. Newest first.
     { id: "M-017", date: "2026-09-05", field: "assessment_correction", from: "AS-002", to: "AS-003", note: "AS-003 appended after the approved LPR-001-D07 bounded correction. Historical AS-001/AS-002 preserved. Current judgement retains FRAGMENTING / VS-03 on the narrower source-faithful basis established by corrected IN-001 through IN-005 and verified IN-006 through IN-009. BN-001, AT-001, lineage, and OQ-002 were aligned to remove dependencies on superseded legacy interpretations." },
     { id: "M-016", date: "2026-09-05", field: "provenance_correction", from: "LPR-001-D07 discrepancies_found", to: "LEGACY-INSTANCES-CORRECTED", note: "Governed bounded correction applied to IN-001 through IN-005. AlphaFold2 bounded to CASP14 prediction evidence; GNoME separated from the distinct A-Lab synthesis study; AI Scientist conference-review overstatement removed; FunSearch bounded to human-framed program search and verifiable reported results; unsupported IN-005 institutional-restructuring bundle withdrawn and retained as explicit provenance debt. Structured primary sources added where attribution is secure. No new evidence admitted." },
