@@ -105,6 +105,17 @@ export const FR_QE_0008 = {
         { citation: "Berthusen et al., ‘Experimental validation of a compact fault-tolerant architecture for trapped ions’, arXiv:2609.03194v1 (2026)", url: "https://arxiv.org/abs/2609.03194v1", locator: "Abstract; repeated QEC, logical-Clifford benchmark and chain-map interface" },
       ],
     },
+    {
+      id: "IN-008",
+      qualifiedEvent: "Distributed surface-code lattice surgery — loss-tolerant fusion-network protocols",
+      description: "Burt et al. (arXiv:2610.01923v1) use ZX-calculus transformations to construct hybrid syndrome-extraction protocols for distributed rotated-surface-code lattice surgery over photonic links. Several protocols attain a 50% interface-erasure threshold when local noise is absent. Hybrid geometries increase the merge-observable interface distance from d+1 to 2d+1 and restore the perpendicular-observable interface distance from floor((d+1)/2) to d, relative to a straight Bell-pair interface. The study maps thresholds under resource-state errors, local circuit noise and fusion erasure; at circuit and resource-state error rates of 10^-3, local errors largely mask the interface-distance advantage, while improvements become clearer at local noise of 10^-4 and below. This is protocol-design and numerical threshold evidence for distributed QEC, not an experimental demonstration of logical-error suppression as processor scale increases. It does not change the governing scale-up evidence or resolve FR-QE-0008.",
+      vectors: ["neutral--distributed-protocol-design-without-system-scale-validation"],
+      date: "2026-10-01",
+      sourceReference: "Burt et al., arXiv:2610.01923v1 (2026), primary preprint",
+      sources: [
+        { citation: "Burt et al., ‘Loss-tolerant distributed lattice surgery using fusion networks’, arXiv:2610.01923v1 (2026)", url: "https://arxiv.org/abs/2610.01923v1", locator: "Abstract; hybrid protocols, interface-erasure thresholds and local-noise simulations" },
+      ],
+    },
   ],
 
   assessments: [
@@ -176,6 +187,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-014", date: "2026-10-03", field: "instance_appended", from: "IN-007", to: "IN-008", note: "Normal Record Review of RR-2026-10-03-01 admitted Burt et al., arXiv:2610.01923v1, as distinct protocol-design evidence for loss-tolerant distributed lattice surgery. The 50% interface-erasure result assumes absent local noise; local errors mask the interface-distance advantage at 10^-3 circuit/resource error and gains strengthen at lower noise. This is not an experimental system-scale suppression result. AS-003 remains current; FR-QE-0008 stays RESOLVING / VS-04. No open question or claim change." },
     { id: "M-013", date: "2026-09-26", field: "mechanism_attractor_consistency_corrected", from: "RM-001 / AT-001 inherited absolute wording", to: "Observed repetition-code floors and outcome-based scaling test", note: "Bounded consistency correction after the Helios Normal Record Review: RM-001 now distinguishes observed repetition-code floors in IN-005 from unresolved larger-distance surface-code and full-circuit behaviour, and states threshold assumptions accurately. AT-001 treats distance-9/11 experiments as informative tests, not an automatic or universal confirmation rule. No instance, assessment, pressure state, verification stage, open question, or claim was changed." },
     { id: "M-012", date: "2026-09-26", field: "instance_appended", from: "IN-006", to: "IN-007", note: "Normal Record Review of RR-2026-09-05-01 admitted Berthusen et al., arXiv:2609.03194v1, as distinct trapped-ion architecture evidence. The reported logical QEC cycle, Clifford benchmark and surface-code interface do not establish increasing-distance suppression, independent replication or useful fault-tolerant economics. AS-003 remains derived current assessment at RESOLVING / VS-04. The retrospectively incomplete Scout stated 4 September as first public date; arXiv v1 was submitted 2 September 2026, inside its review window." },
     { id: "M-011", date: "2026-09-21", field: "assessment_order_corrected", from: "AS-003 → AS-002 → AS-001", to: "AS-001 → AS-002 → AS-003", note: "Structural chronology repair: restored assessments[] to the canonical oldest-first order after AS-002 and AS-003 were mistakenly prepended on 2026-09-18. Existing assessment objects, dates, wording, pressure states, verification stages and evidentiary judgements are unchanged. This correction restores AS-003 as the derived current assessment and makes the repair explicit in the append-only mutation history." },
