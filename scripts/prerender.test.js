@@ -149,6 +149,22 @@ test("Evidence Brief prototype is prerendered only for reviewed Compatible recor
       EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id),
       `${id}: Evidence Brief eligibility`,
     );
+    if (EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id)) {
+      const map = rendered.match(/<aside class="evidence-brief"[\s\S]*?<\/aside>/)?.[0];
+      assert.ok(map, `${id}: reading map missing`);
+      assert.ok(rendered.indexOf(map) < rendered.indexOf('id="s-matrix"'), `${id}: map must precede matrix`);
+      for (const target of ["s-warrant", "evidence-entries", "s-mechanisms", "s-open-questions"]) {
+        assert.ok(map.includes(`href="#${target}"`), `${id}: missing link ${target}`);
+        assert.ok(rendered.includes(`id="${target}"`), `${id}: missing target ${target}`);
+      }
+      const record = ALL_RECORDS.find((item) => item.id === id);
+      const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#x27;");
+      assert.ok(!map.includes(escape(record.assessments.at(-1).summary)), `${id}: duplicates assessment prose`);
+      for (const item of record.mechanisms.filter((item) => item.type === "ATTRACTOR")) {
+        assert.ok(!map.includes(escape(item.description)), `${id}: duplicates Attractor prose`);
+      }
+      for (const item of record.openQuestions) assert.ok(!map.includes(escape(item.question)), `${id}: duplicates question prose`);
+    }
   }
 });
 

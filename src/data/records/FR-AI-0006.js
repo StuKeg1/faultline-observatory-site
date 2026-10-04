@@ -14,7 +14,7 @@ export const FR_AI_0006 = {
   programme: "PROG-AI",
   lastProvenanceReview: "2026-10-01",
   provenanceReviewId: "LPR-001-D36",
-  provenanceOutcome: "pass",
+  provenanceOutcome: "pass_after_correction",
   provenanceRepairStatus: "completed",
 
   claim: {
@@ -238,6 +238,7 @@ export const FR_AI_0006 = {
   ],
 
   mutationLog: [
+    { id: "M-021", date: "2026-10-04", field: "provenance_correction", from: "provenanceOutcome: pass", to: "provenanceOutcome: pass_after_correction", note: "Build-contract repair: normalized the unsupported D36 PASS marker to the governed completed-review value. M-020 records a passing re-audit following the earlier M-012 bounded correction; explicit unresolved IN-005 provenance debt remains. No evidence, assessment, review date, or repair status changed." },
     {"id":"M-016","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_AI_0006_scaling_mechanism_coherence.html (Drive file 1VeNxj-LTcGiSmfmVgFJehKuge1u7Aj37). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-020", date: "2026-10-01", field: "provenance_review", from: "LPR-001-D06", to: "LPR-001-D36", note: "LPR-001-D36 completed as PASS after bounded re-audit of all seven then-existing evidence instances. Six were source-verifiable; IN-005 remained explicit unresolved legacy provenance debt with no guessed source. No new legacy discrepancy required correction. A genuinely new Keeman (2026) candidate was routed to Normal Record Review rather than admitted through LPR-001 and was subsequently resolved as IN-008 / AS-005. Completion marker advances the deterministic provenance-review queue." },

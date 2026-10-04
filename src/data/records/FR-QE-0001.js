@@ -13,7 +13,7 @@ export const FR_QE_0001 = {
   programme: "PROG-QE",
   lastProvenanceReview: "2026-10-01",
   provenanceReviewId: "LPR-001-D37",
-  provenanceOutcome: "discrepancy_pending",
+  provenanceOutcome: "discrepancies_found",
   provenanceRepairStatus: "pending",
 
   claim: {
@@ -279,6 +279,7 @@ export const FR_QE_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-009", date: "2026-10-04", field: "provenance_correction", from: "provenanceOutcome: discrepancy_pending", to: "provenanceOutcome: discrepancies_found", note: "Build-contract repair: normalized the unsupported review marker to the governed value consistent with M-008. The D37 discrepancy remains pending; no evidence correction, assessment change, or review completion is implied." },
     {
       id: "M-008",
       date: "2026-10-01",
