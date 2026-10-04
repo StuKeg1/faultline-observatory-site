@@ -24,12 +24,11 @@ export function getEvidenceBrief(record) {
   const attractors = (record.mechanisms ?? []).filter((mechanism) => mechanism.type === "ATTRACTOR");
   const questions = record.openQuestions ?? [];
 
-  // Compatible status is the admission gate for this prototype. The nulls
-  // below preserve the rule that a projection never invents a missing field.
+  // Keep the reading map limited to metadata; it cannot duplicate prose.
   return {
-    current,
+    current: { pressureState: current.pressureState, date: current.date },
     evidenceCount: record.instances?.length ?? 0,
-    attractors,
-    questions,
+    attractorCount: attractors.length,
+    questionCount: questions.length,
   };
 }

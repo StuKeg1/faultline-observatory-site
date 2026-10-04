@@ -358,7 +358,7 @@ function EvidenceSources({ record }) {
         <span className="evidence-toggle-label" data-state="expanded">Hide ↑</span>
       </summary>
       {(
-        <div className="evidence-list" role="list">
+        <div className="evidence-list" id="evidence-entries" role="list" tabIndex={-1}>
           {instances.map((inst) => {
             const polarity = getInstancePolarity(inst);
             return (
@@ -518,32 +518,14 @@ function EvidenceBrief({ brief }) {
   const state = brief.current.pressureState.toUpperCase();
   return (
     <aside className="evidence-brief" aria-labelledby="evidence-brief-title" data-evidence-brief-prototype="compatible">
-      <div className="evidence-brief-kicker">Evidence Brief · Prototype</div>
-      <h2 id="evidence-brief-title">A short reading of this record</h2>
-      <p className="evidence-brief-context">Derived from the record’s current assessment, evidence trail, attractors and open questions. It adds no new assessment; the State Warrant remains authoritative.</p>
-      <div className="evidence-brief-grid">
-        <div>
-          <h3>Current position</h3>
-          <p><strong>{state} · {brief.current.verificationStage}</strong></p>
-          <p>{brief.current.summary}</p>
-        </div>
-        <div>
-          <h3>Evidence trail</h3>
-          <p>{brief.evidenceCount} logged evidence {brief.evidenceCount === 1 ? "entry" : "entries"} inform this record. The complete trail, sources and limits remain below.</p>
-        </div>
-        {brief.attractors.length > 0 && (
-          <div>
-            <h3>What could change it</h3>
-            {brief.attractors.map((attractor) => <p key={attractor.id}><span className="evidence-brief-id">{attractor.id}</span> {attractor.description}</p>)}
-          </div>
-        )}
-        {brief.questions.length > 0 && (
-          <div>
-            <h3>Questions retained</h3>
-            {brief.questions.map((question) => <p key={question.id}><span className="evidence-brief-id">{question.id}</span> {question.question}</p>)}
-          </div>
-        )}
-      </div>
+      <h2 id="evidence-brief-title">Read this record</h2>
+      <p className="evidence-brief-context">A guide to the record’s sections. The State Warrant gives the current assessment.</p>
+      <nav className="evidence-brief-grid" aria-label="Read this record">
+        <a href="#s-warrant"><strong>Current assessment →</strong><span>{state} · {brief.current.date}</span></a>
+        <a href="#evidence-entries"><strong>Evidence trail →</strong><span>{brief.evidenceCount} logged {brief.evidenceCount === 1 ? "entry" : "entries"}</span></a>
+        {brief.attractorCount > 0 && <a href="#s-mechanisms"><strong>What could change the claim →</strong><span>{brief.attractorCount} {brief.attractorCount === 1 ? "Attractor" : "Attractors"}</span></a>}
+        {brief.questionCount > 0 && <a href="#s-open-questions"><strong>Questions retained →</strong><span>{brief.questionCount} {brief.questionCount === 1 ? "question" : "questions"}</span></a>}
+      </nav>
     </aside>
   );
 }
@@ -757,6 +739,8 @@ export default function FrontierRecord() {
         <MutationHighlightWrapper>
         <div id="record-body">
 
+          <EvidenceBrief brief={evidenceBrief} />
+
           <section className="record-section-inner" id="s-matrix">
             <div className="rs-header">Verification Matrix</div>
             <p className="vm-context">Verification position derived from the record’s assessments; dates show when Faultline first recorded each stage.</p>
@@ -769,7 +753,6 @@ export default function FrontierRecord() {
             <ExperimentalAnnotations record={record} />
           </section>
 
-          <EvidenceBrief brief={evidenceBrief} />
 
           {/* Evidence Trajectories — Prototype 001. Scoped to FR-QE-0001
               only, the corpus's designated multi-assessment/transition
