@@ -43,6 +43,7 @@ import { FR_AM_0004 } from "./records/FR-AM-0004.js";
 import { FR_AM_0005 } from "./records/FR-AM-0005.js";
 import { FR_AM_0006 } from "./records/FR-AM-0006.js";
 import { FR_AM_0007 } from "./records/FR-AM-0007.js";
+import { FR_AM_0008 } from "./records/FR-AM-0008.js";
 
 // ─── PROG-BT — Biotechnology & Life Sciences ────────────────
 import { FR_BT_0001 } from "./records/FR-BT-0001.js";
@@ -83,6 +84,7 @@ export const ALL_RECORDS = [
   FR_AM_0005,
   FR_AM_0006,
   FR_AM_0007,
+  FR_AM_0008,
   // PROG-BT
   FR_BT_0001,
   FR_BT_0002,
