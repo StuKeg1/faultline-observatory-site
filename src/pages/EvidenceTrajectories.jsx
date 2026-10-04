@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
@@ -22,6 +22,12 @@ import {
 import { VS_STAGE_LABELS } from "../data/trajectoryVisuals.js";
 import "./EvidenceTrajectories.css";
 import "./EvidenceTrajectoriesProvenance.css";
+
+// The prerender has no query string. Match it during hydration, then apply
+// browser search parameters in a normal update so React patches attributes.
+const subscribeToHydration = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 const STAGE_ORDER = ["VS-05", "VS-04", "VS-03", "VS-02", "VS-01"];
 
@@ -257,9 +263,10 @@ function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, lensId, onS
 
 export default function EvidenceTrajectories() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const requestedLens = searchParams.get("lens") ?? (searchParams.get("programme") || "full");
+  const hydrated = useSyncExternalStore(subscribeToHydration, getClientSnapshot, getServerSnapshot);
+  const requestedLens = hydrated ? searchParams.get("lens") ?? (searchParams.get("programme") || "full") : "full";
   const lensId = LENSES.some((lens) => lens.id === requestedLens) ? requestedLens : "full";
-  const selectedId = searchParams.get("record");
+  const selectedId = hydrated ? searchParams.get("record") : null;
   const [hoveredId, setHoveredId] = useState(null);
   const trajectories = useMemo(() => ALL_RECORDS.map(buildTrajectory), []);
   const selectedLens = LENSES.find((lens) => lens.id === lensId) ?? LENSES[0];
