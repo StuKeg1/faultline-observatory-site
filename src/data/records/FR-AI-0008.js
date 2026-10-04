@@ -12,10 +12,10 @@
 export const FR_AI_0008 = {
   id: "FR-AI-0008",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-06",
-  provenanceReviewId: "LPR-001-D08",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-04",
+  provenanceReviewId: "LPR-001-D41",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "AI-assisted medical diagnosis achieves specialist-level accuracy on defined imaging tasks.",
@@ -164,6 +164,7 @@ export const FR_AI_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-012", date: "2026-10-04", field: "provenance_review", from: "LPR-001-D08", to: "LPR-001-D41", note: "Second-cycle Legacy Provenance Review completed as PASS across all six existing evidence instances. Current source-to-claim representations remain source-faithful after the governed D08 correction and subsequent Normal Record Review of IN-006. IN-005 remains explicit unsupported legacy provenance debt and is already withdrawn from the current evidential basis, so no source was guessed or retrofitted. No factual, interpretive, attribution, or verification-stage discrepancy was identified; no genuinely new scientific evidence was admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     // APPEND-ONLY. Newest first.
     { id: "M-011", date: "2026-09-06", field: "assessment_issued", from: "AS-002", to: "AS-003", note: "Normal Record Review of the final MASAI interval-cancer analysis. FRAGMENTING / VS-03 retained, but the positive prospective-deployment pole is materially strengthened. BN-001, AT-001, 2026 lineage and OQ-003 updated to reflect that prospective success is demonstrated in mammography while cross-domain transferability remains unresolved." },
     { id: "M-010", date: "2026-09-06", field: "instance_added", from: "IN-005", to: "IN-006", note: "Normal Record Review admitted Gommers et al. (2026) final MASAI primary interval-cancer analysis with structured primary provenance. New evidence only; no retroactive repair or replacement of legacy instances." },
