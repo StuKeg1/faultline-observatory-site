@@ -7,6 +7,10 @@
 export const FR_AM_0008 = {
   id: "FR-AM-0008",
   programme: "PROG-AM",
+  lastProvenanceReview: "2026-10-05",
+  provenanceReviewId: "LPR-001-D42",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "The bulk type-I superconducting state of YbSb₂ intrinsically breaks time-reversal symmetry.",
@@ -116,6 +120,7 @@ export const FR_AM_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-004", date: "2026-10-05", field: "provenance_review", from: "—", to: "LPR-001-D42", note: "Legacy Provenance Review completed as PASS across both existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-003", date: "2026-10-04", field: "assessment_issued", from: "—", to: "AS-001", note: "Initial governed assessment: EMERGING / VS-02 — Published. Evidence concentration and intrinsic-origin tests limit posture; no independent audit or replication inferred from publication count." },
     { id: "M-002", date: "2026-10-04", field: "instances_logged", from: "—", to: "IN-001–IN-002", note: "Historical baseline and 2026 experimental source family logged with structured provenance. Earlier 2022 disclosure retained without duplicate independent weight; no media-only evidence event." },
     { id: "M-001", date: "2026-10-04", field: "record_created", from: "—", to: "RECORD-CREATED", note: "Operator-authorised bounded admission following Materials Scout and new-record review. Scope and MC-01–MC-04 retained in docs/reviews/ADMISSION-2026-10-04-FR-AM-0008.md; no existing record reassessed." },
