@@ -15,8 +15,8 @@ export const FR_AI_0009 = {
   programme: "PROG-AI",
   lastProvenanceReview: "2026-10-06",
   provenanceReviewId: "LPR-001-D43",
-  provenanceOutcome: "review_required",
-  provenanceRepairStatus: "pending",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "AI systems can learn predictive representations of the physical world that support reliable action when the objects, environment, task, or embodiment differ materially from those encountered during training.",
@@ -82,8 +82,8 @@ export const FR_AI_0009 = {
     },
     {
       id: "IN-006",
-      qualifiedEvent: "RoboWM-Bench — generated manipulation behaviours remain difficult to execute physically",
-      description: "Embodiment-grounded evaluation shows that visually plausible predicted behaviour still fails at the boundary where an embodied system must execute it. Jiang et al. convert generated human-hand and robotic manipulation videos into embodied action sequences and validate them through robotic execution. Across evaluated world models, reliably generating physically executable behaviour remains an open challenge; reported failure modes include spatial-reasoning errors, unstable contact prediction and non-physical deformation. Fine-tuning on manipulation data improves results but does not remove the physical inconsistencies. This directly contests physical fidelity and functional utility.",
+      qualifiedEvent: "RoboWM-Bench — generated manipulation behaviours remain difficult to execute in physically grounded simulation",
+      description: "Embodiment-grounded evaluation shows that visually plausible predicted behaviour can still fail when converted into action and tested for executability in physically grounded simulation / real-to-sim environments. Jiang et al. convert generated human-hand and robotic manipulation videos into embodied action sequences and evaluate those behaviours in simulation-based execution environments rather than establishing physical-robot validation. Across evaluated world models, reliably generating executable behaviour remains an open challenge; reported failure modes include spatial-reasoning errors, unstable contact prediction and non-physical deformation. Fine-tuning on manipulation data improves results but does not remove the physical inconsistencies. This contests physical fidelity and functional utility while remaining bounded to simulation-based embodied executability.",
       vectors: ["contesting--physically-executable-behaviour-remains-unreliable"],
       date: "2026",
       sourceReference: "Jiang et al., 'RoboWM-Bench: A Benchmark for Evaluating World Models in Robotic Manipulation', arXiv:2604.19092",
@@ -218,6 +218,7 @@ export const FR_AI_0009 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-013", date: "2026-10-06", field: "provenance_correction", from: "LPR-001-D43 review_required / pending", to: "LPR-001-D43 discrepancies_corrected / completed", note: "Operator-approved bounded correction to IN-006. RoboWM-Bench wording narrowed from language implying physical-robot execution to simulation-based embodied executability in physically grounded / real-to-sim environments. IN-006 ID and evidential vector preserved; no assessment, Pressure State, Verification Stage, mechanism, lineage or open question changed." },
     { id: "M-012", date: "2026-10-06", field: "provenance_review", from: "LPR-001-D09", to: "LPR-001-D43", note: "Second-cycle Legacy Provenance Review completed across all nine existing evidence instances. Eight instances verified source-faithful; IN-006 requires operator-approved bounded correction because current wording can imply physical-robot validation whereas RoboWM-Bench v2 validates generated behaviours through physically grounded simulation / real-to-sim execution. No correction applied through LPR-001. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome review_required / pending; Pressure State and Verification Stage unchanged." },
     { id: "M-011", date: "2026-09-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "Bounded reassessment after IN-009 and Worldmodeldata–Mila research-plan review. Task-specific game-to-robot support is recognized; commercial game-data transfer remains unvalidated. ESCALATING / VS-02 held. OQ-006 records the controlled comparison needed." },
     { id: "M-010", date: "2026-09-28", field: "instance_added", from: "IN-001–IN-008", to: "IN-001–IN-009", note: "IN-009 Project Kitchen / Game2Policy preprint added as qualified, task-specific game-to-robot transfer evidence. WIRED coverage and the Worldmodeldata–Mila planned study were not treated as demonstrated transfer results." },
