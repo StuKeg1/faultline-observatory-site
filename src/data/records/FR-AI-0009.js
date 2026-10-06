@@ -13,10 +13,10 @@
 export const FR_AI_0009 = {
   id: "FR-AI-0009",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-07",
-  provenanceReviewId: "LPR-001-D09",
-  provenanceOutcome: "verified",
-  provenanceRepairStatus: "not_required",
+  lastProvenanceReview: "2026-10-06",
+  provenanceReviewId: "LPR-001-D43",
+  provenanceOutcome: "review_required",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "AI systems can learn predictive representations of the physical world that support reliable action when the objects, environment, task, or embodiment differ materially from those encountered during training.",
@@ -218,6 +218,7 @@ export const FR_AI_0009 = {
 
   mutationLog: [
     // APPEND-ONLY. Newest first.
+    { id: "M-012", date: "2026-10-06", field: "provenance_review", from: "LPR-001-D09", to: "LPR-001-D43", note: "Second-cycle Legacy Provenance Review completed across all nine existing evidence instances. Eight instances verified source-faithful; IN-006 requires operator-approved bounded correction because current wording can imply physical-robot validation whereas RoboWM-Bench v2 validates generated behaviours through physically grounded simulation / real-to-sim execution. No correction applied through LPR-001. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome review_required / pending; Pressure State and Verification Stage unchanged." },
     { id: "M-011", date: "2026-09-28", field: "assessment_issued", from: "AS-001", to: "AS-002", note: "Bounded reassessment after IN-009 and Worldmodeldata–Mila research-plan review. Task-specific game-to-robot support is recognized; commercial game-data transfer remains unvalidated. ESCALATING / VS-02 held. OQ-006 records the controlled comparison needed." },
     { id: "M-010", date: "2026-09-28", field: "instance_added", from: "IN-001–IN-008", to: "IN-001–IN-009", note: "IN-009 Project Kitchen / Game2Policy preprint added as qualified, task-specific game-to-robot transfer evidence. WIRED coverage and the Worldmodeldata–Mila planned study were not treated as demonstrated transfer results." },
     { id: "M-009", date: "2026-09-15", field: "reference_corrected", from: "IN-001 structured source without DOI field", to: "IN-001 structured source with DOI 10.1038/s41586-025-08744-2", note: "Bounded provenance-display correction: the DOI already preserved in IN-001's legacy sourceReference was added to the corresponding structured source so the public Evidence Sources rendering retains it. Citation, URL, locator, evidence wording and assessment are unchanged." },
