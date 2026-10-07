@@ -12,10 +12,10 @@
 export const FR_AM_0001 = {
   id: "FR-AM-0001",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-09-08",
-  provenanceReviewId: "LPR-001-D10",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-07",
+  provenanceReviewId: "LPR-001-D44",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Electrochemical cells can produce nuclear fusion reactions at or near room temperature.",
@@ -267,6 +267,7 @@ export const FR_AM_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-013", date: "2026-10-07", field: "provenance_review", from: "LPR-001-D10", to: "LPR-001-D44", note: "Second-cycle Legacy Provenance Review completed as PASS across all nine existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-012", date: "2026-09-08", field: "assessment_issued", from: "AS-004", to: "AS-005", note: "Normal Record Review of IN-008 and IN-009. COLLAPSED / VS-05 retained. The new evidence positively establishes condensed-matter enhancement of externally driven low-energy fusion but does not satisfy the canonical electrochemical-cell-driven cold-fusion claim. OQ-002 and lineage updated to make the reopening boundary explicit; historical assessments and legacy instances preserved." },
     { id: "M-011", date: "2026-09-08", field: "instances_added", from: "IN-007", to: "IN-008 / IN-009", note: "Normal Record Review admits Chen et al. (2025) and Karahadian et al. (2026) with primary provenance. Both are adjacent mechanistic evidence: electrochemical loading and condensed-matter environment measurably enhance D–D fusion under externally driven ion bombardment. Neither is treated as a qualifying reopening event for the canonical room-temperature electrochemical-fusion claim." },
     { id: "M-010", date: "2026-09-08", field: "assessment_and_dependencies_corrected", from: "AS-003 / legacy CM-001-lineage-OQ wording", to: "AS-004 / corrected dependencies", note: "Append-only AS-004 issued after the operator-approved LPR-001-D10 repair. COLLAPSED / VS-05 retained on a narrower evidential basis. CM-001, affected lineage entries and OQ-001 aligned to the corrected provenance: public announcement timing is retained, unsupported institutional-pressure causation is withdrawn, Berlinguette attribution is corrected, and residual LENR questions are separated from evidence for the canonical fusion claim. Historical assessments preserved. The 2025–26 electrochemically assisted ion-beam fusion papers remain outside LPR-001 as normal Record Review candidates." },
