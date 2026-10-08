@@ -145,12 +145,9 @@ export function resolveHomeQuestion(entry) {
       throw new Error(`homeQuestions: no note found for id "${target.id}" (entry "${entry.id}")`);
     }
     const noteType = PROGRAMME_NOTES.includes(note) ? "Programme Note" : "Institutional Note";
-    const noteDate = new Intl.DateTimeFormat("en-GB", {
-      day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
-    }).format(new Date(`${note.date}T00:00:00Z`));
     return {
       url: getNoteUrl(note),
-      meta: `${note.id} · ${noteType} · ${noteDate}`,
+      meta: `${note.id} · ${noteType}`,
       destinationLabel: "Reading Room",
     };
   }
