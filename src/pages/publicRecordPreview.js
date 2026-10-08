@@ -17,12 +17,12 @@ export function getProgrammeUrl(programme) {
   return `/programmes/${programme.id.toLowerCase()}/`;
 }
 
-export function selectProgrammePreview(programmes, limit = 3) {
+export function selectProgrammePreview(programmes) {
+  // The organisation overview includes every canonical public programme.
   return programmes
     .filter((programme) =>
       PROGRAMME_ID.test(programme?.id ?? "") && Boolean(programme?.name?.trim())
-    )
-    .slice(0, limit);
+    );
 }
 
 export function getValidTrajectoryEvents(record) {
