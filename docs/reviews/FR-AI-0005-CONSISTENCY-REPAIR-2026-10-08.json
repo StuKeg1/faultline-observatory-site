@@ -1,0 +1,163 @@
+{
+  "id": "FR-AI-0005-CONSISTENCY-REPAIR-2026-10-08",
+  "date": "2026-10-08",
+  "basis": [
+    "LPR-001-D05",
+    "AS-003",
+    "IN-001–IN-007"
+  ],
+  "scope": "Editorial consistency repair; no evidence admission or reassessment",
+  "rationale": "Current explanatory fields must not reinstate unsupported premises withdrawn by corrected evidence and AS-003. Definition disagreement is not a demonstrated migration; broader scaling recipes do not prove architectural abandonment or claim dissolution.",
+  "previous": {
+    "mechanisms": [
+      {
+        "id": "RM-001",
+        "type": "RESISTANCE MECHANISM",
+        "description": "Capability-generality gap. LLM scaling produces measurable improvements on benchmarks and economically valuable tasks but has not demonstrated the open-ended generalisation, physical understanding, causal reasoning, or sustained autonomy that earlier AGI framings required. The gap between benchmark performance and general intelligence has not closed with scale — it has become better characterised. Each capability advance reveals new gaps rather than eliminating the structural distance between current LLM behaviour and AGI as originally conceived. This mechanism is not about scaling hitting a ceiling; it is about the scaling path producing something systematically different from the target it was supposed to reach."
+      },
+      {
+        "id": "BN-001",
+        "type": "BOTTLENECK",
+        "description": "AGI definition is not stable. The claim requires that AGI be achieved, but AGI is not a stable object. Different researchers, institutions, and time periods use different definitions. The target has migrated at least once during this record's evidence trail (INST-006). A moving target creates a bottleneck that is not resolvable by experimental evidence: any positive result can be reframed as not yet AGI; any definitional narrowing can make existing systems qualify. The claim cannot transition to a stable assessment state — RESOLVING, COLLAPSED, or confirmed — until the target is fixed. This is a lexical bottleneck of the same type as BN-001 in FR-AI-0004, but more severe: the key term is not merely undefined, it is actively contested and institutionally managed."
+      },
+      {
+        "id": "BN-002",
+        "type": "BOTTLENECK",
+        "description": "Path and destination are disaggregating. The claim asserts a path to a destination. As the path evolves (toward hybrid architectures, test-time compute, embodiment, or novel approaches) while the destination also migrates, the original claim becomes progressively harder to evaluate. The path has bifurcated from pure LLM scaling; the destination has narrowed from general intelligence to economic performance. If both continue to move, the claim may become unevaluable not because evidence is absent but because the claim object no longer has a stable referent. This is a structural bottleneck specific to path prediction claims — a new bottleneck type the corpus has not previously named."
+      },
+      {
+        "id": "AT-001",
+        "type": "ATTRACTOR",
+        "description": "Demonstrated AGI under a stable definition. The only clear resolution path for this record is a demonstration of AGI under a definition that the research community accepts as stable and meaningful — not the migrated economic performance definition, but a definition that captures the original intent of the claim. If such a demonstration occurred, the question of whether the path was pure LLM scaling or something that evolved from it would become secondary. The attractor is not a specific experiment but a definitional stabilisation followed by a capability demonstration. Whether either component is achievable on a near-term timeline is unclear."
+      }
+    ],
+    "lineage": {
+      "items": [
+        {
+          "year": "2017–19",
+          "text": "Scaling hypothesis implicit. GPT-1 and GPT-2 establish that scale improves language model performance. The AGI-through-scaling claim is implicit in the research programme but not yet explicitly stated as a path prediction."
+        },
+        {
+          "year": "2020–22",
+          "text": "Path claim made explicit. GPT-3 and subsequent commentary formalise the claim. Leading researchers publicly assert that scaling LLMs is the path to AGI. The claim enters ESCALATING."
+        },
+        {
+          "year": "2023",
+          "text": "First internal fracture. OpenAI board crisis and Sutskever's eventual departure signal that the originator community is beginning to disaggregate path from destination. The claim enters FRAGMENTING."
+        },
+        {
+          "year": "2024",
+          "text": "Path bifurcation and definition migration. o1/o3 architectures depart from pure LLM scaling. OpenAI narrows the AGI definition to economic task performance. The claim's two components — path and destination — both migrate simultaneously."
+        }
+      ],
+      "relatedRecords": []
+    },
+    "openQuestions": [
+      {
+        "id": "OQ-001",
+        "question": "Can a claim whose target term is actively migrating reach any stable assessment state — RESOLVING, COLLAPSED, or confirmed — or does target migration structurally prevent closure? This is the collapse-criteria question this record generates. It is not the same as the resolution-criteria question in GQ-001, but it is related.",
+        "raisedDate": "2024-01-15"
+      },
+      {
+        "id": "OQ-002",
+        "question": "Is claim dissolution — a claim becoming unevaluable because its referents have migrated — the same governance problem as claim collapse? Cold fusion collapsed through a defined external event. This claim may dissolve through definitional drift. If these are different objects, the Observatory may need to distinguish them.",
+        "raisedDate": "2024-01-15"
+      },
+      {
+        "id": "OQ-003",
+        "question": "FR-AI-0005 is the first path prediction claim in the corpus. Path predictions age differently from capability claims: they can be overtaken by events, rendered moot by alternative paths succeeding, or abandoned by their proponents without formal falsification. Should path prediction claims be treated as a distinct record class, or does the current schema handle them adequately?",
+        "raisedDate": "2024-01-15"
+      },
+      {
+        "id": "OQ-004",
+        "question": "Two years of continued three-way fragmentation (capability/path/target) without convergence is itself a data point. At what point — if any — should sustained non-convergence be treated as evidence toward dissolution (OQ-002's distinction) rather than simply more fragmentation? This record has no stated threshold for when 'still fragmenting' becomes 'has dissolved,' and OQ-002 already flagged that the Observatory lacks a governed answer to this question generally, not just for this record.",
+        "raisedDate": "2026-06-29"
+      }
+    ],
+    "noteCaveats": [
+      "Older mechanism and open-question wording still inheriting that premise is not used here to support a dissolution claim.",
+      "Older FR-AI-0005 wording that still assumes target migration requires a separate consistency review."
+    ]
+  },
+  "updated": {
+    "mechanisms": [
+      {
+        "id": "RM-001",
+        "type": "RESISTANCE MECHANISM",
+        "description": "Capability and AGI warrant remain distinct. GPT-3 and GPT-4 demonstrate substantial evaluated capability gains (IN-001, IN-002), but those results do not establish that scaling current LLM architectures will produce AGI. The GPT-4 report also documents limitations. This is a gap in the warrant for the path prediction, not evidence that every capability gain reveals a new gap, that the distance to AGI cannot close, or that scaling has reached a hard ceiling."
+      },
+      {
+        "id": "BN-001",
+        "type": "BOTTLENECK",
+        "description": "Operational definition of AGI. Evaluating the claim requires an explicit target and criteria for recognising achievement. IN-006 documents OpenAI's longstanding economically valuable work definition; it does not document a 2024–25 target migration. General disagreement about the term remains relevant, but neither institutional goalpost shifting nor inevitable failure of assessment closure is established by this evidence. A governed evaluation must specify which definition it uses and what observations would count for or against the claim."
+      },
+      {
+        "id": "BN-002",
+        "type": "BOTTLENECK",
+        "description": "Scope of the scaling path. Reasoning-focused reinforcement learning, test-time compute and finite public human-text supply broaden the practical development recipe and complicate what counts as scaling current LLM architectures (IN-003, IN-004, IN-005, IN-007). These sources do not demonstrate a necessary architectural departure, abandonment of LLM-based approaches, or simultaneous movement of path and destination. The bottleneck is distinguishing evidence for the original path prediction from evidence for a broader development recipe."
+      },
+      {
+        "id": "AT-001",
+        "type": "ATTRACTOR",
+        "description": "A capability demonstration with an explicit AGI definition and attributable development path. Evidence favouring resolution would need to meet stated AGI criteria and establish how the result bears on scaling current LLM architectures. Meeting an economically valuable work definition must be evaluated on its declared terms; it cannot be dismissed as a migrated definition on the basis of IN-006. A result achieved through a different path would not by itself confirm this path prediction. The current evidence provides neither such a demonstration nor a settled resolution criterion."
+      }
+    ],
+    "lineage": {
+      "items": [
+        {
+          "year": "2020",
+          "text": "GPT-3 demonstrates broad evaluated task performance from a large language model (IN-001). This supports capability gains, not a demonstration of AGI or consensus that scaling establishes a sufficient path to it."
+        },
+        {
+          "year": "2023",
+          "text": "GPT-4 reports further evaluated capability gains alongside substantial limitations (IN-002). Neither an AGI endpoint nor a hard scaling ceiling follows from the report. The corrected evidence does not establish the OpenAI board crisis as an internal rejection of the scaling path."
+        },
+        {
+          "year": "2024",
+          "text": "OpenAI o1, Sutskever's December remarks and the public human-text analysis highlight reasoning-focused training, inference-time compute and a conditional data constraint (IN-003–IN-005); test-time-compute research adds a task-dependent result (IN-007). Sutskever's departure occurred in 2024, not 2023. These sources broaden the recipe without establishing architectural abandonment. The OpenAI Charter definition predates this period (IN-006); no 2024–25 definition-migration event is established."
+        },
+        {
+          "year": "2026",
+          "text": "AS-003 (3 September) retains FRAGMENTING / VS-03 on the narrower basis of capability gains alongside unresolved path definition and scaling-regime change. The target-migration premise is withdrawn; historical AS-001 and AS-002 remain preserved. The 8 October consistency repair aligns current mechanisms and open questions with that corrected basis without admitting new evidence or changing the assessment."
+        }
+      ],
+      "relatedRecords": []
+    },
+    "openQuestions": [
+      {
+        "id": "OQ-001",
+        "question": "Which explicit AGI definition and observable criteria would allow this path prediction to reach a stable assessment state? IN-006 supplies one longstanding operational definition, not evidence of a migrating target. How should differing definitions be governed without treating disagreement alone as proof that closure is impossible? This remains related to the resolution-criteria question in GQ-001.",
+        "raisedDate": "2024-01-15"
+      },
+      {
+        "id": "OQ-002",
+        "question": "Should claim dissolution — a claim becoming unevaluable because its referents or scope cannot be specified — be distinguished from claim collapse through contrary evidence? What evidence would establish dissolution in a path prediction? This is a conditional governance question: the corrected FR-AI-0005 evidence does not establish target migration or that this claim has dissolved.",
+        "raisedDate": "2024-01-15"
+      },
+      {
+        "id": "OQ-003",
+        "question": "FR-AI-0005 is the first path prediction claim in the corpus. Path predictions age differently from capability claims: they can be overtaken by events, rendered moot by alternative paths succeeding, or abandoned by their proponents without formal falsification. Should path prediction claims be treated as a distinct record class, or does the current schema handle them adequately?",
+        "raisedDate": "2024-01-15"
+      },
+      {
+        "id": "OQ-004",
+        "question": "How should sustained non-convergence between capability gains and evidence for a sufficient AGI development path affect assessment? What observations or governed threshold would distinguish continuing fragmentation from evidence of collapse or dissolution? The corrected record does not support the earlier three-way capability/path/target formulation, and elapsed time alone does not establish dissolution (OQ-002).",
+        "raisedDate": "2026-06-29"
+      }
+    ],
+    "noteCaveats": [
+      "The 8 October consistency repair aligns current mechanisms, lineage and open questions with this corrected basis; dissolution remains a conditional governance question, not a finding.",
+      "FR-AI-0005's separate consistency repair was completed on 8 October without changing its evidence or AS-003 judgment."
+    ]
+  },
+  "preserved": [
+    "claim",
+    "instances",
+    "assessments",
+    "prior mutationLog entries",
+    "OQ-003",
+    "question identifiers and raised dates",
+    "provenance review outcome",
+    "note evidence cutoff and synthesis judgment"
+  ]
+}

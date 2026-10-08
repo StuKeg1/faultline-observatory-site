@@ -6,6 +6,40 @@ import { FR_QE_0007 } from "./records/FR-QE-0007.js";
 import { FR_BT_0004 } from "./records/FR-BT-0004.js";
 import { FR_AI_0002 } from "./records/FR-AI-0002.js";
 import { getCurrentAssessment } from "./derive.js";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { FR_AI_0005 } from "./records/FR-AI-0005.js";
+import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.js";
+
+test("AGI consistency repair preserves evidence, judgments and prior mutation history", () => {
+  const hashes = {
+    assessments: "9919ddc8a8e11734a70c9d3ce08b09e2f14eaafe90b02e9352cea7955b34d4e9",
+    instances: "783c84303fab2ea39f4ae4d22500344b430451603153fb468ec29bf0b7feac41",
+    claim: "a4aa834b2b956a37fb9cb65591d758bfc6351dd3947579c2b7de5377849f15ee",
+  };
+  const digest = (v) => createHash("sha256").update(JSON.stringify(v)).digest("hex");
+  for (const [field, expected] of Object.entries(hashes)) {
+    assert.equal(digest(FR_AI_0005[field]), expected, `${field} was rewritten`);
+  }
+  assert.equal(digest(FR_AI_0005.mutationLog.slice(1)),
+    "d5a22a57b5abfc92e80359190be84104cab8bf9bfcfa74a2715e04104bbbd6ae");
+  const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-AI-0005-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
+  assert.deepEqual(FR_AI_0005.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })),
+    receipt.previous.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })));
+  assert.deepEqual(FR_AI_0005.openQuestions[2], receipt.previous.openQuestions[2]);
+  const mutationType = detectMutationType(FR_AI_0005.mutationLog[0], FR_AI_0005);
+  assert.equal(mutationType, "editorial_correction");
+  assert.equal(qualifiesForHomepage(mutationType).qualifies, false);
+});
+
+test("current AGI explanatory fields do not reinstate withdrawn migration and architectural premises", () => {
+  const active = JSON.stringify({ mechanisms: FR_AI_0005.mechanisms,
+    lineage: FR_AI_0005.lineage, openQuestions: FR_AI_0005.openQuestions });
+  assert.doesNotMatch(active, /target has migrated|target term is actively migrating|path has bifurcated|destination has narrowed|not the migrated economic performance definition|Two years of continued three-way fragmentation/);
+  assert.match(active, /does not document a 2024–25 target migration/);
+  assert.match(active, /different path would not by itself confirm this path prediction/);
+  assert.equal(getCurrentAssessment(FR_AI_0005).id, "AS-003");
+});
 
 const AUDITED_RECORDS = [FR_AI_0009, FR_QE_0007, FR_BT_0004];
 
