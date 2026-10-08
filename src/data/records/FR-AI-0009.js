@@ -160,7 +160,7 @@ export const FR_AI_0009 = {
     {
       id: "RM-002",
       type: "RESISTANCE MECHANISM",
-      description: "Compounding prediction error under extended interaction. Autoregressive and recurrent world models repeatedly condition later predictions on earlier predicted states, allowing small spatial, contact or causal errors to accumulate. Genie 3 (IN-003) explicitly identifies interaction duration as bounded, while RoboWM-Bench (IN-006) documents local physical inconsistencies that can become execution failures. Long-horizon reliability is therefore harder than short-horizon visual coherence.",
+      description: "Compounding prediction error under extended interaction. Autoregressive and recurrent world models repeatedly condition later predictions on earlier predicted states, allowing small spatial, contact or causal errors to accumulate. Genie 3 (IN-003) explicitly identifies interaction duration as bounded, while RoboWM-Bench (IN-006) documents local physical inconsistencies that can become execution failures in physically grounded simulation / real-to-sim environments. Long-horizon reliability is therefore harder than short-horizon visual coherence.",
     },
     {
       id: "AT-001",
@@ -174,7 +174,7 @@ export const FR_AI_0009 = {
       { year: "2018–22", text: "Learned world models become an explicit control paradigm. Latent-dynamics approaches show that agents can learn compact predictive states and plan or learn policies inside them, establishing the architectural idea without settling broad transfer." },
       { year: "2023–25", text: "DreamerV3 demonstrates unusually broad task coverage under one world-model reinforcement-learning configuration. World-model capability expands across control benchmarks, but most evidence remains inside designed environments." },
       { year: "2025", text: "The frontier moves toward observational pretraining and physical planning. V-JEPA 2-AC demonstrates bounded zero-shot planning in new laboratory environments; Genie 3 demonstrates real-time interactive generated worlds. The claim becomes empirically testable beyond passive prediction." },
-      { year: "2026", text: "Dedicated causal and embodiment-grounded benchmarks expose a reliability gap. MiraBench, What-If World and RoboWM-Bench show that visual realism does not reliably imply action fidelity, causal correctness or physically executable behaviour. The frontier shifts from generating plausible worlds to predicting consequences that remain useful under intervention and transfer." },
+      { year: "2026", text: "Dedicated causal and embodiment-grounded benchmarks expose a reliability gap. MiraBench and What-If World document action-fidelity and causal-intervention failures; RoboWM-Bench tests generated behaviours for executability in simulation-based environments, including real-to-sim reconstructions. Its benchmark execution failures are not reported physical-robot execution outcomes. The frontier shifts from generating plausible worlds to predicting consequences that remain useful under intervention and transfer." },
     ],
     relatedRecords: [
       { id: "FR-AI-0001", relationship: "Adjacent generalisation claim", note: "LLM Multi-Step Reasoning — tests whether reasoning capability generalises beyond training conditions rather than whether learned physical dynamics transfer under intervention." },
@@ -217,6 +217,14 @@ export const FR_AI_0009 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-014",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Investigated clarification candidate",
+      "to": "Bounded wording aligned with source limits and existing assessment",
+      "note": "Editorial Correction (GP-001), investigated clarification repair: mechanisms.2.description, lineage.items.3.text corrected after source checks. No new evidence, reassessment, claim-scope change or provenance-cycle completion. Claims, assessment histories/current judgments, status, question IDs and raised dates, review metadata and prior mutation entries preserved. Previous values and source basis: docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json."
+    },
     // APPEND-ONLY. Newest first.
     { id: "M-013", date: "2026-10-06", field: "provenance_correction", from: "LPR-001-D43 review_required / pending", to: "LPR-001-D43 discrepancies_corrected / completed", note: "Operator-approved bounded correction to IN-006. RoboWM-Bench wording narrowed from language implying physical-robot execution to simulation-based embodied executability in physically grounded / real-to-sim environments. IN-006 ID and evidential vector preserved; no assessment, Pressure State, Verification Stage, mechanism, lineage or open question changed." },
     { id: "M-012", date: "2026-10-06", field: "provenance_review", from: "LPR-001-D09", to: "LPR-001-D43", note: "Second-cycle Legacy Provenance Review completed across all nine existing evidence instances. Eight instances verified source-faithful; IN-006 requires operator-approved bounded correction because current wording can imply physical-robot validation whereas RoboWM-Bench v2 validates generated behaviours through physically grounded simulation / real-to-sim execution. No correction applied through LPR-001. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome review_required / pending; Pressure State and Verification Stage unchanged." },

@@ -94,7 +94,7 @@ export const FR_AI_0001 = {
     {
       id: "IN-006",
       qualifiedEvent: "Reasoning-trace faithfulness — evidence that chain-of-thought can diverge from answer-producing computation",
-      description: "Studies of chain-of-thought faithfulness identify cases where a stated reasoning trace fails to reflect computation used to produce an answer. Chen et al. (2025) and Arcuschin et al. (2025) examine contemporary reasoning models, while Lanham et al. (2023) and Turpin et al. (2023) provide earlier behavioral evaluations of chain-of-thought faithfulness. Lindsey et al. (2025) use mechanistic interpretability to identify cases in Claude 3.5 Sonnet where answer-relevant information is read directly from the prompt rather than from preceding chain-of-thought text. Together, this work establishes faithfulness as a separate issue when interpreting reasoning traces. Only Lindsey et al. is mechanistic-interpretability research, and these studies do not resolve whether o1/o3-class models implement a qualitatively different reasoning mechanism or scaled pattern matching. The evidence informs OQ-002 without deciding either mechanism hypothesis, and adds faithfulness as a distinct axis alongside contamination (RM-001) and distribution-shift sensitivity (RM-002).",
+      description: "Studies of chain-of-thought faithfulness identify cases where a stated reasoning trace fails to reflect computation used to produce an answer. Chen et al. (2025) and Arcuschin et al. (2025) examine contemporary reasoning models, while Lanham et al. (2023) and Turpin et al. (2023) provide earlier behavioral evaluations of chain-of-thought faithfulness. Lindsey et al. (2025) use mechanistic interpretability to identify cases in Claude 3.5 Haiku where answer-relevant information is read directly from the prompt rather than from preceding chain-of-thought text. Together, this work establishes faithfulness as a separate issue when interpreting reasoning traces. Only Lindsey et al. is mechanistic-interpretability research, and these studies do not resolve whether o1/o3-class models implement a qualitatively different reasoning mechanism or scaled pattern matching. The evidence informs OQ-002 without deciding either mechanism hypothesis, and adds faithfulness as a distinct axis alongside contamination (RM-001) and distribution-shift sensitivity (RM-002).",
       vectors: ["contesting--mechanism-disclosed-partially-decoupled-from-verbalised-reasoning"],
       date: "2023–25",
       sources: [
@@ -230,7 +230,7 @@ export const FR_AI_0001 = {
     },
     {
       id: "OQ-002",
-      question: "Is the extended chain-of-thought mechanism in o1/o3 a qualitatively different computation from prior LLM inference, or a scaled version of the same pattern-matching behaviour documented in INST-002 and INST-004? This is the operative scientific question for the next assessment cycle.",
+      question: "Does the o1/o3-class computation support generalisation beyond memorised or structurally familiar training examples, and what mechanism accounts for that performance? Separately, does its verbalised chain-of-thought faithfully describe the computation producing its answers? AS-002 and IN-006 require these questions to be distinguished: an unfaithful trace does not by itself establish failure to generalise, while a faithful trace does not by itself establish generalisation or decide between the mechanism hypotheses.",
       raisedDate: "2024-01-15",
     },
     {
@@ -251,6 +251,14 @@ export const FR_AI_0001 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-014",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Investigated clarification candidate and misnamed mechanistic-study model",
+      "to": "Bounded wording aligned with source limits and existing assessment",
+      "note": "Editorial Correction (GP-001), investigated clarification repair: openQuestions.1.question, instances.5.description corrected after source checks. IN-006 changes only Claude 3.5 Sonnet to Claude 3.5 Haiku; no other instance wording or provenance changed. No new evidence, reassessment, claim-scope change or provenance-cycle completion. Claims, assessment histories/current judgments, status, question IDs and raised dates, review metadata and prior mutation entries preserved. Previous values and source basis: docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json."
+    },
     { id: "M-013", date: "2026-09-29", field: "instances_appended", from: "—", to: "IN-007", note: "Normal Record Review, retrospective route authorized by operator. Added OpenAI-reported IMO 2025 gold-medal-level performance as bounded supportive evidence, with first-party retrospective reporting and official IMO gold threshold provenance. Limitations on independent score validation and evaluation detail are explicit. Claim, historical assessments, current ESCALATING / VS-03 state, mechanisms and open questions unchanged." },
     { id: "M-012", date: "2026-09-29", field: "provenance_repair", from: "LPR-001-D33 pending", to: "LPR-001-D33 completed", note: "Operator-approved bounded correction completed. IN-003 now labels the unattributed GPT-4/IMO/AIME account as an unverified legacy report and no longer presents it as supportive evidence; no source was inferred. IN-006 now distinguishes behavioral chain-of-thought faithfulness studies from Lindsey et al.'s mechanistic-interpretability analysis, narrows the evidence's relation to OQ-002, and reflects the 2023–25 source chronology. Existing structured sources remain. Historical assessments, pressure state ESCALATING, verification stage VS-03, mechanisms, lineage and open questions remain unchanged. No new evidence was admitted." },
     // APPEND-ONLY. Newest first.
