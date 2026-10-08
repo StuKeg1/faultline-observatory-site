@@ -1,0 +1,134 @@
+{
+  "id": "LPR-001-D37-FR-QE-0001-CORRECTION-2026-10-08",
+  "date": "2026-10-08",
+  "scope": "Complete the pending D37 source-representation review and align active successor explanations with existing AS-002; no evidence admission or reassessment.",
+  "basis": [
+    "LPR-001-D37 / M-008",
+    "AS-002 / M-006",
+    "Zhao et al., arXiv:2406.18889v1, abstract and Section II Summary of Results"
+  ],
+  "sourceReview": {
+    "url": "https://arxiv.org/html/2406.18889v1",
+    "locator": "Section II Summary of Results, final paragraph before METHODS; Abstract",
+    "finding": "The full paper reports 13.7 kWh for the classical run versus 4.3 kWh attributed to Sycamore cooling water. D37 correctly flagged vague source representation, but its categorical statement that the source supplies no quantum-device energy comparison is not sustained by the full text. Preserve the reported figures and their different measurement boundaries; do not infer a complete system-energy comparison."
+  },
+  "originalRecordHash": "ef63dce28481b348707b56a7114a3fc9ccef15f2e6187ee99f6a5a48f94bd2b3",
+  "immutableHashes": {
+    "claim": "2ca401d81f1224ebe9bb33ea98252fd25f22570b01a73d15a7054a6d870e6282",
+    "assessments": "0987d79c83fb819971792c71bb925cee05e9bd6cbdca384b379e45bf216f1dcd",
+    "reconstruction": "bd389d176924780349b52d25eb41ff77aaea20431374466d4817721c572b0e2b",
+    "status": "35ff74aeea25311f4fe759a6b762c8cd41a79adb23dd5615b92cf215175a63e5"
+  },
+  "previousMutationHash": "bd3cec52dbd87cdab4c62e426dcfb764e3c1b5891d62d0f851bef1aadb49937d",
+  "questionIdentity": [
+    {
+      "id": "OQ-001",
+      "sourceId": "OQ-1",
+      "raisedDate": "2026-06-11"
+    },
+    {
+      "id": "OQ-002",
+      "sourceId": "OQ-2",
+      "raisedDate": "2026-06-11"
+    },
+    {
+      "id": "OQ-003",
+      "sourceId": "OQ-3",
+      "raisedDate": "2026-06-11"
+    },
+    {
+      "id": "OQ-004",
+      "sourceId": "OQ-4",
+      "raisedDate": "2026-06-11"
+    },
+    {
+      "id": "OQ-005",
+      "sourceId": "OQ-5",
+      "raisedDate": "2026-06-11"
+    }
+  ],
+  "changes": [
+    {
+      "fieldPath": "instances.3.description",
+      "previous": "A team led by researchers at the University of Science and Technology of China (Zhao et al., arXiv:2406.18889) reports a classical simulation using 1,432 GPUs that generates uncorrelated samples from the Sycamore RCS benchmark with higher linear cross-entropy scores and approximately 7× faster wall-clock time than the original Sycamore experiment. This is the first published result in which a classical system produces higher-fidelity samples faster than the quantum processor on the same benchmark. The authors note that this challenges the first-generation quantum advantage claim directly, though the comparison involves substantially greater energy consumption and hardware footprint than the quantum device.",
+      "current": "Zhao et al. (arXiv:2406.18889) report a classical simulation using 1,432 GPUs that generates uncorrelated samples for the Sycamore RCS benchmark with higher linear cross-entropy scores and approximately sevenfold faster time-to-solution than the original experiment. They present this as a challenge to first-generation quantum advantage. Section II reports 13.7 kWh for their classical run producing three million samples and compares it with 4.3 kWh attributed to Sycamore cooling water. These are differently specified energy-accounting boundaries, not an established comparison of complete system energy use. The paper also reports a two-order reduction relative to prior classical simulations. Higher XEB is the reported benchmark metric, not by itself proof of more faithful sampling of the ideal distribution. The counter-performance is later evidence; AS-002 does not backdate it into proof that the 2019 comparison was already unsound.",
+      "basis": "Zhao et al., Abstract and Section II Summary of Results; existing RM-002 / AS-002"
+    },
+    {
+      "fieldPath": "instances.3.sources.0.locator",
+      "previous": "Abstract; reported 1,432-GPU simulation, uncorrelated samples and sevenfold time-to-solution advantage over Sycamore",
+      "current": "Abstract; Section II Summary of Results: 1,432 GPUs, uncorrelated samples, XEB and sevenfold time-to-solution comparison; 13.7 kWh classical run and 4.3 kWh attributed to Sycamore cooling water",
+      "basis": "Full-text source check, 2026-10-08"
+    },
+    {
+      "fieldPath": "provenanceOutcome",
+      "previous": "discrepancies_found",
+      "current": "discrepancies_corrected",
+      "basis": "D37 pending source-representation item completed with full-text qualification"
+    },
+    {
+      "fieldPath": "provenanceRepairStatus",
+      "previous": "pending",
+      "current": "completed",
+      "basis": "D37 bounded correction completed; no new six-instance provenance cycle"
+    },
+    {
+      "fieldPath": "mechanisms.2.description",
+      "previous": "Claimant-produced classical baseline. In both 2019 (Sycamore) and 2024 (Willow), the classical difficulty estimate was produced by the same team making the quantum claim. No independent party has verified the 10²⁵-year estimate for the Willow RCS benchmark. The historical pattern — Google's 2019 estimate of 10,000 years was reduced to days within five years by independent researchers — provides a Track Record Prior suggesting that claimant-produced classical baselines systematically overestimate classical difficulty.",
+      "current": "Claimant-produced classical baseline. IN-001 records Google's 2019 classical-runtime estimate; IBM's contemporaneous analysis and later classical counter-performance show why such baselines need independent scrutiny. IN-006's Willow estimate is a separate claimant-produced successor estimate retained as context. It cannot validate, reopen or change the time-indexed 2019 claim. The historical erosion supports scrutiny of specific comparators, not a universal rule that every claimant estimate is systematically too high. AS-002 separates the unresolved original comparison from later supersession.",
+      "basis": "IN-001–IN-004 / IN-006; AS-002"
+    },
+    {
+      "fieldPath": "mechanisms.4.description",
+      "previous": "Claim migration obscures resolution. The original 2019 claim has not been formally retracted, but Google's own research programme has moved to qualitatively different claims (error correction scaling, logical qubit lifetime). The supremacy claim persists in public discourse while the technical frontier has migrated. This creates an assessment bottleneck: the Observatory cannot issue a settled verdict on a claim whose claimant has effectively abandoned its original formulation without conceding its invalidity. The FCIF formalises this pattern as Claim Migration — one of four resolution pathways in the Preliminary Claim Resolution Taxonomy.",
+      "current": "Successor context must not obscure the bounded verdict. AS-002 already governs the original 2019 Sycamore comparison: unresolved at its original comparison point and later superseded. Willow error correction and expanded RCS are outside that claim's material commitments. A claimant's later research direction or absence of formal retraction does not prevent this institutional verdict, and successor progress does not make the original evidence fragmenting. Context may be retained without treating the admitted claim kernel as having migrated.",
+      "basis": "AS-002 / M-006"
+    },
+    {
+      "fieldPath": "mechanisms.5.description",
+      "previous": "Exponential scaling of circuit complexity. Google's Willow result suggests that as qubit count and circuit depth increase, the classical simulation cost grows exponentially while the quantum execution cost grows polynomially. If this scaling relationship holds, classical simulation methods will eventually be unable to track quantum hardware improvements regardless of algorithmic ingenuity. The Willow RCS estimate (10²⁵ years) is far enough beyond the Sycamore estimate (10,000 years) that even multiple orders-of-magnitude classical improvement would not close the gap. This attractor mechanism favours eventual resolution of the broader supremacy claim, though it does not retroactively validate the 2019 formulation.",
+      "current": "Evidence at the original comparison point. The reopening route specified by AS-002 is evidence showing that the 2019 classical comparator was already unsound. A source-grounded reconstruction of contemporaneously available algorithms, hardware, sampling conditions and practical-runtime assumptions could sharpen that comparison. Later classical speedups establish supersession without automatically proving original falsity; Willow scaling or successor error-correction achievements do not satisfy this record's reopening condition.",
+      "basis": "AS-002; existing IN-001–IN-004"
+    },
+    {
+      "fieldPath": "lineage.items.6.text",
+      "previous": "Zhao et al. — Sycamore benchmark superseded classically. A 1,432-GPU cluster produces higher-fidelity samples 7× faster than the original Sycamore experiment. The 2019 claim, as originally formulated, is effectively closed by classical supersession. Simultaneously, Google announces Willow: below-threshold error correction and a new RCS benchmark estimated at 10²⁵ classical years. The claim migrates.",
+      "current": "Zhao et al. report classical counter-performance of the original Sycamore benchmark with 1,432 GPUs, higher XEB scores and approximately sevenfold faster time-to-solution. Google also announces Willow error correction and an expanded RCS claimant estimate. AS-002 treats the former as later supersession, without automatically proving the 2019 claim false when made, and retains the latter only as successor context outside the admitted claim's material commitments.",
+      "basis": "Corrected IN-004; IN-005 / IN-006; AS-002"
+    },
+    {
+      "fieldPath": "openQuestions.0.question",
+      "previous": "Does the Willow RCS benchmark (10²⁵ classical years) resist the same pattern of classical erosion that collapsed the Sycamore estimate? The exponential scaling argument suggests it should, but the Track Record Prior from 2019 counsels caution. What is the earliest date at which an independent classical simulation challenge to the Willow benchmark should be expected?",
+      "current": "As a contextual successor question, how would an independent classical challenge test Willow's claimant-produced RCS estimate and its susceptibility to algorithmic improvement? No forecast date or inevitable separation follows from the estimate alone. Any Willow finding requires its own claim-specific review and cannot by itself resolve or reopen the time-indexed 2019 Sycamore comparison.",
+      "basis": "IN-006; AS-002"
+    },
+    {
+      "fieldPath": "openQuestions.1.question",
+      "previous": "Should the Observatory decompose this record into two: one for the original 2019 Sycamore RCS supremacy claim (effectively resolved by classical supersession) and one for the broader Google quantum advantage programme trajectory (Sycamore → Willow → fault-tolerant roadmap)? If so, the Migration architecture should govern the decomposition.",
+      "current": "AS-002 fixes this record to the original 2019 Sycamore comparison and distinguishes later supersession from original falsity. How should contextual Sycamore-to-Willow programme history be linked to separately governed successor claims without merging their material commitments or recasting the bounded verdict as unresolved claim migration? This is a representation question, not a prerequisite to the existing verdict or an authorised decomposition.",
+      "basis": "AS-002 / M-006"
+    },
+    {
+      "fieldPath": "openQuestions.2.question",
+      "previous": "The Willow error correction result (INST-005) is qualitatively different from the supremacy claim. Does it belong in this record at all, or should it be tracked exclusively in FR-QE-0003 (fault-tolerant logical qubits) and FR-QE-0008 (error correction scaling)?",
+      "current": "Willow error correction in IN-005 is retained as contextual successor history outside the 2019 claim's material commitments. How should that context link to FR-QE-0003 and FR-QE-0008, where error-correction evidence can engage their own claims, without treating it as evidence for the original RCS comparison?",
+      "basis": "IN-005; AS-002"
+    },
+    {
+      "fieldPath": "openQuestions.3.question",
+      "previous": "What is the correct pressure state for a record whose original claim has been substantially superseded but whose successor claim is strengthening? FRAGMENTING captures the split evidence, but the FCIF Claim Migration pathway suggests this may be a distinct epistemic state not fully described by the existing pressure vocabulary.",
+      "current": "AS-002 assigns STABILISING / VS-04 to this time-indexed claim: unresolved at the original comparison point and later superseded. How should the Observatory display a strengthening successor programme alongside that bounded verdict without combining the trajectories into FRAGMENTING or implying that successor progress changes the original pressure state? This remains a representation question, not a new pressure-state determination.",
+      "basis": "AS-002 / M-006"
+    },
+    {
+      "fieldPath": "openQuestions.4.question",
+      "previous": "Does the pattern observed here — claimant-produced classical baseline, subsequent classical erosion, claim migration to a new formulation — constitute a repeatable signature that should be codified as a named failure mode in the FCIF? The D-Wave trajectory (FR-QE-0002) exhibits a closely parallel structure.",
+      "current": "Do claimant-produced baselines followed by classical erosion recur in sufficiently comparable, source-grounded cases to warrant a named mechanism? How should such a review distinguish actual changes to an admitted claim from contextual successor research? FR-QE-0002 offers a comparison candidate, but a shared institutional pattern should not be presumed or used to revise this record's settled material commitments.",
+      "basis": "AS-002; current FR-QE-0002 settled optimisation kernel"
+    }
+  ],
+  "mutationIds": [
+    "M-011",
+    "M-010"
+  ]
+}

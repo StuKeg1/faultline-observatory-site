@@ -224,3 +224,45 @@ test("second batch retains conditional event, regimen, recurrence and dated corp
   assert.match(am.openQuestions[2].question, /8 October 2026 consistency checkpoint/);
   assert.deepEqual([qe, bt2, bt4, am].map(record => getCurrentAssessment(record).id), ["AS-003", "AS-004", "AS-003", "AS-003"]);
 });
+
+test("D37 closure preserves assessments, reconstruction and all unreceipted record content", async () => {
+  const { FR_QE_0001: record } = await import("./records/FR-QE-0001.js");
+  const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/LPR-001-D37-FR-QE-0001-CORRECTION-2026-10-08.json", import.meta.url)));
+  const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+  for (const [field, hash] of Object.entries(receipt.immutableHashes)) assert.equal(digest(record[field]), hash, `${field} changed`);
+  assert.equal(digest(record.mutationLog.slice(2)), receipt.previousMutationHash);
+  assert.deepEqual(record.openQuestions.map(({ id, sourceId, raisedDate }) => ({ id, sourceId, raisedDate })), receipt.questionIdentity);
+  assert.deepEqual(record.mutationLog.slice(0, 2).map(({ id }) => id), receipt.mutationIds);
+  const restored = structuredClone(record);
+  restored.mutationLog = restored.mutationLog.slice(2);
+  for (const change of receipt.changes) {
+    const keys = change.fieldPath.split(".");
+    assert.equal(keys.reduce((value, key) => value[key], record), change.current);
+    keys.slice(0, -1).reduce((value, key) => value[key], restored)[keys.at(-1)] = change.previous;
+  }
+  assert.equal(digest(restored), receipt.originalRecordHash, "unreceipted record edit");
+  for (const mutation of record.mutationLog.slice(0, 2)) {
+    const type = detectMutationType(mutation, record);
+    assert.equal(type, "editorial_correction");
+    assert.equal(qualifiesForHomepage(type).qualifies, false);
+  }
+});
+
+test("D37 repair qualifies energy evidence and respects the existing time-indexed verdict", async () => {
+  const { FR_QE_0001: record } = await import("./records/FR-QE-0001.js");
+  const current = getCurrentAssessment(record);
+  assert.deepEqual([current.id, current.pressureState, current.verificationStage], ["AS-002", "stabilising", "VS-04"]);
+  assert.deepEqual([record.provenanceReviewId, record.lastProvenanceReview, record.provenanceOutcome, record.provenanceRepairStatus], ["LPR-001-D37", "2026-10-01", "discrepancies_corrected", "completed"]);
+  const source = record.instances.find(({ id }) => id === "IN-004");
+  assert.match(source.description, /13\.7 kWh/);
+  assert.match(source.description, /4\.3 kWh attributed to Sycamore cooling water/);
+  assert.match(source.description, /differently specified energy-accounting boundaries/);
+  assert.match(source.description, /XEB.*not by itself proof/);
+  assert.doesNotMatch(source.description, /substantially greater energy consumption and hardware footprint/);
+  assert.match(source.sources[0].locator, /Section II/);
+  assert.match(record.mechanisms.find(({ id }) => id === "BN-002").description, /already governs/);
+  assert.match(record.mechanisms.find(({ id }) => id === "AT-001").description, /2019 classical comparator was already unsound/);
+  assert.doesNotMatch(JSON.stringify(record.mechanisms), /cannot issue a settled verdict|eventually be unable to track quantum hardware/);
+  assert.match(record.openQuestions[3].question, /assigns STABILISING \/ VS-04/);
+  assert.doesNotMatch(record.lineage.items[6].text, /effectively closed|The claim migrates/);
+});
