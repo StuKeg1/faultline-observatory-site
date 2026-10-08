@@ -68,7 +68,7 @@ export const HOME_QUESTIONS = [
     id: "ai-evidence-current-state",
     icon: "ai",
     question: "What patterns emerge across the AI evidence?",
-    description: "A dated overview of shared evidence patterns across eight AI Frontier Records.",
+    description: "An overview of evidence patterns across nine AI Frontier Records.",
     action: "Read programme overview",
     target: { type: "note", id: "PN-AI-001" },
   },
