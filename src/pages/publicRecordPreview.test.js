@@ -20,7 +20,7 @@ function record(id, updated, { status = "open", assessments } = {}) {
   };
 }
 
-test("Programme selection preserves canonical order and excludes invalid entries", () => {
+test("Programme selection includes every programme in canonical order and excludes invalid entries", () => {
   const programmes = [
     { id: "PROG-QE", name: "Quantum" },
     { id: "not-public", name: "Invalid" },
@@ -29,7 +29,7 @@ test("Programme selection preserves canonical order and excludes invalid entries
     { id: "PROG-BT", name: "Biotechnology" },
   ];
   assert.deepEqual(selectProgrammePreview(programmes).map(({ id }) => id), [
-    "PROG-QE", "PROG-AI", "PROG-AM",
+    "PROG-QE", "PROG-AI", "PROG-AM", "PROG-BT",
   ]);
 });
 
