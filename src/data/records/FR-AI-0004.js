@@ -171,7 +171,7 @@ export const FR_AI_0004 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Open-weights models with disclosed training data. The contamination resistance mechanism (RM-001) and the \"previously unseen\" bottleneck (BN-001) both weaken substantially for models where training data is fully disclosed and verifiable. Open-weights models with documented training sets — LLaMA, Mistral, and similar — permit principled contamination analysis. As the open-weights ecosystem matures and evaluation methodology improves, the evidentiary base for the claim can become cleaner. The attractor is not a single experiment but a methodological development: a corpus of models where the \"previously unseen\" criterion can be operationally verified. This is an interior attractor — it resolves an evidence quality problem, not a boundary ambiguity.",
+      description: "Auditable training data and task-novelty evaluation. The contamination resistance mechanism (RM-001) can be reduced where the exact model version, processed training corpus and relevant evaluation overlap can be inspected. Open weights alone do not provide that access, and broad descriptions of data sources are not the same as an auditable corpus. Models should qualify for this route through their specific data disclosures rather than family labels such as LLaMA or Mistral. Even corpus access does not by itself settle BN-001: absence of a benchmark item is different from absence of its task type or structural analogues, and an agreed operational definition of previously unseen remains necessary. The attractor is reproducible contamination analysis combined with explicit task-novelty criteria, not automatic confirmation from model openness.",
     }
   ],
 
@@ -209,6 +209,14 @@ export const FR_AI_0004 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-017",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Investigated clarification candidate",
+      "to": "Bounded wording aligned with source limits and existing assessment",
+      "note": "Editorial Correction (GP-001), investigated clarification repair: mechanisms.3.description corrected after source checks. No new evidence, reassessment, claim-scope change or provenance-cycle completion. Claims, assessment histories/current judgments, status, question IDs and raised dates, review metadata and prior mutation entries preserved. Previous values and source basis: docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json."
+    },
     {
       "id": "M-016",
       "date": "2026-10-08",

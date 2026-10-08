@@ -93,3 +93,14 @@ FR-QE-0001's D37 representation item is now corrected and completed through its 
 RM-003, BN-002, AT-001, dependent 2024 lineage and OQ-001–OQ-005 now respect AS-002's time-indexed verdict and the exclusion of successor claims from material commitments. The two historical assessments and reconstruction history are preserved; no new judgment or framework determination is issued. See `../provenance/LPR-001-D37-FR-QE-0001-CORRECTION.md` and `LPR-001-D37-FR-QE-0001-CORRECTION-2026-10-08.json` for closure and previous values.
 
 All eight specific follow-ups in the original table are now addressed. The four lower-confidence clarification candidates still require investigation; the separate 2025 simulation candidate remains a Normal Record Review candidate, not admitted evidence. This completion is not a corpus-wide source re-audit.
+
+## Investigated clarification candidates repaired — 2026-10-08
+
+All four lower-confidence candidates were checked before editing. The resulting bounded corrections and their source basis are preserved in `MCP-CLARIFICATION-REPAIR-2026-10-08.json`.
+
+- FR-AI-0001 OQ-002 explicitly separates generalisation/mechanism questions from trace faithfulness, following AS-002 and IN-006. The source check also identified one attribution error in IN-006: Lindsey et al. study Claude 3.5 Haiku, not Sonnet. Only that model name changes in the instance; its other wording and provenance remain unchanged.
+- FR-AI-0004 AT-001 requires model-specific auditable data rather than assuming that open weights or family names imply access to the processed training corpus. It retains the separate task-type/structural-analogue issue in BN-001; corpus access alone does not establish task novelty.
+- FR-AI-0006 RM-001 describes uneven causal coverage and controlled cross-scale validation instead of asserting universal intractability at 100B+ or necessarily indirect evidence. This does not prove that complete circuit identification is possible at every scale. Existing IN-005 provenance debt remains unchanged.
+- FR-AI-0009 RM-002 and the 2026 lineage explicitly retain RoboWM-Bench's simulation-based execution boundary. Its use of real-world trajectories for interface/consistency validation is distinguished from physical execution of world-model-generated behaviours. No false real-robot claim is attributed to the old wording; this is a clarity repair.
+
+One editorial mutation per record records this work. Claims, assessments and current judgments, all other evidence content, original question identifiers and raised dates, provenance-review metadata and prior mutations remain intact. All eight specific follow-ups and four investigated clarification candidates from this review are now addressed. The separate 2025 Sycamore-class simulation remains a Normal Record Review candidate outside this repair; this closure is not a corpus-wide source re-audit.

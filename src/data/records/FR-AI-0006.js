@@ -194,7 +194,7 @@ export const FR_AI_0006 = {
     {
       id: "RM-001",
       type: "RESISTANCE MECHANISM",
-      description: "Mechanistic interpretability does not yet scale to large models. The strongest positive evidence in this record (INST-001, induction heads) comes from mechanistic interpretability work conducted primarily on small to medium models (up to a few billion parameters). The techniques that identify and verify specific circuits — activation patching, attention head ablation, causal intervention — become computationally intractable at the scale of frontier models (100B+ parameters). Evidence about mechanisms in large models is therefore necessarily indirect: behavioural studies, representation geometry, and probing classifiers rather than direct circuit identification. The resistance mechanism is methodological: the tools that could directly test the claim are limited to the regime where the claim is most plausible and cannot currently reach the regime where it is most contested.",
+      description: "Limited causal coverage and cross-scale comparability. IN-001 provides strong causal induction-head evidence in small attention-only models, while its larger-model evidence with MLPs is mainly correlational and partly extrapolative. That is a limit on the demonstrated attribution, not proof that mechanistic methods become universally intractable above a fixed parameter count or that all larger-model evidence must be behavioural or correlational. IN-006 and IN-008 add bounded mechanistic analyses across selected models without establishing the identity of mechanisms across capabilities generally. Computational cost, incomplete circuit coverage, model access and differences in architecture or training regime constrain how far individual findings can be compared. The resistance mechanism is uneven causal coverage and controlled cross-scale validation, not an established impossibility of studying large-model circuits.",
     },
     {
       id: "BN-001",
@@ -238,6 +238,14 @@ export const FR_AI_0006 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-022",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Investigated clarification candidate",
+      "to": "Bounded wording aligned with source limits and existing assessment",
+      "note": "Editorial Correction (GP-001), investigated clarification repair: mechanisms.0.description corrected after source checks. No new evidence, reassessment, claim-scope change or provenance-cycle completion. Claims, assessment histories/current judgments, status, question IDs and raised dates, review metadata and prior mutation entries preserved. Previous values and source basis: docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json."
+    },
     { id: "M-021", date: "2026-10-04", field: "provenance_correction", from: "provenanceOutcome: pass", to: "provenanceOutcome: pass_after_correction", note: "Build-contract repair: normalized the unsupported D36 PASS marker to the governed completed-review value. M-020 records a passing re-audit following the earlier M-012 bounded correction; explicit unresolved IN-005 provenance debt remains. No evidence, assessment, review date, or repair status changed." },
     {"id":"M-016","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_AI_0006_scaling_mechanism_coherence.html (Drive file 1VeNxj-LTcGiSmfmVgFJehKuge1u7Aj37). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.

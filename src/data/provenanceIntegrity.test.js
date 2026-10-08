@@ -135,11 +135,28 @@ test("each audited record retains the provenance repair as an editorial correcti
   }
 });
 
+// Validate the earlier repair against its snapshot before the separately receipted clarification.
+function beforeClarificationRepair(record) {
+  const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json", import.meta.url)));
+  const entry = receipt.records.find(({ id }) => id === record.id);
+  if (!entry) return record;
+  const restored = structuredClone(record);
+  assert.equal(restored.mutationLog[0].id, entry.mutationId);
+  restored.mutationLog = restored.mutationLog.slice(1);
+  for (const change of entry.changes) {
+    const keys = change.fieldPath.split(".");
+    assert.equal(keys.reduce((value, key) => value[key], record), change.current);
+    keys.slice(0, -1).reduce((value, key) => value[key], restored)[keys.at(-1)] = change.previous;
+  }
+  assert.equal(createHash("sha256").update(JSON.stringify(restored)).digest("hex"), entry.originalRecordHash);
+  return restored;
+}
+
 test("priority consistency repairs preserve governed evidence, judgments and history", async () => {
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
   const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const entry of receipt.records) {
-    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const record = beforeClarificationRepair(Object.values(await import(`./records/${entry.id}.js`))[0]);
     for (const [field, expected] of Object.entries(entry.frozen)) {
       const value = field === "mutationLog" ? record.mutationLog.slice(1) : record[field];
       assert.equal(digest(value), expected, `${entry.id}: ${field} changed`);
@@ -265,4 +282,41 @@ test("D37 repair qualifies energy evidence and respects the existing time-indexe
   assert.doesNotMatch(JSON.stringify(record.mechanisms), /cannot issue a settled verdict|eventually be unable to track quantum hardware/);
   assert.match(record.openQuestions[3].question, /assigns STABILISING \/ VS-04/);
   assert.doesNotMatch(record.lineage.items[6].text, /effectively closed|The claim migrates/);
+});
+
+test("clarification repairs preserve all content outside their field-level receipts", async () => {
+  const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json", import.meta.url)));
+  const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+  for (const entry of receipt.records) {
+    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    for (const [field, hash] of Object.entries(entry.immutableHashes)) assert.equal(digest(record[field]), hash, `${entry.id}: ${field} changed`);
+    assert.equal(digest(record.mutationLog.slice(1)), entry.previousMutationHash);
+    assert.deepEqual(record.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })), entry.questionIdentity);
+    const restored = beforeClarificationRepair(record);
+    assert.equal(digest(restored), entry.originalRecordHash);
+    const type = detectMutationType(record.mutationLog[0], record);
+    assert.equal(type, "editorial_correction");
+    assert.equal(qualifiesForHomepage(type).qualifies, false);
+  }
+});
+
+test("clarifications retain faithfulness, data-access, causal-coverage and simulation distinctions", async () => {
+  const { ALL_RECORDS } = await import("./corpus.js");
+  const record = id => ALL_RECORDS.find(item => item.id === id);
+  const reasoning = record("FR-AI-0001");
+  assert.match(reasoning.openQuestions[1].question, /Separately.*faithfully/);
+  assert.match(reasoning.openQuestions[1].question, /unfaithful trace does not by itself establish failure to generalise/);
+  assert.match(reasoning.instances.find(({ id }) => id === "IN-006").description, /Lindsey.*Claude 3\.5 Haiku/);
+  assert.doesNotMatch(reasoning.instances.find(({ id }) => id === "IN-006").description, /Claude 3\.5 Sonnet/);
+  const scaling = record("FR-AI-0004").mechanisms.find(({ id }) => id === "AT-001").description;
+  assert.match(scaling, /Open weights alone do not provide that access/);
+  assert.match(scaling, /absence of its task type or structural analogues/);
+  const coherence = record("FR-AI-0006").mechanisms.find(({ id }) => id === "RM-001").description;
+  assert.match(coherence, /larger-model evidence with MLPs is mainly correlational/);
+  assert.doesNotMatch(coherence, /become computationally intractable|necessarily indirect|100B\+/);
+  assert.equal(record("FR-AI-0006").instances[4].sources, undefined, "IN-005 debt must not receive invented provenance");
+  const world = record("FR-AI-0009");
+  assert.match(world.mechanisms.find(({ id }) => id === "RM-002").description, /simulation \/ real-to-sim environments/);
+  assert.match(world.lineage.items[3].text, /not reported physical-robot execution outcomes/);
+  assert.deepEqual([reasoning, record("FR-AI-0004"), record("FR-AI-0006"), world].map(item => getCurrentAssessment(item).id), ["AS-002", "AS-003", "AS-005", "AS-002"]);
 });
