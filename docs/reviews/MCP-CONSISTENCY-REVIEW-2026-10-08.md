@@ -104,3 +104,10 @@ All four lower-confidence candidates were checked before editing. The resulting 
 - FR-AI-0009 RM-002 and the 2026 lineage explicitly retain RoboWM-Bench's simulation-based execution boundary. Its use of real-world trajectories for interface/consistency validation is distinguished from physical execution of world-model-generated behaviours. No false real-robot claim is attributed to the old wording; this is a clarity repair.
 
 One editorial mutation per record records this work. Claims, assessments and current judgments, all other evidence content, original question identifiers and raised dates, provenance-review metadata and prior mutations remain intact. All eight specific follow-ups and four investigated clarification candidates from this review are now addressed. The separate 2025 Sycamore-class simulation remains a Normal Record Review candidate outside this repair; this closure is not a corpus-wide source re-audit.
+
+## Subsequent bounded reviews — 2026-10-08
+
+- The separate 2025 Sycamore candidate was identified as Wold/Kasirajan arXiv:2512.07311v1 and independently reviewed against current FR-QE-0001. **VERIFY FIRST**: the timed 20-cycle circuit lacks a verified independent-reference fidelity comparison in the inspected paper/artifact; the 1,000-job runtime is projected. Candidate admission remains suspended; AS-002 is unchanged. Full receipt: [RR-2026-10-08-FR-QE-0001-SYCAMORE-2025.md](RR-2026-10-08-FR-QE-0001-SYCAMORE-2025.md).
+- FR-AI-0006 IN-005 received a bounded original-source recovery attempt across original/copy HTML, Git history and prior review context. No exact historical source set was recovered. **Withdrawal retained; provenance debt unresolved.** Later IN-007/IN-008 remain separate evidence. Receipt: [FR-AI-0006-IN005-DEBT-DISPOSITION-2026-10-08.md](FR-AI-0006-IN005-DEBT-DISPOSITION-2026-10-08.md).
+
+These are review/disposition documents, not corpus changes or new provenance-cycle completions. Return to the normal review cycle; reopen these two items only on their stated source/validation triggers.
