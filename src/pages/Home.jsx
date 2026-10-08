@@ -276,7 +276,7 @@ export default function Home() {
             </h2>
 
             <ul className="home-question-grid" role="list">
-              {questions.map(({ id, icon, question, target, resolved }) => {
+              {questions.map(({ id, icon, question, description, action, target, resolved }) => {
                 const Icon = QUESTION_ICONS[icon];
                 const isFallback = target.type === "public-record";
                 const record = target.type === "record"
@@ -315,15 +315,18 @@ export default function Home() {
                       className={
                         isFallback
                           ? "home-question-card home-question-card--fallback"
-                          : "home-question-card"
+                          : target.type === "note" ? "home-question-card home-question-card--note" : "home-question-card"
                       }
                       aria-label={question}
                     >
                       <span className="hqc-icon">{Icon ? <Icon /> : null}</span>
                       <h3 className="hqc-question">{question}</h3>
+                      {description && <p className="hqc-description">{description}</p>}
                       <div className="hqc-foot">
                         <span className="hqc-meta">{resolved.meta}</span>
-                        <span className="hqc-arrow" aria-hidden="true">→</span>
+                        {action ? (
+                          <span className="hqc-note-action">{action} <span className="hqc-arrow" aria-hidden="true">→</span></span>
+                        ) : <span className="hqc-arrow" aria-hidden="true">→</span>}
                       </div>
                     </Link>
                   </li>

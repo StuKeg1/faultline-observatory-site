@@ -55,7 +55,7 @@ test("the AI question resolves through PROGRAMME_NOTES, not ALL_NOTES, and is la
 
   const resolved = resolveHomeQuestion(aiEntry);
   assert.equal(resolved.url, "/notes/pn-ai-001/");
-  assert.equal(resolved.meta, "PN-AI-001 · Reading Room");
+  assert.equal(resolved.meta, "PN-AI-001 · Programme Note · 26 June 2026");
   assert.equal(resolved.destinationLabel, "Reading Room");
 });
 
