@@ -10,7 +10,7 @@
  *
  * Every destination is resolved through existing canonical data helpers.
  * No record, note, state or URL is duplicated here as an editorial
- * constant — only the reader-facing question text and a reference to the
+ * constant — only reader-facing navigation copy and a reference to the
  * canonical object it targets.
  *
  * Note-target correction (2026-07-21): the specification describes
@@ -67,7 +67,9 @@ export const HOME_QUESTIONS = [
   {
     id: "ai-evidence-current-state",
     icon: "ai",
-    question: "What does the AI evidence currently show?",
+    question: "What patterns emerge across the AI evidence?",
+    description: "A dated overview of shared evidence patterns across eight AI Frontier Records.",
+    action: "Read programme overview",
     target: { type: "note", id: "PN-AI-001" },
   },
   {
@@ -142,9 +144,13 @@ export function resolveHomeQuestion(entry) {
     if (!note) {
       throw new Error(`homeQuestions: no note found for id "${target.id}" (entry "${entry.id}")`);
     }
+    const noteType = PROGRAMME_NOTES.includes(note) ? "Programme Note" : "Institutional Note";
+    const noteDate = new Intl.DateTimeFormat("en-GB", {
+      day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+    }).format(new Date(`${note.date}T00:00:00Z`));
     return {
       url: getNoteUrl(note),
-      meta: `${note.id} · Reading Room`,
+      meta: `${note.id} · ${noteType} · ${noteDate}`,
       destinationLabel: "Reading Room",
     };
   }
