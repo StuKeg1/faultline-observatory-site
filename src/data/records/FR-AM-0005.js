@@ -166,7 +166,7 @@ export const FR_AM_0005 = {
     },
     {
       id: "OQ-003",
-      question: "FR-AM-0004 (commercial fusion) is the one escalating record in PROG-AM. The programme diagnosis suggests it may eventually follow the same collapse dynamic as FR-AM-0001 and FR-AM-0005. Is there evidence bearing on whether FR-AM-0004 is structurally different from the collapsed records — and if so, what protects it from the same dynamic?",
+      question: "At the 8 October 2026 consistency checkpoint, FR-AM-0004 (commercial fusion), FR-AM-0006 and FR-AM-0007 are ESCALATING in PROG-AM; FR-AM-0004 is not the programme's sole escalating record. What evidence bears on whether commercial fusion is structurally different from the collapsed FR-AM-0001 and FR-AM-0005, and whether it is exposed to the same collapse dynamics? Programme membership or the number of escalating records alone does not establish that it will follow a collapsed record's trajectory.",
       raisedDate: "2024-01-15",
     },
     {
@@ -177,6 +177,14 @@ export const FR_AM_0005 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-016",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Stale explanatory cross-reference, regimen or count premise",
+      "to": "Explanatory fields aligned with existing record-specific evidence and corpus boundaries",
+      "note": "Editorial Correction (GP-001), second consistency batch: openQuestions.2.question aligned with existing admitted evidence, corrected cross-references and the dated corpus checkpoint. No new evidence, reassessment, taxonomy or logging procedure. Claims, instances, assessments, status, provenance metadata, original question IDs and raised dates, and prior mutations unchanged. Previous values and source basis: docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json."
+    },
     { id: "M-015", date: "2026-09-20", field: "provenance_repair", from: "LPR-001-D22 discrepancies_found / pending", to: "LPR-001-D22 discrepancies_corrected / completed", note: "Bounded correction executed for IN-001 through IN-006. Retracted-paper descriptions were narrowed to the retraction findings; LK-99 was corrected to candidate-specific failed replication; hydride context was source-bounded; the unsupported universal three-signature rule and alleged editorial guidance were removed; post-LK-99 absence claims were narrowed; and IN-006 was corrected for publication/preprint dates, the LaSc₂H₂₄ paper's reported measurements and its unreplicated status, with the unverified PNAS roadmap removed. Structured sources[] added to repaired instances. AS-001 and AS-002 preserved append-only; AS-003 explicitly re-evaluates and retains COLLAPSED / VS-05 on the narrower independent-reproducibility basis. CM-001, AT-001, 2020–23/2024–25 lineage, OQ-001 and OQ-004 brought into consistency. No new evidence admitted." },
     { id: "M-014", date: "2026-09-20", field: "provenance_review", from: "—", to: "LPR-001-D22 discrepancies_found / pending", note: "Bounded provenance audit completed for IN-001 through IN-006. Material representation and attribution discrepancies identified; no material corrections applied. Routine structured-source enrichment withheld where the instance itself requires correction. Queue marker recorded so deterministic LPR selection advances. Bounded correction candidate pending operator approval." },
     {"id":"M-013","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:CM-001, mechanisms:RM-001, mechanisms:AT-001, lineage:1986–2010s","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored CM-001, RM-001, AT-001; lineage 1986–2010s from FR_MF_0005_room_temp_superconductor_reproducibility.html (Drive file 1tRbrLxtIn7a7DH9AmsIqyFPy-V148Ac7). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},

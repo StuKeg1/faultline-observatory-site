@@ -1,0 +1,431 @@
+{
+  "id": "MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08",
+  "date": "2026-10-08",
+  "scope": "Bounded editorial repair of cross-reference, factor-regimen and count discrepancies; no new evidence, reassessment, taxonomy or governance procedure.",
+  "records": [
+    {
+      "id": "FR-QE-0007",
+      "mutationId": "M-013",
+      "frozen": {
+        "id": "1d516fb9a6fb5c2b617c31972922d4f7c452f0a77dd2d4e2ab52c39fa5d8b8f1",
+        "programme": "028d2243f0e7a34b8de68174a8c2f9a9ce4cd8d4512354819c0fae17c843e37e",
+        "lastProvenanceReview": "7adde3ab68e3a013b2bce70eff168ce294597f55f98f2d972253f283065bcf06",
+        "provenanceReviewId": "e00c8dd923b927fadd2ae25e37b0d29415ed6577d47be434d7e5fb87874e325f",
+        "provenanceOutcome": "bd3ea1d90db2b0dfb46e6d28c6f38b099227bc8051357a7692ea907f4aa9baa2",
+        "provenanceRepairStatus": "7093fda846e50b267da144f7b3683ee1dd8838506939f6052b7370dd01fa2ad0",
+        "claim": "9aef13e071900d1150aa302a1fac015b22558b57bc4bba62f9d212b1abb07245",
+        "instances": "1ad334d4daae9209ff75001237767ba274934363f105d6c4d41f1803442260f4",
+        "assessments": "5fa2954c506136465293e069f4dee85b221b0ef5aa20239fe5c0fc35c2ec7538",
+        "status": "35ff74aeea25311f4fe759a6b762c8cd41a79adb23dd5615b92cf215175a63e5",
+        "mutationLog": "2ce052ed9caaead191e6027b5f6010f578e3c5d60e76795d45688a4ef5a94e6b"
+      },
+      "questionIdentity": [
+        {
+          "id": "OQ-001",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-002",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-003",
+          "raisedDate": "2024-01-15"
+        }
+      ],
+      "previous": {
+        "mechanisms": [
+          {
+            "id": "BN-001",
+            "type": "BOTTLENECK",
+            "description": "\"Practically relevant\" lacks an agreed operational definition. The claim requires advantage on a practically relevant problem, but no agreed standard specifies what practical relevance requires. Different researchers and communities apply different implicit thresholds: some accept scientific relevance (the problem illuminates physical phenomena); others require commercial relevance (the result has identifiable downstream economic value); others require direct application (the computation produces output usable without further classical processing). Without agreement on this threshold, positive and contesting evidence cannot be cleanly compared — the Sycamore result is supportive under some definitions of relevance and irrelevant under others. This is the same threshold-dispute bottleneck as FR-BT-0001 BN-001 and FR-AM-0004 BN-001: not measurement validity, but an undefined success threshold."
+          },
+          {
+            "id": "RM-001",
+            "type": "RESISTANCE MECHANISM",
+            "description": "The best-classical comparison can improve materially after a quantum result is published. The IBM kicked-Ising episode provides a directly sourced example: a regime beyond brute-force computation and beyond the approximations tested in the original quantum study was subsequently reproduced by stronger tensor-network methods. This does not establish that classical methods will erase every proposed quantum advantage, but it means durability must be evaluated against the best method available for the specific problem at the time of comparison."
+          },
+          {
+            "id": "AT-001",
+            "type": "ATTRACTOR",
+            "description": "First quantum computation on a practically relevant problem that establishes a durable advantage over the best contemporaneous classical method under a transparent comparison. A fault-tolerant quantum-chemistry calculation is one plausible route, but the record is not restricted to chemistry or to fault-tolerant hardware if another scientifically or commercially relevant problem satisfies both components at the demonstrated scale."
+          }
+        ],
+        "lineage": {
+          "items": [
+            {
+              "year": "1994–2012",
+              "text": "Theoretical quantum advantage established. Shor, Grover, and related algorithms prove that quantum computers can outperform classical computers on specific problems. The claim is theoretically established; hardware cannot yet demonstrate it."
+            },
+            {
+              "year": "2019",
+              "text": "Google Sycamore — first \"supremacy\" claim. Advantage demonstrated on a demonstration problem; practical relevance contested. The claim enters the ESCALATING phase but the relevance component is immediately challenged."
+            },
+            {
+              "year": "2020–23",
+              "text": "Repeated advantage demonstrations without practical relevance; NISQ-era utility claims. IBM's 2023 utility experiment adds scientific relevance but subsequent classical tensor-network reproduction shows that the beyond-classical comparison was not durable."
+            },
+            {
+              "year": "2024",
+              "text": "Larger random-circuit-sampling experiments strengthen demonstration-problem performance claims, while the separate Willow surface-code result advances error correction. Neither establishes practical quantum advantage, and company-reported RCS runtime comparisons remain distinct from independently established bounds."
+            },
+            {
+              "year": "2025–26",
+              "text": "Quantum Echoes brings reported beyond-classical OTOC performance and molecular-geometry application work into one technical programme, but the two components remain demonstrated at different scales and independent replication of the large-circuit advantage is absent."
+            }
+          ],
+          "relatedRecords": []
+        },
+        "openQuestions": [
+          {
+            "id": "OQ-001",
+            "question": "Is there a problem type that is both classically intractable at demonstrated quantum scales and practically relevant? The two trajectories (demonstration advantage, relevant-problem simulation) need to converge on a single instance. Which specific problem will first satisfy both simultaneously?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-002",
+            "question": "The attractor for FR-QE-0007 and FR-QE-0006 appears to be the same event: first fault-tolerant quantum chemistry calculation beyond classical reach. If both records resolve through the same instance, does the Observatory log it as one event serving two records, or two separate instances? The schema has no governed procedure for this.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-003",
+            "question": "The null measurement validity condition held. Does this constitute sufficient evidence to characterise Measurement Validity as a proxy-measurement failure mode specifically, or does the two-occurrence positive evidence (FR-BT-0002, FR-AI-0007) plus one-occurrence negative evidence (FR-QE-0007) constitute a pattern worth a Review Note?",
+            "raisedDate": "2024-01-15"
+          }
+        ]
+      },
+      "changes": [
+        {
+          "fieldPath": "openQuestions.1.question",
+          "previous": "The attractor for FR-QE-0007 and FR-QE-0006 appears to be the same event: first fault-tolerant quantum chemistry calculation beyond classical reach. If both records resolve through the same instance, does the Observatory log it as one event serving two records, or two separate instances? The schema has no governed procedure for this.",
+          "current": "Could a single fault-tolerant quantum-chemistry computation beyond the best contemporaneous classical method satisfy both FR-QE-0007 and FR-QE-0006, if it also meets each record's practical-relevance and comparison requirements? Chemistry is one possible shared route, not the definition of both attractors; FR-QE-0007 is not restricted to chemistry or fault-tolerant hardware. If an event meets both claims independently, how should the Observatory represent one event serving two records? This question does not establish a new logging procedure.",
+          "basis": "FR-QE-0007 AT-001 / AS-003 / M-012; FR-QE-0006 AT-001 / AS-004"
+        }
+      ]
+    },
+    {
+      "id": "FR-BT-0002",
+      "mutationId": "M-016",
+      "frozen": {
+        "id": "e6dd819bcaaac00e52f7ce8513a2bc6deea27e1175d479387ba9ec5da0a9665c",
+        "programme": "3f0ec4ad67e55925c0f7b4d59e0e2a8d14961e86b65098a762893812dd2a180f",
+        "lastProvenanceReview": "6c26f434a89139387427fa6eea4d321fa7eaf0929936ef3b9100933bfefb2246",
+        "provenanceReviewId": "fb570d1f2911ab2af95d3d359e7b71bf75986f060700e3085dee47d81ca794d4",
+        "provenanceOutcome": "4deec0e789635c1468ce36826d152eb385b4d5b75ad878490f83c16ad64de629",
+        "provenanceRepairStatus": "7093fda846e50b267da144f7b3683ee1dd8838506939f6052b7370dd01fa2ad0",
+        "claim": "66071b3120b350a494b8565eea831e3a557a1f82c177bf67cd6f4783077d07c2",
+        "instances": "4ffa662350ba7e5e5ef932336752b252a3aa95fa5a67fbd3e8847f67747f2c80",
+        "assessments": "65f2a81e05aa73150ed0d9d63d583d69d564a79a0c7a883a8e508d69ae0b1d1d",
+        "status": "35ff74aeea25311f4fe759a6b762c8cd41a79adb23dd5615b92cf215175a63e5",
+        "mutationLog": "ef2f110ebddde14dc017cb0326d27b62b20f29b2e769f898797dcaee4d35b9d5"
+      },
+      "questionIdentity": [
+        {
+          "id": "OQ-001",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-002",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-003",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-004",
+          "raisedDate": "2026-06-29"
+        }
+      ],
+      "previous": {
+        "mechanisms": [
+          {
+            "id": "RM-001",
+            "type": "RESISTANCE MECHANISM",
+            "description": "Safety window for partial reprogramming in humans. Sustained or excessive reprogramming can cause dedifferentiation and tumour risks; limited induction seeks to avoid these outcomes. Mouse work and company-reported NHP ocular data do not define long-term safety at clinically relevant human doses. ER-100 has now received IND clearance and entered Phase 1 dosing, so the earlier prediction that human exposure cannot begin is superseded. Whether partial OSK treatment preserves identity and avoids adverse effects in humans remains unreported and requires trial follow-up."
+          },
+          {
+            "id": "BN-001",
+            "type": "BOTTLENECK",
+            "description": "Biological age measurement validity. The claim requires that biological age be reversed. The primary measurement tool — epigenetic clocks — is contested as a surrogate for genuine rejuvenation. Clocks can be reset by interventions that may not produce functional benefit. If clock reversal and functional rejuvenation are dissociable — if the clock can be moved without changing organismal biology in ways that matter — then the claim's satisfaction conditions are ambiguous. This is a measurement validity bottleneck: the claim cannot be confirmed or contested cleanly until the relationship between clock readings and functional outcomes is established. This is structurally distinct from FR-BT-0001's lexical bottleneck (\"meaningfully extend\"): that was a threshold dispute; this is a measurement validity dispute. Both are bottlenecks from absence of an agreed measurement framework, as the verdict on FR-BT-0001 observed."
+          },
+          {
+            "id": "AT-001",
+            "type": "ATTRACTOR",
+            "description": "First human safety data and validated functional outcome biomarkers. Two developments would materially advance this record: first, Phase I human trials demonstrating safe OSKM induction at partial reprogramming doses with measurable epigenetic clock reversal and no adverse dedifferentiation signals; second, validated functional outcome biomarkers that correlate with clock reversal and demonstrate that clock reduction predicts downstream health benefits. The first would open the human evidence path; the second would resolve BN-001. Neither is present; both are on active development timelines in the field."
+          }
+        ],
+        "lineage": {
+          "items": [
+            {
+              "year": "2006",
+              "text": "Takahashi and Yamanaka induce pluripotency in mouse fibroblasts with four factors. Their study does not measure an epigenetic clock; later in-vitro work tests how clock readings change during reprogramming."
+            },
+            {
+              "year": "2016",
+              "text": "Cyclic partial reprogramming in progeria mice. Ocampo et al. demonstrate lifespan extension without tumour formation through intermittent OSKM. The claim becomes experimentally tractable. Partial reprogramming as a therapeutic concept enters the field."
+            },
+            {
+              "year": "2019–21",
+              "text": "Epigenetic clock reversal demonstrated in multiple tissues. Lu et al. and others demonstrate partial reprogramming in specific tissues (retina, muscle) with functional benefit in aged mice. The claim's mechanistic basis is substantially established in rodent models."
+            },
+            {
+              "year": "2022–23",
+              "text": "Altos Labs launches with $3 billion committed to cellular rejuvenation research; this is institutional investment, not evidence that the claim has been met."
+            },
+            {
+              "year": "2024",
+              "text": "Clock-model uncertainty and intervention-dependent clock disagreement sharpen the measurement question. Life Biosciences reports NHP ocular-function findings at AAO; the single company-reported disease-model result does not establish systemic age reversal."
+            },
+            {
+              "year": "2026",
+              "text": "ER-100 enters human testing. FDA IND clearance is followed by first-participant dosing in the Phase 1 NCT07290244 trial. Human exposure is now established, but no safety, efficacy, age-reversal, identity-preservation, or functional-outcome results have been reported."
+            }
+          ],
+          "relatedRecords": []
+        },
+        "openQuestions": [
+          {
+            "id": "OQ-001",
+            "question": "What would make Altos Labs' substantial, but broadly targeted, capital commitment claim-specific anticipatory evidence rather than institutional context? The former fifth-occurrence count is not retained without that showing.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-002",
+            "question": "The clock validity dispute (INST-004) is structurally similar to the FR-AI-0006 mechanism coherence dispute: both ask whether a measurement tool is tracking the thing it purports to measure. Does this suggest a general phenomenon — measurement validity as a resistance mechanism — or is it specific to certain frontier domains?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-003",
+            "question": "FR-BT-0001 and FR-BT-0002 are structurally adjacent but not related through evidence or ancestry in the way FR-AM-0001 and FR-AM-0002 were related. They share a programme and a validation constraint but have independent evidence trails. Does programme membership without evidence relationship constitute a weaker or different kind of programme structure than the PROG-AM genetic relationship?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-004",
+            "question": "ER-100's trial is the first direct test of AT-001's named attractor condition. When (or if) it reports results, should the pressure state move directly to RESOLVING, or does a single trial — likely small, likely focused on safety rather than efficacy at Phase 1 — only partially satisfy an attractor that names both safety data and validated functional biomarkers? The record should decide this before the trial reports, not in reaction to whatever it finds.",
+            "raisedDate": "2026-06-29"
+          }
+        ]
+      },
+      "changes": [
+        {
+          "fieldPath": "mechanisms.2.description",
+          "previous": "First human safety data and validated functional outcome biomarkers. Two developments would materially advance this record: first, Phase I human trials demonstrating safe OSKM induction at partial reprogramming doses with measurable epigenetic clock reversal and no adverse dedifferentiation signals; second, validated functional outcome biomarkers that correlate with clock reversal and demonstrate that clock reduction predicts downstream health benefits. The first would open the human evidence path; the second would resolve BN-001. Neither is present; both are on active development timelines in the field.",
+          "current": "Human safety data and validated functional outcome biomarkers. Two developments would materially advance this record: first, human trial outcomes for a specified partial-reprogramming regimen demonstrating safety, measurable epigenetic clock reversal and no adverse dedifferentiation signals; second, validated functional outcome biomarkers showing that clock reduction predicts downstream health benefits. ER-100 tests partial OSK reprogramming, not the four-factor OSKM regimen; safety or other outcomes for one regimen cannot be silently transferred to the other. Admitted IN-007 reports human dosing but no trial outcomes. Dosing opens the clinical test without establishing safety, clock reversal or functional rejuvenation. The separate functional-biomarker requirement remains unresolved.",
+          "basis": "Corrected RM-001; IN-007; BN-001; AS-004"
+        },
+        {
+          "fieldPath": "openQuestions.3.question",
+          "previous": "ER-100's trial is the first direct test of AT-001's named attractor condition. When (or if) it reports results, should the pressure state move directly to RESOLVING, or does a single trial — likely small, likely focused on safety rather than efficacy at Phase 1 — only partially satisfy an attractor that names both safety data and validated functional biomarkers? The record should decide this before the trial reports, not in reaction to whatever it finds.",
+          "current": "What can ER-100's Phase 1 partial OSK trial establish toward AT-001's human-safety component, and what additional evidence would be needed for epigenetic clock reversal and validated functional benefit? ER-100 does not directly test four-factor OSKM induction; its results must remain specific to the tested regimen, dose and clinical setting. A safety-focused trial would not by itself satisfy the full attractor or warrant an automatic move to RESOLVING. The admitted dosing milestone supplies no reported outcomes.",
+          "basis": "IN-007; corrected RM-001; AT-001; AS-004"
+        }
+      ]
+    },
+    {
+      "id": "FR-BT-0004",
+      "mutationId": "M-013",
+      "frozen": {
+        "id": "b8ed4a40e9f130cbf62644b733d24cfdb336852dc866e85ed8efece55893fea3",
+        "programme": "3f0ec4ad67e55925c0f7b4d59e0e2a8d14961e86b65098a762893812dd2a180f",
+        "lastProvenanceReview": "d9379e62c9bf6bdaad8eab1d8861c3bf1a36a99ac9e6d33fd21186e3f21d1d11",
+        "provenanceReviewId": "6ca628782fdf996712b3a535652953705a67083f9710843bc7ecb78816486d5d",
+        "provenanceOutcome": "4deec0e789635c1468ce36826d152eb385b4d5b75ad878490f83c16ad64de629",
+        "provenanceRepairStatus": "7093fda846e50b267da144f7b3683ee1dd8838506939f6052b7370dd01fa2ad0",
+        "claim": "58d9b7aa2528777bd15e9c32fdf8c5cdb4ff25f3ab15b7f7317cb14268c27b9a",
+        "instances": "04f3898817c95039d461504bd99a8a031f5a1753944537aafab2863f071b12ea",
+        "assessments": "6b1dc6fc5659644918dbe0f6c6b4b05c2efc82e001953b9ffa27d3f71c2788e9",
+        "status": "35ff74aeea25311f4fe759a6b762c8cd41a79adb23dd5615b92cf215175a63e5",
+        "mutationLog": "838b98114847ea2d5891091fb1128588ab81a6284725235ecfd2c467fe4c7546"
+      },
+      "questionIdentity": [
+        {
+          "id": "OQ-001",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-002",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-003",
+          "raisedDate": "2024-01-15"
+        }
+      ],
+      "previous": {
+        "mechanisms": [
+          {
+            "id": "BN-001",
+            "type": "BOTTLENECK — MEASUREMENT VALIDITY (RN-005)",
+            "description": "Detectable cancer signal as proxy for clinically meaningful early cancer. Blood-based ctDNA signal detects the presence of cancer-derived nucleic acids. This is a proxy for clinically meaningful early cancer — cancer that, if detected earlier, would produce better patient outcomes. The proxy gap exists because not all detectable cancers are clinically meaningful: some grow slowly, some would spontaneously regress, and some are already beyond the treatment benefit window even when \"early.\" The measurement (ctDNA signal) is not the same kind of thing as the asserted object (cancer that benefits from earlier detection). This is a measurement validity bottleneck per RN-005: the proxy relationship between the blood signal and clinically meaningful early cancer requires independent validation through outcome data — specifically, whether patients whose cancers are detected by liquid biopsy have better survival outcomes than those detected conventionally. The NHS-Galleri RCT is the primary evidence-gathering mechanism for this validation."
+          },
+          {
+            "id": "RM-001",
+            "type": "RESISTANCE MECHANISM — BIOLOGICAL-TIME VALIDATION LAG",
+            "description": "Mortality outcome validation requires years of follow-up. The definitive evidence for whether earlier detection improves survival requires following participants from detection through treatment and long-term outcomes. NHS-Galleri's 2026 primary analysis measured late-stage cancer incidence, not mortality, and therefore cannot by itself close the record's outcome-validity gap. Mortality linkage or another adequately powered randomised mortality analysis remains subject to a longer biological-time validation lag."
+          },
+          {
+            "id": "AT-001",
+            "type": "ATTRACTOR",
+            "description": "Randomised mortality evidence following multi-cancer early detection. The event capable of moving this record decisively beyond FRAGMENTING is an adequately powered comparison showing whether screening reduces cancer-specific or all-cancer mortality without disproportionate overdiagnosis and downstream harm. NHS-Galleri's late-stage-incidence analysis is relevant stage-shift evidence but does not itself satisfy this attractor."
+          }
+        ],
+        "lineage": {
+          "items": [
+            {
+              "year": "2008–14",
+              "text": "ctDNA technology foundation. Cell-free DNA detection established; tumour-derived fragments demonstrated in blood. The proxy signal's biological validity is established."
+            },
+            {
+              "year": "2018–21",
+              "text": "Multi-cancer detection tests developed. Galleri and competitors develop methylation-based multi-cancer panels. FDA breakthrough device designations. Commercial interest intensifies."
+            },
+            {
+              "year": "2021–23",
+              "text": "Clinical validation data emerges; lead-time bias concern formalised. SYMPLIFY and PATHFINDER provide performance data. NHS-Galleri RCT enrolls 140,000. Sensitivity gap at early stages documented."
+            },
+            {
+              "year": "2026",
+              "text": "NHS-Galleri full results presented at ASCO. Primary endpoint (combined Stage III/IV reduction) not met within one-year follow-up; Stage IV diagnoses fall, Stage III diagnoses rise; no mortality data reported. Follow-up extended 6–12 months."
+            }
+          ],
+          "relatedRecords": []
+        },
+        "openQuestions": [
+          {
+            "id": "OQ-001",
+            "question": "How should the record distinguish late-stage-incidence evidence from mortality evidence when stage shift is reported before sufficiently mature survival follow-up, and what mortality endpoint would be adequate to resolve the claim?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-002",
+            "question": "The pre-production observation identified early-stage sensitivity (24% for Stage I) as a critical gap. Does this gap constitute a measurement validity issue (ctDNA signal is an insufficient proxy at early stages) or a technological limitation (current assays lack sensitivity, which future methods will improve)? These have different implications for the claim's trajectory.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-003",
+            "question": "INST-005 is the eighth occurrence of anticipatory institutional evidence and the second instance of pre-validation commercial deployment (after FR-BT-0003 INST-005). The pattern of commercialising before definitive clinical evidence is twice confirmed in PROG-BT. Does this constitute a PROG-BT-specific commercial pressure dynamic, or is it a broader biotechnology sector pattern? This bears on whether the fifth anticipatory act type (undermining validation environment) belongs in RN-004 or in a PROG-BT programme note.",
+            "raisedDate": "2024-01-15"
+          }
+        ]
+      },
+      "changes": [
+        {
+          "fieldPath": "openQuestions.2.question",
+          "previous": "INST-005 is the eighth occurrence of anticipatory institutional evidence and the second instance of pre-validation commercial deployment (after FR-BT-0003 INST-005). The pattern of commercialising before definitive clinical evidence is twice confirmed in PROG-BT. Does this constitute a PROG-BT-specific commercial pressure dynamic, or is it a broader biotechnology sector pattern? This bears on whether the fifth anticipatory act type (undermining validation environment) belongs in RN-004 or in a PROG-BT programme note.",
+          "current": "IN-005 records commercial deployment and substantial capital commitments before definitive randomised clinical-utility and mortality evidence. Does this create a claim-specific commercial-pressure dynamic, and what independently supported comparisons would establish whether it recurs across PROG-BT or the wider sector? The former eighth-occurrence and twice-confirmed counts are withdrawn because their predecessor counts are not retained in FR-BT-0002 and FR-BT-0003. Commercial activity alone does not establish that validation has been undermined. Any proposed anticipatory-act classification requires a separately grounded review; the act-type taxonomy should not be attributed to RN-004, which concerns a different, retired trajectory-vocabulary proposal.",
+          "basis": "IN-005; FR-BT-0002 OQ-001; FR-BT-0003 OQ-002; FR-AI-0007 M-008; src/data/metrics.js RN-004 retirement documentation"
+        }
+      ]
+    },
+    {
+      "id": "FR-AM-0005",
+      "mutationId": "M-016",
+      "frozen": {
+        "id": "f8137d4c25c848b6aee4af30d76317b6cabd60dca8a07532fcf301ba9aec82ae",
+        "programme": "683d4ead7a55d6256035f4af3df63b8332c79d1f40e246d740558af993f13c5c",
+        "lastProvenanceReview": "10feffd11b3bd5774a7246e8f2866bcd95ac110d9511ab82877bda1370ad5064",
+        "provenanceReviewId": "9a15e49555515ca841d5cd128fc20b9648c22622c7f38ba9917dab953800f3ed",
+        "provenanceOutcome": "4deec0e789635c1468ce36826d152eb385b4d5b75ad878490f83c16ad64de629",
+        "provenanceRepairStatus": "7093fda846e50b267da144f7b3683ee1dd8838506939f6052b7370dd01fa2ad0",
+        "claim": "e8488892521f834e8a204990adf937b09dcbefeadfe4988c8a580aceadabf59a",
+        "instances": "3d8626badf5bd475cf2c6b5d2a7659fe7a28efe90adf46933f4bf6cbe1f6396c",
+        "assessments": "99614334a2ce8d38f99daaae75aade794290178f99a0cd7f02c27eb1701fa95b",
+        "status": "02e31f51aa8b1b6a622c4f7c30fab328d711cad4c9da74b9965ada8aa15d9df2",
+        "mutationLog": "49e2d635b89d0c1d52cf55a7c5119b604311a67069ef1394a014a84b25f8502d"
+      },
+      "questionIdentity": [
+        {
+          "id": "OQ-001",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-002",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-003",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-004",
+          "raisedDate": "2026-06-29"
+        }
+      ],
+      "previous": {
+        "mechanisms": [
+          {
+            "id": "CM-001",
+            "type": "COLLAPSE MECHANISM",
+            "description": "Premature public claim before independent replication. The Dias-associated claims and LK-99 were publicly prominent before independent laboratories had established reproducibility. That sequence amplifies attention and raises the cost of later correction when a claim fails scrutiny. The record does not infer a shared intent, a common misconduct finding, or a demonstrated incentive motive across the cases. It records the narrower recurring risk: extraordinary materials claims can become public narratives before the independent evidence needed to establish them exists."
+          },
+          {
+            "id": "RM-001",
+            "type": "RESISTANCE MECHANISM",
+            "description": "Sample sensitivity and synthesis irreproducibility. Superconducting properties in complex materials are highly sensitive to synthesis conditions: stoichiometry, impurity levels, grain boundaries, and thermal history all affect whether a material exhibits superconductivity and at what temperature. This creates a structural resistance to reproducibility independent of any intent to deceive: even a genuine room-temperature superconductor might be difficult to reproduce if its properties depend on poorly characterised synthesis variables. The resistance mechanism explains why the high-pressure hydride results took years to reproduce even when genuine, and why the LK-99 apparent partial corroborations (some groups observed partial levitation) could coexist with the definitive null on superconductivity itself."
+          },
+          {
+            "id": "AT-001",
+            "type": "ATTRACTOR",
+            "description": "Independently reproducible room-temperature superconductivity under documented laboratory conditions. A future candidate would reopen the record when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity. The record does not prescribe a universal fixed trio of signatures; the evidential package must be inspectable, coherent and independently reproducible. The attractor is outcome-based rather than tied to a particular material or headline temperature claim."
+          }
+        ],
+        "lineage": {
+          "items": [
+            {
+              "year": "1986–2010s",
+              "text": "High-temperature superconductor discovery and mechanism debate. Cuprate superconductors are discovered and reproduced; the mechanism remains unresolved (FR-AM-0003). The community establishes that superconductivity above 77K is achievable and reproducible. Room temperature remains a theoretical goal."
+            },
+            {
+              "year": "2015–19",
+              "text": "High-pressure hydrides — confirmed reproducibility approaching room temperature. Hydrogen sulfide at 203K and lanthanum hydride at 250–260K are reproduced independently. Room-temperature superconductivity under extreme pressure becomes a credible near-term target."
+            },
+            {
+              "year": "2020–23",
+              "text": "Dias-associated claims and retractions. Two high-profile Nature papers report near-room-temperature and room-temperature superconductivity, then are retracted over serious data-reliability and material-provenance concerns. The retraction notices do not establish that both cases were formal misconduct findings."
+            },
+            {
+              "year": "Jul–Aug 2023",
+              "text": "LK-99 — rapid candidate-specific replication failure. International testing does not reproduce a superconducting transition or zero resistance in the claimed ambient-pressure material. The claim collapses through failed independent reproduction."
+            },
+            {
+              "year": "2024–25",
+              "text": "No independently reproduced room-temperature candidate. High-pressure hydrides remain strong below-room-temperature context. A 2025 LaSc₂H₂₄ preprint reports an unreplicated 298 K high-pressure candidate; it is recorded without reopening the claim."
+            }
+          ],
+          "relatedRecords": []
+        },
+        "openQuestions": [
+          {
+            "id": "OQ-001",
+            "question": "What minimum form of independent, convergent evidence should the Observatory require before treating a room-temperature-superconductivity result as a reopening candidate, without imposing an unsupported universal checklist of signatures?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-002",
+            "question": "CM-001 (pre-announcement collapse mechanism) appears independently in FR-AM-0001 and FR-AM-0005 across different eras and phenomena. Two occurrences of the same collapse mechanism within one programme is a new corpus observation. Does this constitute a programme-level mechanism pattern?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-003",
+            "question": "FR-AM-0004 (commercial fusion) is the one escalating record in PROG-AM. The programme diagnosis suggests it may eventually follow the same collapse dynamic as FR-AM-0001 and FR-AM-0005. Is there evidence bearing on whether FR-AM-0004 is structurally different from the collapsed records — and if so, what protects it from the same dynamic?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-004",
+            "question": "IN-006 now records a single-team 298 K high-pressure LaSc₂H₂₄ preprint without reopening the claim. What threshold—such as an independent replication attempt, a peer-reviewed primary report, or a materially new evidential feature—should trigger a Normal Record Review rather than repeated logging of an unreplicated candidate?",
+            "raisedDate": "2026-06-29"
+          }
+        ]
+      },
+      "changes": [
+        {
+          "fieldPath": "openQuestions.2.question",
+          "previous": "FR-AM-0004 (commercial fusion) is the one escalating record in PROG-AM. The programme diagnosis suggests it may eventually follow the same collapse dynamic as FR-AM-0001 and FR-AM-0005. Is there evidence bearing on whether FR-AM-0004 is structurally different from the collapsed records — and if so, what protects it from the same dynamic?",
+          "current": "At the 8 October 2026 consistency checkpoint, FR-AM-0004 (commercial fusion), FR-AM-0006 and FR-AM-0007 are ESCALATING in PROG-AM; FR-AM-0004 is not the programme's sole escalating record. What evidence bears on whether commercial fusion is structurally different from the collapsed FR-AM-0001 and FR-AM-0005, and whether it is exposed to the same collapse dynamics? Programme membership or the number of escalating records alone does not establish that it will follow a collapsed record's trajectory.",
+          "basis": "Canonical PROG-AM current assessments at 2026-10-08; FR-AM-0001 and FR-AM-0005 collapse comparison"
+        }
+      ]
+    }
+  ]
+}
