@@ -139,7 +139,7 @@ function buildServer(env: Env): McpServer {
 
   server.tool(
     "faultline_search_records",
-    "Search the canonical Frontier Record corpus across claim text, evidence instances, assessments, mechanisms, lineage, open questions and mutation history.",
+    "Search the canonical Frontier Record corpus across claim text, evidence instances, assessments, mechanisms, lineage, open questions and mutation history. Match references identify current versus historical assessments and the matching field; historical matches do not endorse superseded claims. Read currentAssessment for the controlling judgment.",
     {
       query: z.string().min(1).describe("Search text"),
       programme: z.string().optional().describe("Optional canonical programme ID"),

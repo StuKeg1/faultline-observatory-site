@@ -168,6 +168,12 @@ export default function MCPAccess() {
               particularly for large cross-record queries or automated loops.
             </p>
             <p>
+              Search can match preserved historical assessments as well as current fields.
+              Match references identify the relevant field and whether an assessment is current
+              or historical. A historical match does not endorse a superseded claim; read the
+              record's current assessment for the controlling judgment.
+            </p>
+            <p>
               The <code>/mcp</code> endpoint is a single stateless POST route — every call
               is a self-contained JSON-RPC request (no session handshake or cookie state is
               kept between calls), which is what makes the raw HTTP example above work

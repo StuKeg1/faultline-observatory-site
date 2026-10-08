@@ -70,6 +70,9 @@ export async function verifyMcpLive({ endpoint = "https://mcp.faultlinewatch.com
     const search = await call("faultline_search_records", { query: "FR-AI-0005", detail: "full", limit: 50 });
     assert.ok(search.records.some(r => r.id === "FR-AI-0005"));
     for (const record of search.records) assert.deepEqual(record, expectedFullRecord(ALL_RECORDS.find(r => r.id === record.id)));
+    const historical = await call("faultline_search_records", { query: "the path is bifurcating architecturally" });
+    assert.ok(historical.matches.find(match => match.recordId === "FR-AI-0005").references.some(reference =>
+      reference.field === "assessments.AS-001.summary" && reference.assessmentStatus === "historical"));
     console.log(`MCP live parity passed: ${commit}, ${ALL_RECORDS.length} complete records, ${PROGRAMMES.length} programmes, five tools.`);
   } finally { await client.close(); }
 }
