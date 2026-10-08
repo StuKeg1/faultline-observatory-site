@@ -12,10 +12,10 @@
 export const FR_AM_0002 = {
   id: "FR-AM-0002",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-09-09",
-  provenanceReviewId: "LPR-001-D11",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-08",
+  provenanceReviewId: "LPR-001-D45",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Electrochemical cells can produce anomalous excess heat that is not fully explained by conventional chemical processes.",
@@ -180,6 +180,7 @@ export const FR_AM_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-011", date: "2026-10-08", field: "provenance_review", from: "LPR-001-D11", to: "LPR-001-D45", note: "Second-cycle Legacy Provenance Review completed as PASS across all five existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-010", date: "2026-09-09", field: "assessment_and_dependencies_corrected", from: "AS-001 / legacy RM-BN-lineage-OQ wording", to: "AS-002 / corrected dependencies", note: "Append-only AS-002 issued after the operator-approved LPR-001-D11 repair. FRAGMENTING / VS-03 retained on a narrower evidential basis. RM-001, RM-002, BN-001, the inherited-condition wording, lineage and OQ-001/OQ-002/OQ-004 were aligned to corrected source boundaries. Historical AS-001 preserved." },
     { id: "M-009", date: "2026-09-09", field: "provenance_correction", from: "LPR-001-D11 discrepancies_found", to: "LPR-001-D11 discrepancies_corrected", note: "Operator-approved correction of IN-001 through IN-005. Texas A&M attribution corrected; SRI loading correlation bounded to the programme's reported criterion; Storms reframed as a proponent review rather than validated protocol evidence; Berlinguette et al. corrected and the unsupported anomalous-calorimetry acknowledgement withdrawn; NASA/Navy bundle separated, with NASA lattice-confinement work treated as adjacent rather than direct excess-heat evidence. Structured provenance added where confidently established." },
     { id: "M-008", date: "2026-09-09", field: "provenance_review", from: "—", to: "LPR-001-D11", note: "Legacy provenance review completed. All five evidence instances examined. Material source-fidelity or attribution discrepancies identified in IN-001 through IN-005, so no structured provenance was silently attached to those instances. IN-001 misattributes the Texas A&M 1989 excess-heat work to McKubre; IN-002's SRI loading-threshold core is sourceable but its decade-long/reproducibility and independent-replication framing requires bounding; IN-003's Storms protocol and comparative-success claims are more specific than the verified review evidence; IN-004 misattributes Berlinguette et al. and overstates the 2019 Google programme as acknowledging unexplained anomalous calorimetry; IN-005 conflates NASA/Navy programmes and incorrectly describes them as institutions with no prior LENR affiliation. No factual, interpretive, assessment, pressure-state or verification-stage wording changed. No sufficiently direct new scientific evidence was admitted; review marked pending governed correction." },
