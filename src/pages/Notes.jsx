@@ -179,6 +179,18 @@ export function NoteDetail() {
                   <span className="npm-label">Note Date</span>
                   <span className="npm-value">{note.date}</span>
                 </div>
+                {note.previousVersions?.length > 0 && (
+                  <>
+                    <div className="npm-row">
+                      <span className="npm-label">Version</span>
+                      <span className="npm-value">{note.version}</span>
+                    </div>
+                    <div className="npm-row">
+                      <span className="npm-label">Evidence cutoff</span>
+                      <span className="npm-value">{note.evidenceCutoff}</span>
+                    </div>
+                  </>
+                )}
                 {note.author && (
                   <div className="npm-row">
                     <span className="npm-label">Author</span>
@@ -227,6 +239,24 @@ export function NoteDetail() {
                 </div>
               );
             })}
+            {note.previousVersions?.length > 0 && (
+              <section className="note-version-history" aria-labelledby="note-history-heading">
+                <h2 className="note-block-heading" id="note-history-heading">Previous versions</h2>
+                <p className="note-block-text">Historical text is preserved as published. Superseded statements below do not form part of the current overview.</p>
+                {note.previousVersions.map((previous) => (
+                  <details className="note-previous-version" key={previous.version}>
+                    <summary>Version {previous.version} · {previous.date} · Historical</summary>
+                    <p className="note-block-text">{previous.summary}</p>
+                    {previous.body.map((block) => (
+                      <div className="note-block" key={block.id}>
+                        {block.heading && <h3 className="note-block-heading">{block.heading}</h3>}
+                        <p className="note-block-text" dangerouslySetInnerHTML={{ __html: block.text }} />
+                      </div>
+                    ))}
+                  </details>
+                ))}
+              </section>
+            )}
           </div>
         </div>
 
