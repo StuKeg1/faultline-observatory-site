@@ -1,0 +1,425 @@
+{
+  "id": "MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08",
+  "date": "2026-10-08",
+  "scope": "Bounded editorial consistency repair against admitted corrected instances and current assessments; no new evidence or reassessment.",
+  "records": [
+    {
+      "id": "FR-QE-0002",
+      "mutationId": "M-014",
+      "frozen": {
+        "claim": "ceaee3318297a1d12f61b705cd9364d6cee375ba49e1b77165a6967c05883308",
+        "instances": "734208e99f3fece0925cbda03ed54f0f28ebc4efd9ffbb0c2c726ebeb2a9f7c4",
+        "assessments": "779ca6da2151588443112ce2a2c2e49e26a68338467732851e37ab049b565585",
+        "status": "35ff74aeea25311f4fe759a6b762c8cd41a79adb23dd5615b92cf215175a63e5",
+        "mutationLog": "0fccf8ad7182a2f9a75910b3f9aeb1cd82f0ba993432f81e95a534678cc63be1"
+      },
+      "questionIdentity": [
+        {
+          "id": "OQ-001",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-002",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-003",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-004",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-005",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-006",
+          "raisedDate": "2026-07-26"
+        }
+      ],
+      "previous": {
+        "mechanisms": [
+          {
+            "id": "RM-001",
+            "type": "RESISTANCE MECHANISM",
+            "description": "Classical solver improvement rate. Each time a D-Wave performance claim is published, the classical computing community has produced improved algorithms (simulated annealing variants, Hamze-de Freitas-Selby, tensor network methods) that match or exceed the demonstrated quantum performance on the same problem instances. The mechanism is structural: a fixed quantum hardware architecture competes against a classical algorithm space that can be continuously optimised in software."
+          },
+          {
+            "id": "RM-002",
+            "type": "RESISTANCE MECHANISM",
+            "description": "Benchmark structure dependency. Demonstrated performance advantages have been concentrated on problem instances structurally matched to the D-Wave hardware topology. Performance degrades significantly when problems must be embedded into the hardware graph, as most real-world optimisation problems require non-trivial embedding that introduces overhead and degrades solution quality relative to native classical formulations."
+          },
+          {
+            "id": "BN-001",
+            "type": "BOTTLENECK",
+            "description": "Domain scope of the claim. The claim spans commercial optimisation and scientific simulation. Evidence accrues asymmetrically: stronger for scientific simulation (King et al. 2023), weaker for commercial optimisation. The claim cannot be assessed without first resolving which domain is the primary referent. This bottleneck may be irreducible without claim decomposition."
+          },
+          {
+            "id": "BN-002",
+            "type": "BOTTLENECK",
+            "description": "Comparison class specification. No agreed standard exists for which classical methods constitute a valid comparison. D-Wave comparisons have used single-core classical solvers, simulated annealing, and in some cases deliberately excluded state-of-the-art methods. Without a settled comparison class, advantage claims are not independently verifiable against a stable baseline."
+          }
+        ],
+        "lineage": {
+          "items": [
+            {
+              "year": "2007",
+              "text": "D-Wave founded. Company formed to commercialise quantum annealing for combinatorial optimisation. Original claim framing: quantum tunnelling enables faster traversal of complex energy landscapes than classical thermal annealing."
+            },
+            {
+              "year": "2011",
+              "text": "First commercial sale (Lockheed Martin). D-Wave One sold commercially. Claim migrates from laboratory demonstration to commercial utility framing."
+            },
+            {
+              "year": "2013",
+              "text": "Google / NASA / USRA acquisition. D-Wave Two installed. Claim now includes scientific simulation use cases alongside optimisation."
+            },
+            {
+              "year": "2014",
+              "text": "Troyer et al. benchmark challenge. First rigorous independent benchmarking finds no quantum speedup. Claim status changes from asserted to actively contested."
+            },
+            {
+              "year": "2016",
+              "text": "Denchev et al. (Physical Review X) — \"100 million times\" claim. Strongest optimisation advantage claim to date. Immediately challenged on benchmark design. Community consensus: advantage is problem-specific and does not generalise to commercially relevant instances."
+            },
+            {
+              "year": "2020",
+              "text": "D-Wave Advantage release. Claim expands to 5000-qubit hybrid workflows. Commercial case studies published. Academic evaluation continues to find classical parity or superiority on real-world problem sizes."
+            },
+            {
+              "year": "2022–23",
+              "text": "King et al. (Nature) — quantum magnetism simulation. Claim partially substantiated in scientific simulation domain. Evidence trajectory diverges: scientific relevance improving, commercial optimisation advantage unestablished."
+            },
+            {
+              "year": "2025",
+              "text": "Independent optimisation benchmarking by Quinton et al. finds D-Wave's hybrid solver competitive with leading classical approaches only for a limited range of problems, including an advantage in the studied binary quadratic cases but not the tested real-world unit-commitment problem. A separate King et al. Science result demonstrates strong beyond-classical quantum simulation but is not admitted as claim-bearing evidence because it does not engage the settled optimisation-task kernel."
+            }
+          ],
+          "relatedRecords": []
+        },
+        "openQuestions": [
+          {
+            "id": "OQ-001",
+            "question": "Does the claim require decomposition into two separate Frontier Records — one for commercial optimisation advantage, one for scientific simulation advantage — before either can receive a settled assessment?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-002",
+            "question": "What would constitute an agreed comparison class for classical methods? Without this, no future evidence can close the claim.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-003",
+            "question": "Can the King et al. (2023) simulation result be independently replicated by parties without D-Wave affiliation?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-004",
+            "question": "As D-Wave's Advantage2 and future systems increase qubit count and connectivity, does the benchmark structure dependency (RM-002) diminish, or does the classical algorithm improvement rate (RM-001) continue to track the hardware improvements?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-005",
+            "question": "Does the Fragmenting pressure state represent a temporary epistemic condition resolvable by further evidence, or a structural property of a claim whose scope is too broad to admit a unified assessment?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-006",
+            "question": "Does \"practical advantage\" require real-world deployability, or is a rigorous demonstration of speedup on a well-posed instance sufficient regardless of scale? The commercial and scientific-relevant routes may be operating under different implicit standards for the same word. This question concerns the evaluative standard applied to an already-settled kernel element, not the kernel's composition — see Terminal Identity and Continuity Finding, §C–D.",
+            "raisedDate": "2026-07-26"
+          }
+        ]
+      },
+      "changes": [
+        {
+          "fieldPath": "mechanisms.2.description",
+          "previous": "Domain scope of the claim. The claim spans commercial optimisation and scientific simulation. Evidence accrues asymmetrically: stronger for scientific simulation (King et al. 2023), weaker for commercial optimisation. The claim cannot be assessed without first resolving which domain is the primary referent. This bottleneck may be irreducible without claim decomposition.",
+          "current": "Optimisation-task scope and adjacent simulation evidence. The claim kernel is settled on commercially or scientifically relevant optimisation tasks; it does not span quantum simulation as a separate claim domain. IN-004 and IN-005 provide adjacent simulation context, while the 2025 Science simulation result is excluded from claim-bearing evidence in AS-003. The remaining bottleneck is whether bounded optimisation results meet the applicable standard of practical advantage, not a prerequisite to decompose optimisation and simulation before assessment. OQ-006 retains the unresolved evaluative-standard question.",
+          "basis": "Claim; AS-003; IN-004–IN-006; OQ-006"
+        },
+        {
+          "fieldPath": "openQuestions.0.question",
+          "previous": "Does the claim require decomposition into two separate Frontier Records — one for commercial optimisation advantage, one for scientific simulation advantage — before either can receive a settled assessment?",
+          "current": "With the optimisation-task kernel already settled, how should adjacent scientific-simulation results be represented without treating them as proof of practical optimisation advantage? Would a separate simulation record clarify that distinction? This is a record-organisation question, not a prerequisite to assess the existing claim.",
+          "basis": "Claim; AS-003; IN-004–IN-006"
+        },
+        {
+          "fieldPath": "lineage.items.2.text",
+          "previous": "Google / NASA / USRA acquisition. D-Wave Two installed. Claim now includes scientific simulation use cases alongside optimisation.",
+          "current": "NASA / Google / USRA collaboration. USRA leases a D-Wave Two system installed at NASA Ames. This expands the institutional setting for quantum-annealing research; it does not expand the settled optimisation-task claim kernel to a separate simulation domain.",
+          "basis": "Corrected IN-001; AS-003"
+        },
+        {
+          "fieldPath": "lineage.items.3.text",
+          "previous": "Troyer et al. benchmark challenge. First rigorous independent benchmarking finds no quantum speedup. Claim status changes from asserted to actively contested.",
+          "current": "Rønnow et al. benchmark challenge. The 2014 study finds no evidence of quantum speedup for the full studied data set; selected subsets remain inconclusive. This is a bounded benchmark challenge rather than a universal finding about every optimisation problem.",
+          "basis": "Corrected IN-001"
+        },
+        {
+          "fieldPath": "lineage.items.4.text",
+          "previous": "Denchev et al. (Physical Review X) — \"100 million times\" claim. Strongest optimisation advantage claim to date. Immediately challenged on benchmark design. Community consensus: advantage is problem-specific and does not generalise to commercially relevant instances.",
+          "current": "Denchev et al. (Physical Review X) report a large speedup for studied weak-strong-cluster problems on D-Wave 2X, up to 945 variables, against the specified classical comparators. The result is benchmark- and comparator-dependent and does not establish general practical optimisation advantage.",
+          "basis": "Corrected IN-002"
+        },
+        {
+          "fieldPath": "lineage.items.5.text",
+          "previous": "D-Wave Advantage release. Claim expands to 5000-qubit hybrid workflows. Commercial case studies published. Academic evaluation continues to find classical parity or superiority on real-world problem sizes.",
+          "current": "D-Wave Advantage release. The hardware and industry-application setting expands to over 5000 qubits and hybrid workflows. Yarkoni et al. review quantum-annealing industry applications; that review does not establish a categorical cross-instance conclusion of classical parity or superiority.",
+          "basis": "Corrected IN-003"
+        },
+        {
+          "fieldPath": "lineage.items.6.text",
+          "previous": "King et al. (Nature) — quantum magnetism simulation. Claim partially substantiated in scientific simulation domain. Evidence trajectory diverges: scientific relevance improving, commercial optimisation advantage unestablished.",
+          "current": "King et al. report quantum-simulation results: the 2022 Nature Physics study concerns coherent dynamics in a one-dimensional transverse-field Ising chain; the 2023 Nature study concerns three-dimensional spin-glass dynamics with bounded analogous Monte Carlo comparisons. These are adjacent simulation results, not partial substantiation of the settled practical-optimisation claim.",
+          "basis": "Corrected IN-004 and IN-005; AS-003"
+        }
+      ]
+    },
+    {
+      "id": "FR-AI-0003",
+      "mutationId": "M-015",
+      "frozen": {
+        "claim": "ef7f2d3045da8320c2f2907cc0bd368cbca6b5026299cc21ebfec6c52acd96b3",
+        "instances": "3663171d1b43e87aa80e3dbe0d3a8520c94417662f948341d5887ff9e2bc7ca6",
+        "assessments": "fde4b7669debaa3083887d31aedbd9498a90732c84e648c7d73c0518f8db3f6c",
+        "status": "35ff74aeea25311f4fe759a6b762c8cd41a79adb23dd5615b92cf215175a63e5",
+        "mutationLog": "0757e17bfaa2b1f5114e6ffd253203dd4efa4222221a347e4dd14d79bc32ddbc"
+      },
+      "questionIdentity": [
+        {
+          "id": "OQ-001",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-002",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-003",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-004",
+          "raisedDate": "2024-01-15"
+        }
+      ],
+      "previous": {
+        "mechanisms": [
+          {
+            "id": "RM-001",
+            "type": "RESISTANCE MECHANISM",
+            "description": "Reward model distributional brittleness. RLHF trains a reward model on human preference data and then optimises the language model against that reward model. The reward model is itself a learned approximation of human preferences, trained on a finite distribution of examples. When the language model encounters inputs outside that distribution, the reward model's approximation degrades — it assigns high reward to outputs that humans in novel contexts would not prefer. This is the structural source of jailbreak and sycophancy failures: the reward model cannot accurately represent preferences it was not trained to evaluate. The mechanism is not a failure of RLHF as a concept; it is a limitation of any finite training distribution."
+          },
+          {
+            "id": "RM-002",
+            "type": "RESISTANCE MECHANISM",
+            "description": "Preference proxy misalignment. Human raters during RLHF training evaluate outputs on dimensions they can perceive and assess — fluency, apparent helpfulness, surface agreement with their views. They cannot reliably rate outputs on dimensions that require expertise they lack, careful verification they do not have time for, or long-horizon consequences they cannot observe. The training signal therefore reflects what raters can easily evaluate rather than what they would prefer if fully informed. This produces systematic gaps between trained preferences and actual preferences, which widen as the model operates in novel contexts where the gap between easy-to-rate and actually-preferred is larger than in training."
+          },
+          {
+            "id": "BN-001",
+            "type": "BOTTLENECK",
+            "description": "No agreed measurement of preference reflection under distribution shift. The claim requires that preference reflection be measurable outside training conditions. No standard evaluation exists for this. Red-teaming measures adversarial robustness but not general generalisation. Human evaluation measures perceived quality in evaluated contexts but not behaviour in unevaluated contexts. Interpretability methods can identify some internal representations but cannot directly measure preference generalisation. Without a measurement instrument, the claim cannot transition from FRAGMENTING to any resolved state regardless of training improvements. The bottleneck is metrological: the thing the claim asserts cannot currently be measured directly."
+          },
+          {
+            "id": "AT-001",
+            "type": "ATTRACTOR",
+            "description": "Interpretability-grounded preference verification. The scalable oversight and interpretability research programmes (INST-006) represent a potential resolution path: if internal model representations of human preferences can be identified and verified, preference generalisation can be assessed directly rather than through behavioural proxies. This is the attractor for this record — not better RLHF training, but a measurement capability that would allow the claim to be evaluated rather than merely approximated. The attractor is early-stage; current interpretability tools cannot yet verify preference representations reliably. But its direction is visible, and it is the research trajectory most likely to resolve BN-001."
+          }
+        ],
+        "lineage": {
+          "items": [
+            {
+              "year": "2017–20",
+              "text": "RLHF developed as a training method. Christiano et al. (2017) introduce RLHF for language model preference training. The method is motivated by the observation that desired behaviours are easier to evaluate than to specify. The generalisation assumption is implicit rather than tested: that human preferences learned in training will transfer to deployment."
+            },
+            {
+              "year": "2022",
+              "text": "InstructGPT establishes RLHF as standard practice. The positive generalisation results from InstructGPT drive adoption of RLHF across the industry. The generalisation assumption becomes operational rather than aspirational. Mass deployment begins before systematic generalisation evaluation exists."
+            },
+            {
+              "year": "2022–23",
+              "text": "Failure modes documented systematically. Jailbreaks, sycophancy, and reward hacking are documented across deployed systems. The generalisation assumption is empirically challenged. Research into improved training methods (Constitutional AI, RLAIF) begins in response."
+            },
+            {
+              "year": "2023–24",
+              "text": "Scalable oversight and capability tension emerge. The research community recognises that the generalisation problem may worsen with capability increases. Scalable oversight becomes the primary research response. The claim enters a fragmenting state with no clear resolution path in sight."
+            }
+          ],
+          "relatedRecords": []
+        },
+        "openQuestions": [
+          {
+            "id": "OQ-001",
+            "question": "Does increasing model capability make preference generalisation better or worse? INST-005 suggests worse; INST-006 suggests potentially better under specific training regimes. This question is not resolvable from current evidence and is the programme's central unresolved tension.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-002",
+            "question": "Can interpretability tools eventually provide direct measurement of preference representation in model weights, resolving BN-001? If so, the claim becomes evaluable rather than merely approximable. If not, the claim may be permanently unresolvable as stated.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-003",
+            "question": "The three failure modes (adversarial, sycophantic, capability-outpacing) are independent. Does solving one have any effect on the others, or do they require independent solutions? Current evidence does not address this.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-004",
+            "question": "Is this a class-level claim that should remain at the level of RLHF as a method, or should separate records track specific training regimes (standard RLHF, Constitutional AI, RLAIF) as the methods diverge? The corpus lesson from FR-QE-0002 applies: bundling claims that resolve on different timescales produces bottlenecks that belong to the claim rather than the frontier.",
+            "raisedDate": "2024-01-15"
+          }
+        ]
+      },
+      "changes": [
+        {
+          "fieldPath": "mechanisms.3.description",
+          "previous": "Interpretability-grounded preference verification. The scalable oversight and interpretability research programmes (INST-006) represent a potential resolution path: if internal model representations of human preferences can be identified and verified, preference generalisation can be assessed directly rather than through behavioural proxies. This is the attractor for this record — not better RLHF training, but a measurement capability that would allow the claim to be evaluated rather than merely approximated. The attractor is early-stage; current interpretability tools cannot yet verify preference representations reliably. But its direction is visible, and it is the research trajectory most likely to resolve BN-001.",
+          "current": "Evaluation of preference reflection under distribution shift. A potential resolution path is direct evidence that a specified preference-training regime retains human-preferred behaviour under defined shifts, using explicit evaluation criteria and comparators. IN-006 studies weak-to-strong supervision on benchmark tasks and explicitly reports that its methods did not work on ChatGPT preference data; it does not demonstrate interpretability-grounded verification of preference representations. Interpretability remains a prospective measurement route raised by OQ-002, rather than a capability established by this instance. Resolving BN-001 requires an agreed measurement standard and relevant preference-generalisation evidence.",
+          "basis": "Corrected IN-006; BN-001; OQ-002; AS-004"
+        },
+        {
+          "fieldPath": "openQuestions.0.question",
+          "previous": "Does increasing model capability make preference generalisation better or worse? INST-005 suggests worse; INST-006 suggests potentially better under specific training regimes. This question is not resolvable from current evidence and is the programme's central unresolved tension.",
+          "current": "Under controlled changes in model capability and preference-training regime, does preference generalisation under distribution shift improve or deteriorate? IN-005 shows misaligned behaviour in a constructed trading scenario but does not establish causal deterioration with capability; IN-006 reports benchmark weak-to-strong recovery but unsuccessful methods on ChatGPT preference data. Neither supplies a direct answer to this question.",
+          "basis": "Corrected IN-005 and IN-006; AS-004"
+        },
+        {
+          "fieldPath": "openQuestions.2.question",
+          "previous": "The three failure modes (adversarial, sycophantic, capability-outpacing) are independent. Does solving one have any effect on the others, or do they require independent solutions? Current evidence does not address this.",
+          "current": "How are adversarial failures, sycophancy and misaligned behaviour in constructed agentic settings related, and does mitigating one improve preference generalisation in the others? The admitted evidence does not establish that these are independent failure modes or that capability increases themselves cause preference generalisation to deteriorate.",
+          "basis": "Corrected IN-005; AS-004"
+        },
+        {
+          "fieldPath": "lineage.items.1.text",
+          "previous": "InstructGPT establishes RLHF as standard practice. The positive generalisation results from InstructGPT drive adoption of RLHF across the industry. The generalisation assumption becomes operational rather than aspirational. Mass deployment begins before systematic generalisation evaluation exists.",
+          "current": "InstructGPT demonstrates preference-training benefits. Human evaluators prefer InstructGPT to the larger GPT-3 baseline on held-out prompts from the evaluated API prompt distribution. The result establishes transfer to new prompts within that evaluated distribution, not systematic preference generalisation across distribution shifts.",
+          "basis": "Corrected IN-001"
+        },
+        {
+          "fieldPath": "lineage.items.3.text",
+          "previous": "Scalable oversight and capability tension emerge. The research community recognises that the generalisation problem may worsen with capability increases. Scalable oversight becomes the primary research response. The claim enters a fragmenting state with no clear resolution path in sight.",
+          "current": "Scalable-oversight research and constructed agentic failures add distinct evidence. IN-005 reports insider trading and deceptive explanations in a simulated high-pressure setting, without establishing causal deterioration of preference generalisation as capability increases. IN-006 reports weak-to-strong recovery on benchmark tasks but unsuccessful methods on ChatGPT preference data. These bounded results do not establish a capability-driven generalisation failure or an interpretability-based resolution; AS-004 retains FRAGMENTING / VS-03.",
+          "basis": "Corrected IN-005 and IN-006; AS-004"
+        }
+      ]
+    },
+    {
+      "id": "FR-AI-0004",
+      "mutationId": "M-016",
+      "frozen": {
+        "claim": "c0d779fb1dc9be36543edab5ee6af1daae48c5ba01f536b8e7fd208cdef198cb",
+        "instances": "f94a679831dd100cd96ff3764701915f07f5d3db41b0fedb11ac7f7deb5c57d1",
+        "assessments": "7a4684b3ab111f61f35d6e441658c8bb0e00a5a720b6878725af7155af218e9f",
+        "status": "35ff74aeea25311f4fe759a6b762c8cd41a79adb23dd5615b92cf215175a63e5",
+        "mutationLog": "77059842291d4a7687752b910c8da2051e9ffbdd806524692f0e3c671dc402aa"
+      },
+      "questionIdentity": [
+        {
+          "id": "OQ-001",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-002",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-003",
+          "raisedDate": "2024-01-15"
+        },
+        {
+          "id": "OQ-004",
+          "raisedDate": "2026-06-29"
+        }
+      ],
+      "previous": {
+        "mechanisms": [
+          {
+            "id": "RM-001",
+            "type": "RESISTANCE MECHANISM",
+            "description": "Training data contamination. For closed models, training data content is not fully disclosed. When a model performs well on a benchmark, the possibility that benchmark instances appeared in training data cannot be fully excluded. This mechanism creates a structural limitation on the evidential value of benchmark performance gains: positive results are always partially contestable on contamination grounds. The mechanism is more severe for the claim tracked here than for most, because the claim specifically asserts performance on previously unseen tasks — contamination directly challenges whether any given positive result satisfies the \"previously unseen\" criterion. The contamination resistance mechanism is not eliminable for closed models; it can only be reduced by purpose-built anti-contamination evaluation designs."
+          },
+          {
+            "id": "RM-002",
+            "type": "RESISTANCE MECHANISM",
+            "description": "Metric-dependence of apparent emergence. As documented by Schaeffer et al. (INST-004), apparent discontinuities in scaling curves are sensitive to metric choice. What appears as an emergent ability under one evaluation metric may appear as a smooth continuous improvement under another. This creates a resistance mechanism specific to the claim's language: \"increases performance\" can be measured in multiple ways, and the picture of what scaling achieves differs depending on measurement choice. The mechanism does not deny that scaling helps; it complicates how and when improvement is observed, which is a genuine interior difficulty for the claim's evidential base."
+          },
+          {
+            "id": "BN-001",
+            "type": "BOTTLENECK",
+            "description": "No agreed definition of \"previously unseen.\" The claim requires that performance improvements occur on tasks the model has not been specifically trained on. But \"previously unseen\" is ambiguous across several dimensions: whether a task type appeared in training data, whether specific instances appeared, whether structural analogues appeared, and whether the model's in-context learning constitutes encountering the task during inference rather than training. Without an agreed operational definition, positive and contesting evidence cannot be cleanly compared. This is a bottleneck because it cannot be resolved by more experiments — it requires definitional agreement that currently does not exist. This bottleneck sits at the interior of the record, in measurement methodology, not at the claim identity or closure boundary."
+          },
+          {
+            "id": "AT-001",
+            "type": "ATTRACTOR",
+            "description": "Open-weights models with disclosed training data. The contamination resistance mechanism (RM-001) and the \"previously unseen\" bottleneck (BN-001) both weaken substantially for models where training data is fully disclosed and verifiable. Open-weights models with documented training sets — LLaMA, Mistral, and similar — permit principled contamination analysis. As the open-weights ecosystem matures and evaluation methodology improves, the evidentiary base for the claim can become cleaner. The attractor is not a single experiment but a methodological development: a corpus of models where the \"previously unseen\" criterion can be operationally verified. This is an interior attractor — it resolves an evidence quality problem, not a boundary ambiguity."
+          }
+        ],
+        "lineage": {
+          "items": [
+            {
+              "year": "2017–19",
+              "text": "Transformer scaling begins. GPT-1 and GPT-2 demonstrate that language model performance improves with scale. Task generalisation is observed informally but not systematically measured against scaling curves."
+            },
+            {
+              "year": "2020",
+              "text": "Scaling laws quantified; GPT-3 demonstrates emergent few-shot performance. Kaplan et al. establish the power-law relationship. Brown et al. demonstrate that scale produces in-context task performance across diverse previously unseen tasks. The claim enters ESCALATING."
+            },
+            {
+              "year": "2022",
+              "text": "Emergent abilities documented and immediately contested. Wei et al. document discontinuous emergence. Schaeffer et al. challenge the discontinuity interpretation. The mechanism debate opens as an interior question."
+            },
+            {
+              "year": "2022–23",
+              "text": "Chinchilla refines scaling; contamination becomes systematic concern. Hoffmann et al. correct the parameter-data balance. Contamination literature matures. The claim enters FRAGMENTING as evidence quality disputes compound."
+            }
+          ],
+          "relatedRecords": []
+        },
+        "openQuestions": [
+          {
+            "id": "OQ-001",
+            "question": "Can an agreed operational definition of \"previously unseen task\" be established — one that resolves the contamination question and the structural-analogue question simultaneously? Without this, BN-001 cannot be closed regardless of experimental output. This is the primary interior bottleneck.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-002",
+            "question": "Are apparent emergent abilities genuine discontinuities in capability, or continuous improvements made visible by nonlinear metrics? The Schaeffer et al. result is significant but contested. The answer matters for whether scaling law extrapolation can predict future task performance.",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-003",
+            "question": "PROG-AI now contains a substrate inversion: the foundational mechanism record (FR-AI-0004) is FRAGMENTING while downstream consequence records are ESCALATING. Does this inversion resolve as the scaling mechanism clarifies, or does the programme continue to build capability evidence on a contested mechanistic foundation?",
+            "raisedDate": "2024-01-15"
+          },
+          {
+            "id": "OQ-004",
+            "question": "IN-007 introduces test-time/inference-time compute as a scaling axis the claim's original statement did not anticipate. Should the claim statement itself be revised to cover this — \"scaling language model training and inference\" — or does the Canonical Reality Principle's discipline (claims are stated as narrowly as the evidence warrants, scope changes go through the mutation log, not silent rewording) mean this is better tracked as an open question indefinitely, or spun into a related but distinct record? This is the same kind of structural question OQ-001 raises for \"previously unseen,\" now recurring for \"scaling.\"",
+            "raisedDate": "2026-06-29"
+          }
+        ]
+      },
+      "changes": [
+        {
+          "fieldPath": "lineage.items.1.text",
+          "previous": "Scaling laws quantified; GPT-3 demonstrates emergent few-shot performance. Kaplan et al. establish the power-law relationship. Brown et al. demonstrate that scale produces in-context task performance across diverse previously unseen tasks. The claim enters ESCALATING.",
+          "current": "Scaling laws quantified; GPT-3 evaluated in few-shot settings. Kaplan et al. quantify power-law relationships for held-out language-model loss. Brown et al. evaluate in-context task performance without task-specific gradient updates. Those evaluations do not establish that task types, instances or structural analogues were absent from pretraining data, and held-out loss is not itself proof of previously unseen-task performance.",
+          "basis": "Corrected IN-001 and IN-002; AS-003"
+        },
+        {
+          "fieldPath": "lineage.items.2.year",
+          "previous": "2022",
+          "current": "2022–23",
+          "basis": "IN-003 (Wei et al., 2022); corrected IN-004 (Schaeffer et al., 2023)"
+        },
+        {
+          "fieldPath": "lineage.items.2.text",
+          "previous": "Emergent abilities documented and immediately contested. Wei et al. document discontinuous emergence. Schaeffer et al. challenge the discontinuity interpretation. The mechanism debate opens as an interior question.",
+          "current": "Emergent abilities documented and the discontinuity interpretation contested. Wei et al. (2022) report apparent emergent abilities under studied task metrics. Schaeffer et al. (2023) show how metric choice can create apparent discontinuities in particular evaluated settings; this does not establish universal continuity for all capabilities. The mechanism debate concerns how scaling gains are measured.",
+          "basis": "IN-003; corrected IN-004; AS-003"
+        }
+      ]
+    }
+  ]
+}

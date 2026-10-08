@@ -134,3 +134,46 @@ test("each audited record retains the provenance repair as an editorial correcti
     assert.ok(repair, `${record.id} has lost its 2026-08-28 reference correction`);
   }
 });
+
+test("priority consistency repairs preserve governed evidence, judgments and history", async () => {
+  const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
+  const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+  for (const entry of receipt.records) {
+    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    for (const [field, expected] of Object.entries(entry.frozen)) {
+      const value = field === "mutationLog" ? record.mutationLog.slice(1) : record[field];
+      assert.equal(digest(value), expected, `${entry.id}: ${field} changed`);
+    }
+    assert.deepEqual(record.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })), entry.questionIdentity);
+    assert.equal(record.mutationLog[0].id, entry.mutationId);
+    assert.equal(detectMutationType(record.mutationLog[0], record), "editorial_correction");
+    for (const change of entry.changes) {
+      assert.equal(change.fieldPath.split(".").reduce((value, key) => value[key], record), change.current);
+      assert.equal(change.fieldPath.split(".").reduce((value, key) => value[key], entry.previous), change.previous);
+    }
+    // Reconstruct the old explanatory sections to detect edits outside the receipt.
+    const restored = structuredClone({ mechanisms: record.mechanisms, lineage: record.lineage, openQuestions: record.openQuestions });
+    for (const change of entry.changes) {
+      const keys = change.fieldPath.split(".");
+      const parent = keys.slice(0, -1).reduce((value, key) => value[key], restored);
+      parent[keys.at(-1)] = change.previous;
+    }
+    assert.deepEqual(restored, entry.previous, `${entry.id}: unreceipted explanatory edit`);
+  }
+});
+
+test("priority explanatory repairs retain the corrected source limits", async () => {
+  const { FR_QE_0002: qe } = await import("./records/FR-QE-0002.js");
+  const { FR_AI_0003: alignment } = await import("./records/FR-AI-0003.js");
+  const { FR_AI_0004: scaling } = await import("./records/FR-AI-0004.js");
+  assert.match(qe.mechanisms.find(({ id }) => id === "BN-001").description, /kernel is settled/);
+  assert.match(qe.lineage.items[2].text, /USRA leases/);
+  assert.doesNotMatch(qe.lineage.items[6].text, /Claim partially substantiated/);
+  assert.match(alignment.mechanisms.find(({ id }) => id === "AT-001").description, /did not work on ChatGPT preference data/);
+  assert.match(alignment.openQuestions[0].question, /does not establish causal deterioration/);
+  assert.match(alignment.openQuestions[2].question, /does not establish that these are independent/);
+  assert.match(scaling.lineage.items[1].text, /do not establish/);
+  assert.equal(scaling.lineage.items[2].year, "2022–23");
+  assert.match(scaling.lineage.items[2].text, /Schaeffer et al\. \(2023\)/);
+  assert.deepEqual([getCurrentAssessment(qe).id, getCurrentAssessment(alignment).id, getCurrentAssessment(scaling).id], ["AS-003", "AS-004", "AS-003"]);
+});

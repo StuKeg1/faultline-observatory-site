@@ -156,7 +156,7 @@ export const FR_QE_0002 = {
     {
       id: "BN-001",
       type: "BOTTLENECK",
-      description: "Domain scope of the claim. The claim spans commercial optimisation and scientific simulation. Evidence accrues asymmetrically: stronger for scientific simulation (King et al. 2023), weaker for commercial optimisation. The claim cannot be assessed without first resolving which domain is the primary referent. This bottleneck may be irreducible without claim decomposition.",
+      description: "Optimisation-task scope and adjacent simulation evidence. The claim kernel is settled on commercially or scientifically relevant optimisation tasks; it does not span quantum simulation as a separate claim domain. IN-004 and IN-005 provide adjacent simulation context, while the 2025 Science simulation result is excluded from claim-bearing evidence in AS-003. The remaining bottleneck is whether bounded optimisation results meet the applicable standard of practical advantage, not a prerequisite to decompose optimisation and simulation before assessment. OQ-006 retains the unresolved evaluative-standard question.",
     },
     {
       id: "BN-002",
@@ -169,11 +169,11 @@ export const FR_QE_0002 = {
     items: [
     { year: "2007", text: "D-Wave founded. Company formed to commercialise quantum annealing for combinatorial optimisation. Original claim framing: quantum tunnelling enables faster traversal of complex energy landscapes than classical thermal annealing." },
     { year: "2011", text: "First commercial sale (Lockheed Martin). D-Wave One sold commercially. Claim migrates from laboratory demonstration to commercial utility framing." },
-    { year: "2013", text: "Google / NASA / USRA acquisition. D-Wave Two installed. Claim now includes scientific simulation use cases alongside optimisation." },
-    { year: "2014", text: "Troyer et al. benchmark challenge. First rigorous independent benchmarking finds no quantum speedup. Claim status changes from asserted to actively contested." },
-    { year: "2016", text: "Denchev et al. (Physical Review X) — \"100 million times\" claim. Strongest optimisation advantage claim to date. Immediately challenged on benchmark design. Community consensus: advantage is problem-specific and does not generalise to commercially relevant instances." },
-    { year: "2020", text: "D-Wave Advantage release. Claim expands to 5000-qubit hybrid workflows. Commercial case studies published. Academic evaluation continues to find classical parity or superiority on real-world problem sizes." },
-    { year: "2022–23", text: "King et al. (Nature) — quantum magnetism simulation. Claim partially substantiated in scientific simulation domain. Evidence trajectory diverges: scientific relevance improving, commercial optimisation advantage unestablished." },
+    { year: "2013", text: "NASA / Google / USRA collaboration. USRA leases a D-Wave Two system installed at NASA Ames. This expands the institutional setting for quantum-annealing research; it does not expand the settled optimisation-task claim kernel to a separate simulation domain." },
+    { year: "2014", text: "Rønnow et al. benchmark challenge. The 2014 study finds no evidence of quantum speedup for the full studied data set; selected subsets remain inconclusive. This is a bounded benchmark challenge rather than a universal finding about every optimisation problem." },
+    { year: "2016", text: "Denchev et al. (Physical Review X) report a large speedup for studied weak-strong-cluster problems on D-Wave 2X, up to 945 variables, against the specified classical comparators. The result is benchmark- and comparator-dependent and does not establish general practical optimisation advantage." },
+    { year: "2020", text: "D-Wave Advantage release. The hardware and industry-application setting expands to over 5000 qubits and hybrid workflows. Yarkoni et al. review quantum-annealing industry applications; that review does not establish a categorical cross-instance conclusion of classical parity or superiority." },
+    { year: "2022–23", text: "King et al. report quantum-simulation results: the 2022 Nature Physics study concerns coherent dynamics in a one-dimensional transverse-field Ising chain; the 2023 Nature study concerns three-dimensional spin-glass dynamics with bounded analogous Monte Carlo comparisons. These are adjacent simulation results, not partial substantiation of the settled practical-optimisation claim." },
     { year: "2025", text: "Independent optimisation benchmarking by Quinton et al. finds D-Wave's hybrid solver competitive with leading classical approaches only for a limited range of problems, including an advantage in the studied binary quadratic cases but not the tested real-world unit-commitment problem. A separate King et al. Science result demonstrates strong beyond-classical quantum simulation but is not admitted as claim-bearing evidence because it does not engage the settled optimisation-task kernel." }
     ],
     relatedRecords: [],
@@ -182,7 +182,7 @@ export const FR_QE_0002 = {
   openQuestions: [
     {
       id: "OQ-001",
-      question: "Does the claim require decomposition into two separate Frontier Records — one for commercial optimisation advantage, one for scientific simulation advantage — before either can receive a settled assessment?",
+      question: "With the optimisation-task kernel already settled, how should adjacent scientific-simulation results be represented without treating them as proof of practical optimisation advantage? Would a separate simulation record clarify that distinction? This is a record-organisation question, not a prerequisite to assess the existing claim.",
       raisedDate: "2024-01-15",
     },
     {
@@ -213,6 +213,14 @@ export const FR_QE_0002 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-014",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Explanatory wording inconsistent with corrected admitted evidence and current assessment",
+      "to": "Bounded explanatory wording aligned with existing source limits and settled claim scope",
+      "note": "Editorial Correction (GP-001), priority consistency repair: mechanisms.2.description, openQuestions.0.question, lineage.items.2.text, lineage.items.3.text, lineage.items.4.text, lineage.items.5.text, lineage.items.6.text corrected against existing admitted evidence and current assessment. No evidence admitted and no reassessment; claim, instances, assessments, status, question IDs and raised dates, and prior mutation entries preserved. Previous values and field-level basis: docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json."
+    },
     { id: "M-013", date: "2026-10-03", field: "provenance_correction", from: "LPR-001-D39 discrepancies_found / pending", to: "LPR-001-D39 discrepancies_corrected / completed", note: "Operator-approved bounded correction of the five legacy source-representation discrepancies carried from D14 and reconfirmed by D39. IN-001 corrects the 2013 transaction to USRA leasing the D-Wave system within the NASA/Google/USRA collaboration and bounds the 2014 benchmark conclusion. IN-002 replaces the erroneous 108-qubit framing with the D-Wave 2X weak-strong-cluster benchmark up to 945 variables and preserves the source's comparator limits. IN-003 removes the categorical performance conclusion not established by Yarkoni et al. and represents that work as an industry-applications review. IN-004 corrects Nature to Nature Physics, the model to a one-dimensional transverse-field Ising chain, and removes the unsupported classical-inaccessibility claim. IN-005 bounds the 2023 result to 3D spin-glass dynamics and analogous Monte Carlo comparators and removes the unsourced critics assertion. Structured sources added where attribution is established. IN-006, assessments, Pressure State and Verification Stage unchanged." },
     { id: "M-012", date: "2026-10-03", field: "provenance_review", from: "LPR-001-D14", to: "LPR-001-D39", note: "Second-cycle Legacy Provenance Review completed. Six current instances examined. IN-006 verified. Five previously identified D14 representation discrepancies remain pending governed correction; no discrepant wording was changed and no provenance was attached where that would endorse the current representation. No instance was provenance-unverifiable. No new scientific evidence was admitted or flagged for Normal Record Review. Outcome remains discrepancies_found / pending; Pressure State and Verification Stage unchanged." },
     { id: "M-011", date: "2026-09-12", field: "record_review", from: "Two 2025 Record Review candidates", to: "Quinton et al. admitted as IN-006; King et al. not admitted", note: "Governed normal Record Review completed for the two candidates surfaced by LPR-001-D14. Quinton et al., Scientific Reports 2025 (DOI 10.1038/s41598-025-96220-2), is admitted as IN-006 because it directly benchmarks a D-Wave hybrid quantum-annealing workflow against CPLEX, Gurobi and IPOPT on optimisation tasks. Its result is mixed and bounded: advantage for the studied BQP cases, but no general advantage across tested classes and no superiority over Gurobi on the unit-commitment case. King et al., Science 2025 (DOI 10.1126/science.ado6285), is not admitted as an evidence instance: despite strong beyond-classical quantum-simulation results, it studies dynamical quantum simulation rather than an optimisation task and therefore fails the settled optimisation-task element of this record's identity-bearing kernel. AS-003 appended; FRAGMENTING / VS-03 reaffirmed; lineage extended. LPR-001-D14 legacy discrepancies remain pending and were not altered by this Record Review." },

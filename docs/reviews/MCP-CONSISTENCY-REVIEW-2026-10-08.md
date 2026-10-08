@@ -64,3 +64,13 @@ These do not yet establish a specific factual correction and should not be auto-
 First scope a bounded editorial batch for FR-QE-0002, FR-AI-0003 and FR-AI-0004, because current explanatory prose directly reinstates settled or withdrawn premises. Then address the smaller cross-reference/regimen/count discrepancies. Keep FR-QE-0001 within its existing pending governance/provenance route. Investigate the lower-confidence candidates separately before deciding whether a repair is justified.
 
 Programme Note tools, new scientific evidence, assessment changes, source re-audits and corpus-wide governance redesign remain outside this implementation session.
+
+## Priority repair completion — 2026-10-08
+
+The first repair batch is completed for FR-QE-0002, FR-AI-0003 and FR-AI-0004. The review findings above remain as the original review snapshot. Field-level before/after values and source limits are recorded in `MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json`.
+
+- FR-QE-0002: BN-001 and OQ-001 now respect the settled optimisation-task kernel; dependent lineage follows corrected IN-001–IN-005. OQ-006 and all other open questions are preserved.
+- FR-AI-0003: AT-001, OQ-001, OQ-003 and dependent 2022 / 2023–24 lineage no longer infer causal capability deterioration, successful preference-data weak-to-strong generalisation, or demonstrated interpretability verification.
+- FR-AI-0004: the 2020 lineage distinguishes held-out loss and few-shot evaluation from established pretraining novelty; the emergence discussion correctly spans Wei (2022) and Schaeffer (2023).
+
+This is editorial alignment with already admitted corrected evidence. Each record has one new editorial mutation. Claims, instances, assessment histories, current judgments, original question IDs and raised dates, prior mutations and provenance-review metadata are unchanged. The other review follow-ups, the existing pending repair route and lower-confidence candidates remain outside this batch; this completion does not certify a full source re-audit or resolve every explanatory question.
