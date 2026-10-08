@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SiteFooter from "../../components/SiteFooter.jsx";
 import PageMeta from "../../components/PageMeta.jsx";
 import "./MCPAccess.css";
+import { mcpHttpExample } from "../../data/mcpProjection.js";
 
 const TABS = [
   {
@@ -50,18 +51,7 @@ const TABS = [
   },
 ];
 
-const HTTP_SAMPLE_RESPONSE = `{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "content": [
-      {
-        "type": "text",
-        "text": "{\\n  \\"query\\": \\"room-temperature superconductivity\\",\\n  \\"count\\": 1,\\n  \\"records\\": [\\n    {\\n      \\"id\\": \\"FR-AM-0005\\",\\n      \\"programme\\": \\"PROG-AM\\",\\n      \\"programmeName\\": \\"Advanced Materials, Physics & Energy\\",\\n      \\"claim\\": \\"Room-Temperature Superconductivity — Reproducibility Under Laboratory Conditions\\",\\n      \\"status\\": \\"closed\\",\\n      \\"pressureState\\": \\"collapsed\\",\\n      \\"verificationStage\\": \\"VS-04\\",\\n      \\"assessmentDate\\": \\"2026-06-29\\",\\n      \\"openedDate\\": \\"2024-01-15\\",\\n      \\"lastMutationDate\\": \\"2026-07-09\\",\\n      \\"evidenceInstances\\": 6,\\n      \\"assessments\\": 2,\\n      \\"openQuestions\\": 4,\\n      \\"canonicalUrl\\": \\"https://faultlinewatch.com/the-record/fr-am-0005/\\"\\n    }\\n  ]\\n}"
-      }
-    ]
-  }
-}`;
+const HTTP_SAMPLE_RESPONSE = mcpHttpExample();
 
 export default function MCPAccess() {
   const [activeTab, setActiveTab] = useState("codex");

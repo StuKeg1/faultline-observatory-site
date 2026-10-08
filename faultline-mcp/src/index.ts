@@ -11,61 +11,10 @@ import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/
 import { z } from "zod";
 
 import { ALL_RECORDS, PROGRAMMES } from "../../src/data/corpus.js";
-import {
-  getAssessmentHistory,
-  getCurrentAssessment,
-  getRecordUrl,
-  getTransitionFeed,
-} from "../../src/data/derive.js";
+import { getCurrentAssessment } from "../../src/data/derive.js";
+import { canonicalRecordView, recordSummary, searchRecords } from "../../src/data/mcpProjection.js";
 
 export interface Env { DEPLOYMENT_COMMIT?: string }
-
-const PUBLIC_ORIGIN = "https://faultlinewatch.com";
-
-function programmeFor(record: any) {
-  return PROGRAMMES.find((programme: any) => programme.id === record.programme) ?? null;
-}
-
-function canonicalUrl(record: any) {
-  return `${PUBLIC_ORIGIN}${getRecordUrl(record)}`;
-}
-
-function canonicalRecordView(record: any) {
-  const programme = programmeFor(record);
-  const assessments = getAssessmentHistory(record);
-
-  return {
-    ...record,
-    assessments,
-    currentAssessment: getCurrentAssessment(record),
-    transitionFeed: getTransitionFeed(record),
-    programmeMetadata: programme,
-    canonicalUrl: canonicalUrl(record),
-    canonicalSource: "src/data/corpus.js → src/data/records/FR-*.js",
-  };
-}
-
-function recordSummary(record: any) {
-  const current = getCurrentAssessment(record);
-  const programme = programmeFor(record);
-
-  return {
-    id: record.id,
-    programme: record.programme,
-    programmeName: programme?.name ?? null,
-    claim: record.claim?.shortLabel ?? record.claim?.statement ?? null,
-    status: record.status ?? null,
-    pressureState: current.pressureState ?? null,
-    verificationStage: current.verificationStage ?? null,
-    assessmentDate: current.date ?? null,
-    openedDate: record.claim?.openedDate ?? null,
-    lastMutationDate: record.mutationLog?.[0]?.date ?? null,
-    evidenceInstances: record.instances?.length ?? 0,
-    assessments: record.assessments?.length ?? 0,
-    openQuestions: record.openQuestions?.length ?? 0,
-    canonicalUrl: canonicalUrl(record),
-  };
-}
 
 function findRecord(id: string) {
   const normalised = id.trim().toUpperCase();
@@ -198,22 +147,8 @@ function buildServer(env: Env): McpServer {
       detail: z.enum(["summary", "full"]).optional().describe("\"summary\" (default) returns one thin projection per record; \"full\" returns the same full canonical view as faultline_read_record for every matched record"),
     },
     async ({ query, programme, limit, detail }) => {
-      const needle = query.trim().toLowerCase();
-      const max = limit ?? 20;
-      const records = ALL_RECORDS
-        .filter((record: any) => !programme || record.programme.toLowerCase() === programme.toLowerCase())
-        .filter((record: any) => {
-          const programmeMetadata = programmeFor(record);
-          return jsonText({ record, programmeMetadata }).toLowerCase().includes(needle);
-        })
-        .slice(0, max);
-      const project = detail === "full" ? canonicalRecordView : recordSummary;
-
       return {
-        content: [{
-          type: "text" as const,
-          text: jsonText({ query, count: records.length, records: records.map(project) }),
-        }],
+        content: [{ type: "text" as const, text: jsonText(searchRecords({ query, programme, limit, detail })) }],
       };
     },
   );

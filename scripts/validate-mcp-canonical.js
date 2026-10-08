@@ -18,7 +18,10 @@ export function validateMcpCanonical(workerRoot = DEFAULT_WORKER_ROOT) {
   const files = sourceFiles(workerRoot);
   const indexPath = path.join(workerRoot, "index.ts");
   const worker = readFileSync(indexPath, "utf8");
-  const combinedSource = files.map((file) => readFileSync(file, "utf8")).join("\n");
+  // The only approved shared adapter is derived from the canonical corpus.
+  const sharedProjection = worker.includes('from "../../src/data/mcpProjection.js"')
+    ? readFileSync(path.resolve(SCRIPT_DIR, "../src/data/mcpProjection.js"), "utf8") : "";
+  const combinedSource = files.map((file) => readFileSync(file, "utf8")).join("\n") + sharedProjection;
   const errors = [];
 
   if (!worker.includes('from "../../src/data/corpus.js"')) {
@@ -27,7 +30,7 @@ export function validateMcpCanonical(workerRoot = DEFAULT_WORKER_ROOT) {
   if (!worker.includes('from "../../src/data/derive.js"')) {
     errors.push("remote MCP must use canonical derived accessors");
   }
-  if (!worker.includes("...record,")) {
+  if (!combinedSource.includes("...record,")) {
     errors.push("remote MCP full-record projection must preserve canonical instance fields, including sources[]");
   }
   if (!worker.includes("structured source provenance where recorded")) {

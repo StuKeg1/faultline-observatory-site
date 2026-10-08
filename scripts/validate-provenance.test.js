@@ -35,9 +35,11 @@ test("meaningless source objects and DOI resolver URLs are rejected", () => {
 
 test("MCP full-record projection inherits canonical sources without a second provenance model", () => {
   const source = fs.readFileSync("faultline-mcp/src/index.ts", "utf8");
-  assert.match(source, /function canonicalRecordView\(record: any\)/);
-  assert.match(source, /\.\.\.record,/);
-  assert.doesNotMatch(source, /extraction_status|source_hash|provenanceConfidence|machineExtractionConfidence/);
+  const projection = fs.readFileSync("src/data/mcpProjection.js", "utf8");
+  assert.match(source, /from "\.\.\/\.\.\/src\/data\/mcpProjection\.js"/);
+  assert.match(projection, /function canonicalRecordView\(record\)/);
+  assert.match(projection, /\.\.\.record,/);
+  assert.doesNotMatch(source + projection, /extraction_status|source_hash|provenanceConfidence|machineExtractionConfidence/);
 });
 
 test("LPR completion marker requires a complete and internally consistent state", () => {
