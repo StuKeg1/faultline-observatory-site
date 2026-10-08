@@ -60,7 +60,7 @@ export function recordSearchMatches(record, query) {
           ? { context: entry.id === current.id ? "current_assessment" : "historical_assessment",
             assessmentId: entry.id, assessmentStatus: entry.id === current.id ? "current" : "historical", date: entry.date }
           : { context: field === "mutationLog" ? "mutation_history" : field === "instances" ? "evidence_instance" : "current_record",
-            entryId: entry.id, date: entry.date ?? entry.raisedDate };
+            entryId: entry.id, ...(entry.date ?? entry.raisedDate ? { date: entry.date ?? entry.raisedDate } : {}) };
         return walkMatches(entry, `${field}.${entry.id}`, needle, context);
       });
     }
