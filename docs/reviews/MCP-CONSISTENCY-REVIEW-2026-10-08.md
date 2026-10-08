@@ -85,3 +85,11 @@ The smaller cross-reference, factor-regimen and count discrepancies are repaired
 - FR-AM-0005 OQ-003 uses the explicitly dated 8 October corpus checkpoint (three escalating PROG-AM records), preserving the fusion/collapse comparison without predicting collapse from programme membership.
 
 One editorial mutation is appended per record. Evidence, assessments, current judgments, claim statements, question identifiers and raised dates, provenance metadata and prior mutations remain unchanged. All seven ordinary editorial follow-ups from the proposed sequence are now completed. FR-QE-0001 remains on its existing pending provenance/governance path; the four lower-confidence candidates remain unedited and require separate investigation.
+
+## Pending QE-0001 route completed — 2026-10-08
+
+FR-QE-0001's D37 representation item is now corrected and completed through its existing route. Full-text verification qualified D37's original absence-of-energy-comparison finding: the source includes an energy comparison, but differently specified accounting boundaries require explicit qualification. IN-004 and its locator are corrected; the other five instances are preserved.
+
+RM-003, BN-002, AT-001, dependent 2024 lineage and OQ-001–OQ-005 now respect AS-002's time-indexed verdict and the exclusion of successor claims from material commitments. The two historical assessments and reconstruction history are preserved; no new judgment or framework determination is issued. See `../provenance/LPR-001-D37-FR-QE-0001-CORRECTION.md` and `LPR-001-D37-FR-QE-0001-CORRECTION-2026-10-08.json` for closure and previous values.
+
+All eight specific follow-ups in the original table are now addressed. The four lower-confidence clarification candidates still require investigation; the separate 2025 simulation candidate remains a Normal Record Review candidate, not admitted evidence. This completion is not a corpus-wide source re-audit.
