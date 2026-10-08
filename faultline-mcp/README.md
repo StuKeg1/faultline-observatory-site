@@ -52,7 +52,11 @@ Both tools accept an optional `detail: "summary" | "full"` parameter.
   `mutationLog`, `programmeMetadata`) for every matched record, instead of one
   `faultline_read_record` call per hit.
 
-Existing callers that don't pass `detail` see no change in output shape.
+Existing callers that don't pass `detail` retain the summary record projection.
+
+Search additionally returns `matches`, grouped by `recordId`, and `matchPolicy`. Each match reference identifies a field, an entry/assessment ID where relevant, a date where recorded, a short excerpt and its context: current record, current assessment, historical assessment, evidence instance, mutation history or programme metadata. Assessment matches explicitly carry `assessmentStatus: "current" | "historical"`. Field-name and serialised-structure matches are labelled separately.
+
+The existing `query`, `count` and `records` fields and record projections remain unchanged. Search continues to include historical text. A historical hit locates preserved wording; it does not reinstate that wording as the controlling judgment. Read `currentAssessment` to interpret the record now. Evidence-instance and current-field matches are retrieval references, not independent verification of the matched assertion.
 
 ## Structured evidence provenance
 
