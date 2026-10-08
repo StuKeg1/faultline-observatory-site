@@ -22,6 +22,8 @@ MCP clients
 
 The MCP project must not maintain a second case database, separate lifecycle taxonomy, independently authored record summaries, or a second provenance model. New records and governed changes are made in the canonical corpus and become available to the MCP interface through the shared imports.
 
+`src/data/mcpProjection.js` supplies the derived full-record, summary and search views used by the Worker, live verification and the website's HTTP example. The example is generated at website build time from the canonical corpus; no stage, date or record count is manually maintained.
+
 ## Deployment verification
 
 The dedicated deployment workflow stamps the Worker with its Git commit and then runs `npm run verify:mcp:live` against the public endpoint. `/deployment.json` and `/health` expose that commit without caching; `faultline_about` includes `deploymentCommit`. Website and MCP fingerprints describe their own deployments and may differ when only website code changes.

@@ -4,33 +4,13 @@ import { pathToFileURL } from "node:url";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { ALL_RECORDS, PROGRAMMES } from "../src/data/corpus.js";
-import { getAssessmentHistory, getCurrentAssessment, getRecordUrl, getTransitionFeed } from "../src/data/derive.js";
+import { canonicalRecordView as expectedFullRecord, recordSummary as expectedSummary } from "../src/data/mcpProjection.js";
+export { expectedFullRecord, expectedSummary };
 
 export function assertDeployment(metadata, commit) {
   assert.match(commit, /^[a-f0-9]{40}$/, "expected commit must be a full Git SHA");
   assert.equal(metadata.commit, commit, "MCP deployment does not match the checked-out commit");
   assert.equal(metadata.canonical, true);
-}
-
-export function expectedFullRecord(record) {
-  return { ...record, assessments: getAssessmentHistory(record),
-    currentAssessment: getCurrentAssessment(record), transitionFeed: getTransitionFeed(record),
-    programmeMetadata: PROGRAMMES.find(p => p.id === record.programme) ?? null,
-    canonicalUrl: `https://faultlinewatch.com${getRecordUrl(record)}`,
-    canonicalSource: "src/data/corpus.js → src/data/records/FR-*.js" };
-}
-
-export function expectedSummary(record) {
-  const current = getCurrentAssessment(record);
-  return { id: record.id, programme: record.programme,
-    programmeName: PROGRAMMES.find(p => p.id === record.programme)?.name ?? null,
-    claim: record.claim?.shortLabel ?? record.claim?.statement ?? null,
-    status: record.status ?? null, pressureState: current.pressureState ?? null,
-    verificationStage: current.verificationStage ?? null, assessmentDate: current.date ?? null,
-    openedDate: record.claim?.openedDate ?? null, lastMutationDate: record.mutationLog?.[0]?.date ?? null,
-    evidenceInstances: record.instances?.length ?? 0, assessments: record.assessments?.length ?? 0,
-    openQuestions: record.openQuestions?.length ?? 0,
-    canonicalUrl: `https://faultlinewatch.com${getRecordUrl(record)}` };
 }
 
 export function assertRecordParity(response, records = ALL_RECORDS, project = expectedFullRecord) {
