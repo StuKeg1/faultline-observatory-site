@@ -177,3 +177,50 @@ test("priority explanatory repairs retain the corrected source limits", async ()
   assert.match(scaling.lineage.items[2].text, /Schaeffer et al\. \(2023\)/);
   assert.deepEqual([getCurrentAssessment(qe).id, getCurrentAssessment(alignment).id, getCurrentAssessment(scaling).id], ["AS-003", "AS-004", "AS-003"]);
 });
+
+test("second consistency batch preserves evidence, judgments, metadata and bounded edit history", async () => {
+  const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
+  const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+  for (const entry of receipt.records) {
+    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    for (const [field, expected] of Object.entries(entry.frozen)) {
+      assert.equal(digest(field === "mutationLog" ? record.mutationLog.slice(1) : record[field]), expected, `${entry.id}: ${field} changed`);
+    }
+    assert.deepEqual(record.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })), entry.questionIdentity);
+    assert.equal(record.mutationLog[0].id, entry.mutationId);
+    const type = detectMutationType(record.mutationLog[0], record);
+    assert.equal(type, "editorial_correction");
+    assert.equal(qualifiesForHomepage(type).qualifies, false);
+    const restored = structuredClone({ mechanisms: record.mechanisms, lineage: record.lineage, openQuestions: record.openQuestions });
+    for (const change of entry.changes) {
+      const keys = change.fieldPath.split(".");
+      assert.equal(keys.reduce((value, key) => value[key], record), change.current);
+      assert.equal(keys.reduce((value, key) => value[key], entry.previous), change.previous);
+      keys.slice(0, -1).reduce((value, key) => value[key], restored)[keys.at(-1)] = change.previous;
+    }
+    assert.deepEqual(restored, entry.previous, `${entry.id}: unreceipted explanatory edit`);
+  }
+});
+
+test("second batch retains conditional event, regimen, recurrence and dated corpus boundaries", async () => {
+  const { ALL_RECORDS } = await import("./corpus.js");
+  const qe = ALL_RECORDS.find(({ id }) => id === "FR-QE-0007");
+  const bt2 = ALL_RECORDS.find(({ id }) => id === "FR-BT-0002");
+  const bt4 = ALL_RECORDS.find(({ id }) => id === "FR-BT-0004");
+  const am = ALL_RECORDS.find(({ id }) => id === "FR-AM-0005");
+  assert.match(qe.openQuestions[1].question, /not the definition of both attractors/);
+  assert.match(qe.openQuestions[1].question, /not restricted to chemistry or fault-tolerant hardware/);
+  assert.match(bt2.mechanisms.find(({ id }) => id === "AT-001").description, /partial OSK reprogramming, not the four-factor OSKM regimen/);
+  assert.match(bt2.openQuestions[3].question, /does not directly test four-factor OSKM/);
+  assert.match(bt2.mechanisms.find(({ id }) => id === "AT-001").description, /functional-biomarker requirement remains unresolved/);
+  assert.match(bt4.openQuestions[2].question, /counts are withdrawn/);
+  assert.match(bt4.openQuestions[2].question, /should not be attributed to RN-004/);
+  assert.doesNotMatch(bt4.openQuestions[2].question, /is the eighth occurrence|pattern.*twice confirmed/);
+  const escalatingAtCheckpoint = ALL_RECORDS.filter(({ programme }) => programme === "PROG-AM")
+    .filter(record => getCurrentAssessment({ ...record, assessments: record.assessments.filter(({ date }) => date <= "2026-10-08") }).pressureState === "escalating")
+    .map(({ id }) => id).sort();
+  assert.deepEqual(escalatingAtCheckpoint, ["FR-AM-0004", "FR-AM-0006", "FR-AM-0007"]);
+  for (const id of escalatingAtCheckpoint) assert.ok(am.openQuestions[2].question.includes(id));
+  assert.match(am.openQuestions[2].question, /8 October 2026 consistency checkpoint/);
+  assert.deepEqual([qe, bt2, bt4, am].map(record => getCurrentAssessment(record).id), ["AS-003", "AS-004", "AS-003", "AS-003"]);
+});

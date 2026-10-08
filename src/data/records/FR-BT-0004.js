@@ -169,12 +169,20 @@ export const FR_BT_0004 = {
     },
     {
       id: "OQ-003",
-      question: "INST-005 is the eighth occurrence of anticipatory institutional evidence and the second instance of pre-validation commercial deployment (after FR-BT-0003 INST-005). The pattern of commercialising before definitive clinical evidence is twice confirmed in PROG-BT. Does this constitute a PROG-BT-specific commercial pressure dynamic, or is it a broader biotechnology sector pattern? This bears on whether the fifth anticipatory act type (undermining validation environment) belongs in RN-004 or in a PROG-BT programme note.",
+      question: "IN-005 records commercial deployment and substantial capital commitments before definitive randomised clinical-utility and mortality evidence. Does this create a claim-specific commercial-pressure dynamic, and what independently supported comparisons would establish whether it recurs across PROG-BT or the wider sector? The former eighth-occurrence and twice-confirmed counts are withdrawn because their predecessor counts are not retained in FR-BT-0002 and FR-BT-0003. Commercial activity alone does not establish that validation has been undermined. Any proposed anticipatory-act classification requires a separately grounded review; the act-type taxonomy should not be attributed to RN-004, which concerns a different, retired trajectory-vocabulary proposal.",
       raisedDate: "2024-01-15",
     }
   ],
 
   mutationLog: [
+    {
+      "id": "M-013",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Stale explanatory cross-reference, regimen or count premise",
+      "to": "Explanatory fields aligned with existing record-specific evidence and corpus boundaries",
+      "note": "Editorial Correction (GP-001), second consistency batch: openQuestions.2.question aligned with existing admitted evidence, corrected cross-references and the dated corpus checkpoint. No new evidence, reassessment, taxonomy or logging procedure. Claims, instances, assessments, status, provenance metadata, original question IDs and raised dates, and prior mutations unchanged. Previous values and source basis: docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json."
+    },
     // APPEND-ONLY. Newest first.
     { id: "M-012", date: "2026-09-26", field: "assessment_issued", from: "AS-002 / FRAGMENTING / VS-04", to: "AS-003 / FRAGMENTING / VS-04", note: "Normal Record Review of the two LPR-001-D28 new-evidence candidates. Peer-reviewed NHS-Galleri primary RCT and three-round performance papers admitted as IN-007 and IN-008. Evidence quality and test-performance characterization strengthened; mortality and overdiagnosis remain unresolved; AT-001 unsatisfied." },
     { id: "M-011", date: "2026-09-26", field: "instances_logged", from: "IN-001–IN-006", to: "IN-001–IN-008", note: "Normal Record Review admitted Sasieni et al. NEJM doi:10.1056/NEJMoa2505723 as IN-007 and Neal et al. Nature Medicine doi:10.1038/s41591-026-04652-8 as IN-008. These were held outside LPR-001-D28 until normal review." },

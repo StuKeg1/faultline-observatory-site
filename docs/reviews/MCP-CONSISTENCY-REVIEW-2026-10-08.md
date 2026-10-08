@@ -74,3 +74,14 @@ The first repair batch is completed for FR-QE-0002, FR-AI-0003 and FR-AI-0004. T
 - FR-AI-0004: the 2020 lineage distinguishes held-out loss and few-shot evaluation from established pretraining novelty; the emergence discussion correctly spans Wei (2022) and Schaeffer (2023).
 
 This is editorial alignment with already admitted corrected evidence. Each record has one new editorial mutation. Claims, instances, assessment histories, current judgments, original question IDs and raised dates, prior mutations and provenance-review metadata are unchanged. The other review follow-ups, the existing pending repair route and lower-confidence candidates remain outside this batch; this completion does not certify a full source re-audit or resolve every explanatory question.
+
+## Second repair batch completion — 2026-10-08
+
+The smaller cross-reference, factor-regimen and count discrepancies are repaired in FR-QE-0007, FR-BT-0002, FR-BT-0004 and FR-AM-0005. Previous values and field-specific bases are preserved in `MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json`.
+
+- FR-QE-0007 OQ-002 treats a shared chemistry event as conditional on satisfying both claims, without narrowing either attractor or creating a logging procedure.
+- FR-BT-0002 AT-001 and OQ-004 distinguish partial OSK from OSKM, keep the admitted dosing milestone separate from outcomes, and retain the independent functional-biomarker requirement.
+- FR-BT-0004 OQ-003 withdraws the unsupported recurrence counts and incorrect RN-004 attribution. Existing IN-005 remains commercial context for a conditional pressure question, not proof of a sector pattern or undermined validation.
+- FR-AM-0005 OQ-003 uses the explicitly dated 8 October corpus checkpoint (three escalating PROG-AM records), preserving the fusion/collapse comparison without predicting collapse from programme membership.
+
+One editorial mutation is appended per record. Evidence, assessments, current judgments, claim statements, question identifiers and raised dates, provenance metadata and prior mutations remain unchanged. All seven ordinary editorial follow-ups from the proposed sequence are now completed. FR-QE-0001 remains on its existing pending provenance/governance path; the four lower-confidence candidates remain unedited and require separate investigation.

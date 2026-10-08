@@ -152,7 +152,7 @@ export const FR_BT_0002 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "First human safety data and validated functional outcome biomarkers. Two developments would materially advance this record: first, Phase I human trials demonstrating safe OSKM induction at partial reprogramming doses with measurable epigenetic clock reversal and no adverse dedifferentiation signals; second, validated functional outcome biomarkers that correlate with clock reversal and demonstrate that clock reduction predicts downstream health benefits. The first would open the human evidence path; the second would resolve BN-001. Neither is present; both are on active development timelines in the field.",
+      description: "Human safety data and validated functional outcome biomarkers. Two developments would materially advance this record: first, human trial outcomes for a specified partial-reprogramming regimen demonstrating safety, measurable epigenetic clock reversal and no adverse dedifferentiation signals; second, validated functional outcome biomarkers showing that clock reduction predicts downstream health benefits. ER-100 tests partial OSK reprogramming, not the four-factor OSKM regimen; safety or other outcomes for one regimen cannot be silently transferred to the other. Admitted IN-007 reports human dosing but no trial outcomes. Dosing opens the clinical test without establishing safety, clock reversal or functional rejuvenation. The separate functional-biomarker requirement remains unresolved.",
     }
   ],
 
@@ -186,12 +186,20 @@ export const FR_BT_0002 = {
     },
     {
       id: "OQ-004",
-      question: "ER-100's trial is the first direct test of AT-001's named attractor condition. When (or if) it reports results, should the pressure state move directly to RESOLVING, or does a single trial — likely small, likely focused on safety rather than efficacy at Phase 1 — only partially satisfy an attractor that names both safety data and validated functional biomarkers? The record should decide this before the trial reports, not in reaction to whatever it finds.",
+      question: "What can ER-100's Phase 1 partial OSK trial establish toward AT-001's human-safety component, and what additional evidence would be needed for epigenetic clock reversal and validated functional benefit? ER-100 does not directly test four-factor OSKM induction; its results must remain specific to the tested regimen, dose and clinical setting. A safety-focused trial would not by itself satisfy the full attractor or warrant an automatic move to RESOLVING. The admitted dosing milestone supplies no reported outcomes.",
       raisedDate: "2026-06-29",
     }
   ],
 
   mutationLog: [
+    {
+      "id": "M-016",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Stale explanatory cross-reference, regimen or count premise",
+      "to": "Explanatory fields aligned with existing record-specific evidence and corpus boundaries",
+      "note": "Editorial Correction (GP-001), second consistency batch: mechanisms.2.description, openQuestions.3.question aligned with existing admitted evidence, corrected cross-references and the dated corpus checkpoint. No new evidence, reassessment, taxonomy or logging procedure. Claims, instances, assessments, status, provenance metadata, original question IDs and raised dates, and prior mutations unchanged. Previous values and source basis: docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json."
+    },
     { id: "M-015", date: "2026-09-24", field: "provenance_correction", from: "LPR-001-D26 discrepancies_found / pending", to: "LPR-001-D26 discrepancies_corrected / completed", note: "Approved bounded correction of IN-001, IN-003, IN-004 and IN-005. Separated 2006 iPSC induction from later in-vitro epigenetic-clock findings; corrected Yamanaka's Altos role and limited funding to its sourced commitment; replaced the unsupported clock-intervention attribution with identifiable 2024 studies and their publication class; narrowed the primate evidence to Life Biosciences' 2024 company-reported ocular model. IN-002 was enriched from verified Ocampo and Lu papers. IN-006 and IN-007 were preserved. AS-004 appended; RM-001, lineage and OQ-001 aligned with corrected evidence. ESCALATING / VS-02 retained. No later scientific evidence admitted." },
     {"id":"M-014","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, BN-001, AT-001 from FR_BT_0002_epigenetic_reprogramming_age_reversal.html (Drive file 12oQGYiWaYPv8-Je7uQ9gnN_v6IUV5zZ5). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
