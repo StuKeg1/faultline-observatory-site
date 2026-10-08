@@ -178,8 +178,8 @@ export const FR_AI_0004 = {
   lineage: {
     items: [
     { year: "2017–19", text: "Transformer scaling begins. GPT-1 and GPT-2 demonstrate that language model performance improves with scale. Task generalisation is observed informally but not systematically measured against scaling curves." },
-    { year: "2020", text: "Scaling laws quantified; GPT-3 demonstrates emergent few-shot performance. Kaplan et al. establish the power-law relationship. Brown et al. demonstrate that scale produces in-context task performance across diverse previously unseen tasks. The claim enters ESCALATING." },
-    { year: "2022", text: "Emergent abilities documented and immediately contested. Wei et al. document discontinuous emergence. Schaeffer et al. challenge the discontinuity interpretation. The mechanism debate opens as an interior question." },
+    { year: "2020", text: "Scaling laws quantified; GPT-3 evaluated in few-shot settings. Kaplan et al. quantify power-law relationships for held-out language-model loss. Brown et al. evaluate in-context task performance without task-specific gradient updates. Those evaluations do not establish that task types, instances or structural analogues were absent from pretraining data, and held-out loss is not itself proof of previously unseen-task performance." },
+    { year: "2022–23", text: "Emergent abilities documented and the discontinuity interpretation contested. Wei et al. (2022) report apparent emergent abilities under studied task metrics. Schaeffer et al. (2023) show how metric choice can create apparent discontinuities in particular evaluated settings; this does not establish universal continuity for all capabilities. The mechanism debate concerns how scaling gains are measured." },
     { year: "2022–23", text: "Chinchilla refines scaling; contamination becomes systematic concern. Hoffmann et al. correct the parameter-data balance. Contamination literature matures. The claim enters FRAGMENTING as evidence quality disputes compound." }
     ],
     relatedRecords: [],
@@ -209,6 +209,14 @@ export const FR_AI_0004 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-016",
+      "date": "2026-10-08",
+      "field": "reference_corrected",
+      "from": "Explanatory wording inconsistent with corrected admitted evidence and current assessment",
+      "to": "Bounded explanatory wording aligned with existing source limits and settled claim scope",
+      "note": "Editorial Correction (GP-001), priority consistency repair: lineage.items.1.text, lineage.items.2.year, lineage.items.2.text corrected against existing admitted evidence and current assessment. No evidence admitted and no reassessment; claim, instances, assessments, status, question IDs and raised dates, and prior mutation entries preserved. Previous values and field-level basis: docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json."
+    },
     {"id":"M-014","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_AI_0004_scaling_emergent_performance.html (Drive file 1k1YV18ZZDTs7emO7mBXZL103gIvoIsQV). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-015", date: "2026-09-30", field: "provenance_correction", from: "LPR-001-D35 discrepancies_found", to: "DISCREPANCIES-CORRECTED", note: "Governed bounded correction applied to IN-002 after LPR-001-D35. Brown et al. remains strong supportive evidence for task-agnostic few-shot/in-context performance without task-specific parameter updates, but the description no longer asserts that the paper proves the evaluated tasks were absent from GPT-3 pretraining. Existing BN-001 contamination/task-novelty qualification is preserved. No new evidence admitted; claim statement, assessments, pressure state, and verification stage unchanged. LPR-001-D35 completion recorded so the provenance-review queue may advance." },
