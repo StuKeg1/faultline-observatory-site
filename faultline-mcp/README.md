@@ -22,6 +22,12 @@ MCP clients
 
 The MCP project must not maintain a second case database, separate lifecycle taxonomy, independently authored record summaries, or a second provenance model. New records and governed changes are made in the canonical corpus and become available to the MCP interface through the shared imports.
 
+## Deployment verification
+
+The dedicated deployment workflow stamps the Worker with its Git commit and then runs `npm run verify:mcp:live` against the public endpoint. `/deployment.json` and `/health` expose that commit without caching; `faultline_about` includes `deploymentCommit`. Website and MCP fingerprints describe their own deployments and may differ when only website code changes.
+
+The gate checks the exact expected commit, tool discovery, programme metadata/counts, every full record and summary, individual retrieval in each programme, and search retrieval. It compares the live data with the corpus checked out at that commit. A stale deployment, missing record or changed field fails the job even if the record count is unchanged. This verifies faithful publication, not the scientific validity of the corpus.
+
 ## Tools
 
 | Tool | Description |

@@ -18,7 +18,7 @@ import {
   getTransitionFeed,
 } from "../../src/data/derive.js";
 
-export interface Env {}
+export interface Env { DEPLOYMENT_COMMIT?: string }
 
 const PUBLIC_ORIGIN = "https://faultlinewatch.com";
 
@@ -97,7 +97,7 @@ function jsonText(value: unknown) {
   return JSON.stringify(value, null, 2);
 }
 
-function buildServer(): McpServer {
+function buildServer(env: Env): McpServer {
   const server = new McpServer({ name: "Faultline Observatory", version: "2.0.0" });
 
   server.tool(
@@ -111,6 +111,7 @@ function buildServer(): McpServer {
           name: "Faultline Observatory MCP",
           access: "public, read-only",
           canonical: true,
+          deploymentCommit: env.DEPLOYMENT_COMMIT ?? null,
           recordCount: ALL_RECORDS.length,
           programmeCount: PROGRAMMES.length,
           source: "The live Frontier Record corpus in src/data/corpus.js and src/data/records/FR-*.js",
@@ -221,17 +222,18 @@ function buildServer(): McpServer {
 }
 
 export default {
-  async fetch(request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
+  async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.pathname === "/health") {
+    if (url.pathname === "/health" || url.pathname === "/deployment.json") {
       return new Response(JSON.stringify({
         status: "ok",
         server: "faultline-mcp",
         canonical: true,
+        commit: env.DEPLOYMENT_COMMIT ?? null,
         recordCount: ALL_RECORDS.length,
       }), {
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
       });
     }
 
@@ -248,7 +250,7 @@ export default {
     }
 
     if (url.pathname === "/mcp") {
-      const server = buildServer();
+      const server = buildServer(env);
       const transport = new WebStandardStreamableHTTPServerTransport({
         sessionIdGenerator: undefined,
       });
