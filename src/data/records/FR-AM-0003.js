@@ -12,10 +12,10 @@
 export const FR_AM_0003 = {
   id: "FR-AM-0003",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-09-10",
-  provenanceReviewId: "LPR-001-D12",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-09",
+  provenanceReviewId: "LPR-001-D46",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "The mechanism responsible for high-temperature superconductivity in cuprate materials has been identified.",
@@ -118,6 +118,7 @@ export const FR_AM_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-012", date: "2026-10-09", field: "provenance_review", from: "LPR-001-D12", to: "LPR-001-D46", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-011", date: "2026-09-10", field: "record_review", from: "2026 evidence candidates", to: "IN-006 + IN-007 admitted", note: "Governed Record Review admitted Radaelli et al. 2026 critical-spin-fluctuation evidence as IN-006 and Sordi et al. 2026 Hubbard-model pairing-dynamics evidence as IN-007. Append-only AS-003 records the combined assessment and reaffirms FRAGMENTING / VS-03. AT-001 was strengthened only to reflect the discriminating computational progress demonstrated by IN-007; lineage extended through 2026. Neither paper is treated as identifying the microscopic pairing mechanism in real cuprates." },
     { id: "M-010", date: "2026-09-10", field: "provenance_correction", from: "LPR-001-D12 discrepancies pending", to: "LPR-001-D12 repaired", note: "Approved bounded provenance repair. Corrected IN-001 through IN-005 for source fidelity, chronology and mechanistic scope; added structured sources[] only for confidently established primary/review sources. Removed the categorical BCS/phonon exclusion from IN-001 and IN-003; narrowed IN-002 to Anderson's source-supported RVB proposal; removed categorical theory-exclusion claims from IN-004; corrected IN-005 chronology to 2015–24 and distinguished Hubbard-model benchmarking and cold-atom antiferromagnetism from direct reproduction of cuprate superconductivity. Append-only AS-002 reaffirms FRAGMENTING / VS-03 with corrected rationale; AS-001 remains intact as historical assessment. RM-002, BN-001, AT-001, lineage and OQ-001 were aligned to the corrected evidence semantics. No 2026 scientific evidence was admitted through this repair; previously flagged 2026 items remain normal Record Review candidates." },
     { id: "M-009", date: "2026-09-10", field: "provenance_review", from: "—", to: "LPR-001-D12", note: "Legacy provenance review completed. All five evidence instances examined. Material source-fidelity or interpretive discrepancies identified in IN-001 through IN-005, so no structured sources were attached in a way that would endorse the legacy wording. IN-001 overstates the 1986 discovery as being above a defined BCS ceiling and as immediately excluding conventional electron-phonon physics; IN-002 mixes sourceable Anderson RVB history with broader unsourced chronology and vocabulary claims; IN-003 correctly records d-wave pairing symmetry but overstates it as ruling out phonon-mediated BCS pairing categorically; IN-004 combines sourceable pseudogap/CDW complexity and the Keimer review with overly categorical statements about what spin-fluctuation and RVB theories can accommodate; IN-005 misdates the Mazurenko 2017 cold-atom result inside a 2019–24 frame and overcompresses Simons/Hubbard benchmarking and what those studies establish about cuprate phenomenology. No factual, interpretive, assessment, pressure-state or verification-stage wording was silently changed. New 2026 work on critical spin fluctuations across LSCO and Hubbard-model pairing dynamics was flagged for normal Record Review and not admitted through LPR-001. Review marked pending governed correction." },
