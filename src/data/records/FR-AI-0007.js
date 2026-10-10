@@ -152,6 +152,21 @@ export const FR_AI_0007 = {
         },
       ],
     },
+    {
+      id: "IN-010",
+      qualifiedEvent: "MechHypoBench — benchmarked mechanism-hypothesis generation exposes a scientific-judgment constraint",
+      description: "MechHypoBench evaluates whether agents can infer open-form mechanistic hypotheses from empirical-style observations. Its 300 tasks draw on 244 papers and 150 datasets across 14 fields; benchmark designers reconstruct a paper-derived mechanism, generate observations from it, and score hypotheses by their implications under withheld conditions. The strongest tested general-agent configuration, Codex with GPT-5.6 Sol and scientific skills, reached 64.9% mechanism-consequence agreement on easy tasks and 50.8% on hard tasks, versus 87.6% and 82.9% for the qualitative mechanism reference. AI-Scientist-v2 reached 59.2% and 43.8%; AutoDiscovery reached 27.5% and 27.1% on its matched 40-task subset. This is bounded CONTESTING evidence about scientific judgment after a task and observations are supplied: even capable agents often do not derive mechanisms that generalise to withheld conditions. It does not test autonomous problem identification, conduct a real-world discovery loop, or independently validate a new scientific finding. The benchmark's reconstructed mechanisms and fixed LLM hypothesis interpreter are material inference limits.",
+      vectors: ["CONTESTING"],
+      date: "2026",
+      sources: [
+        {
+          citation: "Xie, X. et al. From Scientific Observations to Mechanisms: Benchmarking Hypothesis Generation by AI Scientists. arXiv:2610.05197v1 (2026).",
+          url: "https://arxiv.org/abs/2610.05197",
+          doi: "10.48550/arXiv.2610.05197",
+          locator: "Main text and Table 2: benchmark construction, 300-task evaluation, agent and AI-scientist results; submitted 4 October 2026",
+        },
+      ],
+    },
   ],
 
   assessments: [
@@ -187,6 +202,14 @@ export const FR_AI_0007 = {
       verificationStage: "VS-03",
       summary: "ScholarCatalyst adds a measured literature-selection boundary to the existing scientific-judgment concern. In a computer-science benchmark built from 894 early-stage research questions and firsthand judgments from 184 lead authors of 207 projects, the strongest embedding retriever recovered 48% of author-credited catalyst papers in its top 20; the tested agentic search reached 42%. This indicates that current systems can miss prior work researchers consider useful for advancing a project, even when the task and research question are supplied. The benchmark evaluates retrieval of useful prior literature, not end-to-end discovery, autonomous problem identification, or correctness and novelty of new findings. Its retrospective author labels, uneven computer-science coverage, and unknown performance ceiling bound the inference. It strengthens the specific research-judgment concern but does not reverse bounded successful discoveries or justify a state transition. FRAGMENTING / VS-03 remains.",
       assessorNote: "Normal Record Review of Kim et al., ScholarCatalyst, arXiv:2610.02202v1. Assessment appended without a new evidence instance; the result tests one component of research judgment and does not evaluate end-to-end scientific discovery."
+    },
+    {
+      id: "AS-005",
+      date: "2026-10-10",
+      pressureState: "fragmenting",
+      verificationStage: "VS-03",
+      summary: "MechHypoBench (IN-010) adds a controlled measure to the record's existing scientific-judgment constraint. After task construction, source and dataset selection, and the paper-derived generating mechanism are supplied by benchmark designers, agents must formulate an open-form mechanism from public observations and generalise to withheld conditions. The strongest tested general-agent configuration reached 64.9% mechanism-consequence agreement on easy tasks and 50.8% on hard tasks, versus 87.6% and 82.9% for the qualitative mechanism reference; the dedicated AI-scientist workflows did not consistently outperform a general agent. This independently reinforces the concern that supplying a scientific task does not by itself yield robust scientific judgment. The result remains bounded: it is a constructed benchmark, uses reconstructed mechanisms and a fixed LLM hypothesis interpreter, and does not assess autonomous problem identification, real-world discovery, or independently validated novelty and correctness. It therefore strengthens the current fragmentation rationale alongside AS-004 without reversing bounded successful discoveries or changing FRAGMENTING / VS-03.",
+      assessorNote: "Approved Post-Scout review of arXiv:2610.05197v1. IN-010 is logged before this assessment; the assessment retains the constructed-benchmark and non-end-to-end-discovery limits.",
     },
   ],
 
@@ -238,6 +261,14 @@ export const FR_AI_0007 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-020",
+      date: "2026-10-10",
+      field: "instance_and_assessment_appended",
+      from: "IN-009 / AS-004",
+      to: "IN-010 / AS-005",
+      note: "IN-010 and AS-005 appended after approved Post-Scout flag FR-AI-0007. MechHypoBench (arXiv:2610.05197v1) provides bounded CONTESTING evidence on scientific judgment after a task and observations are supplied. The constructed-benchmark design, reconstructed mechanisms, fixed LLM hypothesis interpreter, and absence of autonomous problem identification, real-world discovery, or independently validated novel correct findings are retained as material limits. Pressure State remains FRAGMENTING and Verification Stage remains VS-03.",
+    },
     { id: "M-019", date: "2026-10-03", field: "assessment_appended", from: "AS-003", to: "AS-004", note: "Normal Record Review of flag 2026-10-03-02 appended AS-004 following operator decision to add the suggested assessment. ScholarCatalyst adds bounded benchmark evidence about author-judged literature selection and scientific judgment (894 queries; 184 lead authors; agentic R@20 0.42 vs strongest embedding 0.48). Retrieval is not end-to-end discovery, and CS-only coverage, retrospective labels and unknown performance ceiling are retained as limits. FRAGMENTING / VS-03 retained; no new instance, claim, mechanism, open question or verification-stage change." },
     { id: "M-018", date: "2026-10-03", field: "provenance_review", from: "LPR-001-D07", to: "LPR-001-D40", note: "Second-cycle Legacy Provenance Review completed as PASS across all nine existing evidence instances. IN-001 through IN-004 and IN-006 through IN-009 remain source-faithful; DOI metadata was added to the four already-structured Nature sources where canonical identifiers are confidently established. IN-005 remains explicit unresolved legacy provenance debt and is already withdrawn from the current evidential basis, so no source was guessed or retrofitted. No factual, interpretive, attribution, or verification-stage discrepancy was identified; no genuinely new scientific evidence was admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     // APPEND-ONLY. Newest first.
