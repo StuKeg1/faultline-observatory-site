@@ -9,8 +9,8 @@ import "./ReadingRoom.css";
 
 const SECTIONS = [
   {
-    title: "Programme Notes",
-    description: "Corpus-grounded accounts of what the records within a programme currently show.",
+    title: "Programme Syntheses",
+    description: "Start with the current record-grounded synthesis; the essays below explore what those patterns may mean.",
     items: PROGRAMME_NOTES,
   },
   {
