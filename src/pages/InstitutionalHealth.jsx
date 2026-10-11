@@ -67,8 +67,7 @@ export default function InstitutionalHealth() {
                 <div className="inst-health-kicker">Metrics</div>
                 <h2 className="inst-health-title">Weekly contextual statistics — not health metrics</h2>
                 <p className="inst-health-copy">
-                  Visitors and page views are sourced from Cloudflare Analytics.
-                  Record and programme counts are derived from the live corpus registry.
+                  Unique-client and page-view counts are sourced from Cloudflare network analytics.\n                  They include automated traffic, such as crawlers and deployment checks, and are not audience estimates.\n                  Record and programme counts are derived from the live corpus registry.
                 </p>
                 <p className="inst-context-governance">
                   Weekly contextual statistics only. No institutional health triggers are derived from this section.
@@ -79,13 +78,13 @@ export default function InstitutionalHealth() {
 
                 <div className="inst-context-grid">
                   <article className="inst-context-card">
-                    <span className="inst-context-label">Visitors</span>
+                    <span className="inst-context-label">Unique clients (unfiltered)</span>
                     <strong className="inst-context-value">
                       <VisitorValue value={visitors} status={status} />
                     </strong>
                   </article>
                   <article className="inst-context-card">
-                    <span className="inst-context-label">Page views</span>
+                    <span className="inst-context-label">Page views (unfiltered)</span>
                     <strong className="inst-context-value">
                       <VisitorValue value={pageViews} status={status} />
                     </strong>
