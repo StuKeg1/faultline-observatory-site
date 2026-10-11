@@ -4,28 +4,43 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Query available traffic dimensions
         env:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
         run: |
           set -euo pipefail
           query='{"query":"query { one: __type(name: \"ZoneHttpRequests1dGroupsDimensions\") { fields { name } } two: __type(name: \"ZoneHttpRequests1dGroupsSum\") { fields { name } } three: __type(name: \"ZoneHttpRequests1dGroupsUniq\") { fields { name } } }"}'
-          response="$(curl --fail-with-body --silent --show-error \
+          mkdir -p reports/generated
+          curl --fail-with-body --silent --show-error \
             -X POST https://api.cloudflare.com/client/v4/graphql \
             -H "Authorization: Bearer $CF_API_TOKEN" \
             -H "Content-Type: application/json" \
-            --data "$query")"
-          echo "$response" | jq .
+            --data "$query" | jq . > reports/generated/cloudflare-traffic-schema.json
           {
             echo "## Available Cloudflare traffic fields"
             echo
             echo '~~~json'
-            echo "$response" | jq .
+            cat reports/generated/cloudflare-traffic-schema.json
             echo '~~~'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit schema result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/generated/cloudflare-traffic-schema.json
+          if git diff --cached --quiet; then
+            echo "Schema result unchanged."
+          else
+            git commit -m "chore: capture Cloudflare traffic schema"
+            git push
+          fi
