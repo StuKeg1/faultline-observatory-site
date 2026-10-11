@@ -164,8 +164,8 @@ function WhereRecordStands({ legibility }) {
       <div className={`record-evidence-gap${evidenceSinceAssessment.length ? " record-evidence-gap--open" : ""}`}>
         <span className="record-stands-label">Evidence since assessment</span>
         <p>{evidenceSinceAssessment.length
-          ? `${evidenceSinceAssessment.length} qualifying evidence ${evidenceSinceAssessment.length === 1 ? "instance was" : "instances were"} recorded after this assessment and not yet assessed.`
-          : "No qualifying evidence has been recorded after this assessment."}</p>
+          ? `${evidenceSinceAssessment.length} evidence ${evidenceSinceAssessment.length === 1 ? "instance has" : "instances have"} been admitted since this assessment. No reassessment has been issued yet.`
+          : "No evidence has been admitted since this assessment."}</p>
       </div>
       {questions.length > 0 && (
         <div className="record-questions-on-record">
