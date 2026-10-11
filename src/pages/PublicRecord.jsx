@@ -40,7 +40,7 @@ const LENSES = [
   {
     eyebrow: "Records Directory",
     title: "What does the Observatory preserve?",
-    description: "Every tracked claim remains individually addressable. The claim collapsed. The record did not.",
+    description: "Even when a tracked claim collapses, its public record remains individually addressable.",
     to: "/the-record/",
     action: "Open the Records Directory",
   },
