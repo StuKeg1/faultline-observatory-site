@@ -5,6 +5,7 @@ import PageMeta from "../components/PageMeta.jsx";
 import StateBadge from "../components/StateBadge.jsx";
 import AssessmentHistoryStrip from "../components/AssessmentHistoryStrip.jsx";
 import { ALL_RECORDS, PROGRAMMES } from "../data/corpus.js";
+import { REGISTERS, getRegisterRows, resolveRegister } from "../data/registerProjection.js";
 import {
   getAssessmentHistory,
   getCurrentAssessment,
@@ -52,18 +53,6 @@ const STATE_TONES = {
   resolving: "resolving",
 };
 
-const LENSES = [
-  { id: "full", label: "Full archive", description: "All Frontier Records remain present.", matches: () => true },
-  { id: "changed", label: "Changed assessments", description: "Records whose institutional assessment changed at least once.", matches: (record) => getTransitionFeed(record).length > 0 },
-  { id: "audit", label: "Current audit records", description: "Records now held in Audit, with the archive still visible around them.", matches: (record) => getCurrentAssessment(record).pressureState === "audit" },
-  ...PROGRAMMES.map((programme) => ({
-    id: programme.id,
-    label: programme.name,
-    description: `${programme.shortId} records are brought forward within the full archive.`,
-    matches: (record) => record.programme === programme.id,
-  })),
-];
-
 function formatState(state) { return getPressureStateLabel(state); }
 function getProgramme(record) { return PROGRAMMES.find((programme) => programme.id === record.programme); }
 function buildTrajectory(record) {
@@ -103,8 +92,16 @@ function provenanceDescription(provenance) {
   return ` Legacy review re-affirmed this stage with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
 }
 
+function RegisterStage({ assessment }) {
+  const provenance = assessment.verificationStageProvenance;
+  const marker = provenance?.disposition === "historically-unverified"
+    ? "historically unverified"
+    : provenance?.disposition === "correction-required" ? "reconstructed" : null;
+  return <span className="et-register-stage">{assessment.verificationStage}{marker && <small> · {marker}</small>}</span>;
+}
+
 function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, onHover }) {
-  const selectedLens = LENSES.find((lens) => lens.id === lensId) ?? LENSES[0];
+  const selectedLens = resolveRegister(lensId);
   const focusIds = useMemo(() => {
     if (selectedId) return new Set([selectedId]);
     if (lensId === "full") return new Set();
@@ -265,26 +262,36 @@ export default function EvidenceTrajectories() {
   const [searchParams, setSearchParams] = useSearchParams();
   const hydrated = useSyncExternalStore(subscribeToHydration, getClientSnapshot, getServerSnapshot);
   const requestedLens = hydrated ? searchParams.get("lens") ?? (searchParams.get("programme") || "full") : "full";
-  const lensId = LENSES.some((lens) => lens.id === requestedLens) ? requestedLens : "full";
+  const lensId = resolveRegister(requestedLens).id;
   const selectedId = hydrated ? searchParams.get("record") : null;
   const [hoveredId, setHoveredId] = useState(null);
   const trajectories = useMemo(() => ALL_RECORDS.map(buildTrajectory), []);
-  const selectedLens = LENSES.find((lens) => lens.id === lensId) ?? LENSES[0];
+  const selectedLens = resolveRegister(lensId);
+  const registerRows = useMemo(() => getRegisterRows(ALL_RECORDS, lensId), [lensId]);
+  const registerGroups = useMemo(() => ["Full archive", "State", "Stage", "Movement", "Programme"].map((group) => ({
+    group,
+    registers: REGISTERS.filter((register) => register.group === group).filter((register) => !register.legacy || ALL_RECORDS.some((record) => register.matches(record))),
+  })), [registerRows]);
 
   function selectRecord(recordId) {
     setSearchParams(trajectoryParams(recordId, lensId), { replace: false });
     if (recordId) window.setTimeout(() => document.getElementById(`record-${recordId}`)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" }), 0);
   }
 
+  function selectRegister(registerId) {
+    setSearchParams(trajectoryParams(null, registerId), { replace: false });
+  }
+
   return (
     <>
       <PageMeta title="Evidence Trajectories" description="Follow how the Observatory's judgement of technology claims has changed as evidence accumulated." path="/evidence-trajectories/" />
       <div className="evidence-trajectories-page">
-        <header className="et-hero"><div className="et-hero-inner"><div className="et-eyebrow">Faultline Observatory</div><h1>Evidence Trajectories</h1><p className="et-proposition">Follow how the Observatory's judgement of technology claims has changed as evidence accumulated.</p><p className="et-instruction">Each line represents one Frontier Record. Select a reading to bring related trajectories forward; the full archive remains present.</p><details className="et-how-to-read"><summary>How to read this page</summary><ol><li><b>Read across</b> - time moves from left to right.</li><li><b>Read vertically</b> - position indicates verification depth at that moment.</li><li><b>Single-assessment records</b> - one documented assessment is shown as one historical point, not as a synthetic line to Today.</li><li><b>Read provenance</b> - dashed rings mark single-assessment stages touched by the legacy review; finer dotted rings mark historically unverified assignments.</li><li><b>Read the register</b> - the chart on the left shows documentary history; the separate Current Register on the right groups records by their ratified Verification Stage today.</li><li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li></ol></details><p className="et-instruction" role="note">Verification-stage provenance notice: the legacy review is complete. Historical codes remain preserved. For single-assessment records, the historical chart now shows the recorded stage while the Current Register shows the ratified present interpretation. Assignments that could not be reliably reconstructed remain visibly marked historically unverified.</p></div></header>
+        <header className="et-hero"><div className="et-hero-inner"><div className="et-eyebrow">Faultline Observatory</div><h1>Evidence Trajectories</h1><p className="et-proposition">Follow how the Observatory's judgement of technology claims has changed as evidence accumulated.</p><p className="et-instruction">Each line represents one Frontier Record. Select a register to bring related trajectories forward; the full archive remains present.</p><details className="et-how-to-read"><summary>How to read this page</summary><ol><li><b>Read across</b> - time moves from left to right.</li><li><b>Read vertically</b> - position indicates verification depth at that moment.</li><li><b>Single-assessment records</b> - one documented assessment is shown as one historical point, not as a synthetic line to Today.</li><li><b>Read provenance</b> - dashed rings mark single-assessment stages touched by the legacy review; finer dotted rings mark historically unverified assignments.</li><li><b>Read the register</b> - the chart on the left shows documentary history; the separate Current Register on the right groups records by their ratified Verification Stage today.</li><li><b>Open the record</b> - every trajectory can be traced back to its documentary history.</li></ol></details><p className="et-instruction" role="note">Verification-stage provenance notice: the legacy review is complete. Historical codes remain preserved. For single-assessment records, the historical chart now shows the recorded stage while the Current Register shows the ratified present interpretation. Assignments that could not be reliably reconstructed remain visibly marked historically unverified.</p></div></header>
         <main className="et-main">
+          <nav className="et-register-bar" aria-label="Evidence Trajectories registers">{registerGroups.map(({ group, registers }) => <div className="et-register-group" key={group}><span>{group}</span><div>{registers.map((register) => { const count = ALL_RECORDS.filter((record) => register.matches(record)).length; return <button type="button" key={register.id} aria-current={lensId === register.id ? "true" : undefined} onClick={() => selectRegister(register.id)} title={register.description}>{register.label} <b>{count}</b></button>; })}</div></div>)}</nav>
           <section className="et-reading-field" aria-label="Evidence Trajectories reading field"><EvidenceChart trajectories={trajectories} selectedId={selectedId} hoveredId={hoveredId} lensId={lensId} onSelect={selectRecord} onHover={setHoveredId} /></section>
           <p className="et-transition">The trajectories above are derived from the assessment histories below.</p>
-          <section className="et-records" aria-labelledby="et-records-title"><div className="et-section-heading"><h2 id="et-records-title">Trajectory records</h2><p>SHOWING THE FULL ARCHIVE · {selectedLens.label !== "Full archive" ? `${selectedLens.label} records are emphasised.` : "NO READING IS PRESELECTED."}</p></div><div className="et-record-list">{trajectories.map((trajectory) => <TrajectoryRecordCard key={trajectory.record.id} trajectory={trajectory} isSelected={selectedId === trajectory.record.id} isLensFocus={selectedLens.matches(trajectory.record)} lensId={lensId} onSelect={selectRecord} />)}</div></section>
+          <section className="et-records" aria-labelledby="et-records-title">{lensId === "full" ? <><div className="et-section-heading"><h2 id="et-records-title">Trajectory records</h2><p>SHOWING THE FULL ARCHIVE · NO REGISTER IS PRESELECTED.</p></div><div className="et-record-list">{trajectories.map((trajectory) => <TrajectoryRecordCard key={trajectory.record.id} trajectory={trajectory} isSelected={selectedId === trajectory.record.id} isLensFocus={selectedLens.matches(trajectory.record)} lensId={lensId} onSelect={selectRecord} />)}</div></> : <><div className="et-section-heading"><h2 id="et-records-title">{selectedLens.label} · {registerRows.length} records · as of each record&apos;s latest assessment</h2><button type="button" className="et-show-full" onClick={() => selectRegister("full")}>Show full archive</button></div>{registerRows.length === 0 ? <p className="et-register-empty-message">No records are currently in this register.</p> : <div className="et-register-table" role="table" aria-label={`${selectedLens.label} register`}><div className="et-register-table-head" role="row"><span>ID</span><span>Record</span><span>State</span><span>VS</span><span>Why here</span><span>Evidence gap</span></div>{registerRows.map((row) => <Link key={row.record.id} to={getRecordUrl(row.record)} className="et-register-table-row" role="row"><span>{row.record.id}</span><span>{row.record.claim.shortLabel}</span><span><StateBadge pressureState={row.current.pressureState} /></span><span><RegisterStage assessment={row.current} /></span><span>{row.reason}</span><span>{row.evidenceGapCount > 0 ? `${row.evidenceGapCount} evidence instance${row.evidenceGapCount === 1 ? "" : "s"} admitted since assessment` : ""}</span></Link>)}</div>}</>}</section>
           <section className="et-accessible" aria-labelledby="et-accessible-title"><h2 id="et-accessible-title">Chronological record of trajectories</h2><p>A text-based equivalent of the visual reading above, preserving each record's assessment history without requiring the chart.</p><details className="et-text-index"><summary>{"View the full chronological trajectory index ->"}</summary><div>{trajectories.map(({ record, history }) => <details key={record.id}><summary>{record.id} - {record.claim.shortLabel}</summary><ol>{history.map((assessment) => <li key={assessment.id}><span>{assessment.date}</span>{" "}<strong>{formatState(assessment.pressureState)}</strong>{" "}{assessment.summary}</li>)}</ol><Link to={getRecordUrl(record)}>Read complete Frontier Record</Link></details>)}</div></details></section>
         </main>
       </div>
