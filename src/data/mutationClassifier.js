@@ -106,6 +106,8 @@ export const INSTANCE_FIELD_SYNONYMS = new Set([
   "instance_appended",
   "instances_logged",
   "instance_added",
+  "instances_appended",
+  "instances_added",
 ]);
 
 // Field-name variants for an assessment appended to the record. Most use
@@ -121,6 +123,35 @@ export const ASSESSMENT_ISSUED_FIELD_SYNONYMS = new Set([
   "assessment_reissued",
   "assessment_correction",
   "assessment_and_dependencies_corrected",
+  "assessment_appended",
+]);
+
+// These field-name variants all record correction, provenance, or record-shape
+// work. They preserve the audit trail, but do not themselves admit new
+// evidence or alter a current assessment.
+const EDITORIAL_CORRECTION_FIELD_SYNONYMS = new Set([
+  "description_corrected",
+  "description_reordered",
+  "editorial_correction",
+  "mechanism_attractor_consistency_corrected",
+  "opened_date_added",
+  "provenance_corrected",
+  "provenance_correction",
+  "provenance_enriched",
+  "provenance_repair",
+  "related_records_corrected",
+  "assessment_order_corrected",
+  "vector_corrected",
+]);
+
+const RECORD_ANNOTATION_FIELD_SYNONYMS = new Set([
+  "experimental_annotations_retired",
+  "realization_note_added",
+]);
+
+const INSTITUTIONAL_RECONSTRUCTION_FIELD_SYNONYMS = new Set([
+  "canonical_baseline_realigned",
+  "record_reconstructed",
 ]);
 
 function findCreationDate(record) {
@@ -205,10 +236,14 @@ export function detectMutationType(mutation, record) {
   if (mutation.field === "open_question_raised") {
     return "open_question_added";
   }
-  if (mutation.field === "reference_corrected") {
-    return "editorial_correction";
+  if (mutation.field === "open_question_added") {
+    return "open_question_added";
   }
-  if (mutation.field === "description_restored") {
+  if (
+    mutation.field === "reference_corrected" ||
+    mutation.field === "description_restored" ||
+    EDITORIAL_CORRECTION_FIELD_SYNONYMS.has(mutation.field)
+  ) {
     return "editorial_correction";
   }
   if (mutation.field === "claim_scope_narrowed") {
@@ -217,11 +252,20 @@ export function detectMutationType(mutation, record) {
   if (mutation.field === "legacy_vocabulary_migrated") {
     return "legacy_vocabulary_migrated";
   }
-  if (mutation.field === "experimental_annotations_added") {
-    return "experimental_annotations_added";
+  if (
+    mutation.field === "experimental_annotations_added" ||
+    RECORD_ANNOTATION_FIELD_SYNONYMS.has(mutation.field)
+  ) {
+    return "record_annotation_updated";
   }
-  if (mutation.field === "provenance_review_completed") {
+  if (mutation.field === "provenance_review_completed" || mutation.field === "provenance_review") {
     return "provenance_review_completed";
+  }
+  if (mutation.field === "record_review") {
+    return /\bIN-\d{3}\b/.test(mutation.to) ? "instance_added" : "unclassified";
+  }
+  if (INSTITUTIONAL_RECONSTRUCTION_FIELD_SYNONYMS.has(mutation.field)) {
+    return "institutional_record_reconstruction";
   }
   if (isBootstrapPlaceholder(mutation, creationDate)) {
     return "creation_batch_internal";
@@ -279,10 +323,10 @@ const QUALIFICATION_TABLE = {
     "D",
     "Row 5 Audit (2026-07-05). Housekeeping: restates a record's own historical mutation-log entries in current taxonomy vocabulary. No new evidence, interpretation, or institutional structure changed — analogous to an editorial correction. Retained in full in the Institutional Changelog.",
   ],
-  experimental_annotations_added: [
+  record_annotation_updated: [
     false,
     "D",
-    "2026-07 pilot: records that a record gained an experimentalAnnotations[] container — internal pilot infrastructure, not itself a public development. Analogous to creation_batch_internal and legacy_vocabulary_migrated: the mutation documents a structural change to the record's shape, not a new evidentiary or assessment finding. The annotation content itself, if any, is surfaced separately on the record page — this entry governs only whether the mutation-log line qualifies for the activity feed. Retained in full in the Institutional Changelog.",
+    "Internal annotation or record-shape work. The underlying observation, if any, is surfaced separately through evidence or assessment mutations; this entry is changelog-only.",
   ],
   provenance_review_completed: [
     false,
@@ -293,6 +337,11 @@ const QUALIFICATION_TABLE = {
     false,
     "C",
     "Row 5 Audit (2026-07-05), first Observed-status evidence toward Policy §3.3's unresolved 'materially changes governance' threshold. This mutation records the downstream consequence, on an individual record, of a single institutional decision (the PROG-MF-* → PROG-AM-* restructuring) — institutional record-keeping, not itself a public development. Retained in full in the Institutional Changelog. Does not resolve §3.3 generally; one case only.",
+  ],
+  institutional_record_reconstruction: [
+    false,
+    "C",
+    "An institutional reconstruction or baseline realignment. It preserves governance history without itself constituting a new public evidentiary development.",
   ],
   unclassified: [
     false,
