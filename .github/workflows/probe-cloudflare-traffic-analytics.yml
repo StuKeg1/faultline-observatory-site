@@ -1,4 +1,4 @@
-name: Probe Cloudflare Traffic Analytics
+name: Pull Cloudflare Traffic Baseline
 
 on:
   workflow_dispatch:
@@ -7,40 +7,88 @@ permissions:
   contents: write
 
 jobs:
-  probe:
+  baseline:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Query available traffic dimensions
+      - name: Pull read-only traffic baseline
         env:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
         run: |
-          set -euo pipefail
-          query='{"query":"query { one: __type(name: \"ZoneHttpRequests1dGroupsDimensions\") { fields { name } } two: __type(name: \"ZoneHttpRequests1dGroupsSum\") { fields { name } } three: __type(name: \"ZoneHttpRequests1dGroupsUniq\") { fields { name } } }"}'
-          mkdir -p reports/generated
-          curl --fail-with-body --silent --show-error \
-            -X POST https://api.cloudflare.com/client/v4/graphql \
-            -H "Authorization: Bearer $CF_API_TOKEN" \
-            -H "Content-Type: application/json" \
-            --data "$query" | jq . > reports/generated/cloudflare-traffic-schema.json
-          {
-            echo "## Available Cloudflare traffic fields"
-            echo
-            echo '~~~json'
-            cat reports/generated/cloudflare-traffic-schema.json
-            echo '~~~'
-          } >> "$GITHUB_STEP_SUMMARY"
+          node <<'NODE'
+          const { mkdirSync, writeFileSync } = require("fs");
 
-      - name: Commit schema result
+          const endpoint = "https://api.cloudflare.com/client/v4/graphql";
+          const auth = { Authorization: "Bearer " + process.env.CF_API_TOKEN, "Content-Type": "application/json" };
+
+          async function graphql(query) {
+            const response = await fetch(endpoint, { method: "POST", headers: auth, body: JSON.stringify({ query }) });
+            const body = await response.json();
+            if (!response.ok || body.errors) throw new Error(JSON.stringify(body.errors || body));
+            return body.data;
+          }
+
+          function iso(d) { return d.toISOString().slice(0, 10) + "T00:00:00Z"; }
+          const end = new Date(); end.setUTCHours(0, 0, 0, 0);
+          const start = new Date(end); start.setUTCDate(start.getUTCDate() - 60);
+
+          async function typeFields(name) {
+            const data = await graphql('query { t: __type(name: "' + name + '") { fields { name } } }');
+            return new Set((data.t && data.t.fields || []).map(field => field.name));
+          }
+
+          async function metric(field) {
+            const query = 'query { viewer { zones(filter: { zoneTag: "' + process.env.CF_ZONE_ID + '" }) { rows: httpRequestsAdaptiveGroups(limit: 100, orderBy: [count_DESC], filter: { datetime_geq: "' + iso(start) + '", datetime_lt: "' + iso(end) + '", requestSource: "eyeball" }) { count avg { sampleInterval } sum { visits } dimensions { ' + field + ' } } } } }';
+            try {
+              const data = await graphql(query);
+              return { status: "available", rows: data.viewer.zones[0].rows };
+            } catch (error) {
+              return { status: "unavailable", reason: error.message };
+            }
+          }
+
+          (async () => {
+            const dimensions = await typeFields("ZoneHttpRequestsAdaptiveGroupsDimensions");
+            const sum = await typeFields("ZoneHttpRequestsAdaptiveGroupsSum");
+            const output = {
+              source: "cloudflare",
+              periodStart: iso(start),
+              periodEndExclusive: iso(end),
+              generatedAt: new Date().toISOString(),
+              availableAdaptiveDimensions: [...dimensions].sort(),
+              availableAdaptiveSums: [...sum].sort(),
+              metrics: {}
+            };
+
+            for (const [name, field] of Object.entries({
+              requestedPaths: "clientRequestPath",
+              referrerHosts: "clientRefererHost",
+              countries: "clientCountryName",
+              deviceTypes: "userAgentDeviceType",
+              browsers: "userAgentBrowser"
+            })) {
+              output.metrics[name] = dimensions.has(field)
+                ? await metric(field)
+                : { status: "not_available_in_plan_or_schema" };
+            }
+
+            mkdirSync("reports/generated", { recursive: true });
+            writeFileSync("reports/generated/cloudflare-traffic-baseline.json", JSON.stringify(output, null, 2) + "\n");
+            console.log(JSON.stringify({ periodStart: output.periodStart, periodEndExclusive: output.periodEndExclusive, metrics: Object.fromEntries(Object.entries(output.metrics).map(([name, value]) => [name, value.status])) }, null, 2));
+          })().catch(error => { console.error(error); process.exit(1); });
+          NODE
+
+      - name: Commit baseline result
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add reports/generated/cloudflare-traffic-schema.json
+          git add reports/generated/cloudflare-traffic-baseline.json
           if git diff --cached --quiet; then
-            echo "Schema result unchanged."
+            echo "Traffic baseline unchanged."
           else
-            git commit -m "chore: capture Cloudflare traffic schema"
+            git commit -m "chore: capture Cloudflare traffic baseline"
             git push
           fi
