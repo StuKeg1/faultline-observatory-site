@@ -33,15 +33,16 @@ jobs:
 
           function iso(d) { return d.toISOString().slice(0, 10) + "T00:00:00Z"; }
           const end = new Date(); end.setUTCHours(0, 0, 0, 0);
-          const start = new Date(end); start.setUTCDate(start.getUTCDate() - 60);
+          const seriesStart = new Date(end); seriesStart.setUTCDate(seriesStart.getUTCDate() - 60);
+          const detailStart = new Date(end); detailStart.setUTCDate(detailStart.getUTCDate() - 30);
 
           async function typeFields(name) {
             const data = await graphql('query { t: __type(name: "' + name + '") { fields { name } } }');
             return new Set((data.t && data.t.fields || []).map(field => field.name));
           }
 
-          async function metric(field) {
-            const query = 'query { viewer { zones(filter: { zoneTag: "' + process.env.CF_ZONE_ID + '" }) { rows: httpRequestsAdaptiveGroups(limit: 100, orderBy: [count_DESC], filter: { datetime_geq: "' + iso(start) + '", datetime_lt: "' + iso(end) + '", requestSource: "eyeball" }) { count avg { sampleInterval } sum { visits } dimensions { ' + field + ' } } } } }';
+          async function detailMetric(field) {
+            const query = 'query { viewer { zones(filter: { zoneTag: "' + process.env.CF_ZONE_ID + '" }) { rows: httpRequestsAdaptiveGroups(limit: 250, orderBy: [count_DESC], filter: { datetime_geq: "' + iso(detailStart) + '", datetime_lt: "' + iso(end) + '", requestSource: "eyeball" }) { count avg { sampleInterval } sum { visits } dimensions { ' + field + ' } } } } }';
             try {
               const data = await graphql(query);
               return { status: "available", rows: data.viewer.zones[0].rows };
@@ -51,13 +52,26 @@ jobs:
           }
 
           (async () => {
-            const dimensions = await typeFields("ZoneHttpRequestsAdaptiveGroupsDimensions");
-            const sum = await typeFields("ZoneHttpRequestsAdaptiveGroupsSum");
+            const [dimensions, sum] = await Promise.all([
+              typeFields("ZoneHttpRequestsAdaptiveGroupsDimensions"),
+              typeFields("ZoneHttpRequestsAdaptiveGroupsSum")
+            ]);
+            const dailyQuery = 'query { viewer { zones(filter: { zoneTag: "' + process.env.CF_ZONE_ID + '" }) { days: httpRequests1dGroups(limit: 70, filter: { date_geq: "' + iso(seriesStart).slice(0, 10) + '", date_leq: "' + iso(new Date(end.getTime() - 86400000)).slice(0, 10) + '" }) { dimensions { date } sum { pageViews } uniq { uniques } } } } }';
+            const dailyData = await graphql(dailyQuery);
+
             const output = {
               source: "cloudflare",
-              periodStart: iso(start),
-              periodEndExclusive: iso(end),
+              dailyPeriodStart: iso(seriesStart),
+              dailyPeriodEndExclusive: iso(end),
+              detailPeriodStart: iso(detailStart),
+              detailPeriodEndExclusive: iso(end),
               generatedAt: new Date().toISOString(),
+              methodology: {
+                dailyTotals: "httpRequests1dGroups: daily unique-client totals and page views",
+                detail: "httpRequestsAdaptiveGroups: last 30 days only; request counts may be sampled, with sampleInterval returned for each row",
+                referrers: "Only included when field access is granted by the Cloudflare plan and token"
+              },
+              dailyTotals: dailyData.viewer.zones[0].days,
               availableAdaptiveDimensions: [...dimensions].sort(),
               availableAdaptiveSums: [...sum].sort(),
               metrics: {}
@@ -67,17 +81,22 @@ jobs:
               requestedPaths: "clientRequestPath",
               referrerHosts: "clientRefererHost",
               countries: "clientCountryName",
-              deviceTypes: "userAgentDeviceType",
+              deviceTypes: "clientDeviceType",
               browsers: "userAgentBrowser"
             })) {
               output.metrics[name] = dimensions.has(field)
-                ? await metric(field)
+                ? await detailMetric(field)
                 : { status: "not_available_in_plan_or_schema" };
             }
 
             mkdirSync("reports/generated", { recursive: true });
             writeFileSync("reports/generated/cloudflare-traffic-baseline.json", JSON.stringify(output, null, 2) + "\n");
-            console.log(JSON.stringify({ periodStart: output.periodStart, periodEndExclusive: output.periodEndExclusive, metrics: Object.fromEntries(Object.entries(output.metrics).map(([name, value]) => [name, value.status])) }, null, 2));
+            console.log(JSON.stringify({
+              dailyRows: output.dailyTotals.length,
+              period: [output.dailyPeriodStart, output.dailyPeriodEndExclusive],
+              detail: [output.detailPeriodStart, output.detailPeriodEndExclusive],
+              metrics: Object.fromEntries(Object.entries(output.metrics).map(([name, value]) => [name, value.status]))
+            }, null, 2));
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
 
