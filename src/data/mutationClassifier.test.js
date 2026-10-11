@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { getLatestDevelopments } from "./derive.js";
+import { ALL_RECORDS } from "./corpus.js";
 import {
   detectMutationType,
   qualifiesForHomepage,
@@ -104,4 +105,14 @@ test("assessment correction variants retain assessment trajectory classification
   };
 
   assert.equal(detectMutationType(correction, correctionRecord), "assessment_reissued_no_state_change");
+});
+
+test("known mutation-field variants are classified across the live corpus", () => {
+  const unclassified = ALL_RECORDS.flatMap((record) =>
+    record.mutationLog
+      .filter((entry) => detectMutationType(entry, record) === "unclassified")
+      .map((entry) => `${record.id}:${entry.id}:${entry.field}`)
+  );
+
+  assert.deepEqual(unclassified, []);
 });
