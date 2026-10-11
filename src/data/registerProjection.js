@@ -60,7 +60,7 @@ export const REGISTERS = [
     group: "Movement",
     label: "Stage changed",
     description: "Records with a documented verification-stage change.",
-    matches: (record) => getAssessmentHistory(record).some((assessment, index, history) => index > 0 && assessment.verificationStage !== history[index - 1].verificationStage),
+    matches: (record) => record.assessments.some((assessment, index, history) => index > 0 && assessment.verificationStage !== history[index - 1].verificationStage),
   },
   {
     id: "reaffirmed",
@@ -97,17 +97,18 @@ function finalRun(history, key) {
   return { assessment: history[index], current };
 }
 
-function latestStageChange(history) {
-  for (let index = history.length - 1; index > 0; index -= 1) {
-    if (history[index - 1].verificationStage !== history[index].verificationStage) {
-      return { from: history[index - 1], to: history[index] };
+function latestStageChange(record) {
+  for (let index = record.assessments.length - 1; index > 0; index -= 1) {
+    if (record.assessments[index - 1].verificationStage !== record.assessments[index].verificationStage) {
+      return { from: record.assessments[index - 1], to: record.assessments[index] };
     }
   }
   return null;
 }
 
 function isRecordedAtOpening(record, assessment) {
-  return assessment.date === record.claim.openedDate || assessment.recordedDate === record.claim.openedDate;
+  const assessmentIndex = record.assessments.findIndex((item) => item.id === assessment.id);
+  return assessmentIndex > 0 && record.assessments[assessmentIndex].date === record.claim.openedDate;
 }
 
 function stateReason(current, stateEnteredDate, history) {
@@ -126,7 +127,7 @@ export function getRegisterRow(record, registerId = "full") {
   const stageReachedDate = stageRun.assessment.date;
   const transitions = getTransitionFeed(record);
   const latestTransition = transitions.at(-1) ?? null;
-  const latestStage = latestStageChange(history);
+  const latestStage = latestStageChange(record);
   let reason;
   let sourceAssessment = stateRun.assessment;
 

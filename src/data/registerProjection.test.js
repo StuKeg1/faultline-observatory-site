@@ -30,9 +30,13 @@ test("register reasons use assessment values and dates", () => {
   }
 });
 
-test("FR-AM-0001 retains its recorded-at-opening marker", () => {
-  const record = ALL_RECORDS.find((item) => item.id === "FR-AM-0001");
-  assert.match(getRegisterRow(record, "full").reason, /\(recorded at opening\)/);
+test("FR-AM-0001 is the only record whose register reasons carry the recorded-at-opening marker", () => {
+  const markedRecordIds = new Set(
+    REGISTERS.flatMap((register) => getRegisterRows(ALL_RECORDS, register.id))
+      .filter((row) => row.reason.includes("(recorded at opening)"))
+      .map((row) => row.record.id),
+  );
+  assert.deepEqual([...markedRecordIds], ["FR-AM-0001"]);
 });
 
 test("legacy and compatible register ids resolve without inventing a fallback", () => {
@@ -44,4 +48,11 @@ test("legacy and compatible register ids resolve without inventing a fallback", 
 
 test("state change register remains derived from its transition feed", () => {
   for (const row of getRegisterRows(ALL_RECORDS, "changed")) assert.ok(getTransitionFeed(row.record).length > 0, row.record.id);
+});
+
+test("stage change register uses stored assessment stages rather than reviewed stages", () => {
+  assert.deepEqual(
+    getRegisterRows(ALL_RECORDS, "stage-changed").map((row) => row.record.id).sort(),
+    ["FR-QE-0001", "FR-QE-0003", "FR-AI-0001", "FR-AM-0001", "FR-AM-0006", "FR-BT-0004"].sort(),
+  );
 });
