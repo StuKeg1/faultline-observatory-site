@@ -26,7 +26,7 @@ const LENSES = [
   {
     eyebrow: "Programme",
     title: "How is the Observatory organised?",
-    description: "Move through the application domains in which claims are observed, compared and preserved.",
+    description: `The Public Record spans ${PROGRAMMES.length} programmes, each organised around a distinct field of claims.`,
     to: "/programmes/",
     action: "Browse by Programme",
   },
@@ -288,7 +288,6 @@ export default function PublicRecord() {
                 </div>
               ))}
             </div>
-            <p className="pr-programme-note">The Public Record currently spans {PROGRAMMES.length} programmes. Each destination above is a preview into a complete, independently addressable view.</p>
           </div>
         </section>
       </main>

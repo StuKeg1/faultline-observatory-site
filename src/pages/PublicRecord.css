@@ -81,8 +81,7 @@
 .pr-method-step:first-child { border-left: 0; padding-left: 0; }
 .pr-method-step > span { font-family: var(--mono); font-size: 9px; color: var(--accent); }
 .pr-method-step h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; margin: 1rem 0 0.5rem; }
-.pr-method-step p, .pr-programme-note { font-family: var(--serif); font-size: 0.85rem; font-weight: 300; line-height: 1.55; color: var(--ink-mid); }
-.pr-programme-note { margin: 2rem 0 0; max-width: 720px; font-style: italic; }
+.pr-method-step p { font-family: var(--serif); font-size: 0.85rem; font-weight: 300; line-height: 1.55; color: var(--ink-mid); }
 @media (max-width: 800px) {
   .pr-lenses, .pr-method-grid { grid-template-columns: 1fr; }
   .pr-lens-cta { margin-top: 0.5rem; }
