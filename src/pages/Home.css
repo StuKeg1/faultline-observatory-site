@@ -1,7 +1,7 @@
 /* ─── FAULTLINE OBSERVATORY — HOME PAGE ──────────────────────
    Homepage vNext — question-first architecture (spec v1.0, 21 Jul 2026)
    Reading order: Identity + trust → Start with a question →
-                  Not yet tracked? → Transparency statement
+                  Not yet tracked?
    Design principle: question-first, evidence-first, no SaaS card system.
    Icons carry a single neutral colour throughout — colour never signals
    evidence quality, pressure state, or an institutionally preferred card.
@@ -292,9 +292,14 @@
 }
 .hqc-note-action {
   align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--sans);
   color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -360,36 +365,6 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   TRANSPARENCY STATEMENT
-══════════════════════════════════════════════════════════ */
-
-.home-transparency {
-  padding: 1.5rem 2rem;
-}
-
-.home-transparency-inner {
-  max-width: var(--width-wide);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.ht-icon {
-  flex: none;
-  color: var(--ink-faint);
-  display: flex;
-}
-
-.ht-text {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: 0.875rem;
-  color: var(--ink-light);
-  margin: 0;
-}
-
-/* ══════════════════════════════════════════════════════════
    TABLET — existing 800px layout threshold
 ══════════════════════════════════════════════════════════ */
 
@@ -416,8 +391,7 @@
 @media (max-width: 520px) {
   .home-hero,
   .home-questions,
-  .home-untracked,
-  .home-transparency {
+  .home-untracked {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }

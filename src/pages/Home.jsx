@@ -130,16 +130,6 @@ function IconDocument() {
   );
 }
 
-function IconInfo() {
-  return (
-    <svg {...ICON_PROPS} width="16" height="16">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 11v5.5" />
-      <circle cx="12" cy="8" r="0.9" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
 const QUESTION_ICONS = {
   quantum: IconQuantum,
   biopsy: IconBiopsy,
@@ -343,8 +333,8 @@ export default function Home() {
             <div className="hu-copy">
               <div className="hu-title" id="home-untracked-heading">Not yet tracked?</div>
               <p className="hu-text">
-                If you&apos;ve heard a technology claim that isn&apos;t here, see what
-                qualifies for a Frontier Record and how claims enter the Observatory.
+                See what qualifies for a Frontier Record and how claims enter the Observatory.
+                Every record is public — its sources, methods and changes remain visible.
               </p>
             </div>
             <Link to="/welcome/" className="hu-cta">
@@ -352,16 +342,6 @@ export default function Home() {
             </Link>
           </div>
         </section>
-
-        {/* ── TRANSPARENCY STATEMENT ── */}
-        <div className="home-transparency">
-          <div className="home-transparency-inner">
-            <span className="ht-icon"><IconInfo /></span>
-            <p className="ht-text">
-              Every record is public. Sources, methods and changes remain visible.
-            </p>
-          </div>
-        </div>
 
       </main>
       <SiteFooter />

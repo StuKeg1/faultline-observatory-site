@@ -12,10 +12,10 @@
 export const FR_QE_0005 = {
   id: "FR-QE-0005",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-10-11",
-  provenanceReviewId: "LPR-001-D48",
-  provenanceOutcome: "verified",
-  provenanceRepairStatus: "not_required",
+  lastProvenanceReview: "2026-09-15",
+  provenanceReviewId: "LPR-001-D17",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "A quantum computer can factor commercially relevant RSA cryptographic keys faster than any classical computer.",
@@ -203,7 +203,6 @@ export const FR_QE_0005 = {
   ],
 
   mutationLog: [
-    { id: "M-016", date: "2026-10-11", field: "provenance_review", from: "LPR-001-D17", to: "LPR-001-D48", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-015", date: "2026-09-15", field: "instances_logged", from: "IN-006", to: "IN-008", note: "Normal Record Review admitted two 2026 RSA-2048 resource analyses: IN-007 Webster et al. Pinnacle QLDPC architecture and IN-008 Mundada et al. heterogeneous architecture. Appended AS-004 and updated current mechanisms, lineage and open questions to distinguish architecture-dependent theoretical resource compression from demonstrated cryptographic capability. Pressure state remains ESCALATING; verification stage remains VS-02." },
     { id: "M-014", date: "2026-09-15", field: "provenance_corrected", from: "LPR-001-D17 discrepancies", to: "PASS-AFTER-CORRECTION", note: "LPR-001-D17 bounded correction: repaired IN-001 through IN-006, added confidently established structured provenance, corrected dependent mechanisms, lineage and open-question wording, and appended AS-003 rather than rewriting historical assessments. Removed unreviewed 2026 QLDPC/ECC material from legacy IN-006 so it can be handled through normal Record Review. Pressure state remains ESCALATING; verification stage remains VS-02." },
     {"id":"M-013","date":"2026-09-06","field":"description_restored","from":"Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001","to":"Source-restored complete descriptions","note":"Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_QE_0005_RSA_quantum_factorisation.html (Drive file 1xzJuLkAdDhGDC2Rc-yQZDH-R8vlVvHHi). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."},
