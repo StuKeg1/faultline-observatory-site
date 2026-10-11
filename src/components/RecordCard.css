@@ -64,6 +64,11 @@
   color: var(--ink-mid);
   font-weight: 500;
 }
+.record-card .assessment-history-strip {
+  border-top: 1px solid var(--rule-light);
+  margin: -0.1rem 0 0.75rem;
+  padding-top: 0.6rem;
+}
 
 .rc-date,
 .rc-mutations {

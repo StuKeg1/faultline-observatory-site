@@ -57,6 +57,7 @@
 .pr-record-entry strong { display: -webkit-box; min-width: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .pr-record-entry-meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.75rem; }
 .pr-record-entry-meta time { font-family: var(--mono); font-size: 9px; color: var(--ink-light); white-space: nowrap; }
+.pr-record-entry .assessment-history-strip { margin-top: -0.1rem; }
 /* Matches Home.css's .home-snapshot treatment (confirmation, not
    introduction): a compact inline mono row, not a wide serif-numeral
    grid — the two pages' snapshot bands should read as the same element. */

@@ -1,0 +1,16 @@
+.assessment-history-strip {
+  align-items: baseline;
+  color: var(--ink-light);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 9px;
+  gap: 0.25rem 0.45rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+.ahs-label { color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+.ahs-summary, .ahs-count, .ahs-date { white-space: nowrap; }
+.ahs-states { color: var(--ink-mid); }
+.ahs-arrow { color: var(--ink-faint); margin: 0 0.28rem; }
+.assessment-history-strip--compact { font-size: 8.5px; }

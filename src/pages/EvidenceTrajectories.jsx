@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import StateBadge from "../components/StateBadge.jsx";
+import AssessmentHistoryStrip from "../components/AssessmentHistoryStrip.jsx";
 import { ALL_RECORDS, PROGRAMMES } from "../data/corpus.js";
 import {
   getAssessmentHistory,
@@ -254,7 +255,7 @@ function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, lensId, onS
       <Link to={trajectoryUrl(record.id, lensId)} className="et-record-select" aria-current={isSelected ? "true" : undefined} onClick={handleSelectClick}>
         <span>{record.id}</span><span>{record.claim.shortLabel}</span><small>{record.claim.statement}</small><em>{programme?.shortId ?? record.programme} · {history.length} assessments · {stateChanges} documented state change{stateChanges === 1 ? "" : "s"}</em>
       </Link>
-      <div className="et-card-current"><StateBadge pressureState={current.pressureState} /><span>since {current.date}</span><details><summary>Assessment history</summary><ol className="et-history-list">{history.map((assessment) => <li key={assessment.id}><span>{assessment.date}</span><span>{formatState(assessment.pressureState)}</span><p>{assessment.summary}</p></li>)}</ol></details></div>
+      <div className="et-card-current"><StateBadge pressureState={current.pressureState} /><AssessmentHistoryStrip record={record} /><details><summary>Full assessment history</summary><ol className="et-history-list">{history.map((assessment) => <li key={assessment.id}><span>{assessment.date}</span><span>{formatState(assessment.pressureState)}</span><p>{assessment.summary}</p></li>)}</ol></details></div>
       <div className="et-card-links"><Link to={getRecordUrl(record)}>Read the complete Frontier Record</Link></div>
     </article>
   );

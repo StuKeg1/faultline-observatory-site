@@ -5,6 +5,7 @@ import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
 import { LANDSCAPE_ESSAYS } from "../data/landscapeEssays.js";
 import { getProgrammeStats, getRecordUrl, getCurrentAssessment, getLatestDevelopments } from "../data/derive.js";
 import StateBadge from "../components/StateBadge.jsx";
+import AssessmentHistoryStrip from "../components/AssessmentHistoryStrip.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import "./Programme.css";
@@ -182,14 +183,10 @@ export default function Programme() {
                         className="prog-record-row"
                       >
                         <span className="prr-id">{r.id}</span>
-                        <span className="prr-title">{r.claim.shortLabel}</span>
+                        <span className="prr-copy"><span className="prr-title">{r.claim.shortLabel}</span><AssessmentHistoryStrip record={r} compact /></span>
                         <span className="prr-state">
                           <StateBadge pressureState={current.pressureState} />
                         </span>
-                        <span className="prr-assessments">
-                          {r.assessments.length} assessment{r.assessments.length !== 1 ? "s" : ""}
-                        </span>
-                        <span className="prr-date">{r.claim.openedDate}</span>
                       </Link>
                     );
                   })}

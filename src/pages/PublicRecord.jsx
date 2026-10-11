@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import StateBadge from "../components/StateBadge.jsx";
+import AssessmentHistoryStrip from "../components/AssessmentHistoryStrip.jsx";
 import { ALL_RECORDS, PROGRAMMES } from "../data/corpus.js";
 import {
   getCorpusSummary,
@@ -170,8 +171,8 @@ function RecordsPreview({ records }) {
           <strong title={record.claim.shortLabel}>{record.claim.shortLabel}</strong>
           <span className="pr-record-entry-meta">
             <StateBadge pressureState={getCurrentAssessment(record).pressureState} />
-            <time dateTime={getRecordUpdatedDate(record)}>{getRecordUpdatedDate(record)}</time>
           </span>
+          <AssessmentHistoryStrip record={record} compact />
         </Link>
       ))}
     </div>

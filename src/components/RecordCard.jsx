@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import StateBadge from "./StateBadge.jsx";
+import AssessmentHistoryStrip from "./AssessmentHistoryStrip.jsx";
 import { getCurrentAssessment, getRecordUrl } from "../data/derive.js";
 import "./RecordCard.css";
 
@@ -15,6 +16,7 @@ export default function RecordCard({ record }) {
       </div>
       <div className="rc-title">{record.claim.shortLabel}</div>
       <div className="rc-claim">{record.claim.statement}</div>
+      <AssessmentHistoryStrip record={record} />
       <div className="rc-meta">
         <span className="rc-programme">{record.programme}</span>
         <span className="rc-assessments">
