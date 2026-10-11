@@ -1,8 +1,677 @@
 {
   "source": "cloudflare",
-  "periodStart": "2026-08-12T00:00:00Z",
-  "periodEndExclusive": "2026-10-11T00:00:00Z",
-  "generatedAt": "2026-10-11T20:58:06.144Z",
+  "dailyPeriodStart": "2026-08-12T00:00:00Z",
+  "dailyPeriodEndExclusive": "2026-10-11T00:00:00Z",
+  "detailPeriodStart": "2026-09-11T00:00:00Z",
+  "detailPeriodEndExclusive": "2026-10-11T00:00:00Z",
+  "generatedAt": "2026-10-11T21:01:13.308Z",
+  "methodology": {
+    "dailyTotals": "httpRequests1dGroups: daily unique-client totals and page views",
+    "detail": "httpRequestsAdaptiveGroups: last 30 days only; request counts may be sampled, with sampleInterval returned for each row",
+    "referrers": "Only included when field access is granted by the Cloudflare plan and token"
+  },
+  "dailyTotals": [
+    {
+      "dimensions": {
+        "date": "2026-10-09"
+      },
+      "sum": {
+        "pageViews": 318
+      },
+      "uniq": {
+        "uniques": 318
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-20"
+      },
+      "sum": {
+        "pageViews": 163
+      },
+      "uniq": {
+        "uniques": 201
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-05"
+      },
+      "sum": {
+        "pageViews": 289
+      },
+      "uniq": {
+        "uniques": 257
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-21"
+      },
+      "sum": {
+        "pageViews": 127
+      },
+      "uniq": {
+        "uniques": 123
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-08"
+      },
+      "sum": {
+        "pageViews": 125
+      },
+      "uniq": {
+        "uniques": 148
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-27"
+      },
+      "sum": {
+        "pageViews": 238
+      },
+      "uniq": {
+        "uniques": 243
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-24"
+      },
+      "sum": {
+        "pageViews": 111
+      },
+      "uniq": {
+        "uniques": 148
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-25"
+      },
+      "sum": {
+        "pageViews": 129
+      },
+      "uniq": {
+        "uniques": 110
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-11"
+      },
+      "sum": {
+        "pageViews": 193
+      },
+      "uniq": {
+        "uniques": 172
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-24"
+      },
+      "sum": {
+        "pageViews": 123
+      },
+      "uniq": {
+        "uniques": 152
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-06"
+      },
+      "sum": {
+        "pageViews": 319
+      },
+      "uniq": {
+        "uniques": 277
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-20"
+      },
+      "sum": {
+        "pageViews": 429
+      },
+      "uniq": {
+        "uniques": 160
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-06"
+      },
+      "sum": {
+        "pageViews": 246
+      },
+      "uniq": {
+        "uniques": 344
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-23"
+      },
+      "sum": {
+        "pageViews": 122
+      },
+      "uniq": {
+        "uniques": 166
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-10"
+      },
+      "sum": {
+        "pageViews": 241
+      },
+      "uniq": {
+        "uniques": 253
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-31"
+      },
+      "sum": {
+        "pageViews": 155
+      },
+      "uniq": {
+        "uniques": 207
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-18"
+      },
+      "sum": {
+        "pageViews": 128
+      },
+      "uniq": {
+        "uniques": 236
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-04"
+      },
+      "sum": {
+        "pageViews": 310
+      },
+      "uniq": {
+        "uniques": 448
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-17"
+      },
+      "sum": {
+        "pageViews": 295
+      },
+      "uniq": {
+        "uniques": 169
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-14"
+      },
+      "sum": {
+        "pageViews": 166
+      },
+      "uniq": {
+        "uniques": 176
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-27"
+      },
+      "sum": {
+        "pageViews": 119
+      },
+      "uniq": {
+        "uniques": 169
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-13"
+      },
+      "sum": {
+        "pageViews": 133
+      },
+      "uniq": {
+        "uniques": 169
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-30"
+      },
+      "sum": {
+        "pageViews": 191
+      },
+      "uniq": {
+        "uniques": 155
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-14"
+      },
+      "sum": {
+        "pageViews": 105
+      },
+      "uniq": {
+        "uniques": 113
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-29"
+      },
+      "sum": {
+        "pageViews": 236
+      },
+      "uniq": {
+        "uniques": 176
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-30"
+      },
+      "sum": {
+        "pageViews": 217
+      },
+      "uniq": {
+        "uniques": 204
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-03"
+      },
+      "sum": {
+        "pageViews": 208
+      },
+      "uniq": {
+        "uniques": 231
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-18"
+      },
+      "sum": {
+        "pageViews": 142
+      },
+      "uniq": {
+        "uniques": 159
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-03"
+      },
+      "sum": {
+        "pageViews": 189
+      },
+      "uniq": {
+        "uniques": 218
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-15"
+      },
+      "sum": {
+        "pageViews": 93
+      },
+      "uniq": {
+        "uniques": 152
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-07"
+      },
+      "sum": {
+        "pageViews": 423
+      },
+      "uniq": {
+        "uniques": 423
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-22"
+      },
+      "sum": {
+        "pageViews": 110
+      },
+      "uniq": {
+        "uniques": 145
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-07"
+      },
+      "sum": {
+        "pageViews": 127
+      },
+      "uniq": {
+        "uniques": 180
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-19"
+      },
+      "sum": {
+        "pageViews": 33
+      },
+      "uniq": {
+        "uniques": 81
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-10"
+      },
+      "sum": {
+        "pageViews": 106
+      },
+      "uniq": {
+        "uniques": 172
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-25"
+      },
+      "sum": {
+        "pageViews": 157
+      },
+      "uniq": {
+        "uniques": 166
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-26"
+      },
+      "sum": {
+        "pageViews": 80
+      },
+      "uniq": {
+        "uniques": 130
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-23"
+      },
+      "sum": {
+        "pageViews": 144
+      },
+      "uniq": {
+        "uniques": 184
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-09"
+      },
+      "sum": {
+        "pageViews": 143
+      },
+      "uniq": {
+        "uniques": 192
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-26"
+      },
+      "sum": {
+        "pageViews": 247
+      },
+      "uniq": {
+        "uniques": 212
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-04"
+      },
+      "sum": {
+        "pageViews": 243
+      },
+      "uniq": {
+        "uniques": 238
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-22"
+      },
+      "sum": {
+        "pageViews": 99
+      },
+      "uniq": {
+        "uniques": 157
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-08"
+      },
+      "sum": {
+        "pageViews": 715
+      },
+      "uniq": {
+        "uniques": 418
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-21"
+      },
+      "sum": {
+        "pageViews": 107
+      },
+      "uniq": {
+        "uniques": 140
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-02"
+      },
+      "sum": {
+        "pageViews": 123
+      },
+      "uniq": {
+        "uniques": 154
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-16"
+      },
+      "sum": {
+        "pageViews": 129
+      },
+      "uniq": {
+        "uniques": 176
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-02"
+      },
+      "sum": {
+        "pageViews": 334
+      },
+      "uniq": {
+        "uniques": 201
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-19"
+      },
+      "sum": {
+        "pageViews": 410
+      },
+      "uniq": {
+        "uniques": 235
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-12"
+      },
+      "sum": {
+        "pageViews": 268
+      },
+      "uniq": {
+        "uniques": 276
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-29"
+      },
+      "sum": {
+        "pageViews": 364
+      },
+      "uniq": {
+        "uniques": 209
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-15"
+      },
+      "sum": {
+        "pageViews": 137
+      },
+      "uniq": {
+        "uniques": 160
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-28"
+      },
+      "sum": {
+        "pageViews": 194
+      },
+      "uniq": {
+        "uniques": 252
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-12"
+      },
+      "sum": {
+        "pageViews": 251
+      },
+      "uniq": {
+        "uniques": 254
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-01"
+      },
+      "sum": {
+        "pageViews": 167
+      },
+      "uniq": {
+        "uniques": 212
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-13"
+      },
+      "sum": {
+        "pageViews": 165
+      },
+      "uniq": {
+        "uniques": 221
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-28"
+      },
+      "sum": {
+        "pageViews": 161
+      },
+      "uniq": {
+        "uniques": 142
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-10-05"
+      },
+      "sum": {
+        "pageViews": 214
+      },
+      "uniq": {
+        "uniques": 317
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-16"
+      },
+      "sum": {
+        "pageViews": 86
+      },
+      "uniq": {
+        "uniques": 155
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-09-01"
+      },
+      "sum": {
+        "pageViews": 178
+      },
+      "uniq": {
+        "uniques": 216
+      }
+    },
+    {
+      "dimensions": {
+        "date": "2026-08-17"
+      },
+      "sum": {
+        "pageViews": 137
+      },
+      "uniq": {
+        "uniques": 239
+      }
+    }
+  ],
   "availableAdaptiveDimensions": [
     "apiGatewayMatchedEndpoint",
     "apiGatewayMatchedHost",
@@ -142,23 +811,4780 @@
   ],
   "metrics": {
     "requestedPaths": {
-      "status": "unavailable",
-      "reason": "[{\"message\":\"zone \\\"bde8c0f19abd330d5b22a251ef38809e\\\" cannot request a time range wider than 4w2d, but your query time range spans 8w4d\",\"path\":[\"viewer\",\"zones\",\"0\",\"rows\"],\"extensions\":{\"code\":\"quota\",\"timestamp\":\"2026-10-11T20:58:06.459645198Z\",\"ray_id\":\"a490c7ec8adc4e41-SEA\"}}]"
+      "status": "available",
+      "rows": [
+        {
+          "avg": {
+            "sampleInterval": 1.1188369152970923
+          },
+          "count": 2655,
+          "dimensions": {
+            "clientRequestPath": "/"
+          },
+          "sum": {
+            "visits": 1269
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0069124423963134
+          },
+          "count": 1748,
+          "dimensions": {
+            "clientRequestPath": "/deployment.json"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0056782334384857
+          },
+          "count": 1594,
+          "dimensions": {
+            "clientRequestPath": "/robots.txt"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 21.790697674418606
+          },
+          "count": 937,
+          "dimensions": {
+            "clientRequestPath": "/wp/v2/posts/999999"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0570342205323193
+          },
+          "count": 834,
+          "dimensions": {
+            "clientRequestPath": "/evidence-trajectories/"
+          },
+          "sum": {
+            "visits": 684
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0647948164146868
+          },
+          "count": 493,
+          "dimensions": {
+            "clientRequestPath": "/cdn-cgi/l/email-protection"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0125523012552302
+          },
+          "count": 484,
+          "dimensions": {
+            "clientRequestPath": "/sitemap.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0145278450363195
+          },
+          "count": 419,
+          "dimensions": {
+            "clientRequestPath": "/mcp"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 285,
+          "dimensions": {
+            "clientRequestPath": "/og-image.png"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.052
+          },
+          "count": 263,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0001/"
+          },
+          "sum": {
+            "visits": 253
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.097938144329897
+          },
+          "count": 213,
+          "dimensions": {
+            "clientRequestPath": "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1049382716049383
+          },
+          "count": 179,
+          "dimensions": {
+            "clientRequestPath": "/public-record/"
+          },
+          "sum": {
+            "visits": 128
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.4344262295081966
+          },
+          "count": 175,
+          "dimensions": {
+            "clientRequestPath": "/.git/config"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.01875
+          },
+          "count": 163,
+          "dimensions": {
+            "clientRequestPath": "/wp-login.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0275862068965518
+          },
+          "count": 149,
+          "dimensions": {
+            "clientRequestPath": "/favicon.ico"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.2982456140350878
+          },
+          "count": 148,
+          "dimensions": {
+            "clientRequestPath": "/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1810344827586208
+          },
+          "count": 137,
+          "dimensions": {
+            "clientRequestPath": "/sitemap-notes.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.064
+          },
+          "count": 133,
+          "dimensions": {
+            "clientRequestPath": "/sitemap-records.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0393700787401574
+          },
+          "count": 132,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-am-0004/"
+          },
+          "sum": {
+            "visits": 121
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1016949152542372
+          },
+          "count": 130,
+          "dimensions": {
+            "clientRequestPath": "/assets/trajectoryVisuals-klax8qij.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0655737704918034
+          },
+          "count": 130,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-bt-0004/"
+          },
+          "sum": {
+            "visits": 112
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0666666666666667
+          },
+          "count": 128,
+          "dimensions": {
+            "clientRequestPath": "/sitemap-pages.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1363636363636365
+          },
+          "count": 125,
+          "dimensions": {
+            "clientRequestPath": "/assets/index-DVLXaQgl.css"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0714285714285714
+          },
+          "count": 120,
+          "dimensions": {
+            "clientRequestPath": "/the-record/"
+          },
+          "sum": {
+            "visits": 108
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.072072072072072
+          },
+          "count": 119,
+          "dimensions": {
+            "clientRequestPath": "/reading-room/"
+          },
+          "sum": {
+            "visits": 79
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.043859649122807
+          },
+          "count": 119,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-am-0005/"
+          },
+          "sum": {
+            "visits": 99
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.008695652173913
+          },
+          "count": 116,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-bt-0002/"
+          },
+          "sum": {
+            "visits": 109
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1047619047619048
+          },
+          "count": 116,
+          "dimensions": {
+            "clientRequestPath": "/methodology/"
+          },
+          "sum": {
+            "visits": 77
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1546391752577319
+          },
+          "count": 112,
+          "dimensions": {
+            "clientRequestPath": "/programmes/prog-qe/"
+          },
+          "sum": {
+            "visits": 96
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0384615384615385
+          },
+          "count": 108,
+          "dimensions": {
+            "clientRequestPath": "/institutional-changelog/"
+          },
+          "sum": {
+            "visits": 79
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1304347826086956
+          },
+          "count": 104,
+          "dimensions": {
+            "clientRequestPath": "/about/"
+          },
+          "sum": {
+            "visits": 76
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0978260869565217
+          },
+          "count": 101,
+          "dimensions": {
+            "clientRequestPath": "/welcome/"
+          },
+          "sum": {
+            "visits": 72
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1111111111111112
+          },
+          "count": 100,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0003/"
+          },
+          "sum": {
+            "visits": 91
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.053191489361702
+          },
+          "count": 99,
+          "dimensions": {
+            "clientRequestPath": "/programmes/"
+          },
+          "sum": {
+            "visits": 57
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1136363636363635
+          },
+          "count": 98,
+          "dimensions": {
+            "clientRequestPath": "/notes/pn-ai-001/"
+          },
+          "sum": {
+            "visits": 58
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0434782608695652
+          },
+          "count": 96,
+          "dimensions": {
+            "clientRequestPath": "/how-to-read/"
+          },
+          "sum": {
+            "visits": 55
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 94,
+          "dimensions": {
+            "clientRequestPath": "/.well-known/oauth-protected-resource"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.5135135135135136
+          },
+          "count": 93,
+          "dimensions": {
+            "clientRequestPath": "/.env.backup"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0574712643678161
+          },
+          "count": 92,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0007/"
+          },
+          "sum": {
+            "visits": 73
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.4864864864864864
+          },
+          "count": 92,
+          "dimensions": {
+            "clientRequestPath": "/.env.bak"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 92,
+          "dimensions": {
+            "clientRequestPath": "/.well-known/oauth-authorization-server"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.139240506329114
+          },
+          "count": 90,
+          "dimensions": {
+            "clientRequestPath": "/guides/how-to-read"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1265822784810127
+          },
+          "count": 89,
+          "dimensions": {
+            "clientRequestPath": "/guides/mcp-access/"
+          },
+          "sum": {
+            "visits": 42
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0113636363636365
+          },
+          "count": 89,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-am-0001/"
+          },
+          "sum": {
+            "visits": 80
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0853658536585367
+          },
+          "count": 89,
+          "dimensions": {
+            "clientRequestPath": "/xmlrpc.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 5.466666666666667
+          },
+          "count": 82,
+          "dimensions": {
+            "clientRequestPath": "/.env.development"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.5185185185185186
+          },
+          "count": 82,
+          "dimensions": {
+            "clientRequestPath": "/.git/HEAD"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0675675675675675
+          },
+          "count": 79,
+          "dimensions": {
+            "clientRequestPath": "/guides/mcp-access"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 78,
+          "dimensions": {
+            "clientRequestPath": "/health"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1692307692307693
+          },
+          "count": 76,
+          "dimensions": {
+            "clientRequestPath": "/cdn-cgi/rum"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0277777777777777
+          },
+          "count": 74,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0002/"
+          },
+          "sum": {
+            "visits": 64
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0277777777777777
+          },
+          "count": 74,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0005/"
+          },
+          "sum": {
+            "visits": 60
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.028169014084507
+          },
+          "count": 73,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-bt-0007/"
+          },
+          "sum": {
+            "visits": 61
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.028169014084507
+          },
+          "count": 73,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-am-0002/"
+          },
+          "sum": {
+            "visits": 60
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 73,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0001"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 6.545454545454546
+          },
+          "count": 72,
+          "dimensions": {
+            "clientRequestPath": "/.env.example"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 4.733333333333333
+          },
+          "count": 71,
+          "dimensions": {
+            "clientRequestPath": "/phpinfo.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.109375
+          },
+          "count": 71,
+          "dimensions": {
+            "clientRequestPath": "/definitely-not-a-page-xyz"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0147058823529411
+          },
+          "count": 69,
+          "dimensions": {
+            "clientRequestPath": "/about/origins/"
+          },
+          "sum": {
+            "visits": 46
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0615384615384615
+          },
+          "count": 69,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-mf-0001"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.9714285714285715
+          },
+          "count": 69,
+          "dimensions": {
+            "clientRequestPath": "/api/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 3.4
+          },
+          "count": 68,
+          "dimensions": {
+            "clientRequestPath": "/application/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0153846153846153
+          },
+          "count": 66,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-bt-0006/"
+          },
+          "sum": {
+            "visits": 52
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 3.4210526315789473
+          },
+          "count": 65,
+          "dimensions": {
+            "clientRequestPath": "/backend/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1206896551724137
+          },
+          "count": 65,
+          "dimensions": {
+            "clientRequestPath": "/programmes/prog-am/"
+          },
+          "sum": {
+            "visits": 47
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0847457627118644
+          },
+          "count": 64,
+          "dimensions": {
+            "clientRequestPath": "/notes/le-qe-001/"
+          },
+          "sum": {
+            "visits": 49
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.9090909090909092
+          },
+          "count": 63,
+          "dimensions": {
+            "clientRequestPath": "/.env.prod"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0327868852459017
+          },
+          "count": 63,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-am-0006/"
+          },
+          "sum": {
+            "visits": 55
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0862068965517242
+          },
+          "count": 63,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0009/"
+          },
+          "sum": {
+            "visits": 55
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.032258064516129
+          },
+          "count": 63,
+          "dimensions": {
+            "clientRequestPath": "/.env.old"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 20.666666666666668
+          },
+          "count": 62,
+          "dimensions": {
+            "clientRequestPath": "/shared/%2eenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 62,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0004/"
+          },
+          "sum": {
+            "visits": 55
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 61,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-zz-9999/"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 15
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/backup/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/var/task/amplify/backend/function/*/src/index%2ejs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/debug-output%2etxt"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/public/system"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/phpinfodev%2ephp"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/wp-content/backup/database%2esql"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/upload/%2eenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/%252F.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/%252f_vercel%252ffunctions%252f"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/%2eDS_Store"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/%252fadmin%252f"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/%2ewell-known/security%2etxt"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/%2egit/"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/main%2e58a95e8d8659972f%2ejs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/sym.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/config/sendgrid_config%2ejson"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/root/%2eenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/routes/%2eenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/old/"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/%252fapp%252fetc%252fenv.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/%252f%252eenv%252elocal"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/first-network/%2eenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 60
+          },
+          "count": 60,
+          "dimensions": {
+            "clientRequestPath": "/chunk-B2FODB4I%2ejs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.5526315789473684
+          },
+          "count": 59,
+          "dimensions": {
+            "clientRequestPath": "/.env.local"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.4390243902439024
+          },
+          "count": 59,
+          "dimensions": {
+            "clientRequestPath": "/.env.production"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0175438596491229
+          },
+          "count": 58,
+          "dimensions": {
+            "clientRequestPath": "/evidence-trajectories"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 4.142857142857143
+          },
+          "count": 58,
+          "dimensions": {
+            "clientRequestPath": "/public/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0754716981132075
+          },
+          "count": 57,
+          "dimensions": {
+            "clientRequestPath": "/welcome"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 14.25
+          },
+          "count": 57,
+          "dimensions": {
+            "clientRequestPath": "/campaign/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 56
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/API/common%2ejs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1666666666666667
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/reading-room"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 56
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/API/config/constants%2ejs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 56
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/%252fapi%252fuser"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 56
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/Kubernetes/%2eenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0566037735849056
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/favicon.svg"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 56
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/%2egitlab-ci"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.018181818181818
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/apple-touch-icon.png"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0769230769230769
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/documentation-requests/"
+          },
+          "sum": {
+            "visits": 46
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 56
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/config%2eprod%2eini"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 56
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/services/portainer/%2eenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 56
+          },
+          "count": 56,
+          "dimensions": {
+            "clientRequestPath": "/backend/config/common%2ejs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0784313725490196
+          },
+          "count": 55,
+          "dimensions": {
+            "clientRequestPath": "/notes/le-ai-001/"
+          },
+          "sum": {
+            "visits": 38
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0188679245283019
+          },
+          "count": 54,
+          "dimensions": {
+            "clientRequestPath": "/assets/FrontierRecord-ChnP_jxV.css"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 10.8
+          },
+          "count": 54,
+          "dimensions": {
+            "clientRequestPath": "/pinfo.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 54,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0007/"
+          },
+          "sum": {
+            "visits": 46
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0192307692307692
+          },
+          "count": 53,
+          "dimensions": {
+            "clientRequestPath": "/assets/index-D1-bo9F5.css"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 52
+          },
+          "count": 52,
+          "dimensions": {
+            "clientRequestPath": "/$(pwd)/%2egit/config"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 52
+          },
+          "count": 52,
+          "dimensions": {
+            "clientRequestPath": "/%252factuator%252fenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 52
+          },
+          "count": 52,
+          "dimensions": {
+            "clientRequestPath": "/API/%2eenv"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 52
+          },
+          "count": 52,
+          "dimensions": {
+            "clientRequestPath": "/%252ftest%252findex.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1304347826086956
+          },
+          "count": 52,
+          "dimensions": {
+            "clientRequestPath": "/assets/index-CJf7G3bf.css"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 52
+          },
+          "count": 52,
+          "dimensions": {
+            "clientRequestPath": "/%252ffirebase%252ejson"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0612244897959184
+          },
+          "count": 52,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-am-0007/"
+          },
+          "sum": {
+            "visits": 40
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.108695652173913
+          },
+          "count": 51,
+          "dimensions": {
+            "clientRequestPath": "/the-record"
+          },
+          "sum": {
+            "visits": 40
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 7.285714285714286
+          },
+          "count": 51,
+          "dimensions": {
+            "clientRequestPath": "/i.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.04
+          },
+          "count": 51,
+          "dimensions": {
+            "clientRequestPath": "/.env.dev"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 50,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0001/"
+          },
+          "sum": {
+            "visits": 37
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 50,
+          "dimensions": {
+            "clientRequestPath": "/wp-json/"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.065217391304348
+          },
+          "count": 49,
+          "dimensions": {
+            "clientRequestPath": "/notes/pn-qe-001/"
+          },
+          "sum": {
+            "visits": 36
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.065217391304348
+          },
+          "count": 49,
+          "dimensions": {
+            "clientRequestPath": "/programmes/prog-ai/"
+          },
+          "sum": {
+            "visits": 29
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0434782608695652
+          },
+          "count": 48,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-bt-0005/"
+          },
+          "sum": {
+            "visits": 40
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 24
+          },
+          "count": 48,
+          "dimensions": {
+            "clientRequestPath": "/config.rb"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 48,
+          "dimensions": {
+            "clientRequestPath": "/media/system/js/core.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 24
+          },
+          "count": 48,
+          "dimensions": {
+            "clientRequestPath": "/admin_phpinfo.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 48,
+          "dimensions": {
+            "clientRequestPath": "/institutional-health/"
+          },
+          "sum": {
+            "visits": 37
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 48,
+          "dimensions": {
+            "clientRequestPath": "//sitemap.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 24
+          },
+          "count": 48,
+          "dimensions": {
+            "clientRequestPath": "/wordpress/wp-json/batch/v1"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.6206896551724137
+          },
+          "count": 47,
+          "dimensions": {
+            "clientRequestPath": "/.env.save"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 6.714285714285714
+          },
+          "count": 47,
+          "dimensions": {
+            "clientRequestPath": "/.env.sample"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.9375
+          },
+          "count": 47,
+          "dimensions": {
+            "clientRequestPath": "/secrets.json"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 11.75
+          },
+          "count": 47,
+          "dimensions": {
+            "clientRequestPath": "/config.yaml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.069767441860465
+          },
+          "count": 46,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0006/"
+          },
+          "sum": {
+            "visits": 38
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 46,
+          "dimensions": {
+            "clientRequestPath": "/api/session/properties"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 4.181818181818182
+          },
+          "count": 46,
+          "dimensions": {
+            "clientRequestPath": "/env.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 46,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0008/"
+          },
+          "sum": {
+            "visits": 39
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.069767441860465
+          },
+          "count": 46,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0002/"
+          },
+          "sum": {
+            "visits": 35
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 11.25
+          },
+          "count": 45,
+          "dimensions": {
+            "clientRequestPath": "/stage/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1842105263157894
+          },
+          "count": 45,
+          "dimensions": {
+            "clientRequestPath": "/assets/LE-QE-001-CEj48gqY.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0227272727272727
+          },
+          "count": 45,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0003/"
+          },
+          "sum": {
+            "visits": 35
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0975609756097562
+          },
+          "count": 45,
+          "dimensions": {
+            "clientRequestPath": "/programmes"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0227272727272727
+          },
+          "count": 45,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-bt-0003/"
+          },
+          "sum": {
+            "visits": 36
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 14.666666666666666
+          },
+          "count": 44,
+          "dimensions": {
+            "clientRequestPath": "/release/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 14.666666666666666
+          },
+          "count": 44,
+          "dimensions": {
+            "clientRequestPath": "/sendgrid/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.048780487804878
+          },
+          "count": 43,
+          "dimensions": {
+            "clientRequestPath": "/methodology"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0238095238095237
+          },
+          "count": 43,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0006/"
+          },
+          "sum": {
+            "visits": 35
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1944444444444444
+          },
+          "count": 43,
+          "dimensions": {
+            "clientRequestPath": "/index.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.024390243902439
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0004/"
+          },
+          "sum": {
+            "visits": 34
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 42
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/%252f.vercel%252foutput%252ffunctions%252f"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 42
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/_react/action/*"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 7
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/.env~"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.05
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/about/origins"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 42
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/%252f%252es3cfg"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0769230769230769
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/assets/index-BmedZzqm.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/.env.live"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 42
+          },
+          "count": 42,
+          "dimensions": {
+            "clientRequestPath": "/%252f.next%252fprerender-manifest.json"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.025
+          },
+          "count": 41,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-qe-0008/"
+          },
+          "sum": {
+            "visits": 31
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.1578947368421053
+          },
+          "count": 41,
+          "dimensions": {
+            "clientRequestPath": "/.aws/credentials"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.7333333333333334
+          },
+          "count": 41,
+          "dimensions": {
+            "clientRequestPath": "/info.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0256410256410255
+          },
+          "count": 40,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-bt-0001/"
+          },
+          "sum": {
+            "visits": 31
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.7391304347826086
+          },
+          "count": 40,
+          "dimensions": {
+            "clientRequestPath": "//site/wp-includes/wlwmanifest.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0810810810810811
+          },
+          "count": 40,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-ai-0005/"
+          },
+          "sum": {
+            "visits": 30
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.5
+          },
+          "count": 40,
+          "dimensions": {
+            "clientRequestPath": "/.env.test"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 39
+          },
+          "count": 39,
+          "dimensions": {
+            "clientRequestPath": "/assets/index-[hash]%2emjs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 39,
+          "dimensions": {
+            "clientRequestPath": "/programmes/prog-bt/"
+          },
+          "sum": {
+            "visits": 20
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.054054054054054
+          },
+          "count": 39,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-am-0003/"
+          },
+          "sum": {
+            "visits": 30
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 39
+          },
+          "count": 39,
+          "dimensions": {
+            "clientRequestPath": "/%2eenv%2edev%2elocal"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 3
+          },
+          "count": 39,
+          "dimensions": {
+            "clientRequestPath": "/config.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1470588235294117
+          },
+          "count": 39,
+          "dimensions": {
+            "clientRequestPath": "/wp-json/gravitysmtp/v1/tests/mock-data"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 39
+          },
+          "count": 39,
+          "dimensions": {
+            "clientRequestPath": "/env%2ebak"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 6.5
+          },
+          "count": 39,
+          "dimensions": {
+            "clientRequestPath": "/core/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1176470588235294
+          },
+          "count": 38,
+          "dimensions": {
+            "clientRequestPath": "/assets/landscapeEssays-Cya6ufpf.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 12.666666666666666
+          },
+          "count": 38,
+          "dimensions": {
+            "clientRequestPath": "/cpanel/phpinfo.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.3103448275862069
+          },
+          "count": 38,
+          "dimensions": {
+            "clientRequestPath": "/.env.staging"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 4.222222222222222
+          },
+          "count": 38,
+          "dimensions": {
+            "clientRequestPath": "/web/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 4.111111111111111
+          },
+          "count": 37,
+          "dimensions": {
+            "clientRequestPath": "/php-info.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 9.25
+          },
+          "count": 37,
+          "dimensions": {
+            "clientRequestPath": "/server/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 12.333333333333334
+          },
+          "count": 37,
+          "dimensions": {
+            "clientRequestPath": "/cms/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.088235294117647
+          },
+          "count": 37,
+          "dimensions": {
+            "clientRequestPath": "/assets/index-CPVv3W4h.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0571428571428572
+          },
+          "count": 37,
+          "dimensions": {
+            "clientRequestPath": "/notes/aud-001/"
+          },
+          "sum": {
+            "visits": 27
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0285714285714285
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "/notes/en-001/"
+          },
+          "sum": {
+            "visits": 28
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.565217391304348
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "//blog/wp-includes/wlwmanifest.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 12
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "/production/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0285714285714285
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "/the-record/fr-am-0005"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.6363636363636365
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "//wp/wp-includes/wlwmanifest.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 6
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "/v2/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 18
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "/wordpress/wp-json/batch/v1/"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0909090909090908
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "/assets/index-rFJA-xD1.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0588235294117647
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "/programmes/prog-am"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 6
+          },
+          "count": 36,
+          "dimensions": {
+            "clientRequestPath": "/test.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 7
+          },
+          "count": 35,
+          "dimensions": {
+            "clientRequestPath": "/lib/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0294117647058822
+          },
+          "count": 35,
+          "dimensions": {
+            "clientRequestPath": "/programmes/prog-bt"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.09375
+          },
+          "count": 35,
+          "dimensions": {
+            "clientRequestPath": "/programmes/prog-ai"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 35,
+          "dimensions": {
+            "clientRequestPath": "/notes/fm-001/"
+          },
+          "sum": {
+            "visits": 25
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1724137931034482
+          },
+          "count": 34,
+          "dimensions": {
+            "clientRequestPath": "/app/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 17
+          },
+          "count": 34,
+          "dimensions": {
+            "clientRequestPath": "/wordpress//wp-json/batch/v1"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 6.8
+          },
+          "count": 34,
+          "dimensions": {
+            "clientRequestPath": "/.git/index"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0625
+          },
+          "count": 34,
+          "dimensions": {
+            "clientRequestPath": "/about"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 17
+          },
+          "count": 34,
+          "dimensions": {
+            "clientRequestPath": "/api/phpinfo.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 8.5
+          },
+          "count": 34,
+          "dimensions": {
+            "clientRequestPath": "/tmp/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 33,
+          "dimensions": {
+            "clientRequestPath": "/guides/"
+          },
+          "sum": {
+            "visits": 21
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.2692307692307692
+          },
+          "count": 33,
+          "dimensions": {
+            "clientRequestPath": "/wp-json/batch/v1"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 8.25
+          },
+          "count": 33,
+          "dimensions": {
+            "clientRequestPath": "/.gitconfig"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.2222222222222223
+          },
+          "count": 33,
+          "dimensions": {
+            "clientRequestPath": "/assets/index-DVXfTPuK.js"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 3
+          },
+          "count": 33,
+          "dimensions": {
+            "clientRequestPath": "/laravel/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 6.6
+          },
+          "count": 33,
+          "dimensions": {
+            "clientRequestPath": "/scripts/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 10.666666666666666
+          },
+          "count": 32,
+          "dimensions": {
+            "clientRequestPath": "/sender/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 16
+          },
+          "count": 32,
+          "dimensions": {
+            "clientRequestPath": "/var/www/html/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.032258064516129
+          },
+          "count": 32,
+          "dimensions": {
+            "clientRequestPath": "/.well-known/security.txt"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 16
+          },
+          "count": 32,
+          "dimensions": {
+            "clientRequestPath": "/blog/wordpress/wp-json/batch/v1"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 16
+          },
+          "count": 32,
+          "dimensions": {
+            "clientRequestPath": "/blog/wp-json/batch/v1"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 16
+          },
+          "count": 32,
+          "dimensions": {
+            "clientRequestPath": "/drupal/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 4.571428571428571
+          },
+          "count": 32,
+          "dimensions": {
+            "clientRequestPath": "/core/app/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 3.5555555555555554
+          },
+          "count": 32,
+          "dimensions": {
+            "clientRequestPath": "/netlify.toml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 7.75
+          },
+          "count": 31,
+          "dimensions": {
+            "clientRequestPath": "/.config/gcloud/application_default_credentials.json"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1071428571428572
+          },
+          "count": 31,
+          "dimensions": {
+            "clientRequestPath": "/programmes/prog-qe"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1923076923076923
+          },
+          "count": 31,
+          "dimensions": {
+            "clientRequestPath": "/public-record"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 7.75
+          },
+          "count": 31,
+          "dimensions": {
+            "clientRequestPath": "/v3/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 30
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/%252ftests%252finfo.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 15
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/.env.remote"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 30
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/%252fpublic%252fstripe%252ejs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 30
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/%252findex.php%3f%3dphpinfo%28%29"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 3.3333333333333335
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/.env.dist"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0714285714285714
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/notes/pn-ai-001"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.5789473684210527
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "//xmlrpc.php"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 30
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/app-7d66de919618d3830635%2ejs"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 10
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/.github/workflows/ci.yml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 7.5
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/info.php.bak"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 30
+          },
+          "count": 30,
+          "dimensions": {
+            "clientRequestPath": "/printenv%2etmp"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1153846153846154
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "/assets/FrontierRecord-DqOyxUKQ.css"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.7058823529411764
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "/config/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 9.666666666666666
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "/old/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 9.666666666666666
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "/logs/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 9.666666666666666
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "/cakephp/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 14.5
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "/vue/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0357142857142858
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "/notes/le-ai-001"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 7.25
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "/cd/.env"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.7058823529411764
+          },
+          "count": 29,
+          "dimensions": {
+            "clientRequestPath": "//wp-includes/wlwmanifest.xml"
+          },
+          "sum": {
+            "visits": 0
+          }
+        }
+      ]
     },
     "referrerHosts": {
       "status": "unavailable",
-      "reason": "[{\"message\":\"zone 'bde8c0f19abd330d5b22a251ef38809e' does not have access to the field 'clientrefererhost' from the path\",\"path\":[\"viewer\",\"zones\",\"0\",\"rows\"],\"extensions\":{\"code\":\"authz\",\"timestamp\":\"2026-10-11T20:58:06.592672255Z\",\"ray_id\":\"a490c7eead084e41-SEA\"}}]"
+      "reason": "[{\"message\":\"zone 'bde8c0f19abd330d5b22a251ef38809e' does not have access to the field 'clientrefererhost' from the path\",\"path\":[\"viewer\",\"zones\",\"0\",\"rows\"],\"extensions\":{\"code\":\"authz\",\"timestamp\":\"2026-10-11T21:01:14.599864299Z\",\"ray_id\":\"a490cc854986dbca-SJC\"}}]"
     },
     "countries": {
-      "status": "unavailable",
-      "reason": "[{\"message\":\"zone \\\"bde8c0f19abd330d5b22a251ef38809e\\\" cannot request a time range wider than 4w2d, but your query time range spans 8w4d\",\"path\":[\"viewer\",\"zones\",\"0\",\"rows\"],\"extensions\":{\"code\":\"quota\",\"timestamp\":\"2026-10-11T20:58:06.708068997Z\",\"ray_id\":\"a490c7efade04e41-SEA\"}}]"
+      "status": "available",
+      "rows": [
+        {
+          "avg": {
+            "sampleInterval": 1.188979324539246
+          },
+          "count": 12709,
+          "dimensions": {
+            "clientCountryName": "US"
+          },
+          "sum": {
+            "visits": 2846
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.1113678373382623
+          },
+          "count": 4569,
+          "dimensions": {
+            "clientCountryName": "NL"
+          },
+          "sum": {
+            "visits": 350
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 4.844940867279895
+          },
+          "count": 3687,
+          "dimensions": {
+            "clientCountryName": "FR"
+          },
+          "sum": {
+            "visits": 96
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.196708463949843
+          },
+          "count": 2803,
+          "dimensions": {
+            "clientCountryName": "DE"
+          },
+          "sum": {
+            "visits": 282
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 6.536885245901639
+          },
+          "count": 1595,
+          "dimensions": {
+            "clientCountryName": "BE"
+          },
+          "sum": {
+            "visits": 35
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0241935483870968
+          },
+          "count": 1016,
+          "dimensions": {
+            "clientCountryName": "SG"
+          },
+          "sum": {
+            "visits": 245
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1405152224824355
+          },
+          "count": 974,
+          "dimensions": {
+            "clientCountryName": "CA"
+          },
+          "sum": {
+            "visits": 416
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.4739583333333333
+          },
+          "count": 849,
+          "dimensions": {
+            "clientCountryName": "GB"
+          },
+          "sum": {
+            "visits": 119
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0936902485659656
+          },
+          "count": 572,
+          "dimensions": {
+            "clientCountryName": "CN"
+          },
+          "sum": {
+            "visits": 84
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.5072046109510087
+          },
+          "count": 523,
+          "dimensions": {
+            "clientCountryName": "HK"
+          },
+          "sum": {
+            "visits": 37
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.3882978723404256
+          },
+          "count": 522,
+          "dimensions": {
+            "clientCountryName": "PL"
+          },
+          "sum": {
+            "visits": 104
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.004830917874396
+          },
+          "count": 415,
+          "dimensions": {
+            "clientCountryName": "IN"
+          },
+          "sum": {
+            "visits": 34
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.1344086021505375
+          },
+          "count": 397,
+          "dimensions": {
+            "clientCountryName": "ID"
+          },
+          "sum": {
+            "visits": 28
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0108991825613078
+          },
+          "count": 371,
+          "dimensions": {
+            "clientCountryName": "BR"
+          },
+          "sum": {
+            "visits": 90
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.225108225108225
+          },
+          "count": 283,
+          "dimensions": {
+            "clientCountryName": "JP"
+          },
+          "sum": {
+            "visits": 52
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0074906367041199
+          },
+          "count": 269,
+          "dimensions": {
+            "clientCountryName": "FI"
+          },
+          "sum": {
+            "visits": 117
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.5625
+          },
+          "count": 175,
+          "dimensions": {
+            "clientCountryName": "KR"
+          },
+          "sum": {
+            "visits": 28
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.3873873873873874
+          },
+          "count": 154,
+          "dimensions": {
+            "clientCountryName": "AU"
+          },
+          "sum": {
+            "visits": 17
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 150,
+          "dimensions": {
+            "clientCountryName": "T1"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.134453781512605
+          },
+          "count": 135,
+          "dimensions": {
+            "clientCountryName": "LT"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 118,
+          "dimensions": {
+            "clientCountryName": "SE"
+          },
+          "sum": {
+            "visits": 15
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 114,
+          "dimensions": {
+            "clientCountryName": "IE"
+          },
+          "sum": {
+            "visits": 15
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 81,
+          "dimensions": {
+            "clientCountryName": "UA"
+          },
+          "sum": {
+            "visits": 9
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 70,
+          "dimensions": {
+            "clientCountryName": "ES"
+          },
+          "sum": {
+            "visits": 33
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 63,
+          "dimensions": {
+            "clientCountryName": "CH"
+          },
+          "sum": {
+            "visits": 27
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 62,
+          "dimensions": {
+            "clientCountryName": "MX"
+          },
+          "sum": {
+            "visits": 23
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0166666666666666
+          },
+          "count": 61,
+          "dimensions": {
+            "clientCountryName": "TR"
+          },
+          "sum": {
+            "visits": 14
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0555555555555556
+          },
+          "count": 57,
+          "dimensions": {
+            "clientCountryName": "IT"
+          },
+          "sum": {
+            "visits": 25
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0754716981132075
+          },
+          "count": 57,
+          "dimensions": {
+            "clientCountryName": "ZA"
+          },
+          "sum": {
+            "visits": 10
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 48,
+          "dimensions": {
+            "clientCountryName": "AR"
+          },
+          "sum": {
+            "visits": 10
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.024390243902439
+          },
+          "count": 42,
+          "dimensions": {
+            "clientCountryName": "VE"
+          },
+          "sum": {
+            "visits": 5
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.2424242424242424
+          },
+          "count": 41,
+          "dimensions": {
+            "clientCountryName": "CO"
+          },
+          "sum": {
+            "visits": 10
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 39,
+          "dimensions": {
+            "clientCountryName": "TW"
+          },
+          "sum": {
+            "visits": 9
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.1428571428571428
+          },
+          "count": 32,
+          "dimensions": {
+            "clientCountryName": "IQ"
+          },
+          "sum": {
+            "visits": 6
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.3478260869565217
+          },
+          "count": 31,
+          "dimensions": {
+            "clientCountryName": "PK"
+          },
+          "sum": {
+            "visits": 9
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 30,
+          "dimensions": {
+            "clientCountryName": "RO"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 29,
+          "dimensions": {
+            "clientCountryName": "HU"
+          },
+          "sum": {
+            "visits": 21
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 29,
+          "dimensions": {
+            "clientCountryName": "BD"
+          },
+          "sum": {
+            "visits": 5
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 25,
+          "dimensions": {
+            "clientCountryName": "VN"
+          },
+          "sum": {
+            "visits": 5
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.25
+          },
+          "count": 25,
+          "dimensions": {
+            "clientCountryName": "CI"
+          },
+          "sum": {
+            "visits": 4
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 25,
+          "dimensions": {
+            "clientCountryName": "PH"
+          },
+          "sum": {
+            "visits": 6
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 24,
+          "dimensions": {
+            "clientCountryName": "SA"
+          },
+          "sum": {
+            "visits": 6
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 23,
+          "dimensions": {
+            "clientCountryName": "AE"
+          },
+          "sum": {
+            "visits": 7
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 22,
+          "dimensions": {
+            "clientCountryName": "EC"
+          },
+          "sum": {
+            "visits": 3
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 21,
+          "dimensions": {
+            "clientCountryName": "LU"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 21,
+          "dimensions": {
+            "clientCountryName": "TH"
+          },
+          "sum": {
+            "visits": 5
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 20,
+          "dimensions": {
+            "clientCountryName": "RU"
+          },
+          "sum": {
+            "visits": 6
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 19,
+          "dimensions": {
+            "clientCountryName": "DK"
+          },
+          "sum": {
+            "visits": 18
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 18,
+          "dimensions": {
+            "clientCountryName": "CL"
+          },
+          "sum": {
+            "visits": 3
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 16,
+          "dimensions": {
+            "clientCountryName": "MA"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 16,
+          "dimensions": {
+            "clientCountryName": "TN"
+          },
+          "sum": {
+            "visits": 4
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 14,
+          "dimensions": {
+            "clientCountryName": "UZ"
+          },
+          "sum": {
+            "visits": 3
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.3
+          },
+          "count": 13,
+          "dimensions": {
+            "clientCountryName": "SR"
+          },
+          "sum": {
+            "visits": 6
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0833333333333333
+          },
+          "count": 13,
+          "dimensions": {
+            "clientCountryName": "DO"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 12,
+          "dimensions": {
+            "clientCountryName": "PE"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 12,
+          "dimensions": {
+            "clientCountryName": "SC"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 12,
+          "dimensions": {
+            "clientCountryName": "NZ"
+          },
+          "sum": {
+            "visits": 10
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 10,
+          "dimensions": {
+            "clientCountryName": "TG"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 10,
+          "dimensions": {
+            "clientCountryName": "JO"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 9,
+          "dimensions": {
+            "clientCountryName": "PY"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 9,
+          "dimensions": {
+            "clientCountryName": "PS"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 8,
+          "dimensions": {
+            "clientCountryName": "DZ"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 8,
+          "dimensions": {
+            "clientCountryName": "PT"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 8,
+          "dimensions": {
+            "clientCountryName": "KE"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 8,
+          "dimensions": {
+            "clientCountryName": "KH"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 7,
+          "dimensions": {
+            "clientCountryName": "MD"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 7,
+          "dimensions": {
+            "clientCountryName": "AZ"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 7,
+          "dimensions": {
+            "clientCountryName": "NP"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 7,
+          "dimensions": {
+            "clientCountryName": "NG"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 6,
+          "dimensions": {
+            "clientCountryName": "SN"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 6,
+          "dimensions": {
+            "clientCountryName": "UY"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 6,
+          "dimensions": {
+            "clientCountryName": "BO"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 6,
+          "dimensions": {
+            "clientCountryName": "CR"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 5,
+          "dimensions": {
+            "clientCountryName": "OM"
+          },
+          "sum": {
+            "visits": 3
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 5,
+          "dimensions": {
+            "clientCountryName": "IL"
+          },
+          "sum": {
+            "visits": 3
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 5,
+          "dimensions": {
+            "clientCountryName": "GR"
+          },
+          "sum": {
+            "visits": 3
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 5,
+          "dimensions": {
+            "clientCountryName": "BG"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 5,
+          "dimensions": {
+            "clientCountryName": "MY"
+          },
+          "sum": {
+            "visits": 3
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 4,
+          "dimensions": {
+            "clientCountryName": "EG"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 4,
+          "dimensions": {
+            "clientCountryName": "LV"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 4,
+          "dimensions": {
+            "clientCountryName": "HR"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "NI"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "BH"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "LB"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "HN"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "XK"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "CD"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "QA"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "MM"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "AT"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "BY"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "TZ"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "CG"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "SI"
+          },
+          "sum": {
+            "visits": 2
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "LY"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "ET"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 3,
+          "dimensions": {
+            "clientCountryName": "KZ"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "JM"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "GE"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "SY"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "RE"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "HT"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "YE"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "MN"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "CZ"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "CU"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "AO"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "clientCountryName": "CM"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "KW"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "TT"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "MZ"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "BJ"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "AL"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "LR"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "PA"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "GY"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "BF"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "SV"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "CW"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "KG"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "clientCountryName": "GQ"
+          },
+          "sum": {
+            "visits": 0
+          }
+        }
+      ]
     },
     "deviceTypes": {
-      "status": "not_available_in_plan_or_schema"
+      "status": "available",
+      "rows": [
+        {
+          "avg": {
+            "sampleInterval": 1.605858785576773
+          },
+          "count": 30863,
+          "dimensions": {
+            "clientDeviceType": "desktop"
+          },
+          "sum": {
+            "visits": 4634
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0034311856652687
+          },
+          "count": 2632,
+          "dimensions": {
+            "clientDeviceType": "mobile"
+          },
+          "sum": {
+            "visits": 726
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.003717472118959
+          },
+          "count": 270,
+          "dimensions": {
+            "clientDeviceType": "tablet"
+          },
+          "sum": {
+            "visits": 15
+          }
+        }
+      ]
     },
     "browsers": {
-      "status": "unavailable",
-      "reason": "[{\"message\":\"zone \\\"bde8c0f19abd330d5b22a251ef38809e\\\" cannot request a time range wider than 4w2d, but your query time range spans 8w4d\",\"path\":[\"viewer\",\"zones\",\"0\",\"rows\"],\"extensions\":{\"code\":\"quota\",\"timestamp\":\"2026-10-11T20:58:06.834829775Z\",\"ray_id\":\"a490c7f03e754e41-SEA\"}}]"
+      "status": "available",
+      "rows": [
+        {
+          "avg": {
+            "sampleInterval": 1.3390535067149862
+          },
+          "count": 12563,
+          "dimensions": {
+            "userAgentBrowser": "Unknown"
+          },
+          "sum": {
+            "visits": 2656
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.8620104841196423
+          },
+          "count": 12077,
+          "dimensions": {
+            "userAgentBrowser": "Chrome"
+          },
+          "sum": {
+            "visits": 1677
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 2.4758909853249476
+          },
+          "count": 4724,
+          "dimensions": {
+            "userAgentBrowser": "Curl"
+          },
+          "sum": {
+            "visits": 90
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0068143100511073
+          },
+          "count": 1182,
+          "dimensions": {
+            "userAgentBrowser": "MobileSafari"
+          },
+          "sum": {
+            "visits": 295
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.001310615989515
+          },
+          "count": 764,
+          "dimensions": {
+            "userAgentBrowser": "ChromeMobile"
+          },
+          "sum": {
+            "visits": 312
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.011864406779661
+          },
+          "count": 597,
+          "dimensions": {
+            "userAgentBrowser": "GoogleBot"
+          },
+          "sum": {
+            "visits": 117
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 439,
+          "dimensions": {
+            "userAgentBrowser": "TwitterBot"
+          },
+          "sum": {
+            "visits": 15
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0132275132275133
+          },
+          "count": 383,
+          "dimensions": {
+            "userAgentBrowser": "BingBot"
+          },
+          "sum": {
+            "visits": 121
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0087719298245614
+          },
+          "count": 345,
+          "dimensions": {
+            "userAgentBrowser": "Firefox"
+          },
+          "sum": {
+            "visits": 40
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0591900311526479
+          },
+          "count": 340,
+          "dimensions": {
+            "userAgentBrowser": "Edge"
+          },
+          "sum": {
+            "visits": 36
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.0135135135135136
+          },
+          "count": 150,
+          "dimensions": {
+            "userAgentBrowser": "Safari"
+          },
+          "sum": {
+            "visits": 8
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.2142857142857142
+          },
+          "count": 68,
+          "dimensions": {
+            "userAgentBrowser": "YandexBot"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1.2307692307692308
+          },
+          "count": 48,
+          "dimensions": {
+            "userAgentBrowser": "AppleBot"
+          },
+          "sum": {
+            "visits": 4
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 40,
+          "dimensions": {
+            "userAgentBrowser": "ChromeDerivative"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 18,
+          "dimensions": {
+            "userAgentBrowser": "ChromeMobileWebview"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 15,
+          "dimensions": {
+            "userAgentBrowser": "SamsungInternet"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 6,
+          "dimensions": {
+            "userAgentBrowser": "ChromeHeadless"
+          },
+          "sum": {
+            "visits": 1
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 2,
+          "dimensions": {
+            "userAgentBrowser": "Opera"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "userAgentBrowser": "Wget"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "userAgentBrowser": "MsnBot"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "userAgentBrowser": "IE"
+          },
+          "sum": {
+            "visits": 0
+          }
+        },
+        {
+          "avg": {
+            "sampleInterval": 1
+          },
+          "count": 1,
+          "dimensions": {
+            "userAgentBrowser": "MobileSafariWebview"
+          },
+          "sum": {
+            "visits": 1
+          }
+        }
+      ]
     }
   }
 }
