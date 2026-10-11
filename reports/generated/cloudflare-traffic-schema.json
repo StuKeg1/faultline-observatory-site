@@ -1,0 +1,74 @@
+{
+  "data": {
+    "one": {
+      "fields": [
+        {
+          "name": "date"
+        }
+      ]
+    },
+    "three": {
+      "fields": [
+        {
+          "name": "uniques"
+        }
+      ]
+    },
+    "two": {
+      "fields": [
+        {
+          "name": "browserMap"
+        },
+        {
+          "name": "bytes"
+        },
+        {
+          "name": "cachedBytes"
+        },
+        {
+          "name": "cachedRequests"
+        },
+        {
+          "name": "clientHTTPVersionMap"
+        },
+        {
+          "name": "clientSSLMap"
+        },
+        {
+          "name": "contentTypeMap"
+        },
+        {
+          "name": "countryMap"
+        },
+        {
+          "name": "edgeRequestBytes"
+        },
+        {
+          "name": "encryptedBytes"
+        },
+        {
+          "name": "encryptedRequests"
+        },
+        {
+          "name": "ipClassMap"
+        },
+        {
+          "name": "pageViews"
+        },
+        {
+          "name": "requests"
+        },
+        {
+          "name": "responseStatusMap"
+        },
+        {
+          "name": "threatPathingMap"
+        },
+        {
+          "name": "threats"
+        }
+      ]
+    }
+  },
+  "errors": null
+}
