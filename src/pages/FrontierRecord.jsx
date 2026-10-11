@@ -17,6 +17,7 @@ import {
   getRecordMetaDescription,
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
+import { getRecordLegibility } from "../data/recordLegibility.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
@@ -106,21 +107,21 @@ function WarrantPanel({ current, record }) {
   );
 }
 
-function CompactAssessmentTrajectory({ trajectory }) {
+function AssessmentHistoryStrip({ trajectory }) {
 
   const hasMovement = trajectory.steps.length > 1;
   const isReaffirmed = trajectory.currentStateEnteredDate !== trajectory.currentAssessmentDate;
   const isStableReassessment = !hasMovement && isReaffirmed;
 
   return (
-    <div className="assessment-trajectory" aria-label="Assessment trajectory">
-      <span className="assessment-trajectory-label">Assessment trajectory</span>
+    <div className="assessment-trajectory" aria-label="Assessment history">
+      <span className="assessment-trajectory-label">Assessment history</span>
       <div className="assessment-trajectory-steps">
         {isStableReassessment && (
           <>
             <StateBadge pressureState={trajectory.steps[0].pressureState} />
             <span className="assessment-trajectory-current">
-              state held · last assessed {trajectory.currentAssessmentDate}
+              assessment reaffirmed · {trajectory.currentAssessmentDate}
             </span>
           </>
         )}
@@ -145,6 +146,41 @@ function CompactAssessmentTrajectory({ trajectory }) {
         )}
       </div>
     </div>
+  );
+}
+
+function WhereRecordStands({ legibility }) {
+  const { current, evidenceSinceAssessment, questions } = legibility;
+  return (
+    <section className="record-stands" aria-labelledby="record-stands-title">
+      <div className="record-stands-header">
+        <h2 id="record-stands-title">Where the record stands</h2>
+        <span className="record-stands-date">Assessed {current.date}</span>
+      </div>
+      <div className="record-stands-assessment">
+        <span className="record-stands-label">Current assessment</span>
+        <StateBadge pressureState={current.pressureState} />
+      </div>
+      <div className={`record-evidence-gap${evidenceSinceAssessment.length ? " record-evidence-gap--open" : ""}`}>
+        <span className="record-stands-label">Evidence since assessment</span>
+        <p>{evidenceSinceAssessment.length
+          ? `${evidenceSinceAssessment.length} qualifying evidence ${evidenceSinceAssessment.length === 1 ? "instance was" : "instances were"} recorded after this assessment and not yet assessed.`
+          : "No qualifying evidence has been recorded after this assessment."}</p>
+      </div>
+      {questions.length > 0 && (
+        <div className="record-questions-on-record">
+          <span className="record-stands-label">Questions on record</span>
+          <ul>
+            {questions.map((question) => (
+              <li key={question.id}>
+                <span>{question.question}</span>
+                <small>{question.elapsed ? `On record for ${question.elapsed} · ` : ""}since {question.raisedDate}</small>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -627,6 +663,7 @@ export default function FrontierRecord() {
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const evidenceBrief = getEvidenceBrief(record);
+  const legibility = getRecordLegibility(record);
   const { hasMechanisms, hasClaimLineage, hasOpenQuestions } = getNarrativeAvailability(record);
   const assessmentTrajectory = record.assessments.length > 1
     ? getCompactAssessmentTrajectory(record)
@@ -686,7 +723,8 @@ export default function FrontierRecord() {
                   <span className="rp-status-provenance">S4 reconstruction · not reaffirmed by realignment</span>
                 )}
               </div>
-              {assessmentTrajectory && <CompactAssessmentTrajectory trajectory={assessmentTrajectory} />}
+              <WhereRecordStands legibility={legibility} />
+              {assessmentTrajectory && <AssessmentHistoryStrip trajectory={assessmentTrajectory} />}
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               {record.claim.subject && (
