@@ -203,7 +203,7 @@ function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, 
                 <text className="et-register-stage-name" x={geometry.registerColumns.stageX} y={group.groupTop + 10} fontSize="11" fontWeight="700">{VS_STAGE_LABELS[group.stage]}</text>
                 <text className="et-register-stage-code" x={geometry.registerColumns.stageX + 86} y={group.groupTop + 10} opacity="0.82">{group.stage}</text>
                 {group.stage === "VS-05" && <text x={geometry.registerColumns.stageX} y={group.groupTop + 22} fill="var(--ink-light)" fontFamily="var(--serif)" fontSize="9" fontStyle="italic">Demonstrated operation</text>}
-                {group.rows.length === 0 && <text className="et-register-empty" x={geometry.registerColumns.idX} y={group.emptyLabelY + 3}>No current records</text>}
+                {group.rows.length === 0 && <text className="et-register-empty" x={geometry.registerColumns.idX} y={group.emptyLabelY + 3}>No records currently at this stage</text>}
                 {group.rows.map((row) => {
                   const trajectory = trajectoryById.get(row.recordId);
                   const record = trajectory.record;
@@ -234,7 +234,6 @@ function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, 
           })}
           <text className="et-phase-range" x={geometry.todayX} y={geometry.height - 46}>Today</text>
           <text className="et-phase-footer" x={geometry.todayX} y={geometry.height - 30}>{footerCaptionLines("Current verification stage").map((line, lineIndex) => <tspan key={line} x={geometry.todayX} dy={lineIndex === 0 ? 0 : 12}>{line}</tspan>)}</text>
-          <text className="et-history-axis" x={(geometry.plotLeft + geometry.todayX) / 2} y={geometry.height - 8}>{"Evidence history ->"}</text>
         </g>
       </svg>
     </div>
