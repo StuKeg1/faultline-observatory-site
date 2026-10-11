@@ -598,16 +598,12 @@
   font-size: 11px;
 }
 
-.et-phase-arrow,
-.et-history-axis {
+.et-phase-arrow {
   fill: var(--ink-mid);
   font-family: var(--mono);
   font-size: 12px;
 }
 
-.et-history-axis {
-  font-size: 11px;
-}
 .et-register-leader {
   fill: none;
   stroke: var(--rule);
