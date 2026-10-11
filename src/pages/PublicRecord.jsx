@@ -171,6 +171,7 @@ function RecordsPreview({ records }) {
           <strong title={record.claim.shortLabel}>{record.claim.shortLabel}</strong>
           <span className="pr-record-entry-meta">
             <StateBadge pressureState={getCurrentAssessment(record).pressureState} />
+            <time dateTime={getRecordUpdatedDate(record)}>Updated {getRecordUpdatedDate(record)}</time>
           </span>
           <AssessmentHistoryStrip record={record} compact />
         </Link>

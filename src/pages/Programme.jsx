@@ -183,7 +183,7 @@ export default function Programme() {
                         className="prog-record-row"
                       >
                         <span className="prr-id">{r.id}</span>
-                        <span className="prr-copy"><span className="prr-title">{r.claim.shortLabel}</span><AssessmentHistoryStrip record={r} compact /></span>
+                        <span className="prr-copy"><span className="prr-title">{r.claim.shortLabel}</span><AssessmentHistoryStrip record={r} compact /><span className="prr-opened">opened {r.claim.openedDate}</span></span>
                         <span className="prr-state">
                           <StateBadge pressureState={current.pressureState} />
                         </span>

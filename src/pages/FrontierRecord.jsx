@@ -107,7 +107,7 @@ function WarrantPanel({ current, record }) {
   );
 }
 
-function AssessmentHistoryStrip({ trajectory }) {
+function RecordAssessmentHistory({ trajectory }) {
 
   const hasMovement = trajectory.steps.length > 1;
   const isReaffirmed = trajectory.currentStateEnteredDate !== trajectory.currentAssessmentDate;
@@ -724,7 +724,7 @@ export default function FrontierRecord() {
                 )}
               </div>
               <WhereRecordStands legibility={legibility} />
-              {assessmentTrajectory && <AssessmentHistoryStrip trajectory={assessmentTrajectory} />}
+              {assessmentTrajectory && <RecordAssessmentHistory trajectory={assessmentTrajectory} />}
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               {record.claim.subject && (

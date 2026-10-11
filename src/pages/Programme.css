@@ -225,23 +225,10 @@
 }
 .prr-copy { display: grid; gap: 0.35rem; min-width: 0; }
 .prr-state { justify-self: end; }
-/* RELEASE-013 — assessment depth, matching RecordCard's .rc-assessments
-   rule (font-weight 500, no other decoration). Added as a flat rule
-   alongside the other .prr-* rules, same convention as this file's
-   existing columns. */
-.prr-assessments {
-  font-family: var(--mono);
-  font-size: 9.5px;
-  font-weight: 500;
-  color: var(--ink-light);
-  white-space: nowrap;
-  text-align: right;
-}
-.prr-date {
+.prr-opened {
   font-family: var(--mono);
   font-size: 9.5px;
   color: var(--ink-faint);
-  text-align: right;
   letter-spacing: 0.03em;
 }
 
