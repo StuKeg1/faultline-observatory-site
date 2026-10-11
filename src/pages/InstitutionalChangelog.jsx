@@ -23,11 +23,42 @@ import "./InstitutionalChangelog.css";
 // — not a second data store, per Policy §5 / the Canonical Reality
 // Principle (CP-004).
 
+const TAG_KEY = [
+  {
+    tag: "A",
+    description: "Substantive development shown in Latest Developments.",
+    qualifies: true,
+  },
+  {
+    tag: "C",
+    description: "Institutional or governance change, retained in the changelog.",
+    qualifies: false,
+  },
+  {
+    tag: "D",
+    description: "Editorial, provenance, or operational update, retained in the changelog.",
+    qualifies: false,
+  },
+  {
+    tag: "A (subsumed)",
+    description: "Part of the original record admission, represented by its admission entry rather than repeated separately.",
+    qualifies: false,
+  },
+];
+
+function getTagDescription(taxonomyClass, qualifies) {
+  const key = taxonomyClass === "A (subsumed)" ? taxonomyClass : taxonomyClass[0];
+  return (
+    TAG_KEY.find((item) => item.tag === key)?.description ??
+    (qualifies ? "Appears in Latest Developments." : "Changelog only.")
+  );
+}
+
 function TaxonomyTag({ qualifies, taxonomyClass }) {
   return (
     <span
       className={`ichl-tag ${qualifies ? "ichl-tag--qualifies" : "ichl-tag--excluded"}`}
-      title={qualifies ? "Appears in Latest Developments" : "Changelog only"}
+      title={getTagDescription(taxonomyClass, qualifies)}
     >
       {taxonomyClass}
     </span>
@@ -77,6 +108,25 @@ export default function InstitutionalChangelog() {
                 <strong>{entries.length - qualifyingCount}</strong> changelog-only
               </span>
             </div>
+            <dl className="ichl-key" aria-label="Changelog tag key">
+              <div className="ichl-key-heading">
+                <dt>Tag key</dt>
+              </div>
+              {TAG_KEY.map(({ tag, description, qualifies }) => (
+                <div className="ichl-key-item" key={tag}>
+                  <dt>
+                    <span
+                      className={`ichl-tag ichl-key-tag ${
+                        qualifies ? "ichl-tag--qualifies" : "ichl-tag--excluded"
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  </dt>
+                  <dd>{description}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </header>
 
