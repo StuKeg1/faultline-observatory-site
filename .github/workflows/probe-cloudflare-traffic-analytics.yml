@@ -1,0 +1,31 @@
+name: Probe Cloudflare Traffic Analytics
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query available traffic dimensions
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          query='{"query":"query { one: __type(name: \"ZoneHttpRequests1dGroupsDimensions\") { fields { name } } two: __type(name: \"ZoneHttpRequests1dGroupsSum\") { fields { name } } three: __type(name: \"ZoneHttpRequests1dGroupsUniq\") { fields { name } } }"}'
+          response="$(curl --fail-with-body --silent --show-error \
+            -X POST https://api.cloudflare.com/client/v4/graphql \
+            -H "Authorization: Bearer $CF_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "$query")"
+          echo "$response" | jq .
+          {
+            echo "## Available Cloudflare traffic fields"
+            echo
+            echo '~~~json'
+            echo "$response" | jq .
+            echo '~~~'
+          } >> "$GITHUB_STEP_SUMMARY"
