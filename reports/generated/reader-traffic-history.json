@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "snapshots": [
+    {
+      "periodStart": "2026-10-05",
+      "periodEnd": "2026-10-11",
+      "capturedAt": "2026-10-12T13:49:47.997Z",
+      "status": "available",
+      "methodology": "Best-effort reader-facing traffic. Includes only Cloudflare's requestSource=eyeball data; this is not a people count and may include automation.",
+      "limitations": [
+        "Referrer data is unavailable for this zone's current Cloudflare access level.",
+        "Adaptive data can be sampled; each row retains Cloudflare's sample interval.",
+        "Known operational, asset and hostile-probe paths are excluded from reader-facing routes."
+      ],
+      "referrerSources": "unavailable",
+      "exclusions": [
+        "deployment.json",
+        "robots and sitemaps",
+        "assets",
+        "Cloudflare utility routes",
+        "common hostile probes"
+      ],
+      "readerFacingRoutes": [
+        {
+          "path": "/",
+          "requests": 677,
+          "visits": 344,
+          "sampleInterval": 1.033587786259542
+        },
+        {
+          "path": "/mcp",
+          "requests": 441,
+          "visits": 0,
+          "sampleInterval": 1.0208333333333333
+        },
+        {
+          "path": "/evidence-trajectories/",
+          "requests": 392,
+          "visits": 314,
+          "sampleInterval": 1.018181818181818
+        },
+        {
+          "path": "/the-record/fr-qe-0001/",
+          "requests": 155,
+          "visits": 148,
+          "sampleInterval": 1.0333333333333334
+        },
+        {
+          "path": "/the-record/fr-am-0004/",
+          "requests": 63,
+          "visits": 57,
+          "sampleInterval": 1.0327868852459017
+        },
+        {
+          "path": "/shared/%2eenv",
+          "requests": 62,
+          "visits": 0,
+          "sampleInterval": 20.666666666666668
+        },
+        {
+          "path": "/reading-room/",
+          "requests": 62,
+          "visits": 44,
+          "sampleInterval": 1.0163934426229508
+        },
+        {
+          "path": "/public-record/",
+          "requests": 61,
+          "visits": 41,
+          "sampleInterval": 1.0517241379310345
+        },
+        {
+          "path": "/debug-output%2etxt",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/main%2e58a95e8d8659972f%2ejs",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/%252F.env",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/var/task/amplify/backend/function/*/src/index%2ejs",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/%2egit/",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/root/%2eenv",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/old/",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/%2eDS_Store",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/config/sendgrid_config%2ejson",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/public/system",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/%2ewell-known/security%2etxt",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        },
+        {
+          "path": "/first-network/%2eenv",
+          "requests": 60,
+          "visits": 0,
+          "sampleInterval": 60
+        }
+      ],
+      "countries": [
+        {
+          "country": "US",
+          "requests": 3416,
+          "visits": 1268,
+          "sampleInterval": 1.0598820974247596
+        },
+        {
+          "country": "FR",
+          "requests": 3162,
+          "visits": 11,
+          "sampleInterval": 9.327433628318584
+        },
+        {
+          "country": "DE",
+          "requests": 2596,
+          "visits": 202,
+          "sampleInterval": 1.5572885422915417
+        },
+        {
+          "country": "NL",
+          "requests": 638,
+          "visits": 13,
+          "sampleInterval": 1.0357142857142858
+        },
+        {
+          "country": "GB",
+          "requests": 597,
+          "visits": 113,
+          "sampleInterval": 1.056637168141593
+        },
+        {
+          "country": "SG",
+          "requests": 394,
+          "visits": 41,
+          "sampleInterval": 1.0260416666666667
+        },
+        {
+          "country": "BE",
+          "requests": 371,
+          "visits": 16,
+          "sampleInterval": 4.946666666666666
+        },
+        {
+          "country": "CN",
+          "requests": 334,
+          "visits": 59,
+          "sampleInterval": 1.1133333333333333
+        },
+        {
+          "country": "IN",
+          "requests": 329,
+          "visits": 11,
+          "sampleInterval": 2.71900826446281
+        },
+        {
+          "country": "CA",
+          "requests": 327,
+          "visits": 163,
+          "sampleInterval": 1
+        },
+        {
+          "country": "HK",
+          "requests": 262,
+          "visits": 13,
+          "sampleInterval": 2.7291666666666665
+        },
+        {
+          "country": "BR",
+          "requests": 208,
+          "visits": 42,
+          "sampleInterval": 1
+        },
+        {
+          "country": "PL",
+          "requests": 191,
+          "visits": 10,
+          "sampleInterval": 4.2444444444444445
+        },
+        {
+          "country": "JP",
+          "requests": 187,
+          "visits": 20,
+          "sampleInterval": 1.385185185185185
+        },
+        {
+          "country": "T1",
+          "requests": 118,
+          "visits": 0,
+          "sampleInterval": 1.0260869565217392
+        },
+        {
+          "country": "LT",
+          "requests": 65,
+          "visits": 0,
+          "sampleInterval": 1.3265306122448979
+        },
+        {
+          "country": "MX",
+          "requests": 53,
+          "visits": 21,
+          "sampleInterval": 1
+        },
+        {
+          "country": "TR",
+          "requests": 40,
+          "visits": 13,
+          "sampleInterval": 1.0256410256410255
+        },
+        {
+          "country": "ES",
+          "requests": 40,
+          "visits": 18,
+          "sampleInterval": 1
+        },
+        {
+          "country": "SE",
+          "requests": 34,
+          "visits": 6,
+          "sampleInterval": 1
+        }
+      ],
+      "deviceTypes": [
+        {
+          "device": "desktop",
+          "requests": 12760,
+          "visits": 1874,
+          "sampleInterval": 1.6306709265175718
+        },
+        {
+          "device": "mobile",
+          "requests": 1173,
+          "visits": 309,
+          "sampleInterval": 1.0025641025641026
+        },
+        {
+          "device": "tablet",
+          "requests": 105,
+          "visits": 1,
+          "sampleInterval": 1.0096153846153846
+        }
+      ],
+      "browsers": [
+        {
+          "browser": "Unknown",
+          "requests": 5649,
+          "visits": 827,
+          "sampleInterval": 1.3982673267326733
+        },
+        {
+          "browser": "Chrome",
+          "requests": 3515,
+          "visits": 956,
+          "sampleInterval": 1.165064633742128
+        },
+        {
+          "browser": "Curl",
+          "requests": 3204,
+          "visits": 45,
+          "sampleInterval": 8.257731958762887
+        },
+        {
+          "browser": "ChromeMobile",
+          "requests": 549,
+          "visits": 200,
+          "sampleInterval": 1.0018248175182483
+        },
+        {
+          "browser": "MobileSafari",
+          "requests": 352,
+          "visits": 87,
+          "sampleInterval": 1.0057142857142858
+        },
+        {
+          "browser": "Edge",
+          "requests": 244,
+          "visits": 4,
+          "sampleInterval": 1.0382978723404255
+        },
+        {
+          "browser": "Firefox",
+          "requests": 189,
+          "visits": 24,
+          "sampleInterval": 1.0161290322580645
+        },
+        {
+          "browser": "GoogleBot",
+          "requests": 115,
+          "visits": 24,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "Safari",
+          "requests": 85,
+          "visits": 1,
+          "sampleInterval": 1.0119047619047619
+        },
+        {
+          "browser": "BingBot",
+          "requests": 59,
+          "visits": 11,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "TwitterBot",
+          "requests": 29,
+          "visits": 4,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "ChromeMobileWebview",
+          "requests": 15,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "UCBrowserMobile",
+          "requests": 15,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "ChromeDerivative",
+          "requests": 12,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "AppleBot",
+          "requests": 5,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "SamsungInternet",
+          "requests": 1,
+          "visits": 1,
+          "sampleInterval": 1
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-10-12T13:49:47.997Z"
+}
