@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
 import { getAssessmentHistory, getCurrentAssessment, getTransitionFeed } from "./derive.js";
-import { REGISTERS, getRegisterRow, getRegisterRows, resolveRegister } from "./registerProjection.js";
+import { REGISTERS, getRegisterRows, resolveRegister, sortKey } from "./registerProjection.js";
 
 const forbidden = /\b(advancement|regression|oscillation|oscillating|endurance|enduring|stagnation|supportive-dominant|contesting-dominant|deferred-resolution|early-support-then-stall|escalating-contradiction)\b/i;
 
@@ -30,13 +30,37 @@ test("register reasons use assessment values and dates", () => {
   }
 });
 
-test("FR-AM-0001 is the only record whose register reasons carry the recorded-at-opening marker", () => {
-  const markedRecordIds = new Set(
-    REGISTERS.flatMap((register) => getRegisterRows(ALL_RECORDS, register.id))
-      .filter((row) => row.reason.includes("(recorded at opening)"))
-      .map((row) => row.record.id),
-  );
-  assert.deepEqual([...markedRecordIds], ["FR-AM-0001"]);
+test("reasons never expose a stored date when LAD-001 supplies a different display date", () => {
+  for (const register of REGISTERS) {
+    for (const row of getRegisterRows(ALL_RECORDS, register.id)) {
+      const history = getAssessmentHistory(row.record);
+      row.record.assessments.forEach((stored, index) => {
+        if (stored.date !== history[index].date) assert.equal(row.reason.includes(stored.date), false, `${register.id}: ${row.record.id}`);
+      });
+    }
+  }
+});
+
+test("FR-AM-0001 changed reason uses its LAD-001 date", () => {
+  const record = ALL_RECORDS.find((item) => item.id === "FR-AM-0001");
+  const row = getRegisterRows([record], "changed")[0];
+  assert.match(row.reason, /2004 or earlier/);
+  assert.doesNotMatch(row.reason, /2024-01-15/);
+});
+
+test("no reason carries a recorded-at-opening suffix", () => {
+  for (const register of REGISTERS) {
+    for (const row of getRegisterRows(ALL_RECORDS, register.id)) assert.doesNotMatch(row.reason, /\(recorded at opening\)/);
+  }
+});
+
+test("register rows are sorted by their register-specific display date", () => {
+  for (const register of REGISTERS) {
+    const rows = getRegisterRows(ALL_RECORDS, register.id);
+    for (let index = 1; index < rows.length; index += 1) {
+      assert.ok(sortKey(rows[index - 1].sortDate) >= sortKey(rows[index].sortDate), register.id);
+    }
+  }
 });
 
 test("legacy and compatible register ids resolve without inventing a fallback", () => {

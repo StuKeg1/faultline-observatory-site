@@ -97,18 +97,31 @@ function finalRun(history, key) {
   return { assessment: history[index], current };
 }
 
-function latestStageChange(record) {
+function latestStateChange(record) {
   for (let index = record.assessments.length - 1; index > 0; index -= 1) {
-    if (record.assessments[index - 1].verificationStage !== record.assessments[index].verificationStage) {
-      return { from: record.assessments[index - 1], to: record.assessments[index] };
+    if (record.assessments[index - 1].pressureState !== record.assessments[index].pressureState) {
+      return { from: record.assessments[index - 1], to: record.assessments[index], index };
     }
   }
   return null;
 }
 
-function isRecordedAtOpening(record, assessment) {
-  const assessmentIndex = record.assessments.findIndex((item) => item.id === assessment.id);
-  return assessmentIndex > 0 && record.assessments[assessmentIndex].date === record.claim.openedDate;
+function latestStageChange(record) {
+  for (let index = record.assessments.length - 1; index > 0; index -= 1) {
+    if (record.assessments[index - 1].verificationStage !== record.assessments[index].verificationStage) {
+      return { from: record.assessments[index - 1], to: record.assessments[index], index };
+    }
+  }
+  return null;
+}
+
+export function sortKey(date) {
+  if (typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    const parsed = new Date(`${date}T00:00:00Z`);
+    if (Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === date) return date;
+  }
+  const year = String(date).match(/\d{4}/)?.[0];
+  return year ? `${year}-00-00` : "";
 }
 
 function stateReason(current, stateEnteredDate, history) {
@@ -120,46 +133,45 @@ function stateReason(current, stateEnteredDate, history) {
 export function getRegisterRow(record, registerId = "full") {
   const register = resolveRegister(registerId);
   const history = getAssessmentHistory(record);
-  const current = getCurrentAssessment(record);
+  const current = history.at(-1);
   const stateRun = finalRun(history, "pressureState");
   const stageRun = finalRun(history, "verificationStage");
   const stateEnteredDate = stateRun.assessment.date;
   const stageReachedDate = stageRun.assessment.date;
-  const transitions = getTransitionFeed(record);
-  const latestTransition = transitions.at(-1) ?? null;
+  const latestTransition = latestStateChange(record);
   const latestStage = latestStageChange(record);
   let reason;
-  let sourceAssessment = stateRun.assessment;
+  let sortDate = stateEnteredDate;
 
   if (register.group === "Stage") {
     reason = `Reached ${current.verificationStage} on ${stageReachedDate}`;
-    sourceAssessment = stageRun.assessment;
+    sortDate = stageReachedDate;
   } else if (register.id === "changed" && latestTransition) {
-    reason = `${getPressureStateLabel(latestTransition.from.pressureState)} → ${getPressureStateLabel(latestTransition.to.pressureState)}, ${latestTransition.to.date}`;
-    sourceAssessment = latestTransition.to;
+    const changeDate = history[latestTransition.index].date;
+    reason = `${getPressureStateLabel(latestTransition.from.pressureState)} → ${getPressureStateLabel(latestTransition.to.pressureState)}, ${changeDate}`;
+    sortDate = changeDate;
   } else if (register.id === "stage-changed" && latestStage) {
-    reason = `${latestStage.from.verificationStage} → ${latestStage.to.verificationStage}, ${latestStage.to.date}`;
-    sourceAssessment = latestStage.to;
+    const changeDate = history[latestStage.index].date;
+    reason = `${latestStage.from.verificationStage} → ${latestStage.to.verificationStage}, ${changeDate}`;
+    sortDate = changeDate;
   } else if (register.id === "reaffirmed") {
     reason = `${getPressureStateLabel(current.pressureState)} held across ${history.length} assessments · last assessed ${current.date}`;
-    sourceAssessment = current;
+    sortDate = current.date;
   } else if (register.id === "single") {
     reason = `1 assessment · since ${current.date}`;
-    sourceAssessment = current;
+    sortDate = current.date;
   } else {
     reason = stateReason(current, stateEnteredDate, history);
   }
 
-  const recordedAtOpening = isRecordedAtOpening(record, sourceAssessment);
-  if (recordedAtOpening) reason += " (recorded at opening)";
   return {
     record,
     current,
     stateEnteredDate,
     stageReachedDate,
+    sortDate,
     reason,
     evidenceGapCount: getRecordLegibility(record).evidenceSinceAssessment.length,
-    recordedAtOpening,
   };
 }
 
@@ -168,5 +180,5 @@ export function getRegisterRows(records, registerId = "full") {
   return records
     .filter((record) => register.matches(record))
     .map((record) => getRegisterRow(record, register.id))
-    .sort((a, b) => b.stateEnteredDate.localeCompare(a.stateEnteredDate) || a.record.id.localeCompare(b.record.id));
+    .sort((a, b) => sortKey(b.sortDate).localeCompare(sortKey(a.sortDate)) || a.record.id.localeCompare(b.record.id));
 }
