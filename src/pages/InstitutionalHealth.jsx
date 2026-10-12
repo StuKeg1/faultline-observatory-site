@@ -67,7 +67,7 @@ export default function InstitutionalHealth() {
                 <div className="inst-health-kicker">Metrics</div>
                 <h2 className="inst-health-title">Weekly contextual statistics — not health metrics</h2>
                 <p className="inst-health-copy">
-                  Unique-client and page-view counts are sourced from Cloudflare network analytics.\n                  They include automated traffic, such as crawlers and deployment checks, and are not audience estimates.\n                  Record and programme counts are derived from the live corpus registry.
+                  Unique-client and page-view counts are sourced from Cloudflare network analytics. They include automated traffic, such as crawlers and deployment checks, and are not audience estimates. Record and programme counts are derived from the live corpus registry.
                 </p>
                 <p className="inst-context-governance">
                   Weekly contextual statistics only. No institutional health triggers are derived from this section.
@@ -125,4 +125,3 @@ export default function InstitutionalHealth() {
     </>
   );
 }
-
