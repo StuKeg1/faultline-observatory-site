@@ -10,7 +10,6 @@ import {
 import { getInstitutionalChangelog, getRecordUrl } from "../data/derive.js";
 import "./InstitutionalChangelog.css";
 
-
 // ─── INSTITUTIONAL CHANGELOG ─────────────────────────────────
 //
 // Governance basis: Activity Taxonomy & Qualification Policy v0.3
@@ -28,8 +27,6 @@ import "./InstitutionalChangelog.css";
 // — not a second data store, per Policy §5 / the Canonical Reality
 // Principle (CP-004).
 
-
-
 function TaxonomyTag({ qualifies, taxonomyClass }) {
   return (
     <span
@@ -37,3 +34,96 @@ function TaxonomyTag({ qualifies, taxonomyClass }) {
       title={getChangelogTagDescription(taxonomyClass, qualifies)}
     >
       {taxonomyClass}
+    </span>
+  );
+}
+
+export default function InstitutionalChangelog() {
+  const entries = useMemo(() => getInstitutionalChangelog(ALL_RECORDS), []);
+
+  const qualifyingCount = entries.filter((e) => e.qualifies).length;
+
+  return (
+    <>
+      <PageMeta
+        title="Institutional Changelog"
+        description="The complete, unfiltered mutation history of every Frontier Record in the corpus — the Observatory's full operational audit trail."
+        path="/institutional-changelog/"
+      />
+      <div className="ichl-page">
+        <header className="ichl-header">
+          <div className="ichl-header-inner">
+            <div className="ichl-eyebrow">Faultline Observatory</div>
+            <h1 className="ichl-title">Institutional Changelog</h1>
+            <p className="ichl-intro">
+              Every mutation to every Frontier Record, in full, chronological order.
+              Nothing here is deleted, hidden, or summarised away — this is the
+              complete operational history the Observatory's append-only obligation
+              requires it to keep.
+            </p>
+            <p className="ichl-intro">
+              The homepage shows a filtered subset,{" "}
+              <Link to="/">Latest Developments</Link>, governed by the{" "}
+              Activity Taxonomy &amp; Qualification Policy. Filtering there is a
+              routing decision, not a suppression one: every entry excluded from
+              that feed is still here, in full, tagged below.
+            </p>
+            <div className="ichl-stats">
+              <span>
+                <strong>{entries.length}</strong> total mutations
+              </span>
+              <span className="ichl-stats-sep">·</span>
+              <span>
+                <strong>{qualifyingCount}</strong> appear in Latest Developments
+              </span>
+              <span className="ichl-stats-sep">·</span>
+              <span>
+                <strong>{entries.length - qualifyingCount}</strong> changelog-only
+              </span>
+            </div>
+            <dl className="ichl-key" aria-label="Changelog tag key">
+              <div className="ichl-key-heading">
+                <dt>Tag key</dt>
+              </div>
+              {CHANGELOG_TAG_KEY.map(({ tag, description, qualifies }) => (
+                <div className="ichl-key-item" key={tag}>
+                  <dt>
+                    <span
+                      className={`ichl-tag ichl-key-tag ${
+                        qualifies ? "ichl-tag--qualifies" : "ichl-tag--excluded"
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  </dt>
+                  <dd>{description}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </header>
+
+        <main className="ichl-body">
+          <div className="ichl-body-inner">
+            <div className="ichl-list" role="feed" aria-label="Institutional Changelog">
+              {entries.map(({ record, mutation, qualifies, taxonomyClass }) => (
+                <div key={`${record.id}-${mutation.id}`} className="ichl-row">
+                  <span className="ichl-date">{mutation.date}</span>
+                  <Link to={getRecordUrl(record)} className="ichl-record-id">
+                    {record.id}
+                  </Link>
+                  <span className="ichl-note">{mutation.note}</span>
+                  <span className="ichl-field" title="Raw mutationLog field name">
+                    {mutation.field}
+                  </span>
+                  <TaxonomyTag qualifies={qualifies} taxonomyClass={taxonomyClass} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </main>
+      </div>
+      <SiteFooter />
+    </>
+  );
+}
