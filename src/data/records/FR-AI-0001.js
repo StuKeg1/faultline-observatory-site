@@ -184,6 +184,26 @@ export const FR_AI_0001 = {
       verificationStage: "VS-03",
       summary: "INST-006 sustains the ESCALATING state from AS-001 while materially sharpening OQ-002 rather than closing it. The disclosure that chain-of-thought traces are frequently unfaithful — not reliably reflecting the computation that produced an answer — means o1/o3-class performance (INST-005) cannot be straightforwardly read as evidence of the reasoning process its own output narrates. This cuts against treating AT-001's mechanism candidate as settled in either direction: a model could be performing genuine multi-step computation that its verbalised trace merely fails to describe accurately, or could be pattern-matching while its trace fabricates a plausible reasoning narrative — the faithfulness literature establishes that both are observed, without yet establishing which dominates for any specific frontier system. The claim's evidentiary picture therefore escalates in complexity: BN-001's undefined generalisation threshold is now joined by an analogous undefined-faithfulness threshold, and OQ-002 should be read going forward as two distinct questions (does the model generalise; does its chain-of-thought narrate that generalisation faithfully) rather than one. Verification stage advances to VS-03 (Audit): a substantial, multi-author, partly first-party (Anthropic) literature has now subjected the mechanism itself to direct scrutiny — the first such audit-stage evidence this record has logged.",
       assessorNote: "Sources: Chen et al., 'Reasoning Models Don't Always Say What They Think' (Anthropic, 2025); Arcuschin et al., arXiv:2503.08679 (2025); Lanham et al., arXiv:2307.13702 (2023); Turpin et al. (NeurIPS 2023); Lindsey et al. (2025, mechanistic circuit analysis). Verified directly via web search during RELEASE-004 / TRIAL-001, 2026-06-27.",
+    },
+    {
+      "id": "AS-003",
+      "date": "2026-10-12",
+      "pressureState": "escalating",
+      "verificationStage": "VS-03",
+      "summary": "IN-007 adds bounded supportive evidence of competition-mathematics performance: OpenAI retrospectively reports 35/42 at IMO 2025, matching the official gold-medal threshold. The official threshold does not independently validate the model's score. The admitted sources leave model identity, training exposure, inference conditions and independent grading insufficiently specified to establish generalisation beyond memorised examples. The corrected record also treats IN-003 as an unverified legacy report and distinguishes behavioural trace-faithfulness studies from the mechanistic analysis in IN-006. Faithfulness and generalisation remain separate questions: an unfaithful trace does not establish failure to generalise, and a high score does not establish the computation responsible. The current balance remains ESCALATING / VS-03: substantial capability evidence and direct scrutiny coexist with unresolved contamination, distribution-shift, mechanism and class-versus-system boundaries. IN-007 strengthens the performance strand without closing OQ-001 through OQ-005 or warranting a verification-stage change.",
+      "assessorNote": "Reassessment of evidence admitted since AS-002, specifically IN-007 admitted 2026-09-29, against the complete corrected record. Primary sources checked 2026-10-12: OpenAI's retrospective report and official IMO 2025 threshold. This assesses the admitted IMO result only; it does not admit First Proof results or later capability reports. Same-state reaffirmation; historical assessments and all evidence retained.",
+      "sources": [
+        {
+          "citation": "OpenAI, Our First Proof submissions (20 February 2026), retrospective IMO 2025 statement.",
+          "url": "https://openai.com/index/first-proof-submissions/",
+          "locator": "Paragraph reporting July 2025 performance of 35/42"
+        },
+        {
+          "citation": "International Mathematical Olympiad, IMO 2025 results.",
+          "url": "https://www.imo-official.org/editions/2025/",
+          "locator": "Gold-medal threshold of 35 points"
+        }
+      ]
     }
   ],
 
@@ -251,6 +271,7 @@ export const FR_AI_0001 = {
   ],
 
   mutationLog: [
+    {"id": "M-015", "date": "2026-10-12", "field": "assessment_issued", "from": "AS-002", "to": "AS-003", "note": "Operator-authorised evidence-gap reassessment considers IN-007 admitted 2026-09-29. AS-003 appended at ESCALATING / VS-03; current posture reaffirmed. No prior assessment, claim, evidence, mechanism, lineage, open question or provenance-review metadata changed. Review receipt: docs/reviews/EVIDENCE-GAP-REASSESSMENT-2026-10-12.md."},
     {
       "id": "M-014",
       "date": "2026-10-08",

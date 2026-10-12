@@ -143,6 +143,26 @@ export const FR_QE_0008 = {
       verificationStage: "VS-04",
       summary: "IN-006 strengthens the operational scaling case by demonstrating that QEC syndrome information can continuously steer more than 1,000 control parameters during computation and materially improve logical stability against drift on Willow. This reduces one practical threat to maintaining below-threshold operation over long runtimes, but it does not extend the experimentally demonstrated surface-code distance beyond 7 and does not remove the correlated-error-floor evidence in IN-005. Simulated distance-15 scalability is supportive engineering evidence rather than an experimental scaling result. The claim therefore remains RESOLVING / VS-04: experimental logical-error suppression and active stabilization are both advancing, while durable scaling at application-relevant distances and runtimes remains unconfirmed.",
       assessorNote: "Normal Record Review of Sivak et al., Nature 655 (2026), doi:10.1038/s41586-026-10759-2. Admitted as IN-006. No claim-resolution or verification-stage transition.",
+    },
+    {
+      "id": "AS-004",
+      "date": "2026-10-12",
+      "pressureState": "resolving",
+      "verificationStage": "VS-04",
+      "summary": "IN-007 strengthens the integrated trapped-ion architecture case through repeated correction, logical Clifford operations and a heterogeneous-code interface that outperform their unencoded baselines without postselection. Its source also reports a bounded logical-memory improvement under concatenation from the [[10,2,3]] code to [[20,2,6]] C4-Helix. That comparison is experimental evidence relevant to scaling, but does not establish reproducible suppression across a broad size range, a universal fault-tolerant workload, larger-distance durability or application-scale resource economics. IN-008 adds protocol-design and numerical evidence for distributed lattice surgery: the 50% interface-erasure threshold assumes absent local noise, and local errors can mask the interface-distance benefit. It supplies no experimental system-scale validation. These additions leave the governing balance RESOLVING / VS-04: measured below-threshold suppression and operational components support convergence, while correlated floors, long-runtime and full-circuit reliability and useful scale-up remain unresolved. Resolving is not resolved; neither instance satisfies AT-001 or closes the recorded questions.",
+      "assessorNote": "Reassessment of IN-007 admitted 2026-09-26 and IN-008 admitted 2026-10-03 against the complete current record. Primary preprints arXiv:2609.03194v1 and arXiv:2610.01923v1 reviewed 2026-10-12. Helios is first-party Quantinuum evidence, not independent replication; simulated improvements and distributed thresholds remain distinguished from hardware measurements. Same-state reaffirmation; no evidence or prior assessment rewritten.",
+      "sources": [
+        {
+          "citation": "Berthusen et al., Experimental validation of a compact fault-tolerant architecture for trapped ions, arXiv:2609.03194v1 (2026).",
+          "url": "https://arxiv.org/abs/2609.03194v1",
+          "locator": "Introduction; experimental memory/Clifford/interface results; Discussion and Outlook"
+        },
+        {
+          "citation": "Burt et al., Loss-tolerant distributed lattice surgery using fusion networks, arXiv:2610.01923v1 (2026).",
+          "url": "https://arxiv.org/abs/2610.01923v1",
+          "locator": "Abstract; local-noise simulations and threshold assumptions"
+        }
+      ]
     }
   ],
 
@@ -187,6 +207,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    {"id": "M-015", "date": "2026-10-12", "field": "assessment_issued", "from": "AS-003", "to": "AS-004", "note": "Operator-authorised evidence-gap reassessment considers IN-007 admitted 2026-09-26 and IN-008 admitted 2026-10-03. AS-004 appended at RESOLVING / VS-04; current posture reaffirmed. No prior assessment, claim, evidence, mechanism, lineage, open question or provenance-review metadata changed. Review receipt: docs/reviews/EVIDENCE-GAP-REASSESSMENT-2026-10-12.md."},
     { id: "M-014", date: "2026-10-03", field: "instance_appended", from: "IN-007", to: "IN-008", note: "Normal Record Review of RR-2026-10-03-01 admitted Burt et al., arXiv:2610.01923v1, as distinct protocol-design evidence for loss-tolerant distributed lattice surgery. The 50% interface-erasure result assumes absent local noise; local errors mask the interface-distance advantage at 10^-3 circuit/resource error and gains strengthen at lower noise. This is not an experimental system-scale suppression result. AS-003 remains current; FR-QE-0008 stays RESOLVING / VS-04. No open question or claim change." },
     { id: "M-013", date: "2026-09-26", field: "mechanism_attractor_consistency_corrected", from: "RM-001 / AT-001 inherited absolute wording", to: "Observed repetition-code floors and outcome-based scaling test", note: "Bounded consistency correction after the Helios Normal Record Review: RM-001 now distinguishes observed repetition-code floors in IN-005 from unresolved larger-distance surface-code and full-circuit behaviour, and states threshold assumptions accurately. AT-001 treats distance-9/11 experiments as informative tests, not an automatic or universal confirmation rule. No instance, assessment, pressure state, verification stage, open question, or claim was changed." },
     { id: "M-012", date: "2026-09-26", field: "instance_appended", from: "IN-006", to: "IN-007", note: "Normal Record Review of RR-2026-09-05-01 admitted Berthusen et al., arXiv:2609.03194v1, as distinct trapped-ion architecture evidence. The reported logical QEC cycle, Clifford benchmark and surface-code interface do not establish increasing-distance suppression, independent replication or useful fault-tolerant economics. AS-003 remains derived current assessment at RESOLVING / VS-04. The retrospectively incomplete Scout stated 4 September as first public date; arXiv v1 was submitted 2 September 2026, inside its review window." },

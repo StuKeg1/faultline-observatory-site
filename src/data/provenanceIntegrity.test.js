@@ -5,11 +5,22 @@ import { FR_AI_0009 } from "./records/FR-AI-0009.js";
 import { FR_QE_0007 } from "./records/FR-QE-0007.js";
 import { FR_BT_0004 } from "./records/FR-BT-0004.js";
 import { FR_AI_0002 } from "./records/FR-AI-0002.js";
-import { getCurrentAssessment } from "./derive.js";
+import { getCurrentAssessment, getTransitionFeed } from "./derive.js";
+import { getRecordLegibility } from "./recordLegibility.js";
+import { FR_QE_0008 } from "./records/FR-QE-0008.js";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { FR_AI_0005 } from "./records/FR-AI-0005.js";
 import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.js";
+
+// Historical editorial receipts govern their original checkpoint, not later reassessments.
+function atCheckpoint(record, date) {
+  return {
+    ...record,
+    assessments: record.assessments.filter(assessment => assessment.date <= date),
+    mutationLog: record.mutationLog.filter(mutation => mutation.date <= date),
+  };
+}
 
 test("AGI consistency repair preserves evidence, judgments and prior mutation history", () => {
   const hashes = {
@@ -74,7 +85,7 @@ test("FR-AI-0002 retains the Day 1 correction after D32 without reassessment", (
   assert.equal(FR_AI_0002.provenanceRepairStatus, "completed");
   assert.equal(current.pressureState, "escalating");
   assert.equal(current.verificationStage, "VS-02");
-  assert.equal(FR_AI_0002.assessments.length, 2);
+  assert.equal(atCheckpoint(FR_AI_0002, "2026-09-29").assessments.length, 2);
 });
 
 test("FR-AI-0001 closes D33 with bounded provenance corrections and no reassessment", () => {
@@ -93,8 +104,8 @@ test("FR-AI-0001 closes D33 with bounded provenance corrections and no reassessm
   assert.equal(FR_AI_0001.provenanceReviewId, "LPR-001-D33");
   assert.equal(FR_AI_0001.provenanceOutcome, "discrepancies_corrected");
   assert.equal(FR_AI_0001.provenanceRepairStatus, "completed");
-  assert.equal(FR_AI_0001.assessments.length, 2);
-  assert.deepEqual(FR_AI_0001.assessments.map(({ id }) => id), ["AS-001", "AS-002"]);
+  assert.equal(atCheckpoint(FR_AI_0001, "2026-09-29").assessments.length, 2);
+  assert.deepEqual(atCheckpoint(FR_AI_0001, "2026-09-29").assessments.map(({ id }) => id), ["AS-001", "AS-002"]);
   assert.equal(current.pressureState, "escalating");
   assert.equal(current.verificationStage, "VS-03");
   assert.ok(FR_AI_0001.mutationLog.some(({ id, to }) => id === "M-012" && to.includes("LPR-001-D33 completed")));
@@ -137,6 +148,7 @@ test("each audited record retains the provenance repair as an editorial correcti
 
 // Validate the earlier repair against its snapshot before the separately receipted clarification.
 function beforeClarificationRepair(record) {
+  record = atCheckpoint(record, "2026-10-08");
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json", import.meta.url)));
   const entry = receipt.records.find(({ id }) => id === record.id);
   if (!entry) return record;
@@ -199,7 +211,7 @@ test("second consistency batch preserves evidence, judgments, metadata and bound
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
   const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const entry of receipt.records) {
-    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const record = atCheckpoint(Object.values(await import(`./records/${entry.id}.js`))[0], receipt.date);
     for (const [field, expected] of Object.entries(entry.frozen)) {
       assert.equal(digest(field === "mutationLog" ? record.mutationLog.slice(1) : record[field]), expected, `${entry.id}: ${field} changed`);
     }
@@ -288,7 +300,7 @@ test("clarification repairs preserve all content outside their field-level recei
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json", import.meta.url)));
   const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const entry of receipt.records) {
-    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const record = atCheckpoint(Object.values(await import(`./records/${entry.id}.js`))[0], receipt.date);
     for (const [field, hash] of Object.entries(entry.immutableHashes)) assert.equal(digest(record[field]), hash, `${entry.id}: ${field} changed`);
     assert.equal(digest(record.mutationLog.slice(1)), entry.previousMutationHash);
     assert.deepEqual(record.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })), entry.questionIdentity);
@@ -318,5 +330,28 @@ test("clarifications retain faithfulness, data-access, causal-coverage and simul
   const world = record("FR-AI-0009");
   assert.match(world.mechanisms.find(({ id }) => id === "RM-002").description, /simulation \/ real-to-sim environments/);
   assert.match(world.lineage.items[3].text, /not reported physical-robot execution outcomes/);
-  assert.deepEqual([reasoning, record("FR-AI-0004"), record("FR-AI-0006"), world].map(item => getCurrentAssessment(item).id), ["AS-002", "AS-003", "AS-005", "AS-002"]);
+  assert.deepEqual([reasoning, record("FR-AI-0004"), record("FR-AI-0006"), world].map(item => getCurrentAssessment(atCheckpoint(item, "2026-10-08")).id), ["AS-002", "AS-003", "AS-005", "AS-002"]);
+});
+
+
+test("2026-10-12 reassessments account for admitted evidence without manufacturing transitions", () => {
+  for (const [record, assessmentId, mutationId, state, stage, instanceIds] of [
+    [FR_AI_0001, "AS-003", "M-015", "escalating", "VS-03", ["IN-007"]],
+    [FR_AI_0002, "AS-003", "M-014", "escalating", "VS-02", ["IN-008"]],
+    [FR_QE_0008, "AS-004", "M-015", "resolving", "VS-04", ["IN-007", "IN-008"]],
+  ]) {
+    const reviewed = atCheckpoint(record, "2026-10-12");
+    const current = getCurrentAssessment(reviewed);
+    const prior = { ...reviewed, assessments: reviewed.assessments.slice(0, -1) };
+    assert.deepEqual([current.id, current.date, current.pressureState, current.verificationStage],
+      [assessmentId, "2026-10-12", state, stage]);
+    assert.ok(getRecordLegibility(prior).evidenceSinceAssessment.length > 0);
+    assert.equal(getRecordLegibility(reviewed).evidenceSinceAssessment.length, 0);
+    assert.deepEqual(getTransitionFeed(reviewed), getTransitionFeed(prior));
+    for (const id of instanceIds) assert.ok(current.summary.includes(id), `${record.id}: ${id} unassessed`);
+    const mutation = reviewed.mutationLog.find(({ id }) => id === mutationId);
+    assert.equal(mutation.field, "assessment_issued");
+    assert.equal(mutation.to, assessmentId);
+    assert.ok(current.sources.every(({ url }) => /^https:\/\//.test(url)));
+  }
 });
