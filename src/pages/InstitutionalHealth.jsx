@@ -109,7 +109,7 @@ export default function InstitutionalHealth() {
               <article className="inst-health-card inst-health-card--primary">
                 <h2 className="inst-health-title">Constitutional Fidelity</h2>
                 <p className="inst-health-copy">
-                  Constitutional metrics remain static and manual for now. This page keeps those values separate from the contextual figures below.
+                  Constitutional Fidelity remains the manual frame for institutional interpretation. It is not inferred from contextual traffic figures.
                 </p>
                 <ul className="inst-health-note-list">
                   <li>Manual constitutional review remains the authoritative institutional frame.</li>
