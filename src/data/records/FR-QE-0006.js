@@ -6,10 +6,10 @@
 export const FR_QE_0006 = {
   id: "FR-QE-0006",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-09-16",
-  provenanceReviewId: "LPR-001-D18",
-  provenanceOutcome: "pass_after_correction",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-12",
+  provenanceReviewId: "LPR-001-D49",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
   claim: {
     statement: "A fault-tolerant quantum computer can execute a practically useful quantum algorithm beyond classical simulation.",
     shortLabel: "Fault-Tolerant Quantum Utility — Practically Useful Algorithms Beyond Classical Simulation",
@@ -62,6 +62,7 @@ export const FR_QE_0006 = {
   ],
   realizationNotes: [{ id: "REN-001", note: "Realization currently depends on fault-tolerant hardware at application-relevant logical-qubit count and sustained circuit depth, distinct from the simple fault-tolerant circuits already demonstrated.", conflation: null, raisedDate: "2026-07-08", status: "open", closedDate: null, closedNote: null }],
   mutationLog: [
+    { id: "M-015", date: "2026-10-12", field: "provenance_review", from: "LPR-001-D18", to: "LPR-001-D49", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-014", date: "2026-09-16", field: "record_review", from: "LPR-001-D18 Record Review candidate", to: "IN-007 / AS-004", note: "Normal Record Review admitted Proctor et al. QUOPS (arXiv:2609.12146) as supportive system-level gap-measurement evidence. Added IN-007 and AS-004 and updated current mechanisms and lineage to recognise the benchmark while preserving the application-specific classical-comparator requirement. QUOPS measures present physical and small logical processors and maps recognised challenge workloads into the same capability framework; its FeMoco translation remains about five orders of magnitude beyond present measured circuit-size capability. It does not demonstrate practical quantum advantage. ESCALATING / VS-02 reaffirmed. LPR-001-D18 remains completed." },
     { id: "M-013", date: "2026-09-16", field: "provenance_corrected", from: "LPR-001-D18 discrepancies", to: "PASS-AFTER-CORRECTION", note: "LPR-001-D18 bounded correction: repaired IN-001 through IN-005, added confidently established structured provenance, corrected dependent mechanisms and lineage, and appended AS-003. IN-006 retained as verified. QUOPS remained a separate Normal Record Review candidate. Pressure State remains ESCALATING; Verification Stage remains VS-02." },
     { id: "M-012", date: "2026-09-16", field: "provenance_review", from: "—", to: "LPR-001-D18 REVIEW REQUIRED", note: "LPR-001-D18 audited all six evidence instances. IN-006 was source-verified and provenance-enriched. IN-001 through IN-005 required bounded correction. QUOPS surfaced as a Normal Record Review candidate." },
