@@ -12,9 +12,9 @@
 export const FR_QE_0007 = {
   id: "FR-QE-0007",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-09-17",
-  provenanceReviewId: "LPR-001-D19",
-  provenanceOutcome: "pass_after_correction",
+  lastProvenanceReview: "2026-10-14",
+  provenanceReviewId: "LPR-001-D50",
+  provenanceOutcome: "discrepancies_corrected",
   provenanceRepairStatus: "completed",
 
   claim: {
@@ -90,7 +90,7 @@ export const FR_QE_0007 = {
       date: "2025–26",
       sourceReference: "Google Quantum AI et al., Nature 646 (2025) 825–830, doi:10.1038/s41586-025-09526-6; Zhang et al., arXiv:2510.19550; Bermejo et al., arXiv:2604.15427",
       sources: [
-        { citation: "Google Quantum AI and collaborators. Quantum echoes and the computational complexity of many-body dynamics. Nature 646, 825–830 (2025).", url: "https://www.nature.com/articles/s41586-025-09526-6", doi: "10.1038/s41586-025-09526-6", locator: "65-qubit OTOC experiment and reported Frontier comparison" },
+        { citation: "Google Quantum AI and collaborators. Observation of constructive interference at the edge of quantum ergodicity. Nature 646, 825–830 (2025).", url: "https://www.nature.com/articles/s41586-025-09526-6", doi: "10.1038/s41586-025-09526-6", locator: "65-qubit OTOC experiment and reported Frontier comparison" },
         { citation: "Zhang et al. Molecular geometry from out-of-time-order correlators. arXiv:2510.19550 (2025).", url: "https://arxiv.org/abs/2510.19550", locator: "Molecular distance and angle estimation using OTOCs" },
         { citation: "Bermejo et al. Tensor-network analysis of Quantum Echoes circuits. arXiv:2604.15427 (2026).", url: "https://arxiv.org/abs/2604.15427", locator: "Classical-simulation analysis; affiliated corroboration boundary" },
       ],
@@ -124,6 +124,8 @@ export const FR_QE_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-015", date: "2026-10-14", field: "provenance_repair", from: "LPR-001-D50 pending", to: "LPR-001-D50 completed", note: "Operator-approved bounded attribution correction completed for IN-006. The structured Nature citation title attached to DOI 10.1038/s41586-025-09526-6 was corrected from the noncanonical title Quantum echoes and the computational complexity of many-body dynamics to the DOI-resolved title Observation of constructive interference at the edge of quantum ergodicity. DOI, URL, locator, sourceReference, evidence description, vectors, assessment, Pressure State and Verification Stage remain unchanged. provenanceOutcome advanced to discrepancies_corrected and provenanceRepairStatus to completed." },
+    { id: "M-014", date: "2026-10-14", field: "provenance_review", from: "LPR-001-D19", to: "LPR-001-D50 REVIEW REQUIRED", note: "Second-cycle LPR audited all six evidence instances. IN-001 through IN-005 were source-verified. IN-006 is substantively bounded correctly, but its structured Nature citation gives DOI 10.1038/s41586-025-09526-6 a noncanonical title; the DOI resolves to Observation of constructive interference at the edge of quantum ergodicity. The attribution defect is left unchanged pending operator-approved bounded correction. No verification-stage discrepancy and no new Record Review candidate." },
     {
       "id": "M-013",
       "date": "2026-10-08",
