@@ -12,10 +12,10 @@
 export const FR_QE_0007 = {
   id: "FR-QE-0007",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-09-17",
-  provenanceReviewId: "LPR-001-D19",
-  provenanceOutcome: "pass_after_correction",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-14",
+  provenanceReviewId: "LPR-001-D50",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "A quantum computer has achieved quantum advantage on a practically relevant problem.",
@@ -124,6 +124,7 @@ export const FR_QE_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-014", date: "2026-10-14", field: "provenance_review", from: "LPR-001-D19", to: "LPR-001-D50 REVIEW REQUIRED", note: "Second-cycle LPR audited all six evidence instances. IN-001 through IN-005 were source-verified. IN-006 is substantively bounded correctly, but its structured Nature citation gives DOI 10.1038/s41586-025-09526-6 a noncanonical title; the DOI resolves to Observation of constructive interference at the edge of quantum ergodicity. The attribution defect is left unchanged pending operator-approved bounded correction. No verification-stage discrepancy and no new Record Review candidate." },
     {
       "id": "M-013",
       "date": "2026-10-08",
