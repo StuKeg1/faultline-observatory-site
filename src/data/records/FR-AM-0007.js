@@ -12,10 +12,10 @@
 export const FR_AM_0007 = {
   id: "FR-AM-0007",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-09-22",
-  provenanceReviewId: "LPR-001-D24",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-16",
+  provenanceReviewId: "LPR-001-D52",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Pressure-quench protocols can stabilise pressure-induced or pressure-enhanced superconducting states at ambient pressure.",
@@ -172,6 +172,7 @@ export const FR_AM_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-008", date: "2026-10-16", field: "provenance_review", from: "LPR-001-D24", to: "LPR-001-D52", note: "Second-cycle Legacy Provenance Review completed as PASS across all four existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {
       id: "M-007",
       date: "2026-09-22",
