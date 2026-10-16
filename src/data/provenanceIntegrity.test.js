@@ -211,11 +211,12 @@ test("second consistency batch preserves evidence, judgments, metadata and bound
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
   const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const entry of receipt.records) {
-    const record = atCheckpoint(Object.values(await import(`./records/${entry.id}.js`))[0], receipt.date);
+    const currentRecord = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const record = atCheckpoint(currentRecord, receipt.date);
     for (const [field, expected] of Object.entries(entry.frozen)) {
       // Later authorised mutations can supersede fields frozen by this historical receipt.
-      // Only compare fields for which no post-checkpoint mutation explicitly records a change.
-      const postCheckpoint = record.mutationLog.filter(mutation => mutation.date > receipt.date);
+      // Inspect the full current mutation history, while keeping historical assertions checkpointed.
+      const postCheckpoint = currentRecord.mutationLog.filter(mutation => mutation.date > receipt.date);
       const supersededByLaterMutation =
         ["lastProvenanceReview", "provenanceReviewId", "provenanceOutcome", "provenanceRepairStatus"].includes(field)
         || (field === "instances" && postCheckpoint.some(mutation => ["provenance_repair", "provenance_corrected", "instance_appended", "instances_logged"].includes(mutation.field)));
