@@ -45,6 +45,6 @@ test("homepage prerender preserves Refined A for every direct Frontier Record qu
     assert.ok(html.toLowerCase().includes(current.pressureState.toLowerCase()), `${record.id} Pressure State missing from homepage prerender`);
   }
 
-  const openRecordCount = (html.match(/Open record/g) || []).length;
-  assert.ok(openRecordCount >= recordEntries.length, "homepage prerender does not expose Open record for every direct record question");
+  const openRecordCount = (html.match(/Follow the evidence/g) || []).length;
+  assert.ok(openRecordCount >= recordEntries.length, "homepage prerender does not expose Follow the evidence for every direct record question");
 });
