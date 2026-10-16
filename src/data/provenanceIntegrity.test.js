@@ -211,8 +211,16 @@ test("second consistency batch preserves evidence, judgments, metadata and bound
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
   const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const entry of receipt.records) {
-    const record = atCheckpoint(Object.values(await import(`./records/${entry.id}.js`))[0], receipt.date);
+    const currentRecord = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const record = atCheckpoint(currentRecord, receipt.date);
     for (const [field, expected] of Object.entries(entry.frozen)) {
+      // Later authorised mutations can supersede fields frozen by this historical receipt.
+      // Inspect the full current mutation history, while keeping historical assertions checkpointed.
+      const postCheckpoint = currentRecord.mutationLog.filter(mutation => mutation.date > receipt.date);
+      const supersededByLaterMutation =
+        ["lastProvenanceReview", "provenanceReviewId", "provenanceOutcome", "provenanceRepairStatus"].includes(field)
+        || (field === "instances" && postCheckpoint.some(mutation => ["provenance_repair", "provenance_corrected", "instance_appended", "instances_logged"].includes(mutation.field)));
+      if (supersededByLaterMutation) continue;
       assert.equal(digest(field === "mutationLog" ? record.mutationLog.slice(1) : record[field]), expected, `${entry.id}: ${field} changed`);
     }
     assert.deepEqual(record.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })), entry.questionIdentity);

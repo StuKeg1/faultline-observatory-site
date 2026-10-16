@@ -267,11 +267,11 @@ export default function EvidenceTrajectories() {
   const [hoveredId, setHoveredId] = useState(null);
   const trajectories = useMemo(() => ALL_RECORDS.map(buildTrajectory), []);
   const selectedLens = resolveRegister(lensId);
-  const registerRows = useMemo(() => getRegisterRows(ALL_RECORDS, lensId), [lensId]);
+  const registerRows = getRegisterRows(ALL_RECORDS, lensId);
   const registerGroups = useMemo(() => ["Full archive", "State", "Stage", "Movement", "Programme"].map((group) => ({
     group,
     registers: REGISTERS.filter((register) => register.group === group).filter((register) => !register.legacy || ALL_RECORDS.some((record) => register.matches(record))),
-  })), [registerRows]);
+  })), []);
 
   function selectRecord(recordId) {
     setSearchParams(trajectoryParams(recordId, lensId), { replace: false });
