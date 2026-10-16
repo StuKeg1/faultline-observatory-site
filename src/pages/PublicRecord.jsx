@@ -251,8 +251,9 @@ export default function PublicRecord() {
           <section className="pr-section pr-shell" aria-labelledby="pr-latest-title">
             <div className="pr-section-head pr-section-head--split">
               <div>
-                <div className="pr-eyebrow">Recent activity</div>
-                <h2 id="pr-latest-title">Latest Developments</h2>
+                <div className="pr-eyebrow">Record movement</div>
+                <h2 id="pr-latest-title">Recent movement in the Public Record</h2>
+                <p>Evidence and assessment changes surfaced from the records themselves.</p>
               </div>
               <Link to="/the-record/?sort=updated" className="pr-link">View all by latest update →</Link>
             </div>
