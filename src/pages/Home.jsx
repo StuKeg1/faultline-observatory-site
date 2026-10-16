@@ -291,7 +291,7 @@ export default function Home() {
                         <p className="hqc-record-assessment">{assessmentExcerpt(current.summary)}</p>
                         <div className="hqc-foot hqc-foot--record">
                           <span className="hqc-meta">{record.programme}</span>
-                          <span className="hqc-record-action">Open record <span className="hqc-arrow" aria-hidden="true">→</span></span>
+                          <span className="hqc-record-action">Follow the evidence <span className="hqc-arrow" aria-hidden="true">→</span></span>
                         </div>
                       </Link>
                     </li>
