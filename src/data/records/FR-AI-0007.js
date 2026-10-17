@@ -152,6 +152,66 @@ export const FR_AI_0007 = {
         },
       ],
     },
+    {
+      id: "IN-011",
+      qualifiedEvent: "Into the Unknown — open research follow-ups expose evidence-supported completion failures",
+      description: "Kim et al. evaluate nine agents on 15 human-specified, open computational follow-ups, producing 135 submissions. None satisfies every integrity, completeness and scientific-sufficiency requirement; 114 fail the integrity rubric. The original papers, code, data and research directions are supplied, so the result bears on research execution and scientific judgment after problem specification. Integrity failures include unsupported completion claims and discrepancies between reported results and recorded evidence; they do not establish deceptive intent. This is bounded contesting evidence that fluent research output can coexist with inadequate evidential support. It does not negate earlier verified bounded discoveries or test autonomous problem identification. The primary preprint uses selected problems, particular model/harness configurations and automated grading with selected expert validation; it does not establish universal scientific incapacity.",
+      vectors: ["CONTESTING"],
+      date: "2026-10-13",
+      sources: [
+        {
+          citation: "Kim, S. et al. (2026), Into the Unknown: Benchmarking AI agents on open scientific research problems, arXiv:2610.19159v1.",
+          url: "https://arxiv.org/abs/2610.19159v1",
+          doi: "10.48550/arXiv.2610.19159",
+          locator: "Sections 2–4; Table 2; grading-validation Appendices A–B; submitted 13 October 2026. Primary preprint by benchmark designers.",
+        },
+      ],
+    },
+    {
+      id: "IN-012",
+      qualifiedEvent: "SciΠvot — recognizing corrective research plans remains unreliable on selected cases",
+      description: "Sun et al. construct 248 correction-recognition cases from 26 projects across six scientific fields. Models choose between an original agent plan and a human-corrected alternative using the pre-intervention project record. At medium effort, four of five models score below chance; the highest project-condition result across tested settings is 63.5%, compared with 73.4% for fresh researchers with an agent assistant available. The cases were selected partly using model-response variation, so these scores are diagnostic and do not estimate failure prevalence across scientific research. This supplies bounded contesting evidence about scientific judgment after a problem is supplied. It tests recognition, not generating a corrective plan or executing research. Retrospective reconstruction, benchmark-author involvement, correlated project cases and different reading interfaces limit generalisation. Existing bounded successes and the autonomous problem-identification question remain intact.",
+      vectors: ["CONTESTING"],
+      date: "2026-10-15",
+      sources: [
+        {
+          citation: "Sun, Y. et al. (2026), SciΠvot: Benchmarking Principal-Investigator Judgment at Pivotal Moments of Scientific AutoResearch Agents, arXiv:2610.21082v1.",
+          url: "https://arxiv.org/abs/2610.21082v1",
+          doi: "10.48550/arXiv.2610.21082",
+          locator: "Sections 3–4 and Limitations; Tables 4–6; human-baseline Appendix D; submitted 15 October 2026. Primary preprint by programme/benchmark designers.",
+        },
+      ],
+    },
+    {
+      id: "IN-013",
+      qualifiedEvent: "PhysClosureBench — bounded scientific closure successes coexist with reliability and validation gaps",
+      description: "Mao et al. test seven models on 50 supplied physics tasks derived from published studies, with three runs per task and 1,050 scored attempts. The strongest model reaches complete Research Closure (RC4) in 32.7% of its attempts and on 18.0% of tasks in all three runs. Local accomplishment scores can remain high while indispensable interpretation, validation or scope requirements remain unresolved. This is mixed, partial evidence: bounded investigations can succeed, but completion is unreliable in the tested setting. It does not establish autonomous problem identification or independently validated novel discovery. Tasks use fixed computational resources and offline environments. Automated grading receives selected human criterion checks; the 75.9% agreement for closure-relevant judgments is not validation of every final RC assignment. Preprint and benchmark-author limits remain. The existing fragmentation rationale is corroborated, not replaced.",
+      vectors: ["PARTIAL"],
+      date: "2026-10-15",
+      sources: [
+        {
+          citation: "Mao, Y. et al. (2026), From Research Goals to Scientific Closure: Evaluating Agents Through Evidence-Supported Physics Research, arXiv:2610.21767v1.",
+          url: "https://arxiv.org/abs/2610.21767v1",
+          doi: "10.48550/arXiv.2610.21767",
+          locator: "Sections 3–5; grading Appendix B; Tables 8 and 12; submitted 15 October 2026. Primary preprint by benchmark designers.",
+        },
+      ],
+    },
+    {
+      id: "IN-014",
+      qualifiedEvent: "Evaluator-guided LLM search — new reversible-circuit designs within human-specified tasks",
+      description: "Gu et al. report evolutionary LLM search over circuit-generating programs, starting from human-written specifications and blank programs. Seven of eight tasks reduce both Toffoli and qubit counts against stated comparators; one comparator is a naive reversible construction. Prime-field modular inversion produces a new architecture and a different resource trade-off. This supports bounded algorithmic novelty and correctness, extending the evaluator-guided pattern in IN-004 without testing autonomous problem identification. A separate programmatic evaluator checks candidates; this is not evidence of external replication. The circuit class is restricted and efficiently classically simulable, large-domain validation samples trajectories, and some tasks permit explicit failure budgets. Logical resource proxies do not demonstrate hardware runtime or practical quantum advantage. The primary preprint is authored by framework developers, including Anthropic and QuEra affiliates; general autonomous-science capability remains unestablished.",
+      vectors: ["SUPPORTIVE"],
+      date: "2026-10-15",
+      sources: [
+        {
+          citation: "Gu, A., Kemeny, A. H., Yelin, S. F. & Lukin, M. D. (2026), Discovering state-of-the-art quantum circuits with large language models, arXiv:2610.22367v1.",
+          url: "https://arxiv.org/abs/2610.22367v1",
+          doi: "10.48550/arXiv.2610.22367",
+          locator: "Table 1 and comparator footnotes; Discussion; Methods: validation, cost model and evolutionary search; submitted 15 October 2026.",
+        },
+      ],
+    },
   ],
 
   assessments: [
@@ -238,6 +298,10 @@ export const FR_AI_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-024", date: "2026-10-17", field: "instance_appended", from: "IN-013", to: "IN-014", note: "Approved flag 2026-10-17-04 implemented after explicit all-flags corpus authorisation. Bounded circuit discovery; no assessment or boundary change." },
+    { id: "M-023", date: "2026-10-17", field: "instance_appended", from: "IN-012", to: "IN-013", note: "Approved flag 2026-10-17-03 implemented after explicit all-flags corpus authorisation. Mixed closure successes and reliability limits preserved as PARTIAL; no assessment change." },
+    { id: "M-022", date: "2026-10-17", field: "instance_appended", from: "IN-011", to: "IN-012", note: "Approved flag 2026-10-17-02 implemented after explicit all-flags corpus authorisation. Selected correction-recognition evidence; no general failure-rate inference or assessment change." },
+    { id: "M-021", date: "2026-10-17", field: "instance_appended", from: "IN-009", to: "IN-011", note: "Approved flag 2026-10-17-01 implemented after explicit all-flags corpus authorisation. IN-010/AS-005/M-020 remain reserved from historical commit b7af357; their removal in fc8c04e is a separate continuity repair, not reversed here. No assessment change." },
     { id: "M-019", date: "2026-10-03", field: "assessment_appended", from: "AS-003", to: "AS-004", note: "Normal Record Review of flag 2026-10-03-02 appended AS-004 following operator decision to add the suggested assessment. ScholarCatalyst adds bounded benchmark evidence about author-judged literature selection and scientific judgment (894 queries; 184 lead authors; agentic R@20 0.42 vs strongest embedding 0.48). Retrieval is not end-to-end discovery, and CS-only coverage, retrospective labels and unknown performance ceiling are retained as limits. FRAGMENTING / VS-03 retained; no new instance, claim, mechanism, open question or verification-stage change." },
     { id: "M-018", date: "2026-10-03", field: "provenance_review", from: "LPR-001-D07", to: "LPR-001-D40", note: "Second-cycle Legacy Provenance Review completed as PASS across all nine existing evidence instances. IN-001 through IN-004 and IN-006 through IN-009 remain source-faithful; DOI metadata was added to the four already-structured Nature sources where canonical identifiers are confidently established. IN-005 remains explicit unresolved legacy provenance debt and is already withdrawn from the current evidential basis, so no source was guessed or retrofitted. No factual, interpretive, attribution, or verification-stage discrepancy was identified; no genuinely new scientific evidence was admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     // APPEND-ONLY. Newest first.
