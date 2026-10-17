@@ -12,10 +12,10 @@
 export const FR_BT_0001 = {
   id: "FR-BT-0001",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-09-23",
-  provenanceReviewId: "LPR-001-D25",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-17",
+  provenanceReviewId: "LPR-001-D53",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Senolytic therapies can meaningfully extend healthy human lifespan.",
@@ -43,6 +43,7 @@ export const FR_BT_0001 = {
       sources: [
         { citation: "Justice et al., Senolytics in idiopathic pulmonary fibrosis: Results from a first-in-human, open-label pilot study, EBioMedicine 40, 554–563 (2019)", doi: "10.1016/j.ebiom.2018.12.052", locator: "Abstract — open-label IPF pilot and physical-function feasibility signal" },
         { citation: "Hickson et al., Senolytics decrease senescent cells in humans: Preliminary report from a clinical trial of Dasatinib plus Quercetin in individuals with diabetic kidney disease, EBioMedicine 47, 446–456 (2019)", doi: "10.1016/j.ebiom.2019.08.069", locator: "Abstract — adipose and epidermal senescent-cell measures after D+Q" },
+        { citation: "Hickson et al., Corrigendum to Senolytics decrease senescent cells in humans, EBioMedicine 52, 102595 (2020)", doi: "10.1016/j.ebiom.2019.12.004", locator: "Corrigendum — re-analysis of raw data and revised conclusions attached to the 2019 DKD pilot" },
       ],
     },
     {
@@ -72,6 +73,9 @@ export const FR_BT_0001 = {
       description: "Commercial and philanthropic interest in aging biology is real, but broad longevity-sector investment is not equivalent to investment in, or evidence for, senolytic therapies. Calico, Altos Labs, Human Longevity and the National Institute on Aging Interventions Testing Program have wider remits; the ITP evaluates interventions in mice and does not establish human senolytic healthspan benefit. This instance is therefore bounded as context about institutional interest, not as support for the claim or as a comparable measure of anticipatory senolytic commitment.",
       vectors: ["neutral--broader-longevity-interest-not-senolytic-efficacy-evidence"],
       date: "2021–24",
+      sources: [
+        { citation: "National Institute on Aging, Interventions Testing Program (ITP)", url: "https://www.nia.nih.gov/research/dab/interventions-testing-program-itp", locator: "Programme description — lifespan and healthspan interventions tested in genetically heterogeneous mice" },
+      ],
     },
     {
       id: "IN-006",
@@ -166,6 +170,7 @@ export const FR_BT_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-011", date: "2026-10-17", field: "provenance_review", from: "LPR-001-D25", to: "LPR-001-D53", note: "Second-cycle Legacy Provenance Review completed as PASS across all six existing evidence instances. Underlying sources and claim representation verified. Routine provenance enrichment added the 2020 Hickson et al. corrigendum to IN-002 and the NIA Interventions Testing Program source to IN-005; neither changes evidence interpretation. No unverifiable attribution, factual, interpretive, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-010", date: "2026-09-23", field: "instance_added", from: "—", to: "IN-006 ADMITTED / NORMAL RECORD REVIEW", note: "Normal Record Review of Bian et al. (2026), EBioMedicine 124:106124, DOI 10.1016/j.ebiom.2026.106124. The primary study reports D+Q effects in streptozotocin-induced diabetic male C57BL/6J mice and supporting cell models; it is admitted as disease-specific preclinical evidence. It reports no new human intervention result or hard human healthspan outcome. AS-003 is appended with no state change: ESCALATING / VS-02 retained. The review is separate from LPR-001-D25 and does not alter its provenance-correction outcome." },
     { id: "M-009", date: "2026-09-23", field: "provenance_correction", from: "LPR-001-D25 discrepancies_found / pending", to: "LPR-001-D25 discrepancies_corrected / completed", note: "Approved bounded correction of IN-001 through IN-005. IN-001 now states the source-supported, sex- and background-dependent mouse lifespan result; IN-002 separates the 2019 IPF and diabetic-kidney-disease D+Q pilots; IN-003 corrects Unity chronology and distinguishes UBX0101 from company-reported UBX1325 eye-disease evidence; IN-004 withdraws the mismatched MILES/AFFIRM-NASH/Müller trial bundle; and IN-005 bounds broader longevity-sector interest as non-efficacy context. Structured sources[] added only where the reviewed source basis is confident. AS-001 is preserved and AS-002 appended; RM-001, lineage and OQ-001 were aligned. ESCALATING / VS-02 retained. No 2026 evidence admitted; the diabetic-kidney-disease report remains a Normal Record Review candidate." },
     { id: "M-008", date: "2026-09-23", field: "provenance_review", from: "—", to: "LPR-001-D25 REVIEW REQUIRED", note: "Legacy provenance review completed. All five instances require bounded correction before structured sources[] can be attached without endorsing inaccurate or conflated wording. IN-001 overstates Baker et al.'s 2016 median-lifespan result as approximately 25%; the reported extension varies by sex and genetic background. IN-002 conflates the 2019 open-label IPF D+Q pilot (physical-function feasibility signal) with the separate 2019 diabetic-kidney-disease preliminary report (adipose/epidermal senescent-cell measures); it misattributes authorship, study design, tissue measures, and functional outcomes. IN-003 misdates the UBX0101 Phase II result and compresses distinct company-reported UBX1325 outcomes into a mixed 2022–23 clinical-failure narrative. IN-004 relies on a mismatched MILES trial (sirolimus in lymphangioleiomyomatosis, not D+Q senolysis) and cannot establish the claimed AFFIRM-NASH/Müller D+Q biomarker result. IN-005 conflates broad longevity-sector capital, which is not necessarily senolytic investment, with evidence for this claim. No evidence wording, assessment, pressure state, verification stage, mechanisms, lineage, or open questions was silently changed. A 2026 pilot report of D+Q in diabetic kidney disease is held out as a normal Record Review candidate and not admitted through LPR-001." },
