@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { assessmentChangeLabel } from "../data/recordReading.js";
 
 const frontierRecordSource = readFileSync(
   new URL("./FrontierRecord.jsx", import.meta.url),
@@ -14,7 +15,8 @@ const legacyRecordSource = readFileSync(
 test("legacy fallback dates are not presented as record-opening events", () => {
   assert.doesNotMatch(frontierRecordSource, /Record Opened/);
   assert.doesNotMatch(frontierRecordSource, /Record opened/);
-  assert.match(frontierRecordSource, /Initial assessment —/);
+  assert.equal(assessmentChangeLabel(null, {}), "Initial assessment");
+  assert.match(frontierRecordSource, /assessmentChangeLabel\(previous, a\)/);
 });
 
 test("legacy provenance remains preserved outside the public opening label", () => {

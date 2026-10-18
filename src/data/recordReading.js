@@ -1,4 +1,18 @@
 /** Presentation of existing record semantics; never an evidence reassessment. */
+export function assessmentChangeLabel(previous, current) {
+  if (!previous) return "Initial assessment";
+  const stateChanged = previous.pressureState !== current.pressureState;
+  const stageChanged = previous.verificationStage !== current.verificationStage;
+  const stages = `${previous.verificationStage} → ${current.verificationStage}`;
+  if (stateChanged && stageChanged) return `Pressure State and Verification Stage changed (${stages})`;
+  if (stateChanged) return "Pressure State changed";
+  if (stageChanged) {
+    const action = current.changeKind === "verification_stage_correction" ? "correction recorded" : "changed";
+    return `Verification Stage ${action} (${stages}); Pressure State unchanged`;
+  }
+  return "Assessment updated; Pressure State and Verification Stage unchanged";
+}
+
 export function questionDateText(question) {
   const original = question.raisedDateKind === "legacy"
     ? "Original date uncertain (legacy)"
