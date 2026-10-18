@@ -79,10 +79,19 @@ const REVIEW_INDEX = new Map(
  * prevents the overlay from implying more temporal certainty than the
  * evidence can carry.
  *
- * FR-AM-0001 is the sole reference implementation. Corpus-wide migration is
- * explicitly out of scope until a separate classification pass is authorised.
+ * FR-AM-0001 is the historical reference implementation. The separately
+ * authorised 18 October 2026 AI-0008 repair qualifies one converter date;
+ * this does not authorise a corpus-wide date migration.
  */
 export const HISTORICAL_EFFECTIVE_DATES = [
+  {
+    recordId: "FR-AI-0008",
+    assessmentId: "AS-001",
+    value: "date uncertain (legacy)",
+    precision: "unknown",
+    basis: ["IN-001", "IN-002", "IN-003", "IN-004"],
+    note: "The July 2026 ratification identifies 2024-01-15 as a common converter fallback, not a verified assessment or operation date. The historical stage interpretation is retained; no exact replacement chronology is asserted. Authorised coherence repair, 2026-10-18.",
+  },
   {
     recordId: "FR-AM-0001",
     assessmentId: "AS-001",

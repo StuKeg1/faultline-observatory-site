@@ -144,7 +144,9 @@ export function getRegisterRow(record, registerId = "full") {
   let sortDate = stateEnteredDate;
 
   if (register.group === "Stage") {
-    reason = `Reached ${current.verificationStage} on ${stageReachedDate}`;
+    reason = current.changeKind === "verification_stage_correction"
+      ? `Stage corrected to ${current.verificationStage} on ${current.date}; existing evidence`
+      : `Reached ${current.verificationStage} on ${stageReachedDate}`;
     sortDate = stageReachedDate;
   } else if (register.id === "changed" && latestTransition) {
     const changeDate = history[latestTransition.index].date;
@@ -152,7 +154,7 @@ export function getRegisterRow(record, registerId = "full") {
     sortDate = changeDate;
   } else if (register.id === "stage-changed" && latestStage) {
     const changeDate = history[latestStage.index].date;
-    reason = `${latestStage.from.verificationStage} → ${latestStage.to.verificationStage}, ${changeDate}`;
+    reason = `${latestStage.to.changeKind === "verification_stage_correction" ? "Stage correction: " : ""}${latestStage.from.verificationStage} → ${latestStage.to.verificationStage}, ${changeDate}`;
     sortDate = changeDate;
   } else if (register.id === "reaffirmed") {
     reason = `${getPressureStateLabel(current.pressureState)} held across ${history.length} assessments · last assessed ${current.date}`;
