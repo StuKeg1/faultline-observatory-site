@@ -145,6 +145,7 @@ const EDITORIAL_CORRECTION_FIELD_SYNONYMS = new Set([
 ]);
 
 const RECORD_ANNOTATION_FIELD_SYNONYMS = new Set([
+  "verification_stage_challenge_opened",
   "experimental_annotations_retired",
   "realization_note_added",
 ]);

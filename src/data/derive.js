@@ -22,10 +22,16 @@ export function getCurrentAssessment(record) {
   if (!record.assessments || record.assessments.length === 0) {
     throw new Error(`Record ${record.id} has no assessments — structurally invalid.`);
   }
-  return applyVerificationStageReview(
+  const current = applyVerificationStageReview(
     record.id,
     record.assessments[record.assessments.length - 1],
   );
+  const challenge = record.verificationStageChallenges?.filter(
+    (entry) => entry.assessmentId === current.id,
+  ).at(-1);
+  return challenge?.status === "awaiting_operator_decision"
+    ? { ...current, verificationStageChallenge: { ...challenge } }
+    : current;
 }
 
 /**

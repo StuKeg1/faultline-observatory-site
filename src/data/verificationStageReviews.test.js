@@ -154,3 +154,20 @@ test("FR-QE-0001 remains outside the legacy stage overlay", () => {
   assert.equal(getCurrentAssessment(record).verificationStage, "VS-04");
   assert.equal(getCurrentAssessment(record).verificationStageProvenance, undefined);
 });
+
+test("pending challenge qualifies only the current assessment without creating a new stage", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  const before = JSON.stringify(record);
+  const current = getCurrentAssessment(record);
+  assert.equal(record.assessments.length, 4);
+  assert.equal(current.id, "AS-004");
+  assert.equal(current.verificationStage, "VS-05");
+  assert.equal(current.verificationStageChallenge.assessmentId, current.id);
+  assert.equal(current.verificationStageChallenge.status, "awaiting_operator_decision");
+  assert.equal(getTransitionFeed(record).length, 0);
+  assert.equal(JSON.stringify(record), before);
+  const subsequent = { ...record, assessments: [...record.assessments,
+    { ...record.assessments.at(-1), id: "AS-005", verificationStage: "VS-04" }] };
+  assert.equal(getCurrentAssessment(subsequent).verificationStageChallenge, undefined,
+    "a challenge to AS-004 must not qualify a later assessment automatically");
+});

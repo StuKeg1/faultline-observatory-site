@@ -25,7 +25,8 @@ export function recordSummary(record) {
     assessmentDate: current.date ?? null, openedDate: record.claim?.openedDate ?? null,
     lastMutationDate: record.mutationLog?.[0]?.date ?? null, evidenceInstances: record.instances?.length ?? 0,
     assessments: record.assessments?.length ?? 0, openQuestions: record.openQuestions?.length ?? 0,
-    canonicalUrl: canonicalUrl(record) };
+    canonicalUrl: canonicalUrl(record),
+    ...(current.verificationStageChallenge ? { verificationStageChallenge: current.verificationStageChallenge } : {}) };
 }
 
 function excerpt(value, needle) {

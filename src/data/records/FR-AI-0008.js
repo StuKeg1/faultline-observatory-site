@@ -174,7 +174,21 @@ export const FR_AI_0008 = {
     }
   ],
 
+  // Append-only challenge record. This qualifies AS-004 without editing it or
+  // assigning a replacement stage before the operator decides the review.
+  verificationStageChallenges: [
+    {
+      id: "VSC-001",
+      assessmentId: "AS-004",
+      date: "2026-10-18",
+      status: "awaiting_operator_decision",
+      notice: "Stage under review. AS-004 assigns VS-05 using evidence already on this record. The July ruling covers the initial assessment only. A bounded review has examined whether the current evidence supports Operation; an operator decision is pending. The displayed stage is unchanged pending that decision.",
+      reviewPath: "docs/reviews/FR-AI-0008-STAGE-CHALLENGE-2026-10-18.md",
+    },
+  ],
+
   mutationLog: [
+    { id: "M-015", date: "2026-10-18", field: "verification_stage_challenge_opened", from: "AS-004 / stage presented without an active challenge", to: "VSC-001 / AS-004 stage under review; operator decision pending", note: "Operator-authorised bounded challenge and interim disclosure. No assessment, historical overlay, stage, Pressure State or evidence instance changed. The review finding is a recommendation, not a ratified replacement stage." },
     { id: "M-014", date: "2026-10-18", field: "provenance_correction", from: "OQ-003 legacy raisedDate alone", to: "OQ-003 revisedDate 2026-09-06; legacy date explicitly qualified", note: "M-011 records the MASAI-related revision of OQ-003 on 6 September 2026. Preserve its stored original date and question text; do not describe the current wording as 2y 9m old. No question was opened or closed." },
     { id: "M-013", date: "2026-10-18", field: "assessment_correction", from: "AS-003 / FRAGMENTING / VS-03", to: "AS-004 / FRAGMENTING / VS-05", note: "Operator-authorised coherence repair. Apply the ratified defined-task interpretation of Operation to the existing clinical-use evidence rather than conflating verification depth with cross-domain generalisation. No new evidence or pressure-state transition; preserve AS-001–AS-003 and the July stage-review overlay. Initial legacy chronology is explicitly uncertain in the display overlay." },
     { id: "M-012", date: "2026-10-04", field: "provenance_review", from: "LPR-001-D08", to: "LPR-001-D41", note: "Second-cycle Legacy Provenance Review completed as PASS across all six existing evidence instances. Current source-to-claim representations remain source-faithful after the governed D08 correction and subsequent Normal Record Review of IN-006. IN-005 remains explicit unsupported legacy provenance debt and is already withdrawn from the current evidential basis, so no source was guessed or retrofitted. No factual, interpretive, attribution, or verification-stage discrepancy was identified; no genuinely new scientific evidence was admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },

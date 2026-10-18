@@ -57,8 +57,15 @@ function WarrantPanel({ current, record }) {
         <span className="wp-value wp-state">
           <StateBadge pressureState={current.pressureState} />
           <span className="wp-vs-code">{current.verificationStage}</span>
+          {current.verificationStageChallenge && <a href="#stage-challenge">Stage under review</a>}
         </span>
       </div>
+      {current.verificationStageChallenge && (
+        <div className="wp-row wp-row-provenance" id="stage-challenge" tabIndex={-1}>
+          <span className="wp-label">Stage under review</span>
+          <span className="wp-value">{current.verificationStageChallenge.notice}</span>
+        </div>
+      )}
       <div className="wp-row wp-row-rationale">
         <span className="wp-label">Current assessment</span>
         <span className="wp-value">{current.summary}</span>
@@ -717,6 +724,7 @@ export default function FrontierRecord() {
               <div className="rp-status-row" role="status" aria-label="Current record state">
                 <StateBadge pressureState={current.pressureState} />
                 <span className="rp-status-vs">{current.verificationStage}</span>
+                {current.verificationStageChallenge && <a href="#stage-challenge">Stage under review</a>}
                 <span className="rp-status-sep">·</span>
                 <span className="rp-status-since">since {current.date}</span>
                 {current.provenanceNote && (
