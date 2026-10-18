@@ -12,10 +12,10 @@
 export const FR_BT_0002 = {
   id: "FR-BT-0002",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-09-24",
-  provenanceReviewId: "LPR-001-D26",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-18",
+  provenanceReviewId: "LPR-001-D54",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Epigenetic reprogramming can reverse biological age in living organisms without loss of cellular identity.",
@@ -192,6 +192,7 @@ export const FR_BT_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-017", date: "2026-10-18", field: "provenance_review", from: "LPR-001-D26", to: "LPR-001-D54", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representation verified; no unverifiable attribution or factual, interpretive, attribution, or verification-stage discrepancy identified. A Life Biosciences 2026-10-08 interim ER-100 human-results announcement was identified as genuinely new evidence and held out for Normal Record Review; it was not admitted through LPR-001. Canonical outcome verified / not_required; existing evidence, assessment, Pressure State and Verification Stage unchanged." },
     {
       "id": "M-016",
       "date": "2026-10-08",
