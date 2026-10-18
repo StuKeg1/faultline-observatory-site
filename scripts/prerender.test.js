@@ -136,8 +136,31 @@ test("record pages carry substantive content before JavaScript runs", { skip }, 
     }
     if (record.mechanisms?.length) assert.ok(rendered.includes("Mechanisms"), `${id} body omits mechanisms`);
     if (record.lineage?.items?.length) assert.ok(rendered.includes("Claim Lineage"), `${id} body omits claim lineage`);
-    if (record.openQuestions?.length) assert.ok(rendered.includes("Open Questions"), `${id} body omits open questions`);
+    if (record.openQuestions?.length) assert.ok(rendered.includes("Questions on record"), `${id} body omits open questions`);
   }
+});
+
+test("record-reading repair preserves assessment authority and discloses evidence relationships", { skip }, () => {
+  for (const id of ["fr-ai-0008", "fr-bt-0005", "fr-am-0001", "fr-bt-0001", "fr-qe-0001"]) {
+    const rendered = body(read(`/the-record/${id}/`));
+    const warrant = rendered.match(/<div class="warrant-panel"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(warrant, id);
+    if (warrant.includes("Assessment context")) assert.ok(warrant.indexOf("Current assessment") < warrant.indexOf("Assessment context"), id);
+    assert.ok(!warrant.includes("Why this state?"), id);
+    assert.ok(rendered.includes("not counts of independent studies or patients"), id);
+    if (id !== "fr-qe-0001") assert.ok(rendered.includes('<details class="evidence-description">'), id);
+  }
+  const imaging = body(read("/the-record/fr-ai-0008/"));
+  assert.ok(imaging.includes("date uncertain (legacy)"));
+  assert.ok(imaging.includes("wording revised 2026-09-06"));
+  assert.ok(imaging.includes("verification-stage correction"));
+  assert.ok(!imaging.includes("On record for"));
+  const kidney = body(read("/the-record/fr-bt-0005/"));
+  assert.ok(kidney.includes("not another patient or independent replication"));
+  assert.ok(kidney.includes('href="#evidence-IN-003"'));
+  assert.ok(kidney.includes('href="#evidence-IN-008"'));
+  assert.ok(kidney.includes('id="evidence-IN-003"'));
+  assert.ok(kidney.includes('id="evidence-IN-008"'));
 });
 
 test("Evidence Brief prototype is prerendered only for reviewed Compatible records", { skip }, () => {
@@ -152,6 +175,9 @@ test("Evidence Brief prototype is prerendered only for reviewed Compatible recor
     if (EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id)) {
       const map = rendered.match(/<aside class="evidence-brief"[\s\S]*?<\/aside>/)?.[0];
       assert.ok(map, `${id}: reading map missing`);
+      assert.ok(map.includes("Questions on record"));
+      assert.ok(map.includes("Mechanisms and barriers"));
+      assert.ok(!map.includes("Attractor"));
       assert.ok(rendered.indexOf(map) < rendered.indexOf('id="s-matrix"'), `${id}: map must precede matrix`);
       for (const target of ["s-warrant", "evidence-entries", "s-mechanisms", "s-open-questions"]) {
         assert.ok(map.includes(`href="#${target}"`), `${id}: missing link ${target}`);
