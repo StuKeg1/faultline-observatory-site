@@ -53,3 +53,13 @@ test("HTTP documentation example uses the same live corpus projection as MCP sea
   assert.equal(body.records[0].assessments, record.assessments.length);
   assert.equal(body.records[0].assessmentDate, getCurrentAssessment(record).date);
 });
+
+test("summary and full MCP views expose the same pending challenge as the public current assessment", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  assert.deepEqual(recordSummary(record).verificationStageChallenge,
+    canonicalRecordView(record).currentAssessment.verificationStageChallenge);
+  assert.match(recordSummary(record).verificationStageChallenge.notice, /operator decision is pending/);
+  for (const other of ALL_RECORDS.filter(r => r.id !== record.id)) {
+    assert.equal(recordSummary(other).verificationStageChallenge, undefined);
+  }
+});
