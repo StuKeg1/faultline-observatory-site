@@ -215,13 +215,21 @@ export function getVerificationStages(record) {
     }
   }
 
+  // The start of the current uninterrupted assignment is not necessarily
+  // the first historical appearance of this stage (including corrections).
+  let currentSince = current.date;
+  for (let i = history.length - 1; i >= 0; i -= 1) {
+    if (history[i].verificationStage !== current.verificationStage) break;
+    currentSince = history[i].date;
+  }
+
   return ALL_STAGES.map((vsCode) => {
     const isCurrent = vsCode === current.verificationStage;
     const isReached = vsCode in reachedDates;
     return {
       vsCode,
       label: getVerificationStageLabel(vsCode),
-      date: reachedDates[vsCode] ?? null,
+      date: isCurrent ? currentSince : reachedDates[vsCode] ?? null,
       status: isCurrent ? "current" : isReached ? "reached" : "pending",
     };
   });

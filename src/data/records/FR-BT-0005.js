@@ -98,6 +98,7 @@ export const FR_BT_0005 = {
     },
     {
       id: "IN-008",
+      relationship: { type: "same_recipient_followup", relatedInstanceId: "IN-003", note: "Same recipient as IN-003. This is the later peer-reviewed report of the 271-day case, not another patient or independent replication." },
       qualifiedEvent: "271-day xenokidney — peer-reviewed bridge to successful human allotransplantation",
       description: "Riella et al. report in The Lancet the first recipient in a planned three-patient FDA Expanded Access study using the 69-edit EGEN-2784 porcine kidney. The xenograft functioned immediately and sustained dialysis independence for 271 days. An early T-cell-mediated rejection episode resolved with treatment. After approximately six months of stable function, immunosuppression was reduced during a non-zoonotic bacterial infection; microvascular inflammation and endothelial injury subsequently progressed to thrombotic microangiopathy and graft failure, with macrophage- and natural-killer-cell-predominant infiltration and minimal T-cell involvement. No porcine pathogen transmission was detected and anti-HLA antibodies remained unchanged. Eighty-two days after xenograft explantation, the recipient received a human kidney with immediate graft function and no evidence of sensitisation during 231 days of follow-up. The case therefore strengthens evidence for months-long life-supporting renal replacement and demonstrates feasibility as a bridge to allotransplantation, while directly exposing late microvascular and innate-immune injury as a durability barrier.",
       vectors: ["partial--271-day-dialysis-independence-bridge-demonstrated-late-microvascular-failure"],
@@ -197,6 +198,7 @@ export const FR_BT_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-009", date: "2026-10-18", field: "reference_corrected", from: "IN-003 / IN-008 relationship in narrative only", to: "IN-008 explicitly linked to IN-003 as same-recipient follow-up", note: "Make the already recorded same-recipient relationship explicit and machine-readable. Preserve both entries, source chronology, descriptions, vectors and assessments. Eight logged entries do not mean eight independent cases." },
     // APPEND-ONLY. Newest first.
     { id: "M-008", date: "2026-09-26", field: "assessment_issued", from: "AS-001 / ESCALATING / VS-03", to: "AS-002 / ESCALATING / VS-03", note: "Normal Record Review of the Lancet 271-day xenokidney case. Capability evidence strengthens and late microvascular/innate injury is better resolved, but prospective multi-recipient replication remains outstanding." },
     { id: "M-007", date: "2026-09-26", field: "instances_logged", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "Riella et al., Lancet 2026, admitted as IN-008 after being held outside LPR-001-D29. IN-003 retained as historical chronology rather than overwritten." },

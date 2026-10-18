@@ -7,6 +7,7 @@ import {
   getCurrentAssessment,
   getStateEnteredDate,
   getVerificationStages,
+  getTransitionFeed,
 } from "./derive.js";
 import {
   HISTORICAL_EFFECTIVE_DATES,
@@ -76,16 +77,15 @@ test("LAD-001 preserves recorded dates while deriving historical chronology for 
 });
 
 test("LAD-001 historical dates carry bounded precision and evidence-instance provenance", () => {
-  assert.equal(HISTORICAL_EFFECTIVE_DATES.length, 3);
+  assert.equal(HISTORICAL_EFFECTIVE_DATES.length, 4);
   assert.deepEqual(
     HISTORICAL_EFFECTIVE_DATES.map(({ recordId, assessmentId }) => `${recordId}:${assessmentId}`),
-    ["FR-AM-0001:AS-001", "FR-AM-0001:AS-002", "FR-AM-0001:AS-003"],
+    ["FR-AI-0008:AS-001", "FR-AM-0001:AS-001", "FR-AM-0001:AS-002", "FR-AM-0001:AS-003"],
   );
 
-  const record = ALL_RECORDS.find((candidate) => candidate.id === "FR-AM-0001");
-  const instanceIds = new Set(record.instances.map((instance) => instance.id));
-
   for (const entry of HISTORICAL_EFFECTIVE_DATES) {
+    const record = ALL_RECORDS.find((candidate) => candidate.id === entry.recordId);
+    const instanceIds = new Set(record.instances.map((instance) => instance.id));
     assert.ok(entry.precision);
     assert.ok(entry.basis.length > 0);
     for (const instanceId of entry.basis) {
@@ -97,6 +97,22 @@ test("LAD-001 historical dates carry bounded precision and evidence-instance pro
     getHistoricalEffectiveDate("FR-AM-0001", "AS-003").precision,
     "upper-bound-year",
   );
+});
+
+test("AI-0008 stage correction preserves historical assignments without a false 2024 operation date", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  const history = getAssessmentHistory(record);
+  assert.deepEqual(record.assessments.map(a => a.verificationStage), ["VS-03", "VS-03", "VS-03", "VS-05"]);
+  assert.deepEqual(history.map(a => a.verificationStage), ["VS-05", "VS-03", "VS-03", "VS-05"]);
+  assert.equal(history[0].recordedDate, "2024-01-15");
+  assert.equal(history[0].historicalEffectiveDate.precision, "unknown");
+  assert.equal(history[0].date, "date uncertain (legacy)");
+  assert.equal(getCurrentAssessment(record).changeKind, "verification_stage_correction");
+  assert.equal(getCurrentAssessment(record).pressureState, "fragmenting");
+  const current = getVerificationStages(record).find(s => s.status === "current");
+  assert.equal(current.vsCode, "VS-05");
+  assert.equal(current.date, "2026-10-18");
+  assert.deepEqual(getTransitionFeed(record), []);
 });
 
 test("historically unverified entries retain their stored stage", () => {

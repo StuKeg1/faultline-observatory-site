@@ -444,6 +444,7 @@
 .ev-weight { font-family: var(--mono); font-size: 10px; color: var(--ink-light); white-space: nowrap; padding: 1px 5px; border: 1px solid var(--rule-light); }
 .ev-weight.primary { color: var(--state-replication); border-color: #b8c8e0; }
 .ev-weight.counter { color: var(--state-contested); border-color: #d4a0a0; }
+.ev-weight.partial { color: var(--ink-mid); border-color: var(--rule); }
 .ev-weight.contested { color: var(--state-audit); border-color: var(--state-audit-rule); }
 
 /* Mechanisms — RENDER-PILOT-001 / ADR-00X */
@@ -530,6 +531,16 @@
   color: var(--ink-light);
 }
 #evidence-entries { scroll-margin-top: 200px; }
+[id^="evidence-IN-"] { scroll-margin-top: 120px; }
+.reading-note { display: block; font-size: .82rem; color: var(--ink-mid); line-height: 1.6; margin: .6rem 0; }
+.evidence-reading-key { margin: 1rem 0; }
+.evidence-relationship { font-size: .88rem; line-height: 1.6; padding-left: .75rem; border-left: 2px solid var(--accent); margin: .7rem 0; }
+.evidence-description { margin: .6rem 0; font-size: .88rem; line-height: 1.7; }
+.evidence-description summary { cursor: pointer; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.evidence-description summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.evidence-description p { margin-top: .6rem; white-space: pre-line; }
+.evidence-description .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.assessment-entry-id { font-family: var(--mono); font-size: .8rem; }
 
 /* Claim Lineage (narrative) — RENDER-PILOT-001 / ADR-00Z.
    Deliberately reuses the .timeline visual language (year gutter + rule)

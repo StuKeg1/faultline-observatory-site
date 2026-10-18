@@ -18,6 +18,7 @@ import {
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
+import { questionDateText, evidencePolarity, evidenceRelationships } from "../data/recordReading.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
@@ -38,8 +39,7 @@ function StageProvenanceMarker() {
 // ─── WARRANT PANEL ───────────────────────────────────────────
 // Driven entirely by getCurrentAssessment(record) and
 // getStateEnteredDate(record). No schema additions.
-// Main rationale: assessorNote if present, otherwise summary.
-// Assessment summary row only rendered when assessorNote is present.
+// Substantive assessment first; source and process notes remain separate.
 //
 // A record can be reaffirmed at the same pressureState across several
 // assessments (new evidence appended, stage unchanged). In that case
@@ -48,7 +48,6 @@ function StageProvenanceMarker() {
 // state since" reads as if the state just changed. The entered-date row
 // is only shown when it differs from the last-verified date.
 function WarrantPanel({ current, record }) {
-  const rationale = current.assessorNote || current.summary;
   const enteredDate = getStateEnteredDate(record);
   const wasReaffirmed = enteredDate !== current.date;
   return (
@@ -61,13 +60,15 @@ function WarrantPanel({ current, record }) {
         </span>
       </div>
       <div className="wp-row wp-row-rationale">
-        <span className="wp-label">Why this state?</span>
-        <span className="wp-value">{rationale}</span>
+        <span className="wp-label">Current assessment</span>
+        <span className="wp-value">{current.summary}</span>
       </div>
       {current.assessorNote && (
         <div className="wp-row">
-          <span className="wp-label">Assessment summary</span>
-          <span className="wp-value">{current.summary}</span>
+          <span className="wp-label">Assessment context</span>
+          <span className="wp-value">{current.assessorNote}
+            {/held outside LPR-/.test(current.assessorNote) && <small className="reading-note">This evidence was reviewed separately from the earlier source check. LPR identifiers name internal source-review records.</small>}
+          </span>
         </div>
       )}
       {wasReaffirmed && (
@@ -174,7 +175,7 @@ function WhereRecordStands({ legibility }) {
             {questions.map((question) => (
               <li key={question.id}>
                 <span>{question.question}</span>
-                <small>{question.elapsed ? `On record for ${question.elapsed} · ` : ""}since {question.raisedDate}</small>
+                <small>{questionDateText(question)}</small>
               </li>
             ))}
           </ul>
@@ -279,6 +280,7 @@ function RecordLineage({ record }) {
             <div className={`tl-dot ${dotClass}`} aria-hidden="true" />
             <div className="tl-content">
               <div className={`tl-event${!isFirst && !isTransition ? " tl-event-reaffirmed" : ""}`}>
+                <span className="assessment-entry-id">{a.id} · </span>
                 {eventLabel}
                 <StateBadge pressureState={a.pressureState} />
               </div>
@@ -357,20 +359,13 @@ function MutationLog({ record }) {
 // qualifiedEvent/description/vectors/date. Polarity (supportive/contesting/
 // neutral/partial) is read from the prefix of vectors[0] and mapped onto
 // the existing ev-weight badge classes for visual continuity. Full
-// description text is intentionally not shown in this compact list — only
-// the id, qualifiedEvent label, and polarity — to keep row layout and
-// height consistent with the prior design. No CSS changes required.
-function getInstancePolarity(instance) {
-  const vector = instance.vectors?.[0] ?? "";
-  const [polarity] = vector.split("--");
-  return polarity || "neutral";
-}
+// descriptions are available through native disclosures; vectors are unchanged.
 
 function getPolarityBadgeClass(polarity) {
   const map = {
     supportive: "primary",
     contesting: "counter",
-    partial: "contested",
+    partial: "partial",
   };
   return map[polarity] ?? "";
 }
@@ -389,24 +384,28 @@ function EvidenceSources({ record }) {
   return (
     <details className="evidence-sources">
       <summary className="evidence-toggle-bar">
-        <span>{instances.length} instances on record</span>
+        <span>{instances.length} logged {instances.length === 1 ? "entry" : "entries"}</span>
         <span className="evidence-toggle-label" data-state="collapsed">Show sources ↓</span>
         <span className="evidence-toggle-label" data-state="expanded">Hide ↑</span>
       </summary>
+      <p className="narrative-context evidence-reading-key">Logged entries are reports on record, not counts of independent studies or patients. Several entries can concern the same underlying evidence. Supportive and Contesting describe an entry’s relation to the claim. Partial indicates limited or mixed bearing; read the details for limitations or legacy status. These labels are not study-quality ratings.</p>
       {(
         <div className="evidence-list" id="evidence-entries" role="list" tabIndex={-1}>
           {instances.map((inst) => {
-            const polarity = getInstancePolarity(inst);
+            const polarity = evidencePolarity(inst);
+            const relationships = evidenceRelationships(record, inst);
             return (
-              <div key={inst.id} className="evidence-entry" role="listitem">
+              <div key={inst.id} id={`evidence-${inst.id}`} className="evidence-entry" role="listitem" tabIndex={-1}>
                 <span className="ev-code">
                   {inst.id}{inst.sourceId ? ` ← ${inst.sourceId}` : ""}
                 </span>
-                <span className="ev-citation">
+                <div className="ev-citation">
                   <span className="ev-title">{inst.qualifiedEvent}</span>
+                  {relationships.map(({ targetId, text }) => <p className="evidence-relationship" key={targetId}>{text} <a href={`#evidence-${targetId}`}>View {targetId}</a></p>)}
                   {showFullS4Content && inst.description && (
                     <span className="ev-description">{inst.description}</span>
                   )}
+                  {!showFullS4Content && inst.description && <details className="evidence-description"><summary>Read evidence details and limits <span className="sr-only">for {inst.id}</span></summary><p>{inst.description}</p></details>}
                   {inst.sources?.length > 0 ? (
                     <span className="ev-structured-sources" aria-label={`${inst.sources.length} structured source${inst.sources.length === 1 ? "" : "s"}`}>
                       {inst.sources.map((source, index) => {
@@ -425,9 +424,9 @@ function EvidenceSources({ record }) {
                   ) : inst.sourceReference && (
                     <span className="ev-source-reference">{inst.sourceReference}</span>
                   )}
-                </span>
-                <span className={`ev-weight ${getPolarityBadgeClass(polarity)}`}>
-                  {polarity}
+                </div>
+                <span className={`ev-weight ${getPolarityBadgeClass(polarity.key)}`}>
+                  {polarity.label}
                 </span>
               </div>
             );
@@ -488,6 +487,7 @@ function Mechanisms({ record }) {
             </span>
             <span className="mech-id">{m.id}</span>
           </div>
+          {m.type === "ATTRACTOR" && <p className="reading-note">A recorded possible resolution path, not automatically a sufficient test for closing the claim.</p>}
           <p className="mech-description">{m.description}</p>
         </div>
       ))}
@@ -530,13 +530,13 @@ function OpenQuestions({ record }) {
   const questions = record.openQuestions ?? [];
   if (questions.length === 0) return null;
   return (
-    <div className="open-questions-list" role="list" aria-label="Open questions">
+    <div className="open-questions-list" role="list" aria-label="Questions on record">
       {questions.map((q) => (
         <div key={q.id} className="open-question-entry" role="listitem">
           <span className="oq-id">{q.id}</span>
           <div className="oq-body">
             <p className="oq-text">{q.question}</p>
-            <span className="oq-date">Raised {q.raisedDate}</span>
+            <span className="oq-date">{questionDateText(q)}</span>
           </div>
         </div>
       ))}
@@ -557,10 +557,10 @@ function EvidenceBrief({ brief }) {
       <h2 id="evidence-brief-title">Read this record</h2>
       <p className="evidence-brief-context">A guide to the record’s sections. The State Warrant gives the current assessment.</p>
       <nav className="evidence-brief-grid" aria-label="Read this record">
-        <a href="#s-warrant"><strong>Current assessment →</strong><span>{state} · {brief.current.date}</span></a>
-        <a href="#evidence-entries"><strong>Evidence trail →</strong><span>{brief.evidenceCount} logged {brief.evidenceCount === 1 ? "entry" : "entries"}</span></a>
-        {brief.attractorCount > 0 && <a href="#s-mechanisms"><strong>What could change the claim →</strong><span>{brief.attractorCount} {brief.attractorCount === 1 ? "Attractor" : "Attractors"}</span></a>}
-        {brief.questionCount > 0 && <a href="#s-open-questions"><strong>Questions retained →</strong><span>{brief.questionCount} {brief.questionCount === 1 ? "question" : "questions"}</span></a>}
+        <a href="#s-warrant"><strong>Current assessment →</strong><span>{state} · assessed {brief.current.date}</span></a>
+        <a href="#evidence-entries"><strong>Evidence and sources →</strong><span>{brief.evidenceCount} logged {brief.evidenceCount === 1 ? "entry" : "entries"}</span></a>
+        {brief.attractorCount > 0 && <a href="#s-mechanisms"><strong>Mechanisms and barriers →</strong><span>Barriers and possible ways forward</span></a>}
+        {brief.questionCount > 0 && <a href="#s-open-questions"><strong>Questions on record →</strong><span>{brief.questionCount} retained {brief.questionCount === 1 ? "question" : "questions"}</span></a>}
       </nav>
     </aside>
   );
@@ -593,10 +593,10 @@ function getSections(record) {
   return [
     { id: "s-matrix",             label: "Verification Matrix" },
     { id: "s-warrant",            label: "State Warrant" },
-    ...(hasMechanisms ? [{ id: "s-mechanisms", label: "Mechanisms" }] : []),
+    ...(hasMechanisms ? [{ id: "s-mechanisms", label: "Mechanisms and barriers" }] : []),
     { id: "s-assessment-history", label: "Assessment History" },
     ...(hasClaimLineage ? [{ id: "s-claim-lineage", label: "Claim Lineage" }] : []),
-    ...(hasOpenQuestions ? [{ id: "s-open-questions", label: "Open Questions" }] : []),
+    ...(hasOpenQuestions ? [{ id: "s-open-questions", label: "Questions on record" }] : []),
     { id: "s-mutations",          label: "Mutation Log" },
     { id: "s-evidence",           label: "Evidence Sources" },
     ...(hasRelated ? [{ id: "s-related", label: "Related Records" }] : []),
@@ -809,14 +809,15 @@ export default function FrontierRecord() {
 
           {hasMechanisms && (
             <section className="record-section-inner" id="s-mechanisms">
-              <div className="rs-header">Mechanisms</div>
-              <p className="narrative-context">Causal mechanisms recorded for this claim. The State Warrant above remains the authoritative current assessment.</p>
+              <div className="rs-header">Mechanisms and barriers</div>
+              <p className="narrative-context">How the claim could hold, what obstructs it, and possible ways forward. The State Warrant above remains the authoritative current assessment.</p>
               <Mechanisms record={record} />
             </section>
           )}
 
           <section className="record-section-inner" id="s-assessment-history">
             <div className="rs-header">Assessment History</div>
+            {record.assessments.some((a, i) => i > 0 && a.date === record.assessments[i - 1].date) && <p className="narrative-context">Assessments on the same date follow their assessment ID order. An evidence-basis correction and a review of new evidence can be separate events.</p>}
             <RecordLineage record={record} />
           </section>
 
@@ -830,8 +831,8 @@ export default function FrontierRecord() {
 
           {hasOpenQuestions && (
             <section className="record-section-inner" id="s-open-questions">
-              <div className="rs-header">Open Questions</div>
-              <p className="narrative-context">Questions retained in this record. The current State Warrant may have narrowed or reframed earlier questions.</p>
+              <div className="rs-header">Questions on record</div>
+              <p className="narrative-context">Questions retained in this record. The current State Warrant may have narrowed or reframed them. Recorded dates refer to question history, not necessarily the age of the current wording; known revision dates are shown separately.</p>
               <OpenQuestions record={record} />
             </section>
           )}

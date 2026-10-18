@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
 import { getAssessmentHistory, getCurrentAssessment, getTransitionFeed } from "./derive.js";
-import { REGISTERS, getRegisterRows, resolveRegister, sortKey } from "./registerProjection.js";
+import { REGISTERS, getRegisterRow, getRegisterRows, resolveRegister, sortKey } from "./registerProjection.js";
 
 const forbidden = /\b(advancement|regression|oscillation|oscillating|endurance|enduring|stagnation|supportive-dominant|contesting-dominant|deferred-resolution|early-support-then-stall|escalating-contradiction)\b/i;
 
@@ -77,6 +77,12 @@ test("state change register remains derived from its transition feed", () => {
 test("stage change register uses stored assessment stages rather than reviewed stages", () => {
   assert.deepEqual(
     getRegisterRows(ALL_RECORDS, "stage-changed").map((row) => row.record.id).sort(),
-    ["FR-QE-0001", "FR-QE-0003", "FR-AI-0001", "FR-AM-0001", "FR-AM-0006", "FR-BT-0004"].sort(),
+    ["FR-QE-0001", "FR-QE-0003", "FR-AI-0001", "FR-AI-0008", "FR-AM-0001", "FR-AM-0006", "FR-BT-0004"].sort(),
   );
+});
+
+test("stage correction is not described as a newly observed capability advance", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  assert.match(getRegisterRow(record, "stage-vs-05").reason, /Stage corrected|Stage correction/);
+  assert.match(getRegisterRow(record, "stage-changed").reason, /Stage correction/);
 });
