@@ -9,7 +9,6 @@ import { ALL_RECORDS } from "../data/corpus.js";
 import { getAssessmentRecency } from "../data/assessmentRecency.js";
 import {
   getCurrentAssessment,
-  getTransitionFeed,
   getAssessmentHistory,
   getCompactAssessmentTrajectory,
   getVerificationStages,
@@ -18,7 +17,7 @@ import {
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
-import { questionDateText, evidencePolarity, evidenceRelationships } from "../data/recordReading.js";
+import { assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships } from "../data/recordReading.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
@@ -261,32 +260,26 @@ function VerificationMatrix({ record }) {
 }
 
 // ─── RECORD LINEAGE TIMELINE ────────────────────────────────
-// RELEASE-013: distinguishes a genuine state transition from a
-// reaffirmation (state held) using the existing getTransitionFeed(),
-// already correctly computed in derive.js but never called from any
-// view before this release. No new derived function added.
+// Compare both axes in the governed display history. A held Pressure State
+// must not label a Verification Stage change as "no change".
 function RecordLineage({ record }) {
   const history = getAssessmentHistory(record);
-  const transitionIds = new Set(getTransitionFeed(record).map((t) => t.to.id));
   const lastIndex = history.length - 1;
   return (
     <div className="timeline" role="list">
       {history.map((a, i) => {
         const isFirst = i === 0;
         const isLast = i === lastIndex;
-        const isTransition = transitionIds.has(a.id);
+        const previous = history[i - 1];
+        const hasChange = previous && (previous.pressureState !== a.pressureState || previous.verificationStage !== a.verificationStage);
         const dotClass = isFirst ? "major" : isLast ? "current" : "";
-        const eventLabel = isFirst
-          ? "Initial assessment — "
-          : isTransition
-          ? "State changed — "
-          : "Reassessed, no change — ";
+        const eventLabel = `${assessmentChangeLabel(previous, a)} — `;
         return (
           <div key={a.id} className="timeline-entry" role="listitem">
             <div className="tl-date">{a.date}</div>
             <div className={`tl-dot ${dotClass}`} aria-hidden="true" />
             <div className="tl-content">
-              <div className={`tl-event${!isFirst && !isTransition ? " tl-event-reaffirmed" : ""}`}>
+              <div className={`tl-event${!isFirst && !hasChange ? " tl-event-reaffirmed" : ""}`}>
                 <span className="assessment-entry-id">{a.id} · </span>
                 {eventLabel}
                 <StateBadge pressureState={a.pressureState} />
