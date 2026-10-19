@@ -119,6 +119,28 @@ export const FR_BT_0004 = {
       vectors: ["partial--anticipatory-commercial-deployment-definitive-evidence-pending"],
       date: "2021–24",
       sourceReference: "US FTC, Illumina/GRAIL enforcement record and divestment statement (2021–23); European Commission, restorative measures IP/23/4872 (2023); Illumina, 'Illumina completes the divestiture of GRAIL' (24 June 2024)",
+      sources: [
+        {
+          "citation": "Federal Trade Commission. Illumina, Inc., and GRAIL, Inc., In the Matter of. Case 201-0144.",
+          "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/201-0144-illumina-inc-grail-inc-matter",
+          "locator": "Enforcement chronology beginning in March 2021; competition proceedings, not a clinical efficacy finding."
+        },
+        {
+          "citation": "Federal Trade Commission. Statement Regarding Illumina’s Decision to Divest Grail. 18 December 2023.",
+          "url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/statement-regarding-illuminas-decision-divest-grail",
+          "locator": "December 2023 court decision and announced divestment; the court vacated the order and remanded on the rebuttal-evidence standard."
+        },
+        {
+          "citation": "European Commission. Commission orders Illumina to unwind its completed acquisition of GRAIL. IP/23/4872, 12 October 2023.",
+          "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_23_4872/IP_23_4872_EN.pdf",
+          "locator": "Pages 1–2: historical restorative and transitional measures adopted in October 2023."
+        },
+        {
+          "citation": "Illumina. Illumina completes the divestiture of GRAIL. 24 June 2024.",
+          "url": "https://www.illumina.com/company/news-center/press-releases/2024/d2e2aec7-563a-4301-9d60-db56ea067bfb.html",
+          "locator": "Company announcement of the completed spin-off; commercial history, not independent clinical validation."
+        }
+      ],
     },
     {
       id: "IN-006",
@@ -137,11 +159,13 @@ export const FR_BT_0004 = {
         },
         {
           "citation": "GRAIL trial-results release (19 February 2026).",
-          "locator": "Company trial-results release."
+          "locator": "Company trial-results release.",
+          "url": "https://grail.com/press-releases/landmark-nhs-galleri-trial-demonstrates-a-substantial-reduction-in-stage-iv-cancer-diagnoses-increased-stage-i-and-ii-detection-of-deadly-cancers-and-four-fold-higher-cancer-detection-rate/"
         },
         {
           "citation": "Science Media Centre expert reaction (30 May 2026).",
-          "locator": "Expert reaction to the conference results."
+          "locator": "Expert reaction to the conference results.",
+          "url": "https://www.sciencemediacentre.org/expert-reaction-to-press-release-from-grail-on-full-results-of-the-nhs-galleri-trial-being-presented-at-asco/"
         }
       ],
     },
@@ -246,6 +270,7 @@ export const FR_BT_0004 = {
   ],
 
   mutationLog: [
+    {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"IN-005 institutional references unlinked; two IN-006 references unlinked","to":"Exact regulator/company source links on IN-005 and remaining same-trial references on IN-006","note":"Operator-authorised Batch 5 / R05 source repairs, increment 2. Add URLs for already named documents and structured citations for the existing IN-005 bundle. No new evidence, assessment, scientific wording, state, stage, dates, counts, relationships, review-completion marker or prior mutation changed. Preserve sourceReference and the conference-abstract citation; company releases and expert commentary are not independent trial replications. Exact changes and source verification: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-2-2026-10-19.json and companion .md."},
     {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-001, IN-002, IN-003, IN-004, IN-006","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, assessments, dates, relationships, review status and all prior mutations preserved. BT-0004 IN-003 citation and sourceReference clarify Swanton as first author of the existing DOI; the prior Neal attribution is preserved in the receipt. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {"id": "M-015", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-006, IN-007, IN-008", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
     {"id":"M-014","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-007 → AS-002","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
