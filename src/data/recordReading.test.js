@@ -128,6 +128,43 @@ test("same-recipient follow-up is explicit in both directions without merging en
   }
 });
 
+test("clinical continuity groups NHS-Galleri reports and ER-100 milestones without changing counts", () => {
+  const before = JSON.stringify(ALL_RECORDS);
+  for (const [id, anchor, reports, count] of [
+    ["FR-BT-0004", "IN-003", ["IN-006", "IN-007", "IN-008"], 8],
+    ["FR-BT-0002", "IN-006", ["IN-007"], 7],
+  ]) {
+    const record = ALL_RECORDS.find(r => r.id === id);
+    assert.equal(record.instances.length, count);
+    assert.deepEqual(evidenceRelationships(record, record.instances.find(i => i.id === anchor)).map(r => r.targetId), reports);
+    for (const report of reports) {
+      const rows = evidenceRelationships(record, record.instances.find(i => i.id === report));
+      assert.equal(rows.length, 1);
+      assert.equal(rows[0].targetId, anchor);
+      assert.match(rows[0].text, /Same.*trial/);
+      assert.match(rows[0].text, /not.*(replication|two trials)/);
+    }
+  }
+  assert.equal(JSON.stringify(ALL_RECORDS), before);
+});
+
+test("T15 continuity qualifies both directions of a bundled report and guards its source", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-BT-0007");
+  const original = record.instances.find(i => i.id === "IN-003");
+  const bundled = record.instances.find(i => i.id === "IN-004");
+  for (const rows of [evidenceRelationships(record, original).filter(r => r.targetId === "IN-004"), evidenceRelationships(record, bundled)]) {
+    assert.equal(rows.length, 1);
+    assert.match(rows[0].text, /Wairagkar/);
+    assert.match(rows[0].text, /Littlejohn/);
+    assert.match(rows[0].text, /different participant \(BRAVO-3\)/);
+  }
+  assert.match(evidenceRelationships(record, record.instances.find(i => i.id === "IN-005"))[0].text, /Same participant T15/);
+  const missingSource = structuredClone(record);
+  missingSource.instances.find(i => i.id === "IN-004").sources = [];
+  assert.deepEqual(evidenceRelationships(missingSource, missingSource.instances.find(i => i.id === "IN-004")), []);
+  assert.equal(evidenceRelationships(missingSource, original).some(r => r.targetId === "IN-004"), false);
+});
+
 test("MASAI reports link the same trial in both directions without implying replication", () => {
   const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
   assert.equal(record.instances.length, 6);
