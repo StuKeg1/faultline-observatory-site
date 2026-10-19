@@ -133,6 +133,22 @@ test("FR-QE-0007 corrects the IN-005 source conflation without changing its verd
   assert.equal(current.verificationStage, "VS-03");
 });
 
+test("practical-advantage context follows the closed Sycamore ruling without reopening it", async () => {
+  const { FR_QE_0001: sycamore } = await import("./records/FR-QE-0001.js");
+  const before = JSON.stringify(sycamore);
+  const ruling = getCurrentAssessment(sycamore);
+  const entry = FR_QE_0007.instances.find(i => i.id === "IN-001");
+  assert.equal(ruling.id, "AS-002");
+  assert.equal(ruling.date, "2026-07-22");
+  assert.match(ruling.summary, /UNRESOLVED AT THE ORIGINAL COMPARISON POINT; LATER SUPERSEDED/);
+  assert.doesNotMatch(entry.description, /genuine and was demonstrated at the time of publication/);
+  assert.match(entry.description, /unresolved claim.*original 2019 comparison point/);
+  assert.match(entry.description, /without automatically proving.*2019 claim was false/);
+  assert.deepEqual(entry.vectors, ["partial--original-comparison-unresolved-practical-relevance-absent"]);
+  assert.equal(getCurrentAssessment(FR_QE_0007).id, "AS-003");
+  assert.equal(JSON.stringify(sycamore), before);
+});
+
 test("FR-BT-0004 distinguishes late-stage incidence, mortality and publication class", () => {
   const design = FR_BT_0004.instances.find(({ id }) => id === "IN-003");
   const result = FR_BT_0004.instances.find(({ id }) => id === "IN-006");
