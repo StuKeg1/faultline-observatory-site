@@ -84,22 +84,23 @@ export function evidencePolarity(instance) {
 export function evidenceRelationships(record, instance) {
   const rows = [];
   const types = ["same_recipient_followup", "same_recipient_analysis", "same_trial_report", "shared_publication"];
-  const validOverlap = (entry, related) => entry.relationship?.type !== "shared_publication" || (
+  const validOverlap = (entry, related) => (!entry.relationship?.sourceDoi ||
+    entry.sources?.some(s => s.doi === entry.relationship.sourceDoi)) && (entry.relationship?.type !== "shared_publication" || (
     entry.relationship.sharedSourceDoi && [entry, related].every(i => i?.sources?.some(s => s.doi === entry.relationship.sharedSourceDoi))
-  );
+  ));
   const target = record.instances?.find(i => i.id === instance.relationship?.relatedInstanceId);
   if (target && target.id !== instance.id && types.includes(instance.relationship?.type) && validOverlap(instance, target)) {
     rows.push({ targetId: instance.relationship.relatedInstanceId, text: instance.relationship.note });
   }
   for (const other of record.instances ?? []) {
     if (other.id !== instance.id && types.includes(other.relationship?.type) && other.relationship.relatedInstanceId === instance.id && validOverlap(other, instance)) {
-      rows.push({ targetId: other.id, text: other.relationship.type === "same_trial_report"
+      rows.push({ targetId: other.id, text: other.relationship.reverseNote ?? (other.relationship.type === "same_trial_report"
         ? `Same trial as ${other.id}; these are different reports from one trial, not independent replications.`
         : other.relationship.type === "shared_publication"
         ? (other.relationship.reverseNote ?? `Shares publication ${other.relationship.sharedSourceDoi} with ${other.id}; overlapping evidence is not independent replication.`)
         : other.relationship.type === "same_recipient_analysis"
         ? `Same recipient as ${other.id}; that entry reports immune profiling of this case, not an additional patient.`
-        : `Same recipient as ${other.id}; that entry is a later report of this case, not an independent patient.` });
+        : `Same recipient as ${other.id}; that entry is a later report of this case, not an independent patient.`) });
     }
   }
   return rows;

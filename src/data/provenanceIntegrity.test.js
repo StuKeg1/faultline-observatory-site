@@ -221,7 +221,20 @@ test("second consistency batch preserves evidence, judgments, metadata and bound
         ["lastProvenanceReview", "provenanceReviewId", "provenanceOutcome", "provenanceRepairStatus"].includes(field)
         || (field === "instances" && postCheckpoint.some(mutation => ["provenance_repair", "provenance_corrected", "instance_appended", "instances_logged"].includes(mutation.field)));
       if (supersededByLaterMutation) continue;
-      assert.equal(digest(field === "mutationLog" ? record.mutationLog.slice(1) : record[field]), expected, `${entry.id}: ${field} changed`);
+      // Batch 2 adds only these continuity annotations after this receipt.
+      // Keep hashing every historical scientific field rather than waiving instances.
+      const laterRelationships = {
+        "FR-BT-0002": ["IN-007"],
+        "FR-BT-0004": ["IN-006", "IN-007", "IN-008"],
+        "FR-BT-0007": ["IN-004", "IN-005"],
+      };
+      const historicalValue = field === "instances" && laterRelationships[entry.id]
+        ? record.instances.map(instance => {
+          if (!laterRelationships[entry.id].includes(instance.id)) return instance;
+          const { relationship: _laterRelationship, ...original } = instance;
+          return original;
+        }) : record[field];
+      assert.equal(digest(field === "mutationLog" ? record.mutationLog.slice(1) : historicalValue), expected, `${entry.id}: ${field} changed`);
     }
     assert.deepEqual(record.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })), entry.questionIdentity);
     assert.equal(record.mutationLog[0].id, entry.mutationId);

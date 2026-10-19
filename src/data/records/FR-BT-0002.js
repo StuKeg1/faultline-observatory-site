@@ -91,6 +91,7 @@ export const FR_BT_0002 = {
     },
     {
       id: "IN-007",
+      relationship: {"type": "same_trial_report", "relatedInstanceId": "IN-006", "note": "Same ER-100 Phase 1 trial as IN-006 (NCT07290244). IND clearance and first dosing are successive milestones in one trial, not two trials or independent replications."},
       qualifiedEvent: "ER-100 enters human dosing — first participant treated in Phase 1",
       description: "Life Biosciences reports that the first participant was dosed on June 9, 2026 in the Phase 1 ER-100 trial for open-angle glaucoma and non-arteritic anterior ischemic optic neuropathy. ClinicalTrials.gov lists NCT07290244 as a recruiting first-in-human Phase 1 study sponsored by Life Biosciences. This converts the prior IND-clearance milestone into actual human exposure to partial OSK epigenetic reprogramming. It is materially closer to AT-001, but no trial results have been posted: dosing establishes operation of the clinical test, not safety, efficacy, biological-age reversal, identity preservation, or validated functional rejuvenation. The central evidentiary boundary therefore remains unresolved.",
       vectors: ["supportive--first-human-dosing-no-results-yet"],
@@ -192,6 +193,7 @@ export const FR_BT_0002 = {
   ],
 
   mutationLog: [
+    {"id": "M-018", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-007", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
     { id: "M-017", date: "2026-10-18", field: "provenance_review", from: "LPR-001-D26", to: "LPR-001-D54", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representation verified; no unverifiable attribution or factual, interpretive, attribution, or verification-stage discrepancy identified. A Life Biosciences 2026-10-08 interim ER-100 human-results announcement was identified as genuinely new evidence and held out for Normal Record Review; it was not admitted through LPR-001. Canonical outcome verified / not_required; existing evidence, assessment, Pressure State and Verification Stage unchanged." },
     {
       "id": "M-016",

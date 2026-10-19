@@ -70,6 +70,7 @@ export const FR_BT_0004 = {
     },
     {
       id: "IN-006",
+      relationship: {"type": "same_trial_report", "relatedInstanceId": "IN-003", "note": "Same NHS-Galleri trial as IN-003 (NCT05611632 / ISRCTN91431511). This is the conference results report from that trial, not an independent replication."},
       qualifiedEvent: "NHS-Galleri trial — full results presented at ASCO 2026",
       description: "Investigators present the NHS-Galleri primary results orally at the 2026 American Society of Clinical Oncology Annual Meeting on 30 May 2026. The results are published as late-breaking abstract LBA100 in the Journal of Clinical Oncology conference supplement, not as a full peer-reviewed results article. The pre-specified primary endpoint — a statistically significant combined reduction in Stage III and Stage IV diagnoses across twelve cancer types — is not met. Stage IV diagnoses fall by more than 20% in later screening rounds, but a higher-than-anticipated number of Stage III diagnoses offsets that result in the combined endpoint. The Galleri arm reports a four-fold higher overall cancer detection rate than standard-care screening alone. No mortality endpoint is reported. Independent commentary via the Science Media Centre emphasises that stage shift and mortality benefit are distinct questions and describes the evidence as conference-presented results rather than a published full study. The awaited trial event has therefore occurred without producing the clean resolution anticipated by the record's original attractor.",
       vectors: ["partial--primary-endpoint-missed-stage-shift-observed-mortality-pending"],
@@ -78,6 +79,7 @@ export const FR_BT_0004 = {
     },
     {
       id: "IN-007",
+      relationship: {"type": "same_trial_report", "relatedInstanceId": "IN-003", "note": "Same NHS-Galleri trial as IN-003 and IN-006 (NCT05611632 / ISRCTN91431511). This is the peer-reviewed primary-results report, not another trial or independent replication."},
       qualifiedEvent: "NHS-Galleri trial — peer-reviewed primary randomized results",
       description: "Sasieni et al. publish the NHS-Galleri primary randomized results in the New England Journal of Medicine on 22 September 2026. Among 142,250 randomized participants, the prespecified primary endpoint of Stage III/IV cancer incidence across twelve cancer types is not reduced by MCED screening plus usual care versus usual care alone (incidence-rate ratio 1.03; 95% CI 0.92–1.14; P=0.63). The key Stage IV secondary endpoint has an incidence-rate ratio of 0.86 (95% CI 0.74–1.00). Trial-related adverse events occur in fewer than 1% of participants and none are serious. The peer-reviewed article therefore confirms the mixed evidential state previously represented from ASCO 2026: the primary late-stage endpoint is negative while a Stage IV signal remains compatible with benefit but requires further follow-up. Mortality is not resolved.",
       vectors: ["partial--peer-reviewed-primary-endpoint-negative-stage-IV-signal-mortality-pending"],
@@ -89,6 +91,7 @@ export const FR_BT_0004 = {
     },
     {
       id: "IN-008",
+      relationship: {"type": "same_trial_report", "relatedInstanceId": "IN-003", "note": "Same NHS-Galleri trial as IN-003, IN-006 and IN-007 (NCT05611632 / ISRCTN91431511). This reports test performance in that trial’s intervention arm, not an independent replication."},
       qualifiedEvent: "NHS-Galleri trial — three-round MCED test performance",
       description: "Neal et al. publish prespecified secondary test-performance endpoints from the NHS-Galleri intervention arm in Nature Medicine on 22 September 2026. Across the three annual screening rounds, positive predictive value is 58.0%, 50.4% and 45.8%; specificity remains 99.50–99.60%; and episode sensitivity for all cancers is 37.2%, 27.1% and 26.7%, respectively. Cancer-signal-origin accuracy remains above 91% by round. These results strengthen evidence that the assay can identify cancer signals with very high specificity in population screening, while also quantifying a substantial sensitivity limitation that persists across repeated annual rounds. The analyses are descriptive and do not establish mortality benefit or resolve overdiagnosis; those outcomes are reserved for future reporting.",
       vectors: ["partial--high-specificity-persistent-sensitivity-limit-outcome-benefit-unresolved"],
@@ -175,6 +178,7 @@ export const FR_BT_0004 = {
   ],
 
   mutationLog: [
+    {"id": "M-015", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-006, IN-007, IN-008", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
     {"id":"M-014","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-007 → AS-002","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
     {
       "id": "M-013",

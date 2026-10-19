@@ -80,6 +80,7 @@ export const FR_BT_0007 = {
     },
     {
       id: "IN-004",
+      relationship: {"type": "same_recipient_followup", "relatedInstanceId": "IN-003", "sourceDoi": "10.1038/s41586-025-09127-3", "note": "The Wairagkar et al. 2025 voice-synthesis report in this bundled entry concerns the same participant T15 as IN-003 and IN-005. The Littlejohn et al. report concerns a different participant (BRAVO-3); the whole entry must not be counted as one T15 report.", "reverseNote": "The Wairagkar et al. 2025 component of IN-004 concerns this same participant T15; its Littlejohn et al. component concerns a different participant (BRAVO-3). The bundle is not wholly another T15 report."},
       qualifiedEvent: "Streaming brain-to-voice systems — lower-latency and personalised synthetic speech",
       description: "Independent 2025 studies advanced communication output from completed-text decoding towards continuously generated speech. Littlejohn et al. reported streaming synthesis and text decoding from a chronically implanted electrocorticography interface, including unprompted attempted speech. Wairagkar et al. separately generated near-instantaneous personalised voice from intracortical activity; human listeners transcribed the synthetic output substantially more accurately than the participant's residual dysarthric speech. These systems strengthen the functional-communication claim by reducing latency and restoring expressive voice characteristics, but each was evaluated in one participant and neither established sustained independent everyday operation.",
       vectors: ["supportive--streaming-personalised-voice-improves-naturalistic-communication"],
@@ -102,6 +103,7 @@ export const FR_BT_0007 = {
     },
     {
       id: "IN-005",
+      relationship: {"type": "same_recipient_followup", "relatedInstanceId": "IN-003", "note": "Same participant T15 as IN-003 and the Wairagkar et al. component of IN-004. This is later long-term home-use evidence from that participant, not an additional participant or independent replication.", "reverseNote": "Same participant T15 as IN-005; that entry reports later long-term home use, not an additional participant or independent replication."},
       qualifiedEvent: "Long-term independent home use — 3,800 hours of speech and computer access",
       description: "Card et al. report that one participant with ALS used an intracortical speech-and-cursor BCI independently at home for more than 3,800 hours over nearly two years. The system supported 183,060 communicated sentences totalling almost two million words, together with email, internet access and employment-related computer use; the participant rated most sentences as at least mostly correct. This is the strongest direct evidence that an implanted BCI can cross from supervised laboratory performance into sustained everyday communication. It does not establish population-level reliability: the result concerns one highly supported participant, retained percutaneous connections and substantial external equipment, and has not been independently reproduced at comparable duration.",
       vectors: ["supportive--sustained-independent-everyday-communication-in-one-participant"],
@@ -234,6 +236,7 @@ export const FR_BT_0007 = {
   ],
 
   mutationLog: [
+    {"id": "M-007", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-004, IN-005", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. BT-0007 overlap is limited to the Wairagkar component of IN-004; Littlejohn BRAVO-3 is distinct. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-09-28", field: "provenance_review_completed", from: "—", to: "LPR-001-D31", note: "Legacy provenance review completed. All seven existing instances verified against their structured sources; no provenance enrichment, discrepancy or new-evidence candidate identified. No assessment, interpretation, pressure state, verification stage, mechanism, attractor or claim changed." },
     { id: "M-005", date: "2026-09-15", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "Admission diagnosis: EMERGING / VS-03. Communication capability is independently demonstrated and one participant has sustained everyday use; cross-participant operational replication remains absent." },
