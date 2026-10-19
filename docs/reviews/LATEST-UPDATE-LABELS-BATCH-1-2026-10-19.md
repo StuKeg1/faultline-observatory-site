@@ -50,3 +50,9 @@ An initial build attempt used the host npm 11 and stopped at the engine guard. T
 ## Rollback
 
 Revert this focused PR. Its summary is derived, so rollback requires no content migration or assessment reversal.
+
+## Compatibility follow-up — governance PR #176
+
+Stuart separately approved the bounded AM-0004 / BT-0003 stage resolutions. PR #176 appends AS-004 to both records on 19 October; these substantive changes are outside Batch 1. The five-record comparison above describes the original base, not the future post-reconciliation corpus.
+
+Pin the September R01 regression fixtures to their assessment and mutation cutoffs so the omissions remain covered after those append-only corrections. AI-0009 stays editorial-only. Validate the combined contents of both PRs: clean full build and 195 tests, including the governance preservation/register checks and Batch 1's label checks. The two current record summaries then describe the new stage corrections; September's history remains intact. Merge governance first, then update/recheck this PR against main. No merge or production deployment was executed in this follow-up.

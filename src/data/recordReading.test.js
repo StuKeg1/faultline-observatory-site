@@ -35,7 +35,12 @@ test("latest-day assessment activity includes corrections logged under other mut
     ["FR-BT-0003", "2026-09-25", ["Editorial correction recorded", "Verification Stage changed (VS-04 → VS-03); Pressure State unchanged", "Assessment updated; Pressure State and Verification Stage unchanged", "Evidence entry added"]],
   ];
   for (const [id, date, labels] of expectations) {
-    const record = ALL_RECORDS.find(r => r.id === id);
+    const current = ALL_RECORDS.find(r => r.id === id);
+    // Preserve the September omission cases after an append-only reconciliation.
+    const record = { ...current,
+      assessments: current.assessments.filter(a => a.date <= date),
+      mutationLog: current.mutationLog.filter(m => m.date <= date),
+    };
     assert.deepEqual(getRecordUpdateSummary(record), { date, labels });
     assert.deepEqual(getRecordUpdateSummary({ ...record, mutationLog: [...record.mutationLog].reverse() }).labels.slice().sort(), [...labels].sort());
   }
