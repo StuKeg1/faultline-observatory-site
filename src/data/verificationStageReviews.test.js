@@ -16,6 +16,34 @@ import {
   getVerificationStageReview,
 } from "./verificationStageReviews.js";
 
+test("October stage reconciliations preserve the ratified historical overlays and pressure states", () => {
+  for (const [id, state, stage, stored, interpreted] of [
+    ["FR-AM-0004", "escalating", "VS-03", ["VS-02", "VS-02", "VS-02"], ["VS-03", "VS-03", "VS-02"]],
+    ["FR-BT-0003", "fragmenting", "VS-04", ["VS-03", "VS-03", "VS-03"], ["VS-04", "VS-03", "VS-03"]],
+  ]) {
+    const record = ALL_RECORDS.find(r => r.id === id);
+    const current = getCurrentAssessment(record);
+    assert.equal(current.id, "AS-004");
+    assert.equal(current.date, "2026-10-19");
+    assert.equal(current.verificationStage, stage);
+    assert.equal(current.pressureState, state);
+    assert.equal(current.changeKind, "verification_stage_correction");
+    assert.deepEqual(record.assessments.slice(0, -1).map(a => a.verificationStage), stored);
+    assert.deepEqual(getAssessmentHistory(record).slice(0, -1).map(a => a.verificationStage), interpreted);
+    assert.ok(record.assessments.every(a => a.pressureState === state));
+    assert.equal(record.mutationLog.find(m => m.field === "assessment_correction").to, `AS-004 / ${state.toUpperCase()} / ${stage}`);
+    assert.match(current.assessorNote, /Legacy VS Assignment Review \(23 July 2026\)/);
+  }
+  const biological = getCurrentAssessment(ALL_RECORDS.find(r => r.id === "FR-BT-0003"));
+  assert.match(biological.summary, /population-level predictive associations/);
+  assert.match(biological.summary, /VS-04 does not certify an individually useful prediction/);
+  const fusion = ALL_RECORDS.find(r => r.id === "FR-AM-0004");
+  assert.equal(fusion.instances.length, 7);
+  const economics = fusion.instances.find(i => i.id === "IN-005");
+  assert.equal(economics.sources[1].doi, "10.1016/j.enpol.2023.113511");
+  assert.match(economics.sources[1].citation, /Energy Policy 177 \(2023\) 113511/);
+});
+
 test("ratified overlay covers 34 unique assignments with preserved stored codes", () => {
   assert.equal(VERIFICATION_STAGE_REVIEWS.length, 34);
   assert.equal(

@@ -77,12 +77,14 @@ test("state change register remains derived from its transition feed", () => {
 test("stage change register uses stored assessment stages rather than reviewed stages", () => {
   assert.deepEqual(
     getRegisterRows(ALL_RECORDS, "stage-changed").map((row) => row.record.id).sort(),
-    ["FR-QE-0001", "FR-QE-0003", "FR-AI-0001", "FR-AI-0008", "FR-AM-0001", "FR-AM-0006", "FR-BT-0004"].sort(),
+    ["FR-QE-0001", "FR-QE-0003", "FR-AI-0001", "FR-AI-0008", "FR-AM-0001", "FR-AM-0004", "FR-AM-0006", "FR-BT-0003", "FR-BT-0004"].sort(),
   );
 });
 
 test("stage correction is not described as a newly observed capability advance", () => {
-  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
-  assert.match(getRegisterRow(record, "stage-vs-05").reason, /Stage corrected|Stage correction/);
-  assert.match(getRegisterRow(record, "stage-changed").reason, /Stage correction/);
+  for (const [id, stage] of [["FR-AI-0008", "05"], ["FR-AM-0004", "03"], ["FR-BT-0003", "04"]]) {
+    const record = ALL_RECORDS.find(r => r.id === id);
+    assert.match(getRegisterRow(record, `stage-vs-${stage}`).reason, /Stage corrected|Stage correction/);
+    assert.match(getRegisterRow(record, "stage-changed").reason, /Stage correction/);
+  }
 });
