@@ -105,6 +105,8 @@ export function mutationFieldLabel(field) {
 export function recordCodeExplanations(text) {
   return [
     [/\bFCIF Admission Review\b/, "FCIF Admission Review is the Observatory’s process for deciding whether a claim enters the record; it is not external scientific peer review."],
+    [/\bNormal Record Review\b/, "Normal Record Review is the Observatory’s assessment process for newly considered evidence, not external scientific peer review."],
+    [/\bExpanded Access\b/, "Expanded Access permits investigational treatment outside a clinical trial; a case treated this way is not itself a clinical trial or independent replication."],
     [/\bLPR-/, "LPR identifies an internal source-review record."],
     [/\bVSC-/, "VSC identifies a verification-stage challenge and its review reference."],
     [/\bRN-/, "RN identifies an institutional note."],
@@ -112,11 +114,17 @@ export function recordCodeExplanations(text) {
   ].filter(([pattern]) => pattern.test(text)).map(([, explanation]) => explanation);
 }
 
-/** Context beside preserved historical wording, never a replacement assessment. */
-export function assessmentReadingNotes(record, assessment) {
-  const notes = [];
-  if (record.id === "FR-AI-0008" && assessment.id === "AS-001") notes.push("Historical stage annotation: VS-05 was applied to this initial assessment by a later stage review. It is not proof of Operation on the uncertain original date. Subsequent assessments retain their recorded assignments; see the current State Warrant for the separate stage challenge.");
-  return notes;
+export function evidenceReadingStatus(record, instance) {
+  if (record.id === "FR-AI-0008" && instance.id === "IN-005" && !instance.sources?.length && !instance.sourceReference && instance.description?.includes("withdrawn from the current evidential basis")) {
+    return "No verified source for this legacy attribution; excluded from the current evidence basis.";
+  }
+  return null;
+}
+
+/** Only link receipts verified in the repository; do not invent paths. */
+export function mutationReceiptLinks(mutation) {
+  const path = "docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json";
+  return mutation.note?.includes(path) ? [{ path, href: `https://github.com/StuKeg1/faultline-observatory-site/blob/18c771128a8b85a3e62a65444f22c30ce8e7da1a/${path}` }] : [];
 }
 
 /** Narrow editorial rendering; original strings remain available beside it. */

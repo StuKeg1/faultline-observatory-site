@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment } from "./recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment, evidenceReadingStatus, mutationReceiptLinks } from "./recordReading.js";
 import { getAssessmentHistory } from "./derive.js";
 import { CURRENT_PRESSURE_STATES, getPressureStateExplanation } from "./pressureStates.js";
 
@@ -148,6 +148,23 @@ test("editorial reading removes confusing phrases while preserving originals and
   assert.doesNotMatch(assessmentReadingView(imaging, imaging.assessments.at(-1)).assessorNote, /converter date/);
   assert.equal(recordCodeExplanations("VSC-001").length, 1);
   assert.equal(JSON.stringify(ALL_RECORDS), before);
+});
+
+test("withdrawn legacy evidence has an explicit status without guessing a citation", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  const legacy = record.instances.find(i => i.id === "IN-005");
+  assert.match(evidenceReadingStatus(record, legacy), /excluded from the current evidence basis/);
+  assert.equal(evidenceReadingStatus(record, { ...legacy, sources: [{ citation: "Newly verified" }] }), null);
+  assert.equal(evidenceReadingStatus(record, record.instances[0]), null);
+});
+
+test("correction receipt links are allowlisted and process terms get one explanation each", () => {
+  assert.deepEqual(mutationReceiptLinks({ note: "docs/reviews/nonexistent.json" }), []);
+  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0009");
+  const mutation = record.mutationLog.find(m => m.note?.includes("MCP-CLARIFICATION-REPAIR-2026-10-08.json"));
+  assert.equal(mutationReceiptLinks(mutation).length, 1);
+  assert.match(mutationReceiptLinks(mutation)[0].href, /18c771128a8b85a3e62a65444f22c30ce8e7da1a/);
+  assert.equal(recordCodeExplanations("Expanded Access Expanded Access Normal Record Review").length, 2);
 });
 
 test("partial remains an evidential relation, not a quality verdict or reassignment", () => {
