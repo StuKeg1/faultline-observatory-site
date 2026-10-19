@@ -1,4 +1,5 @@
 import { detectMutationType, resolveAssessmentMutation } from "./mutationClassifier.js";
+import { getAssessmentHistory } from "./derive.js";
 
 /** All event types recorded on the latest dated day; no significance ranking. */
 export function getRecordUpdateSummary(record) {
@@ -6,6 +7,11 @@ export function getRecordUpdateSummary(record) {
   const date = dates.sort().at(-1) ?? null;
   if (!date) return { date: null, labels: ["No dated update recorded"] };
   const entries = record.mutationLog.filter((m) => m.date === date);
+  const assessments = record.assessments ?? [];
+  const history = assessments.length
+    ? getAssessmentHistory(record).map(a => chronologicalReadingAssessment(record, a))
+    : [];
+  const opened = entries.some(m => detectMutationType(m, record) === "record_created");
   const labels = new Set();
   const evidence = [];
   for (const mutation of entries) {
@@ -13,6 +19,9 @@ export function getRecordUpdateSummary(record) {
     if (type === "instance_added") { evidence.push(mutation); continue; }
     if (type.startsWith("assessment_")) {
       const assessment = resolveAssessmentMutation(mutation, record);
+      // A dated assessment below supplies the specific label once, even when
+      // several mutations reference it. Keep the fallback for legacy links.
+      if (assessment?.date === date) continue;
       labels.add(assessment?.changeKind === "verification_stage_correction"
         ? "Verification Stage correction recorded" : "Assessment updated");
       continue;
@@ -30,6 +39,11 @@ export function getRecordUpdateSummary(record) {
     };
     if (type !== "creation_batch_internal") labels.add(wording[type] ?? "Record updated—see change log");
   }
+  assessments.forEach((assessment, index) => {
+    // Match the recorded date, not a reconstructed historical effective date.
+    if (assessment.date !== date || (opened && index === 0)) return;
+    labels.add(assessmentChangeLabel(history[index - 1], history[index]));
+  });
   if (evidence.length) {
     const targets = evidence.map((m) => [...new Set(String(m.to).match(/\bIN-\d{3}\b/g) ?? [])]);
     const known = targets.every((ids) => ids.length === 1 && record.instances?.some((i) => i.id === ids[0]));

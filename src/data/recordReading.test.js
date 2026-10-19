@@ -20,11 +20,51 @@ test("source-check recency is separate from the assessment and all same-day upda
   assert.ok(am.assessments.at(-1).date < "2026-10-16");
   const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
   const before = JSON.stringify(ai);
-  assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-18") }).labels, ["Record annotation updated", "Editorial correction recorded", "Verification Stage correction recorded"]);
+  assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-18") }).labels, ["Record annotation updated", "Editorial correction recorded", "Verification Stage correction recorded (VS-03 → VS-05); Pressure State unchanged"]);
   assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
   assert.equal(ai.assessments.at(-1).verificationStage, "VS-05");
   assert.equal(ai.verificationStageChallenges.at(-1).status, "awaiting_operator_decision");
   assert.equal(JSON.stringify(ai), before);
+});
+
+test("latest-day assessment activity includes corrections logged under other mutation types", () => {
+  const before = JSON.stringify(ALL_RECORDS);
+  const expectations = [
+    ["FR-QE-0004", "2026-09-14", ["Editorial correction recorded", "Source review completed", "Assessment updated; Pressure State and Verification Stage unchanged", "Evidence entry added"]],
+    ["FR-AM-0004", "2026-09-19", ["Editorial correction recorded", "Verification Stage changed (VS-03 → VS-02); Pressure State unchanged"]],
+    ["FR-BT-0003", "2026-09-25", ["Editorial correction recorded", "Verification Stage changed (VS-04 → VS-03); Pressure State unchanged", "Assessment updated; Pressure State and Verification Stage unchanged", "Evidence entry added"]],
+  ];
+  for (const [id, date, labels] of expectations) {
+    const current = ALL_RECORDS.find(r => r.id === id);
+    // Preserve the September omission cases after an append-only reconciliation.
+    const record = { ...current,
+      assessments: current.assessments.filter(a => a.date <= date),
+      mutationLog: current.mutationLog.filter(m => m.date <= date),
+    };
+    assert.deepEqual(getRecordUpdateSummary(record), { date, labels });
+    assert.deepEqual(getRecordUpdateSummary({ ...record, mutationLog: [...record.mutationLog].reverse() }).labels.slice().sort(), [...labels].sort());
+  }
+  assert.deepEqual(getRecordUpdateSummary(ALL_RECORDS.find(r => r.id === "FR-AI-0009")), {
+    date: "2026-10-08", labels: ["Editorial correction recorded"],
+  });
+  assert.equal(JSON.stringify(ALL_RECORDS), before);
+});
+
+test("dated assessment labels replace generic mutation labels and preserve record opening", () => {
+  const initial = { id: "AS-001", date: "2026-10-01", pressureState: "emerging", verificationStage: "VS-02" };
+  const record = { id: "test", assessments: [initial], mutationLog: [
+    { date: initial.date, field: "record_created", to: "test" },
+    { date: initial.date, field: "assessment_issued", to: "AS-001" },
+  ] };
+  assert.deepEqual(getRecordUpdateSummary(record), { date: initial.date, labels: ["Record opened"] });
+  const reassessed = { ...record, assessments: [initial, { ...initial, id: "AS-002" }], mutationLog: [
+    ...record.mutationLog,
+    { date: initial.date, field: "assessment_issued", to: "AS-002" },
+    { date: initial.date, field: "assessment_issued", to: "AS-002" },
+  ] };
+  assert.deepEqual(getRecordUpdateSummary(reassessed).labels, ["Record opened", "Assessment updated; Pressure State and Verification Stage unchanged"]);
+  assert.deepEqual(getRecordUpdateSummary({ ...record, mutationLog: record.mutationLog.slice(1) }).labels, ["Initial assessment"]);
+  assert.deepEqual(getRecordUpdateSummary({ ...record, mutationLog: [] }), { date: null, labels: ["No dated update recorded"] });
 });
 
 test("post-assessment admissions count distinct known entries without inventing a reassessment", () => {
