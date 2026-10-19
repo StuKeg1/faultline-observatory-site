@@ -86,7 +86,10 @@ export function evidenceRelationships(record, instance) {
   const types = ["same_recipient_followup", "same_recipient_analysis", "same_trial_report", "shared_publication"];
   const validOverlap = (entry, related) => (!entry.relationship?.sourceDoi ||
     entry.sources?.some(s => s.doi === entry.relationship.sourceDoi)) && (entry.relationship?.type !== "shared_publication" || (
-    entry.relationship.sharedSourceDoi && [entry, related].every(i => i?.sources?.some(s => s.doi === entry.relationship.sharedSourceDoi))
+    (entry.relationship.sharedSourceDoi || entry.relationship.sharedSourceUrl) &&
+    [entry, related].every(i =>
+      (!entry.relationship.sharedSourceDoi || i?.sources?.some(s => s.doi === entry.relationship.sharedSourceDoi)) &&
+      (!entry.relationship.sharedSourceUrl || i?.sources?.some(s => s.url === entry.relationship.sharedSourceUrl)))
   ));
   const target = record.instances?.find(i => i.id === instance.relationship?.relatedInstanceId);
   if (target && target.id !== instance.id && types.includes(instance.relationship?.type) && validOverlap(instance, target)) {
@@ -97,7 +100,7 @@ export function evidenceRelationships(record, instance) {
       rows.push({ targetId: other.id, text: other.relationship.reverseNote ?? (other.relationship.type === "same_trial_report"
         ? `Same trial as ${other.id}; these are different reports from one trial, not independent replications.`
         : other.relationship.type === "shared_publication"
-        ? (other.relationship.reverseNote ?? `Shares publication ${other.relationship.sharedSourceDoi} with ${other.id}; overlapping evidence is not independent replication.`)
+        ? `Shares a source with ${other.id}; a shared citation alone does not determine whether the underlying experiments are independent.`
         : other.relationship.type === "same_recipient_analysis"
         ? `Same recipient as ${other.id}; that entry reports immune profiling of this case, not an additional patient.`
         : `Same recipient as ${other.id}; that entry is a later report of this case, not an independent patient.`) });

@@ -75,6 +75,7 @@ export const FR_BT_0006 = {
     },
     {
       id: "IN-004",
+      relationship: {"type":"shared_publication","relatedInstanceId":"IN-001","sharedSourceDoi":"10.1038/s41557-025-02019-z","note":"Shares the Fletcher, Diggines and Elani Perspective with IN-001. It discusses module integration and systems engineering; this is not an additional independent experiment.","reverseNote":"Shares the Fletcher, Diggines and Elani Perspective with IN-004. These entries use different aspects of the same field synthesis, not additional independent experiments."},
       qualifiedEvent: "Systems-engineering analysis — complexity and module coupling resist autonomous operation",
       description: "Contemporary field analysis identifies molecular integration, module compatibility, resource competition, physicochemical stability and increasing system complexity as active barriers to bottom-up synthetic-cell construction. Adding individually functional modules can change the operating conditions and performance of the modules already present; rational assembly therefore becomes more restrictive as a system approaches cellular complexity. This is contesting evidence against a simple additive path from demonstrated parts to a self-sustaining reproductive system, while preserving the possibility that systems-engineering and evolutionary approaches can overcome the constraint.",
       vectors: ["contesting--module-coupling-and-system-complexity-block-autonomous-integration"],
@@ -173,6 +174,7 @@ export const FR_BT_0006 = {
   ],
 
   mutationLog: [
+    {"id":"M-007","date":"2026-10-19","field":"reference_corrected","from":"Shared citations not explained in the evidence list","to":"Source-specific reciprocal notices on IN-004","note":"Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-09-27", field: "provenance_review_completed", from: "—", to: "LPR-001-D30", note: "Legacy provenance review completed. All four existing instances verified against their structured sources; no provenance enrichment, discrepancy or new-evidence candidate identified. No assessment, interpretation, pressure state, verification stage, mechanism, attractor or claim changed." },
     { id: "M-005", date: "2026-09-12", field: "diagnosis_held", from: "—", to: "DIAGNOSIS-HELD", note: "Admission diagnosis: EMERGING / VS-02. Integrated cellular functions are established in peer-reviewed work; autonomous repeated reproduction remains provisional and unreplicated." },

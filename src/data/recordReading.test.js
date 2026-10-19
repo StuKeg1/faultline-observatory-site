@@ -210,6 +210,45 @@ test("partial publication overlap is guarded by both sources and does not erase 
   assert.equal(record.instances[0].sources.length, 2);
 });
 
+test("shared-source groups distinguish report reuse from experimental independence", () => {
+  let noticeCount = 0;
+  for (const [recordId, pairs] of [
+    ["FR-QE-0003", [["IN-006", "IN-005"]]],
+    ["FR-QE-0006", [["IN-005", "IN-002"]]],
+    ["FR-QE-0008", [["IN-002", "IN-005"], ["IN-003", "IN-005"]]],
+    ["FR-AM-0001", [["IN-001", "IN-002"], ["IN-003", "IN-002"], ["IN-006", "IN-005"]]],
+    ["FR-BT-0006", [["IN-004", "IN-001"]]],
+  ]) {
+    const record = ALL_RECORDS.find(record => record.id === recordId);
+    for (const [fromId, targetId] of pairs) {
+      const from = record.instances.find(instance => instance.id === fromId);
+      const target = record.instances.find(instance => instance.id === targetId);
+      for (const [a, b] of [[from, target], [target, from]]) {
+        assert.equal(evidenceRelationships(record, a).filter(row => row.targetId === b.id).length, 1);
+        noticeCount++;
+      }
+      for (const field of ["sharedSourceDoi", "sharedSourceUrl"]) {
+        if (!from.relationship[field]) continue;
+        for (const missingId of [fromId, targetId]) {
+          const broken = structuredClone(record);
+          const missing = broken.instances.find(instance => instance.id === missingId);
+          const sourceField = field === "sharedSourceDoi" ? "doi" : "url";
+          missing.sources = missing.sources.filter(source => source[sourceField] !== from.relationship[field]);
+          assert.equal(evidenceRelationships(broken, broken.instances.find(i => i.id === fromId)).some(row => row.targetId === targetId), false);
+          assert.equal(evidenceRelationships(broken, broken.instances.find(i => i.id === targetId)).some(row => row.targetId === fromId), false);
+        }
+      }
+    }
+  }
+  assert.equal(noticeCount, 16);
+  const cold = ALL_RECORDS.find(record => record.id === "FR-AM-0001");
+  const note = evidenceRelationships(cold, cold.instances[0])[0].text;
+  assert.match(note, /distinct events and laboratories/);
+  assert.doesNotMatch(note, /not independent replications/);
+  const qe = ALL_RECORDS.find(record => record.id === "FR-QE-0003");
+  assert.ok(qe.instances.slice(0, 4).every(instance => instance.evidenceStatus.kind === "pending_correction"));
+});
+
 test("immune profiling is explicitly the first recipient and historical notes do not alter assessments", () => {
   const kidney = ALL_RECORDS.find(r => r.id === "FR-BT-0005");
   assert.equal(evidenceRelationships(kidney, kidney.instances.find(i => i.id === "IN-004"))[0].targetId, "IN-002");
