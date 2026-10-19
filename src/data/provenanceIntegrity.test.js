@@ -14,6 +14,7 @@ import { FR_AI_0005 } from "./records/FR-AI-0005.js";
 import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.js";
 
 // Historical editorial receipts govern their original checkpoint, not later reassessments.
+const sourceLinkReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json", import.meta.url)));
 function atCheckpoint(record, date) {
   const statusAddedLater = record.mutationLog.some(mutation => mutation.date > date &&
     mutation.note?.includes("docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md"));
@@ -21,14 +22,47 @@ function atCheckpoint(record, date) {
     ...record,
     // Status metadata was added after these frozen receipts; preserve their
     // scientific-content hashes instead of accepting new hashes or waiving them.
-    instances: statusAddedLater ? record.instances.map(instance => {
+    instances: record.instances.map(instance => {
+      const change = sourceLinkReceipt.date > date && sourceLinkReceipt.records
+        .find(entry => entry.id === record.id)?.changes.find(entry => entry.instanceId === instance.id);
+      if (change) {
+        const { sources: _laterSources, ...original } = instance;
+        instance = change.previousSources === null ? original : { ...instance, sources: change.previousSources };
+        if (change.previousSourceReference) instance = { ...instance, sourceReference: change.previousSourceReference };
+      }
+      if (!statusAddedLater) return instance;
       const { evidenceStatus: _laterStatus, ...original } = instance;
       return original;
-    }) : record.instances,
+    }),
     assessments: record.assessments.filter(assessment => assessment.date <= date),
     mutationLog: record.mutationLog.filter(mutation => mutation.date <= date),
   };
 }
+
+test("verified source increment preserves all scientific content and prior history", async () => {
+  const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+  assert.equal(sourceLinkReceipt.records.reduce((n, entry) => n + entry.changes.length, 0), 8);
+  for (const entry of sourceLinkReceipt.records) {
+    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const restored = structuredClone(record);
+    assert.equal(restored.mutationLog[0].id, entry.mutationId);
+    const type = detectMutationType(restored.mutationLog[0], record);
+    assert.equal(type, "editorial_correction");
+    assert.equal(qualifiesForHomepage(type).qualifies, false);
+    restored.mutationLog.shift();
+    for (const change of entry.changes) {
+      const instance = restored.instances.find(instance => instance.id === change.instanceId);
+      assert.deepEqual(instance.sources, change.sources);
+      if (change.previousSourceReference) {
+        assert.equal(instance.sourceReference, change.sourceReference);
+        instance.sourceReference = change.previousSourceReference;
+      }
+      if (change.previousSources === null) delete instance.sources;
+      else instance.sources = change.previousSources;
+    }
+    assert.equal(digest(restored), entry.originalRecordHash, `${entry.id}: unreceipted edit`);
+  }
+});
 
 test("AGI consistency repair preserves evidence, judgments and prior mutation history", () => {
   const record = atCheckpoint(FR_AI_0005, "2026-10-08");

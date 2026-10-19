@@ -1,0 +1,185 @@
+{
+  "reviewId": "VERIFIED-SOURCE-REPAIRS-INCREMENT-1",
+  "date": "2026-10-19",
+  "baseCommit": "5194d6b90ed192eb9b931430e9f577cbee60fef2",
+  "records": [
+    {
+      "id": "FR-QE-0007",
+      "mutationId": "M-017",
+      "originalRecordHash": "99d1b811cfe8f3a52ff61d5a3320077ec4ead92066b2f8687269fe367c659b3d",
+      "changes": [
+        {
+          "instanceId": "IN-005",
+          "previousSources": null,
+          "sources": [
+            {
+              "citation": "Mi et al. Time-crystalline eigenstate order on a quantum processor. Nature 601, 531–536 (2022).",
+              "doi": "10.1038/s41586-021-04257-w",
+              "url": "https://www.nature.com/articles/s41586-021-04257-w"
+            },
+            {
+              "citation": "Kandala et al. Hardware-efficient variational quantum eigensolver for small molecules and quantum magnets. Nature 549, 242–246 (2017).",
+              "doi": "10.1038/nature23879",
+              "url": "https://www.nature.com/articles/nature23879"
+            },
+            {
+              "citation": "Yamamoto et al. Quantum hardware calculations of periodic systems with partition-measurement symmetry verification: Simplified models of hydrogen chain and iron crystals. Physical Review Research 4, 033110 (2022).",
+              "doi": "10.1103/PhysRevResearch.4.033110",
+              "url": "https://doi.org/10.1103/PhysRevResearch.4.033110"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FR-AM-0004",
+      "mutationId": "M-018",
+      "originalRecordHash": "737413c7f4edc42fb1c67923608ff9d2032e365e17494c1be09c6bda474b4ded",
+      "changes": [
+        {
+          "instanceId": "IN-007",
+          "previousSources": null,
+          "sources": [
+            {
+              "citation": "Narushima et al. Experiment of a Double-Pancake Coil Wound by UROCOIC Conductor for Application in Helical Fusion Reactors. Journal of Physics: Conference Series 3278, 012031 (2026).",
+              "doi": "10.1088/1742-6596/3278/1/012031",
+              "url": "https://iopscience.iop.org/article/10.1088/1742-6596/3278/1/012031",
+              "locator": "Component coil test; does not establish whole-reactor operation."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FR-AM-0005",
+      "mutationId": "M-017",
+      "originalRecordHash": "e483eb4aa365e38fe7ddd08eabbfea837307f5b6e39949a7d1914f12b3cfb530",
+      "changes": [
+        {
+          "instanceId": "IN-001",
+          "previousSources": [
+            {
+              "citation": "Nature, ‘Retraction Note: Room-temperature superconductivity in a carbonaceous sulfur hydride’ (2022)",
+              "locator": "Undisclosed non-standard background subtraction and loss of confidence in magnetic-susceptibility data"
+            },
+            {
+              "citation": "Nature, ‘Retraction Note: Evidence of near-ambient superconductivity in a N-doped lutetium hydride’ (2023)",
+              "locator": "Unresolved reliability and material-provenance concerns"
+            }
+          ],
+          "sources": [
+            {
+              "citation": "Nature, ‘Retraction Note: Room-temperature superconductivity in a carbonaceous sulfur hydride’ (2022)",
+              "locator": "Undisclosed non-standard background subtraction and loss of confidence in magnetic-susceptibility data",
+              "doi": "10.1038/s41586-022-05294-9",
+              "url": "https://www.nature.com/articles/s41586-022-05294-9"
+            },
+            {
+              "citation": "Nature, ‘Retraction Note: Evidence of near-ambient superconductivity in a N-doped lutetium hydride’ (2023)",
+              "locator": "Unresolved reliability and material-provenance concerns",
+              "doi": "10.1038/s41586-023-06774-2",
+              "url": "https://www.nature.com/articles/s41586-023-06774-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FR-BT-0004",
+      "mutationId": "M-016",
+      "originalRecordHash": "4f01c2aee25c6d1c9bdfdf40d2c16f61878c1248b20328f96aef2c16d75ac5f7",
+      "changes": [
+        {
+          "instanceId": "IN-001",
+          "previousSources": null,
+          "sources": [
+            {
+              "citation": "Diehl et al. Circulating mutant DNA to assess tumor dynamics. Nature Medicine 14, 985–990 (2008).",
+              "doi": "10.1038/nm.1789",
+              "url": "https://www.nature.com/articles/nm.1789"
+            },
+            {
+              "citation": "Wan et al. Liquid biopsies come of age: towards implementation of circulating tumour DNA. Nature Reviews Cancer 17, 223–238 (2017).",
+              "doi": "10.1038/nrc.2017.7",
+              "url": "https://www.nature.com/articles/nrc.2017.7"
+            }
+          ]
+        },
+        {
+          "instanceId": "IN-002",
+          "previousSources": null,
+          "sources": [
+            {
+              "citation": "Schrag et al. Blood-based tests for multicancer early detection (PATHFINDER): a prospective cohort study. The Lancet 402, 1251–1260 (2023).",
+              "doi": "10.1016/S0140-6736(23)01700-2",
+              "url": "https://doi.org/10.1016/S0140-6736(23)01700-2"
+            },
+            {
+              "citation": "Nicholson et al. Multi-cancer early detection test in symptomatic patients referred for cancer investigation in England and Wales (SYMPLIFY): a large-scale, observational cohort study. The Lancet Oncology 24, 733–743 (2023).",
+              "doi": "10.1016/S1470-2045(23)00277-2",
+              "url": "https://doi.org/10.1016/S1470-2045(23)00277-2"
+            }
+          ]
+        },
+        {
+          "instanceId": "IN-003",
+          "previousSources": null,
+          "sources": [
+            {
+              "citation": "Swanton et al. NHS-Galleri Trial Design: Equitable study recruitment tactics for targeted population-level screening with a multi-cancer early detection (MCED) test. Journal of Clinical Oncology 40, TPS6606 (2022).",
+              "doi": "10.1200/JCO.2022.40.16_suppl.TPS6606",
+              "url": "https://doi.org/10.1200/JCO.2022.40.16_suppl.TPS6606",
+              "locator": "Conference design abstract, not a results report."
+            },
+            {
+              "citation": "ISRCTN91431511 — NHS-Galleri trial registration.",
+              "url": "https://www.isrctn.com/ISRCTN91431511"
+            },
+            {
+              "citation": "NCT05611632 — NHS-Galleri trial registration.",
+              "url": "https://clinicaltrials.gov/study/NCT05611632"
+            }
+          ],
+          "previousSourceReference": "Neal et al., Journal of Clinical Oncology 40 supplement (2022), NHS-Galleri trial design, doi:10.1200/JCO.2022.40.16_suppl.TPS6606; ISRCTN91431511; NCT05611632",
+          "sourceReference": "Swanton et al., Journal of Clinical Oncology 40 supplement (2022), NHS-Galleri trial design, doi:10.1200/JCO.2022.40.16_suppl.TPS6606; ISRCTN91431511; NCT05611632"
+        },
+        {
+          "instanceId": "IN-004",
+          "previousSources": null,
+          "sources": [
+            {
+              "citation": "Andriole et al. Mortality Results from a Randomized Prostate-Cancer Screening Trial. New England Journal of Medicine 360, 1310–1319 (2009).",
+              "doi": "10.1056/NEJMoa0810696",
+              "url": "https://doi.org/10.1056/NEJMoa0810696"
+            },
+            {
+              "citation": "National Lung Screening Trial Research Team. Reduced Lung-Cancer Mortality with Low-Dose Computed Tomographic Screening. New England Journal of Medicine 365, 395–409 (2011).",
+              "doi": "10.1056/NEJMoa1102873",
+              "url": "https://doi.org/10.1056/NEJMoa1102873"
+            }
+          ]
+        },
+        {
+          "instanceId": "IN-006",
+          "previousSources": null,
+          "sources": [
+            {
+              "citation": "Swanton et al. NHS-Galleri: Primary results from a randomised controlled trial to assess the clinical utility of a multi-cancer early detection (MCED) test in population screening. Journal of Clinical Oncology 44, LBA100 (2026).",
+              "doi": "10.1200/JCO.2026.44.17_suppl.LBA100",
+              "url": "https://doi.org/10.1200/JCO.2026.44.17_suppl.LBA100",
+              "locator": "Conference abstract, not the later full results paper in IN-007."
+            },
+            {
+              "citation": "GRAIL trial-results release (19 February 2026).",
+              "locator": "Company trial-results release."
+            },
+            {
+              "citation": "Science Media Centre expert reaction (30 May 2026).",
+              "locator": "Expert reaction to the conference results."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

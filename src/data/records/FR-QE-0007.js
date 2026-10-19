@@ -81,6 +81,23 @@ export const FR_QE_0007 = {
       vectors: ["partial--approaching-both-components-neither-fully-satisfied-simultaneously"],
       date: "2017–22",
       sourceReference: "Mi et al., Nature 601 (2022), doi:10.1038/s41586-021-04257-w; Kandala et al., Nature 549 (2017), doi:10.1038/nature23879; Yamamoto et al., Physical Review Research 4 (2022), doi:10.1103/PhysRevResearch.4.033110",
+      sources: [
+        {
+          "citation": "Mi et al. Time-crystalline eigenstate order on a quantum processor. Nature 601, 531–536 (2022).",
+          "doi": "10.1038/s41586-021-04257-w",
+          "url": "https://www.nature.com/articles/s41586-021-04257-w"
+        },
+        {
+          "citation": "Kandala et al. Hardware-efficient variational quantum eigensolver for small molecules and quantum magnets. Nature 549, 242–246 (2017).",
+          "doi": "10.1038/nature23879",
+          "url": "https://www.nature.com/articles/nature23879"
+        },
+        {
+          "citation": "Yamamoto et al. Quantum hardware calculations of periodic systems with partition-measurement symmetry verification: Simplified models of hydrogen chain and iron crystals. Physical Review Research 4, 033110 (2022).",
+          "doi": "10.1103/PhysRevResearch.4.033110",
+          "url": "https://doi.org/10.1103/PhysRevResearch.4.033110"
+        }
+      ],
     },
     {
       id: "IN-006",
@@ -124,6 +141,7 @@ export const FR_QE_0007 = {
   ],
 
   mutationLog: [
+    {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-005","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, sourceReference, assessments, dates, relationships, review status and all prior mutations preserved. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {"id": "M-016", "date": "2026-10-19", "field": "reference_corrected", "from": "IN-001 characterises quantum advantage as established at 2019 publication", "to": "IN-001 follows FR-QE-0001 AS-002: original comparison unresolved; later superseded", "note": "Operator-authorised corpus audit Batch 4B / R08 editorial alignment. Correct the final interpretation sentence and dependent vector reason on IN-001 to follow the existing operator-ratified FR-QE-0001 AS-002 ruling of 2026-07-22. Experimental task performance is distinguished from original practical classical infeasibility; later counter-performance is not backdated as proof of original falsity. Partial polarity, sources, dates, counts, assessments, current FRAGMENTING / VS-03 and all previous mutations are preserved. No new evidence admitted; FR-QE-0001 remains closed and untouched. Exact prior wording and basis: docs/reviews/BATCH-4B-QE-0007-SYCAMORE-2026-10-19.md."},
     { id: "M-015", date: "2026-10-14", field: "provenance_repair", from: "LPR-001-D50 pending", to: "LPR-001-D50 completed", note: "Operator-approved bounded attribution correction completed for IN-006. The structured Nature citation title attached to DOI 10.1038/s41586-025-09526-6 was corrected from the noncanonical title Quantum echoes and the computational complexity of many-body dynamics to the DOI-resolved title Observation of constructive interference at the edge of quantum ergodicity. DOI, URL, locator, sourceReference, evidence description, vectors, assessment, Pressure State and Verification Stage remain unchanged. provenanceOutcome advanced to discrepancies_corrected and provenanceRepairStatus to completed." },
     { id: "M-014", date: "2026-10-14", field: "provenance_review", from: "LPR-001-D19", to: "LPR-001-D50 REVIEW REQUIRED", note: "Second-cycle LPR audited all six evidence instances. IN-001 through IN-005 were source-verified. IN-006 is substantively bounded correctly, but its structured Nature citation gives DOI 10.1038/s41586-025-09526-6 a noncanonical title; the DOI resolves to Observation of constructive interference at the edge of quantum ergodicity. The attribution defect is left unchanged pending operator-approved bounded correction. No verification-stage discrepancy and no new Record Review candidate." },

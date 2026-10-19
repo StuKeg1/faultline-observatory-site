@@ -35,6 +35,18 @@ export const FR_BT_0004 = {
       vectors: ["supportive--proxy-signal-biologically-validated"],
       date: "2008–19",
       sourceReference: "Diehl et al., Nature Medicine 14 (2008), doi:10.1038/nm.1789; Wan et al., Nature Reviews Cancer 17 (2017), doi:10.1038/nrc.2017.7",
+      sources: [
+        {
+          "citation": "Diehl et al. Circulating mutant DNA to assess tumor dynamics. Nature Medicine 14, 985–990 (2008).",
+          "doi": "10.1038/nm.1789",
+          "url": "https://www.nature.com/articles/nm.1789"
+        },
+        {
+          "citation": "Wan et al. Liquid biopsies come of age: towards implementation of circulating tumour DNA. Nature Reviews Cancer 17, 223–238 (2017).",
+          "doi": "10.1038/nrc.2017.7",
+          "url": "https://www.nature.com/articles/nrc.2017.7"
+        }
+      ],
     },
     {
       id: "IN-002",
@@ -43,6 +55,18 @@ export const FR_BT_0004 = {
       vectors: ["partial--detection-demonstrated-early-stage-sensitivity-remains-low"],
       date: "2021–23",
       sourceReference: "Schrag et al., The Lancet 402 (2023), PATHFINDER, doi:10.1016/S0140-6736(23)01700-2; Nicholson et al., The Lancet Oncology 24 (2023), SYMPLIFY, doi:10.1016/S1470-2045(23)00277-2",
+      sources: [
+        {
+          "citation": "Schrag et al. Blood-based tests for multicancer early detection (PATHFINDER): a prospective cohort study. The Lancet 402, 1251–1260 (2023).",
+          "doi": "10.1016/S0140-6736(23)01700-2",
+          "url": "https://doi.org/10.1016/S0140-6736(23)01700-2"
+        },
+        {
+          "citation": "Nicholson et al. Multi-cancer early detection test in symptomatic patients referred for cancer investigation in England and Wales (SYMPLIFY): a large-scale, observational cohort study. The Lancet Oncology 24, 733–743 (2023).",
+          "doi": "10.1016/S1470-2045(23)00277-2",
+          "url": "https://doi.org/10.1016/S1470-2045(23)00277-2"
+        }
+      ],
     },
     {
       id: "IN-003",
@@ -50,7 +74,23 @@ export const FR_BT_0004 = {
       description: "The NHS-Galleri trial randomised 142,250 participants in England (71,122 to Galleri plus standard care and 71,128 to standard care alone) in an asymptomatic population aged 50–77. Its pre-specified primary objective was a reduction in late-stage (Stage III–IV) cancer incidence, first assessed across twelve pre-specified cancer types; mortality was not the primary endpoint. Randomisation and longer-term linkage can support later mortality comparison, but stage shift and mortality benefit are distinct outcomes. At this point in the record's chronology, the late-stage-incidence result and mortality follow-up were both pending. The claim therefore remained FRAGMENTING: early detection was demonstrably achievable in some contexts, while whether it produces clinically meaningful outcome benefit rather than lead-time or overdiagnosis effects remained unresolved.",
       vectors: ["neutral--definitive-trial-ongoing-results-pending-2026"],
       date: "2021–23",
-      sourceReference: "Neal et al., Journal of Clinical Oncology 40 supplement (2022), NHS-Galleri trial design, doi:10.1200/JCO.2022.40.16_suppl.TPS6606; ISRCTN91431511; NCT05611632",
+      sourceReference: "Swanton et al., Journal of Clinical Oncology 40 supplement (2022), NHS-Galleri trial design, doi:10.1200/JCO.2022.40.16_suppl.TPS6606; ISRCTN91431511; NCT05611632",
+      sources: [
+        {
+          "citation": "Swanton et al. NHS-Galleri Trial Design: Equitable study recruitment tactics for targeted population-level screening with a multi-cancer early detection (MCED) test. Journal of Clinical Oncology 40, TPS6606 (2022).",
+          "doi": "10.1200/JCO.2022.40.16_suppl.TPS6606",
+          "url": "https://doi.org/10.1200/JCO.2022.40.16_suppl.TPS6606",
+          "locator": "Conference design abstract, not a results report."
+        },
+        {
+          "citation": "ISRCTN91431511 — NHS-Galleri trial registration.",
+          "url": "https://www.isrctn.com/ISRCTN91431511"
+        },
+        {
+          "citation": "NCT05611632 — NHS-Galleri trial registration.",
+          "url": "https://clinicaltrials.gov/study/NCT05611632"
+        }
+      ],
     },
     {
       id: "IN-004",
@@ -59,6 +99,18 @@ export const FR_BT_0004 = {
       vectors: ["contesting--proxy-gap-detectable-signal--clinically-actionable-cancer"],
       date: "2023–24",
       sourceReference: "Andriole et al., New England Journal of Medicine 360 (2009), PLCO prostate screening, doi:10.1056/NEJMoa0810696; National Lung Screening Trial Research Team, New England Journal of Medicine 365 (2011), doi:10.1056/NEJMoa1102873",
+      sources: [
+        {
+          "citation": "Andriole et al. Mortality Results from a Randomized Prostate-Cancer Screening Trial. New England Journal of Medicine 360, 1310–1319 (2009).",
+          "doi": "10.1056/NEJMoa0810696",
+          "url": "https://doi.org/10.1056/NEJMoa0810696"
+        },
+        {
+          "citation": "National Lung Screening Trial Research Team. Reduced Lung-Cancer Mortality with Low-Dose Computed Tomographic Screening. New England Journal of Medicine 365, 395–409 (2011).",
+          "doi": "10.1056/NEJMoa1102873",
+          "url": "https://doi.org/10.1056/NEJMoa1102873"
+        }
+      ],
     },
     {
       id: "IN-005",
@@ -76,6 +128,22 @@ export const FR_BT_0004 = {
       vectors: ["partial--primary-endpoint-missed-stage-shift-observed-mortality-pending"],
       date: "2026",
       sourceReference: "Swanton et al., NHS-Galleri primary results, Journal of Clinical Oncology 44 supplement (2026), abstract LBA100, doi:10.1200/JCO.2026.44.17_suppl.LBA100; GRAIL trial-results release (19 February 2026); Science Media Centre expert reaction (30 May 2026)",
+      sources: [
+        {
+          "citation": "Swanton et al. NHS-Galleri: Primary results from a randomised controlled trial to assess the clinical utility of a multi-cancer early detection (MCED) test in population screening. Journal of Clinical Oncology 44, LBA100 (2026).",
+          "doi": "10.1200/JCO.2026.44.17_suppl.LBA100",
+          "url": "https://doi.org/10.1200/JCO.2026.44.17_suppl.LBA100",
+          "locator": "Conference abstract, not the later full results paper in IN-007."
+        },
+        {
+          "citation": "GRAIL trial-results release (19 February 2026).",
+          "locator": "Company trial-results release."
+        },
+        {
+          "citation": "Science Media Centre expert reaction (30 May 2026).",
+          "locator": "Expert reaction to the conference results."
+        }
+      ],
     },
     {
       id: "IN-007",
@@ -178,6 +246,7 @@ export const FR_BT_0004 = {
   ],
 
   mutationLog: [
+    {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-001, IN-002, IN-003, IN-004, IN-006","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, assessments, dates, relationships, review status and all prior mutations preserved. BT-0004 IN-003 citation and sourceReference clarify Swanton as first author of the existing DOI; the prior Neal attribution is preserved in the receipt. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {"id": "M-015", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-006, IN-007, IN-008", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
     {"id":"M-014","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-007 → AS-002","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
     {

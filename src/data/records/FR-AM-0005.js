@@ -32,8 +32,18 @@ export const FR_AM_0005 = {
       date: "2020–23",
       sourceReference: "Nature retraction notices for CSH (2022) and nitrogen-doped lutetium hydride (2023)",
       sources: [
-        { citation: "Nature, ‘Retraction Note: Room-temperature superconductivity in a carbonaceous sulfur hydride’ (2022)", locator: "Undisclosed non-standard background subtraction and loss of confidence in magnetic-susceptibility data" },
-        { citation: "Nature, ‘Retraction Note: Evidence of near-ambient superconductivity in a N-doped lutetium hydride’ (2023)", locator: "Unresolved reliability and material-provenance concerns" },
+        {
+          "citation": "Nature, ‘Retraction Note: Room-temperature superconductivity in a carbonaceous sulfur hydride’ (2022)",
+          "locator": "Undisclosed non-standard background subtraction and loss of confidence in magnetic-susceptibility data",
+          "doi": "10.1038/s41586-022-05294-9",
+          "url": "https://www.nature.com/articles/s41586-022-05294-9"
+        },
+        {
+          "citation": "Nature, ‘Retraction Note: Evidence of near-ambient superconductivity in a N-doped lutetium hydride’ (2023)",
+          "locator": "Unresolved reliability and material-provenance concerns",
+          "doi": "10.1038/s41586-023-06774-2",
+          "url": "https://www.nature.com/articles/s41586-023-06774-2"
+        }
       ],
     },
     {
@@ -177,6 +187,7 @@ export const FR_AM_0005 = {
   ],
 
   mutationLog: [
+    {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-001","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, sourceReference, assessments, dates, relationships, review status and all prior mutations preserved. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {
       "id": "M-016",
       "date": "2026-10-08",
