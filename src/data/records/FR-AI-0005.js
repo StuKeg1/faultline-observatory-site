@@ -221,6 +221,7 @@ export const FR_AI_0005 = {
   ],
 
   mutationLog: [
+    {"id": "M-018", "date": "2026-10-19", "field": "reference_corrected", "from": "AS-003 administrative context still requests downstream repair", "to": "Editorial reading acknowledges M-017 completion on 2026-10-08", "note": "Operator-authorised corpus audit Batch 4A / R07. Use the existing editorial reading view to acknowledge the repair already completed by M-017. Preserve the canonical AS-003 note and expose it through the existing Original recorded wording disclosure. No assessment, evidence, source, stage, Pressure State or scientific explanation changed. Receipt: docs/reviews/BATCH-4A-AI-0005-CONTEXT-2026-10-19.md."},
     {
       id: "M-017",
       date: "2026-10-08",

@@ -31,6 +31,7 @@ function atCheckpoint(record, date) {
 }
 
 test("AGI consistency repair preserves evidence, judgments and prior mutation history", () => {
+  const record = atCheckpoint(FR_AI_0005, "2026-10-08");
   const hashes = {
     assessments: "9919ddc8a8e11734a70c9d3ce08b09e2f14eaafe90b02e9352cea7955b34d4e9",
     instances: "783c84303fab2ea39f4ae4d22500344b430451603153fb468ec29bf0b7feac41",
@@ -38,15 +39,15 @@ test("AGI consistency repair preserves evidence, judgments and prior mutation hi
   };
   const digest = (v) => createHash("sha256").update(JSON.stringify(v)).digest("hex");
   for (const [field, expected] of Object.entries(hashes)) {
-    assert.equal(digest(FR_AI_0005[field]), expected, `${field} was rewritten`);
+    assert.equal(digest(record[field]), expected, `${field} was rewritten`);
   }
-  assert.equal(digest(FR_AI_0005.mutationLog.slice(1)),
+  assert.equal(digest(record.mutationLog.slice(1)),
     "d5a22a57b5abfc92e80359190be84104cab8bf9bfcfa74a2715e04104bbbd6ae");
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-AI-0005-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
-  assert.deepEqual(FR_AI_0005.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })),
+  assert.deepEqual(record.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })),
     receipt.previous.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })));
-  assert.deepEqual(FR_AI_0005.openQuestions[2], receipt.previous.openQuestions[2]);
-  const mutationType = detectMutationType(FR_AI_0005.mutationLog[0], FR_AI_0005);
+  assert.deepEqual(record.openQuestions[2], receipt.previous.openQuestions[2]);
+  const mutationType = detectMutationType(record.mutationLog[0], record);
   assert.equal(mutationType, "editorial_correction");
   assert.equal(qualifiesForHomepage(mutationType).qualifies, false);
 });
