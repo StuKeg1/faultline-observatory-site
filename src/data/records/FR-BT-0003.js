@@ -12,10 +12,10 @@
 export const FR_BT_0003 = {
   id: "FR-BT-0003",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-09-25",
-  provenanceReviewId: "LPR-001-D27",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-19",
+  provenanceReviewId: "LPR-001-D55",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "A blood-based biomarker panel can reliably predict biological age-related decline before clinical symptoms appear.",
@@ -171,6 +171,7 @@ export const FR_BT_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-010", date: "2026-10-19", field: "provenance_review", from: "LPR-001-D27", to: "LPR-001-D55", note: "Second-cycle Legacy Provenance Review completed as PASS across all six existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. Wang et al. (bioRxiv, 2026) was identified as genuinely new evidence relevant to individual predictive uncertainty and is held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id": "M-009", "date": "2026-10-19", "field": "assessment_correction", "from": "AS-003 / FRAGMENTING / VS-03", "to": "AS-004 / FRAGMENTING / VS-04", "note": "Operator-ratified stage and scope reconciliation. VS-04 concerns reproduced population-level predictive associations under the explicitly qualified July interpretation; it does not certify calibrated individual prognosis or clinical utility. The retained longitudinal clock-validation packet survives September corrections. No general cohort/team equivalence rule, new evidence or Pressure State transition. Preserve AS-001–AS-003 and July AS-001 overlay. Receipt: docs/reviews/AM-0004-BT-0003-STAGE-RECONCILIATION-2026-10-19.md."},
 
     { id: "M-008", date: "2026-09-25", field: "record_review", from: "LPR-001-D27 held 2025 organ-proteomics candidate", to: "IN-006 admitted; AS-003 reaffirmed FRAGMENTING / VS-03", note: "Normal Record Review admitted Oh et al., Nature Medicine 2025, DOI 10.1038/s41591-025-03798-1, with structured primary provenance. In 44,498 UK Biobank participants, 11 organ-specific age estimates derived from 2,916 plasma proteins were associated with subsequent disease and mortality over 2–17 years. This strengthens prospective organ-specific blood evidence beyond the 2023 study but does not establish externally calibrated individual absolute risk, transportable performance or clinical benefit from acting on a score. AS-003 appended with no pressure-state or stage transition. BN-001, RM-001 and AT-001 sharpened; lineage extended. LPR-001-D27 marker and historical assessments retained unchanged." },
