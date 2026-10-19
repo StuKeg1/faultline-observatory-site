@@ -1,9 +1,17 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText } from "./recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText, mutationFieldLabel, recordCodeExplanations } from "./recordReading.js";
 import { getAssessmentHistory } from "./derive.js";
 import { CURRENT_PRESSURE_STATES, getPressureStateExplanation } from "./pressureStates.js";
+
+test("code help is contextual and change-log labels preserve field meaning", () => {
+  assert.deepEqual(recordCodeExplanations("A clinical result"), []);
+  assert.equal(recordCodeExplanations("LPR-001-D08 repeated LPR-001-D41").length, 1);
+  assert.equal(recordCodeExplanations("RN-005 and PROG-AI").length, 2);
+  assert.equal(mutationFieldLabel("provenance_review"), "Source review");
+  assert.equal(mutationFieldLabel("instance_added"), "Instance added");
+});
 
 test("source-check recency is separate from the assessment and all same-day update types are retained", () => {
   const am = ALL_RECORDS.find(r => r.id === "FR-AM-0007");
@@ -11,7 +19,8 @@ test("source-check recency is separate from the assessment and all same-day upda
   assert.ok(am.assessments.at(-1).date < "2026-10-16");
   const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
   const before = JSON.stringify(ai);
-  assert.deepEqual(getRecordUpdateSummary(ai).labels, ["Record annotation updated", "Editorial correction recorded", "Verification Stage correction recorded"]);
+  assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-18") }).labels, ["Record annotation updated", "Editorial correction recorded", "Verification Stage correction recorded"]);
+  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
   assert.equal(ai.assessments.at(-1).verificationStage, "VS-05");
   assert.equal(ai.verificationStageChallenges.at(-1).status, "awaiting_operator_decision");
   assert.equal(JSON.stringify(ai), before);
@@ -76,6 +85,21 @@ test("same-recipient follow-up is explicit in both directions without merging en
   for (const r of ALL_RECORDS) for (const i of r.instances) for (const relationship of evidenceRelationships(r, i)) {
     assert.ok(r.instances.some(target => target.id === relationship.targetId));
   }
+});
+
+test("MASAI reports link the same trial in both directions without implying replication", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  assert.equal(record.instances.length, 6);
+  for (const [id, target] of [["IN-004", "IN-006"], ["IN-006", "IN-004"]]) {
+    const rows = evidenceRelationships(record, record.instances.find(i => i.id === id));
+    assert.equal(rows.length, 1);
+    assert.equal(rows[0].targetId, target);
+    assert.match(rows[0].text, /not (an independent replication|independent replications)/);
+  }
+  const instance = { id: "IN-001", relationship: { type: "same_trial_report", relatedInstanceId: "missing", note: "Invalid" } };
+  assert.deepEqual(evidenceRelationships({ instances: [instance] }, instance), []);
+  assert.equal(record.assessments.at(-1).verificationStage, "VS-05");
+  assert.equal(record.verificationStageChallenges[0].status, "awaiting_operator_decision");
 });
 
 test("partial remains an evidential relation, not a quality verdict or reassignment", () => {

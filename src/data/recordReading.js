@@ -69,13 +69,36 @@ export function evidencePolarity(instance) {
 
 export function evidenceRelationships(record, instance) {
   const rows = [];
-  if (instance.relationship?.type === "same_recipient_followup") {
+  const types = ["same_recipient_followup", "same_trial_report"];
+  const target = record.instances?.find(i => i.id === instance.relationship?.relatedInstanceId);
+  if (target && target.id !== instance.id && types.includes(instance.relationship?.type)) {
     rows.push({ targetId: instance.relationship.relatedInstanceId, text: instance.relationship.note });
   }
   for (const other of record.instances ?? []) {
-    if (other.relationship?.type === "same_recipient_followup" && other.relationship.relatedInstanceId === instance.id) {
-      rows.push({ targetId: other.id, text: `Same recipient as ${other.id}; that entry is a later report of this case, not an independent patient.` });
+    if (other.id !== instance.id && types.includes(other.relationship?.type) && other.relationship.relatedInstanceId === instance.id) {
+      rows.push({ targetId: other.id, text: other.relationship.type === "same_trial_report"
+        ? `Same trial as ${other.id}; these are different reports from one trial, not independent replications.`
+        : `Same recipient as ${other.id}; that entry is a later report of this case, not an independent patient.` });
     }
   }
   return rows;
+}
+
+/** Plain-language display only; the original field identifier is preserved. */
+export function mutationFieldLabel(field) {
+  const labels = {
+    provenance_review: "Source review", provenance_correction: "Source or history correction",
+    reference_corrected: "Reference correction", assessment_correction: "Assessment correction",
+    verification_stage_challenge_opened: "Verification Stage challenge opened",
+  };
+  const words = String(field).replaceAll("_", " ");
+  return labels[field] ?? words.charAt(0).toUpperCase() + words.slice(1);
+}
+
+export function recordCodeExplanations(text) {
+  return [
+    [/\bLPR-/, "LPR identifies an internal source-review record."],
+    [/\bRN-/, "RN identifies an institutional note."],
+    [/\bPROG-/, "PROG identifies a programme: AI (Artificial Intelligence), AM (Advanced Materials), BT (Biotechnology), or QE (Quantum Engineering)."],
+  ].filter(([pattern]) => pattern.test(text)).map(([, explanation]) => explanation);
 }

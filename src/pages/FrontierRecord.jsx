@@ -17,12 +17,17 @@ import {
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships } from "../data/recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations } from "../data/recordReading.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
+
+function RecordCodeKey({ text }) {
+  const explanations = recordCodeExplanations(text);
+  return explanations.length ? <p className="reading-note">{explanations.join(" ")}</p> : null;
+}
 
 function StageProvenanceMarker() {
   return (
@@ -42,29 +47,25 @@ function StageProvenanceMarker() {
 // getStateEnteredDate(record). No schema additions.
 // Substantive assessment first; source and process notes remain separate.
 //
-// A record can be reaffirmed at the same pressureState across several
-// assessments (new evidence appended, stage unchanged). In that case
-// current.date is the date of the most recent reaffirmation, not the
-// date the state was entered — showing only current.date as "in this
-// state since" reads as if the state just changed. The entered-date row
-// is only shown when it differs from the last-verified date.
+// State-entry and latest-assessment dates are distinct. An unchanged
+// Pressure State does not imply the whole assessment was reaffirmed:
+// its reasoning or Verification Stage may have changed.
 function WarrantPanel({ current, record }) {
   const enteredDate = getStateEnteredDate(record);
-  const wasReaffirmed = enteredDate !== current.date;
   return (
     <div className="warrant-panel" aria-label="State warrant">
       <div className="wp-row">
         <span className="wp-label">Current state</span>
         <span className="wp-value wp-state">
           <StateBadge pressureState={current.pressureState} />
-          <span className="wp-vs-code">{current.verificationStage}</span>
-          {current.verificationStageChallenge && <a href="#stage-challenge">Stage under review</a>}
+          <span className="wp-vs-code">{current.verificationStageChallenge ? "Currently recorded: " : ""}{current.verificationStage}</span>
+          {current.verificationStageChallenge && <a href="#stage-challenge">Assignment under review</a>}
         </span>
       </div>
       {current.verificationStageChallenge && (
         <div className="wp-row wp-row-provenance" id="stage-challenge" tabIndex={-1}>
           <span className="wp-label">Stage under review</span>
-          <span className="wp-value">{current.verificationStageChallenge.notice}</span>
+          <span className="wp-value">Currently recorded stage: {current.verificationStage}. Its assignment is under review; no replacement decision has been recorded. {current.verificationStageChallenge.notice}</span>
         </div>
       )}
       <div className="wp-row wp-row-rationale">
@@ -75,18 +76,17 @@ function WarrantPanel({ current, record }) {
         <div className="wp-row">
           <span className="wp-label">Assessment context</span>
           <span className="wp-value">{current.assessorNote}
-            {/held outside LPR-/.test(current.assessorNote) && <small className="reading-note">This evidence was reviewed separately from the earlier source check. LPR identifiers name internal source-review records.</small>}
+            {/held outside LPR-/.test(current.assessorNote) && <small className="reading-note">This evidence was reviewed separately from the earlier source check.</small>}
           </span>
         </div>
       )}
-      {wasReaffirmed && (
+      <RecordCodeKey text={`${current.summary} ${current.assessorNote ?? ""}`} />
         <div className="wp-row">
           <span className="wp-label">State entered</span>
           <span className="wp-value">{enteredDate}</span>
         </div>
-      )}
       <div className="wp-row">
-        <span className="wp-label">{wasReaffirmed ? "Last reaffirmed" : "In this state since"}</span>
+        <span className="wp-label">Latest assessment</span>
         <span className="wp-value">{current.date}</span>
       </div>
       {current.provenanceNote && (
@@ -130,7 +130,7 @@ function RecordAssessmentHistory({ trajectory }) {
           <>
             <StateBadge pressureState={trajectory.steps[0].pressureState} />
             <span className="assessment-trajectory-current">
-              assessment reaffirmed · {trajectory.currentAssessmentDate}
+              Pressure State unchanged · latest assessment {trajectory.currentAssessmentDate}
             </span>
           </>
         )}
@@ -336,7 +336,7 @@ function MutationLog({ record }) {
               >
                 <td className="mut-id">{m.id}</td>
                 <td>{m.date}</td>
-                <td className="mut-field">{m.field}</td>
+                <td className="mut-field">{mutationFieldLabel(m.field)}<small className="reading-note">{m.field}</small></td>
                 <td className="mut-from">{m.from}</td>
                 <td className="mut-to">{m.to}
                   {referenceReview && (
@@ -723,10 +723,10 @@ export default function FrontierRecord() {
                   instead of being duplicated here as well. */}
               <div className="rp-status-row" role="status" aria-label="Current record state">
                 <StateBadge pressureState={current.pressureState} />
-                <span className="rp-status-vs">{current.verificationStage}</span>
-                {current.verificationStageChallenge && <a href="#stage-challenge">Stage under review</a>}
+                <span className="rp-status-vs">{current.verificationStageChallenge ? "Currently recorded: " : ""}{current.verificationStage}</span>
+                {current.verificationStageChallenge && <a href="#stage-challenge">Assignment under review</a>}
                 <span className="rp-status-sep">·</span>
-                <span className="rp-status-since">since {current.date}</span>
+                <span className="rp-status-since">Assessed {current.date}</span>
                 {current.provenanceNote && (
                   <span className="rp-status-provenance">S4 reconstruction · not reaffirmed by realignment</span>
                 )}
@@ -830,6 +830,7 @@ export default function FrontierRecord() {
               <div className="rs-header">Mechanisms and barriers</div>
               <p className="narrative-context">How the claim could hold, what obstructs it, and possible ways forward. The State Warrant above remains the authoritative current assessment.</p>
               <Mechanisms record={record} />
+              <RecordCodeKey text={JSON.stringify(record.mechanisms ?? {})} />
             </section>
           )}
 
@@ -852,11 +853,13 @@ export default function FrontierRecord() {
               <div className="rs-header">Questions on record</div>
               <p className="narrative-context">Questions retained in this record. The current State Warrant may have narrowed or reframed them. Recorded dates refer to question history, not necessarily the age of the current wording; known revision dates are shown separately.</p>
               <OpenQuestions record={record} />
+              <RecordCodeKey text={JSON.stringify(record.openQuestions)} />
             </section>
           )}
 
           <section className="record-section-inner" id="s-mutations">
             <div className="rs-header">Mutation Log</div>
+            <RecordCodeKey text={JSON.stringify(record.mutationLog)} />
             <MutationLog record={record} />
           </section>
 
