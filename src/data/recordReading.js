@@ -129,10 +129,16 @@ export function recordCodeExplanations(text) {
 }
 
 export function evidenceReadingStatus(record, instance) {
-  if (record.id === "FR-AI-0008" && instance.id === "IN-005" && !instance.sources?.length && !instance.sourceReference && instance.description?.includes("withdrawn from the current evidential basis")) {
-    return "No verified source for this legacy attribution; excluded from the current evidence basis.";
-  }
-  return null;
+  const status = instance.evidenceStatus;
+  if (!status?.reviewId || !record.instances?.some(i => i.id === instance.id) ||
+    !record.mutationLog?.some(m => m.id === status.mutationId)) return null;
+  const notices = {
+    pending_correction: "Correction pending: source review found a material discrepancy in this entry. Its legacy wording is retained pending a governed correction.",
+    withdrawn_attribution: "Legacy attribution withdrawn: the cited source does not substantiate the original claim. The entry is retained for history; this is not a notice that the cited paper was retracted.",
+    excluded: "No verified source for this legacy attribution; excluded from the current evidence basis.",
+    unverified: "Unverified legacy attribution: the source and reported result could not be traced. This entry does not establish the claimed finding.",
+  };
+  return Object.hasOwn(notices, status.kind) ? notices[status.kind] : null;
 }
 
 /** Only link receipts verified in the repository; do not invent paths. */

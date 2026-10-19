@@ -58,6 +58,7 @@ export const FR_AI_0001 = {
     },
     {
       id: "IN-003",
+      evidenceStatus: {"kind": "unverified", "reviewId": "LPR-001-D33", "mutationId": "M-012"},
       qualifiedEvent: "GPT-4 on 2023 competition-math problems — unattributed legacy report",
       description: "The earlier record asserted that independent evaluators tested GPT-4 on IMO 2023 and AIME 2023 problems published after its training cutoff and found it solved a non-trivial fraction. The intended evaluations, exact problems, scoring result, and basis for the attribution to researchers at MIT and elsewhere could not be identified from available sources. This is retained as an unverified legacy report, not as attributable evidence that GPT-4 solved post-cutoff problems. Without a traceable source, the claimed novelty and training-contamination status cannot be assessed.",
       vectors: ["partial--legacy-report-unverified"],
@@ -271,6 +272,7 @@ export const FR_AI_0001 = {
   ],
 
   mutationLog: [
+    {"id": "M-017", "date": "2026-10-19", "field": "reference_corrected", "from": "Existing source-review limitation not fully exposed in evidence-list status", "to": "Explicit reviewed evidence status on IN-003", "note": "Operator-authorised corpus reading audit Batch 3 / R02. Render the existing entry-level review disposition from explicit status metadata linked to its retained review and mutation. A withdrawn attribution is not a retracted publication; missing sources and Partial polarity do not automatically determine status. Preserve all original titles, descriptions, citations, counts, assessments, review markers and prior mutations. No substitute source, new evidence or reassessment. Receipt: docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md."},
     {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-007 → AS-002","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
     {"id": "M-015", "date": "2026-10-12", "field": "assessment_issued", "from": "AS-002", "to": "AS-003", "note": "Operator-authorised evidence-gap reassessment considers IN-007 admitted 2026-09-29. AS-003 appended at ESCALATING / VS-03; current posture reaffirmed. No prior assessment, claim, evidence, mechanism, lineage, open question or provenance-review metadata changed. Review receipt: docs/reviews/EVIDENCE-GAP-REASSESSMENT-2026-10-12.md."},
     {

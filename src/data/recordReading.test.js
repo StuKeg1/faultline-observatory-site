@@ -69,7 +69,8 @@ test("dated assessment labels replace generic mutation labels and preserve recor
 
 test("post-assessment admissions count distinct known entries without inventing a reassessment", () => {
   const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0007");
-  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-17", labels: ["4 evidence entries added"] });
+  assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-17") }), { date: "2026-10-17", labels: ["4 evidence entries added"] });
+  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
   assert.ok(ai.assessments.at(-1).date < "2026-10-17");
 });
 
@@ -194,8 +195,35 @@ test("withdrawn legacy evidence has an explicit status without guessing a citati
   const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
   const legacy = record.instances.find(i => i.id === "IN-005");
   assert.match(evidenceReadingStatus(record, legacy), /excluded from the current evidence basis/);
-  assert.equal(evidenceReadingStatus(record, { ...legacy, sources: [{ citation: "Newly verified" }] }), null);
+  // A citation alone cannot silently supersede a governed exclusion.
+  assert.match(evidenceReadingStatus(record, { ...legacy, sources: [{ citation: "Newly verified" }] }), /excluded/);
+  assert.equal(evidenceReadingStatus(record, { ...legacy, evidenceStatus: undefined }), null);
   assert.equal(evidenceReadingStatus(record, record.instances[0]), null);
+});
+
+test("reviewed entry statuses are explicit, distinct and backed by existing mutations", () => {
+  const before = JSON.stringify(ALL_RECORDS);
+  const expected = [
+    ["FR-QE-0003", ["IN-001", "IN-002", "IN-003", "IN-004"], /Correction pending/],
+    ["FR-BT-0001", ["IN-004"], /Legacy attribution withdrawn/],
+    ["FR-AI-0006", ["IN-005"], /excluded from the current evidence basis/],
+    ["FR-AI-0007", ["IN-005"], /excluded from the current evidence basis/],
+    ["FR-AI-0001", ["IN-003"], /Unverified legacy attribution/],
+  ];
+  for (const [id, ids, notice] of expected) {
+    const record = ALL_RECORDS.find(r => r.id === id);
+    for (const entryId of ids) {
+      const entry = record.instances.find(i => i.id === entryId);
+      assert.match(evidenceReadingStatus(record, entry), notice);
+      assert.match(entry.evidenceStatus.reviewId, /^LPR-001-D\d+$/);
+      assert.equal(evidenceReadingStatus(record, { ...entry, evidenceStatus: { ...entry.evidenceStatus, kind: "future_unknown" } }), null);
+      assert.equal(evidenceReadingStatus(record, { ...entry, evidenceStatus: { ...entry.evidenceStatus, mutationId: "M-999" } }), null);
+    }
+  }
+  const unrelated = ALL_RECORDS.find(r => r.id === "FR-AI-0009");
+  assert.equal(evidenceReadingStatus(unrelated, { ...unrelated.instances[0], sources: [], sourceReference: undefined, vectors: ["partial--unverified"] }), null);
+  assert.equal(evidenceReadingStatus(unrelated, { ...unrelated.instances[0], evidenceStatus: { kind: "toString", reviewId: "LPR-001-D00", mutationId: unrelated.mutationLog[0].id } }), null);
+  assert.equal(JSON.stringify(ALL_RECORDS), before);
 });
 
 test("correction receipt links are allowlisted and process terms get one explanation each", () => {
