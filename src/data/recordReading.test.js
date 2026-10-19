@@ -1,8 +1,51 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
-import { assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText } from "./recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText } from "./recordReading.js";
 import { getAssessmentHistory } from "./derive.js";
+import { CURRENT_PRESSURE_STATES, getPressureStateExplanation } from "./pressureStates.js";
+
+test("source-check recency is separate from the assessment and all same-day update types are retained", () => {
+  const am = ALL_RECORDS.find(r => r.id === "FR-AM-0007");
+  assert.deepEqual(getRecordUpdateSummary(am), { date: "2026-10-16", labels: ["Source review completed"] });
+  assert.ok(am.assessments.at(-1).date < "2026-10-16");
+  const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  const before = JSON.stringify(ai);
+  assert.deepEqual(getRecordUpdateSummary(ai).labels, ["Record annotation updated", "Editorial correction recorded", "Verification Stage correction recorded"]);
+  assert.equal(ai.assessments.at(-1).verificationStage, "VS-05");
+  assert.equal(ai.verificationStageChallenges.at(-1).status, "awaiting_operator_decision");
+  assert.equal(JSON.stringify(ai), before);
+});
+
+test("post-assessment admissions count distinct known entries without inventing a reassessment", () => {
+  const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0007");
+  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-17", labels: ["4 evidence entries added"] });
+  assert.ok(ai.assessments.at(-1).date < "2026-10-17");
+});
+
+test("latest-day summaries retain mixed events and unknowns without relying on mutation order", () => {
+  const r = { instances: [{ id: "IN-001" }], assessments: [
+    { id: "AS-001", pressureState: "emerging", verificationStage: "VS-02" },
+    { id: "AS-002", pressureState: "emerging", verificationStage: "VS-02" },
+  ], mutationLog: [
+    { date: "2026-09-01", field: "provenance_review", to: "LPR-001" },
+    { date: "2026-10-01", field: "instance_added", to: "IN-001" },
+    { date: "2026-10-01", field: "assessment_issued", to: "AS-002 / retained" },
+    { date: "2026-10-01", field: "future_unknown_event", to: "Unknown" },
+    { date: "2026-10-01", field: "instance_added", to: "IN-001" },
+  ] };
+  assert.deepEqual(getRecordUpdateSummary(r), { date: "2026-10-01", labels: ["Assessment updated", "Record updated—see change log", "Evidence entry added"] });
+  assert.equal(getRecordUpdateSummary({ mutationLog: [] }).date, null);
+});
+
+test("all current states have compact explanations and full Methodology definitions", () => {
+  for (const state of CURRENT_PRESSURE_STATES) {
+    assert.ok(state.definition.length > state.explanation.length);
+    assert.equal(getPressureStateExplanation(state.value), state.explanation);
+  }
+  assert.match(getPressureStateExplanation("escalating"), /confidence in—or pressure on/);
+  assert.match(getPressureStateExplanation("audit"), /Legacy or unrecognised/);
+});
 
 test("AI-0008 history distinguishes a recorded stage correction from unchanged axes", () => {
   const record = ALL_RECORDS.find(r => r.id === "FR-AI-0008");

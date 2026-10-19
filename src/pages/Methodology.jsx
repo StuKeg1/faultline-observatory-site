@@ -1,3 +1,5 @@
+import { CURRENT_PRESSURE_STATES } from "../data/pressureStates.js";
+import { useEffect } from "react";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import "./Institutional.css";
@@ -115,14 +117,7 @@ const PRESSURE_STATE_INTRO = [
   "As new evidence accumulates, later Assessments may retain or change the Pressure State while preserving the complete history of earlier judgments.",
 ];
 
-const PRESSURE_STATES = [
-  { name: "Emerging", body: "The claim has entered the Observatory with credible evidence or a well-defined scientific question, but the evidence remains early, limited, or largely untested. The central uncertainty is still taking shape." },
-  { name: "Escalating", body: "Evidence is accumulating in a consistent direction and materially increasing confidence—or materially increasing pressure on the claim. Important developments are occurring, but significant uncertainties remain and the claim is still actively contested." },
-  { name: "Stabilising", body: "The evidentiary picture has become relatively stable. New evidence continues to appear, but it largely reinforces the existing assessment rather than substantially changing it. The claim remains under active observation." },
-  { name: "Fragmenting", body: "The evidence no longer points in a single direction. Different aspects of the claim begin to diverge, competing explanations emerge, or apparent progress in one area is offset by uncertainty in another. The claim requires deeper interpretation rather than a simple increase or decrease in confidence." },
-  { name: "Resolving", body: "The central uncertainty is approaching resolution. The remaining questions are narrower than those that originally defined the claim, and the evidence is converging toward a clear outcome. The claim has not yet been confirmed or closed." },
-  { name: "Collapsed", body: "The claim is no longer supported under current evidence. Critical evidence has failed, key assumptions have been overturned, or repeated investigation has left the central claim unsupported. The record remains part of the Observatory as a permanent account of how the evidence evolved." },
-];
+
 
 const PRESSURE_STATE_NOTE = "Pressure States are descriptive, not procedural. They do not represent a mandatory sequence of stages. A record may remain in one state for many years, return to an earlier state if the evidentiary picture changes, or move directly between states when the evidence warrants it. Every change in Pressure State is justified by an Assessment and preserved as part of the record's permanent history.";
 
@@ -150,6 +145,15 @@ const EVIDENCE_REVIEW_STEPS = [
 ];
 
 export default function Methodology() {
+  useEffect(() => {
+    if (window.location.hash !== "#pressure-states") return;
+    const frame = window.requestAnimationFrame(() => {
+      const target = document.getElementById("pressure-states");
+      target?.scrollIntoView({ block: "start" });
+      target?.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
   return (
     <InstitutionalPage eyebrow="FCIF — Frontier Claim Intelligence Framework" title="Methodology" wide>
       <PageMeta
@@ -224,7 +228,7 @@ export default function Methodology() {
         </div>
         <div className="inst-methodology-part-content">
 
-          <div className="inst-methodology-subsection-label">Pressure State</div>
+          <div className="inst-methodology-subsection-label" id="pressure-states" tabIndex={-1} style={{ scrollMarginTop: "calc(var(--nav-height) + 1.5rem)" }}>Pressure State</div>
           <div className="inst-methodology-prose">
             {PRESSURE_STATE_INTRO.map((p, i) => (
               <p key={i}>{p}</p>
@@ -240,10 +244,10 @@ export default function Methodology() {
                 </tr>
               </thead>
               <tbody>
-                {PRESSURE_STATES.map((s) => (
-                  <tr key={s.name}>
-                    <td>{s.name}</td>
-                    <td>{s.body}</td>
+                {CURRENT_PRESSURE_STATES.map((s) => (
+                  <tr key={s.value}>
+                    <td>{s.label}</td>
+                    <td>{s.definition}</td>
                   </tr>
                 ))}
               </tbody>

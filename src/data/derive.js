@@ -526,6 +526,7 @@ export function getMutationSummaryLabel(mutationType, mutation) {
       return to ? `First assessment issued — ${to}` : "First assessment issued";
     case "assessment_pressure_state_changed":
     case "assessment_verification_stage_changed":
+      if (mutation?.field === "assessment_correction") return "Assessment correction recorded";
       return from && to ? `Assessment issued — ${from} → ${to}` : "Assessment issued";
     case "open_question_added":
       return to ? `Open question raised — ${to}` : "Open question raised";

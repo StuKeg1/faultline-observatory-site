@@ -86,6 +86,20 @@
   font-size: 11px;
   color: var(--ink-light);
 }
+.rp-state-explanation {
+  margin: 0.65rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+.rp-update-description {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-mid);
+  overflow-wrap: anywhere;
+}
+.rp-update-description ul { margin: 0 0 0.35rem; padding-left: 1.1rem; }
 .rp-status-sep {
   color: var(--ink-faint);
 }

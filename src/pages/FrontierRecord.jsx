@@ -17,7 +17,8 @@ import {
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
-import { assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships } from "../data/recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships } from "../data/recordReading.js";
+import { getPressureStateExplanation } from "../data/pressureStates.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
@@ -660,6 +661,7 @@ export default function FrontierRecord() {
 
   const current = getCurrentAssessment(record);
   const assessmentRecency = getAssessmentRecency(record);
+  const recordUpdate = getRecordUpdateSummary(record);
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const evidenceBrief = getEvidenceBrief(record);
@@ -724,6 +726,10 @@ export default function FrontierRecord() {
                   <span className="rp-status-provenance">S4 reconstruction · not reaffirmed by realignment</span>
                 )}
               </div>
+              <p className="rp-state-explanation">
+                {getPressureStateExplanation(current.pressureState)}{" "}
+                <a href="/methodology/#pressure-states">State definitions</a>
+              </p>
               <WhereRecordStands legibility={legibility} />
               {assessmentTrajectory && <RecordAssessmentHistory trajectory={assessmentTrajectory} />}
             </div>
@@ -751,8 +757,14 @@ export default function FrontierRecord() {
                 <span className="rp-status-value">{assessmentRecency.date}</span>
               </div>
               <div className="rp-meta-row">
-                <span className="rp-status-label">Last Mutation</span>
-                <span className="rp-status-value">{record.mutationLog[0]?.date ?? "—"}</span>
+                <span className="rp-status-label">Latest record update</span>
+                <span className="rp-status-value">{recordUpdate.date ?? "—"}</span>
+              </div>
+              <div className="rp-update-description">
+                <ul aria-label="Updates recorded on this date">
+                  {recordUpdate.labels.map((label) => <li key={label}>{label}</li>)}
+                </ul>
+                <a href="#s-mutations">View change log</a>
               </div>
               <div className="rp-meta-row">
                 <span className="rp-status-label">Mutation Count</span>
