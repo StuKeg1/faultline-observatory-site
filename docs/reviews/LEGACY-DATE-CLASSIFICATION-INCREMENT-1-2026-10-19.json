@@ -1,0 +1,508 @@
+{
+  "reviewId": "LEGACY-DATE-CLASSIFICATION-INCREMENT-1",
+  "date": "2026-10-19",
+  "baseCommit": "5194d6b90ed192eb9b931430e9f577cbee60fef2",
+  "scope": "23 unqualified legacy AS-001 dates; classification only. No runtime consumer, date rewrite, new overlay or assessment.",
+  "definitions": {
+    "verified_date": "Contemporaneous provenance establishes the assessment date, beyond a repeated storage literal.",
+    "converter_fallback": "The inspected source input and converter rule demonstrate replacement of a missing or non-date source value by 2024-01-15.",
+    "unknown": "Actual assessment date is not established. storageOrigin separately records whether a literal predates this converter."
+  },
+  "authority": {
+    "url": "https://docs.google.com/document/d/1aDpuzdV01cWV9ZOZ17r_R1UbrUDJqUPoKH6b359kJhA/edit",
+    "note": "23 July ratification calls the notional cohort the common converter fallback and explicitly says storage dates remain provenance-suspect. This classifies the date limitation, not evidence depth; this review distinguishes the observed immediate ingestion path from the authority’s broader legacy-fallback terminology."
+  },
+  "converter": {
+    "path": "convert-records.js",
+    "function": "extractAssessments",
+    "rule": "Missing ISSUED, notional, march, mid-, or non-year-leading text is replaced with 2024-01-15; a literal year-leading 2024-01-15 is preserved.",
+    "openedDateRule": "extractMetaVal(RECORD OPENED) || 2024-01-15 is separate from assessment date conversion; do not transfer an assessment-date classification to openedDate or question raisedDate."
+  },
+  "counts": {
+    "verified_date": 0,
+    "converter_fallback": 0,
+    "unknown": 23
+  },
+  "records": [
+    {
+      "recordId": "FR-AI-0001",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1P9qpi6wq4V6nyn4ZpgqiYiz-cVrl9pIq",
+        "url": "https://drive.google.com/file/d/1P9qpi6wq4V6nyn4ZpgqiYiz-cVrl9pIq/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-08T18:42:42.000Z",
+        "restorationReceiptTextSha256": "f2be8905f6ae8ff6fdf04bceb0341d6f455d85811de07c42981301c7c6061ebb"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-005"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AI-0002",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1kmjQHLUxpNKFNStSoFKR-AE7P-ogFAIZ",
+        "url": "https://drive.google.com/file/d/1kmjQHLUxpNKFNStSoFKR-AE7P-ogFAIZ/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-08T19:48:40.000Z",
+        "restorationReceiptTextSha256": "f1e42147728eb18cd5ca18f502e19d58cd067992fa98719028041829e65626a6"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-005"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AI-0003",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "17k4GkTxHeauxh-Tg-Yxir8gCBNF1ymYa",
+        "url": "https://drive.google.com/file/d/17k4GkTxHeauxh-Tg-Yxir8gCBNF1ymYa/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-08T20:01:49.000Z",
+        "restorationReceiptTextSha256": "6bdad2362859bf453d6a7e6b00b3508bfdbcf3592e8228e17267c91c873c946b"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-005"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AI-0004",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1k1YV18ZZDTs7emO7mBXZL103gIvoIsQV",
+        "url": "https://drive.google.com/file/d/1k1YV18ZZDTs7emO7mBXZL103gIvoIsQV/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T12:53:40.000Z",
+        "restorationReceiptTextSha256": "ccd52c3c7044a2cc37196cd7a7f7616997656d5b8b8b82b62292854a2d43f272"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-005"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AI-0005",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1V4eVHRvuMV4gNZw4kVegbZGph1vcvvTn",
+        "url": "https://drive.google.com/file/d/1V4eVHRvuMV4gNZw4kVegbZGph1vcvvTn/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T13:30:07.000Z",
+        "restorationReceiptTextSha256": "6c19670389c46a62fb4456b20982b3d00b784868d20abafcc3a4c3305ad8513b"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-006"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AI-0006",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1VeNxj-LTcGiSmfmVgFJehKuge1u7Aj37",
+        "url": "https://drive.google.com/file/d/1VeNxj-LTcGiSmfmVgFJehKuge1u7Aj37/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T13:47:31.000Z",
+        "restorationReceiptTextSha256": "6859ad666766e97a7de00b659f35421a75712f11caae7340b86479d1068c4037"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-005"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AI-0007",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1lnii_cS1Mbv8fdDCEvJ35d52-j7eZ5g1",
+        "url": "https://drive.google.com/file/d/1lnii_cS1Mbv8fdDCEvJ35d52-j7eZ5g1/view",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-10T09:08:55.000Z",
+        "restorationReceiptTextSha256": null
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AM-0002",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1qB9Wsdf9b3Trw32dcQHEPPLsrZIH6z14",
+        "url": "https://drive.google.com/file/d/1qB9Wsdf9b3Trw32dcQHEPPLsrZIH6z14/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-08T19:54:48.000Z",
+        "restorationReceiptTextSha256": "ae71e8605b2365c6546dd3e4808628bf9fe8bdcd8b26659421dbb5b145cf5c45"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-004"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AM-0003",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "19czOspfLKee1tTark6lti8sr-LBaHObs",
+        "url": "https://drive.google.com/file/d/19czOspfLKee1tTark6lti8sr-LBaHObs/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T08:57:43.000Z",
+        "restorationReceiptTextSha256": "059588ac56c5b1f64ea4759075e96b036d1bbe311bfe4c7b65c21bab27996538"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-004"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AM-0004",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1agttcKhzYzuekNWnZmYnUnwQ1XzmPp8-",
+        "url": "https://drive.google.com/file/d/1agttcKhzYzuekNWnZmYnUnwQ1XzmPp8-/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T13:18:23.000Z",
+        "restorationReceiptTextSha256": "13643b1c2ab0da01514d268c3446967617961a24881eba40f539e6765055fa35"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-002"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AM-0005",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1tRbrLxtIn7a7DH9AmsIqyFPy-V148Ac7",
+        "url": "https://drive.google.com/file/d/1tRbrLxtIn7a7DH9AmsIqyFPy-V148Ac7/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T16:54:31.000Z",
+        "restorationReceiptTextSha256": "d2e06ae2433fcb547d4ff8876b8293ba29cb17df161c82aa29433792d80f826d"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-002 and INST-005"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-AM-0006",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1C8JlUzn2qBeHOncW6vAxA98w5g0Qcnju",
+        "url": "https://drive.google.com/file/d/1C8JlUzn2qBeHOncW6vAxA98w5g0Qcnju/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-10T09:52:42.000Z",
+        "restorationReceiptTextSha256": "3d4b8904dd46435e36058a4b18d83e91a6716e4c9d9291fc75f7a42b705cda05"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-BT-0001",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1YxRAM6C_mRMC7AbG5C_cM18zujArQxhl",
+        "url": "https://drive.google.com/file/d/1YxRAM6C_mRMC7AbG5C_cM18zujArQxhl/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T20:10:48.000Z",
+        "restorationReceiptTextSha256": "3ec6c3ceb5eb0353152d8982f1694e846cb7ab8b48d9abda7d4eb8cc77931fc8"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-BT-0002",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "12oQGYiWaYPv8-Je7uQ9gnN_v6IUV5zZ5",
+        "url": "https://drive.google.com/file/d/12oQGYiWaYPv8-Je7uQ9gnN_v6IUV5zZ5/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-10T09:01:35.000Z",
+        "restorationReceiptTextSha256": "7a12f49aa91b16f342187e77d1f0c5b1bbc419ddbe6eb388db607ca78c633471"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-BT-0003",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1JK_i4ftSrQ5UtZWm2Ncv8sd8wykgIaC0",
+        "url": "https://drive.google.com/file/d/1JK_i4ftSrQ5UtZWm2Ncv8sd8wykgIaC0/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-10T09:31:51.000Z",
+        "restorationReceiptTextSha256": "6c349db7f855a7761c56770fa3a0da432034f35691e20ac8687743faaff01dc5"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-BT-0004",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS",
+        "url": "https://drive.google.com/file/d/1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-10T09:39:23.000Z",
+        "restorationReceiptTextSha256": "c83f7e251cf8eabfc035ee9c4dfff43430f5ed49b111bc019925b63ea4ed9694"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-QE-0002",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1s9-MAnWoWMwt2ReSLdPtGSW6QRtOVgvM",
+        "url": "https://drive.google.com/file/d/1s9-MAnWoWMwt2ReSLdPtGSW6QRtOVgvM/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-08T18:33:01.000Z",
+        "restorationReceiptTextSha256": "6176aff3f6dbe199c4125378acf1873ed57220a9b42796a74ae430d5f76bed89"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-005"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-QE-0003",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "15wAwW5oDhl-eLUsK7g82KSR-0wJjufho",
+        "url": "https://drive.google.com/file/d/15wAwW5oDhl-eLUsK7g82KSR-0wJjufho/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-08T19:42:07.000Z",
+        "restorationReceiptTextSha256": "1d3d17104db2689b66d23b1eb0a20c8351e8780367449b16ee9da29f1310f1e5"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-005"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-QE-0004",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1eVaKKE5Dx2Fm2rL-Wk-Qnle1BMAndLwk",
+        "url": "https://drive.google.com/file/d/1eVaKKE5Dx2Fm2rL-Wk-Qnle1BMAndLwk/view",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T12:37:28.000Z",
+        "restorationReceiptTextSha256": null
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-004"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-QE-0005",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1xzJuLkAdDhGDC2Rc-yQZDH-R8vlVvHHi",
+        "url": "https://drive.google.com/file/d/1xzJuLkAdDhGDC2Rc-yQZDH-R8vlVvHHi/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T13:39:15.000Z",
+        "restorationReceiptTextSha256": "b746b63df07b50c19983c9c3c781e8ac4622644be30187312bad089224768b71"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-QE-0006",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1N-FOxZkIRwc5qmpce1erwAqD9rpqRpTF",
+        "url": "https://drive.google.com/file/d/1N-FOxZkIRwc5qmpce1erwAqD9rpqRpTF/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-09T18:58:57.000Z",
+        "restorationReceiptTextSha256": "3bdb13c1f22ce14a83ed1f458f74dc289b9999cdfc9e34d9e08479caae39cf2e"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-QE-0007",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1qCC0WcnKOMiutuuqh5ah_6wXPN0X2SQs",
+        "url": "https://drive.google.com/file/d/1qCC0WcnKOMiutuuqh5ah_6wXPN0X2SQs/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-11T11:38:05.825Z",
+        "restorationReceiptTextSha256": "e5fd2fa6d00f9c1cb7288a3b25b801aea077681d656a09132a376738a2e2275f"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    },
+    {
+      "recordId": "FR-QE-0008",
+      "assessmentId": "AS-001",
+      "storedDate": "2024-01-15",
+      "classification": "unknown",
+      "storageOrigin": "retained_html_literal",
+      "source": {
+        "fileId": "1b6n8s4qZ8FE08RIymo-4e-kpFvQ49Nyz",
+        "url": "https://drive.google.com/file/d/1b6n8s4qZ8FE08RIymo-4e-kpFvQ49Nyz/view?usp=drivesdk",
+        "mimeType": "text/html",
+        "modifiedTime": "2026-06-11T07:45:03.000Z",
+        "restorationReceiptTextSha256": "6982241a2e3d15d896882033f61e27fee88b7811b16b28340e70327c0d8417e9"
+      },
+      "openedDateExcerpt": "2024-01-15",
+      "assessmentMetaExcerpts": [
+        "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+      ],
+      "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+      "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+    }
+  ],
+  "positiveControl": {
+    "recordId": "FR-AM-0001",
+    "outsideCohort": true,
+    "sourceUrl": "https://drive.google.com/file/d/1goJsend-Scsoet868GpcTWELGC_ctVfh/view",
+    "assessments": [
+      {
+        "id": "AS-001",
+        "sourceMeta": "ASSESSMENT-001 ISSUED: notional — March 1989 TRIGGERING INSTANCE: INST-001",
+        "storedDate": "2024-01-15",
+        "classification": "converter_fallback"
+      },
+      {
+        "id": "AS-002",
+        "sourceMeta": "ASSESSMENT-002 ISSUED: notional — mid-1989 TRIGGERING INSTANCE: INST-003",
+        "storedDate": "2024-01-15",
+        "classification": "converter_fallback"
+      }
+    ],
+    "note": "Demonstrated converter substitutions; existing reviewed AM-0001 display overlays remain untouched. AS-003 already contains the literal 2024-01-15 and is not included as a demonstrated substitution."
+  }
+}
