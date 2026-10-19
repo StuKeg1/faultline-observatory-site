@@ -197,11 +197,20 @@ function isBootstrapPlaceholder(mutation, creationDate) {
  * type; that only exists by diffing consecutive assessments — the same
  * comparison derive.js:getTransitionFeed() already performs.
  */
+export function resolveAssessmentMutation(mutation, record) {
+  if (!ASSESSMENT_ISSUED_FIELD_SYNONYMS.has(mutation.field)) return null;
+  const ids = [...new Set(String(mutation.to ?? "").match(/\bAS-\d{3}\b/g) ?? [])];
+  if (ids.length !== 1) return null;
+  return record.assessments.find((a) => a.id === ids[0]) ?? null;
+}
+
 function classifyAssessmentIssued(mutation, record) {
-  const idx = record.assessments.findIndex((a) => a.id === mutation.to);
+  const assessment = resolveAssessmentMutation(mutation, record);
+  const idx = assessment ? record.assessments.indexOf(assessment) : -1;
 
   if (idx === -1) {
-    return "creation_batch_internal"; // placeholder, singular or plural form
+    return isBootstrapPlaceholder(mutation, findCreationDate(record))
+      ? "creation_batch_internal" : "unclassified";
   }
   if (idx === 0) {
     return "assessment_first_issued";

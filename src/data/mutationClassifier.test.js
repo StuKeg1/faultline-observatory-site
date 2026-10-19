@@ -6,6 +6,7 @@ import { ALL_RECORDS } from "./corpus.js";
 import {
   detectMutationType,
   qualifiesForHomepage,
+  resolveAssessmentMutation,
 } from "./mutationClassifier.js";
 
 const mutation = {
@@ -107,12 +108,33 @@ test("assessment correction variants retain assessment trajectory classification
   assert.equal(detectMutationType(correction, correctionRecord), "assessment_reissued_no_state_change");
 });
 
-test("known mutation-field variants are classified across the live corpus", () => {
+test("unresolved legacy assessment references remain visible and fail closed", () => {
   const unclassified = ALL_RECORDS.flatMap((record) =>
     record.mutationLog
       .filter((entry) => detectMutationType(entry, record) === "unclassified")
       .map((entry) => `${record.id}:${entry.id}:${entry.field}`)
   );
 
-  assert.deepEqual(unclassified, []);
+  assert.deepEqual(unclassified, [
+    "FR-QE-0001:M-003:assessment_issued",
+    "FR-AI-0001:M-007:assessment_issued",
+    "FR-AM-0006:M-015:assessment_issued",
+    "FR-AM-0006:M-013:assessment_issued",
+    "FR-AM-0006:M-009:assessment_issued",
+    "FR-BT-0004:M-007:assessment_issued",
+  ]);
+  assert.equal(qualifiesForHomepage("unclassified").qualifies, false);
+});
+
+test("assessment targets resolve explanatory suffixes but reject ambiguous or missing references", () => {
+  const r = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  const m = r.mutationLog.find(m => m.id === "M-013");
+  assert.equal(resolveAssessmentMutation(m, r).id, "AS-004");
+  assert.equal(detectMutationType(m, r), "assessment_verification_stage_changed");
+  for (const to of ["AS-003 / AS-004", "AS-999", "Unlinked assessment", "AS-0040"]) {
+    assert.equal(resolveAssessmentMutation({ ...m, to }, r), null);
+    assert.equal(detectMutationType({ ...m, to }, r), "unclassified");
+  }
+  const bootstrap = { date: "2026-08-19", field: "assessment_issued", to: "ASSESSMENT-ISSUED" };
+  assert.equal(detectMutationType(bootstrap, record), "creation_batch_internal");
 });
