@@ -5,6 +5,20 @@ import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, eviden
 import { getAssessmentHistory } from "./derive.js";
 import { CURRENT_PRESSURE_STATES, getPressureStateExplanation } from "./pressureStates.js";
 
+test("AGI context acknowledges the completed repair only with its recorded completion", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-AI-0005");
+  const assessment = record.assessments.find(a => a.id === "AS-003");
+  const before = JSON.stringify(record);
+  const reading = assessmentReadingView(record, assessment);
+  assert.match(reading.assessorNote, /completed on 8 October 2026 \(M-017\)/);
+  assert.doesNotMatch(reading.assessorNote, /requires a separate bounded consistency repair/);
+  assert.match(assessment.assessorNote, /requires a separate bounded consistency repair/);
+  assert.equal(reading.changed, true);
+  const noCompletion = { ...record, mutationLog: record.mutationLog.filter(m => m.id !== "M-017") };
+  assert.equal(assessmentReadingView(noCompletion, assessment).assessorNote, assessment.assessorNote);
+  assert.equal(JSON.stringify(record), before);
+});
+
 test("code help is contextual and change-log labels preserve field meaning", () => {
   assert.deepEqual(recordCodeExplanations("A clinical result"), []);
   assert.equal(recordCodeExplanations("LPR-001-D08 repeated LPR-001-D41").length, 1);

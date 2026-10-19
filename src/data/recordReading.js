@@ -152,6 +152,14 @@ export function mutationReceiptLinks(mutation) {
 export function assessmentReadingView(record, assessment) {
   let summary = assessment.summary;
   let assessorNote = assessment.assessorNote ?? "";
+  if (record.id === "FR-AI-0005" && assessment.id === "AS-003" && record.mutationLog?.some(m =>
+    m.id === "M-017" && m.date === "2026-10-08" && m.field === "reference_corrected" &&
+    m.to === "Current explanatory fields aligned to corrected IN-001–IN-007 and AS-003")) {
+    assessorNote = assessorNote.replace(
+      "Downstream mechanism, lineage, and open-question wording that independently relies on the withdrawn IN-006 target-migration premise requires a separate bounded consistency repair and is not silently changed here.",
+      "The downstream mechanism, lineage and open-question consistency repair was completed on 8 October 2026 (M-017). That editorial repair aligned explanatory wording with this assessment; it admitted no new evidence and did not reassess the claim."
+    );
+  }
   if (record.id === "FR-AI-0009" && assessment.id === "AS-001") {
     summary = summary.replace("DreamerV3 (IN-001) independently shows", "A separate study, DreamerV3 (IN-001), shows");
     assessorNote = assessorNote.replace("recorded in Drive", "documented in the Observatory’s internal records");
