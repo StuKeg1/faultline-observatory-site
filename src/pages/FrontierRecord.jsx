@@ -17,7 +17,7 @@ import {
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingNotes, assessmentReadingView, chronologicalReadingAssessment } from "../data/recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment, evidenceReadingStatus, mutationReceiptLinks } from "../data/recordReading.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import "./FrontierRecord.css";
@@ -73,8 +73,10 @@ function WarrantPanel({ current, record }) {
       </div>
       {current.verificationStageChallenge && (
         <div className="wp-row wp-row-provenance" id="stage-challenge" tabIndex={-1}>
-          <span className="wp-label">Stage under review</span>
-          <span className="wp-value">Currently recorded stage: {current.verificationStage}. Its assignment is under review; no replacement decision has been recorded. {current.verificationStageChallenge.notice}</span>
+          <span className="wp-label">Stage review</span>
+          <span className="wp-value">{current.verificationStage} is currently recorded. Its assignment is under review; no replacement decision has been recorded.
+            <details><summary>Original stage-review notice</summary><p>{current.verificationStageChallenge.notice}</p></details>
+          </span>
         </div>
       )}
       <div className="wp-row wp-row-rationale">
@@ -89,8 +91,7 @@ function WarrantPanel({ current, record }) {
         </div>
       )}
       <OriginalAssessmentWording assessment={current} reading={reading} />
-      <RecordCodeKey text={`${reading.summary} ${reading.assessorNote}`} />
-      {assessmentReadingNotes(record, current).map(note => <p className="reading-note" key={note}>{note}</p>)}
+      <RecordCodeKey text={JSON.stringify(record)} />
         <div className="wp-row">
           <span className="wp-label">State entered</span>
           <span className="wp-value">{enteredDate}</span>
@@ -296,12 +297,11 @@ function RecordLineage({ record }) {
                 <div className="tl-assessor-note">{reading.assessorNote}</div>
               )}
               <OriginalAssessmentWording assessment={a} reading={reading} />
-              <RecordCodeKey text={`${reading.summary} ${reading.assessorNote}`} />
-              {assessmentReadingNotes(record, a).map(note => <p className="reading-note" key={note}>{note}</p>)}
               {a.verificationStageProvenance && (
                 <div className="tl-assessor-note">
-                  {record.id === "FR-AI-0008" && a.id === "AS-001" ? "Later review annotation (separate from the original assessment date): " : "Verification Stage: "}
-                  {a.verificationStageProvenance.disposition === "historically-unverified"
+                  {record.id === "FR-AI-0008" && a.id === "AS-001"
+                    ? `Originally stored: ${a.verificationStageProvenance.storedStage}. A later review assigned ${a.verificationStageProvenance.effectiveStage} to this initial assessment. This retrospective annotation is not a stage transition on its uncertain original date; see the current State Warrant for the separate stage challenge.`
+                    : a.verificationStageProvenance.disposition === "historically-unverified"
                     ? `${a.verificationStageProvenance.storedStage} preserved — historically unverified`
                     : `${a.verificationStageProvenance.effectiveStage} after ratified review (stored code ${a.verificationStageProvenance.storedStage} preserved)`}
                   .<StageProvenanceMarker />
@@ -353,6 +353,7 @@ function MutationLog({ record }) {
                 <td className="mut-field">{mutationFieldLabel(m.field)}<small className="reading-note">{m.field}</small></td>
                 <td className="mut-from">{m.from}</td>
                 <td className="mut-to">{m.to}
+                  {m.note && <details className="mutation-explanation"><summary>What this update recorded <span className="sr-only">for {m.id}</span></summary><p>{m.note}</p>{mutationReceiptLinks(m).map(receipt => <a key={receipt.path} href={receipt.href} target="_blank" rel="noreferrer">View correction receipt (fields, prior wording and source basis) ↗</a>)}</details>}
                   {referenceReview && (
                     <small className="reading-note">
                       {referenceReview.disposition === "linked"
@@ -421,6 +422,7 @@ function EvidenceSources({ record }) {
                 </span>
                 <div className="ev-citation">
                   <span className="ev-title">{inst.qualifiedEvent}</span>
+                  {evidenceReadingStatus(record, inst) && <p className="reading-note evidence-status">{evidenceReadingStatus(record, inst)}</p>}
                   {relationships.map(({ targetId, text }) => <p className="evidence-relationship" key={targetId}>{text} <a href={`#evidence-${targetId}`}>View {targetId}</a></p>)}
                   {showFullS4Content && inst.description && (
                     <span className="ev-description">{inst.description}</span>
@@ -844,13 +846,12 @@ export default function FrontierRecord() {
               <div className="rs-header">Mechanisms and barriers</div>
               <p className="narrative-context">How the claim could hold, what obstructs it, and possible ways forward. The State Warrant above remains the authoritative current assessment.</p>
               <Mechanisms record={record} />
-              <RecordCodeKey text={JSON.stringify(record.mechanisms ?? {})} />
             </section>
           )}
 
           <section className="record-section-inner" id="s-assessment-history">
             <div className="rs-header">Assessment History</div>
-            {record.id === "FR-AI-0008" && <p className="narrative-context">History labels compare the originally recorded stages: AS-001, AS-002 and AS-003 stored VS-03; AS-004 assigned VS-05. The later review assigning VS-05 to AS-001 is shown separately as a retrospective annotation, not an original stage transition. This does not resolve the current stage challenge.</p>}
+            {record.id === "FR-AI-0008" && <p className="narrative-context">History labels compare stages originally stored at each assessment. Retrospective reviews are shown separately.</p>}
             {record.assessments.some((a, i) => i > 0 && a.date === record.assessments[i - 1].date) && <p className="narrative-context">Assessments on the same date follow their assessment ID order. An evidence-basis correction and a review of new evidence can be separate events.</p>}
             <RecordLineage record={record} />
           </section>
@@ -868,13 +869,11 @@ export default function FrontierRecord() {
               <div className="rs-header">Questions on record</div>
               <p className="narrative-context">Questions retained in this record. The current State Warrant may have narrowed or reframed them. Recorded dates refer to question history, not necessarily the age of the current wording; known revision dates are shown separately.</p>
               <OpenQuestions record={record} />
-              <RecordCodeKey text={JSON.stringify(record.openQuestions)} />
             </section>
           )}
 
           <section className="record-section-inner" id="s-mutations">
             <div className="rs-header">Mutation Log</div>
-            <RecordCodeKey text={JSON.stringify(record.mutationLog)} />
             <MutationLog record={record} />
           </section>
 
