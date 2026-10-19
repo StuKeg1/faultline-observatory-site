@@ -74,7 +74,7 @@ export default function Programme() {
     <>
       <PageMeta
         title={prog.name}
-        description={`${prog.scopeStatement} ${stats.total} Frontier Record${stats.total !== 1 ? "s" : ""} in this programme.`}
+        description={`${prog.thresholdStatement} ${stats.total} Frontier Record${stats.total !== 1 ? "s" : ""} in this programme.`}
         path={`/programmes/${prog.id.toLowerCase()}/`}
       />
       <div className="programme-page">

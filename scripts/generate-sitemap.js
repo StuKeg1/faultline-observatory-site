@@ -13,7 +13,6 @@ import { getIndexableRouteGroups } from "./route-manifest.js";
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const PUBLIC_DIR = path.join(ROOT, "public");
 const BASE_URL = "https://faultlinewatch.com";
-const EVIDENCE_ENTRY_FIELD = /^(?:instance|instances|evidence)_(?:logged|appended)$/i;
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 function fail(message) {
@@ -26,24 +25,19 @@ function absoluteUrl(route) {
 
 function assertIsoDate(date, recordId) {
   if (!ISO_DATE.test(date)) {
-    fail(`${recordId} has a non-ISO evidence entry date: ${date}`);
+    fail(`${recordId} has a non-ISO page-modified date: ${date}`);
   }
   const parsed = new Date(`${date}T00:00:00Z`);
   if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) {
-    fail(`${recordId} has an invalid evidence entry date: ${date}`);
+    fail(`${recordId} has an invalid page-modified date: ${date}`);
   }
 }
 
-export function getLastEvidenceEntryDate(record) {
-  const evidenceEntries = (record.mutationLog || []).filter((entry) =>
-    EVIDENCE_ENTRY_FIELD.test(entry.field)
-  );
-  if (evidenceEntries.length === 0) {
-    fail(`${record.id} has no governed evidence-entry mutation`);
-  }
-
-  for (const entry of evidenceEntries) assertIsoDate(entry.date, record.id);
-  return evidenceEntries.map((entry) => entry.date).sort().at(-1);
+function getRecordLastmod(record, getPageModifiedDate) {
+  const date = getPageModifiedDate(record);
+  if (!date) fail(`${record.id} has no mutation that dates its page`);
+  assertIsoDate(date, record.id);
+  return date;
 }
 
 function buildUrlset(entries) {
@@ -97,8 +91,10 @@ const server = await createServer({
 });
 
 let records;
+let getPageModifiedDate;
 try {
   ({ ALL_RECORDS: records } = await server.ssrLoadModule("/src/data/corpus.js"));
+  ({ getPageModifiedDate } = await server.ssrLoadModule("/src/data/derive.js"));
 } finally {
   await server.close();
 }
@@ -109,7 +105,7 @@ const sitemapFiles = {
   "sitemap-records.xml": buildUrlset(
     records.map((record) => ({
       route: `/the-record/${record.id.toLowerCase()}/`,
-      lastmod: getLastEvidenceEntryDate(record),
+      lastmod: getRecordLastmod(record, getPageModifiedDate),
     }))
   ),
   "sitemap-notes.xml": buildUrlset(

@@ -385,6 +385,25 @@ export function getRecentActivity(records, limit = 5) {
     .slice(0, limit);
 }
 
+/**
+ * Returns the date the record's public page last changed in substance — the
+ * newest mutationLog date of any type except a provenance review outcome.
+ * A review records an audit; any text it changes is logged as its own
+ * correction entry. Unclassified future fields count, so a new kind of
+ * change can only make this date newer, never leave it stale.
+ *
+ * This is a page date, not an evidence date: editorial and provenance
+ * corrections count here, but they never imply new evidence or a
+ * reassessment. Used for sitemap <lastmod>.
+ */
+export function getPageModifiedDate(record) {
+  return (record.mutationLog || [])
+    .filter((m) => detectMutationType(m, record) !== "provenance_review_completed")
+    .map((m) => m.date)
+    .sort()
+    .at(-1);
+}
+
 function flattenClassifiedMutations(records) {
   const rows = [];
   for (const record of records) {
