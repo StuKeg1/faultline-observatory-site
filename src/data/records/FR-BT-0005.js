@@ -38,7 +38,7 @@ export const FR_BT_0005 = {
     },
     {
       id: "IN-002",
-      qualifiedEvent: "First living-recipient gene-edited pig kidney — life-sustaining renal function for 51 days",
+      qualifiedEvent: "First living-recipient gene-edited pig kidney — life-sustaining renal function",
       description: "A 62-year-old man with end-stage kidney disease received a 69-edit porcine kidney in March 2024. The graft provided essential renal functions including solute clearance, electrolyte homeostasis, urine concentration and blood-pressure regulation. A T-cell-mediated rejection episode occurred within the first week and was reversed with intensified immunosuppression. The recipient died from cardiac causes on day 52; autopsy found no evidence that graft rejection caused death. This is direct supportive evidence that a gene-edited porcine kidney can provide life-sustaining renal replacement in a living human for weeks, while also demonstrating that rejection control remains an active requirement.",
       vectors: ["supportive--living-human-life-sustaining-renal-function"],
       date: "2024",
@@ -58,6 +58,7 @@ export const FR_BT_0005 = {
     },
     {
       id: "IN-004",
+      relationship: { type: "same_recipient_analysis", relatedInstanceId: "IN-002", note: "Same recipient as IN-002: the first living-recipient transplant in March 2024. This paper profiles that recipient’s immune response; it is not an additional patient." },
       qualifiedEvent: "Immune profiling — reversible T-cell rejection but persistent innate activation",
       description: "High-dimensional profiling of the first living-recipient xenokidney showed early T-cell-mediated rejection despite profound circulating T-cell depletion. Intensified immunosuppression reversed the adaptive rejection episode, but sustained monocyte and macrophage activity and elevated inflammatory signalling persisted. The rejection profile shared features with human kidney allograft rejection while also showing distinct innate signatures. This directly identifies persistent innate immune activation as a biological resistance mechanism that may limit durability even when acute adaptive rejection is controlled.",
       vectors: ["contesting--persistent-innate-xenoimmune-activation"],
@@ -198,6 +199,7 @@ export const FR_BT_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-010", date: "2026-10-19", field: "reference_corrected", from: "IN-004 recipient relationship implicit; IN-002 title says 51 days", to: "IN-004 explicitly linked to IN-002 as same-recipient analysis; IN-002 title omits ambiguous duration", note: "Ribas et al., Nature Medicine, DOI 10.1038/s41591-025-04053-3, profiles the March 2024 first recipient reported by Kawai et al., NEJM, DOI 10.1056/NEJMoa2412747. Not another patient. Remove the unexplained 51-day title while preserving the description and source chronology documenting death on postoperative day 52. All assessments, sources, dates, vectors and historical mutations preserved; no new clinical evidence admitted." },
     { id: "M-009", date: "2026-10-18", field: "reference_corrected", from: "IN-003 / IN-008 relationship in narrative only", to: "IN-008 explicitly linked to IN-003 as same-recipient follow-up", note: "Make the already recorded same-recipient relationship explicit and machine-readable. Preserve both entries, source chronology, descriptions, vectors and assessments. Eight logged entries do not mean eight independent cases." },
     // APPEND-ONLY. Newest first.
     { id: "M-008", date: "2026-09-26", field: "assessment_issued", from: "AS-001 / ESCALATING / VS-03", to: "AS-002 / ESCALATING / VS-03", note: "Normal Record Review of the Lancet 271-day xenokidney case. Capability evidence strengthens and late microvascular/innate injury is better resolved, but prospective multi-recipient replication remains outstanding." },

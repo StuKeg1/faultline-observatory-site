@@ -46,6 +46,7 @@ export const FR_AM_0007 = {
     },
     {
       id: "IN-002",
+      relationship: { type: "shared_publication", relatedInstanceId: "IN-001", sharedSourceDoi: "10.1073/pnas.2108938118", reverseNote: "Shares the FeSe paper (Deng et al., 2021) with IN-002. This entry also includes separate antimony evidence; the entries partly overlap and are not independent replications.", note: "Shares the FeSe paper (Deng et al., 2021) with IN-001. This entry isolates its composition comparison; IN-001 also includes separate antimony evidence. Partial source overlap, not an independent replication." },
       qualifiedEvent: "FeSe and Cu-doped FeSe — same-study composition comparison",
       description: "The 2021 PNAS pressure-quench study reports retention at ambient pressure in both pure FeSe and Cu-doped FeSe. The Cu-doped result supplies a composition-level comparison within the FeSe material family; it is not a later 2022–24 extension or evidence of a separate material family. It modestly weakens a single-specimen interpretation, but the evidence remains concentrated within the originating research programme and does not constitute independent institutional replication.",
       vectors: ["supportive--within-material-family-composition-comparison-originating-group-concentration"],
@@ -172,6 +173,7 @@ export const FR_AM_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-009", date: "2026-10-19", field: "reference_corrected", from: "IN-001 / IN-002 shared FeSe publication implicit in sources", to: "IN-002 explicitly linked to IN-001 as partial publication overlap", note: "Both entries cite Deng et al. (2021), DOI 10.1073/pnas.2108938118. IN-001 also cites Wu et al. (2020) on antimony. Make the partial overlap explicit without merging distinct evidence or claiming independent replication. Preserve all assessments, descriptions, sources, dates and vectors; no new evidence admitted." },
     { id: "M-008", date: "2026-10-16", field: "provenance_review", from: "LPR-001-D24", to: "LPR-001-D52", note: "Second-cycle Legacy Provenance Review completed as PASS across all four existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {
       id: "M-007",

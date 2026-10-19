@@ -69,15 +69,22 @@ export function evidencePolarity(instance) {
 
 export function evidenceRelationships(record, instance) {
   const rows = [];
-  const types = ["same_recipient_followup", "same_trial_report"];
+  const types = ["same_recipient_followup", "same_recipient_analysis", "same_trial_report", "shared_publication"];
+  const validOverlap = (entry, related) => entry.relationship?.type !== "shared_publication" || (
+    entry.relationship.sharedSourceDoi && [entry, related].every(i => i?.sources?.some(s => s.doi === entry.relationship.sharedSourceDoi))
+  );
   const target = record.instances?.find(i => i.id === instance.relationship?.relatedInstanceId);
-  if (target && target.id !== instance.id && types.includes(instance.relationship?.type)) {
+  if (target && target.id !== instance.id && types.includes(instance.relationship?.type) && validOverlap(instance, target)) {
     rows.push({ targetId: instance.relationship.relatedInstanceId, text: instance.relationship.note });
   }
   for (const other of record.instances ?? []) {
-    if (other.id !== instance.id && types.includes(other.relationship?.type) && other.relationship.relatedInstanceId === instance.id) {
+    if (other.id !== instance.id && types.includes(other.relationship?.type) && other.relationship.relatedInstanceId === instance.id && validOverlap(other, instance)) {
       rows.push({ targetId: other.id, text: other.relationship.type === "same_trial_report"
         ? `Same trial as ${other.id}; these are different reports from one trial, not independent replications.`
+        : other.relationship.type === "shared_publication"
+        ? (other.relationship.reverseNote ?? `Shares publication ${other.relationship.sharedSourceDoi} with ${other.id}; overlapping evidence is not independent replication.`)
+        : other.relationship.type === "same_recipient_analysis"
+        ? `Same recipient as ${other.id}; that entry reports immune profiling of this case, not an additional patient.`
         : `Same recipient as ${other.id}; that entry is a later report of this case, not an independent patient.` });
     }
   }
@@ -97,8 +104,18 @@ export function mutationFieldLabel(field) {
 
 export function recordCodeExplanations(text) {
   return [
+    [/\bFCIF Admission Review\b/, "FCIF Admission Review is the Observatory’s process for deciding whether a claim enters the record; it is not external scientific peer review."],
     [/\bLPR-/, "LPR identifies an internal source-review record."],
     [/\bRN-/, "RN identifies an institutional note."],
     [/\bPROG-/, "PROG identifies a programme: AI (Artificial Intelligence), AM (Advanced Materials), BT (Biotechnology), or QE (Quantum Engineering)."],
   ].filter(([pattern]) => pattern.test(text)).map(([, explanation]) => explanation);
+}
+
+/** Context beside preserved historical wording, never a replacement assessment. */
+export function assessmentReadingNotes(record, assessment) {
+  const notes = [];
+  if (/held outside LPR-/.test(assessment.assessorNote ?? "")) notes.push("This evidence was reviewed separately from the earlier source check; the LPR code identifies that internal source-review record.");
+  if (record.id === "FR-AI-0008" && assessment.id === "AS-001") notes.push("Historical stage annotation: VS-05 was applied to this initial assessment by a later stage review. It is not proof of Operation on the uncertain original date. Subsequent assessments retain their recorded assignments; see the current State Warrant for the separate stage challenge.");
+  if (record.id === "FR-AI-0009" && assessment.id === "AS-001") notes.push("Here, ‘independently shows’ refers to a separate study, not independent replication of the V-JEPA 2 result. ‘Recorded in Drive’ refers to internal administrative documentation, not scientific evidence or external verification.");
+  return notes;
 }
