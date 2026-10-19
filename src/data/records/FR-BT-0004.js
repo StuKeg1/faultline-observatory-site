@@ -175,6 +175,7 @@ export const FR_BT_0004 = {
   ],
 
   mutationLog: [
+    {"id":"M-014","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-007 → AS-002","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
     {
       "id": "M-013",
       "date": "2026-10-08",

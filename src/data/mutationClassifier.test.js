@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 
 import { getLatestDevelopments } from "./derive.js";
 import { ALL_RECORDS } from "./corpus.js";
+import { ASSESSMENT_MUTATION_REFERENCE_REVIEWS, getAssessmentMutationReferenceReview } from "./assessmentMutationReferences.js";
 import {
   detectMutationType,
   qualifiesForHomepage,
@@ -117,13 +118,52 @@ test("unresolved legacy assessment references remain visible and fail closed", (
 
   assert.deepEqual(unclassified, [
     "FR-QE-0001:M-003:assessment_issued",
-    "FR-AI-0001:M-007:assessment_issued",
-    "FR-AM-0006:M-015:assessment_issued",
-    "FR-AM-0006:M-013:assessment_issued",
-    "FR-AM-0006:M-009:assessment_issued",
-    "FR-BT-0004:M-007:assessment_issued",
   ]);
   assert.equal(qualifiesForHomepage("unclassified").qualifies, false);
+});
+
+test("five source-backed references resolve once while the lost QE assessment stays unlinked", () => {
+  const keys = ASSESSMENT_MUTATION_REFERENCE_REVIEWS.map(r => `${r.recordId}:${r.mutationId}`);
+  assert.equal(new Set(keys).size, 6);
+  for (const review of ASSESSMENT_MUTATION_REFERENCE_REVIEWS) {
+    const r = ALL_RECORDS.find(r => r.id === review.recordId);
+    const m = r.mutationLog.find(m => m.id === review.mutationId);
+    assert.equal(getAssessmentMutationReferenceReview(r, m), review);
+    assert.deepEqual(Object.fromEntries(Object.keys(review.expectedMutation).map(k => [k, m[k]])), review.expectedMutation);
+    assert.equal(resolveAssessmentMutation(m, r)?.id ?? null, review.assessmentId);
+    if (review.assessmentId) {
+      assert.match(review.sourceCommit, /^[a-f0-9]{40}$/);
+      assert.equal(r.assessments.find(a => a.id === review.assessmentId).date, m.date);
+    }
+  }
+});
+
+test("reviewed links fail closed when source identity or assessment date changes", () => {
+  const r = ALL_RECORDS.find(r => r.id === "FR-AM-0006");
+  const m = r.mutationLog.find(m => m.id === "M-015");
+  for (const changed of [{ ...m, date: "2026-08-30" }, { ...m, note: "Changed source" }, { ...m, id: "M-999" }]) {
+    assert.equal(resolveAssessmentMutation(changed, r), null);
+  }
+  const altered = { ...r, assessments: r.assessments.map(a => a.id === "AS-004" ? { ...a, date: "2026-08-30" } : a) };
+  assert.equal(resolveAssessmentMutation(m, altered), null);
+  assert.equal(resolveAssessmentMutation({ ...m, to: "AS-999" }, r), null);
+  assert.equal(resolveAssessmentMutation({ ...m, to: "AS-003 / AS-004" }, r), null);
+});
+
+test("four historical stage changes qualify once on original dates; metadata corrections do not", () => {
+  const expected = ["FR-AI-0001:M-007", "FR-AM-0006:M-009", "FR-AM-0006:M-015", "FR-BT-0004:M-007"];
+  const rows = getLatestDevelopments(ALL_RECORDS, 10000);
+  for (const key of expected) {
+    const matches = rows.filter(row => `${row.record.id}:${row.mutation.id}` === key);
+    assert.equal(matches.length, 1);
+    assert.ok(["2026-06-27", "2026-08-29"].includes(matches[0].mutation.date));
+  }
+  assert.ok(!rows.some(row => row.record.id === "FR-AM-0006" && row.mutation.id === "M-013"));
+  for (const [rid, mid] of [["FR-AI-0001", "M-016"], ["FR-AM-0006", "M-019"], ["FR-BT-0004", "M-014"]]) {
+    const r = ALL_RECORDS.find(r => r.id === rid), m = r.mutationLog.find(m => m.id === mid);
+    assert.equal(detectMutationType(m, r), "editorial_correction");
+    assert.ok(!rows.some(row => row.record.id === rid && row.mutation.id === mid));
+  }
 });
 
 test("assessment targets resolve explanatory suffixes but reject ambiguous or missing references", () => {

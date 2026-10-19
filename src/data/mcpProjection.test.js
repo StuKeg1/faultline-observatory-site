@@ -13,6 +13,17 @@ test("shared MCP view preserves canonical fields and governed assessment project
   }
 });
 
+test("MCP exposes five reviewed links and the explicit QE limitation without replacing original targets", () => {
+  const views = ALL_RECORDS.map(canonicalRecordView);
+  const reviews = views.flatMap(v => v.assessmentMutationReferenceReviews ?? []);
+  assert.equal(reviews.filter(r => r.disposition === "linked").length, 5);
+  assert.equal(reviews.filter(r => r.disposition === "historical_target_unavailable").length, 1);
+  const qe = views.find(v => v.id === "FR-QE-0001");
+  assert.equal(qe.assessmentMutationReferenceReviews[0].assessmentId, null);
+  assert.equal(qe.mutationLog.find(m => m.id === "M-003").to, "Original assessment (approximate)");
+  assert.equal(qe.assessments.length, 2);
+});
+
 test("withdrawn AGI architecture wording is attributed to historical AS-001", () => {
   const result = searchRecords({ query: "the path is bifurcating architecturally" });
   assert.deepEqual(result.records.map(r => r.id), ["FR-AI-0005"]);
