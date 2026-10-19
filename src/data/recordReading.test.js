@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText, mutationFieldLabel, recordCodeExplanations, assessmentReadingNotes } from "./recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment } from "./recordReading.js";
 import { getAssessmentHistory } from "./derive.js";
 import { CURRENT_PRESSURE_STATES, getPressureStateExplanation } from "./pressureStates.js";
 
@@ -124,9 +124,30 @@ test("immune profiling is explicitly the first recipient and historical notes do
   assert.match(evidenceRelationships(kidney, kidney.instances.find(i => i.id === "IN-002"))[0].text, /not an additional patient/);
   const world = ALL_RECORDS.find(r => r.id === "FR-AI-0009");
   const before = JSON.stringify(world.assessments);
-  assert.match(assessmentReadingNotes(world, world.assessments[0])[0], /not independent replication/);
+  assert.match(assessmentReadingView(world, world.assessments[0]).summary, /A separate study, DreamerV3/);
   assert.equal(JSON.stringify(world.assessments), before);
   assert.match(recordCodeExplanations("FCIF Admission Review")[0], /not external scientific peer review/);
+});
+
+test("editorial reading removes confusing phrases while preserving originals and reviewed stage authority", () => {
+  const before = JSON.stringify(ALL_RECORDS);
+  const world = ALL_RECORDS.find(r => r.id === "FR-AI-0009");
+  const reading = assessmentReadingView(world, world.assessments[0]);
+  assert.ok(reading.changed);
+  assert.doesNotMatch(reading.summary, /independently shows/);
+  assert.doesNotMatch(reading.assessorNote, /recorded in Drive/);
+  assert.match(world.assessments[0].assessorNote, /recorded in Drive/);
+  const kidney = ALL_RECORDS.find(r => r.id === "FR-BT-0005");
+  assert.doesNotMatch(assessmentReadingView(kidney, kidney.assessments.at(-1)).assessorNote, /held outside LPR/);
+  const imaging = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
+  const history = getAssessmentHistory(imaging);
+  const chronology = history.map(a => chronologicalReadingAssessment(imaging, a));
+  assert.deepEqual(chronology.map(a => a.verificationStage), ["VS-03", "VS-03", "VS-03", "VS-05"]);
+  assert.equal(history[0].verificationStage, "VS-05");
+  assert.equal(chronology[0].verificationStageProvenance.effectiveStage, "VS-05");
+  assert.doesNotMatch(assessmentReadingView(imaging, imaging.assessments.at(-1)).assessorNote, /converter date/);
+  assert.equal(recordCodeExplanations("VSC-001").length, 1);
+  assert.equal(JSON.stringify(ALL_RECORDS), before);
 });
 
 test("partial remains an evidential relation, not a quality verdict or reassignment", () => {

@@ -106,6 +106,7 @@ export function recordCodeExplanations(text) {
   return [
     [/\bFCIF Admission Review\b/, "FCIF Admission Review is the Observatory’s process for deciding whether a claim enters the record; it is not external scientific peer review."],
     [/\bLPR-/, "LPR identifies an internal source-review record."],
+    [/\bVSC-/, "VSC identifies a verification-stage challenge and its review reference."],
     [/\bRN-/, "RN identifies an institutional note."],
     [/\bPROG-/, "PROG identifies a programme: AI (Artificial Intelligence), AM (Advanced Materials), BT (Biotechnology), or QE (Quantum Engineering)."],
   ].filter(([pattern]) => pattern.test(text)).map(([, explanation]) => explanation);
@@ -114,8 +115,27 @@ export function recordCodeExplanations(text) {
 /** Context beside preserved historical wording, never a replacement assessment. */
 export function assessmentReadingNotes(record, assessment) {
   const notes = [];
-  if (/held outside LPR-/.test(assessment.assessorNote ?? "")) notes.push("This evidence was reviewed separately from the earlier source check; the LPR code identifies that internal source-review record.");
   if (record.id === "FR-AI-0008" && assessment.id === "AS-001") notes.push("Historical stage annotation: VS-05 was applied to this initial assessment by a later stage review. It is not proof of Operation on the uncertain original date. Subsequent assessments retain their recorded assignments; see the current State Warrant for the separate stage challenge.");
-  if (record.id === "FR-AI-0009" && assessment.id === "AS-001") notes.push("Here, ‘independently shows’ refers to a separate study, not independent replication of the V-JEPA 2 result. ‘Recorded in Drive’ refers to internal administrative documentation, not scientific evidence or external verification.");
   return notes;
+}
+
+/** Narrow editorial rendering; original strings remain available beside it. */
+export function assessmentReadingView(record, assessment) {
+  let summary = assessment.summary;
+  let assessorNote = assessment.assessorNote ?? "";
+  if (record.id === "FR-AI-0009" && assessment.id === "AS-001") {
+    summary = summary.replace("DreamerV3 (IN-001) independently shows", "A separate study, DreamerV3 (IN-001), shows");
+    assessorNote = assessorNote.replace("recorded in Drive", "documented in the Observatory’s internal records");
+  }
+  if (record.id === "FR-AI-0008") assessorNote = assessorNote.replace("converter date", "date inherited from the original data import");
+  if (record.id === "FR-BT-0005") assessorNote = assessorNote.replace("held outside LPR-001-D29", "reviewed separately from the earlier source check");
+  return { summary, assessorNote, changed: summary !== assessment.summary || assessorNote !== (assessment.assessorNote ?? "") };
+}
+
+/** A retrospective annotation must not masquerade as an original stage event. */
+export function chronologicalReadingAssessment(record, assessment) {
+  if (record.id === "FR-AI-0008" && assessment.id === "AS-001" && assessment.verificationStageProvenance?.storedStage) {
+    return { ...assessment, verificationStage: assessment.verificationStageProvenance.storedStage };
+  }
+  return assessment;
 }
