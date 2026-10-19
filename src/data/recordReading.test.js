@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText, mutationFieldLabel, recordCodeExplanations } from "./recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, evidencePolarity, evidenceRelationships, questionDateText, mutationFieldLabel, recordCodeExplanations, assessmentReadingNotes } from "./recordReading.js";
 import { getAssessmentHistory } from "./derive.js";
 import { CURRENT_PRESSURE_STATES, getPressureStateExplanation } from "./pressureStates.js";
 
@@ -15,7 +15,8 @@ test("code help is contextual and change-log labels preserve field meaning", () 
 
 test("source-check recency is separate from the assessment and all same-day update types are retained", () => {
   const am = ALL_RECORDS.find(r => r.id === "FR-AM-0007");
-  assert.deepEqual(getRecordUpdateSummary(am), { date: "2026-10-16", labels: ["Source review completed"] });
+  assert.deepEqual(getRecordUpdateSummary({ ...am, mutationLog: am.mutationLog.filter(m => m.date <= "2026-10-16") }), { date: "2026-10-16", labels: ["Source review completed"] });
+  assert.deepEqual(getRecordUpdateSummary(am), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
   assert.ok(am.assessments.at(-1).date < "2026-10-16");
   const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
   const before = JSON.stringify(ai);
@@ -100,6 +101,32 @@ test("MASAI reports link the same trial in both directions without implying repl
   assert.deepEqual(evidenceRelationships({ instances: [instance] }, instance), []);
   assert.equal(record.assessments.at(-1).verificationStage, "VS-05");
   assert.equal(record.verificationStageChallenges[0].status, "awaiting_operator_decision");
+});
+
+test("partial publication overlap is guarded by both sources and does not erase distinct antimony evidence", () => {
+  const record = ALL_RECORDS.find(r => r.id === "FR-AM-0007");
+  for (const id of ["IN-001", "IN-002"]) {
+    const rows = evidenceRelationships(record, record.instances.find(i => i.id === id));
+    assert.equal(rows.length, 1);
+    assert.match(rows[0].text, /antimony/);
+    assert.match(rows[0].text, /not (an independent replication|independent replications)/);
+  }
+  const copy = structuredClone(record);
+  copy.instances[0].sources = copy.instances[0].sources.filter(s => s.doi !== "10.1073/pnas.2108938118");
+  assert.deepEqual(evidenceRelationships(copy, copy.instances[0]), []);
+  assert.deepEqual(evidenceRelationships(copy, copy.instances[1]), []);
+  assert.equal(record.instances[0].sources.length, 2);
+});
+
+test("immune profiling is explicitly the first recipient and historical notes do not alter assessments", () => {
+  const kidney = ALL_RECORDS.find(r => r.id === "FR-BT-0005");
+  assert.equal(evidenceRelationships(kidney, kidney.instances.find(i => i.id === "IN-004"))[0].targetId, "IN-002");
+  assert.match(evidenceRelationships(kidney, kidney.instances.find(i => i.id === "IN-002"))[0].text, /not an additional patient/);
+  const world = ALL_RECORDS.find(r => r.id === "FR-AI-0009");
+  const before = JSON.stringify(world.assessments);
+  assert.match(assessmentReadingNotes(world, world.assessments[0])[0], /not independent replication/);
+  assert.equal(JSON.stringify(world.assessments), before);
+  assert.match(recordCodeExplanations("FCIF Admission Review")[0], /not external scientific peer review/);
 });
 
 test("partial remains an evidential relation, not a quality verdict or reassignment", () => {

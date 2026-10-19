@@ -17,7 +17,7 @@ import {
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations } from "../data/recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingNotes } from "../data/recordReading.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import "./FrontierRecord.css";
@@ -76,11 +76,11 @@ function WarrantPanel({ current, record }) {
         <div className="wp-row">
           <span className="wp-label">Assessment context</span>
           <span className="wp-value">{current.assessorNote}
-            {/held outside LPR-/.test(current.assessorNote) && <small className="reading-note">This evidence was reviewed separately from the earlier source check.</small>}
           </span>
         </div>
       )}
       <RecordCodeKey text={`${current.summary} ${current.assessorNote ?? ""}`} />
+      {assessmentReadingNotes(record, current).map(note => <p className="reading-note" key={note}>{note}</p>)}
         <div className="wp-row">
           <span className="wp-label">State entered</span>
           <span className="wp-value">{enteredDate}</span>
@@ -284,6 +284,8 @@ function RecordLineage({ record }) {
               {a.assessorNote && (
                 <div className="tl-assessor-note">{a.assessorNote}</div>
               )}
+              <RecordCodeKey text={`${a.summary} ${a.assessorNote ?? ""}`} />
+              {assessmentReadingNotes(record, a).map(note => <p className="reading-note" key={note}>{note}</p>)}
               {a.verificationStageProvenance && (
                 <div className="tl-assessor-note">
                   Verification Stage:{" "}
