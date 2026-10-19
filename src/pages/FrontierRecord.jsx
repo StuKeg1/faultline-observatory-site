@@ -17,7 +17,7 @@ import {
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingNotes } from "../data/recordReading.js";
+import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingNotes, assessmentReadingView, chronologicalReadingAssessment } from "../data/recordReading.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import "./FrontierRecord.css";
@@ -27,6 +27,14 @@ const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
 function RecordCodeKey({ text }) {
   const explanations = recordCodeExplanations(text);
   return explanations.length ? <p className="reading-note">{explanations.join(" ")}</p> : null;
+}
+
+function OriginalAssessmentWording({ assessment, reading }) {
+  if (!reading.changed) return null;
+  return <div className="assessment-editorial-rendering">
+    <p className="reading-note">Editorial rendering for clarity; the assessment is unchanged.</p>
+    <details><summary>Original recorded wording</summary><p>{assessment.summary}</p>{assessment.assessorNote && <p>{assessment.assessorNote}</p>}</details>
+  </div>;
 }
 
 function StageProvenanceMarker() {
@@ -52,6 +60,7 @@ function StageProvenanceMarker() {
 // its reasoning or Verification Stage may have changed.
 function WarrantPanel({ current, record }) {
   const enteredDate = getStateEnteredDate(record);
+  const reading = assessmentReadingView(record, current);
   return (
     <div className="warrant-panel" aria-label="State warrant">
       <div className="wp-row">
@@ -70,16 +79,17 @@ function WarrantPanel({ current, record }) {
       )}
       <div className="wp-row wp-row-rationale">
         <span className="wp-label">Current assessment</span>
-        <span className="wp-value">{current.summary}</span>
+        <span className="wp-value">{reading.summary}</span>
       </div>
       {current.assessorNote && (
         <div className="wp-row">
           <span className="wp-label">Assessment context</span>
-          <span className="wp-value">{current.assessorNote}
+          <span className="wp-value">{reading.assessorNote}
           </span>
         </div>
       )}
-      <RecordCodeKey text={`${current.summary} ${current.assessorNote ?? ""}`} />
+      <OriginalAssessmentWording assessment={current} reading={reading} />
+      <RecordCodeKey text={`${reading.summary} ${reading.assessorNote}`} />
       {assessmentReadingNotes(record, current).map(note => <p className="reading-note" key={note}>{note}</p>)}
         <div className="wp-row">
           <span className="wp-label">State entered</span>
@@ -259,7 +269,7 @@ function VerificationMatrix({ record }) {
 // Compare both axes in the governed display history. A held Pressure State
 // must not label a Verification Stage change as "no change".
 function RecordLineage({ record }) {
-  const history = getAssessmentHistory(record);
+  const history = getAssessmentHistory(record).map(a => chronologicalReadingAssessment(record, a));
   const lastIndex = history.length - 1;
   return (
     <div className="timeline" role="list">
@@ -267,6 +277,7 @@ function RecordLineage({ record }) {
         const isFirst = i === 0;
         const isLast = i === lastIndex;
         const previous = history[i - 1];
+        const reading = assessmentReadingView(record, a);
         const hasChange = previous && (previous.pressureState !== a.pressureState || previous.verificationStage !== a.verificationStage);
         const dotClass = isFirst ? "major" : isLast ? "current" : "";
         const eventLabel = `${assessmentChangeLabel(previous, a)} — `;
@@ -280,15 +291,16 @@ function RecordLineage({ record }) {
                 {eventLabel}
                 <StateBadge pressureState={a.pressureState} />
               </div>
-              <div className="tl-detail">{a.summary}</div>
+              <div className="tl-detail">{reading.summary}</div>
               {a.assessorNote && (
-                <div className="tl-assessor-note">{a.assessorNote}</div>
+                <div className="tl-assessor-note">{reading.assessorNote}</div>
               )}
-              <RecordCodeKey text={`${a.summary} ${a.assessorNote ?? ""}`} />
+              <OriginalAssessmentWording assessment={a} reading={reading} />
+              <RecordCodeKey text={`${reading.summary} ${reading.assessorNote}`} />
               {assessmentReadingNotes(record, a).map(note => <p className="reading-note" key={note}>{note}</p>)}
               {a.verificationStageProvenance && (
                 <div className="tl-assessor-note">
-                  Verification Stage:{" "}
+                  {record.id === "FR-AI-0008" && a.id === "AS-001" ? "Later review annotation (separate from the original assessment date): " : "Verification Stage: "}
                   {a.verificationStageProvenance.disposition === "historically-unverified"
                     ? `${a.verificationStageProvenance.storedStage} preserved — historically unverified`
                     : `${a.verificationStageProvenance.effectiveStage} after ratified review (stored code ${a.verificationStageProvenance.storedStage} preserved)`}
@@ -838,6 +850,7 @@ export default function FrontierRecord() {
 
           <section className="record-section-inner" id="s-assessment-history">
             <div className="rs-header">Assessment History</div>
+            {record.id === "FR-AI-0008" && <p className="narrative-context">History labels compare the originally recorded stages: AS-001, AS-002 and AS-003 stored VS-03; AS-004 assigned VS-05. The later review assigning VS-05 to AS-001 is shown separately as a retrospective annotation, not an original stage transition. This does not resolve the current stage challenge.</p>}
             {record.assessments.some((a, i) => i > 0 && a.date === record.assessments[i - 1].date) && <p className="narrative-context">Assessments on the same date follow their assessment ID order. An evidence-basis correction and a review of new evidence can be separate events.</p>}
             <RecordLineage record={record} />
           </section>
