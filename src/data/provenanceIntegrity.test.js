@@ -15,8 +15,16 @@ import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.j
 
 // Historical editorial receipts govern their original checkpoint, not later reassessments.
 function atCheckpoint(record, date) {
+  const statusAddedLater = record.mutationLog.some(mutation => mutation.date > date &&
+    mutation.note?.includes("docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md"));
   return {
     ...record,
+    // Status metadata was added after these frozen receipts; preserve their
+    // scientific-content hashes instead of accepting new hashes or waiving them.
+    instances: statusAddedLater ? record.instances.map(instance => {
+      const { evidenceStatus: _laterStatus, ...original } = instance;
+      return original;
+    }) : record.instances,
     assessments: record.assessments.filter(assessment => assessment.date <= date),
     mutationLog: record.mutationLog.filter(mutation => mutation.date <= date),
   };

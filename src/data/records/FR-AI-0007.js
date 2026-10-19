@@ -91,6 +91,7 @@ export const FR_AI_0007 = {
     },
     {
       id: "IN-005",
+      evidenceStatus: {"kind": "excluded", "reviewId": "LPR-001-D07", "mutationId": "M-016"},
       qualifiedEvent: "Legacy institutional-restructuring attribution — provenance unresolved",
       description: "The legacy instance bundled the Broad Institute, EMBL, pharmaceutical companies, Nature and Science editorials, Nobel-laureate commentary, and internal programmes at OpenAI, Anthropic, and Google DeepMind into a single claim that major institutions were reorganising scientific workflows in anticipation of autonomous AI discovery. LPR-001-D07 could not confidently reconstruct a source chain supporting that exact historical bundle or its stronger institutional-restructuring interpretation. The bundled claim is therefore withdrawn from the current evidential basis rather than retrofitted to substitute sources. IN-005 remains visible as explicit legacy provenance debt and contributes no substantive evidence for the record's current assessment or for the anticipatory-institutional-evidence taxonomy pending a separately governed review.",
       vectors: ["partial--legacy-provenance-unresolved"],
@@ -298,6 +299,7 @@ export const FR_AI_0007 = {
   ],
 
   mutationLog: [
+    {"id": "M-025", "date": "2026-10-19", "field": "reference_corrected", "from": "Existing source-review limitation not fully exposed in evidence-list status", "to": "Explicit reviewed evidence status on IN-005", "note": "Operator-authorised corpus reading audit Batch 3 / R02. Render the existing entry-level review disposition from explicit status metadata linked to its retained review and mutation. A withdrawn attribution is not a retracted publication; missing sources and Partial polarity do not automatically determine status. Preserve all original titles, descriptions, citations, counts, assessments, review markers and prior mutations. No substitute source, new evidence or reassessment. Receipt: docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md."},
     { id: "M-024", date: "2026-10-17", field: "instance_appended", from: "IN-013", to: "IN-014", note: "Approved flag 2026-10-17-04 implemented after explicit all-flags corpus authorisation. Bounded circuit discovery; no assessment or boundary change." },
     { id: "M-023", date: "2026-10-17", field: "instance_appended", from: "IN-012", to: "IN-013", note: "Approved flag 2026-10-17-03 implemented after explicit all-flags corpus authorisation. Mixed closure successes and reliability limits preserved as PARTIAL; no assessment change." },
     { id: "M-022", date: "2026-10-17", field: "instance_appended", from: "IN-011", to: "IN-012", note: "Approved flag 2026-10-17-02 implemented after explicit all-flags corpus authorisation. Selected correction-recognition evidence; no general failure-rate inference or assessment change." },
