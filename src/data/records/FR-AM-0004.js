@@ -103,6 +103,7 @@ export const FR_AM_0004 = {
       vectors: ["partial--peer-reviewed-stellarator-hts-magnet-engineering-no-threshold-met"],
       date: "2025; peer-reviewed 2026-08",
       sourceReference: "Y. Narushima et al., Journal of Physics: Conference Series 3278 (2026) 012031; Helical Fusion / NIFS UROCOIC double-pancake coil testing",
+      sources: [{"citation": "Narushima et al. Experiment of a Double-Pancake Coil Wound by UROCOIC Conductor for Application in Helical Fusion Reactors. Journal of Physics: Conference Series 3278, 012031 (2026).", "doi": "10.1088/1742-6596/3278/1/012031", "url": "https://iopscience.iop.org/article/10.1088/1742-6596/3278/1/012031", "locator": "Component coil test; does not establish whole-reactor operation."}],
     }
   ],
 
@@ -213,6 +214,7 @@ export const FR_AM_0004 = {
   ],
 
   mutationLog: [
+    {"id":"M-018","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-007","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, sourceReference, assessments, dates, relationships, review status and all prior mutations preserved. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {"id": "M-017", "date": "2026-10-19", "field": "editorial_correction", "from": "IN-005 named economic paper with mismatched author order, journal/year and DOI", "to": "IN-005 Lindley et al., Energy Policy 177 (2023) 113511; DOI 10.1016/j.enpol.2023.113511", "note": "Operator-approved citation correction following the bounded stage review. Align the named paper with publisher metadata; retain Entler citation, empirical interpretation, instance date and evidence count. No new paper or scientific result admitted. Exact former citation and verification source preserved in docs/reviews/AM-0004-BT-0003-STAGE-RECONCILIATION-2026-10-19.md."},
     {"id": "M-016", "date": "2026-10-19", "field": "assessment_correction", "from": "AS-003 / ESCALATING / VS-02", "to": "AS-004 / ESCALATING / VS-03", "note": "Operator-ratified current-stage reconciliation. Independent scrutiny of the full commercial-fusion claim supports Audit despite no plant threshold being met. Reconcile the September retained-code assignment with July rulings on AS-001/AS-002; preserve all prior assessments, mutations and overlays. No new evidence or Pressure State transition. Receipt: docs/reviews/AM-0004-BT-0003-STAGE-RECONCILIATION-2026-10-19.md."},
 
