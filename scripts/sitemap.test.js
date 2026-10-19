@@ -44,7 +44,7 @@ test("every child is a duplicate-free XML urlset", () => {
   }
 });
 
-test("sitemap-records.xml contains every FR record and lastmod is its latest evidence-entry date", async () => {
+test("sitemap-records.xml contains every FR record and lastmod is its page-modified date", async () => {
   const server = await createServer({
     root: ROOT,
     server: { middlewareMode: true },
@@ -58,17 +58,42 @@ test("sitemap-records.xml contains every FR record and lastmod is its latest evi
     assert.equal(entries.length, ALL_RECORDS.length);
 
     for (const record of ALL_RECORDS) {
-      const evidenceDates = record.mutationLog
-        .filter((entry) => /^(?:instance|instances|evidence)_(?:logged|appended)$/i.test(entry.field))
+      // Every mutation dates the page except a provenance review outcome.
+      const pageDates = record.mutationLog
+        .filter((entry) => !/^provenance_review(?:_completed)?$/.test(entry.field))
         .map((entry) => entry.date)
         .sort();
-      assert.ok(evidenceDates.length > 0, `${record.id} has no evidence-entry mutation`);
+      assert.ok(pageDates.length > 0, `${record.id} has no page-dating mutation`);
       const route = `${BASE_URL}/the-record/${record.id.toLowerCase()}/`;
       const match = entries.find((entry) => entry[1] === route);
       assert.ok(match, `${record.id} missing from sitemap-records.xml`);
-      assert.equal(match[2], evidenceDates.at(-1), `${record.id} has the wrong lastmod`);
+      assert.equal(match[2], pageDates.at(-1), `${record.id} has the wrong lastmod`);
       assert.match(match[2], /^\d{4}-\d{2}-\d{2}$/);
     }
+  } finally {
+    await server.close();
+  }
+});
+
+test("a trailing provenance review does not advance the page-modified date", async () => {
+  const server = await createServer({
+    root: ROOT,
+    server: { middlewareMode: true },
+    appType: "custom",
+    logLevel: "silent",
+  });
+  try {
+    const { getPageModifiedDate } = await server.ssrLoadModule("/src/data/derive.js");
+    const record = {
+      id: "FR-XX-0001",
+      mutationLog: [
+        { id: "M-004", date: "2026-10-05", field: "provenance_review", from: null, to: null },
+        { id: "M-003", date: "2026-10-01", field: "reference_corrected", from: null, to: null },
+        { id: "M-002", date: "2026-01-02", field: "instances_logged", from: null, to: "IN-001" },
+        { id: "M-001", date: "2026-01-01", field: "record_created", from: null, to: "FR-XX-0001" },
+      ],
+    };
+    assert.equal(getPageModifiedDate(record), "2026-10-01");
   } finally {
     await server.close();
   }
