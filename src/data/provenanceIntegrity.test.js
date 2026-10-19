@@ -14,7 +14,29 @@ import { FR_AI_0005 } from "./records/FR-AI-0005.js";
 import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.js";
 
 // Historical editorial receipts govern their original checkpoint, not later reassessments.
-const sourceLinkReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json", import.meta.url)));
+const sourceLinkReceipts = [1, 2].map(increment => JSON.parse(readFileSync(new URL(
+  `../../docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-${increment}-2026-10-19.json`, import.meta.url))));
+
+function restoreSourceFields(instance, change) {
+  if (!change) return instance;
+  const { sources: _laterSources, ...original } = instance;
+  const restored = change.previousSources === null ? original : { ...instance, sources: change.previousSources };
+  if (change.previousSourceReference) restored.sourceReference = change.previousSourceReference;
+  return restored;
+}
+
+function undoSourceReceipt(record, receipt) {
+  const entry = receipt.records.find(entry => entry.id === record.id);
+  if (!entry) return record;
+  assert.equal(record.mutationLog[0].id, entry.mutationId);
+  for (const change of entry.changes) {
+    const instance = record.instances.find(instance => instance.id === change.instanceId);
+    assert.deepEqual(instance.sources, change.sources);
+    if (change.sourceReference) assert.equal(instance.sourceReference, change.sourceReference);
+  }
+  return { ...record, mutationLog: record.mutationLog.slice(1), instances: record.instances.map(instance =>
+    restoreSourceFields(instance, entry.changes.find(change => change.instanceId === instance.id))) };
+}
 function atCheckpoint(record, date) {
   const statusAddedLater = record.mutationLog.some(mutation => mutation.date > date &&
     mutation.note?.includes("docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md"));
@@ -23,12 +45,10 @@ function atCheckpoint(record, date) {
     // Status metadata was added after these frozen receipts; preserve their
     // scientific-content hashes instead of accepting new hashes or waiving them.
     instances: record.instances.map(instance => {
-      const change = sourceLinkReceipt.date > date && sourceLinkReceipt.records
-        .find(entry => entry.id === record.id)?.changes.find(entry => entry.instanceId === instance.id);
-      if (change) {
-        const { sources: _laterSources, ...original } = instance;
-        instance = change.previousSources === null ? original : { ...instance, sources: change.previousSources };
-        if (change.previousSourceReference) instance = { ...instance, sourceReference: change.previousSourceReference };
+      for (const receipt of [...sourceLinkReceipts].reverse()) {
+        const change = receipt.date > date && receipt.records
+          .find(entry => entry.id === record.id)?.changes.find(entry => entry.instanceId === instance.id);
+        instance = restoreSourceFields(instance, change);
       }
       if (!statusAddedLater) return instance;
       const { evidenceStatus: _laterStatus, ...original } = instance;
@@ -39,28 +59,21 @@ function atCheckpoint(record, date) {
   };
 }
 
-test("verified source increment preserves all scientific content and prior history", async () => {
+test("successive source increments preserve all scientific content and prior history", async () => {
   const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
-  assert.equal(sourceLinkReceipt.records.reduce((n, entry) => n + entry.changes.length, 0), 8);
-  for (const entry of sourceLinkReceipt.records) {
-    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
-    const restored = structuredClone(record);
-    assert.equal(restored.mutationLog[0].id, entry.mutationId);
-    const type = detectMutationType(restored.mutationLog[0], record);
-    assert.equal(type, "editorial_correction");
-    assert.equal(qualifiesForHomepage(type).qualifies, false);
-    restored.mutationLog.shift();
-    for (const change of entry.changes) {
-      const instance = restored.instances.find(instance => instance.id === change.instanceId);
-      assert.deepEqual(instance.sources, change.sources);
-      if (change.previousSourceReference) {
-        assert.equal(instance.sourceReference, change.sourceReference);
-        instance.sourceReference = change.previousSourceReference;
-      }
-      if (change.previousSources === null) delete instance.sources;
-      else instance.sources = change.previousSources;
+  assert.deepEqual(sourceLinkReceipts.map(receipt => receipt.records.reduce((n, entry) => n + entry.changes.length, 0)), [8, 2]);
+  for (let index = 0; index < sourceLinkReceipts.length; index++) {
+    const receipt = sourceLinkReceipts[index];
+    for (const entry of receipt.records) {
+      let record = Object.values(await import(`./records/${entry.id}.js`))[0];
+      // Reverse only explicitly receipted later increments. Keep the original
+      // whole-record hash checks valid instead of replacing or waiving them.
+      for (const later of sourceLinkReceipts.slice(index + 1).reverse()) record = undoSourceReceipt(record, later);
+      const type = detectMutationType(record.mutationLog[0], record);
+      assert.equal(type, "editorial_correction");
+      assert.equal(qualifiesForHomepage(type).qualifies, false);
+      assert.equal(digest(undoSourceReceipt(record, receipt)), entry.originalRecordHash, `${entry.id}: unreceipted edit`);
     }
-    assert.equal(digest(restored), entry.originalRecordHash, `${entry.id}: unreceipted edit`);
   }
 });
 
