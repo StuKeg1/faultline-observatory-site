@@ -1,0 +1,131 @@
+{
+  "reviewId": "SHARED-SOURCE-LABELS-STEP-5A",
+  "date": "2026-10-19",
+  "baseCommit": "fd736d648f32aae6830fb419ea3d67f9f694a284",
+  "records": [
+    {
+      "id": "FR-QE-0003",
+      "mutationId": "M-015",
+      "originalRecordHash": "1f25de94dbdbe4203cde7f617e36a4cc0a8cb1af8e726865175170f43cca5f6a",
+      "changes": [
+        {
+          "instanceId": "IN-006",
+          "previousRelationship": null,
+          "relationship": {
+            "type": "shared_publication",
+            "relatedInstanceId": "IN-005",
+            "sharedSourceDoi": "10.1038/s41586-024-08449-y",
+            "note": "Shares the Willow publication with IN-005. These entries discuss the same published result at different review points, not an additional experiment.",
+            "reverseNote": "Shares the Willow publication with IN-006. Its later review entry does not establish an additional experiment."
+          }
+        }
+      ]
+    },
+    {
+      "id": "FR-QE-0006",
+      "mutationId": "M-016",
+      "originalRecordHash": "01b2aab870debcb7cdaac4de9744da4941a4147da9103aae6929fac5c236376f",
+      "changes": [
+        {
+          "instanceId": "IN-005",
+          "previousRelationship": null,
+          "relationship": {
+            "type": "shared_publication",
+            "relatedInstanceId": "IN-002",
+            "sharedSourceDoi": "10.1038/s41586-023-06096-3",
+            "sharedSourceUrl": "https://arxiv.org/abs/2306.14887",
+            "note": "Shares the IBM experiment and Tindall classical-simulation sources with IN-002. This entry focuses on the changing classical comparison; the two entries are not two independent quantum experiments.",
+            "reverseNote": "Shares the IBM experiment and Tindall classical-simulation sources with IN-005. That entry focuses on the classical comparison, rather than another independent quantum experiment."
+          }
+        }
+      ]
+    },
+    {
+      "id": "FR-QE-0008",
+      "mutationId": "M-016",
+      "originalRecordHash": "b9bc85ee3d909e4375aa79760a724417ecce8e89f8dd00b35d0ce398f5e027da",
+      "changes": [
+        {
+          "instanceId": "IN-002",
+          "previousRelationship": null,
+          "relationship": {
+            "type": "shared_publication",
+            "relatedInstanceId": "IN-005",
+            "sharedSourceDoi": "10.1038/s41586-022-05434-1",
+            "note": "Shares the 2023 Google publication with IN-005. This entry discusses surface-code scaling; IN-005 uses its repetition-code error-floor evidence. These are different aspects of one paper.",
+            "reverseNote": "Shares the 2023 Google publication with IN-002. That entry discusses surface-code scaling; this entry uses its repetition-code error-floor evidence. Sharing a paper does not make these the same measurement."
+          }
+        },
+        {
+          "instanceId": "IN-003",
+          "previousRelationship": null,
+          "relationship": {
+            "type": "shared_publication",
+            "relatedInstanceId": "IN-005",
+            "sharedSourceDoi": "10.1038/s41586-024-08449-y",
+            "note": "Shares the Willow publication with IN-005. This entry discusses surface-code scaling; IN-005 uses the paper’s repetition-code error-floor evidence. These are different aspects of one paper.",
+            "reverseNote": "Shares the Willow publication with IN-003. That entry discusses surface-code scaling; this entry uses its repetition-code error-floor evidence. Sharing a paper does not make these the same measurement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "FR-AM-0001",
+      "mutationId": "M-014",
+      "originalRecordHash": "8d42cbe0578cbbee6ba50e64af552e89df226d8cbdf25ce18d4dbee4c1f84e6d",
+      "changes": [
+        {
+          "instanceId": "IN-001",
+          "previousRelationship": null,
+          "relationship": {
+            "type": "shared_publication",
+            "relatedInstanceId": "IN-002",
+            "sharedSourceUrl": "https://files.ncas.org/erab/apx2a.htm",
+            "note": "Shares the DOE 1989 chronology appendix with IN-002 and IN-003. The report describes distinct events and laboratories; sharing this source does not mean the experiments were the same.",
+            "reverseNote": "Shares the DOE 1989 chronology appendix with IN-001; IN-003 also cites it. The report describes distinct events and laboratories, so shared reporting does not establish whether the underlying experiments are independent."
+          }
+        },
+        {
+          "instanceId": "IN-003",
+          "previousRelationship": null,
+          "relationship": {
+            "type": "shared_publication",
+            "relatedInstanceId": "IN-002",
+            "sharedSourceUrl": "https://files.ncas.org/erab/apx2a.htm",
+            "note": "Shares the DOE 1989 chronology appendix with IN-002 and IN-001. The laboratory failures described here are distinct from the initial announcement and early positive reports.",
+            "reverseNote": "Shares the DOE 1989 chronology appendix with IN-003; IN-001 also cites it. The laboratory failures in IN-003 are distinct from the early positive reports described here."
+          }
+        },
+        {
+          "instanceId": "IN-006",
+          "previousRelationship": null,
+          "relationship": {
+            "type": "shared_publication",
+            "relatedInstanceId": "IN-005",
+            "sharedSourceUrl": "https://en.wikisource.org/wiki/Report_of_the_Review_of_Low_Energy_Nuclear_Reactions",
+            "note": "Shares the DOE 2004 review report with IN-005. This entry discusses the review’s conclusions; IN-005 uses its account of continuing research. Neither citation represents an additional experiment.",
+            "reverseNote": "Shares the DOE 2004 review report with IN-006. This entry uses its account of continuing research; IN-006 discusses the review’s conclusions. The two citations are not two additional experiments."
+          }
+        }
+      ]
+    },
+    {
+      "id": "FR-BT-0006",
+      "mutationId": "M-007",
+      "originalRecordHash": "1d016b2bdb0d65cd281031c7d9644f6cbeb077e8a40d9e6e36b130a1296261c5",
+      "changes": [
+        {
+          "instanceId": "IN-004",
+          "previousRelationship": null,
+          "relationship": {
+            "type": "shared_publication",
+            "relatedInstanceId": "IN-001",
+            "sharedSourceDoi": "10.1038/s41557-025-02019-z",
+            "note": "Shares the Fletcher, Diggines and Elani Perspective with IN-001. It discusses module integration and systems engineering; this is not an additional independent experiment.",
+            "reverseNote": "Shares the Fletcher, Diggines and Elani Perspective with IN-004. These entries use different aspects of the same field synthesis, not additional independent experiments."
+          }
+        }
+      ]
+    }
+  ]
+}

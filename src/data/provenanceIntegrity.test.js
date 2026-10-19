@@ -16,6 +16,7 @@ import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.j
 // Historical editorial receipts govern their original checkpoint, not later reassessments.
 const sourceLinkReceipts = [1, 2].map(increment => JSON.parse(readFileSync(new URL(
   `../../docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-${increment}-2026-10-19.json`, import.meta.url))));
+const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.json", import.meta.url)));
 
 function restoreSourceFields(instance, change) {
   if (!change) return instance;
@@ -45,6 +46,12 @@ function atCheckpoint(record, date) {
     // Status metadata was added after these frozen receipts; preserve their
     // scientific-content hashes instead of accepting new hashes or waiving them.
     instances: record.instances.map(instance => {
+      const sharedChange = sharedSourceReceipt.date > date && sharedSourceReceipt.records
+        .find(entry => entry.id === record.id)?.changes.find(change => change.instanceId === instance.id);
+      if (sharedChange) {
+        const { relationship: _laterRelationship, ...original } = instance;
+        instance = sharedChange.previousRelationship === null ? original : { ...instance, relationship: sharedChange.previousRelationship };
+      }
       for (const receipt of [...sourceLinkReceipts].reverse()) {
         const change = receipt.date > date && receipt.records
           .find(entry => entry.id === record.id)?.changes.find(entry => entry.instanceId === instance.id);
@@ -74,6 +81,25 @@ test("successive source increments preserve all scientific content and prior his
       assert.equal(qualifiesForHomepage(type).qualifies, false);
       assert.equal(digest(undoSourceReceipt(record, receipt)), entry.originalRecordHash, `${entry.id}: unreceipted edit`);
     }
+  }
+});
+
+test("shared-source labels preserve whole records outside their receipted metadata", async () => {
+  assert.equal(sharedSourceReceipt.records.length, 5);
+  assert.equal(sharedSourceReceipt.records.reduce((sum, entry) => sum + entry.changes.length, 0), 8);
+  for (const entry of sharedSourceReceipt.records) {
+    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const restored = structuredClone(record);
+    assert.equal(restored.mutationLog[0].id, entry.mutationId);
+    assert.equal(detectMutationType(restored.mutationLog[0], record), "editorial_correction");
+    restored.mutationLog.shift();
+    for (const change of entry.changes) {
+      const instance = restored.instances.find(instance => instance.id === change.instanceId);
+      assert.deepEqual(instance.relationship, change.relationship);
+      if (change.previousRelationship === null) delete instance.relationship;
+      else instance.relationship = change.previousRelationship;
+    }
+    assert.equal(createHash("sha256").update(JSON.stringify(restored)).digest("hex"), entry.originalRecordHash, `${entry.id}: unreceipted edit`);
   }
 });
 
