@@ -179,14 +179,8 @@ function WhereRecordStands({ legibility }) {
       {questions.length > 0 && (
         <div className="record-questions-on-record">
           <span className="record-stands-label">Questions on record</span>
-          <ul>
-            {questions.map((question) => (
-              <li key={question.id}>
-                <span>{question.question}</span>
-                <small>{questionDateText(question)}</small>
-              </li>
-            ))}
-          </ul>
+          <a href="#s-open-questions">View {questions.length} retained {questions.length === 1 ? "question" : "questions"} →</a>
+          <p>Retained questions may have been narrowed or reframed by the current assessment.</p>
         </div>
       )}
     </section>
@@ -854,7 +848,7 @@ export default function FrontierRecord() {
           )}
 
           {hasOpenQuestions && (
-            <section className="record-section-inner" id="s-open-questions">
+            <section className="record-section-inner" id="s-open-questions" tabIndex={-1}>
               <div className="rs-header">Questions on record</div>
               <p className="narrative-context">Questions retained in this record. The current State Warrant may have narrowed or reframed them. Recorded dates refer to question history, not necessarily the age of the current wording; known revision dates are shown separately.</p>
               <OpenQuestions record={record} />
