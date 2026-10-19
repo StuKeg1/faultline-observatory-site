@@ -271,6 +271,7 @@ export const FR_AI_0001 = {
   ],
 
   mutationLog: [
+    {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-007 → AS-002","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
     {"id": "M-015", "date": "2026-10-12", "field": "assessment_issued", "from": "AS-002", "to": "AS-003", "note": "Operator-authorised evidence-gap reassessment considers IN-007 admitted 2026-09-29. AS-003 appended at ESCALATING / VS-03; current posture reaffirmed. No prior assessment, claim, evidence, mechanism, lineage, open question or provenance-review metadata changed. Review receipt: docs/reviews/EVIDENCE-GAP-REASSESSMENT-2026-10-12.md."},
     {
       "id": "M-014",

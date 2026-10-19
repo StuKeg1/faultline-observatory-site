@@ -1,3 +1,5 @@
+import { getAssessmentMutationReferenceReview } from "./assessmentMutationReferences.js";
+
 /**
  * mutationClassifier.js — Latest Developments / Institutional Changelog
  *
@@ -200,8 +202,10 @@ function isBootstrapPlaceholder(mutation, creationDate) {
 export function resolveAssessmentMutation(mutation, record) {
   if (!ASSESSMENT_ISSUED_FIELD_SYNONYMS.has(mutation.field)) return null;
   const ids = [...new Set(String(mutation.to ?? "").match(/\bAS-\d{3}\b/g) ?? [])];
-  if (ids.length !== 1) return null;
-  return record.assessments.find((a) => a.id === ids[0]) ?? null;
+  if (ids.length) return ids.length === 1 ? record.assessments.find((a) => a.id === ids[0]) ?? null : null;
+  const review = getAssessmentMutationReferenceReview(record, mutation);
+  return review?.disposition === "linked"
+    ? record.assessments.find((a) => a.id === review.assessmentId) ?? null : null;
 }
 
 function classifyAssessmentIssued(mutation, record) {

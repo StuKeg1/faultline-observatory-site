@@ -19,6 +19,7 @@ import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
 import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships } from "../data/recordReading.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
+import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
@@ -276,7 +277,7 @@ function RecordLineage({ record }) {
         const dotClass = isFirst ? "major" : isLast ? "current" : "";
         const eventLabel = `${assessmentChangeLabel(previous, a)} — `;
         return (
-          <div key={a.id} className="timeline-entry" role="listitem">
+          <div key={a.id} id={`assessment-${a.id}`} tabIndex={-1} className="timeline-entry" role="listitem">
             <div className="tl-date">{a.date}</div>
             <div className={`tl-dot ${dotClass}`} aria-hidden="true" />
             <div className="tl-content">
@@ -329,6 +330,7 @@ function MutationLog({ record }) {
         <tbody>
           {record.mutationLog.map((m) => {
             const isActive = highlight?.activeMutationId === m.id;
+            const referenceReview = getAssessmentMutationReferenceReview(record, m);
             return (
               <tr
                 key={m.id}
@@ -342,7 +344,16 @@ function MutationLog({ record }) {
                 <td>{m.date}</td>
                 <td className="mut-field">{m.field}</td>
                 <td className="mut-from">{m.from}</td>
-                <td className="mut-to">{m.to}</td>
+                <td className="mut-to">{m.to}
+                  {referenceReview && (
+                    <small className="reading-note">
+                      {referenceReview.disposition === "linked"
+                        ? <>Reviewed reference: <a href={`#assessment-${referenceReview.assessmentId}`}>{referenceReview.assessmentId}</a>. Original entry preserved.</>
+                        : "No surviving assessment linked. This entry predates the reconstruction; the original assessment was lost."}
+                      {" "}Reference reviewed {referenceReview.reviewDate}.
+                    </small>
+                  )}
+                </td>
               </tr>
             );
           })}
