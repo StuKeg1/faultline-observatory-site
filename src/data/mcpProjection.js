@@ -57,12 +57,15 @@ export function recordSearchMatches(record, query) {
   const needle = query.trim().toLowerCase();
   if (!needle) return [{ field: "record", context: "serialized_structure", matchType: "empty_after_trimming" }];
   const current = getCurrentAssessment(record);
+  const assessmentHistory = getAssessmentHistory(record);
   const matches = Object.entries(record).flatMap(([field, value]) => {
     if (["assessments", "instances", "mutationLog", "openQuestions", "mechanisms"].includes(field)) {
       return value.flatMap(entry => {
+        const displayed = field === "assessments" ? assessmentHistory.find(assessment => assessment.id === entry.id) : null;
         const context = field === "assessments"
           ? { context: entry.id === current.id ? "current_assessment" : "historical_assessment",
-            assessmentId: entry.id, assessmentStatus: entry.id === current.id ? "current" : "historical", date: entry.date }
+            assessmentId: entry.id, assessmentStatus: entry.id === current.id ? "current" : "historical", date: displayed.date,
+            ...(displayed.recordedDate ? { recordedDate: displayed.recordedDate } : {}) }
           : { context: field === "mutationLog" ? "mutation_history" : field === "instances" ? "evidence_instance" : "current_record",
             entryId: entry.id, ...(entry.date ?? entry.raisedDate ? { date: entry.date ?? entry.raisedDate } : {}) };
         return walkMatches(entry, `${field}.${entry.id}`, needle, context);

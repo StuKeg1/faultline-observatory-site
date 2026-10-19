@@ -81,9 +81,36 @@ const REVIEW_INDEX = new Map(
  *
  * FR-AM-0001 is the historical reference implementation. The separately
  * authorised 18 October 2026 AI-0008 repair qualifies one converter date;
- * this does not authorise a corpus-wide date migration.
+ * this does not authorise a corpus-wide date migration. The separately
+ * authorised 19 October pilot qualifies three additional AS-001 dates;
+ * its receipt preserves the distinction between an inherited literal and
+ * a demonstrated converter substitution. No replacement issue date is inferred.
  */
 export const HISTORICAL_EFFECTIVE_DATES = [
+  {
+    recordId: "FR-QE-0002",
+    assessmentId: "AS-001",
+    value: "date uncertain (legacy)",
+    precision: "unknown",
+    basis: ["IN-005"],
+    note: "The original assessment names IN-005 as its trigger, but its actual issue date is unverified. The retained HTML already contains 2024-01-15; the July 2026 review treats this cohort as notional. Preserve the stored date without presenting it as a verified assessment or state-entry date. Operator-authorised date pilot, 19 October 2026; receipt: LEGACY-DATE-PILOT-STEP-5B-2026-10-19.",
+  },
+  {
+    recordId: "FR-AM-0003",
+    assessmentId: "AS-001",
+    value: "date uncertain (legacy)",
+    precision: "unknown",
+    basis: ["IN-004"],
+    note: "The original assessment names IN-004 as its trigger, but its actual issue date is unverified. The retained HTML already contains 2024-01-15; the July 2026 review treats this cohort as notional. Preserve the stored date without presenting it as a verified assessment or state-entry date. Operator-authorised date pilot, 19 October 2026; receipt: LEGACY-DATE-PILOT-STEP-5B-2026-10-19.",
+  },
+  {
+    recordId: "FR-BT-0004",
+    assessmentId: "AS-001",
+    value: "date uncertain (legacy)",
+    precision: "unknown",
+    basis: ["IN-003"],
+    note: "The original assessment names IN-003 as its trigger, but its actual issue date is unverified. The retained HTML already contains 2024-01-15; the July 2026 review treats this cohort as notional. Preserve the stored date without presenting it as a verified assessment or state-entry date. Operator-authorised date pilot, 19 October 2026; receipt: LEGACY-DATE-PILOT-STEP-5B-2026-10-19.",
+  },
   {
     recordId: "FR-AI-0008",
     assessmentId: "AS-001",

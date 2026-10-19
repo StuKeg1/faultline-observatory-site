@@ -1,5 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { getCompactAssessmentTrajectory } from "./derive.js";
+import { getRegisterRow, sortKey } from "./registerProjection.js";
+import { getCardAssessmentHistory } from "./cardAssessmentHistory.js";
 
 import { ALL_RECORDS } from "./corpus.js";
 import {
@@ -105,10 +110,10 @@ test("LAD-001 preserves recorded dates while deriving historical chronology for 
 });
 
 test("LAD-001 historical dates carry bounded precision and evidence-instance provenance", () => {
-  assert.equal(HISTORICAL_EFFECTIVE_DATES.length, 4);
+  assert.equal(HISTORICAL_EFFECTIVE_DATES.length, 7);
   assert.deepEqual(
     HISTORICAL_EFFECTIVE_DATES.map(({ recordId, assessmentId }) => `${recordId}:${assessmentId}`),
-    ["FR-AI-0008:AS-001", "FR-AM-0001:AS-001", "FR-AM-0001:AS-002", "FR-AM-0001:AS-003"],
+    ["FR-QE-0002:AS-001", "FR-AM-0003:AS-001", "FR-BT-0004:AS-001", "FR-AI-0008:AS-001", "FR-AM-0001:AS-001", "FR-AM-0001:AS-002", "FR-AM-0001:AS-003"],
   );
 
   for (const entry of HISTORICAL_EFFECTIVE_DATES) {
@@ -125,6 +130,29 @@ test("LAD-001 historical dates carry bounded precision and evidence-instance pro
     getHistoricalEffectiveDate("FR-AM-0001", "AS-003").precision,
     "upper-bound-year",
   );
+});
+
+test("three-record date pilot qualifies history while preserving every canonical record field", () => {
+  const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/LEGACY-DATE-PILOT-STEP-5B-2026-10-19.json", import.meta.url)));
+  assert.deepEqual(receipt.records.map(entry => entry.recordId), ["FR-QE-0002", "FR-AM-0003", "FR-BT-0004"]);
+  for (const entry of receipt.records) {
+    const record = ALL_RECORDS.find(record => record.id === entry.recordId);
+    assert.equal(createHash("sha256").update(JSON.stringify(record)).digest("hex"), entry.canonicalRecordHash);
+    const history = getAssessmentHistory(record);
+    assert.equal(history[0].date, "date uncertain (legacy)");
+    assert.equal(history[0].recordedDate, "2024-01-15");
+    assert.equal(history[0].historicalEffectiveDate.precision, "unknown");
+    assert.equal(getStateEnteredDate(record), "date uncertain (legacy)");
+    assert.equal(getCompactAssessmentTrajectory(record).currentStateEnteredDate, "date uncertain (legacy)");
+    assert.equal(getCardAssessmentHistory(record).states[0].date, "date uncertain (legacy)");
+    assert.equal(sortKey(getRegisterRow(record).sortDate), "");
+    assert.doesNotMatch(getRegisterRow(record).reason, /2024-01-15/);
+    assert.equal(getCurrentAssessment(record).date, record.assessments.at(-1).date);
+    assert.ok(getVerificationStages(record).some(stage => stage.date === "date uncertain (legacy)"));
+    assert.deepEqual(getTransitionFeed(record), []);
+  }
+  const otherRecords = HISTORICAL_EFFECTIVE_DATES.filter(entry => !receipt.records.some(record => record.recordId === entry.recordId));
+  assert.deepEqual([...new Set(otherRecords.map(entry => entry.recordId))].sort(), ["FR-AI-0008", "FR-AM-0001"]);
 });
 
 test("AI-0008 stage correction preserves historical assignments without a false 2024 operation date", () => {

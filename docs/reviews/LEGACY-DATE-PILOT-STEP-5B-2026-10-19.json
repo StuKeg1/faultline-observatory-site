@@ -1,0 +1,122 @@
+{
+  "reviewId": "LEGACY-DATE-PILOT-STEP-5B",
+  "date": "2026-10-19",
+  "baseCommit": "fd736d648f32aae6830fb419ea3d67f9f694a284",
+  "authority": {
+    "url": "https://docs.google.com/document/d/1aDpuzdV01cWV9ZOZ17r_R1UbrUDJqUPoKH6b359kJhA/edit",
+    "note": "23 July ratification calls the notional cohort the common converter fallback and explicitly says storage dates remain provenance-suspect. This classifies the date limitation, not evidence depth; this review distinguishes the observed immediate ingestion path from the authority’s broader legacy-fallback terminology."
+  },
+  "records": [
+    {
+      "recordId": "FR-QE-0002",
+      "assessmentId": "AS-001",
+      "canonicalRecordHash": "02af0c06b9590be8c45d7183f920253fd2602212caaa815307341ab465a4a869",
+      "previousOverlay": null,
+      "overlay": {
+        "recordId": "FR-QE-0002",
+        "assessmentId": "AS-001",
+        "value": "date uncertain (legacy)",
+        "precision": "unknown",
+        "basis": [
+          "IN-005"
+        ],
+        "note": "The original assessment names IN-005 as its trigger, but its actual issue date is unverified. The retained HTML already contains 2024-01-15; the July 2026 review treats this cohort as notional. Preserve the stored date without presenting it as a verified assessment or state-entry date. Operator-authorised date pilot, 19 October 2026; receipt: LEGACY-DATE-PILOT-STEP-5B-2026-10-19."
+      },
+      "provenance": {
+        "recordId": "FR-QE-0002",
+        "assessmentId": "AS-001",
+        "storedDate": "2024-01-15",
+        "classification": "unknown",
+        "storageOrigin": "retained_html_literal",
+        "source": {
+          "fileId": "1s9-MAnWoWMwt2ReSLdPtGSW6QRtOVgvM",
+          "url": "https://drive.google.com/file/d/1s9-MAnWoWMwt2ReSLdPtGSW6QRtOVgvM/view?usp=drivesdk",
+          "mimeType": "text/html",
+          "modifiedTime": "2026-06-08T18:33:01.000Z",
+          "restorationReceiptTextSha256": "6176aff3f6dbe199c4125378acf1873ed57220a9b42796a74ae430d5f76bed89"
+        },
+        "openedDateExcerpt": "2024-01-15",
+        "assessmentMetaExcerpts": [
+          "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-005"
+        ],
+        "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+        "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+      },
+      "decision": "Unknown-date qualification only. No replacement date established; no stored record field or assessment changed."
+    },
+    {
+      "recordId": "FR-AM-0003",
+      "assessmentId": "AS-001",
+      "canonicalRecordHash": "6389b8af20f8cf89f7811a0a6833cc2d0cefbf6a1ecfa7f261ac8281b7cd0cb4",
+      "previousOverlay": null,
+      "overlay": {
+        "recordId": "FR-AM-0003",
+        "assessmentId": "AS-001",
+        "value": "date uncertain (legacy)",
+        "precision": "unknown",
+        "basis": [
+          "IN-004"
+        ],
+        "note": "The original assessment names IN-004 as its trigger, but its actual issue date is unverified. The retained HTML already contains 2024-01-15; the July 2026 review treats this cohort as notional. Preserve the stored date without presenting it as a verified assessment or state-entry date. Operator-authorised date pilot, 19 October 2026; receipt: LEGACY-DATE-PILOT-STEP-5B-2026-10-19."
+      },
+      "provenance": {
+        "recordId": "FR-AM-0003",
+        "assessmentId": "AS-001",
+        "storedDate": "2024-01-15",
+        "classification": "unknown",
+        "storageOrigin": "retained_html_literal",
+        "source": {
+          "fileId": "19czOspfLKee1tTark6lti8sr-LBaHObs",
+          "url": "https://drive.google.com/file/d/19czOspfLKee1tTark6lti8sr-LBaHObs/view?usp=drivesdk",
+          "mimeType": "text/html",
+          "modifiedTime": "2026-06-09T08:57:43.000Z",
+          "restorationReceiptTextSha256": "059588ac56c5b1f64ea4759075e96b036d1bbe311bfe4c7b65c21bab27996538"
+        },
+        "openedDateExcerpt": "2024-01-15",
+        "assessmentMetaExcerpts": [
+          "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-004"
+        ],
+        "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+        "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+      },
+      "decision": "Unknown-date qualification only. No replacement date established; no stored record field or assessment changed."
+    },
+    {
+      "recordId": "FR-BT-0004",
+      "assessmentId": "AS-001",
+      "canonicalRecordHash": "59d21eadc191802f1d96b1c87de74cee4fc5532f6f3b4c1f2b65af1f23c73662",
+      "previousOverlay": null,
+      "overlay": {
+        "recordId": "FR-BT-0004",
+        "assessmentId": "AS-001",
+        "value": "date uncertain (legacy)",
+        "precision": "unknown",
+        "basis": [
+          "IN-003"
+        ],
+        "note": "The original assessment names IN-003 as its trigger, but its actual issue date is unverified. The retained HTML already contains 2024-01-15; the July 2026 review treats this cohort as notional. Preserve the stored date without presenting it as a verified assessment or state-entry date. Operator-authorised date pilot, 19 October 2026; receipt: LEGACY-DATE-PILOT-STEP-5B-2026-10-19."
+      },
+      "provenance": {
+        "recordId": "FR-BT-0004",
+        "assessmentId": "AS-001",
+        "storedDate": "2024-01-15",
+        "classification": "unknown",
+        "storageOrigin": "retained_html_literal",
+        "source": {
+          "fileId": "1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS",
+          "url": "https://drive.google.com/file/d/1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS/view?usp=drivesdk",
+          "mimeType": "text/html",
+          "modifiedTime": "2026-06-10T09:39:23.000Z",
+          "restorationReceiptTextSha256": "c83f7e251cf8eabfc035ee9c4dfff43430f5ed49b111bc019925b63ea4ed9694"
+        },
+        "openedDateExcerpt": "2024-01-15",
+        "assessmentMetaExcerpts": [
+          "ASSESSMENT-001 ISSUED: 2024-01-15 AUTHORITY: Observatory Floor TRIGGERING INSTANCE: INST-003"
+        ],
+        "reason": "The retained HTML already contains ISSUED: 2024-01-15. The converter would preserve that literal. The July ratification identifies the cohort as notional/provenance-suspect; neither file metadata nor this literal verifies an actual assessment or state-entry date. No replacement date is established.",
+        "nextAction": "Seek contemporaneous authoring/decision provenance. Any display overlay requires a separately reviewed item-specific basis; do not derive a date from the latest cited paper."
+      },
+      "decision": "Unknown-date qualification only. No replacement date established; no stored record field or assessment changed."
+    }
+  ]
+}

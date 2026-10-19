@@ -7,7 +7,21 @@ import {
   calculateStageRegisterGroups,
   calculateTerminalNodeLayout,
   estimateRegisterLabelMetrics,
+  phaseDateSummaries,
 } from "./evidenceTrajectoryLayout.js";
+
+test("phase captions qualify uncertain history without inventing years or time spacing", () => {
+  const inputs = [
+    { history: [assessment("AS-001", "date uncertain (legacy)")] },
+    { history: [assessment("AS-001", "Mar 1989")] },
+    { history: [assessment("AS-001", "2024-05-02")] },
+  ];
+  const origins = phaseDateSummaries(inputs).find(phase => phase.phaseId === "origins");
+  assert.equal(origins.summary, "1989 - 2024");
+  assert.equal(origins.qualified, true);
+  assert.equal(phaseDateSummaries(inputs.slice(0, 1))[0].summary, "Dates uncertain");
+  assert.equal(phaseDateSummaries(inputs.slice(2))[0].summary, "2024");
+});
 
 function assessment(id, date, verificationStage = "VS-03") {
   return { id, date, verificationStage, pressureState: "escalating" };

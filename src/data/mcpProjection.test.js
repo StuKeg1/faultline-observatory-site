@@ -13,6 +13,22 @@ test("shared MCP view preserves canonical fields and governed assessment project
   }
 });
 
+test("MCP history and search distinguish qualified display dates from retained storage dates", () => {
+  const search = searchRecords({ query: "2024-01-15", limit: 50, detail: "full" });
+  for (const id of ["FR-QE-0002", "FR-AM-0003", "FR-BT-0004"]) {
+    const record = ALL_RECORDS.find(record => record.id === id);
+    const history = canonicalRecordView(record).assessments;
+    assert.equal(history[0].date, "date uncertain (legacy)");
+    assert.equal(history[0].recordedDate, "2024-01-15");
+    const match = search.matches.find(match => match.recordId === id).references.find(reference => reference.field === "assessments.AS-001.date");
+    assert.equal(match.date, "date uncertain (legacy)");
+    assert.equal(match.recordedDate, "2024-01-15");
+    assert.equal(match.assessmentStatus, "historical");
+    assert.equal(recordSummary(record).assessmentDate, record.assessments.at(-1).date);
+    assert.equal(recordSummary(record).openedDate, record.claim.openedDate);
+  }
+});
+
 test("MCP exposes five reviewed links and the explicit QE limitation without replacing original targets", () => {
   const views = ALL_RECORDS.map(canonicalRecordView);
   const reviews = views.flatMap(v => v.assessmentMutationReferenceReviews ?? []);

@@ -91,11 +91,16 @@ export function phaseDateSummaries(trajectories) {
     });
   });
   return DOCUMENTARY_PHASES.map((phase) => {
-    const dates = (phaseDates.get(phase.id) ?? []).sort();
+    const dates = phaseDates.get(phase.id) ?? [];
     if (!dates.length) return { phaseId: phase.id, summary: "" };
-    const first = dates[0].slice(0, 4);
-    const last = dates.at(-1).slice(0, 4);
-    return { phaseId: phase.id, summary: first === last ? first : `${first} - ${last}` };
+    // Qualified chronology is not an ISO date. Keep unknown labels out of
+    // year captions instead of turning "date uncertain" into the year "date".
+    const years = dates.flatMap(date => String(date).match(/\b(?:19|20)\d{2}\b/g) ?? []).sort();
+    if (!years.length) return { phaseId: phase.id, summary: "Dates uncertain" };
+    const qualified = dates.some(date => !/^\d{4}-\d{2}-\d{2}$/.test(date));
+    const first = years[0];
+    const last = years.at(-1);
+    return { phaseId: phase.id, summary: first === last ? first : `${first} - ${last}`, qualified };
   });
 }
 
