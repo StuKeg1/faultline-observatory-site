@@ -118,6 +118,17 @@ export const FR_QE_0008 = {
         { citation: "Burt et al., ‘Loss-tolerant distributed lattice surgery using fusion networks’, arXiv:2610.01923v1 (2026)", url: "https://arxiv.org/abs/2610.01923v1", locator: "Abstract; hybrid protocols, interface-erasure thresholds and local-noise simulations" },
       ],
     },
+    {
+      id: "IN-009",
+      qualifiedEvent: "Quantinuum Helios — below-threshold colour-code scaling through distance 7",
+      description: "Lavasani et al. (arXiv:2610.24077v1) experimentally demonstrate below-threshold triangular colour-code operation at distances 3, 5 and 7 on Quantinuum's Helios trapped-ion processor. Logical memory error falls to 5 (+4/−2) × 10⁻⁶ per syndrome-extraction round at distance 7, with an experimental suppression factor Λ = 12 (+3/−2) for each successive increase in code distance. The study also reports below-threshold scaling for two-qubit Clifford randomized-benchmarking circuits from distance 3 to 5, reaching 7 (+3/−3) × 10⁻⁵ error per logical two-qubit Clifford at distance 5 with Λ = 9 (+8/−3). This is direct increasing-distance hardware evidence on a trapped-ion architecture and materially strengthens the cross-platform scaling case beyond IN-007's fixed-code Helix benchmarks. It does not establish independent replication of the Quantinuum result, scaling beyond distance 7, below-threshold magic-state preparation, sustained universal fault-tolerant computation, or application-scale resource economics; extrapolations to larger processors remain projections.",
+      vectors: ["supportive--trapped-ion-below-threshold-distance-scaling-through-d7"],
+      date: "2026-10-16",
+      sourceReference: "Lavasani et al., arXiv:2610.24077v1 (2026), primary preprint",
+      sources: [
+        { citation: "Lavasani et al., ‘Quantum error correction well below the color code threshold’, arXiv:2610.24077v1 (2026)", url: "https://arxiv.org/abs/2610.24077v1", locator: "Abstract; colour-code memory scaling at d=3,5,7 and logical two-qubit Clifford scaling at d=3,5" },
+      ],
+    },
   ],
 
   assessments: [
@@ -166,6 +177,17 @@ export const FR_QE_0008 = {
         }
       ]
     }
+    {
+      id: "AS-005",
+      date: "2026-10-20",
+      pressureState: "resolving",
+      verificationStage: "VS-04",
+      summary: "IN-009 materially strengthens the central scaling evidence by demonstrating below-threshold colour-code operation on Quantinuum Helios across distances 3, 5 and 7, with logical-memory suppression Λ = 12 (+3/−2) per successive distance increase and a distance-7 logical error of 5 (+4/−2) × 10⁻⁶ per syndrome-extraction round. Two-qubit Clifford benchmarking also shows below-threshold scaling from distance 3 to 5. Unlike IN-007's integrated fixed-code Helix benchmarks, IN-009 directly measures an increasing-distance suppression curve on trapped-ion hardware, adding a second hardware modality and code family to the record's measured scaling evidence. The record remains RESOLVING / VS-04 rather than resolving completely: this is first-party Quantinuum evidence, reaches distance 7 rather than application-scale code sizes, and does not demonstrate below-threshold magic-state preparation, long-runtime universal computation, independent replication, or application-scale resource economics. The new result strengthens convergence without satisfying the full outcome-based AT-001.",
+      assessorNote: "Normal Record Review of Lavasani et al., arXiv:2610.24077v1, submitted 16 October 2026 and publicly highlighted by Quantinuum on 19 October. Admitted as IN-009. Primary preprint controls the scientific representation; company resource projections are not admitted as measured scale-up evidence. Same-state reaffirmation; no verification-stage transition.",
+      sources: [
+        { citation: "Lavasani et al., ‘Quantum error correction well below the color code threshold’, arXiv:2610.24077v1 (2026)", url: "https://arxiv.org/abs/2610.24077v1", locator: "Abstract; experimental distance-scaling and logical-Clifford results" },
+      ],
+    },
   ],
 
   mechanisms: [
@@ -185,7 +207,8 @@ export const FR_QE_0008 = {
     items: [
     { year: "1995–2012", text: "Threshold theorem established; surface code identified. Theoretical foundation for scalable error correction is secure. The empirical question is whether physical systems satisfy the theorem's assumptions." },
     { year: "2022–23", text: "Google demonstrates the first surface-code scaling break-even: the distance-5 code modestly outperforms the distance-3 ensemble on average. High-distance repetition-code tests also expose rare correlated-error floors." },
-    { year: "2024–25", text: "Willow demonstrates below-threshold surface-code memories through distance 7, with Λ≈2.14 per distance increase of two. Microsoft/Quantinuum provide separate trapped-ion logical-error reduction. Willow high-distance repetition codes reveal an apparent ~10⁻¹⁰ correlated-error floor. Claim remains RESOLVING." }
+    { year: "2024–25", text: "Willow demonstrates below-threshold surface-code memories through distance 7, with Λ≈2.14 per distance increase of two. Microsoft/Quantinuum provide separate trapped-ion logical-error reduction. Willow high-distance repetition codes reveal an apparent ~10⁻¹⁰ correlated-error floor. Claim remains RESOLVING." },
+    { year: "2026", text: "Quantinuum Helios demonstrates below-threshold triangular colour-code memory scaling at distances 3, 5 and 7, with Λ≈12 per successive distance increase and 5×10⁻⁶ logical error per syndrome-extraction round at distance 7; two-qubit Clifford scaling is also measured from distance 3 to 5. This materially broadens measured scaling evidence across hardware modalities and code families while larger-scale, long-runtime universal fault tolerance remains open." }
     ],
     relatedRecords: [],
   },
@@ -209,6 +232,8 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-018", date: "2026-10-20", field: "assessment_issued", from: "AS-004", to: "AS-005", note: "Normal Record Review of IN-009 reaffirms RESOLVING / VS-04. Helios colour-code distance scaling materially strengthens cross-platform evidence but does not satisfy the full outcome-based attractor. No Pressure State or Verification Stage transition." },
+    { id: "M-017", date: "2026-10-20", field: "instance_appended", from: "IN-008", to: "IN-009", note: "Normal Record Review admitted Lavasani et al., arXiv:2610.24077v1, as direct trapped-ion below-threshold distance-scaling evidence. Experimental colour-code memory scaling spans d=3,5,7 and logical two-qubit Clifford scaling spans d=3,5. Larger-scale resource projections and unmeasured universal-computation claims are excluded." },
     { id: "M-011", date: "2026-10-20", field: "provenance_review", from: "LPR-001-D20", to: "LPR-001-D56", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. The 19 October 2026 Quantinuum Helios colour-code result was identified as genuinely new evidence relevant to logical-error scaling and is held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Shared citations not explained in the evidence list","to":"Source-specific reciprocal notices on IN-002, IN-003","note":"Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."},
     {"id": "M-015", "date": "2026-10-12", "field": "assessment_issued", "from": "AS-003", "to": "AS-004", "note": "Operator-authorised evidence-gap reassessment considers IN-007 admitted 2026-09-26 and IN-008 admitted 2026-10-03. AS-004 appended at RESOLVING / VS-04; current posture reaffirmed. No prior assessment, claim, evidence, mechanism, lineage, open question or provenance-review metadata changed. Review receipt: docs/reviews/EVIDENCE-GAP-REASSESSMENT-2026-10-12.md."},
