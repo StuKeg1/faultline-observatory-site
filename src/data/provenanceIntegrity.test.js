@@ -19,8 +19,10 @@ const sourceLinkReceipts = [1, 2].map(increment => JSON.parse(readFileSync(new U
 const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.json", import.meta.url)));
 // Later whole-record changes, receipted with their previous values, so frozen
 // checks at earlier checkpoints can restore the record rather than waive it.
+// Add each new receipt to this list; they are undone newest first, so each
+// one is checked against the record as it stood on its own date.
 const laterRecordReceipts = ["FR-QE-0008-D56-HELIOS-2026-10-20"].map(id => JSON.parse(readFileSync(new URL(
-  `../../docs/reviews/${id}.json`, import.meta.url))));
+  `../../docs/reviews/${id}.json`, import.meta.url)))).sort((a, b) => b.date.localeCompare(a.date));
 
 function undoRecordReceipt(record, receipt) {
   const isAdded = (path, item) => receipt.changes.some(change => change.fieldPath.startsWith(path) && change.previous === null &&
@@ -106,11 +108,15 @@ test("successive source increments preserve all scientific content and prior his
   }
 });
 
-test("the FR-QE-0008 20 Oct receipt restores the record exactly as it stood before", () => {
-  const [receipt] = laterRecordReceipts;
+test("each later-record receipt restores its record exactly as it stood before", async () => {
   const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
-  assert.equal(digest(FR_QE_0008), receipt.currentRecordHash);
-  assert.equal(digest(undoRecordReceipt(FR_QE_0008, receipt)), receipt.originalRecordHash);
+  for (const receipt of laterRecordReceipts) {
+    const record = Object.values(await import(`./records/${receipt.recordId}.js`))[0];
+    // Checked at the receipt's own date, so later receipted updates don't break it.
+    const atReceipt = atCheckpoint(record, receipt.date);
+    assert.equal(digest(atReceipt), receipt.currentRecordHash, `${receipt.id}: record differs from its receipt`);
+    assert.equal(digest(undoRecordReceipt(atReceipt, receipt)), receipt.originalRecordHash, `${receipt.id}: undo does not restore the original`);
+  }
 });
 
 test("shared-source labels preserve whole records outside their receipted metadata", async () => {
