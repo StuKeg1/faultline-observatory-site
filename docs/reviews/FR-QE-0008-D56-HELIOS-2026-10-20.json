@@ -1,0 +1,69 @@
+{
+  "id": "FR-QE-0008-D56-HELIOS-2026-10-20",
+  "date": "2026-10-20",
+  "scope": "Receipt for FR-QE-0008's 20 October 2026 changes (#189 LPR-001-D56 review; #190 Helios colour-code admission), so frozen whole-record checks can restore the record as it stood before them.",
+  "baseCommit": "7c827169e0d9b01f0f249cdaf22cc3f51864f9a2",
+  "recordId": "FR-QE-0008",
+  "originalRecordHash": "2bf43d26438ac11b858990e08d2ce6958ad03ccb72026db885096192dbf2b0c5",
+  "currentRecordHash": "37378261333d3ef80b266ffe50ec48e08cc626ee205b2702f43ea78758a9f8eb",
+  "mutationIds": [
+    "M-017",
+    "M-018",
+    "M-019"
+  ],
+  "changes": [
+    {
+      "fieldPath": "lastProvenanceReview",
+      "previous": "2026-09-18",
+      "current": "2026-10-20",
+      "mutationId": "M-017",
+      "basis": "LPR-001-D56 second-cycle Legacy Provenance Review recorded as PASS (#189)."
+    },
+    {
+      "fieldPath": "provenanceReviewId",
+      "previous": "LPR-001-D20",
+      "current": "LPR-001-D56",
+      "mutationId": "M-017",
+      "basis": "LPR-001-D56 second-cycle Legacy Provenance Review recorded as PASS (#189)."
+    },
+    {
+      "fieldPath": "provenanceOutcome",
+      "previous": "pass_after_correction",
+      "current": "verified",
+      "mutationId": "M-017",
+      "basis": "LPR-001-D56 second-cycle Legacy Provenance Review recorded as PASS (#189)."
+    },
+    {
+      "fieldPath": "provenanceRepairStatus",
+      "previous": "completed",
+      "current": "not_required",
+      "mutationId": "M-017",
+      "basis": "LPR-001-D56 second-cycle Legacy Provenance Review recorded as PASS (#189)."
+    },
+    {
+      "fieldPath": "instances.8",
+      "previous": null,
+      "current": "IN-009",
+      "mutationId": "M-018",
+      "basis": "Normal Record Review admitted Lavasani et al., arXiv:2610.24077v1, as IN-009 (#190)."
+    },
+    {
+      "fieldPath": "lineage.items.3",
+      "previous": null,
+      "current": {
+        "year": "2026",
+        "text": "Quantinuum Helios demonstrates below-threshold triangular colour-code memory scaling at distances 3, 5 and 7, with Λ≈12 per successive distance increase and 5×10⁻⁶ logical error per syndrome-extraction round at distance 7; two-qubit Clifford scaling is also measured from distance 3 to 5. This materially broadens measured scaling evidence across hardware modalities and code families while larger-scale, long-runtime universal fault tolerance remains open."
+      },
+      "mutationId": "M-018",
+      "basis": "2026 Helios lineage entry added with the IN-009 admission (#190)."
+    },
+    {
+      "fieldPath": "assessments.4",
+      "previous": null,
+      "current": "AS-005",
+      "mutationId": "M-019",
+      "basis": "AS-005 issued: RESOLVING / VS-04 reaffirmed (#190). Removed by date at earlier checkpoints."
+    }
+  ],
+  "notes": "Generated from the record at baseCommit and after #191, which renumbered the 20 October mutations M-017 to M-019 and restored a missing comma. Values only; no record content is changed by this receipt."
+}
