@@ -176,7 +176,7 @@ export const FR_QE_0008 = {
           "locator": "Abstract; local-noise simulations and threshold assumptions"
         }
       ]
-    }
+    },
     {
       id: "AS-005",
       date: "2026-10-20",
