@@ -12,10 +12,10 @@
 export const FR_QE_0008 = {
   id: "FR-QE-0008",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-09-18",
-  provenanceReviewId: "LPR-001-D20",
-  provenanceOutcome: "pass_after_correction",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-20",
+  provenanceReviewId: "LPR-001-D56",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Quantum error correction can reduce logical error rates faster than physical error rates increase with system scale.",
@@ -209,6 +209,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-011", date: "2026-10-20", field: "provenance_review", from: "LPR-001-D20", to: "LPR-001-D56", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. The 19 October 2026 Quantinuum Helios colour-code result was identified as genuinely new evidence relevant to logical-error scaling and is held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Shared citations not explained in the evidence list","to":"Source-specific reciprocal notices on IN-002, IN-003","note":"Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."},
     {"id": "M-015", "date": "2026-10-12", "field": "assessment_issued", "from": "AS-003", "to": "AS-004", "note": "Operator-authorised evidence-gap reassessment considers IN-007 admitted 2026-09-26 and IN-008 admitted 2026-10-03. AS-004 appended at RESOLVING / VS-04; current posture reaffirmed. No prior assessment, claim, evidence, mechanism, lineage, open question or provenance-review metadata changed. Review receipt: docs/reviews/EVIDENCE-GAP-REASSESSMENT-2026-10-12.md."},
     { id: "M-014", date: "2026-10-03", field: "instance_appended", from: "IN-007", to: "IN-008", note: "Normal Record Review of RR-2026-10-03-01 admitted Burt et al., arXiv:2610.01923v1, as distinct protocol-design evidence for loss-tolerant distributed lattice surgery. The 50% interface-erasure result assumes absent local noise; local errors mask the interface-distance advantage at 10^-3 circuit/resource error and gains strengthen at lower noise. This is not an experimental system-scale suppression result. AS-003 remains current; FR-QE-0008 stays RESOLVING / VS-04. No open question or claim change." },
