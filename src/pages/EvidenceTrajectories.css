@@ -542,6 +542,12 @@
   margin-top: 0.2rem;
 }
 
+.et-current-line {
+  margin: 0;
+  color: var(--ink-mid);
+  line-height: 1.45;
+}
+
 .et-card-current summary {
   color: var(--accent);
   cursor: pointer;
