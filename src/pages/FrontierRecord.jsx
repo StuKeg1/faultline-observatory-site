@@ -302,8 +302,8 @@ function RecordLineage({ record }) {
                   {record.id === "FR-AI-0008" && a.id === "AS-001"
                     ? `Originally stored: ${a.verificationStageProvenance.storedStage}. A later review assigned ${a.verificationStageProvenance.effectiveStage} to this initial assessment. This retrospective annotation is not a stage transition on its uncertain original date; see the current State Warrant for the separate stage challenge`
                     : a.verificationStageProvenance.disposition === "historically-unverified"
-                    ? `${a.verificationStageProvenance.storedStage} preserved — historically unverified`
-                    : `${a.verificationStageProvenance.effectiveStage} after ratified review (stored code ${a.verificationStageProvenance.storedStage} preserved)`}
+                    ? `${a.id} stage: ${a.verificationStageProvenance.storedStage} preserved — historically unverified`
+                    : `${a.id} stage: ${a.verificationStageProvenance.effectiveStage} after ratified review (stored code ${a.verificationStageProvenance.storedStage} preserved)`}
                   .<StageProvenanceMarker />
                 </div>
               )}

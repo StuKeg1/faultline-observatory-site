@@ -92,6 +92,17 @@ function provenanceDescription(provenance) {
   return ` Legacy review re-affirmed this stage with ${provenance.confidence} confidence on ${provenance.reviewDate}.`;
 }
 
+// One self-contained line per record, so a reader (or a model quoting the
+// page) can't take an earlier assessment for the current one.
+function CurrentAssessmentLine({ current }) {
+  return (
+    <p className="et-current-line">
+      Current assessment: {formatState(current.pressureState)} · {current.verificationStage} {VS_STAGE_LABELS[current.verificationStage]} · assessed {current.date} ({current.id})
+      {current.verificationStageChallenge ? " · stage under review" : ""}
+    </p>
+  );
+}
+
 function RegisterStage({ assessment }) {
   const provenance = assessment.verificationStageProvenance;
   const marker = provenance?.disposition === "historically-unverified"
@@ -184,7 +195,8 @@ function EvidenceChart({ trajectories, selectedId, hoveredId, lensId, onSelect, 
                 const isTransition = !previous || previous.assessment.pressureState !== point.assessment.pressureState;
                 const pointProvenance = trajectory.history.length === 1 ? provenance : null;
                 const pointClass = [isCurrent ? "is-current-ring" : isTransition ? "is-transition" : "is-reaffirmation", ...provenanceClasses(pointProvenance)].join(" ");
-                const aria = `${record.id}, ${point.assessment.date}, recorded stage ${point.assessment.verificationStage}, ${formatState(point.assessment.pressureState)}.${provenanceDescription(pointProvenance)}`;
+                const pointStatus = trajectory.history.length === 1 ? " Only assessment." : isCurrent ? " Current assessment." : " Earlier assessment, not current.";
+                const aria = `${record.id}, ${point.assessment.date}, recorded stage ${point.assessment.verificationStage}, ${formatState(point.assessment.pressureState)}.${pointStatus}${provenanceDescription(pointProvenance)}`;
                 return <circle key={`${record.id}-${point.assessment.id}-${point.phaseId}`} className={pointClass} cx={point.x} cy={point.y} r={isCurrent ? 4.2 : isLensFocus || isSelected || isHovered ? 4.8 : 3.6} tabIndex={isLensFocus || isSelected ? 0 : -1} role="button" aria-label={aria} onClick={(event) => { event.stopPropagation(); onSelect(record.id); }} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onSelect(record.id); } }}><title>{aria}</title></circle>;
               })}
             </g>
@@ -253,7 +265,7 @@ function TrajectoryRecordCard({ trajectory, isSelected, isLensFocus, lensId, onS
       <Link to={trajectoryUrl(record.id, lensId)} className="et-record-select" aria-current={isSelected ? "true" : undefined} onClick={handleSelectClick}>
         <span>{record.id}</span><span>{record.claim.shortLabel}</span><small>{record.claim.statement}</small><em>{programme?.shortId ?? record.programme} · {history.length} assessments · {stateChanges} documented state change{stateChanges === 1 ? "" : "s"}</em>
       </Link>
-      <div className="et-card-current"><StateBadge pressureState={current.pressureState} /><AssessmentHistoryStrip record={record} /><details><summary>Full assessment history</summary><ol className="et-history-list">{history.map((assessment) => <li key={assessment.id}><span>{assessment.date}</span><span>{formatState(assessment.pressureState)}</span><p>{assessment.summary}</p></li>)}</ol></details></div>
+      <div className="et-card-current"><StateBadge pressureState={current.pressureState} /><CurrentAssessmentLine current={current} /><AssessmentHistoryStrip record={record} /><details><summary>Full assessment history</summary><ol className="et-history-list">{history.map((assessment) => <li key={assessment.id}><span>{assessment.date} · {assessment.id}{assessment.id === current.id ? " · current" : ""}</span><span>{formatState(assessment.pressureState)}</span><p>{assessment.summary}</p></li>)}</ol></details></div>
       <div className="et-card-links"><Link to={getRecordUrl(record)}>Read the complete Frontier Record</Link></div>
     </article>
   );
@@ -293,7 +305,7 @@ export default function EvidenceTrajectories() {
           <section className="et-reading-field" aria-label="Evidence Trajectories reading field"><EvidenceChart trajectories={trajectories} selectedId={selectedId} hoveredId={hoveredId} lensId={lensId} onSelect={selectRecord} onHover={setHoveredId} /></section>
           <p className="et-transition">The trajectories above are derived from the assessment histories below.</p>
           <section className="et-records" aria-labelledby="et-records-title">{lensId === "full" ? <><div className="et-section-heading"><h2 id="et-records-title">Trajectory records</h2><p>SHOWING THE FULL ARCHIVE · NO REGISTER IS PRESELECTED.</p></div><div className="et-record-list">{trajectories.map((trajectory) => <TrajectoryRecordCard key={trajectory.record.id} trajectory={trajectory} isSelected={selectedId === trajectory.record.id} isLensFocus={selectedLens.matches(trajectory.record)} lensId={lensId} onSelect={selectRecord} />)}</div></> : <><div className="et-section-heading"><h2 id="et-records-title">{selectedLens.label} · {registerRows.length} records · as of each record&apos;s latest assessment</h2><button type="button" className="et-show-full" onClick={() => selectRegister("full")}>Show full archive</button></div>{registerRows.length === 0 ? <p className="et-register-empty-message">No records are currently in this register.</p> : <div className="et-register-table" role="table" aria-label={`${selectedLens.label} register`}><div className="et-register-table-head" role="row"><span>ID</span><span>Record</span><span>State</span><span>VS</span><span>Why here</span><span>Evidence gap</span></div>{registerRows.map((row) => <Link key={row.record.id} to={getRecordUrl(row.record)} className="et-register-table-row" role="row"><span>{row.record.id}</span><span>{row.record.claim.shortLabel}</span><span><StateBadge pressureState={row.current.pressureState} /></span><span><RegisterStage assessment={row.current} /></span><span>{row.reason}</span><span>{row.evidenceGapCount > 0 ? `${row.evidenceGapCount} evidence instance${row.evidenceGapCount === 1 ? "" : "s"} admitted since assessment` : ""}</span></Link>)}</div>}</>}</section>
-          <section className="et-accessible" aria-labelledby="et-accessible-title"><h2 id="et-accessible-title">Chronological record of trajectories</h2><p>A text-based equivalent of the visual reading above, preserving each record's assessment history without requiring the chart.</p><details className="et-text-index"><summary>{"View the full chronological trajectory index ->"}</summary><div>{trajectories.map(({ record, history }) => <details key={record.id}><summary>{record.id} - {record.claim.shortLabel}</summary><ol>{history.map((assessment) => <li key={assessment.id}><span>{assessment.date}</span>{" "}<strong>{formatState(assessment.pressureState)}</strong>{" "}{assessment.summary}</li>)}</ol><Link to={getRecordUrl(record)}>Read complete Frontier Record</Link></details>)}</div></details></section>
+          <section className="et-accessible" aria-labelledby="et-accessible-title"><h2 id="et-accessible-title">Chronological record of trajectories</h2><p>A text-based equivalent of the visual reading above, preserving each record's assessment history without requiring the chart.</p><details className="et-text-index"><summary>{"View the full chronological trajectory index ->"}</summary><div>{trajectories.map(({ record, history, current }) => <details key={record.id}><summary>{record.id} - {record.claim.shortLabel}</summary><CurrentAssessmentLine current={current} /><ol>{history.map((assessment) => <li key={assessment.id}><span>{assessment.date} · {assessment.id}{assessment.id === current.id ? " · current" : ""}</span>{" "}<strong>{formatState(assessment.pressureState)}</strong>{" "}{assessment.summary}</li>)}</ol><Link to={getRecordUrl(record)}>Read complete Frontier Record</Link></details>)}</div></details></section>
         </main>
       </div>
       <SiteFooter />
