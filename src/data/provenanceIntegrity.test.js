@@ -88,7 +88,7 @@ test("shared-source labels preserve whole records outside their receipted metada
   assert.equal(sharedSourceReceipt.records.length, 5);
   assert.equal(sharedSourceReceipt.records.reduce((sum, entry) => sum + entry.changes.length, 0), 8);
   for (const entry of sharedSourceReceipt.records) {
-    const record = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const record = atCheckpoint(Object.values(await import(`./records/${entry.id}.js`))[0], sharedSourceReceipt.date);
     const restored = structuredClone(record);
     assert.equal(restored.mutationLog[0].id, entry.mutationId);
     assert.equal(detectMutationType(restored.mutationLog[0], record), "editorial_correction");
