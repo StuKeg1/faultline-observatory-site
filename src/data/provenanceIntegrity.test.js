@@ -17,6 +17,25 @@ import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.j
 const sourceLinkReceipts = [1, 2].map(increment => JSON.parse(readFileSync(new URL(
   `../../docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-${increment}-2026-10-19.json`, import.meta.url))));
 const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.json", import.meta.url)));
+// Later whole-record changes, receipted with their previous values, so frozen
+// checks at earlier checkpoints can restore the record rather than waive it.
+const laterRecordReceipts = ["FR-QE-0008-D56-HELIOS-2026-10-20"].map(id => JSON.parse(readFileSync(new URL(
+  `../../docs/reviews/${id}.json`, import.meta.url))));
+
+function undoRecordReceipt(record, receipt) {
+  const isAdded = (path, item) => receipt.changes.some(change => change.fieldPath.startsWith(path) && change.previous === null &&
+    (typeof change.current === "string" ? change.current === item.id : JSON.stringify(change.current) === JSON.stringify(item)));
+  const restored = { ...record };
+  for (const change of receipt.changes.filter(change => !change.fieldPath.includes("."))) {
+    assert.deepEqual(record[change.fieldPath], change.current, `${receipt.id}: ${change.fieldPath} no longer matches its receipt`);
+    restored[change.fieldPath] = change.previous;
+  }
+  restored.instances = record.instances.filter(instance => !isAdded("instances.", instance));
+  restored.assessments = record.assessments.filter(assessment => !isAdded("assessments.", assessment));
+  restored.lineage = { ...record.lineage, items: record.lineage.items.filter(item => !isAdded("lineage.items.", item)) };
+  restored.mutationLog = record.mutationLog.filter(mutation => !(receipt.mutationIds.includes(mutation.id) && mutation.date === receipt.date));
+  return restored;
+}
 
 function restoreSourceFields(instance, change) {
   if (!change) return instance;
@@ -39,6 +58,9 @@ function undoSourceReceipt(record, receipt) {
     restoreSourceFields(instance, entry.changes.find(change => change.instanceId === instance.id))) };
 }
 function atCheckpoint(record, date) {
+  for (const receipt of laterRecordReceipts) {
+    if (receipt.recordId === record.id && receipt.date > date) record = undoRecordReceipt(record, receipt);
+  }
   const statusAddedLater = record.mutationLog.some(mutation => mutation.date > date &&
     mutation.note?.includes("docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md"));
   return {
@@ -82,6 +104,13 @@ test("successive source increments preserve all scientific content and prior his
       assert.equal(digest(undoSourceReceipt(record, receipt)), entry.originalRecordHash, `${entry.id}: unreceipted edit`);
     }
   }
+});
+
+test("the FR-QE-0008 20 Oct receipt restores the record exactly as it stood before", () => {
+  const [receipt] = laterRecordReceipts;
+  const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+  assert.equal(digest(FR_QE_0008), receipt.currentRecordHash);
+  assert.equal(digest(undoRecordReceipt(FR_QE_0008, receipt)), receipt.originalRecordHash);
 });
 
 test("shared-source labels preserve whole records outside their receipted metadata", async () => {
