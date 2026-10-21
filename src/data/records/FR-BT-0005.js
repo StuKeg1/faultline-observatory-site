@@ -13,8 +13,8 @@
 export const FR_BT_0005 = {
   id: "FR-BT-0005",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-09-26",
-  provenanceReviewId: "LPR-001-D29",
+  lastProvenanceReview: "2026-10-21",
+  provenanceReviewId: "LPR-001-D57",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -199,6 +199,7 @@ export const FR_BT_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-011", date: "2026-10-21", field: "provenance_review_completed", from: "LPR-001-D29", to: "LPR-001-D57", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representations verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution or verification-stage discrepancy identified. A September 2026 report of another living recipient exceeding nine months with a functioning pig kidney was identified as genuinely new evidence and is held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-010", date: "2026-10-19", field: "reference_corrected", from: "IN-004 recipient relationship implicit; IN-002 title says 51 days", to: "IN-004 explicitly linked to IN-002 as same-recipient analysis; IN-002 title omits ambiguous duration", note: "Ribas et al., Nature Medicine, DOI 10.1038/s41591-025-04053-3, profiles the March 2024 first recipient reported by Kawai et al., NEJM, DOI 10.1056/NEJMoa2412747. Not another patient. Remove the unexplained 51-day title while preserving the description and source chronology documenting death on postoperative day 52. All assessments, sources, dates, vectors and historical mutations preserved; no new clinical evidence admitted." },
     { id: "M-009", date: "2026-10-18", field: "reference_corrected", from: "IN-003 / IN-008 relationship in narrative only", to: "IN-008 explicitly linked to IN-003 as same-recipient follow-up", note: "Make the already recorded same-recipient relationship explicit and machine-readable. Preserve both entries, source chronology, descriptions, vectors and assessments. Eight logged entries do not mean eight independent cases." },
     // APPEND-ONLY. Newest first.
