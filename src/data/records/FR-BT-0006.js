@@ -13,8 +13,8 @@
 export const FR_BT_0006 = {
   id: "FR-BT-0006",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-09-27",
-  provenanceReviewId: "LPR-001-D30",
+  lastProvenanceReview: "2026-10-22",
+  provenanceReviewId: "LPR-001-D58",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -174,6 +174,7 @@ export const FR_BT_0006 = {
   ],
 
   mutationLog: [
+    { id: "M-007", date: "2026-10-22", field: "provenance_review", from: "LPR-001-D30", to: "LPR-001-D58", note: "Second-cycle Legacy Provenance Review completed as PASS across all four existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence requiring Normal Record Review was identified. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id":"M-007","date":"2026-10-19","field":"reference_corrected","from":"Shared citations not explained in the evidence list","to":"Source-specific reciprocal notices on IN-004","note":"Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-09-27", field: "provenance_review_completed", from: "—", to: "LPR-001-D30", note: "Legacy provenance review completed. All four existing instances verified against their structured sources; no provenance enrichment, discrepancy or new-evidence candidate identified. No assessment, interpretation, pressure state, verification stage, mechanism, attractor or claim changed." },
