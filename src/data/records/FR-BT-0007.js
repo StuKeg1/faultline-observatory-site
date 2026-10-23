@@ -12,8 +12,8 @@
 export const FR_BT_0007 = {
   id: "FR-BT-0007",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-09-28",
-  provenanceReviewId: "LPR-001-D31",
+  lastProvenanceReview: "2026-10-23",
+  provenanceReviewId: "LPR-001-D59",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -236,6 +236,7 @@ export const FR_BT_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-008", date: "2026-10-23", field: "provenance_review", from: "LPR-001-D31", to: "LPR-001-D59", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representations verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. Paradromics Connexus first-participant real-time open-ended communication reporting was identified as genuinely new potentially relevant evidence and held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id": "M-007", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-004, IN-005", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. BT-0007 overlap is limited to the Wairagkar component of IN-004; Littlejohn BRAVO-3 is distinct. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
     // APPEND-ONLY. Newest first.
     { id: "M-006", date: "2026-09-28", field: "provenance_review_completed", from: "—", to: "LPR-001-D31", note: "Legacy provenance review completed. All seven existing instances verified against their structured sources; no provenance enrichment, discrepancy or new-evidence candidate identified. No assessment, interpretation, pressure state, verification stage, mechanism, attractor or claim changed." },
