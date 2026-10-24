@@ -1,0 +1,35 @@
+{
+  "id": "FR-BT-0001-AT-001-RECLASSIFICATION-2026-10-24",
+  "date": "2026-10-24",
+  "recordId": "FR-BT-0001",
+  "mutationId": "M-013",
+  "classification": "editorial_governance_mechanism_reclassification",
+  "review": "docs/reviews/FR-BT-0001-AT-001-MECHANISM-OVERLAP-REVIEW-2026-10-24.md",
+  "changes": [
+    {
+      "fieldPath": "mechanisms.RM-001.description",
+      "previous": "Surrogate-to-clinical translation gap. Small human studies report preliminary target-engagement and short-term functional signals, but it remains unproven that those measures produce clinically meaningful healthspan outcomes. The translation gap between biomarkers and clinical endpoints is a structural problem for this claim: early surrogate evidence can accumulate over months while meaningful healthspan outcomes require longer, indication-appropriate follow-up.",
+      "current": "Surrogate-to-clinical translation gap. Small human studies report preliminary target-engagement and short-term functional signals, but it remains unproven that those measures produce clinically meaningful healthspan outcomes. The translation gap between biomarkers and clinical endpoints is a structural problem for this claim: early surrogate evidence can accumulate over months while meaningful healthspan outcomes require longer, indication-appropriate follow-up. A validated biomarker panel that predicts subsequent healthspan outcomes could reduce this surrogate and trial-duration barrier, but surrogate validation would not itself demonstrate that a senolytic meaningfully extends human healthspan."
+    },
+    {
+      "fieldPath": "mechanisms.BN-001.description",
+      "previous": "\"Meaningfully extend\" lacks an agreed threshold. The claim requires meaningful extension of healthy lifespan, but no agreed clinical threshold defines what \"meaningful\" means. Is one year of additional healthy function meaningful? Five years? A 10% reduction in age-related disease incidence? The FDA has not approved any intervention for the indication of \"aging\" or \"healthspan extension\" — the regulatory framework does not currently accommodate such claims, meaning clinical trials cannot be powered against a standard threshold. This is a lexical and regulatory bottleneck of the same type as FR-AI-0004 (\"previously unseen\") and FR-AI-0006 (\"same mechanism\") — the fourth such bottleneck in the corpus. Without an agreed threshold, the claim cannot transition to any resolved state regardless of evidence accumulation.",
+      "current": "\"Meaningfully extend\" lacks an agreed threshold. The claim requires meaningful extension of healthy lifespan, but no agreed clinical threshold defines what \"meaningful\" means. Is one year of additional healthy function meaningful? Five years? A 10% reduction in age-related disease incidence? The FDA has not approved any intervention for the indication of \"aging\" or \"healthspan extension\" — the regulatory framework does not currently accommodate such claims, meaning clinical trials cannot be powered against a standard threshold. A future regulatory framework that provides a governed clinical endpoint could reduce this operational barrier, but it would not by itself determine what magnitude of healthspan extension this record should regard as meaningful. This is a lexical and regulatory bottleneck of the same type as FR-AI-0004 (\"previously unseen\") and FR-AI-0006 (\"same mechanism\") — the fourth such bottleneck in the corpus. Without an agreed threshold, the claim cannot transition to any resolved state regardless of evidence accumulation."
+    }
+  ],
+  "retiredMechanism": {
+    "id": "AT-001",
+    "type": "ATTRACTOR",
+    "description": "FDA \"geroscience\" indication and validated biomarker panel. Two developments would materially advance this record: first, FDA regulatory framework for aging as an indication (currently under discussion through the TAME trial — Targeting Aging with Metformin — and geroscience initiatives), which would create a governed clinical endpoint for healthspan extension; second, a validated biomarker panel that correlates with subsequent healthspan outcomes, providing a surrogate endpoint that is accepted as predictive. Both developments are in progress. If achieved, they would resolve BN-001 by providing an agreed threshold and make Phase III trials of senolytics tractable on five-to-ten year rather than twenty-to-thirty year timescales."
+  },
+  "nonEffects": [
+    "no new evidence",
+    "no external factual update",
+    "no reassessment",
+    "no claim change",
+    "no Pressure State change",
+    "no Verification Stage change",
+    "no historical rewrite",
+    "no ATTRACTOR taxonomy ratification"
+  ]
+}
