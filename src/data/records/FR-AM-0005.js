@@ -148,7 +148,7 @@ export const FR_AM_0005 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Independently reproducible room-temperature superconductivity under documented laboratory conditions. A future candidate would reopen the record when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity. The record does not prescribe a universal fixed trio of signatures; the evidential package must be inspectable, coherent and independently reproducible. The attractor is outcome-based rather than tied to a particular material or headline temperature claim.",
+      description: "Independently reproducible room-temperature superconductivity under documented laboratory conditions. A future candidate would provide a bounded evidential basis for considering governed reopening when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity. The record does not prescribe a universal fixed trio of signatures; the evidential package must be inspectable, coherent and independently reproducible. The attractor is outcome-based rather than tied to a particular material or headline temperature claim.",
     }
   ],
 
