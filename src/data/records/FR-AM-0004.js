@@ -163,7 +163,7 @@ export const FR_AM_0004 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "First plant-level net electricity demonstration. The specific event that would transition this record from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid. This is expected to occur, if at all, in a private or public demonstration plant in the 2030s. It would satisfy threshold 1 and open the evidential path to thresholds 2 and 3. The attractor is clearly defined, practically anticipated, and the primary evidence target for this record's near-term development.",
+      description: "First plant-level net electricity demonstration. The specific event that would materially engage a governed reassessment of whether this record should move from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid. This is expected to occur, if at all, in a private or public demonstration plant in the 2030s. It would satisfy threshold 1 and open the evidential path to thresholds 2 and 3. The attractor is clearly defined, practically anticipated, and the primary evidence target for this record's near-term development.",
     }
   ],
 
