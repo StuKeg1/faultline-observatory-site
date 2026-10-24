@@ -154,7 +154,7 @@ export const FR_AM_0006 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "First production vehicle with a solid-state battery meeting the claim's thresholds under independent third-party testing. The specific event that would transition this record from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost. Toyota states a 2027–28 objective; it is a monitored company timetable, not certification or proof of delivery. The attractor remains future operational deployment rather than company roadmaps, policy certification, supply agreements, or pilot-line progress.",
+      description: "First production vehicle with a solid-state battery meeting the claim's thresholds under independent third-party testing. The specific event that would materially engage a governed reassessment of whether this record should move from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost. Toyota states a 2027–28 objective; it is a monitored company timetable, not certification or proof of delivery. The attractor remains future operational deployment rather than company roadmaps, policy certification, supply agreements, or pilot-line progress.",
     }
   ],
 
