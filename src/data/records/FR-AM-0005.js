@@ -148,7 +148,7 @@ export const FR_AM_0005 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Independently reproducible room-temperature superconductivity under documented laboratory conditions. A future candidate would reopen the record when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity. The record does not prescribe a universal fixed trio of signatures; the evidential package must be inspectable, coherent and independently reproducible. The attractor is outcome-based rather than tied to a particular material or headline temperature claim.",
+      description: "Independently reproducible room-temperature superconductivity under documented laboratory conditions. A future candidate would provide a bounded evidential basis for considering governed reopening when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity. The record does not prescribe a universal fixed trio of signatures; the evidential package must be inspectable, coherent and independently reproducible. The attractor is outcome-based rather than tied to a particular material or headline temperature claim.",
     }
   ],
 
@@ -187,6 +187,7 @@ export const FR_AM_0005 = {
   ],
 
   mutationLog: [
+    {"id":"M-018","date":"2026-10-24","field":"editorial_correction","from":"ATTRACTOR wording assigned a governed institutional consequence directly to the future evidence event","to":"ATTRACTOR wording preserves the evidence route while reserving State, Stage, verdict or reopening consequences to governed assessment","note":"Operator-authorised A4 institutional-authority consistency repair. Correct AT-001 explanatory wording only; no new evidence, scientific threshold, evidence target, Pressure State, Verification Stage, assessment or ATTRACTOR identity changed. This repair is independent of the closed ATTRACTOR taxonomy v2 FAIL. Receipt: docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json."},
     {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-001","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, sourceReference, assessments, dates, relationships, review status and all prior mutations preserved. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {
       "id": "M-016",

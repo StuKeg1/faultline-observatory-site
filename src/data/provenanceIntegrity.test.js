@@ -21,6 +21,7 @@ const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/
 // checks at earlier checkpoints can restore the record rather than waive it.
 // Add each new receipt to this list; they are undone newest first, so each
 // one is checked against the record as it stood on its own date.
+const a4AuthorityReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json", import.meta.url)));
 const laterRecordReceipts = ["FR-QE-0008-D56-HELIOS-2026-10-20", "FR-QE-0008-SCOUT-2026-10-24", "FR-AI-0007-SCOUT-2026-10-24", "FR-BT-0006-MUTATION-ID-2026-10-24", "FR-BT-0006-D58-2026-10-22", "FR-AI-0002-D60-2026-10-24"].map(id => JSON.parse(readFileSync(new URL(
   `../../docs/reviews/${id}.json`, import.meta.url)))).sort((a, b) => b.date.localeCompare(a.date));
 
@@ -61,7 +62,24 @@ function undoSourceReceipt(record, receipt) {
   return { ...record, mutationLog: record.mutationLog.slice(1), instances: record.instances.map(instance =>
     restoreSourceFields(instance, entry.changes.find(change => change.instanceId === instance.id))) };
 }
+function undoA4AuthorityReceipt(record) {
+  const entry = a4AuthorityReceipt.records.find(entry => entry.recordId === record.id);
+  if (!entry) return record;
+  const restored = structuredClone(record);
+  assert.equal(restored.mutationLog[0].id, entry.mutationId, `${record.id}: A4 receipt mutation is not current`);
+  restored.mutationLog.shift();
+  for (const change of entry.changes) {
+    const mechanismId = change.fieldPath.split(".")[1];
+    const mechanism = restored.mechanisms.find(item => item.id === mechanismId);
+    assert.ok(mechanism, `${record.id}: A4 receipt mechanism missing`);
+    assert.equal(mechanism.description, change.current, `${record.id}: A4 current wording differs from receipt`);
+    mechanism.description = change.previous;
+  }
+  return restored;
+}
+
 function atCheckpoint(record, date) {
+  if (a4AuthorityReceipt.date > date) record = undoA4AuthorityReceipt(record);
   for (const receipt of laterRecordReceipts) {
     if (receipt.recordId === record.id && receipt.date > date) record = undoRecordReceipt(record, receipt);
   }
@@ -92,6 +110,17 @@ function atCheckpoint(record, date) {
   };
 }
 
+test("A4 institutional-authority repair is receipted and remains editorial only", async () => {
+  for (const entry of a4AuthorityReceipt.records) {
+    const record = Object.values(await import(`./records/${entry.recordId}.js`))[0];
+    assert.equal(record.mutationLog[0].id, entry.mutationId);
+    assert.equal(detectMutationType(record.mutationLog[0], record), "editorial_correction");
+    assert.equal(qualifiesForHomepage("editorial_correction").qualifies, false);
+    const restored = undoA4AuthorityReceipt(record);
+    assert.equal(restored.mutationLog.some(({ id }) => id === entry.mutationId), false);
+  }
+});
+
 test("successive source increments preserve all scientific content and prior history", async () => {
   const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   assert.deepEqual(sourceLinkReceipts.map(receipt => receipt.records.reduce((n, entry) => n + entry.changes.length, 0)), [8, 2]);
@@ -99,8 +128,10 @@ test("successive source increments preserve all scientific content and prior his
     const receipt = sourceLinkReceipts[index];
     for (const entry of receipt.records) {
       let record = Object.values(await import(`./records/${entry.id}.js`))[0];
-      // Reverse only explicitly receipted later increments. Keep the original
-      // whole-record hash checks valid instead of replacing or waiving them.
+      // Reverse the newer A4 editorial receipt before validating historical
+      // source increments, then reverse only explicitly receipted later increments.
+      if (a4AuthorityReceipt.records.some(item => item.recordId === record.id)) record = undoA4AuthorityReceipt(record);
+      // Keep the original whole-record hash checks valid instead of replacing or waiving them.
       for (const later of sourceLinkReceipts.slice(index + 1).reverse()) record = undoSourceReceipt(record, later);
       const type = detectMutationType(record.mutationLog[0], record);
       assert.equal(type, "editorial_correction");
