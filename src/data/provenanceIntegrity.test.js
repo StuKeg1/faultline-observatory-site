@@ -128,8 +128,10 @@ test("successive source increments preserve all scientific content and prior his
     const receipt = sourceLinkReceipts[index];
     for (const entry of receipt.records) {
       let record = Object.values(await import(`./records/${entry.id}.js`))[0];
-      // Reverse only explicitly receipted later increments. Keep the original
-      // whole-record hash checks valid instead of replacing or waiving them.
+      // Reverse the newer A4 editorial receipt before validating historical
+      // source increments, then reverse only explicitly receipted later increments.
+      if (a4AuthorityReceipt.records.some(item => item.recordId === record.id)) record = undoA4AuthorityReceipt(record);
+      // Keep the original whole-record hash checks valid instead of replacing or waiving them.
       for (const later of sourceLinkReceipts.slice(index + 1).reverse()) record = undoSourceReceipt(record, later);
       const type = detectMutationType(record.mutationLog[0], record);
       assert.equal(type, "editorial_correction");
