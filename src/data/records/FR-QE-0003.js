@@ -121,7 +121,7 @@ export const FR_QE_0003 = {
     {
       id: "AT-001",
       type: "ATTRACTOR",
-      description: "Below-threshold operation as resolution point. The below-threshold result in INST-005 (Google Willow) represents a qualitative threshold that, if confirmed at increasing code distances, would constitute resolution of the claim as stated. Below-threshold operation means the scaling behaviour is not merely demonstrated but is self-reinforcing: each additional qubit added to the code actively improves logical error rates. If this holds at d=11 and d=15, the claim trajectory moves toward RESOLVING. The attractor is the below-threshold confirmation at larger distances, which is the next expected evidence event in this record.",
+      description: "Below-threshold operation as resolution point. The below-threshold result in INST-005 (Google Willow) represents a qualitative threshold that, if confirmed at increasing code distances, would provide material evidence for a governed assessment of whether the claim has reached resolution. Below-threshold operation means the scaling behaviour is not merely demonstrated but is self-reinforcing: each additional qubit added to the code actively improves logical error rates. If this holds at d=11 and d=15, the claim trajectory moves toward RESOLVING. The attractor is the below-threshold confirmation at larger distances, which is the next expected evidence event in this record.",
     }
   ],
 
