@@ -1,0 +1,23 @@
+{
+  "id": "FR-AI-0001-AT-001-RETIREMENT-2026-10-24",
+  "date": "2026-10-24",
+  "recordId": "FR-AI-0001",
+  "mutationId": "M-018",
+  "classification": "editorial_governance_redundancy_retirement",
+  "review": "docs/reviews/FR-AI-0001-AT-001-REDUNDANCY-REVIEW-2026-10-24.md",
+  "scope": "Remove only current AT-001 as redundant working metadata. Preserve all evidence, assessments, claim, State, Stage, OQ-001–005, BN-001, RM-001/002, lineage and historical assessment references.",
+  "retiredMechanism": {
+    "id": "AT-001",
+    "type": "ATTRACTOR",
+    "description": "Extended chain-of-thought as mechanism candidate. The o1/o3 architecture (INST-005) introduces explicit extended internal reasoning as a trained behaviour. If this mechanism produces genuine generalisation, it represents a qualitative shift in the kind of evidence available for this claim — not just better benchmark scores but a different computational process. Whether the mechanism produces true generalisation or a higher-order pattern-matching behaviour is the open research question. Recorded as an Attractor: it is drawing the evidence trail toward a potential resolution point, though the resolution is not yet achieved."
+  },
+  "nonEffects": [
+    "no new evidence",
+    "no reassessment",
+    "no claim change",
+    "no Pressure State change",
+    "no Verification Stage change",
+    "no historical assessment rewrite",
+    "no ATTRACTOR taxonomy ratification"
+  ]
+}
