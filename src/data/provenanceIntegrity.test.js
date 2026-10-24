@@ -90,7 +90,11 @@ function undoAi1AttractorRetirement(record) {
 }
 
 function atCheckpoint(record, date) {
-  if (ai1AttractorRetirementReceipt.date > date) record = undoAi1AttractorRetirement(record);
+  if (ai1AttractorRetirementReceipt.date > date &&
+      record.id === ai1AttractorRetirementReceipt.recordId &&
+      record.mutationLog[0]?.id === ai1AttractorRetirementReceipt.mutationId) {
+    record = undoAi1AttractorRetirement(record);
+  }
   if (a4AuthorityReceipt.date > date) record = undoA4AuthorityReceipt(record);
   for (const receipt of laterRecordReceipts) {
     if (receipt.recordId === record.id && receipt.date > date) record = undoRecordReceipt(record, receipt);
