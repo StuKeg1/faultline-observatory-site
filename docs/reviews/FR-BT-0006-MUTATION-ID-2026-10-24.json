@@ -1,0 +1,159 @@
+{
+  "id": "FR-BT-0006-MUTATION-ID-2026-10-24",
+  "date": "2026-10-24",
+  "recordId": "FR-BT-0006",
+  "baseCommit": "accbbbe0846d0555117065f743fe0f85343c2e82",
+  "originalRecordHash": "3e64b8bc0f288816ef08ce55e15e84e26d5de9adcbaaa1fc0e0e2dd3c9825801",
+  "currentRecordHash": "ab7b3c5e4cdced0164535aedd73c52d105fc8ea7ee06eb26b20b7d5fbdc0370b",
+  "mutationIds": [
+    "M-009",
+    "M-008"
+  ],
+  "changes": [
+    {
+      "fieldPath": "mutationLog",
+      "previous": [
+        {
+          "id": "M-007",
+          "date": "2026-10-22",
+          "field": "provenance_review",
+          "from": "LPR-001-D30",
+          "to": "LPR-001-D58",
+          "note": "Second-cycle Legacy Provenance Review completed as PASS across all four existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence requiring Normal Record Review was identified. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged."
+        },
+        {
+          "id": "M-007",
+          "date": "2026-10-19",
+          "field": "reference_corrected",
+          "from": "Shared citations not explained in the evidence list",
+          "to": "Source-specific reciprocal notices on IN-004",
+          "note": "Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."
+        },
+        {
+          "id": "M-006",
+          "date": "2026-09-27",
+          "field": "provenance_review_completed",
+          "from": "—",
+          "to": "LPR-001-D30",
+          "note": "Legacy provenance review completed. All four existing instances verified against their structured sources; no provenance enrichment, discrepancy or new-evidence candidate identified. No assessment, interpretation, pressure state, verification stage, mechanism, attractor or claim changed."
+        },
+        {
+          "id": "M-005",
+          "date": "2026-09-12",
+          "field": "diagnosis_held",
+          "from": "—",
+          "to": "DIAGNOSIS-HELD",
+          "note": "Admission diagnosis: EMERGING / VS-02. Integrated cellular functions are established in peer-reviewed work; autonomous repeated reproduction remains provisional and unreplicated."
+        },
+        {
+          "id": "M-004",
+          "date": "2026-09-12",
+          "field": "mechanisms_recorded",
+          "from": "—",
+          "to": "MECHANISMS-RECORDED",
+          "note": "BN-001, RM-001, RM-002, RM-003 and AT-001 recorded from the admission evidence package."
+        },
+        {
+          "id": "M-003",
+          "date": "2026-09-12",
+          "field": "assessment_issued",
+          "from": "—",
+          "to": "ASSESSMENT-ISSUED",
+          "note": "AS-001 issued. Pressure State: EMERGING. Verification Stage: VS-02."
+        },
+        {
+          "id": "M-002",
+          "date": "2026-09-12",
+          "field": "instances_logged",
+          "from": "—",
+          "to": "INSTANCES-LOGGED",
+          "note": "IN-001 through IN-004 admitted as the initial evidence set with source-level structured provenance."
+        },
+        {
+          "id": "M-001",
+          "date": "2026-09-12",
+          "field": "record_created",
+          "from": "—",
+          "to": "RECORD-CREATED",
+          "note": "FR-BT-0006 admitted following Biotechnology Programme Gap Review and formal New Record Evaluation."
+        }
+      ],
+      "current": [
+        {
+          "id": "M-009",
+          "date": "2026-10-24",
+          "field": "reference_corrected",
+          "from": "Duplicate M-007 identifiers on 19 and 22 October",
+          "to": "22 October LPR-001-D58 entry identified as M-008",
+          "note": "Build-blocking identifier collision corrected during authorised 24 October Scout implementation. The 19 October M-007 retains its identity. The newer 22 October provenance-review entry receives unused M-008 and preserves its originalId M-007; its date, field, from/to and note are unchanged. No evidence, assessment, state, stage or provenance outcome changed. Original collision was introduced in d84d4bd (PR #194) after the earlier M-007 existed. This M-009 explicitly records the metadata correction. Receipt: docs/reviews/SCOUT-2026-10-24-APPROVED-INSTANCES.md."
+        },
+        {
+          "id": "M-008",
+          "originalId": "M-007",
+          "date": "2026-10-22",
+          "field": "provenance_review",
+          "from": "LPR-001-D30",
+          "to": "LPR-001-D58",
+          "note": "Second-cycle Legacy Provenance Review completed as PASS across all four existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence requiring Normal Record Review was identified. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged."
+        },
+        {
+          "id": "M-007",
+          "date": "2026-10-19",
+          "field": "reference_corrected",
+          "from": "Shared citations not explained in the evidence list",
+          "to": "Source-specific reciprocal notices on IN-004",
+          "note": "Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."
+        },
+        {
+          "id": "M-006",
+          "date": "2026-09-27",
+          "field": "provenance_review_completed",
+          "from": "—",
+          "to": "LPR-001-D30",
+          "note": "Legacy provenance review completed. All four existing instances verified against their structured sources; no provenance enrichment, discrepancy or new-evidence candidate identified. No assessment, interpretation, pressure state, verification stage, mechanism, attractor or claim changed."
+        },
+        {
+          "id": "M-005",
+          "date": "2026-09-12",
+          "field": "diagnosis_held",
+          "from": "—",
+          "to": "DIAGNOSIS-HELD",
+          "note": "Admission diagnosis: EMERGING / VS-02. Integrated cellular functions are established in peer-reviewed work; autonomous repeated reproduction remains provisional and unreplicated."
+        },
+        {
+          "id": "M-004",
+          "date": "2026-09-12",
+          "field": "mechanisms_recorded",
+          "from": "—",
+          "to": "MECHANISMS-RECORDED",
+          "note": "BN-001, RM-001, RM-002, RM-003 and AT-001 recorded from the admission evidence package."
+        },
+        {
+          "id": "M-003",
+          "date": "2026-09-12",
+          "field": "assessment_issued",
+          "from": "—",
+          "to": "ASSESSMENT-ISSUED",
+          "note": "AS-001 issued. Pressure State: EMERGING. Verification Stage: VS-02."
+        },
+        {
+          "id": "M-002",
+          "date": "2026-09-12",
+          "field": "instances_logged",
+          "from": "—",
+          "to": "INSTANCES-LOGGED",
+          "note": "IN-001 through IN-004 admitted as the initial evidence set with source-level structured provenance."
+        },
+        {
+          "id": "M-001",
+          "date": "2026-09-12",
+          "field": "record_created",
+          "from": "—",
+          "to": "RECORD-CREATED",
+          "note": "FR-BT-0006 admitted following Biotechnology Programme Gap Review and formal New Record Evaluation."
+        }
+      ],
+      "basis": "Repair duplicated M-007 identifier, retain originalId and record correction; all prior event content preserved."
+    }
+  ]
+}

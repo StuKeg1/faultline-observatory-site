@@ -1,0 +1,24 @@
+{
+  "id": "FR-BT-0006-D58-2026-10-22",
+  "date": "2026-10-22",
+  "recordId": "FR-BT-0006",
+  "baseCommit": "d84d4bd^",
+  "originalRecordHash": "9d0e97e5bfe3ffc4bba608dfa35bd1831d92e21172d05ac0a78c02bcff8f2587",
+  "currentRecordHash": "3e64b8bc0f288816ef08ce55e15e84e26d5de9adcbaaa1fc0e0e2dd3c9825801",
+  "mutationIds": [
+    "M-007"
+  ],
+  "changes": [
+    {
+      "fieldPath": "lastProvenanceReview",
+      "previous": "2026-09-27",
+      "current": "2026-10-22"
+    },
+    {
+      "fieldPath": "provenanceReviewId",
+      "previous": "LPR-001-D30",
+      "current": "LPR-001-D58"
+    }
+  ],
+  "notes": "Historical D58 checkpoint before the separately receipted 24 October identifier repair; the added M-007 on 22 October is distinguished from M-007 dated 19 October."
+}

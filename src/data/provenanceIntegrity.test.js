@@ -21,7 +21,7 @@ const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/
 // checks at earlier checkpoints can restore the record rather than waive it.
 // Add each new receipt to this list; they are undone newest first, so each
 // one is checked against the record as it stood on its own date.
-const laterRecordReceipts = ["FR-QE-0008-D56-HELIOS-2026-10-20"].map(id => JSON.parse(readFileSync(new URL(
+const laterRecordReceipts = ["FR-QE-0008-D56-HELIOS-2026-10-20", "FR-QE-0008-SCOUT-2026-10-24", "FR-AI-0007-SCOUT-2026-10-24", "FR-BT-0006-MUTATION-ID-2026-10-24", "FR-BT-0006-D58-2026-10-22", "FR-AI-0002-D60-2026-10-24"].map(id => JSON.parse(readFileSync(new URL(
   `../../docs/reviews/${id}.json`, import.meta.url)))).sort((a, b) => b.date.localeCompare(a.date));
 
 function undoRecordReceipt(record, receipt) {
@@ -35,7 +35,9 @@ function undoRecordReceipt(record, receipt) {
   restored.instances = record.instances.filter(instance => !isAdded("instances.", instance));
   restored.assessments = record.assessments.filter(assessment => !isAdded("assessments.", assessment));
   restored.lineage = { ...record.lineage, items: record.lineage.items.filter(item => !isAdded("lineage.items.", item)) };
-  restored.mutationLog = record.mutationLog.filter(mutation => !(receipt.mutationIds.includes(mutation.id) && mutation.date === receipt.date));
+  if (!receipt.changes.some(change => change.fieldPath === "mutationLog")) {
+    restored.mutationLog = record.mutationLog.filter(mutation => !(receipt.mutationIds.includes(mutation.id) && mutation.date === receipt.date));
+  }
   return restored;
 }
 
@@ -198,8 +200,11 @@ test("FR-AI-0002 retains the Day 1 correction after D32 without reassessment", (
   assert.equal(writing.sources[0].doi, "10.1126/science.adh2586");
   assert.equal(failures.sources[1].doi, "10.1038/s41746-023-00939-z");
   assert.ok(FR_AI_0002.mutationLog.some(({ id, to }) => id === "M-010" && to.includes("LPR-001-D01")));
-  assert.equal(FR_AI_0002.provenanceReviewId, "LPR-001-D32");
-  assert.equal(FR_AI_0002.provenanceRepairStatus, "completed");
+  const afterD32 = atCheckpoint(FR_AI_0002, "2026-09-29");
+  assert.equal(afterD32.provenanceReviewId, "LPR-001-D32");
+  assert.equal(afterD32.provenanceRepairStatus, "completed");
+  assert.equal(FR_AI_0002.provenanceReviewId, "LPR-001-D60");
+  assert.equal(FR_AI_0002.provenanceRepairStatus, "not_required");
   assert.equal(current.pressureState, "escalating");
   assert.equal(current.verificationStage, "VS-02");
   assert.equal(atCheckpoint(FR_AI_0002, "2026-09-29").assessments.length, 2);
