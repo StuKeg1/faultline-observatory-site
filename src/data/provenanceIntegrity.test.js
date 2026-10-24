@@ -22,6 +22,7 @@ const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/
 // Add each new receipt to this list; they are undone newest first, so each
 // one is checked against the record as it stood on its own date.
 const a4AuthorityReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json", import.meta.url)));
+const ai1AttractorRetirementReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-AI-0001-AT-001-RETIREMENT-2026-10-24.json", import.meta.url)));
 const laterRecordReceipts = ["FR-QE-0008-D56-HELIOS-2026-10-20", "FR-QE-0008-SCOUT-2026-10-24", "FR-AI-0007-SCOUT-2026-10-24", "FR-BT-0006-MUTATION-ID-2026-10-24", "FR-BT-0006-D58-2026-10-22", "FR-AI-0002-D60-2026-10-24"].map(id => JSON.parse(readFileSync(new URL(
   `../../docs/reviews/${id}.json`, import.meta.url)))).sort((a, b) => b.date.localeCompare(a.date));
 
@@ -78,7 +79,18 @@ function undoA4AuthorityReceipt(record) {
   return restored;
 }
 
+function undoAi1AttractorRetirement(record) {
+  if (record.id !== ai1AttractorRetirementReceipt.recordId) return record;
+  const restored = structuredClone(record);
+  assert.equal(restored.mutationLog[0].id, ai1AttractorRetirementReceipt.mutationId, "FR-AI-0001: retirement receipt mutation is not current");
+  restored.mutationLog.shift();
+  assert.equal(restored.mechanisms.some(item => item.id === ai1AttractorRetirementReceipt.retiredMechanism.id), false, "FR-AI-0001: retired mechanism unexpectedly present");
+  restored.mechanisms.push(ai1AttractorRetirementReceipt.retiredMechanism);
+  return restored;
+}
+
 function atCheckpoint(record, date) {
+  if (ai1AttractorRetirementReceipt.date > date) record = undoAi1AttractorRetirement(record);
   if (a4AuthorityReceipt.date > date) record = undoA4AuthorityReceipt(record);
   for (const receipt of laterRecordReceipts) {
     if (receipt.recordId === record.id && receipt.date > date) record = undoRecordReceipt(record, receipt);
@@ -109,6 +121,16 @@ function atCheckpoint(record, date) {
     mutationLog: record.mutationLog.filter(mutation => mutation.date <= date),
   };
 }
+
+test("FR-AI-0001 AT-001 retirement is receipted and remains editorial only", () => {
+  assert.equal(FR_AI_0001.mutationLog[0].id, ai1AttractorRetirementReceipt.mutationId);
+  assert.equal(detectMutationType(FR_AI_0001.mutationLog[0], FR_AI_0001), "editorial_correction");
+  assert.equal(qualifiesForHomepage("editorial_correction").qualifies, false);
+  assert.equal(FR_AI_0001.mechanisms.some(({ id }) => id === "AT-001"), false);
+  const restored = undoAi1AttractorRetirement(FR_AI_0001);
+  assert.deepEqual(restored.mechanisms.find(({ id }) => id === "AT-001"), ai1AttractorRetirementReceipt.retiredMechanism);
+  assert.equal(restored.mutationLog.some(({ id }) => id === ai1AttractorRetirementReceipt.mutationId), false);
+});
 
 test("A4 institutional-authority repair is receipted and remains editorial only", async () => {
   for (const entry of a4AuthorityReceipt.records) {
