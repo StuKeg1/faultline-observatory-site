@@ -9,8 +9,8 @@
       "changes": [
         {
           "fieldPath": "mechanisms.AT-001.description",
-          "previous": "The specific event that would transition this record from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid.",
-          "current": "The specific event that would materially engage a governed reassessment of whether this record should move from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid."
+          "previous": "First plant-level net electricity demonstration. The specific event that would transition this record from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid. This is expected to occur, if at all, in a private or public demonstration plant in the 2030s. It would satisfy threshold 1 and open the evidential path to thresholds 2 and 3. The attractor is clearly defined, practically anticipated, and the primary evidence target for this record's near-term development.",
+          "current": "First plant-level net electricity demonstration. The specific event that would materially engage a governed reassessment of whether this record should move from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid. This is expected to occur, if at all, in a private or public demonstration plant in the 2030s. It would satisfy threshold 1 and open the evidential path to thresholds 2 and 3. The attractor is clearly defined, practically anticipated, and the primary evidence target for this record's near-term development."
         }
       ]
     },
@@ -20,8 +20,8 @@
       "changes": [
         {
           "fieldPath": "mechanisms.AT-001.description",
-          "previous": "A future candidate would reopen the record when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity.",
-          "current": "A future candidate would provide a bounded evidential basis for considering governed reopening when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity."
+          "previous": "Independently reproducible room-temperature superconductivity under documented laboratory conditions. A future candidate would reopen the record when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity. The record does not prescribe a universal fixed trio of signatures; the evidential package must be inspectable, coherent and independently reproducible. The attractor is outcome-based rather than tied to a particular material or headline temperature claim.",
+          "current": "Independently reproducible room-temperature superconductivity under documented laboratory conditions. A future candidate would provide a bounded evidential basis for considering governed reopening when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity. The record does not prescribe a universal fixed trio of signatures; the evidential package must be inspectable, coherent and independently reproducible. The attractor is outcome-based rather than tied to a particular material or headline temperature claim."
         }
       ]
     },
@@ -31,8 +31,8 @@
       "changes": [
         {
           "fieldPath": "mechanisms.AT-001.description",
-          "previous": "The specific event that would transition this record from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost.",
-          "current": "The specific event that would materially engage a governed reassessment of whether this record should move from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost."
+          "previous": "First production vehicle with a solid-state battery meeting the claim's thresholds under independent third-party testing. The specific event that would transition this record from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost. Toyota states a 2027–28 objective; it is a monitored company timetable, not certification or proof of delivery. The attractor remains future operational deployment rather than company roadmaps, policy certification, supply agreements, or pilot-line progress.",
+          "current": "First production vehicle with a solid-state battery meeting the claim's thresholds under independent third-party testing. The specific event that would materially engage a governed reassessment of whether this record should move from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost. Toyota states a 2027–28 objective; it is a monitored company timetable, not certification or proof of delivery. The attractor remains future operational deployment rather than company roadmaps, policy certification, supply agreements, or pilot-line progress."
         }
       ]
     },
@@ -42,8 +42,8 @@
       "changes": [
         {
           "fieldPath": "mechanisms.AT-001.description",
-          "previous": "The below-threshold result in INST-005 (Google Willow) represents a qualitative threshold that, if confirmed at increasing code distances, would constitute resolution of the claim as stated.",
-          "current": "The below-threshold result in INST-005 (Google Willow) represents a qualitative threshold that, if confirmed at increasing code distances, would provide material evidence for a governed assessment of whether the claim has reached resolution."
+          "previous": "Below-threshold operation as resolution point. The below-threshold result in INST-005 (Google Willow) represents a qualitative threshold that, if confirmed at increasing code distances, would constitute resolution of the claim as stated. Below-threshold operation means the scaling behaviour is not merely demonstrated but is self-reinforcing: each additional qubit added to the code actively improves logical error rates. If this holds at d=11 and d=15, the claim trajectory moves toward RESOLVING. The attractor is the below-threshold confirmation at larger distances, which is the next expected evidence event in this record.",
+          "current": "Below-threshold operation as resolution point. The below-threshold result in INST-005 (Google Willow) represents a qualitative threshold that, if confirmed at increasing code distances, would provide material evidence for a governed assessment of whether the claim has reached resolution. Below-threshold operation means the scaling behaviour is not merely demonstrated but is self-reinforcing: each additional qubit added to the code actively improves logical error rates. If this holds at d=11 and d=15, the claim trajectory moves toward RESOLVING. The attractor is the below-threshold confirmation at larger distances, which is the next expected evidence event in this record."
         }
       ]
     },
@@ -53,8 +53,8 @@
       "changes": [
         {
           "fieldPath": "mechanisms.AT-001.description",
-          "previous": "This is the specific experimental milestone that would move the claim from RESOLVING toward a fully confirmed state.",
-          "current": "This is the specific experimental milestone that would materially strengthen the evidential basis for a governed assessment of whether the claim should move beyond RESOLVING toward a fully confirmed state."
+          "previous": "Demonstration at d=11 and beyond. The next decisive evidence event for this record is demonstration of below-threshold scaling at code distances d=11 and higher. At d=7, the Willow result establishes the behaviour. At d=11 or d=15, the result would confirm that the scaling continues into regimes relevant for practical fault-tolerant computation. This is the specific experimental milestone that would move the claim from RESOLVING toward a fully confirmed state. The attractor is clearly defined and the trajectory toward it is visible in current hardware development roadmaps.",
+          "current": "Demonstration at d=11 and beyond. The next decisive evidence event for this record is demonstration of below-threshold scaling at code distances d=11 and higher. At d=7, the Willow result establishes the behaviour. At d=11 or d=15, the result would confirm that the scaling continues into regimes relevant for practical fault-tolerant computation. This is the specific experimental milestone that would materially strengthen the evidential basis for a governed assessment of whether the claim should move beyond RESOLVING toward a fully confirmed state. The attractor is clearly defined and the trajectory toward it is visible in current hardware development roadmaps."
         }
       ]
     }
