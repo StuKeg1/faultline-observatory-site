@@ -87,3 +87,14 @@ Two bounded reviews are independently justified:
 These reviews must stand on record clarity and FCIF architecture, not on v2 taxonomy outcomes.
 
 The reader need — explaining what future evidence would matter — remains separate. Any future reader-facing prototype should derive from ratified record structures and must not present ATTRACTOR as a constitutional term unless separately governed.
+
+## Subsequent canonical disposition
+
+This review was written before its two authorised bounded follow-ons were completed. The historical findings above are retained as the decision trail; the current canonical dispositions are:
+
+- **FR-AI-0001 / AT-001:** the bounded redundancy review confirmed that AT-001 added no distinct institutional function beyond OQ-002 / BN-001 / governed assessments. AT-001 was subsequently retired with provenance preserved in PR #201, canonical merge `f5917a63b2dc28a0a0a6e9abce1e321f62e9b5d4`.
+- **FR-BT-0001 / AT-001:** the bounded mechanism-overlap review found useful enabling-condition content but mislocated institutional function. The supported regulatory/endpoint distinction was preserved in BN-001, the predictive-surrogate distinction in RM-001, and separate AT-001 was retired in PR #203, canonical merge `ab8a3da5a0591b634782f86457665a6afef58f8a`.
+
+These later corrections do not alter the review's corpus-wide endpoint: ATTRACTOR remains optional, unratified working metadata; there is no taxonomy v3; absence is not a schema defect; remaining legacy ATTRACTORs are not candidates for mechanical review or repair merely because they exist.
+
+The two follow-on items listed above are therefore **complete**.
