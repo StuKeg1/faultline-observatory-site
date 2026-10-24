@@ -11,6 +11,7 @@ import { FR_QE_0008 } from "./records/FR-QE-0008.js";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { FR_AI_0005 } from "./records/FR-AI-0005.js";
+import { FR_BT_0001 } from "./records/FR-BT-0001.js";
 import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.js";
 
 // Historical editorial receipts govern their original checkpoint, not later reassessments.
@@ -23,6 +24,7 @@ const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/
 // one is checked against the record as it stood on its own date.
 const a4AuthorityReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json", import.meta.url)));
 const ai1AttractorRetirementReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-AI-0001-AT-001-RETIREMENT-2026-10-24.json", import.meta.url)));
+const bt1AttractorReclassificationReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-BT-0001-AT-001-RECLASSIFICATION-2026-10-24.json", import.meta.url)));
 const laterRecordReceipts = ["FR-QE-0008-D56-HELIOS-2026-10-20", "FR-QE-0008-SCOUT-2026-10-24", "FR-AI-0007-SCOUT-2026-10-24", "FR-BT-0006-MUTATION-ID-2026-10-24", "FR-BT-0006-D58-2026-10-22", "FR-AI-0002-D60-2026-10-24"].map(id => JSON.parse(readFileSync(new URL(
   `../../docs/reviews/${id}.json`, import.meta.url)))).sort((a, b) => b.date.localeCompare(a.date));
 
@@ -89,7 +91,29 @@ function undoAi1AttractorRetirement(record) {
   return restored;
 }
 
+function undoBt1AttractorReclassification(record) {
+  if (record.id !== bt1AttractorReclassificationReceipt.recordId) return record;
+  const restored = structuredClone(record);
+  assert.equal(restored.mutationLog[0].id, bt1AttractorReclassificationReceipt.mutationId, "FR-BT-0001: reclassification receipt mutation is not current");
+  restored.mutationLog.shift();
+  for (const change of bt1AttractorReclassificationReceipt.changes) {
+    const mechanismId = change.fieldPath.split(".")[1];
+    const mechanism = restored.mechanisms.find(item => item.id === mechanismId);
+    assert.ok(mechanism, `FR-BT-0001: ${mechanismId} missing`);
+    assert.equal(mechanism.description, change.current, `FR-BT-0001: ${mechanismId} current wording differs from receipt`);
+    mechanism.description = change.previous;
+  }
+  assert.equal(restored.mechanisms.some(item => item.id === bt1AttractorReclassificationReceipt.retiredMechanism.id), false);
+  restored.mechanisms.push(bt1AttractorReclassificationReceipt.retiredMechanism);
+  return restored;
+}
+
 function atCheckpoint(record, date) {
+  if (bt1AttractorReclassificationReceipt.date > date &&
+      record.id === bt1AttractorReclassificationReceipt.recordId &&
+      record.mutationLog[0]?.id === bt1AttractorReclassificationReceipt.mutationId) {
+    record = undoBt1AttractorReclassification(record);
+  }
   if (ai1AttractorRetirementReceipt.date > date &&
       record.id === ai1AttractorRetirementReceipt.recordId &&
       record.mutationLog[0]?.id === ai1AttractorRetirementReceipt.mutationId) {
@@ -125,6 +149,16 @@ function atCheckpoint(record, date) {
     mutationLog: record.mutationLog.filter(mutation => mutation.date <= date),
   };
 }
+
+test("FR-BT-0001 AT-001 reclassification is receipted and remains editorial only", () => {
+  assert.equal(FR_BT_0001.mutationLog[0].id, bt1AttractorReclassificationReceipt.mutationId);
+  assert.equal(detectMutationType(FR_BT_0001.mutationLog[0], FR_BT_0001), "editorial_correction");
+  assert.equal(qualifiesForHomepage("editorial_correction").qualifies, false);
+  assert.equal(FR_BT_0001.mechanisms.some(({ id }) => id === "AT-001"), false);
+  const restored = undoBt1AttractorReclassification(FR_BT_0001);
+  assert.deepEqual(restored.mechanisms.find(({ id }) => id === "AT-001"), bt1AttractorReclassificationReceipt.retiredMechanism);
+  assert.equal(restored.mutationLog.some(({ id }) => id === bt1AttractorReclassificationReceipt.mutationId), false);
+});
 
 test("FR-AI-0001 AT-001 retirement is receipted and remains editorial only", () => {
   assert.equal(FR_AI_0001.mutationLog[0].id, ai1AttractorRetirementReceipt.mutationId);
