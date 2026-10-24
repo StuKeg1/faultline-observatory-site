@@ -12,10 +12,10 @@
 export const FR_AI_0002 = {
   id: "FR-AI-0002",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-29",
-  provenanceReviewId: "LPR-001-D32",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-24",
+  provenanceReviewId: "LPR-001-D60",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Large language models can perform economically valuable knowledge-work tasks with limited human supervision.",
@@ -244,6 +244,7 @@ export const FR_AI_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-015", date: "2026-10-24", field: "provenance_review", from: "LPR-001-D32", to: "LPR-001-D60", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representations verified; all instances already carry structured sources and no provenance enrichment or unverifiable attribution was required. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence requiring Normal Record Review was identified. Canonical outcome verified / not_required; Pressure State ESCALATING and Verification Stage VS-02 unchanged." },
     {"id": "M-014", "date": "2026-10-12", "field": "assessment_issued", "from": "AS-002", "to": "AS-003", "note": "Operator-authorised evidence-gap reassessment considers IN-008 admitted 2026-09-26. AS-003 appended at ESCALATING / VS-02; current posture reaffirmed. No prior assessment, claim, evidence, mechanism, lineage, open question or provenance-review metadata changed. Review receipt: docs/reviews/EVIDENCE-GAP-REASSESSMENT-2026-10-12.md."},
     { id: "M-013", date: "2026-09-29", field: "provenance_review_completed", from: "LPR-001-D32 review_required / pending", to: "LPR-001-D32 discrepancies_corrected / completed", note: "Approved bounded correction and closure of the second-cycle provenance review. IN-003 narrowed to attributable 2023 legal deployment without an unmeasured time-saving claim; IN-005 aligned to the 2025 QJE sample, 15% productivity result and distinct sentiment versus surveyed-satisfaction outcomes; IN-006 narrowed to SWE-bench and SWE-agent results without an unsupported human baseline or broad agent-failure claims. Structured primary sources added; lineage date aligned. AS-001 and AS-002 preserved as dated historical assessments, with no new scientific evidence, pressure-state or verification-stage change." },
     { id: "M-012", date: "2026-09-26", field: "instance_appended", from: "IN-001–IN-007", to: "IN-001–IN-008", note: "Normal Record Review of Frontline Scout flag 2026-09-26-01 admitted OSWorld-Pro arXiv:2609.24890v1 as bounded process-level contesting evidence at the low-supervision agentic boundary. AS-002 remains current; Pressure State ESCALATING, Verification Stage VS-02, mechanisms and open questions unchanged. The benchmark does not establish economic productivity or real-world supervision cost." },
