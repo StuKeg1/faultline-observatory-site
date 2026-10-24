@@ -213,6 +213,39 @@ export const FR_AI_0007 = {
         },
       ],
     },
+    {
+      "id": "IN-015",
+      "qualifiedEvent": "ExpEvolve — reusable idea factors improve search within supplied discovery tasks",
+      "description": "Chen et al. introduce ExpEvolve, which extracts high-level idea factors from evaluated programs, uses those factors to guide mutations, and varies strategies when search plateaus. Across 11 supplied mathematical tasks, with 200 evaluated programs and three seeds per setting, it improves final performance over SCS and ShinkaEvolve in most configurations. Integration with OpenRSI improves mean final best-so-far scores on six selected machine-learning tasks, using the same 20-slot starting history and 50 additional evaluator calls per method. This October paper explicitly extends CausalEvolve (arXiv:2603.14575), whose March evaluation covered four tasks; the expanded experiments and revised search framework are not independent corroboration of that predecessor. The result supports experience reuse inside human-specified tasks and evaluators. It does not establish autonomous problem identification or independently verified novel scientific discovery. Tasks remain relatively simple with small-scale verification; evaluator dependence, limited seeds, developer-authored preprint status and unestablished independent replication bound the inference. Efficiency gains depend on task, configuration and criterion. Like IN-006, it leaves the whole claim's load-bearing autonomy and validation boundaries untouched.",
+      "vectors": [
+        "NEUTRAL"
+      ],
+      "date": "2026-10-21",
+      "sources": [
+        {
+          "citation": "Chen, Y. et al. (2026), ExpEvolve: Structuring and Reusing Experience for Open-Ended Discovery, arXiv:2610.29303v1.",
+          "url": "https://arxiv.org/abs/2610.29303v1",
+          "doi": "10.48550/arXiv.2610.29303",
+          "locator": "First-page CausalEvolve lineage note; Sections 4–5; Limitations Appendix A; experimental Appendices I–K; submitted 21 October 2026. Primary preprint by framework developers."
+        }
+      ]
+    },
+    {
+      "id": "IN-016",
+      "qualifiedEvent": "RIDAR — integrity auditing exposes failures and enables partial runtime mitigation",
+      "description": "Siow et al. evaluate research-integrity auditing across selected computational research tasks. RIDAR's post-hoc detector achieves 85.2% instance-level F1 against 60 expert-annotated trajectories; finding-to-annotation matching uses a separate LLM judge. Applied to 300 trajectories from 50 tasks and six harness-model configurations, it accepts 3,964 findings in 299 trajectories. In 60 matched baseline/intervention pairs, runtime feedback reduces mean remaining findings from 14.9 to 9.4 (36.8%); eight pairs contain more findings after intervention. This is mixed evidence about scientific judgment and correctness after humans supply the problem: integrity failures persist, while external oversight can partially reduce them. Findings are detector-defined violations, not a universal false-discovery rate or evidence of intent. The same post-hoc detector evaluates both conditions; human annotations are reviewed by the author team, and runtime detection is less comprehensive. Held-out files remain accessible and stated resource limits are deliberately unenforced to make violations observable. Selected tasks, model/harness dependence and the framework developers' Tsinghua/Zhipu AI affiliations bound generalisation; independent replication is unestablished. The result corroborates the record's fragmentation rationale without negating bounded successful discoveries or resolving autonomous problem identification.",
+      "vectors": [
+        "PARTIAL"
+      ],
+      "date": "2026-10-22",
+      "sources": [
+        {
+          "citation": "Siow, J. et al. (2026), RIDAR: Safeguarding Research Integrity in Autonomous Research Agents via Automated Detection and Runtime Intervention, arXiv:2610.31372v1.",
+          "url": "https://arxiv.org/abs/2610.31372v1",
+          "locator": "Sections 3–6; Tables 1–2; task, annotation and matching Appendices C–E; submitted 22 October 2026. Primary preprint by taxonomy/framework developers."
+        }
+      ]
+    },
   ],
 
   assessments: [
@@ -299,6 +332,22 @@ export const FR_AI_0007 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-027",
+      "date": "2026-10-24",
+      "field": "instance_appended",
+      "from": "IN-015",
+      "to": "IN-016",
+      "note": "Approved Scout flag 2026-10-24-03 implemented after explicit all-approved-flags corpus authorisation. RIDAR preserves both detector-defined integrity failures and partial runtime mitigation as PARTIAL; task, detector, resource and independence limits retained. No new assessment; AS-004, FRAGMENTING / VS-03, mechanisms and open questions unchanged. Historical IN-010 / AS-005 / M-020 remain reserved. Receipt: docs/reviews/SCOUT-2026-10-24-APPROVED-INSTANCES.md."
+    },
+    {
+      "id": "M-026",
+      "date": "2026-10-24",
+      "field": "instance_appended",
+      "from": "IN-014",
+      "to": "IN-015",
+      "note": "Approved Scout flag 2026-10-24-02 implemented after explicit all-approved-flags corpus authorisation. ExpEvolve is NEUTRAL bounded evaluator-guided search evidence; CausalEvolve lineage explicit, no independent novelty or autonomous problem-identification inference. No new assessment; AS-004, FRAGMENTING / VS-03, mechanisms and open questions unchanged. Receipt: docs/reviews/SCOUT-2026-10-24-APPROVED-INSTANCES.md."
+    },
     {"id": "M-025", "date": "2026-10-19", "field": "reference_corrected", "from": "Existing source-review limitation not fully exposed in evidence-list status", "to": "Explicit reviewed evidence status on IN-005", "note": "Operator-authorised corpus reading audit Batch 3 / R02. Render the existing entry-level review disposition from explicit status metadata linked to its retained review and mutation. A withdrawn attribution is not a retracted publication; missing sources and Partial polarity do not automatically determine status. Preserve all original titles, descriptions, citations, counts, assessments, review markers and prior mutations. No substitute source, new evidence or reassessment. Receipt: docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md."},
     { id: "M-024", date: "2026-10-17", field: "instance_appended", from: "IN-013", to: "IN-014", note: "Approved flag 2026-10-17-04 implemented after explicit all-flags corpus authorisation. Bounded circuit discovery; no assessment or boundary change." },
     { id: "M-023", date: "2026-10-17", field: "instance_appended", from: "IN-012", to: "IN-013", note: "Approved flag 2026-10-17-03 implemented after explicit all-flags corpus authorisation. Mixed closure successes and reliability limits preserved as PARTIAL; no assessment change." },

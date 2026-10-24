@@ -1,0 +1,33 @@
+{
+  "id": "FR-AI-0002-D60-2026-10-24",
+  "date": "2026-10-24",
+  "recordId": "FR-AI-0002",
+  "baseCommit": "accbbbe0846d0555117065f743fe0f85343c2e82^",
+  "originalRecordHash": "2129a4178695a8f63653b819d190e27659cc8242f898c96e973a96a183d81bc5",
+  "currentRecordHash": "89c52d66c820b2948438574249de68a72ba3bb4d7fd8293cdb490d5e21fedfac",
+  "mutationIds": [
+    "M-015"
+  ],
+  "changes": [
+    {
+      "fieldPath": "lastProvenanceReview",
+      "previous": "2026-09-29",
+      "current": "2026-10-24"
+    },
+    {
+      "fieldPath": "provenanceReviewId",
+      "previous": "LPR-001-D32",
+      "current": "LPR-001-D60"
+    },
+    {
+      "fieldPath": "provenanceOutcome",
+      "previous": "discrepancies_corrected",
+      "current": "verified"
+    },
+    {
+      "fieldPath": "provenanceRepairStatus",
+      "previous": "completed",
+      "current": "not_required"
+    }
+  ]
+}

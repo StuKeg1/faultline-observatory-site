@@ -1,0 +1,26 @@
+{
+  "id": "FR-AI-0007-SCOUT-2026-10-24",
+  "date": "2026-10-24",
+  "recordId": "FR-AI-0007",
+  "baseCommit": "accbbbe0846d0555117065f743fe0f85343c2e82",
+  "originalRecordHash": "8d1c11b4541eacc797f9f017826e7110da7fbdcfdfcdb1ed2c11aac76150fac3",
+  "currentRecordHash": "6440c40394fc786e7f19edd5081ca661524d55353ad427f42f8fe9d5bb326af9",
+  "mutationIds": [
+    "M-027",
+    "M-026"
+  ],
+  "changes": [
+    {
+      "fieldPath": "instances.13",
+      "previous": null,
+      "current": "IN-015",
+      "basis": "Operator-approved 24 October Scout instance."
+    },
+    {
+      "fieldPath": "instances.14",
+      "previous": null,
+      "current": "IN-016",
+      "basis": "Operator-approved 24 October Scout instance."
+    }
+  ]
+}

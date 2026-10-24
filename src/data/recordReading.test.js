@@ -84,7 +84,8 @@ test("dated assessment labels replace generic mutation labels and preserve recor
 test("post-assessment admissions count distinct known entries without inventing a reassessment", () => {
   const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0007");
   assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-17") }), { date: "2026-10-17", labels: ["4 evidence entries added"] });
-  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
+  assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-19") }), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
+  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-24", labels: ["2 evidence entries added"] });
   assert.ok(ai.assessments.at(-1).date < "2026-10-17");
 });
 

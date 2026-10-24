@@ -129,6 +129,23 @@ export const FR_QE_0008 = {
         { citation: "Lavasani et al., ‘Quantum error correction well below the color code threshold’, arXiv:2610.24077v1 (2026)", url: "https://arxiv.org/abs/2610.24077v1", locator: "Abstract; colour-code memory scaling at d=3,5,7 and logical two-qubit Clifford scaling at d=3,5" },
       ],
     },
+    {
+      "id": "IN-010",
+      "qualifiedEvent": "NeST — simulated qLDPC error suppression with silicon spin-shuttling constraints",
+      "description": "Siegel proposes Nested Shuttling Tracks (NeST), a silicon spin-qubit architecture that implements high-rate lifted-product qLDPC checks through coordinated electron-shuttling motions. A code search returns 20%-rate mitten codes up to [[1400,280,≤28]]; circuit-level simulations including shuttling dephasing report thresholds above 10⁻³ and stabiliser cycles below 50 microseconds under the stated timing and noise assumptions. The estimated 10⁻¹⁴ logical error probability per qubit per round for the largest code is an extrapolation that assumes tenfold better shuttling than early demonstrations and other physical errors of 0.1%. This is bounded architecture and simulation evidence about suppression versus physical overhead, not measured logical-qubit scale-up, demonstrated cycle time, or universal fault-tolerant computation. The primary preprint is authored by the architecture proposer at Quantum Motion. Physical transport, noise, decoding and larger full-circuit operation still require hardware validation. It adds a model-level pathway within the existing record without changing the current assessment or satisfying its outcome-based scaling attractor.",
+      "vectors": [
+        "NEUTRAL"
+      ],
+      "date": "2026-10-20",
+      "sources": [
+        {
+          "citation": "Siegel, A. (2026), NeST: ultra-high-rate qLDPC codes with sub-50μs stabiliser cycles via spin shuttling, arXiv:2610.28538v1.",
+          "url": "https://arxiv.org/abs/2610.28538v1",
+          "doi": "10.48550/arXiv.2610.28538",
+          "locator": "Sections III–VI; circuit-level noise simulations and extrapolation assumptions; submitted 20 October 2026. Primary preprint by architecture proposer, Quantum Motion."
+        }
+      ]
+    },
   ],
 
   assessments: [
@@ -232,6 +249,14 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-020",
+      "date": "2026-10-24",
+      "field": "instance_appended",
+      "from": "IN-009",
+      "to": "IN-010",
+      "note": "Approved Scout flag 2026-10-24-01 implemented after explicit all-approved-flags corpus authorisation. NeST is architecture/simulation evidence only; extrapolation and hardware-validation limits retained. FR-QE-0008 only; no separate FR-QE-0004 instance. AS-005, RESOLVING / VS-04, mechanisms and open questions unchanged. Receipt: docs/reviews/SCOUT-2026-10-24-APPROVED-INSTANCES.md."
+    },
     { id: "M-019", date: "2026-10-20", field: "assessment_issued", from: "AS-004", to: "AS-005", note: "Normal Record Review of IN-009 reaffirms RESOLVING / VS-04. Helios colour-code distance scaling materially strengthens cross-platform evidence but does not satisfy the full outcome-based attractor. No Pressure State or Verification Stage transition." },
     { id: "M-018", date: "2026-10-20", field: "instance_appended", from: "IN-008", to: "IN-009", note: "Normal Record Review admitted Lavasani et al., arXiv:2610.24077v1, as direct trapped-ion below-threshold distance-scaling evidence. Experimental colour-code memory scaling spans d=3,5,7 and logical two-qubit Clifford scaling spans d=3,5. Larger-scale resource projections and unmeasured universal-computation claims are excluded." },
     { id: "M-017", date: "2026-10-20", field: "provenance_review", from: "LPR-001-D20", to: "LPR-001-D56", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. The 19 October 2026 Quantinuum Helios colour-code result was identified as genuinely new evidence relevant to logical-error scaling and is held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
