@@ -1,0 +1,62 @@
+{
+  "id": "A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24",
+  "date": "2026-10-24",
+  "scope": "Bounded editorial/governance consistency correction to five AT-001 descriptions; no new evidence, reassessment, taxonomy result or scientific threshold.",
+  "records": [
+    {
+      "recordId": "FR-AM-0004",
+      "mutationId": "M-019",
+      "changes": [
+        {
+          "fieldPath": "mechanisms.AT-001.description",
+          "previous": "The specific event that would transition this record from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid.",
+          "current": "The specific event that would materially engage a governed reassessment of whether this record should move from ESCALATING toward RESOLVING is a demonstration of net electricity at the plant level — Q > 1 relative to all energy inputs, with the excess delivered to the grid."
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AM-0005",
+      "mutationId": "M-018",
+      "changes": [
+        {
+          "fieldPath": "mechanisms.AT-001.description",
+          "previous": "A future candidate would reopen the record when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity.",
+          "current": "A future candidate would provide a bounded evidential basis for considering governed reopening when independent laboratories reproduce a room-temperature transition using disclosed material preparation and measurement protocols, with convergent electrical, magnetic and other context-appropriate evidence sufficient to establish superconductivity."
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AM-0006",
+      "mutationId": "M-020",
+      "changes": [
+        {
+          "fieldPath": "mechanisms.AT-001.description",
+          "previous": "The specific event that would transition this record from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost.",
+          "current": "The specific event that would materially engage a governed reassessment of whether this record should move from ESCALATING toward RESOLVING is commercial release of an EV with evidence on energy density, safety, cycle life, manufacturing yield, and cost."
+        }
+      ]
+    },
+    {
+      "recordId": "FR-QE-0003",
+      "mutationId": "M-016",
+      "changes": [
+        {
+          "fieldPath": "mechanisms.AT-001.description",
+          "previous": "The below-threshold result in INST-005 (Google Willow) represents a qualitative threshold that, if confirmed at increasing code distances, would constitute resolution of the claim as stated.",
+          "current": "The below-threshold result in INST-005 (Google Willow) represents a qualitative threshold that, if confirmed at increasing code distances, would provide material evidence for a governed assessment of whether the claim has reached resolution."
+        }
+      ]
+    },
+    {
+      "recordId": "FR-QE-0004",
+      "mutationId": "M-018",
+      "changes": [
+        {
+          "fieldPath": "mechanisms.AT-001.description",
+          "previous": "This is the specific experimental milestone that would move the claim from RESOLVING toward a fully confirmed state.",
+          "current": "This is the specific experimental milestone that would materially strengthen the evidential basis for a governed assessment of whether the claim should move beyond RESOLVING toward a fully confirmed state."
+        }
+      ]
+    }
+  ]
+}
