@@ -91,3 +91,15 @@ This decision:
 FR-BT-0001 contains useful forward-looking material in AT-001, but its institutional function is mislocated. Regulatory and surrogate-validation developments are enabling conditions for testing the claim, not evidence that the claim is satisfied and not sufficient by themselves to settle the "meaningfully extend" threshold.
 
 The record should therefore preserve that information within existing BN-001 / RM-001 architecture and retire AT-001 as a separate current object.
+
+## Subsequent canonical implementation
+
+The bounded implementation authorised by this review was completed after the review was recorded.
+
+PR #203 retired current FR-BT-0001 AT-001, preserved the supported regulatory/endpoint distinction in BN-001, preserved the predictive-surrogate distinction in RM-001, appended editorial/governance mutation M-013, and added a machine-readable reconstruction receipt. Full CI passed before merge.
+
+Canonical merge: `ab8a3da5a0591b634782f86457665a6afef58f8a`.
+
+The implementation did not add new evidence, external factual updates, reassessment, claim changes, Pressure State changes, Verification Stage changes or historical rewrites. It remains independent of the closed ATTRACTOR taxonomy v2 and does not constitute taxonomy v3.
+
+Accordingly, the implementation authorised by this review is **complete**.
