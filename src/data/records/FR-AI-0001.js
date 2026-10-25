@@ -16,10 +16,10 @@
 export const FR_AI_0001 = {
   id: "FR-AI-0001",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-29",
-  provenanceReviewId: "LPR-001-D33",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-25",
+  provenanceReviewId: "LPR-001-D61",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Large language models can perform multi-step reasoning that generalises beyond memorised training examples.",
@@ -267,6 +267,7 @@ export const FR_AI_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-019", date: "2026-10-25", field: "provenance_review", from: "LPR-001-D33", to: "LPR-001-D61", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. IN-001, IN-002, IN-004, IN-005, IN-006 and IN-007 were re-verified against their recorded sources; IN-003 remains explicitly and correctly retained as an unverifiable legacy report rather than attributable evidence. Existing structured provenance is sufficient; no source was guessed and no routine enrichment was required. No new factual, interpretive, attribution or verification-stage discrepancy was identified. Potential later reasoning-capability reports encountered during source checking were not admitted through LPR-001 and do not alter this provenance closure. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id":"M-018","date":"2026-10-24","field":"editorial_correction","from":"AT-001 — Extended chain-of-thought as mechanism candidate","to":"RETIRED — substantive question retained in OQ-002 / BN-001 / governed assessments","note":"Operator-authorised bounded redundancy retirement following FR-AI-0001 AT-001 Redundancy Review. Remove current AT-001 because it duplicates the governed generalisation/mechanism question already carried by OQ-002, BN-001 and assessments. No new evidence, reassessment, claim change, Pressure State change, Verification Stage change or historical assessment rewrite. Historical references to AT-001 remain append-only history. Receipt: docs/reviews/FR-AI-0001-AT-001-RETIREMENT-2026-10-24.json."},
     {"id": "M-017", "date": "2026-10-19", "field": "reference_corrected", "from": "Existing source-review limitation not fully exposed in evidence-list status", "to": "Explicit reviewed evidence status on IN-003", "note": "Operator-authorised corpus reading audit Batch 3 / R02. Render the existing entry-level review disposition from explicit status metadata linked to its retained review and mutation. A withdrawn attribution is not a retracted publication; missing sources and Partial polarity do not automatically determine status. Preserve all original titles, descriptions, citations, counts, assessments, review markers and prior mutations. No substitute source, new evidence or reassessment. Receipt: docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md."},
     {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-007 → AS-002","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
