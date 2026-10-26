@@ -12,10 +12,10 @@
 export const FR_AI_0003 = {
   id: "FR-AI-0003",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-29",
-  provenanceReviewId: "LPR-001-D34",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-26",
+  provenanceReviewId: "LPR-001-D62",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Reinforcement learning from human feedback produces AI systems whose behaviour continues to reflect human preferences when deployed beyond the conditions represented in training.",
@@ -174,6 +174,7 @@ export const FR_AI_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-016", date: "2026-10-26", field: "provenance_review", from: "LPR-001-D34", to: "LPR-001-D62", note: "Second-cycle Legacy Provenance Review completed as PASS across all nine existing evidence instances. Underlying sources and bounded claim representations verified against primary source records where available; existing structured sources[] are sufficient and no attribution was guessed. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence was admitted through LPR-001. Canonical outcome verified / not_required; FRAGMENTING / VS-03 unchanged." },
     {
       "id": "M-015",
       "date": "2026-10-08",
