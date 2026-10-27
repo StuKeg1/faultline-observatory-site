@@ -11,10 +11,10 @@
 export const FR_QE_0001 = {
   id: "FR-QE-0001",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-10-01",
-  provenanceReviewId: "LPR-001-D37",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-27",
+  provenanceReviewId: "LPR-001-D63",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement:
@@ -279,6 +279,14 @@ export const FR_QE_0001 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-012",
+      date: "2026-10-27",
+      field: "provenance_review",
+      from: "LPR-001-D37",
+      to: "LPR-001-D63",
+      note: "Second-cycle Legacy Provenance Review completed as PASS across all six existing evidence instances. Underlying sources and claim representation verified; existing structured sources[] attribution remains confidently established and no enrichment was required. No unverifiable provenance or factual, interpretive, attribution, pressure-state, or verification-stage discrepancy identified. No genuinely new scientific evidence requiring Normal Record Review was identified during the bounded pass. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged.",
+    },
     {
       "id": "M-011",
       "date": "2026-10-08",
