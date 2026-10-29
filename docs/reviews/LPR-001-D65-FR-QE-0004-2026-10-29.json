@@ -1,0 +1,102 @@
+{
+  "protocol": "LPR-001",
+  "reviewId": "LPR-001-D65",
+  "date": "2026-10-29",
+  "recordId": "FR-QE-0004",
+  "selection": {
+    "priorReviewId": "LPR-001-D64",
+    "priorMarkerVerifiedOnMain": true,
+    "priorMarkerGovernanceRepair": {
+      "pullRequest": 213,
+      "commit": "551547c0813561605ff795a3972ab056202e870e",
+      "reason": "Previous record FR-QE-0003 used invalid discrepancies_found/completed pair; corrected to discrepancies_corrected/completed before queue selection."
+    },
+    "rule": "Never-reviewed first; otherwise oldest lastProvenanceReview then Record ID",
+    "previousLastProvenanceReview": "2026-09-14"
+  },
+  "outcome": "discrepancies_found",
+  "repairStatus": "pending",
+  "counts": {
+    "instances": 10,
+    "verified": 8,
+    "enriched": 0,
+    "unverifiable": 0,
+    "discrepancies": 2
+  },
+  "instanceResults": [
+    {
+      "id": "IN-001",
+      "status": "verified",
+      "source": "https://www.nature.com/articles/nature13171"
+    },
+    {
+      "id": "IN-002",
+      "status": "verified",
+      "source": "https://arxiv.org/abs/2107.07505"
+    },
+    {
+      "id": "IN-003",
+      "status": "verified",
+      "source": "https://www.quantinuum.com/press-releases/quantinuum-and-microsoft-announce-new-era-in-quantum-computing-with-breakthrough-demonstration-of-reliable-qubits",
+      "note": "Company announcement identified as interested-party evidence."
+    },
+    {
+      "id": "IN-004",
+      "status": "verified",
+      "source": "https://www.nature.com/articles/s41586-024-08449-y",
+      "note": "2026 author correction DOI 10.1038/s41586-026-10559-8 concerns Fig.3a repetition-code labels, not the central Willow surface-code memory result."
+    },
+    {
+      "id": "IN-005",
+      "status": "verified",
+      "source": "https://www.nature.com/articles/s41586-024-08445-2"
+    },
+    {
+      "id": "IN-006",
+      "status": "discrepancy",
+      "sources": [
+        "https://www.nature.com/articles/s41586-026-10567-8",
+        "https://www.nature.com/articles/s41586-026-10568-7"
+      ],
+      "candidate": "Replace stale relational framing: IN-005 is now contextual platform evidence, not corroborating below-threshold evidence, and its original paper already acknowledges topological ambiguity. Legg's 2026 critique and Microsoft's reply directly concern the 2025 parity-measurement paper; represent active dispute without asserting a formerly logged pending-independent-verification state or changing current State/Stage."
+    },
+    {
+      "id": "IN-007",
+      "status": "verified",
+      "source": "https://arxiv.org/abs/2606.06455",
+      "note": "qLDPC breakeven bounded; primary preprint revised 14 September 2026."
+    },
+    {
+      "id": "IN-008",
+      "status": "discrepancy",
+      "source": "https://www.nature.com/articles/s41586-026-10759-2",
+      "candidate": "Replace 20% increase in detected and corrected errors with approximately 20% additional suppression of logical error rate after expert calibration; distinguish the 3.5-fold stability improvement under injected drift and d=5/7 surface-code and d=5 colour-code experiments from the inaccurate two-logical-qubit characterisation. No automatic vector/assessment changes."
+    },
+    {
+      "id": "IN-009",
+      "status": "verified",
+      "source": "https://www.nature.com/articles/s41586-026-10822-y"
+    },
+    {
+      "id": "IN-010",
+      "status": "verified",
+      "source": "https://www.nature.com/articles/s41586-026-10628-y"
+    }
+  ],
+  "normalRecordReviewCandidates": [
+    {
+      "topic": "Quantinuum Helios below-threshold colour-code scaling, Lavasani et al.",
+      "source": "https://arxiv.org/abs/2610.24077",
+      "status": "Already admitted in FR-QE-0008 as IN-009; cross-record relevance to FR-QE-0004 should be assessed only via Normal Record Review, not LPR-001."
+    }
+  ],
+  "governance": {
+    "instancesModified": false,
+    "sourcesAdded": 0,
+    "assessmentsModified": false,
+    "pressureStateModified": false,
+    "verificationStageModified": false,
+    "mutationId": "M-019",
+    "nextReviewMayAdvanceOnlyAfterMainMarkerVerification": true
+  }
+}
