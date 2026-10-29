@@ -14,7 +14,7 @@ export const FR_QE_0003 = {
   programme: "PROG-QE",
   lastProvenanceReview: "2026-10-28",
   provenanceReviewId: "LPR-001-D64",
-  provenanceOutcome: "discrepancies_found",
+  provenanceOutcome: "discrepancies_corrected",
   provenanceRepairStatus: "completed",
 
   claim: {
@@ -171,6 +171,7 @@ export const FR_QE_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-023", date: "2026-10-29", field: "provenance_marker_validation_repair", from: "LPR-001-D64 discrepancies_found / completed (invalid governed field pairing)", to: "LPR-001-D64 discrepancies_corrected / completed", note: "Transactional governance repair after operator-approved M-018 through M-022 corrections. The D64 audit originally found four discrepancies, preserved in M-017 and the historical mutation trail. The subsequent approved corrections completed all four instance repairs and historical-consistency qualification; the canonical governed completion pair must be discrepancies_corrected / completed under validate-provenance.js. No evidence, assessment, State, Stage, source or review date changed." },
     { id: "M-022", date: "2026-10-28", field: "historical_assessment_consistency_correction", from: "AS-001 historical interpretation and 2021–24 lineage predate source-level corrections", to: "Historical AS-001 retained verbatim; corrected lineage and explicit qualification", note: "Editorial correction notice for AS-001 (2024-01-15), preserved verbatim as a historical decision, not a currently source-faithful account of every experiment: IN-002 below-physical error wording refers to selected SPAM/circuit performance, not general logical-gate error advantage; IN-003 2023 d=3/5 showed approximately 4% improvement, not d=7 scaling or sustained below-threshold operation. The latter was demonstrated by Willow (IN-005/IN-006). Corrected 2021–23 and 2024 lineage. AS-002 remains consistent; no reassessment, State or Stage change. Approved source-level repairs M-018–M-021 complete. D15/D64 provenance repair completed; historical provenanceOutcome discrepancies_found remains unchanged." },
     { id: "M-021", date: "2026-10-28", field: "evidence_correction", from: "IN-004 pending_correction", to: "IN-004 corrected", note: "Operator-approved D15/D64 bounded correction: replace unsupported generic per-two-qubit-logical-gate error and threshold claim with conditional selected-circuit Bell-state result; correct title and vector; attach da Silva et al. primary research. All four instance-level corrections now made; overall repair remains pending historical assessment consistency review. No historical assessments changed." },
     { id: "M-020", date: "2026-10-28", field: "evidence_correction", from: "IN-003 pending_correction", to: "IN-003 corrected", note: "Operator-approved D15/D64 correction: 2023 Google surface-code comparison d=3 versus d=5 with approximately 4% logical-error improvement, not d=7 or halving. Nature DOI added. Retained supportive vector; AS-001 historical interpretation preserved for separately governed consistency review. IN-004 and overall repair status remain pending." },
