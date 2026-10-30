@@ -109,6 +109,18 @@ export const FR_AM_0004 = {
       sourceReference: "Y. Narushima et al., Journal of Physics: Conference Series 3278 (2026) 012031; Helical Fusion / NIFS UROCOIC double-pancake coil testing",
       sources: [{"citation": "Narushima et al. Experiment of a Double-Pancake Coil Wound by UROCOIC Conductor for Application in Helical Fusion Reactors. Journal of Physics: Conference Series 3278, 012031 (2026).", "doi": "10.1088/1742-6596/3278/1/012031", "url": "https://iopscience.iop.org/article/10.1088/1742-6596/3278/1/012031", "locator": "Component coil test; does not establish whole-reactor operation."}],
     }
+    {
+      id: "IN-008",
+      qualifiedEvent: "JET DTE3 final deuterium-tritium campaign — 69.26 MJ fusion energy, below plasma breakeven",
+      description: "JET's final deuterium-tritium experimental campaign in 2023 produced 69.26 megajoules of fusion energy in a single pulse over six seconds, reported publicly in February 2024. Subsequent scientific analysis places average plasma energy gain for this pulse at approximately Q = 0.36. This is a substantive tokamak operating and fuel-handling milestone, extending the earlier JET results in IN-001, but remains below plasma breakeven; JET neither generated nor exported electricity. The result therefore supports pre-threshold fusion engineering without demonstrating plant-level net electricity, grid-scale output or commercial viability. This is an historical result admitted in the 2026-10-30 Normal Record Review, not a new 2026 experiment.",
+      vectors: ["supportive--high-output-dt-operation-below-plasma-breakeven"],
+      date: "2023; announced 2024-02",
+      sourceReference: "UKAEA / EUROfusion JET DTE3 final campaign; subsequent scientific analysis of 69.26 MJ pulse",
+      sources: [
+        { citation: "EUROfusion, JET final deuterium-tritium experiments (February 2024)", url: "https://euro-fusion.org/eurofusion-news/dte3record/", locator: "2023 DTE3 campaign and 69.26 MJ fusion-energy pulse; announcement February 2024" },
+        { citation: "UK Atomic Energy Authority, JET final experiments announcement (February 2024)", url: "https://www.gov.uk/government/news/jets-final-tritium-experiments-yield-new-fusion-energy-record", locator: "JET record result; experimental rather than electricity-producing facility" },
+      ],
+    },
   ],
 
   assessments: [
@@ -145,6 +157,15 @@ export const FR_AM_0004 = {
       changeKind: "verification_stage_correction",
       summary: "This is a Verification Stage correction using evidence already admitted, not a newly observed fusion advance. Independent scientific, engineering and economic scrutiny of the commercial-fusion claim supports Audit (VS-03). The September source corrections limit what JET, NIF, private engineering milestones and conditional cost studies establish; they do not remove that scrutiny or return the record to publication-only evidence. The July ratified review assigned VS-03 to AS-001 and AS-002; AS-003 retained the originally stored VS-02 without reconciling that interpretation. VS-03 now corrects the current assignment while preserving that history. ESCALATING is unchanged: no retained evidence demonstrates the conjunction of plant-level net electricity, grid-scale output and commercial viability. Repeated target ignition or enabling magnet results do not establish independent replication or operation of that full claim.",
       assessorNote: "Operator-ratified stage reconciliation, 19 October 2026, following the bounded two-record review. Authority: VS Semantic-Authority Ruling (22 July 2026) and Legacy VS Assignment Review (23 July 2026). Decision, evidence boundaries and preservation receipt: docs/reviews/AM-0004-BT-0003-STAGE-RECONCILIATION-2026-10-19.md. Applies the current retained evidence to the July Audit reasoning; it does not automatically extend a historical overlay to a later assessment. AS-001–AS-003, their stored stages and both July overlays are preserved. No new evidence instance or Pressure State transition; no later JET result admitted.",
+    },
+    {
+      id: "AS-005",
+      date: "2026-10-30",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      changeKind: "reaffirmation",
+      summary: "Normal Record Review admits the previously deferred JET DTE3 result (IN-008): a 2023 deuterium-tritium pulse produced 69.26 MJ of fusion energy over six seconds, announced in 2024, with reported plasma gain below unity (approximately Q = 0.36). This extends the evidence for sustained high-output tokamak operation but does not establish plasma breakeven, electricity generation, plant-level net electricity, grid-scale output or commercial viability. None of the claim's three thresholds is crossed. ESCALATING / VS-03 is reaffirmed, without treating this historical experiment as a new 2026 breakthrough.",
+      assessorNote: "Operator-approved Normal Record Review, 30 October 2026. Historical JET DTE3 evidence admitted separately from IN-001; primary institutional reporting and subsequent scientific analysis considered. Existing assessments retained append-only. No pressure-state or verification-stage transition.",
     },
   ],
 
@@ -218,6 +239,7 @@ export const FR_AM_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-022", date: "2026-10-30", field: "normal_record_review", from: "7 evidence instances / AS-004", to: "8 evidence instances / AS-005", note: "Operator-approved admission of historical JET DTE3 69.26 MJ result as IN-008 and reaffirmation AS-005. ESCALATING / VS-03 retained; no threshold crossed. Existing evidence and assessments preserved." },
     { id: "M-021", date: "2026-10-30", field: "provenance_repair", from: "LPR-001-D66 discrepancies_found / pending", to: "LPR-001-D66 discrepancies_found / completed", note: "Operator-approved bounded corrections to IN-003 Helion 2024 Senate attribution, IN-004 ITER proposed/endorsed baseline status, and IN-006 DOE 2025 announcement versus June 2026 roadmap chronology. Structured sources corrected; no new evidence instance, assessment, pressure state or verification-stage change. D66 review outcome retained as discrepancies_found; repair marked completed." },
     { id: "M-020", date: "2026-10-30", field: "provenance_review", from: "LPR-001-D21", to: "LPR-001-D66", note: "Second-cycle LPR review: all seven existing evidence instances audited. Three source-faithful (IN-002, IN-005, IN-007); IN-001 source-faithful with one additional structured historical attribution to 1997 JET Q=0.64; zero unverifiable. Three bounded discrepancies retained unmodified pending approval: IN-003 Helion PPA penalties incorrectly attributed to 2023 press release rather than later 2024 Senate testimony; IN-004 proposed/endorsed ITER Baseline 2024 incorrectly called approved revised baseline; IN-006 2025 DOE roadmap event conflated with June 2026 published roadmap counts and source points to unrelated 2024 strategy. No new evidence or assessments admitted. Normal Record Review candidates: JET DTE3 69.26 MJ (2023); General Fusion LM26 1 keV compression (October 2026); Helion Orion 2028/2029 delivery-target clarification. D66 discrepancies_found / pending. Receipt docs/reviews/LPR-001-D66-FR-AM-0004-2026-10-30.json." },
     {"id":"M-019","date":"2026-10-24","field":"editorial_correction","from":"ATTRACTOR wording assigned a governed institutional consequence directly to the future evidence event","to":"ATTRACTOR wording preserves the evidence route while reserving State, Stage, verdict or reopening consequences to governed assessment","note":"Operator-authorised A4 institutional-authority consistency repair. Correct AT-001 explanatory wording only; no new evidence, scientific threshold, evidence target, Pressure State, Verification Stage, assessment or ATTRACTOR identity changed. This repair is independent of the closed ATTRACTOR taxonomy v2 FAIL. Receipt: docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json."},
