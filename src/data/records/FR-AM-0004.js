@@ -134,6 +134,19 @@ export const FR_AM_0004 = {
         { citation: "UK Atomic Energy Authority, ‘UKAEA, General Fusion announce Magnetised Target Fusion milestone’ (8 October 2026)", url: "https://www.gov.uk/government/news/ukaea-general-fusion-announce-magnetised-target-fusion-milestone", locator: "UKAEA diagnostic collaboration, reported 1 keV milestone, submitted peer review and prospective 10 keV / 2035 targets" },
       ],
     },
+    {
+      id: "IN-010",
+      qualifiedEvent: "Helion Orion / Microsoft electricity delivery — 2028 initial operations distinguished from full contracted output",
+      description: "Helion's May 2023 Microsoft power-purchase announcement targeted a fusion power plant online by 2028, with at least 50 MW of electricity after a one-year ramp-up. Later Helion project descriptions refer to initial Orion operations beginning in 2028, which is not equivalent to 50 MW commercial delivery in that year. September 2026 reporting quotes a Helion public-affairs representative clarifying that full 50 MW operation would not occur in 2028, while a year-end 2028 grid-connection and initial-operations milestone remained the company's stated objective; the later full-output window is reported rather than a verified commissioning schedule. The earlier 2024 Senate testimony separately distinguished 2028 initial operations from full commercial supply in 2029. This instance records the evolving public delivery interpretation, not a demonstrated fusion-electricity result or proof of contractual breach. Neither construction progress nor a power-purchase agreement establishes plant-level net electricity, grid-scale generation or commercial viability.",
+      vectors: ["partial--commercial-timeline-qualified-no-delivery-demonstrated"],
+      date: "2023–2026; clarification reported 2026-09",
+      sourceReference: "Helion 2023 Microsoft power-purchase announcement; Orion project materials; 2024 Senate testimony; September 2026 reported clarification",
+      sources: [
+        { citation: "Helion Energy, ‘Helion announces world’s first fusion energy purchase agreement with Microsoft’ (10 May 2023)", url: "https://www.helionenergy.com/articles/helion-announces-worlds-first-fusion-ppa-with-microsoft/", locator: "2028 online target and at least 50 MW following a one-year ramp-up" },
+        { citation: "Helion Energy, Orion project page", url: "https://www.helionenergy.com/orion/", locator: "Current company description of initial operations beginning in 2028; not evidence of 50 MW output" },
+        { citation: "Jackie Siebens (Helion), testimony to US Senate (September 2024)", url: "https://www.govinfo.gov/content/pkg/CHRG-118shrg57016/html/CHRG-118shrg57016.htm", locator: "Distinction between initial 2028 operations and full commercial supply in 2029" },
+      ],
+    },
   ],
 
   assessments: [
@@ -188,6 +201,15 @@ export const FR_AM_0004 = {
       changeKind: "reaffirmation",
       summary: "Normal Record Review admits General Fusion's October 2026 LM26 compressional-heating result as IN-009. Two technical preprints report electron temperatures above 1 keV measured through complementary diagnostics, with Thomson scattering developed in collaboration with UKAEA and ion heating inferred from neutron yield. This adds experimentally measured progress in magnetized target fusion, separate from LM26's earlier first-plasma event, but neither demonstrates plasma net-energy gain nor crosses the claim's thresholds of plant-level net electricity, grid-scale output and commercial viability. The technical papers are preprints submitted for peer review; joint diagnostic work is not independent replication of the commercial-power claim. ESCALATING / VS-03 is reaffirmed, with 10 keV, the Lawson criterion and a first-of-a-kind plant remaining prospective milestones.",
       assessorNote: "Operator-approved Normal Record Review, 30 October 2026. Primary sources: Howard et al. arXiv:2610.11890, Carle et al. arXiv:2610.11769, UKAEA joint release dated 8 October 2026. IN-006 first-plasma history and AS-001 through AS-005 preserved append-only; no pressure-state or verification-stage transition.",
+    },
+    {
+      id: "AS-007",
+      date: "2026-10-30",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      changeKind: "reaffirmation",
+      summary: "Normal Record Review admits IN-010 to preserve the trajectory of Helion's commercial electricity-delivery expectations. The original 2023 Microsoft agreement anticipated a plant online in 2028 and at least 50 MW after ramp-up; later Orion descriptions and the company's 2024 Senate testimony distinguish initial 2028 operations from later full commercial supply. September 2026 reporting further qualifies the interpretation of full 50 MW delivery in 2028, but a reported schedule is not independently verified commissioning evidence. These developments reduce support for treating 2028 as an achieved or assured full-output milestone without establishing technological failure or contractual breach. No fusion plant has demonstrated the claim's three combined thresholds: plant-level net electricity, grid-scale generation and commercial viability. ESCALATING / VS-03 is reaffirmed.",
+      assessorNote: "Operator-approved Normal Record Review, 30 October 2026. IN-010 records a delivery-timeline clarification, not a scientific demonstration. September 2026 reporting remains a secondary-source qualification and is not elevated to independently confirmed contractual terms. Nicolas and Lackner technical critiques explicitly deferred to separate source-level Normal Record Review. All previous assessments preserved.",
     },
   ],
 
@@ -261,6 +283,7 @@ export const FR_AM_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-024", date: "2026-10-30", field: "normal_record_review", from: "9 evidence instances / AS-006", to: "10 evidence instances / AS-007", note: "Operator-approved Helion commercial-delivery timeline qualification admitted as IN-010 with reaffirming AS-007. 2028 initial operations distinguished from full 50 MW output and prospective later supply. ESCALATING / VS-03 unchanged; no demonstrated electricity or contractual breach inferred. Nicolas and Lackner technical critiques reserved as separate review candidate." },
     { id: "M-023", date: "2026-10-30", field: "normal_record_review", from: "8 evidence instances / AS-005", to: "9 evidence instances / AS-006", note: "Operator-approved admission of General Fusion October 2026 LM26 compressional-heating result as IN-009 and reaffirmation AS-006. Complementary preprint diagnostics with UKAEA collaboration; no net fusion energy or commercial electricity threshold achieved. ESCALATING / VS-03 retained. Prior evidence and assessments preserved." },
     { id: "M-022", date: "2026-10-30", field: "normal_record_review", from: "7 evidence instances / AS-004", to: "8 evidence instances / AS-005", note: "Operator-approved admission of historical JET DTE3 69.26 MJ result as IN-008 and reaffirmation AS-005. ESCALATING / VS-03 retained; no threshold crossed. Existing evidence and assessments preserved." },
     { id: "M-021", date: "2026-10-30", field: "provenance_repair", from: "LPR-001-D66 discrepancies_found / pending", to: "LPR-001-D66 discrepancies_found / completed", note: "Operator-approved bounded corrections to IN-003 Helion 2024 Senate attribution, IN-004 ITER proposed/endorsed baseline status, and IN-006 DOE 2025 announcement versus June 2026 roadmap chronology. Structured sources corrected; no new evidence instance, assessment, pressure state or verification-stage change. D66 review outcome retained as discrepancies_found; repair marked completed." },
