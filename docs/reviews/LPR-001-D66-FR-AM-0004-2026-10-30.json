@@ -1,0 +1,109 @@
+{
+  "protocol": "LPR-001",
+  "reviewId": "LPR-001-D66",
+  "date": "2026-10-30",
+  "recordId": "FR-AM-0004",
+  "selection": {
+    "previousReviewId": "LPR-001-D65",
+    "previousRecordId": "FR-QE-0004",
+    "priorMarkerVerifiedOnMain": true,
+    "rule": "Never-reviewed first; otherwise oldest lastProvenanceReview then Record ID",
+    "corpusSize": 32,
+    "previousLastProvenanceReview": "2026-09-19"
+  },
+  "outcome": "discrepancies_found",
+  "repairStatus": "pending",
+  "counts": {
+    "instances": 7,
+    "verified": 3,
+    "enriched": 1,
+    "unverifiable": 0,
+    "discrepancies": 3
+  },
+  "instanceResults": [
+    {
+      "id": "IN-001",
+      "status": "enriched",
+      "source": "https://physicsworld.com/a/fusion-energy-record-smashed-by-joint-european-torus-facility/",
+      "note": "Historical JET 1997 Q=0.64 and 16/25 MW source added, not new evidence."
+    },
+    {
+      "id": "IN-002",
+      "status": "verified",
+      "source": "https://www.llnl.gov/article/49306/lawrence-livermore-national-laboratory-achieves-fusion-ignition"
+    },
+    {
+      "id": "IN-003",
+      "status": "discrepancy",
+      "sources": [
+        "https://www.helionenergy.com/newsroom/helion-announces-worlds-first-fusion-ppa-with-microsoft",
+        "https://www.govinfo.gov/content/pkg/CHRG-118shrg57016/html/CHRG-118shrg57016.htm"
+      ],
+      "candidate": "2023 Helion announcement confirms PPA and 2028 plant target but does not itself disclose penalties. Helion executive Jackie Siebens explicitly confirmed firm penalties, 2028 construction/initial operations and 2029 full commercial supply in September 2024 Senate testimony. Attribute penalties to testimony and distinguish milestones; do not silently edit."
+    },
+    {
+      "id": "IN-004",
+      "status": "discrepancy",
+      "sources": [
+        "https://www.iter.org/node/20687/updated-baseline-presented",
+        "https://www.iter.org/node/20687/support-baseline-approach"
+      ],
+      "candidate": "ITER Council June 2024 received a proposed Baseline 2024 and November 2024 endorsed its overall approach/working plan; do not describe it as a formally approved revised baseline. Retain 2036/2039 targets as proposed/endorsed schedule."
+    },
+    {
+      "id": "IN-005",
+      "status": "verified",
+      "sources": [
+        "https://doi.org/10.1016/j.energy.2018.03.130",
+        "https://doi.org/10.1016/j.enpol.2023.113511"
+      ]
+    },
+    {
+      "id": "IN-006",
+      "status": "discrepancy",
+      "sources": [
+        "https://www.energy.gov/articles/energy-department-announces-fusion-science-and-technology-roadmap-accelerate-commercial",
+        "https://www.energy.gov/documents/fusion-science-and-technology-roadmap",
+        "https://blog.cfs.energy/cfs-takes-its-next-step-toward-fusion-energy-assembling-the-sparc-tokamak/",
+        "https://generalfusion.com/post/watch-general-fusions-lm26-achieves-first-plasma/"
+      ],
+      "candidate": "2025 DOE announcement cited >600 contributors, while the currently linked June 2026 roadmap PDF reports >800 and 15+ companies, 10 labs, 72 universities; record date 2025 and source link to 2024 fusion strategy conflate versions. Split dates/source provenance or narrowly source the 2025 event; preserve engineering-milestone claims."
+    },
+    {
+      "id": "IN-007",
+      "status": "verified",
+      "sources": [
+        "https://iopscience.iop.org/article/10.1088/1742-6596/3278/1/012031",
+        "https://global.helicalfusion.com/post/helical-fusion-publishes-peer-reviewed-paper-on-hts-magnet-technology-validated-through-collaboratio"
+      ],
+      "note": "Primary DOI supported by institutional summary; full publisher text access restricted. Engineering claims corroborated."
+    }
+  ],
+  "normalRecordReviewCandidates": [
+    {
+      "topic": "JET DTE3 final D-T campaign 69.26 MJ (2023), previously queued",
+      "source": "https://scientific-publications.ukaea.uk/papers/insights-of-the-jet-high-fusion-power-scenario-in-the-final-dt-campaign/",
+      "status": "Normal Record Review only; not admitted"
+    },
+    {
+      "topic": "General Fusion LM26 compressional plasma heating above 1 keV, 8 October 2026",
+      "source": "https://www.gov.uk/government/news/ukaea-general-fusion-announce-magnetised-target-fusion-milestone",
+      "status": "New scientific evidence; Normal Record Review only; not admitted"
+    },
+    {
+      "topic": "Helion Orion 2028 initial operations and 2029/2030 full output guidance",
+      "source": "https://www.axios.com/pro/climate-deals/2026/09/08/helion-energy-fusion-net-electricity-date-year",
+      "status": "Commercial target update; Normal Record Review only; not admitted"
+    }
+  ],
+  "governance": {
+    "instancesModified": false,
+    "sourceEnrichmentCount": 1,
+    "scientificDescriptionsModified": false,
+    "assessmentsModified": false,
+    "pressureStateModified": false,
+    "verificationStageModified": false,
+    "mutationId": "M-020",
+    "queueAdvanceRequiresMainVerification": true
+  }
+}
