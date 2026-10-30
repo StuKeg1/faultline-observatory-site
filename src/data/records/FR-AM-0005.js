@@ -104,6 +104,18 @@ export const FR_AM_0005 = {
         { citation: "LaSc₂H₂₄ high-temperature-superconductivity preprint (submitted 29 Sep 2025)", locator: "195–266 GPa; onset up to 298 K; resistance, field suppression and thirteen repeat runs; no independent replication" },
       ],
     }
+    {
+      id: "IN-007",
+      qualifiedEvent: "Semenok et al. — independent LaSc₂H₂₄ synthesis attempts with no observed near-room-temperature superconductivity",
+      description: "A March 2026 German Physical Society conference abstract by Semenok, Troyan, Zhou and Struzhkin reported unsuccessful attempts to reproduce the 2025 Song et al. LaSc₂H₂₄ claim using a La–Sc alloy precursor at 264–280 GPa, with no superconductivity detected between 255 K and 295 K in the resulting hydride. A subsequent research preprint by Semenok and colleagues (arXiv:2605.29985, submitted 28 May 2026; version 2 revised 20 August 2026) reports seven synthesis attempts at approximately 250–280 GPa and no superconducting traces in the resulting La–Sc–H hydrides across 245–300 K. Version 2 adds three experiments and detailed precursor characterisation. This is independent experimental non-observation relevant to the earlier IN-006 candidate, not seven independently replicated studies or a second independent result from the March abstract. The authors identify a critical synthesis-equivalence limitation: their alloy precursor differs from simultaneous deposition of La and Sc metals, which may be important to producing the claimed phase. Failure to obtain superconductivity in these samples therefore does not prove that identically prepared LaSc₂H₂₄ is non-superconducting, definitively falsify Song et al., or disprove room-temperature superconductivity across other materials. The follow-up remains a preprint rather than a verified peer-reviewed journal publication.",
+      vectors: ["contesting--independent-experimental-non-observation-synthesis-equivalence-unresolved"],
+      date: "2026-03–08",
+      sourceReference: "Semenok et al., DPG Dresden 2026 conference abstract and arXiv:2605.29985v2 (20 August 2026)",
+      sources: [
+        { citation: "Semenok, Troyan, Zhou and Struzhkin, 'Search for Room-temperature Superconductivity in the La-Sc-H System', DPG Dresden TT 80.8 (12 March 2026)", url: "https://www.dpg-verhandlungen.de/year/2026/conference/dresden/part/tt/session/80/contribution/8", locator: "Conference abstract: alloy-precursor attempts at 264–280 GPa; no superconductivity detected at 255–295 K; preliminary report, not a separate confirmed publication" },
+        { citation: "Semenok et al., 'Stability Analysis of Superconductivity in P6/mmm-LaSc₂H₂₄ and its Experimental Reproducibility from La-Sc Alloys', arXiv:2605.29985v2 (20 August 2026)", url: "https://arxiv.org/abs/2605.29985v2", doi: "10.48550/arXiv.2605.29985", locator: "Seven alloy-precursor synthesis attempts at 250–280 GPa; no superconductivity at 245–300 K; different precursor method may account for non-reproduction; preprint, not verified peer reviewed" },
+      ],
+    },
   ],
 
   assessments: [
@@ -132,6 +144,14 @@ export const FR_AM_0005 = {
       summary: "LPR-001-D22 narrows the record's evidential basis but preserves the COLLAPSED / VS-05 judgement. The Dias-associated retractions are serious reliability and provenance failures, not established findings that both datasets were falsified; LK-99 remains decisive candidate-specific negative replication evidence, not a field-wide null experiment. High-pressure hydrides demonstrate very high transition temperatures below room temperature, while LaSc₂H₂₄ is now represented accurately as a single-team 298 K high-pressure preprint with reported supporting measurements but no independent replication. No candidate has yet supplied independently reproducible evidence that establishes room-temperature superconductivity under laboratory conditions. The collapse judgement is therefore about the represented claims failing to survive the required reproducibility test, not a claim that a universal three-signature rule has been formally adopted or that the underlying physical possibility has been disproved.",
       assessorNote: "Corrective assessment following LPR-001-D22 bounded provenance repair. AS-001 and AS-002 are preserved append-only. The state and stage were explicitly re-evaluated because earlier wording relied partly on an unsupported universal standard; they are retained on the narrower independent-reproducibility basis. No new evidence is admitted: the 2025 LaSc₂H₂₄ work was already IN-006.",
     }
+    {
+      id: "AS-004",
+      date: "2026-10-30",
+      pressureState: "collapsed",
+      verificationStage: "VS-05",
+      summary: "Normal Record Review admits IN-007, an independent experimental challenge to the 2025 single-team LaSc₂H₂₄ near-room-temperature superconductivity claim already represented in IN-006. Semenok and colleagues report seven unsuccessful La–Sc alloy-precursor synthesis attempts at 250–280 GPa and no superconductivity in resulting hydrides between 245 K and 300 K (arXiv:2605.29985v2). The March 2026 DPG abstract and later preprint are related reports from overlapping researchers, not two independent replications. Crucially, the alloy precursor differs from the simultaneous La/Sc deposition method potentially required for the originally claimed phase; synthesis equivalence is not established. The negative result reinforces the absence of independently reproduced room-temperature superconductivity among represented candidates, but does not conclusively falsify an identically synthesised LaSc₂H₂₄ sample, establish a universal null, or prove physical impossibility. The preprint has not been verified as peer-reviewed journal work. COLLAPSED / VS-05 is reaffirmed on the record's bounded reproducibility basis.",
+      assessorNote: "Operator-approved Normal Record Review, 30 October 2026. Source-level review of DPG Dresden TT 80.8 and Semenok et al. arXiv:2605.29985v2 (20 August 2026); seven experiments are within one research report. Distinct synthesis precursor and publication-status limitations explicitly retained. No historical assessment rewritten; no claim-wide impossibility inference.",
+    },
   ],
 
   mechanisms: [
@@ -187,6 +207,7 @@ export const FR_AM_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-019", date: "2026-10-30", field: "normal_record_review", from: "6 evidence instances / AS-003", to: "7 evidence instances / AS-004", note: "Operator-approved Semenok et al. independent experimental non-observation admitted as IN-007, with DPG abstract and arXiv:2605.29985v2 treated as related reports, not independent confirmations. Alloy-precursor synthesis differs from original proposed preparation, so exact reproduction and definitive falsification are not established. AS-004 reaffirms COLLAPSED / VS-05. Earlier history retained." },
     {"id":"M-018","date":"2026-10-24","field":"editorial_correction","from":"ATTRACTOR wording assigned a governed institutional consequence directly to the future evidence event","to":"ATTRACTOR wording preserves the evidence route while reserving State, Stage, verdict or reopening consequences to governed assessment","note":"Operator-authorised A4 institutional-authority consistency repair. Correct AT-001 explanatory wording only; no new evidence, scientific threshold, evidence target, Pressure State, Verification Stage, assessment or ATTRACTOR identity changed. This repair is independent of the closed ATTRACTOR taxonomy v2 FAIL. Receipt: docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json."},
     {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-001","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, sourceReference, assessments, dates, relationships, review status and all prior mutations preserved. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {
