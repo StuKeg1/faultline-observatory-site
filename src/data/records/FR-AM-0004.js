@@ -121,6 +121,19 @@ export const FR_AM_0004 = {
         { citation: "UK Atomic Energy Authority, JET final experiments announcement (February 2024)", url: "https://www.gov.uk/government/news/jets-final-tritium-experiments-yield-new-fusion-energy-record", locator: "JET record result; experimental rather than electricity-producing facility" },
       ],
     },
+    {
+      id: "IN-009",
+      qualifiedEvent: "General Fusion LM26 — compressional electron heating above 1 keV in magnetized target fusion",
+      description: "On 8 October 2026 General Fusion and the UK Atomic Energy Authority announced an LM26 magnetized-target-fusion compressional-heating result. A technical preprint reports a peak electron temperature of 1180 ± 65 eV from filtered X-ray diagnostics, supported by adjacent Thomson-scattering measurements of 1090 ± 40 eV; deuterium ion temperature of 459 ± 33 eV is inferred from neutron yield. The Thomson-scattering measurement was developed with UKAEA specialists, strengthening diagnostic scrutiny, but the reported work remains submitted for peer review and is not independent replication of fusion gain. LM26's solid-lithium-liner compression experiment is distinct from the earlier first-plasma milestone in IN-006 and from the proposed commercial liquid-metal-wall plant. It does not demonstrate plasma net-energy gain, the Lawson criterion, plant-level net electricity, grid-scale electricity generation or commercial viability. The next 10 keV milestone and proposed first-of-a-kind plant around 2035 are targets, not achieved outcomes.",
+      vectors: ["supportive--mtf-compressional-heating-pre-threshold"],
+      date: "2026-10-08",
+      sourceReference: "Howard et al., arXiv:2610.11890; Carle et al., arXiv:2610.11769; UKAEA / General Fusion joint announcement (8 Oct 2026)",
+      sources: [
+        { citation: "Howard et al., ‘Compressional heating above 1 keV on the LM26 magnetized target fusion machine’ (8 October 2026), preprint", url: "https://arxiv.org/abs/2610.11890", locator: "1180 ± 65 eV X-ray, 1090 ± 40 eV Thomson scattering, 459 ± 33 eV inferred ion temperature; peer review pending" },
+        { citation: "Carle et al., ‘Thomson Scattering Measurement of 1 keV Electron Temperature on Lawson Machine 26’ (8 October 2026), preprint", url: "https://arxiv.org/abs/2610.11769", locator: "Thomson scattering diagnostic and 1090 ± 40 eV LMC-12 measurement" },
+        { citation: "UK Atomic Energy Authority, ‘UKAEA, General Fusion announce Magnetised Target Fusion milestone’ (8 October 2026)", url: "https://www.gov.uk/government/news/ukaea-general-fusion-announce-magnetised-target-fusion-milestone", locator: "UKAEA diagnostic collaboration, reported 1 keV milestone, submitted peer review and prospective 10 keV / 2035 targets" },
+      ],
+    },
   ],
 
   assessments: [
@@ -166,6 +179,15 @@ export const FR_AM_0004 = {
       changeKind: "reaffirmation",
       summary: "Normal Record Review admits the previously deferred JET DTE3 result (IN-008): a 2023 deuterium-tritium pulse produced 69.26 MJ of fusion energy over six seconds, announced in 2024, with reported plasma gain below unity (approximately Q = 0.36). This extends the evidence for sustained high-output tokamak operation but does not establish plasma breakeven, electricity generation, plant-level net electricity, grid-scale output or commercial viability. None of the claim's three thresholds is crossed. ESCALATING / VS-03 is reaffirmed, without treating this historical experiment as a new 2026 breakthrough.",
       assessorNote: "Operator-approved Normal Record Review, 30 October 2026. Historical JET DTE3 evidence admitted separately from IN-001; primary institutional reporting and subsequent scientific analysis considered. Existing assessments retained append-only. No pressure-state or verification-stage transition.",
+    },
+    {
+      id: "AS-006",
+      date: "2026-10-30",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      changeKind: "reaffirmation",
+      summary: "Normal Record Review admits General Fusion's October 2026 LM26 compressional-heating result as IN-009. Two technical preprints report electron temperatures above 1 keV measured through complementary diagnostics, with Thomson scattering developed in collaboration with UKAEA and ion heating inferred from neutron yield. This adds experimentally measured progress in magnetized target fusion, separate from LM26's earlier first-plasma event, but neither demonstrates plasma net-energy gain nor crosses the claim's thresholds of plant-level net electricity, grid-scale output and commercial viability. The technical papers are preprints submitted for peer review; joint diagnostic work is not independent replication of the commercial-power claim. ESCALATING / VS-03 is reaffirmed, with 10 keV, the Lawson criterion and a first-of-a-kind plant remaining prospective milestones.",
+      assessorNote: "Operator-approved Normal Record Review, 30 October 2026. Primary sources: Howard et al. arXiv:2610.11890, Carle et al. arXiv:2610.11769, UKAEA joint release dated 8 October 2026. IN-006 first-plasma history and AS-001 through AS-005 preserved append-only; no pressure-state or verification-stage transition.",
     },
   ],
 
@@ -239,6 +261,7 @@ export const FR_AM_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-023", date: "2026-10-30", field: "normal_record_review", from: "8 evidence instances / AS-005", to: "9 evidence instances / AS-006", note: "Operator-approved admission of General Fusion October 2026 LM26 compressional-heating result as IN-009 and reaffirmation AS-006. Complementary preprint diagnostics with UKAEA collaboration; no net fusion energy or commercial electricity threshold achieved. ESCALATING / VS-03 retained. Prior evidence and assessments preserved." },
     { id: "M-022", date: "2026-10-30", field: "normal_record_review", from: "7 evidence instances / AS-004", to: "8 evidence instances / AS-005", note: "Operator-approved admission of historical JET DTE3 69.26 MJ result as IN-008 and reaffirmation AS-005. ESCALATING / VS-03 retained; no threshold crossed. Existing evidence and assessments preserved." },
     { id: "M-021", date: "2026-10-30", field: "provenance_repair", from: "LPR-001-D66 discrepancies_found / pending", to: "LPR-001-D66 discrepancies_found / completed", note: "Operator-approved bounded corrections to IN-003 Helion 2024 Senate attribution, IN-004 ITER proposed/endorsed baseline status, and IN-006 DOE 2025 announcement versus June 2026 roadmap chronology. Structured sources corrected; no new evidence instance, assessment, pressure state or verification-stage change. D66 review outcome retained as discrepancies_found; repair marked completed." },
     { id: "M-020", date: "2026-10-30", field: "provenance_review", from: "LPR-001-D21", to: "LPR-001-D66", note: "Second-cycle LPR review: all seven existing evidence instances audited. Three source-faithful (IN-002, IN-005, IN-007); IN-001 source-faithful with one additional structured historical attribution to 1997 JET Q=0.64; zero unverifiable. Three bounded discrepancies retained unmodified pending approval: IN-003 Helion PPA penalties incorrectly attributed to 2023 press release rather than later 2024 Senate testimony; IN-004 proposed/endorsed ITER Baseline 2024 incorrectly called approved revised baseline; IN-006 2025 DOE roadmap event conflated with June 2026 published roadmap counts and source points to unrelated 2024 strategy. No new evidence or assessments admitted. Normal Record Review candidates: JET DTE3 69.26 MJ (2023); General Fusion LM26 1 keV compression (October 2026); Helion Orion 2028/2029 delivery-target clarification. D66 discrepancies_found / pending. Receipt docs/reviews/LPR-001-D66-FR-AM-0004-2026-10-30.json." },
