@@ -147,6 +147,18 @@ export const FR_AM_0004 = {
         { citation: "Jackie Siebens (Helion), testimony to US Senate (September 2024)", url: "https://www.govinfo.gov/content/pkg/CHRG-118shrg57016/html/CHRG-118shrg57016.htm", locator: "Distinction between initial 2028 operations and full commercial supply in 2029" },
       ],
     },
+    {
+      id: "IN-011",
+      qualifiedEvent: "Peer-reviewed theoretical critiques of Helion-style pulsed D–³He field-reversed-configuration fusion",
+      description: "Two 2026 peer-reviewed Journal of Fusion Energy studies critically examine physical and energy-balance assumptions relevant to Helion's proposed pulsed, deuterium–helium-3 field-reversed-configuration fusion architecture. Lackner and co-authors analyse ion-to-electron energy transfer and the difficulty of maintaining sufficiently hot ions relative to electrons during the fusion-relevant interval. Nicolas and co-authors model energy balance and confinement requirements, including demanding confinement times for the examined magnetic-field conditions and distinctions between circulating magnetic energy and energy coupled into the plasma. These are related but separately attributed theoretical analyses, not two independent experimental reactor failures. Their conclusions depend on model assumptions and their applicability to Helion's precise pulse dynamics and direct electrical recovery design remains disputed by the company. Neither paper directly measures Helion's reactor performance, experimentally falsifies its concept, or establishes failure of the wider commercial-fusion claim. They increase theoretical scrutiny of one architecture while plant-level net electricity, grid-scale generation and commercial viability remain undemonstrated.",
+      vectors: ["challenging--model-dependent-helion-energy-balance-and-confinement"],
+      date: "2026-02–03",
+      sourceReference: "Lackner et al. and Nicolas et al., Journal of Fusion Energy (2026), separate theoretical critiques of pulsed D–³He FRC fusion",
+      sources: [
+        { citation: "Lackner et al., Journal of Fusion Energy (2026), theoretical analysis of ion–electron energy transfer", doi: "10.1007/s10894-026-00554-2", url: "https://doi.org/10.1007/s10894-026-00554-2", locator: "Modelled ion/electron temperature equilibration and fusion-yield limitations; theoretical, not experimental falsification" },
+        { citation: "Nicolas et al., Journal of Fusion Energy (2026), energy-balance and confinement analysis of D–³He FRC fusion", doi: "10.1007/s10894-026-00565-z", url: "https://doi.org/10.1007/s10894-026-00565-z", locator: "Modelled confinement and magnetic/plasma energy-accounting constraints; not a measured Helion reactor failure" },
+      ],
+    },
   ],
 
   assessments: [
@@ -210,6 +222,15 @@ export const FR_AM_0004 = {
       changeKind: "reaffirmation",
       summary: "Normal Record Review admits IN-010 to preserve the trajectory of Helion's commercial electricity-delivery expectations. The original 2023 Microsoft agreement anticipated a plant online in 2028 and at least 50 MW after ramp-up; later Orion descriptions and the company's 2024 Senate testimony distinguish initial 2028 operations from later full commercial supply. September 2026 reporting further qualifies the interpretation of full 50 MW delivery in 2028, but a reported schedule is not independently verified commissioning evidence. These developments reduce support for treating 2028 as an achieved or assured full-output milestone without establishing technological failure or contractual breach. No fusion plant has demonstrated the claim's three combined thresholds: plant-level net electricity, grid-scale generation and commercial viability. ESCALATING / VS-03 is reaffirmed.",
       assessorNote: "Operator-approved Normal Record Review, 30 October 2026. IN-010 records a delivery-timeline clarification, not a scientific demonstration. September 2026 reporting remains a secondary-source qualification and is not elevated to independently confirmed contractual terms. Nicolas and Lackner technical critiques explicitly deferred to separate source-level Normal Record Review. All previous assessments preserved.",
+    },
+    {
+      id: "AS-008",
+      date: "2026-10-30",
+      pressureState: "escalating",
+      verificationStage: "VS-03",
+      changeKind: "reaffirmation",
+      summary: "Normal Record Review admits IN-011: two separately attributed peer-reviewed theoretical critiques of assumptions relevant to Helion's pulsed deuterium–helium-3 field-reversed-configuration concept. The studies identify potentially demanding ion–electron temperature separation, confinement and energy-accounting requirements. Their shared direction strengthens theoretical resistance to one proposed fusion architecture, but the findings are model-dependent, contested in applicability by Helion, and do not constitute direct experimental falsification or two independent reactor failures. Other fusion architectures are not resolved by these analyses. No plant has demonstrated the record's conjunction of net electricity, grid-scale output and commercial viability. ESCALATING / VS-03 is reaffirmed while explicitly recognizing stronger theoretical scrutiny.",
+      assessorNote: "Operator-approved Normal Record Review, 30 October 2026. Sources: Lackner et al. DOI 10.1007/s10894-026-00554-2 and Nicolas et al. DOI 10.1007/s10894-026-00565-z. Peer-reviewed theoretical analyses admitted as a single grouped instance with separate citations; no experimental result inferred, no new pressure-state or verification-stage transition. Prior evidence and assessments preserved.",
     },
   ],
 
@@ -283,6 +304,7 @@ export const FR_AM_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-025", date: "2026-10-30", field: "normal_record_review", from: "10 evidence instances / AS-007", to: "11 evidence instances / AS-008", note: "Operator-approved admission of two separately attributed peer-reviewed Helion-relevant theoretical critiques as grouped IN-011 and reaffirmation AS-008. Model-dependent challenge distinguished from experimental falsification; other fusion architectures not adjudicated. ESCALATING / VS-03 retained. All prior evidence and assessments preserved." },
     { id: "M-024", date: "2026-10-30", field: "normal_record_review", from: "9 evidence instances / AS-006", to: "10 evidence instances / AS-007", note: "Operator-approved Helion commercial-delivery timeline qualification admitted as IN-010 with reaffirming AS-007. 2028 initial operations distinguished from full 50 MW output and prospective later supply. ESCALATING / VS-03 unchanged; no demonstrated electricity or contractual breach inferred. Nicolas and Lackner technical critiques reserved as separate review candidate." },
     { id: "M-023", date: "2026-10-30", field: "normal_record_review", from: "8 evidence instances / AS-005", to: "9 evidence instances / AS-006", note: "Operator-approved admission of General Fusion October 2026 LM26 compressional-heating result as IN-009 and reaffirmation AS-006. Complementary preprint diagnostics with UKAEA collaboration; no net fusion energy or commercial electricity threshold achieved. ESCALATING / VS-03 retained. Prior evidence and assessments preserved." },
     { id: "M-022", date: "2026-10-30", field: "normal_record_review", from: "7 evidence instances / AS-004", to: "8 evidence instances / AS-005", note: "Operator-approved admission of historical JET DTE3 69.26 MJ result as IN-008 and reaffirmation AS-005. ESCALATING / VS-03 retained; no threshold crossed. Existing evidence and assessments preserved." },
