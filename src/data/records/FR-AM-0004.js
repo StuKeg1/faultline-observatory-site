@@ -12,10 +12,10 @@
 export const FR_AM_0004 = {
   id: "FR-AM-0004",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-09-19",
-  provenanceReviewId: "LPR-001-D21",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-30",
+  provenanceReviewId: "LPR-001-D66",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "A commercially viable fusion power plant can generate net electricity at grid scale.",
@@ -32,6 +32,7 @@ export const FR_AM_0004 = {
       date: "1997–2022",
       sourceReference: "JET 1997 D-T campaign; EUROfusion, ‘European research reaches highest sustained energy from fusion’ (9 Feb 2022)",
       sources: [
+        { citation: "Physics World, ‘Fusion energy record smashed by Joint European Torus facility’ (9 February 2022)", url: "https://physicsworld.com/a/fusion-energy-record-smashed-by-joint-european-torus-facility/", locator: "1997 JET peak 16 MW fusion power from 25 MW input heating, Q = 0.64; separate from 2021 sustained 59 MJ shot" },
         { citation: "EUROfusion, ‘JET’s 1997 deuterium-tritium campaign’ — 16 MW fusion power and Q = 0.64", locator: "1997 D-T performance result" },
         { citation: "EUROfusion, ‘European research reaches highest sustained energy from fusion’ (9 Feb 2022)", url: "https://euro-fusion.org/eurofusion-news/dte3record/", locator: "59 MJ over five seconds; experiment performed in 2021" },
       ],
@@ -214,6 +215,7 @@ export const FR_AM_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-020", date: "2026-10-30", field: "provenance_review", from: "LPR-001-D21", to: "LPR-001-D66", note: "Second-cycle LPR review: all seven existing evidence instances audited. Three source-faithful (IN-002, IN-005, IN-007); IN-001 source-faithful with one additional structured historical attribution to 1997 JET Q=0.64; zero unverifiable. Three bounded discrepancies retained unmodified pending approval: IN-003 Helion PPA penalties incorrectly attributed to 2023 press release rather than later 2024 Senate testimony; IN-004 proposed/endorsed ITER Baseline 2024 incorrectly called approved revised baseline; IN-006 2025 DOE roadmap event conflated with June 2026 published roadmap counts and source points to unrelated 2024 strategy. No new evidence or assessments admitted. Normal Record Review candidates: JET DTE3 69.26 MJ (2023); General Fusion LM26 1 keV compression (October 2026); Helion Orion 2028/2029 delivery-target clarification. D66 discrepancies_found / pending. Receipt docs/reviews/LPR-001-D66-FR-AM-0004-2026-10-30.json." },
     {"id":"M-019","date":"2026-10-24","field":"editorial_correction","from":"ATTRACTOR wording assigned a governed institutional consequence directly to the future evidence event","to":"ATTRACTOR wording preserves the evidence route while reserving State, Stage, verdict or reopening consequences to governed assessment","note":"Operator-authorised A4 institutional-authority consistency repair. Correct AT-001 explanatory wording only; no new evidence, scientific threshold, evidence target, Pressure State, Verification Stage, assessment or ATTRACTOR identity changed. This repair is independent of the closed ATTRACTOR taxonomy v2 FAIL. Receipt: docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json."},
     {"id":"M-018","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-007","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, sourceReference, assessments, dates, relationships, review status and all prior mutations preserved. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {"id": "M-017", "date": "2026-10-19", "field": "editorial_correction", "from": "IN-005 named economic paper with mismatched author order, journal/year and DOI", "to": "IN-005 Lindley et al., Energy Policy 177 (2023) 113511; DOI 10.1016/j.enpol.2023.113511", "note": "Operator-approved citation correction following the bounded stage review. Align the named paper with publisher metadata; retain Entler citation, empirical interpretation, instance date and evidence count. No new paper or scientific result admitted. Exact former citation and verification source preserved in docs/reviews/AM-0004-BT-0003-STAGE-RECONCILIATION-2026-10-19.md."},
