@@ -144,6 +144,9 @@ const EDITORIAL_CORRECTION_FIELD_SYNONYMS = new Set([
   "related_records_corrected",
   "assessment_order_corrected",
   "vector_corrected",
+  "evidence_correction",
+  "historical_assessment_consistency_correction",
+  "editorial_syntax_repair",
 ]);
 
 const RECORD_ANNOTATION_FIELD_SYNONYMS = new Set([
@@ -272,11 +275,16 @@ export function detectMutationType(mutation, record) {
   ) {
     return "record_annotation_updated";
   }
-  if (mutation.field === "provenance_review_completed" || mutation.field === "provenance_review") {
+  if (mutation.field === "provenance_review_completed" || mutation.field === "provenance_review" || mutation.field === "provenance_status_reconciled" || mutation.field === "provenance_marker_validation_repair") {
     return "provenance_review_completed";
   }
-  if (mutation.field === "record_review") {
-    return /\bIN-\d{3}\b/.test(mutation.to) ? "instance_added" : "unclassified";
+  if (mutation.field === "record_review" || mutation.field === "normal_record_review") {
+    if (/\bIN-\d{3}\b/.test(mutation.to)) return "instance_added";
+    const before = String(mutation.from).match(/^(\d+) evidence instances\b/);
+    const after = String(mutation.to).match(/^(\d+) evidence instances\b/);
+    return mutation.field === "normal_record_review" && before && after &&
+      Number(after[1]) === Number(before[1]) + 1 && Number(after[1]) <= record.instances.length
+      ? "instance_added" : "unclassified";
   }
   if (INSTITUTIONAL_RECONSTRUCTION_FIELD_SYNONYMS.has(mutation.field)) {
     return "institutional_record_reconstruction";
@@ -376,3 +384,4 @@ export function qualifiesForHomepage(mutationType) {
   const [qualifies, taxonomyClass, note] = entry;
   return { qualifies, taxonomyClass, note };
 }
+

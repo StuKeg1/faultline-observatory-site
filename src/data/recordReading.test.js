@@ -1,3 +1,4 @@
+import { historicalRecord } from "./historicalCheckpointTestSupport.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
@@ -246,7 +247,7 @@ test("shared-source groups distinguish report reuse from experimental independen
   const note = evidenceRelationships(cold, cold.instances[0])[0].text;
   assert.match(note, /distinct events and laboratories/);
   assert.doesNotMatch(note, /not independent replications/);
-  const qe = ALL_RECORDS.find(record => record.id === "FR-QE-0003");
+  const qe = historicalRecord(ALL_RECORDS.find(record => record.id === "FR-QE-0003"));
   assert.ok(qe.instances.slice(0, 4).every(instance => instance.evidenceStatus.kind === "pending_correction"));
 });
 
@@ -302,7 +303,7 @@ test("reviewed entry statuses are explicit, distinct and backed by existing muta
     ["FR-AI-0001", ["IN-003"], /Unverified legacy attribution/],
   ];
   for (const [id, ids, notice] of expected) {
-    const record = ALL_RECORDS.find(r => r.id === id);
+    const record = historicalRecord(ALL_RECORDS.find(r => r.id === id));
     for (const entryId of ids) {
       const entry = record.instances.find(i => i.id === entryId);
       assert.match(evidenceReadingStatus(record, entry), notice);
@@ -340,3 +341,13 @@ test("known wording revision does not inherit the elapsed age of a legacy questi
   assert.equal(questionDateText(q), "Original date uncertain (legacy) · wording revised 2026-09-06");
   assert.equal(questionDateText({ raisedDate: "2026-09-28" }), "Question recorded 2026-09-28");
 });
+
+
+ test("completed QE-0003 repairs no longer expose historical pending notices", () => {
+ const record = ALL_RECORDS.find(r => r.id === "FR-QE-0003");
+ for (const entry of record.instances.slice(0, 4)) {
+ assert.notEqual(entry.evidenceStatus?.kind, "pending_correction");
+ assert.equal(evidenceReadingStatus(record, entry), null);
+ assert.ok(entry.sources?.length > 0);
+ }
+ });

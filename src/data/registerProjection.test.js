@@ -1,3 +1,4 @@
+import { historicalRecord } from "./historicalCheckpointTestSupport.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { ALL_RECORDS } from "./corpus.js";
@@ -83,8 +84,9 @@ test("stage change register uses stored assessment stages rather than reviewed s
 
 test("stage correction is not described as a newly observed capability advance", () => {
   for (const [id, stage] of [["FR-AI-0008", "05"], ["FR-AM-0004", "03"], ["FR-BT-0003", "04"]]) {
-    const record = ALL_RECORDS.find(r => r.id === id);
+    const record = historicalRecord(ALL_RECORDS.find(r => r.id === id));
     assert.match(getRegisterRow(record, `stage-vs-${stage}`).reason, /Stage corrected|Stage correction/);
     assert.match(getRegisterRow(record, "stage-changed").reason, /Stage correction/);
   }
 });
+
