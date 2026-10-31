@@ -1,0 +1,125 @@
+{
+  "protocol": "LPR-001",
+  "reviewId": "LPR-001-D67",
+  "date": "2026-10-31",
+  "recordId": "FR-AM-0005",
+  "selection": {
+    "previousReviewId": "LPR-001-D66",
+    "previousRecordId": "FR-AM-0004",
+    "priorMarkerVerifiedOnMain": true,
+    "priorGovernanceRepair": {
+      "pullRequest": 224,
+      "mergeCommit": "93dc15fe24687a23e043c29b31436012679143df",
+      "reason": "D66 had invalid discrepancies_found/completed pair after approved corrections; repaired to discrepancies_corrected/completed, and restored missing IN-008 comma, before selecting D67"
+    },
+    "rule": "Never-reviewed first; otherwise oldest lastProvenanceReview then Record ID",
+    "corpusSize": 32,
+    "previousLastProvenanceReview": "2026-09-20"
+  },
+  "outcome": "discrepancies_found",
+  "repairStatus": "pending",
+  "counts": {
+    "instances": 7,
+    "verified": 1,
+    "enriched": 1,
+    "unverifiable": 0,
+    "discrepancies": 5
+  },
+  "instanceResults": [
+    {
+      "id": "IN-001",
+      "status": "discrepancy",
+      "sources": [
+        "https://www.nature.com/articles/s41586-022-05294-9",
+        "https://www.nature.com/articles/s41586-023-06774-2"
+      ],
+      "candidate": "Source notices support both retractions and bounded integrity/provenance concerns. Vector still reads 'data-manipulation-both-papers-retracted' while corrected description explicitly avoids treating both as proven data manipulation. Operator-authorised vector alignment required; no scientific text edited."
+    },
+    {
+      "id": "IN-002",
+      "status": "discrepancy",
+      "sources": [
+        "https://link.springer.com/article/10.1007/s11433-023-2201-9"
+      ],
+      "candidate": "Existing Guo source citation names an unrelated topological-material paper and is an exclusion, not LK-99 evidence. Guo, Li and Jia (2023) directly report LK-99-like sample ferromagnetism and no Meissner effect or zero resistance in their samples; publisher abstract accessible. Existing generic Nature title not uniquely attributed. Replace with explicitly newly verified attribution, not recovery of lost D22 ledger; avoid universal null inference."
+    },
+    {
+      "id": "IN-003",
+      "status": "enriched",
+      "sources": [
+        "https://www.nature.com/articles/nature14964",
+        "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.122.027001",
+        "https://www.nature.com/articles/s41586-019-1201-8"
+      ],
+      "note": "Added publisher URLs to two existing DOI citations and one independently identifiable Drozdov 2019 Nature study already named in sourceReference. No new scientific event or representation change."
+    },
+    {
+      "id": "IN-004",
+      "status": "discrepancy",
+      "sources": [
+        "https://www.nature.com/articles/s41567-023-02225-x"
+      ],
+      "candidate": "The Nature Physics editorial Party like it’s LK-99 is a verified candidate for the generic 2023 citation, but its accessible abstract is commentary, not evidence of a formal universal journal rule or a substitute for full methodological literature. Original D22 attribution unrecovered; correction needs operator approval."
+    },
+    {
+      "id": "IN-005",
+      "status": "discrepancy",
+      "sources": [
+        "https://www.nature.com/articles/s41586-022-05294-9",
+        "https://www.nature.com/articles/s41586-023-06774-2",
+        "https://link.springer.com/article/10.1007/s11433-023-2201-9"
+      ],
+      "candidate": "This is a synthesis of IN-001 and IN-002, not a third replication. Current generic source slot is not independently traceable; inherit exact underlying citations after IN-002 correction, with no independent-study double counting."
+    },
+    {
+      "id": "IN-006",
+      "status": "discrepancy",
+      "sources": [
+        "https://www6.slac.stanford.edu/news/2025-02-04-first-researchers-stabilize-promising-new-class-high-temperature-superconductors",
+        "https://www.nature.com/articles/s41586-024-08525-3",
+        "https://arxiv.org/abs/2510.01273v2"
+      ],
+      "candidate": "The qualifiedEvent title still includes 'and a field-wide roadmap' although the corrected description explicitly removes the unverified PNAS roadmap. Existing generic citations lack structured links. Candidate title/citation correction is material attribution/representation work; defer to operator approval. Song 2025 preprint reports 13 within-team runs, not independent replication. SLAC nickelate is room-pressure, not room-temperature."
+    },
+    {
+      "id": "IN-007",
+      "status": "verified",
+      "sources": [
+        "https://www.dpg-verhandlungen.de/year/2026/conference/dresden/part/tt/session/80/contribution/8",
+        "https://arxiv.org/abs/2605.29985v2"
+      ],
+      "note": "DPG TT80.8 and DS17.8 are parallel listings of the same March abstract, not two reports. Semenok et al. v2 reports seven alloy-precursor attempts and no superconductivity in resulting hydrides, with synthesis-method limitations. Preprint and conference abstract are related, not independent experiments. Comparison with Song preparation remains an explicit uncertainty; no definitive falsification."
+    }
+  ],
+  "normalRecordReviewCandidates": [],
+  "separateReviewCandidates": [
+    {
+      "topic": "Song versus Semenok synthesis-protocol equivalence",
+      "status": "Bounded scientific-method comparison for possible future Normal Record Review or correction, not newly admitted evidence",
+      "sources": [
+        "https://arxiv.org/abs/2510.01273v2",
+        "https://arxiv.org/abs/2605.29985v2"
+      ]
+    }
+  ],
+  "governance": {
+    "instancesModified": false,
+    "sourceEnrichmentCount": 1,
+    "structuredLinksAdded": 3,
+    "scientificDescriptionsModified": false,
+    "assessmentModified": false,
+    "pressureStateModified": false,
+    "verificationStageModified": false,
+    "syntaxRepair": {
+      "missingSeparatorsBefore": [
+        "IN-007",
+        "AS-004"
+      ],
+      "mutationId": "M-020",
+      "impact": "Restores valid JavaScript import; no evidence or assessment meaning changed"
+    },
+    "mutationId": "M-021",
+    "queueAdvanceRequiresMainVerification": true
+  },
+  "deferredAttributionReview": "docs/reviews/AM-0005-BOUNDED-ATTRIBUTION-REVIEW-2026-10-19.md"
+}

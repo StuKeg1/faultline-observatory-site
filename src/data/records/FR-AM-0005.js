@@ -12,10 +12,10 @@
 export const FR_AM_0005 = {
   id: "FR-AM-0005",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-09-20",
-  provenanceReviewId: "LPR-001-D22",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-10-31",
+  provenanceReviewId: "LPR-001-D67",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "A room-temperature superconductor can be produced under reproducible laboratory conditions.",
@@ -66,8 +66,9 @@ export const FR_AM_0005 = {
       date: "2015–19",
       sourceReference: "Drozdov et al. (2015) H₃S; Drozdov et al. (2019) and Somayazulu et al. (2019) LaH₁₀",
       sources: [
-        { citation: "Drozdov et al., ‘Conventional superconductivity at 203 kelvin at high pressures in the sulfur hydride system’, Nature 525 (2015)", doi: "10.1038/nature14964", locator: "H₃S high-pressure transition" },
-        { citation: "Somayazulu et al., ‘Evidence for superconductivity above 260 K in lanthanum superhydride at megabar pressures’, Physical Review Letters 122 (2019)", doi: "10.1103/PhysRevLett.122.027001", locator: "LaH₁₀ high-pressure evidence" },
+        { citation: "Drozdov et al., ‘Conventional superconductivity at 203 kelvin at high pressures in the sulfur hydride system’, Nature 525 (2015)", doi: "10.1038/nature14964", url: "https://www.nature.com/articles/nature14964", locator: "H₃S high-pressure transition" },
+        { citation: "Somayazulu et al., ‘Evidence for superconductivity above 260 K in lanthanum superhydride at megabar pressures’, Physical Review Letters 122 (2019)", doi: "10.1103/PhysRevLett.122.027001", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.122.027001", locator: "LaH₁₀ high-pressure evidence" },
+        { citation: "Drozdov et al., ‘Superconductivity at 250 K in lanthanum hydride under high pressures’, Nature 569, 528–531 (2019)", doi: "10.1038/s41586-019-1201-8", url: "https://www.nature.com/articles/s41586-019-1201-8", locator: "Independent 2019 lanthanum-hydride study already named in sourceReference; near 250 K under extreme pressure" },
       ],
     },
     {
@@ -103,7 +104,7 @@ export const FR_AM_0005 = {
         { citation: "SLAC National Accelerator Laboratory, nickelate superconductivity announcement (4 Feb 2025)", locator: "Ambient-pressure nickelate stability; transition temperature far below room temperature" },
         { citation: "LaSc₂H₂₄ high-temperature-superconductivity preprint (submitted 29 Sep 2025)", locator: "195–266 GPa; onset up to 298 K; resistance, field suppression and thirteen repeat runs; no independent replication" },
       ],
-    }
+    },
     {
       id: "IN-007",
       qualifiedEvent: "Semenok et al. — independent LaSc₂H₂₄ synthesis attempts with no observed near-room-temperature superconductivity",
@@ -143,7 +144,7 @@ export const FR_AM_0005 = {
       verificationStage: "VS-05",
       summary: "LPR-001-D22 narrows the record's evidential basis but preserves the COLLAPSED / VS-05 judgement. The Dias-associated retractions are serious reliability and provenance failures, not established findings that both datasets were falsified; LK-99 remains decisive candidate-specific negative replication evidence, not a field-wide null experiment. High-pressure hydrides demonstrate very high transition temperatures below room temperature, while LaSc₂H₂₄ is now represented accurately as a single-team 298 K high-pressure preprint with reported supporting measurements but no independent replication. No candidate has yet supplied independently reproducible evidence that establishes room-temperature superconductivity under laboratory conditions. The collapse judgement is therefore about the represented claims failing to survive the required reproducibility test, not a claim that a universal three-signature rule has been formally adopted or that the underlying physical possibility has been disproved.",
       assessorNote: "Corrective assessment following LPR-001-D22 bounded provenance repair. AS-001 and AS-002 are preserved append-only. The state and stage were explicitly re-evaluated because earlier wording relied partly on an unsupported universal standard; they are retained on the narrower independent-reproducibility basis. No new evidence is admitted: the 2025 LaSc₂H₂₄ work was already IN-006.",
-    }
+    },
     {
       id: "AS-004",
       date: "2026-10-30",
@@ -207,6 +208,8 @@ export const FR_AM_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-021", date: "2026-10-31", field: "provenance_review", from: "LPR-001-D22 discrepancies_corrected / completed", to: "LPR-001-D67 discrepancies_found / pending", note: "Second-cycle LPR-001 review of all seven admitted instances, deterministically selected after D66 marker repair and verification on canonical main (PR #224). IN-003 enriched with publisher-verified DOI URLs and already-attributed Drozdov 2019 source; IN-007 primary abstract and v2 preprint verified; five bounded attribution/representation discrepancies held for operator approval (IN-001, IN-002, IN-004, IN-005, IN-006). No scientific descriptions, vectors, assessments, state or stage changed. Receipt docs/reviews/LPR-001-D67-FR-AM-0005-2026-10-31.json. Nonmaterial syntax repair recorded separately in M-020." },
+    { id: "M-020", date: "2026-10-31", field: "editorial_syntax_repair", from: "Missing array commas before approved IN-007 and AS-004", to: "Valid JavaScript evidence and assessment arrays", note: "Mechanical parser repair of omissions introduced during PR #223; no evidence text, identity, date, vector, assessment or scientific meaning changed. Included with governed D67 provenance review to restore importability and validation." },
     { id: "M-019", date: "2026-10-30", field: "normal_record_review", from: "6 evidence instances / AS-003", to: "7 evidence instances / AS-004", note: "Operator-approved Semenok et al. independent experimental non-observation admitted as IN-007, with DPG abstract and arXiv:2605.29985v2 treated as related reports, not independent confirmations. Alloy-precursor synthesis differs from original proposed preparation, so exact reproduction and definitive falsification are not established. AS-004 reaffirms COLLAPSED / VS-05. Earlier history retained." },
     {"id":"M-018","date":"2026-10-24","field":"editorial_correction","from":"ATTRACTOR wording assigned a governed institutional consequence directly to the future evidence event","to":"ATTRACTOR wording preserves the evidence route while reserving State, Stage, verdict or reopening consequences to governed assessment","note":"Operator-authorised A4 institutional-authority consistency repair. Correct AT-001 explanatory wording only; no new evidence, scientific threshold, evidence target, Pressure State, Verification Stage, assessment or ATTRACTOR identity changed. This repair is independent of the closed ATTRACTOR taxonomy v2 FAIL. Receipt: docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json."},
     {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-001","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, sourceReference, assessments, dates, relationships, review status and all prior mutations preserved. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
