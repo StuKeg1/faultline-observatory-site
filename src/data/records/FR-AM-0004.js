@@ -14,7 +14,7 @@ export const FR_AM_0004 = {
   programme: "PROG-AM",
   lastProvenanceReview: "2026-10-30",
   provenanceReviewId: "LPR-001-D66",
-  provenanceOutcome: "discrepancies_found",
+  provenanceOutcome: "discrepancies_corrected",
   provenanceRepairStatus: "completed",
 
   claim: {
@@ -108,7 +108,7 @@ export const FR_AM_0004 = {
       date: "2025; peer-reviewed 2026-08",
       sourceReference: "Y. Narushima et al., Journal of Physics: Conference Series 3278 (2026) 012031; Helical Fusion / NIFS UROCOIC double-pancake coil testing",
       sources: [{"citation": "Narushima et al. Experiment of a Double-Pancake Coil Wound by UROCOIC Conductor for Application in Helical Fusion Reactors. Journal of Physics: Conference Series 3278, 012031 (2026).", "doi": "10.1088/1742-6596/3278/1/012031", "url": "https://iopscience.iop.org/article/10.1088/1742-6596/3278/1/012031", "locator": "Component coil test; does not establish whole-reactor operation."}],
-    }
+    },
     {
       id: "IN-008",
       qualifiedEvent: "JET DTE3 final deuterium-tritium campaign — 69.26 MJ fusion energy, below plasma breakeven",
@@ -304,6 +304,7 @@ export const FR_AM_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-026", date: "2026-10-31", field: "provenance_status_reconciled", from: "LPR-001-D66 discrepancies_found / completed; missing comma before IN-008", to: "LPR-001-D66 discrepancies_corrected / completed; syntactically valid evidence array", note: "Governance and mechanical syntax repair after operator-approved D66 source corrections landed in M-021 / PR #218. Audit marker already existed on main; reconcile invalid status pairing under repository validator. Restore missing separator between IN-007 and IN-008 introduced in the later Normal Record Review; no scientific descriptions, evidence identity, assessment, state or stage changed. Original D66 receipt retains its original pending audit disposition." },
     { id: "M-025", date: "2026-10-30", field: "normal_record_review", from: "10 evidence instances / AS-007", to: "11 evidence instances / AS-008", note: "Operator-approved admission of two separately attributed peer-reviewed Helion-relevant theoretical critiques as grouped IN-011 and reaffirmation AS-008. Model-dependent challenge distinguished from experimental falsification; other fusion architectures not adjudicated. ESCALATING / VS-03 retained. All prior evidence and assessments preserved." },
     { id: "M-024", date: "2026-10-30", field: "normal_record_review", from: "9 evidence instances / AS-006", to: "10 evidence instances / AS-007", note: "Operator-approved Helion commercial-delivery timeline qualification admitted as IN-010 with reaffirming AS-007. 2028 initial operations distinguished from full 50 MW output and prospective later supply. ESCALATING / VS-03 unchanged; no demonstrated electricity or contractual breach inferred. Nicolas and Lackner technical critiques reserved as separate review candidate." },
     { id: "M-023", date: "2026-10-30", field: "normal_record_review", from: "8 evidence instances / AS-005", to: "9 evidence instances / AS-006", note: "Operator-approved admission of General Fusion October 2026 LM26 compressional-heating result as IN-009 and reaffirmation AS-006. Complementary preprint diagnostics with UKAEA collaboration; no net fusion energy or commercial electricity threshold achieved. ESCALATING / VS-03 retained. Prior evidence and assessments preserved." },
