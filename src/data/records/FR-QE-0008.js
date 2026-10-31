@@ -146,6 +146,22 @@ export const FR_QE_0008 = {
         }
       ]
     },
+    {
+      "id": "IN-011",
+      "qualifiedEvent": "Correlated magic-state inputs — theoretical distillation diagnostic",
+      "description": "Wang et al. derive a correlation-sensitive map for the five-to-one Bravyi–Kitaev distillation protocol and model resource preparation using spin-squeezed neutral atoms. Joint inputs with identical single-qubit and two-qubit reduced states can yield opposite fidelity gains because higher-order correlations differ. Individually exceeding the independent-input threshold therefore does not guarantee purification of the correlated register. The neutral-atom model explores spatial separation and addressed phases to control correlations, and a retained-cell protocol gives positive modeled gain above a circuit-dependent source-contrast threshold. This is theory and simulation relevant to the record's full-circuit correlation constraint, not a new measured code-distance suppression curve or hardware replication. Source windows and delivered rates depend on interaction, extraction, storage and readout assumptions; direct preparation can use fewer atoms when it supplies equivalent quality. The authors develop the proposed method at Shanxi University. The result adds a bounded diagnostic and possible mitigation within the existing evidential shape; it neither overturns the measured distance-7 scaling evidence nor establishes application-scale universal fault tolerance or resource economics.",
+      "vectors": [
+        "PARTIAL"
+      ],
+      "date": "2026-10-27",
+      "sources": [
+        {
+          "citation": "Wang, X. et al. (2026), Correlation-sensitive magic-state distillation from spin-squeezed neutral atoms, arXiv:2610.36963v1.",
+          "url": "https://arxiv.org/abs/2610.36963v1",
+          "locator": "Sections II–VI; higher-moment map, fixed-local-state comparison, source/readout/storage models and domain of application; submitted 27 October 2026."
+        }
+      ]
+    },
   ],
 
   assessments: [
@@ -250,6 +266,14 @@ export const FR_QE_0008 = {
 
   mutationLog: [
     {
+      "id": "M-021",
+      "date": "2026-10-31",
+      "field": "instance_appended",
+      "from": "IN-010",
+      "to": "IN-011",
+      "note": "Operator-approved Scout flag 2026-10-31-01 implemented after explicit authorisation. INSTANCE only; source and modeling/benchmark limits preserved. No new assessment; AS-005 / RESOLVING / VS-04, claim, mechanisms, questions and provenance-review metadata retained. Receipt: docs/reviews/SCOUT-2026-10-31-APPROVED-INSTANCES.md."
+    },
+    {
       "id": "M-020",
       "date": "2026-10-24",
       "field": "instance_appended",
@@ -281,3 +305,4 @@ export const FR_QE_0008 = {
 
   status: "open",
 };
+

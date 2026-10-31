@@ -154,6 +154,22 @@ export const FR_AI_0002 = {
         },
       ],
     },
+    {
+      "id": "IN-009",
+      "qualifiedEvent": "Reasoning-effort economics — task costs and externally verified escalation",
+      "description": "Sun et al. compare reasoning-effort settings across eight models on AIME, GPQA, Terminal-Bench and SWE-Bench Pro, including a corrected software environment that removes reference-fix history and restricts network access. Higher effort often improves aggregate success but can increase execution cost on tasks already solved at lower effort; additional self-verification does not ensure external-evaluator success. Main agentic evaluations use one attempt per setting. Observed success reversals are not established decreases in task-specific success probability: repeated-run analysis finds reversals compatible with chance. Starting at lower effort and escalating after an externally verified failure can improve the tested cost–success trade-off, but requires trustworthy feedback that many deployments lack and charges retries. Original and corrected benchmark results must remain distinct. Token-price accounting and modeled waiting costs do not measure deployed workplace return or actual human-supervision requirements. Several authors are affiliated with inference provider Together AI. The study supplies mixed task-level evidence relevant to OQ-001's supervision boundary and execution costs, without refuting bounded human-reviewed utility or establishing reliable low-supervision professional work.",
+      "vectors": [
+        "PARTIAL"
+      ],
+      "date": "2026-10-25",
+      "sources": [
+        {
+          "citation": "Sun, K. et al. (2026), What Effort Level Should I Choose? On the Economics of Reasoning Effort in LLM Agents, arXiv:2610.34491v1.",
+          "url": "https://arxiv.org/abs/2610.34491v1",
+          "locator": "Sections 2–3; corrected SWE-Bench environment; external-feedback laddering; modeled waiting costs; Appendix J repeated-run uncertainty; submitted 25 October 2026."
+        }
+      ]
+    },
   ],
 
   assessments: [
@@ -244,6 +260,14 @@ export const FR_AI_0002 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-016",
+      "date": "2026-10-31",
+      "field": "instance_appended",
+      "from": "IN-008",
+      "to": "IN-009",
+      "note": "Operator-approved Scout flag 2026-10-31-02 implemented after explicit authorisation. INSTANCE only; source and modeling/benchmark limits preserved. No new assessment; AS-003 / ESCALATING / VS-02, claim, mechanisms, questions and provenance-review metadata retained. Receipt: docs/reviews/SCOUT-2026-10-31-APPROVED-INSTANCES.md."
+    },
     { id: "M-015", date: "2026-10-24", field: "provenance_review", from: "LPR-001-D32", to: "LPR-001-D60", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representations verified; all instances already carry structured sources and no provenance enrichment or unverifiable attribution was required. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence requiring Normal Record Review was identified. Canonical outcome verified / not_required; Pressure State ESCALATING and Verification Stage VS-02 unchanged." },
     {"id": "M-014", "date": "2026-10-12", "field": "assessment_issued", "from": "AS-002", "to": "AS-003", "note": "Operator-authorised evidence-gap reassessment considers IN-008 admitted 2026-09-26. AS-003 appended at ESCALATING / VS-02; current posture reaffirmed. No prior assessment, claim, evidence, mechanism, lineage, open question or provenance-review metadata changed. Review receipt: docs/reviews/EVIDENCE-GAP-REASSESSMENT-2026-10-12.md."},
     { id: "M-013", date: "2026-09-29", field: "provenance_review_completed", from: "LPR-001-D32 review_required / pending", to: "LPR-001-D32 discrepancies_corrected / completed", note: "Approved bounded correction and closure of the second-cycle provenance review. IN-003 narrowed to attributable 2023 legal deployment without an unmeasured time-saving claim; IN-005 aligned to the 2025 QJE sample, 15% productivity result and distinct sentiment versus surveyed-satisfaction outcomes; IN-006 narrowed to SWE-bench and SWE-agent results without an unsupported human baseline or broad agent-failure claims. Structured primary sources added; lineage date aligned. AS-001 and AS-002 preserved as dated historical assessments, with no new scientific evidence, pressure-state or verification-stage change." },
@@ -264,3 +288,4 @@ export const FR_AI_0002 = {
 
   status: "open",
 };
+
