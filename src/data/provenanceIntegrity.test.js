@@ -1,6 +1,7 @@
+import { historicalRecord, verifyHistoricalCheckpoints } from "./historicalCheckpointTestSupport.js";
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FR_AI_0001 } from "./records/FR-AI-0001.js";
+import { FR_AI_0001 as RAW_AI_0001 } from "./records/FR-AI-0001.js";
 import { FR_AI_0009 } from "./records/FR-AI-0009.js";
 import { FR_QE_0007 } from "./records/FR-QE-0007.js";
 import { FR_BT_0004 } from "./records/FR-BT-0004.js";
@@ -11,7 +12,7 @@ import { FR_QE_0008 } from "./records/FR-QE-0008.js";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { FR_AI_0005 } from "./records/FR-AI-0005.js";
-import { FR_BT_0001 } from "./records/FR-BT-0001.js";
+import { FR_BT_0001 as RAW_BT_0001 } from "./records/FR-BT-0001.js";
 import { detectMutationType, qualifiesForHomepage } from "./mutationClassifier.js";
 
 // Historical editorial receipts govern their original checkpoint, not later reassessments.
@@ -25,7 +26,7 @@ const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/
 const a4AuthorityReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json", import.meta.url)));
 const ai1AttractorRetirementReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-AI-0001-AT-001-RETIREMENT-2026-10-24.json", import.meta.url)));
 const bt1AttractorReclassificationReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-BT-0001-AT-001-RECLASSIFICATION-2026-10-24.json", import.meta.url)));
-const laterRecordReceipts = ["FR-QE-0008-D56-HELIOS-2026-10-20", "FR-QE-0008-SCOUT-2026-10-24", "FR-AI-0007-SCOUT-2026-10-24", "FR-BT-0006-MUTATION-ID-2026-10-24", "FR-BT-0006-D58-2026-10-22", "FR-AI-0002-D60-2026-10-24"].map(id => JSON.parse(readFileSync(new URL(
+const laterRecordReceipts = ["FR-QE-0008-SCOUT-2026-10-31", "FR-AI-0002-SCOUT-2026-10-31", "FR-QE-0008-D56-HELIOS-2026-10-20", "FR-QE-0008-SCOUT-2026-10-24", "FR-AI-0007-SCOUT-2026-10-24", "FR-BT-0006-MUTATION-ID-2026-10-24", "FR-BT-0006-D58-2026-10-22", "FR-AI-0002-D60-2026-10-24"].map(id => JSON.parse(readFileSync(new URL(
   `../../docs/reviews/${id}.json`, import.meta.url)))).sort((a, b) => b.date.localeCompare(a.date));
 
 function undoRecordReceipt(record, receipt) {
@@ -108,7 +109,12 @@ function undoBt1AttractorReclassification(record) {
   return restored;
 }
 
-function atCheckpoint(record, date) {
+const FR_AI_0001 = historicalRecord(RAW_AI_0001);
+const FR_BT_0001 = historicalRecord(RAW_BT_0001);
+test("post-24-October current records reconstruct pinned historical checkpoints exactly", verifyHistoricalCheckpoints);
+
+function atCheckpoint(record, date, rewindLater = true) {
+  if (rewindLater) record = historicalRecord(record);
   if (bt1AttractorReclassificationReceipt.date > date &&
       record.id === bt1AttractorReclassificationReceipt.recordId &&
       record.mutationLog[0]?.id === bt1AttractorReclassificationReceipt.mutationId) {
@@ -172,7 +178,7 @@ test("FR-AI-0001 AT-001 retirement is receipted and remains editorial only", () 
 
 test("A4 institutional-authority repair is receipted and remains editorial only", async () => {
   for (const entry of a4AuthorityReceipt.records) {
-    const record = Object.values(await import(`./records/${entry.recordId}.js`))[0];
+    const record = historicalRecord(Object.values(await import(`./records/${entry.recordId}.js`))[0]);
     assert.equal(record.mutationLog[0].id, entry.mutationId);
     assert.equal(detectMutationType(record.mutationLog[0], record), "editorial_correction");
     assert.equal(qualifiesForHomepage("editorial_correction").qualifies, false);
@@ -187,7 +193,7 @@ test("successive source increments preserve all scientific content and prior his
   for (let index = 0; index < sourceLinkReceipts.length; index++) {
     const receipt = sourceLinkReceipts[index];
     for (const entry of receipt.records) {
-      let record = Object.values(await import(`./records/${entry.id}.js`))[0];
+      let record = historicalRecord(Object.values(await import(`./records/${entry.id}.js`))[0]);
       // Reverse the newer A4 editorial receipt before validating historical
       // source increments, then reverse only explicitly receipted later increments.
       if (a4AuthorityReceipt.records.some(item => item.recordId === record.id)) record = undoA4AuthorityReceipt(record);
@@ -216,7 +222,7 @@ test("shared-source labels preserve whole records outside their receipted metada
   assert.equal(sharedSourceReceipt.records.length, 5);
   assert.equal(sharedSourceReceipt.records.reduce((sum, entry) => sum + entry.changes.length, 0), 8);
   for (const entry of sharedSourceReceipt.records) {
-    const record = atCheckpoint(Object.values(await import(`./records/${entry.id}.js`))[0], sharedSourceReceipt.date);
+    const record = atCheckpoint(historicalRecord(Object.values(await import(`./records/${entry.id}.js`))[0]), sharedSourceReceipt.date);
     const restored = structuredClone(record);
     assert.equal(restored.mutationLog[0].id, entry.mutationId);
     assert.equal(detectMutationType(restored.mutationLog[0], record), "editorial_correction");
@@ -377,7 +383,7 @@ test("each audited record retains the provenance repair as an editorial correcti
 
 // Validate the earlier repair against its snapshot before the separately receipted clarification.
 function beforeClarificationRepair(record) {
-  record = atCheckpoint(record, "2026-10-08");
+  record = atCheckpoint(record, "2026-10-08", false);
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json", import.meta.url)));
   const entry = receipt.records.find(({ id }) => id === record.id);
   if (!entry) return record;
@@ -397,7 +403,7 @@ test("priority consistency repairs preserve governed evidence, judgments and his
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
   const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const entry of receipt.records) {
-    const record = beforeClarificationRepair(Object.values(await import(`./records/${entry.id}.js`))[0]);
+    const record = beforeClarificationRepair(historicalRecord(Object.values(await import(`./records/${entry.id}.js`))[0]));
     for (const [field, expected] of Object.entries(entry.frozen)) {
       const value = field === "mutationLog" ? record.mutationLog.slice(1) : record[field];
       assert.equal(digest(value), expected, `${entry.id}: ${field} changed`);
@@ -440,7 +446,7 @@ test("second consistency batch preserves evidence, judgments, metadata and bound
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json", import.meta.url)));
   const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const entry of receipt.records) {
-    const currentRecord = Object.values(await import(`./records/${entry.id}.js`))[0];
+    const currentRecord = historicalRecord(Object.values(await import(`./records/${entry.id}.js`))[0]);
     const record = atCheckpoint(currentRecord, receipt.date);
     for (const [field, expected] of Object.entries(entry.frozen)) {
       // Later authorised mutations can supersede fields frozen by this historical receipt.
@@ -501,11 +507,12 @@ test("second batch retains conditional event, regimen, recurrence and dated corp
   assert.deepEqual(escalatingAtCheckpoint, ["FR-AM-0004", "FR-AM-0006", "FR-AM-0007"]);
   for (const id of escalatingAtCheckpoint) assert.ok(am.openQuestions[2].question.includes(id));
   assert.match(am.openQuestions[2].question, /8 October 2026 consistency checkpoint/);
-  assert.deepEqual([qe, bt2, bt4, am].map(record => getCurrentAssessment(record).id), ["AS-003", "AS-004", "AS-003", "AS-003"]);
+  assert.deepEqual([qe, bt2, bt4, am].map(record => getCurrentAssessment(historicalRecord(record)).id), ["AS-003", "AS-004", "AS-003", "AS-003"]);
 });
 
 test("D37 closure preserves assessments, reconstruction and all unreceipted record content", async () => {
-  const { FR_QE_0001: record } = await import("./records/FR-QE-0001.js");
+  const { FR_QE_0001: rawRecord } = await import("./records/FR-QE-0001.js");
+  const record = historicalRecord(rawRecord);
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/LPR-001-D37-FR-QE-0001-CORRECTION-2026-10-08.json", import.meta.url)));
   const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const [field, hash] of Object.entries(receipt.immutableHashes)) assert.equal(digest(record[field]), hash, `${field} changed`);
@@ -528,7 +535,8 @@ test("D37 closure preserves assessments, reconstruction and all unreceipted reco
 });
 
 test("D37 repair qualifies energy evidence and respects the existing time-indexed verdict", async () => {
-  const { FR_QE_0001: record } = await import("./records/FR-QE-0001.js");
+  const { FR_QE_0001: rawRecord } = await import("./records/FR-QE-0001.js");
+  const record = historicalRecord(rawRecord);
   const current = getCurrentAssessment(record);
   assert.deepEqual([current.id, current.pressureState, current.verificationStage], ["AS-002", "stabilising", "VS-04"]);
   assert.deepEqual([record.provenanceReviewId, record.lastProvenanceReview, record.provenanceOutcome, record.provenanceRepairStatus], ["LPR-001-D37", "2026-10-01", "discrepancies_corrected", "completed"]);
@@ -550,7 +558,7 @@ test("clarification repairs preserve all content outside their field-level recei
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json", import.meta.url)));
   const digest = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
   for (const entry of receipt.records) {
-    const record = atCheckpoint(Object.values(await import(`./records/${entry.id}.js`))[0], receipt.date);
+    const record = atCheckpoint(historicalRecord(Object.values(await import(`./records/${entry.id}.js`))[0]), receipt.date);
     for (const [field, hash] of Object.entries(entry.immutableHashes)) assert.equal(digest(record[field]), hash, `${entry.id}: ${field} changed`);
     assert.equal(digest(record.mutationLog.slice(1)), entry.previousMutationHash);
     assert.deepEqual(record.openQuestions.map(({ id, raisedDate }) => ({ id, raisedDate })), entry.questionIdentity);
@@ -605,3 +613,4 @@ test("2026-10-12 reassessments account for admitted evidence without manufacturi
     assert.ok(current.sources.every(({ url }) => /^https:\/\//.test(url)));
   }
 });
+

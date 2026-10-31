@@ -1,0 +1,19 @@
+{
+  "id": "FR-AI-0002-SCOUT-2026-10-31",
+  "date": "2026-10-31",
+  "recordId": "FR-AI-0002",
+  "baseCommit": "26439b4135ebff7b24a06f4bd8f535af21b06036",
+  "originalRecordHash": "89c52d66c820b2948438574249de68a72ba3bb4d7fd8293cdb490d5e21fedfac",
+  "currentRecordHash": "a83172fa00857bac4ebeb67fb25f38829f8a511274737cf7500f67fbb36a534d",
+  "mutationIds": [
+    "M-016"
+  ],
+  "changes": [
+    {
+      "fieldPath": "instances.8",
+      "previous": null,
+      "current": "IN-009",
+      "basis": "Operator-approved 31 October Scout instance; explicit implementation authorisation."
+    }
+  ]
+}

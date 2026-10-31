@@ -178,3 +178,17 @@ test("assessment targets resolve explanatory suffixes but reject ambiguous or mi
   const bootstrap = { date: "2026-08-19", field: "assessment_issued", to: "ASSESSMENT-ISSUED" };
   assert.equal(detectMutationType(bootstrap, record), "creation_batch_internal");
 });
+
+
+test("record review count transitions require one real instance increment and fail closed otherwise", () => {
+ const record = ALL_RECORDS.find(r => r.id === "FR-AM-0004");
+ const mutation = record.mutationLog.find(m => m.id === "M-025");
+ assert.equal(detectMutationType(mutation, record), "instance_added");
+ assert.equal(detectMutationType({...mutation, to: "20 evidence instances / AS-008"}, record), "unclassified");
+ assert.equal(detectMutationType({...mutation, to: "10 evidence instances / AS-008"}, record), "unclassified");
+ assert.equal(detectMutationType({...mutation, to: "Assessment reviewed"}, record), "unclassified");
+ for (const field of ["evidence_correction", "historical_assessment_consistency_correction", "editorial_syntax_repair"]) {
+ assert.equal(detectMutationType({...mutation, field}, record), "editorial_correction");
+ assert.equal(qualifiesForHomepage("editorial_correction").qualifies, false);
+ }
+});

@@ -60,7 +60,7 @@ test("sitemap-records.xml contains every FR record and lastmod is its page-modif
     for (const record of ALL_RECORDS) {
       // Every mutation dates the page except a provenance review outcome.
       const pageDates = record.mutationLog
-        .filter((entry) => !/^provenance_review(?:_completed)?$/.test(entry.field))
+        .filter((entry) => !/^provenance_(?:review(?:_completed)?|status_reconciled|marker_validation_repair)$/.test(entry.field))
         .map((entry) => entry.date)
         .sort();
       assert.ok(pageDates.length > 0, `${record.id} has no page-dating mutation`);
@@ -87,6 +87,8 @@ test("a trailing provenance review does not advance the page-modified date", asy
     const record = {
       id: "FR-XX-0001",
       mutationLog: [
+        { id: "M-006", date: "2026-10-07", field: "provenance_status_reconciled", from: null, to: null },
+        { id: "M-005", date: "2026-10-06", field: "provenance_marker_validation_repair", from: null, to: null },
         { id: "M-004", date: "2026-10-05", field: "provenance_review", from: null, to: null },
         { id: "M-003", date: "2026-10-01", field: "reference_corrected", from: null, to: null },
         { id: "M-002", date: "2026-01-02", field: "instances_logged", from: null, to: "IN-001" },
@@ -124,3 +126,4 @@ test("the sitemap children together equal the indexable-route manifest", async (
 test("robots.txt declares the sitemap index", () => {
   assert.match(read("robots.txt"), /^Sitemap: https:\/\/faultlinewatch\.com\/sitemap\.xml$/m);
 });
+
