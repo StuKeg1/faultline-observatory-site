@@ -16,10 +16,10 @@
 export const FR_BT_0004 = {
   id: "FR-BT-0004",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-09-26",
-  provenanceReviewId: "LPR-001-D28",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-11-01",
+  provenanceReviewId: "LPR-001-D68",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "A blood-based liquid biopsy can reliably detect cancer before conventional clinical diagnosis.",
@@ -270,6 +270,7 @@ export const FR_BT_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-018", date: "2026-11-01", field: "provenance_review", from: "LPR-001-D28 discrepancies_corrected / completed", to: "LPR-001-D68 discrepancies_found / pending", note: "Second-cycle LPR-001 review of all eight existing instances, selected after verifying D67 persisted on canonical main. Five instances source-verified; three bounded material representation/attribution issues held for operator approval: IN-001 unsupported 2019 breakthrough-designation generalisation; IN-005 omitted 2024 EU withdrawal of Illumina/GRAIL divestment decision; IN-006 fourfold screen-detected versus overall cancer-detection conflation, also inherited by AS-002. No scientific text, vectors, sources, assessments, State or Stage altered. Distinct PATHFINDER 2 publication flagged for Normal Record Review, not admitted. Receipt docs/reviews/LPR-001-D68-FR-BT-0004-2026-11-01.json." },
     {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"IN-005 institutional references unlinked; two IN-006 references unlinked","to":"Exact regulator/company source links on IN-005 and remaining same-trial references on IN-006","note":"Operator-authorised Batch 5 / R05 source repairs, increment 2. Add URLs for already named documents and structured citations for the existing IN-005 bundle. No new evidence, assessment, scientific wording, state, stage, dates, counts, relationships, review-completion marker or prior mutation changed. Preserve sourceReference and the conference-abstract citation; company releases and expert commentary are not independent trial replications. Exact changes and source verification: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-2-2026-10-19.json and companion .md."},
     {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-001, IN-002, IN-003, IN-004, IN-006","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, assessments, dates, relationships, review status and all prior mutations preserved. BT-0004 IN-003 citation and sourceReference clarify Swanton as first author of the existing DOI; the prior Neal attribution is preserved in the receipt. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {"id": "M-015", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-006, IN-007, IN-008", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
