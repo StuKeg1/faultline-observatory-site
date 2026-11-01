@@ -1,0 +1,140 @@
+{
+  "protocol": "LPR-001",
+  "reviewId": "LPR-001-D68",
+  "date": "2026-11-01",
+  "recordId": "FR-BT-0004",
+  "selection": {
+    "priorReview": "LPR-001-D67",
+    "priorRecord": "FR-AM-0005",
+    "priorMarkerVerifiedOnMain": true,
+    "priorValues": {
+      "lastProvenanceReview": "2026-10-31",
+      "provenanceReviewId": "LPR-001-D67",
+      "provenanceOutcome": "discrepancies_found",
+      "provenanceRepairStatus": "pending",
+      "mutation": "M-021"
+    },
+    "rule": "Never-reviewed first; otherwise oldest lastProvenanceReview, Record ID tie-breaker",
+    "corpusSize": 32,
+    "selectedPreviousReview": "2026-09-26",
+    "allRecordsReviewedAtLeastOnce": true
+  },
+  "outcome": "discrepancies_found",
+  "repairStatus": "pending",
+  "counts": {
+    "instances": 8,
+    "verified": 5,
+    "enriched": 0,
+    "unverifiable": 0,
+    "discrepancies": 3
+  },
+  "instanceResults": [
+    {
+      "id": "IN-001",
+      "status": "discrepancy",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/18670422/",
+        "https://www.nature.com/articles/nrc.2017.7"
+      ],
+      "finding": "Diehl et al. 2008 established ctDNA detection for tumour monitoring during colorectal cancer treatment, not early screening; record identifies it as technological foundation, which is appropriately bounded. The further statement 'By 2019, several single-cancer liquid biopsy tests have received FDA breakthrough device designation' is not supported by the two cited papers and no exact set of FDA designation records was established in this review. Seek separate verified attribution or remove/qualify after operator approval."
+    },
+    {
+      "id": "IN-002",
+      "status": "verified",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37805216/",
+        "https://pubmed.ncbi.nlm.nih.gov/37352875/"
+      ],
+      "finding": "Schrag PATHFINDER is prospective asymptomatic cohort, Nicholson SYMPLIFY symptomatic diagnostic-referral cohort; stage I 24.2%, overall sensitivity 66.3%, specificity 98.4% attributed to SYMPLIFY, not PATHFINDER. No trial conflation."
+    },
+    {
+      "id": "IN-003",
+      "status": "verified",
+      "sources": [
+        "https://doi.org/10.1200/JCO.2022.40.16_suppl.TPS6606",
+        "https://www.isrctn.com/ISRCTN91431511",
+        "https://clinicaltrials.gov/study/NCT05611632",
+        "https://www.nature.com/articles/s41591-026-04652-8"
+      ],
+      "finding": "Swanton 2022 JCO is design abstract not result. Randomised cohort 142250, intervention 71122 and control 71128, age 50-77. Historical results-pending wording is explicitly at this earlier point in record chronology, superseded by IN-006 to IN-008. Same trial links preserved."
+    },
+    {
+      "id": "IN-004",
+      "status": "verified",
+      "sources": [
+        "https://www.nejm.org/doi/abs/10.1056/NEJMoa0810696",
+        "https://www.nejm.org/doi/10.1056/NEJMoa1102873"
+      ],
+      "finding": "PLCO prostate screening trial reported no statistically significant mortality reduction at 7-10 years; NLST low-dose CT trial demonstrated lung-cancer mortality reduction. Both are analogical screening-method evidence, not direct Galleri mortality results. Broader interpretive statements remain bounded as screening-risk discussion."
+    },
+    {
+      "id": "IN-005",
+      "status": "discrepancy",
+      "sources": [
+        "https://www.ftc.gov/news-events/news/press-releases/2023/12/statement-regarding-illuminas-decision-divest-grail",
+        "https://www.sec.gov/Archives/edgar/data/1110803/000111080324000052/ilmn-20240929.htm",
+        "https://www.sec.gov/Archives/edgar/data/1699031/000119312524167037/d797014d8k.htm"
+      ],
+      "finding": "2021 acquisition, US FTC challenge, December 2023 divestment decision and 24 June 2024 spin-off supported. But EC 12 Oct 2023 restorative divestment order was WITHDRAWN on 6 Sep 2024 after EU Court of Justice annulled the jurisdictional basis on 3 Sep 2024, per Illumina SEC filing. The instance describes the original EU order without the subsequent reversal despite its chronology through June 2024; decide whether an explicit bounded historical status clarification is needed. Also $950 price and 2024 regulatory status lack direct attribution in existing sources; do not guess."
+    },
+    {
+      "id": "IN-006",
+      "status": "discrepancy",
+      "sources": [
+        "https://ascopubs.org/doi/10.1200/JCO.2026.44.17_suppl.LBA100",
+        "https://grail.com/press-releases/grail-reports-full-results-from-nhs-galleri-trial-demonstrating-substantial-reduction-in-stage-iv-cancer-diagnoses-at-2026-asco-annual-meeting/"
+      ],
+      "finding": "Swanton et al. JCO ASCO 2026 abstract is a conference result, not a full article; primary combined stage III/IV endpoint missed, Stage IV signal and no mortality result correctly distinguished. Material denominator conflation: record says 'four-fold higher overall cancer detection rate than standard-care screening alone', but abstract reports FOURFOLD SCREEN-DETECTED cancers (1173 vs 290) while all cancers diagnosed were 3637 vs 3400, not fourfold. AS-002 repeats 'four-fold detection-rate increase'; correcting either requires operator-approved bounded description and assessment-governance review, not silent LPR edit. JCO abstract online June 3, ASCO oral May 30; distinct dates."
+    },
+    {
+      "id": "IN-007",
+      "status": "verified",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/42776074/",
+        "https://www.nejm.org/doi/full/10.1056/NEJMoa2505723"
+      ],
+      "finding": "Sasieni et al. NEJM first published 22 Sep 2026: 71122/71128 randomized; stage III/IV IRR 1.03 (95% CI 0.92-1.14, p=.63); Stage IV IRR 0.86 (95% CI 0.74-1.00). Trial follow-up and mortality unresolved; same-trial relation preserved."
+    },
+    {
+      "id": "IN-008",
+      "status": "verified",
+      "sources": [
+        "https://www.nature.com/articles/s41591-026-04652-8"
+      ],
+      "finding": "Neal et al. Nature Medicine published 22 Sep 2026: PPV 58.0/50.4/45.8%; specificity 99.50-99.60%; episode sensitivity 37.2/27.1/26.7%; cancer-signal-origin accuracy above 91%. Descriptive intervention-arm test performance from SAME NHS-Galleri trial, not another randomized trial or mortality outcome."
+    }
+  ],
+  "normalRecordReviewCandidates": [
+    {
+      "topic": "PATHFINDER 2 prospective US multicancer detection study",
+      "status": "NEW SCIENTIFIC EVIDENCE — NORMAL RECORD REVIEW ONLY, not admitted by LPR",
+      "source": "https://www.nature.com/articles/s41591-026-04618-w",
+      "doi": "10.1038/s41591-026-04618-w",
+      "date": "2026-09-22",
+      "finding": "Distinct prospective single-arm PATHFINDER 2 cohort (NCT05155605), 35878 enrolled, 32007 performance-analyzable, 39.3% episode sensitivity, 99.64% specificity, 60.3% PPV; no randomized comparison or mortality-benefit demonstration. Do not conflate with PATHFINDER 2023 or NHS-Galleri trial."
+    }
+  ],
+  "regulatoryContext": [
+    {
+      "topic": "FDA Galleri advisory panel vote, 23 Sep 2026",
+      "source": "https://grail.com/press-releases/fda-advisory-committee-votes-in-favor-of-approval-of-grails-galleri-multi-cancer-early-detection-test/",
+      "note": "Advisory vote, not final FDA approval and not new clinical efficacy evidence; outside LPR evidence admission."
+    }
+  ],
+  "governance": {
+    "sourceEnrichmentCount": 0,
+    "scientificDescriptionsModified": false,
+    "instanceVectorsModified": false,
+    "assessmentsModified": false,
+    "pressureStateModified": false,
+    "verificationStageModified": false,
+    "mutationId": "M-018",
+    "marker": {
+      "lastProvenanceReview": "2026-11-01",
+      "provenanceReviewId": "LPR-001-D68",
+      "provenanceOutcome": "discrepancies_found",
+      "provenanceRepairStatus": "pending"
+    },
+    "queueAdvanceRequiresMainVerification": true
+  }
+}
