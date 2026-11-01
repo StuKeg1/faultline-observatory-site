@@ -197,7 +197,20 @@ export const FR_BT_0004 = {
       sources: [
         { citation: "Neal et al. (2026), Performance of a multi-cancer early detection test in the randomized controlled NHS-Galleri trial, Nature Medicine, published 22 September 2026.", doi: "10.1038/s41591-026-04652-8", url: "https://doi.org/10.1038/s41591-026-04652-8" }
       ],
-    }
+    },
+    {
+      id: "IN-009",
+      relationship: { type: "distinct_study", relatedInstanceId: "IN-008", note: "PATHFINDER 2 (NCT05155605) is a separate North American prospective single-arm study of the same MCED test; IN-008 is NHS-Galleri trial performance, not the same participant cohort or independent randomized utility confirmation." },
+      qualifiedEvent: "PATHFINDER 2 — prospective multi-cancer early-detection performance and safety",
+      description: "Nabavizadeh et al. report the peer-reviewed PATHFINDER 2 prospective multicentre single-arm interventional study of Galleri in adults aged 50 years or older without clinical suspicion of cancer. Among 35,878 enrolled participants, 32,007 were performance-analyzable after 12-month cancer-status assessment: cancer detection rate 0.54%, positive predictive value 60.3%, specificity 99.64%, all-cancer 12-month episode sensitivity 39.3%, and sensitivity 69.8% in the prespecified subgroup of 12 cancers. In the safety-analyzable set (35,335), 213 participants (0.6%) underwent invasive procedures after a positive test; no serious study-related adverse events were reported by data lock. Descriptive endpoints had no formal hypothesis testing or prespecified success criteria. The study was designed and funded by GRAIL, which participated in analysis and manuscript preparation. These results strengthen prospective detection-performance evidence, but the single-arm design cannot establish reduction in late-stage incidence, cancer mortality or net population-screening benefit. Do not conflate this publication's unweighted performance analysis with separately weighted regulatory analyses or with NHS-Galleri's randomized trial.",
+      vectors: ["partial--prospective-detection-performance-supported-clinical-utility-unresolved"],
+      date: "2026-09-22",
+      sourceReference: "Nabavizadeh et al., Nature Medicine 32 (2026), doi:10.1038/s41591-026-04618-w; PATHFINDER 2 NCT05155605",
+      sources: [
+        { citation: "Nabavizadeh et al. Performance and safety of a multi-cancer early detection test: the PATHFINDER 2 study. Nature Medicine (2026).", doi: "10.1038/s41591-026-04618-w", url: "https://doi.org/10.1038/s41591-026-04618-w", locator: "Abstract, Results, Methods, Funding and Data availability; 32,007 performance analysis versus 35,335 safety analysis; descriptive, single-arm." },
+        { citation: "ClinicalTrials.gov. PATHFINDER 2, NCT05155605.", url: "https://clinicaltrials.gov/study/NCT05155605", locator: "Trial identifier and study design; not a separate efficacy dataset." }
+      ],
+    },
   ],
 
   assessments: [
@@ -227,6 +240,14 @@ export const FR_BT_0004 = {
       assessorNote: "Normal Record Review 2026-09-26. Sources: Sasieni et al., NEJM, doi:10.1056/NEJMoa2505723; Neal et al., Nature Medicine, doi:10.1038/s41591-026-04652-8. Both published 22 September 2026. No mortality or overdiagnosis endpoint admitted.",
     },
     { id: "AS-004", date: "2026-11-01", pressureState: "fragmenting", verificationStage: "VS-04", summary: "D68 bounded corrections reaffirm FRAGMENTING / VS-04. The foundational ctDNA sources do not establish the removed generalised FDA breakthrough-designation claim. The European Commission withdrew its 2023 Illumina/GRAIL restorative-measures decision in September 2024 following a jurisdiction ruling; Illumina’s June 2024 spin-off remains historical fact. The NHS-Galleri fourfold comparison concerns screen-detected cancers (1,173 versus 290), not all cancers diagnosed (3,637 versus 3,400). AS-002 remains historically intact but its ambiguous denominator is superseded here. The missed combined Stage III/IV primary endpoint and lack of demonstrated mortality benefit remain controlling limitations. PATHFINDER 2 is a separate, unadmitted Normal Record Review candidate.", assessorNote: "Operator-approved D68 bounded correction; no new evidence admitted, historical assessments preserved." },
+    {
+      id: "AS-005",
+      date: "2026-11-01",
+      pressureState: "fragmenting",
+      verificationStage: "VS-04",
+      summary: "PATHFINDER 2 (IN-009) provides a distinct, peer-reviewed, prospective single-arm North American cohort supporting the reproducibility of Galleri cancer-signal detection performance in intended-use screening populations: 39.3% all-cancer episode sensitivity, 99.64% specificity and 60.3% positive predictive value in 32,007 performance-analyzable participants. It also exposes substantial false-negative sensitivity limitations. The sponsor-designed and sponsor-funded study has descriptive endpoints and does not demonstrate reduced late-stage incidence, mortality benefit or net clinical utility. NHS-Galleri's randomized missed primary Stage III/IV endpoint remains independently controlling for utility. The two cohorts must not be counted as two randomized efficacy confirmations, and separately weighted regulatory metrics must not be mixed with the paper's performance estimates. FRAGMENTING / VS-04 reaffirmed: detection performance strengthens, clinical outcome warrant remains unresolved.",
+      assessorNote: "Operator-authorized Normal Record Review admission of distinct PATHFINDER 2 evidence. Source: Nabavizadeh et al., Nature Medicine 2026, doi:10.1038/s41591-026-04618-w. No reclassification or mortality inference."
+    },
   ],
 
   mechanisms: [
@@ -276,6 +297,7 @@ export const FR_BT_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-020", date: "2026-11-01", field: "evidence_admitted", from: "8 instances / 4 assessments; PATHFINDER 2 queued for Normal Record Review", to: "9 instances / 5 assessments; IN-009 and AS-005; FRAGMENTING / VS-04 retained", note: "Operator-approved source-verified PATHFINDER 2 admission. Distinct prospective single-arm cohort, not NHS-Galleri randomized efficacy replication. Source DOI 10.1038/s41591-026-04618-w; 32,007 performance set, 35,335 safety set; descriptive results and sponsor involvement noted; mortality/clinical utility unresolved." },
     { id: "M-019", date: "2026-11-01", field: "bounded_correction", from: "D68 three material representation discrepancies pending", to: "IN-001, IN-005, IN-006 corrected and AS-004 appended", note: "Operator-approved bounded repair: remove unsupported FDA-designation generalisation; add September 2024 EU withdrawal and primary source; distinguish screen-detected from total cancer diagnoses; append corrective assessment without rewriting AS-002. PATHFINDER 2 not admitted." },
     { id: "M-018", date: "2026-11-01", field: "provenance_review", from: "LPR-001-D28 discrepancies_corrected / completed", to: "LPR-001-D68 discrepancies_found / pending", note: "Second-cycle LPR-001 review of all eight existing instances, selected after verifying D67 persisted on canonical main. Five instances source-verified; three bounded material representation/attribution issues held for operator approval: IN-001 unsupported 2019 breakthrough-designation generalisation; IN-005 omitted 2024 EU withdrawal of Illumina/GRAIL divestment decision; IN-006 fourfold screen-detected versus overall cancer-detection conflation, also inherited by AS-002. No scientific text, vectors, sources, assessments, State or Stage altered. Distinct PATHFINDER 2 publication flagged for Normal Record Review, not admitted. Receipt docs/reviews/LPR-001-D68-FR-BT-0004-2026-11-01.json." },
     {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"IN-005 institutional references unlinked; two IN-006 references unlinked","to":"Exact regulator/company source links on IN-005 and remaining same-trial references on IN-006","note":"Operator-authorised Batch 5 / R05 source repairs, increment 2. Add URLs for already named documents and structured citations for the existing IN-005 bundle. No new evidence, assessment, scientific wording, state, stage, dates, counts, relationships, review-completion marker or prior mutation changed. Preserve sourceReference and the conference-abstract citation; company releases and expert commentary are not independent trial replications. Exact changes and source verification: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-2-2026-10-19.json and companion .md."},
