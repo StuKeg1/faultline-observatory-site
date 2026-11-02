@@ -1,0 +1,108 @@
+{
+  "protocol": "LPR-001",
+  "reviewId": "LPR-001-D69",
+  "date": "2026-11-02",
+  "recordId": "FR-AI-0004",
+  "selection": {
+    "priorReview": "LPR-001-D68",
+    "priorRecord": "FR-BT-0004",
+    "priorMarkerVerifiedOnMain": true,
+    "priorValues": {
+      "lastProvenanceReview": "2026-11-01",
+      "provenanceReviewId": "LPR-001-D68",
+      "provenanceOutcome": "discrepancies_corrected",
+      "provenanceRepairStatus": "completed",
+      "mutation": "M-018"
+    },
+    "rule": "Never-reviewed first; otherwise oldest lastProvenanceReview, Record ID tie-breaker",
+    "corpusSize": 32,
+    "allRecordsReviewedAtLeastOnce": true,
+    "selectedPreviousReview": "2026-09-30",
+    "nextOldestAfterSelection": "FR-AI-0006 (2026-10-01)"
+  },
+  "outcome": "verified",
+  "repairStatus": "not_required",
+  "counts": {
+    "instances": 7,
+    "verified": 7,
+    "enriched": 0,
+    "unverifiable": 0,
+    "discrepancies": 0
+  },
+  "instanceResults": [
+    {
+      "id": "IN-001",
+      "status": "verified",
+      "sources": [
+        "https://arxiv.org/abs/2001.08361"
+      ],
+      "finding": "Kaplan et al. power-law scaling of held-out cross-entropy loss, not direct novel-task generalisation. Existing record caveat accurate."
+    },
+    {
+      "id": "IN-002",
+      "status": "verified",
+      "sources": [
+        "https://arxiv.org/abs/2005.14165"
+      ],
+      "finding": "Brown et al. GPT-3 175B, few-shot task evaluations without parameter updates; training-set novelty not demonstrated, as already qualified."
+    },
+    {
+      "id": "IN-003",
+      "status": "verified",
+      "sources": [
+        "https://arxiv.org/html/2206.07682v2"
+      ],
+      "finding": "Wei et al. TMLR survey documents emergent threshold patterns in arithmetic, unscrambling and augmented chain-of-thought prompting; claims are framed as reported apparent emergence and contested by IN-004."
+    },
+    {
+      "id": "IN-004",
+      "status": "verified",
+      "sources": [
+        "https://arxiv.org/abs/2304.15004"
+      ],
+      "finding": "Schaeffer et al. metric-choice account and bounded task/model-family conclusions accurately represented; not universal dismissal of scaling."
+    },
+    {
+      "id": "IN-005",
+      "status": "verified",
+      "sources": [
+        "https://arxiv.org/abs/2308.08493"
+      ],
+      "finding": "Golchin and Surdeanu report GPT-4 contamination findings for AG News, WNLI, XSum; record correctly declines to infer contamination-driven gains for MMLU, HellaSwag or ARC."
+    },
+    {
+      "id": "IN-006",
+      "status": "verified",
+      "sources": [
+        "https://arxiv.org/abs/2203.15556"
+      ],
+      "finding": "Hoffmann et al. compute-optimal parameter/token scaling and 70B Chinchilla downstream comparisons supported; novelty caveat maintained."
+    },
+    {
+      "id": "IN-007",
+      "status": "verified",
+      "sources": [
+        "https://arxiv.org/abs/2408.03314"
+      ],
+      "finding": "Snell et al. >4x test-time compute efficiency and FLOPs-matched 14x-larger-model conditional comparison supported; inference axis kept distinct from claim's training axis."
+    }
+  ],
+  "discrepancies": [],
+  "normalRecordReviewCandidates": [],
+  "governance": {
+    "sourceEnrichmentCount": 0,
+    "scientificDescriptionsModified": false,
+    "instanceVectorsModified": false,
+    "assessmentsModified": false,
+    "pressureStateModified": false,
+    "verificationStageModified": false,
+    "mutationId": "M-018",
+    "marker": {
+      "lastProvenanceReview": "2026-11-02",
+      "provenanceReviewId": "LPR-001-D69",
+      "provenanceOutcome": "verified",
+      "provenanceRepairStatus": "not_required"
+    },
+    "queueAdvanceRequiresMainVerification": true
+  }
+}

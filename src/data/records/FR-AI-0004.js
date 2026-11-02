@@ -12,10 +12,10 @@
 export const FR_AI_0004 = {
   id: "FR-AI-0004",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-09-30",
-  provenanceReviewId: "LPR-001-D35",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-11-02",
+  provenanceReviewId: "LPR-001-D69",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Scaling language model training increases performance on previously unseen tasks without task-specific optimisation.",
@@ -209,6 +209,7 @@ export const FR_AI_0004 = {
   ],
 
   mutationLog: [
+    { id: "M-018", date: "2026-11-02", field: "provenance_review", from: "LPR-001-D35 discrepancies_corrected / completed", to: "LPR-001-D69 verified / not_required", note: "Second-cycle LPR-001 bounded source-provenance audit of all seven existing instances. All seven independently matched to their already structured arXiv primary sources; 7 verified, 0 enriched, 0 unverifiable, 0 material discrepancies, no new evidence admitted. Existing scope qualifications retained (held-out loss versus novel-task proof, benchmark contamination, metric-dependent emergence, and test-time compute outside training-scaling claim). Source, claim, vectors, assessments, State and Stage unchanged. Previous D68 completion marker confirmed on canonical main; deterministic selection from 32 reviewed records (oldest lastProvenanceReview 2026-09-30). Receipt: docs/reviews/LPR-001-D69-FR-AI-0004-2026-11-02.json." },
     {
       "id": "M-017",
       "date": "2026-10-08",
