@@ -12,10 +12,10 @@
 export const FR_AI_0006 = {
   id: "FR-AI-0006",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-10-01",
-  provenanceReviewId: "LPR-001-D36",
-  provenanceOutcome: "pass_after_correction",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-11-03",
+  provenanceReviewId: "LPR-001-D70",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Capabilities that emerge through scaling language models are explained by the same underlying mechanism across model sizes.",
@@ -239,6 +239,7 @@ export const FR_AI_0006 = {
   ],
 
   mutationLog: [
+    { id: "M-024", date: "2026-11-03", field: "provenance_review", from: "D36 pass_after_correction / completed", to: "D70 verified / not_required", note: "Reviewed all eight instances: seven source-verified, zero enriched, one previously excluded for unresolved legacy attribution (IN-005), no new discrepancy. Existing exclusion retained; no evidence or assessment change." },
     {"id": "M-023", "date": "2026-10-19", "field": "reference_corrected", "from": "Existing source-review limitation not fully exposed in evidence-list status", "to": "Explicit reviewed evidence status on IN-005", "note": "Operator-authorised corpus reading audit Batch 3 / R02. Render the existing entry-level review disposition from explicit status metadata linked to its retained review and mutation. A withdrawn attribution is not a retracted publication; missing sources and Partial polarity do not automatically determine status. Preserve all original titles, descriptions, citations, counts, assessments, review markers and prior mutations. No substitute source, new evidence or reassessment. Receipt: docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md."},
     {
       "id": "M-022",

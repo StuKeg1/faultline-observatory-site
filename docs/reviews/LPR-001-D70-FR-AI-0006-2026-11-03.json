@@ -1,0 +1,15 @@
+{
+  "reviewId": "LPR-001-D70",
+  "recordId": "FR-AI-0006",
+  "date": "2026-11-03",
+  "outcome": "verified",
+  "repairStatus": "not_required",
+  "instances": 8,
+  "verified": 7,
+  "enriched": 0,
+  "unverifiable": 1,
+  "existingExcluded": "IN-005",
+  "newDiscrepancies": 0,
+  "normalReviewCandidates": 0,
+  "notes": "Existing IN-005 provenance exclusion preserved. No evidence admission, assessment or stage change."
+}
