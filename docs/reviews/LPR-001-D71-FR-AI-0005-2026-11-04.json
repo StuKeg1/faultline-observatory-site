@@ -1,0 +1,15 @@
+{
+  "reviewId": "LPR-001-D71",
+  "recordId": "FR-AI-0005",
+  "reviewDate": "2026-11-04",
+  "previousReview": "LPR-001-D38",
+  "instancesAudited": 7,
+  "instancesVerified": 7,
+  "instancesEnriched": 0,
+  "instancesUnverifiable": 0,
+  "discrepancies": [],
+  "recordReviewCandidates": [],
+  "provenanceOutcome": "verified",
+  "provenanceRepairStatus": "not_required",
+  "notes": "Bounded second-cycle review; existing primary/authoritative sources and limiting qualifications retained. No scientific or assessment mutation. Source coverage: GPT-3 Brown; GPT-4 Technical Report; Reuters Sutskever; OpenAI o1; Villalobos human-data constraint; OpenAI Charter; Snell test-time compute."
+}
