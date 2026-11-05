@@ -12,8 +12,8 @@
 export const FR_AI_0007 = {
   id: "FR-AI-0007",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-10-03",
-  provenanceReviewId: "LPR-001-D40",
+  lastProvenanceReview: "2026-11-05",
+  provenanceReviewId: "LPR-001-D72",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -332,6 +332,7 @@ export const FR_AI_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-028", date: "2026-11-05", field: "provenance_review", from: "LPR-001-D40 verified / not_required", to: "LPR-001-D72 verified / not_required", note: "Second-cycle bounded review of all 15 existing evidence instances: 14 with structured primary-source attribution retained, 1 (IN-005) remains explicitly excluded for unresolved legacy attribution. No newly identified material discrepancies, no source enrichment, no scientific evidence admitted, and no assessment, pressure state or verification stage changed. Review receipt docs/reviews/LPR-001-D72-FR-AI-0007-2026-11-05.json." },
     {
       "id": "M-027",
       "date": "2026-10-24",
