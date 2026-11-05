@@ -1,0 +1,25 @@
+{
+  "reviewId": "LPR-001-D72",
+  "recordId": "FR-AI-0007",
+  "reviewDate": "2026-11-05",
+  "previousReview": "LPR-001-D40",
+  "previousCompletionVerifiedOnMain": {
+    "recordId": "FR-AI-0005",
+    "reviewId": "LPR-001-D71",
+    "lastProvenanceReview": "2026-11-04",
+    "provenanceOutcome": "verified",
+    "provenanceRepairStatus": "not_required",
+    "receipt": "docs/reviews/LPR-001-D71-FR-AI-0005-2026-11-04.json"
+  },
+  "selection": "All 32 canonical corpus records compared: never-reviewed first, then oldest lastProvenanceReview, ID tie-breaker. FR-AI-0007 (2026-10-03) precedes FR-QE-0002 (2026-10-03).",
+  "instancesAudited": 15,
+  "instancesVerified": 14,
+  "instancesEnriched": 0,
+  "instancesUnverifiable": 1,
+  "excludedInstance": "IN-005",
+  "discrepancies": [],
+  "recordReviewCandidates": [],
+  "provenanceOutcome": "verified",
+  "provenanceRepairStatus": "not_required",
+  "notes": "All 15 instance representations and their existing source attribution reviewed; 14 retain primary-source links and bounded qualifications. Existing IN-005 excluded under D07/M-016, not silently reattributed. Spot-checked original publisher/arXiv metadata and headline quantitative representations including Into the Unknown, SciΠvot, quantum circuits, ExpEvolve and the Station. No newly found discrepancy. No change to instances, assessments, State or Stage. This PASS concerns absence of new provenance discrepancies; excluded IN-005 remains non-evidential."
+}
