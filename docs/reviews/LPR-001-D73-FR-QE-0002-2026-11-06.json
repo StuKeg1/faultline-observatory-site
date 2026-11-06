@@ -1,0 +1,24 @@
+{
+  "reviewId": "LPR-001-D73",
+  "recordId": "FR-QE-0002",
+  "reviewDate": "2026-11-06",
+  "previousReview": "LPR-001-D39",
+  "previousCompletionVerifiedOnMain": {
+    "recordId": "FR-AI-0007",
+    "reviewId": "LPR-001-D72",
+    "lastProvenanceReview": "2026-11-05",
+    "provenanceOutcome": "verified",
+    "provenanceRepairStatus": "not_required",
+    "receipt": "docs/reviews/LPR-001-D72-FR-AI-0007-2026-11-05.json"
+  },
+  "selection": "Prior D72 independently confirmed on canonical main; FR-QE-0002 is the deterministic next candidate after D72, last reviewed 2026-10-03.",
+  "instancesAudited": 6,
+  "instancesVerified": 6,
+  "instancesEnriched": 1,
+  "instancesUnverifiable": 0,
+  "discrepancies": [],
+  "recordReviewCandidates": [],
+  "provenanceOutcome": "verified",
+  "provenanceRepairStatus": "not_required",
+  "notes": "IN-001 NASA collaboration and Rønnow benchmarking; IN-002 Denchev comparator-bounded finite-range tunneling; IN-003 Yarkoni industry review plus added D-Wave first-party Advantage launch; IN-004 King 2022 coherent 2,000-qubit Ising chain; IN-005 King 2023 spin-glass critical dynamics; IN-006 Quinton 2025 bounded hybrid optimisation benchmark. No unrestricted practical quantum advantage inferred. Existing assessments unchanged."
+}

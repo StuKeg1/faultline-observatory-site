@@ -12,10 +12,10 @@
 export const FR_QE_0002 = {
   id: "FR-QE-0002",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-10-03",
-  provenanceReviewId: "LPR-001-D39",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-11-06",
+  provenanceReviewId: "LPR-001-D73",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "Quantum annealing systems have demonstrated practical computational advantage over classical methods on commercially or scientifically relevant optimisation tasks.",
@@ -67,6 +67,11 @@ export const FR_QE_0002 = {
           citation: "Yarkoni, S., Raponi, E., Bäck, T. & Schmitt, S. Quantum annealing for industry applications: introduction and review. Reports on Progress in Physics 85 (2022).",
           url: "https://pubmed.ncbi.nlm.nih.gov/36001953/",
           doi: "10.1088/1361-6633/ac8c54",
+        },
+        {
+          citation: "D-Wave Systems. D-Wave Announces General Availability of First Quantum Computer Built for Business (29 September 2020).",
+          url: "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-announces-general-availability-of-first-quantum-computer-built-for-business/",
+          locator: "Primary company announcement for Advantage general availability, 5,000+ qubits and Pegasus connectivity; vendor claims are not independent performance validation.",
         },
       ],
     },
@@ -213,6 +218,7 @@ export const FR_QE_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-015", date: "2026-11-06", field: "provenance_review", from: "LPR-001-D39 discrepancies_corrected / completed", to: "LPR-001-D73 verified / not_required", note: "Second-cycle bounded audit of all six existing instances. Five existing primary/review source sets retained, one IN-003 enriched with D-Wave primary 29 September 2020 Advantage launch announcement, explicitly not independent advantage validation. No new material discrepancy, evidence instance, assessment or State/Stage change. Receipt: docs/reviews/LPR-001-D73-FR-QE-0002-2026-11-06.json." },
     {
       "id": "M-014",
       "date": "2026-10-08",
