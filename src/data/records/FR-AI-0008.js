@@ -12,10 +12,10 @@
 export const FR_AI_0008 = {
   id: "FR-AI-0008",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-10-04",
-  provenanceReviewId: "LPR-001-D41",
-  provenanceOutcome: "verified",
-  provenanceRepairStatus: "not_required",
+  lastProvenanceReview: "2026-11-07",
+  provenanceReviewId: "LPR-001-D74",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "AI-assisted medical diagnosis achieves specialist-level accuracy on defined imaging tasks.",
@@ -190,6 +190,7 @@ export const FR_AI_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-018", date: "2026-11-07", field: "provenance_review", from: "LPR-001-D41", to: "LPR-001-D74", note: "Third-cycle Legacy Provenance Review completed across six existing evidence instances. IN-001, IN-002, IN-003, IN-004 and IN-006 retain source-faithful bounded representations; IN-005 remains explicitly excluded unsupported legacy provenance debt, with no substitute source invented. The operator-authorised IN-004 2025 MASAI first-author attribution correction (Dembrower to Hernström, same DOI) was separately merged in PR #238 and independently verified on canonical main before this closure. No further material discrepancy or genuinely new evidence identified. Outcome discrepancies_corrected / completed. No assessment, pressure state, verification stage, or evidence admission changed." },
     {"id": "M-017", "date": "2026-10-19", "field": "reference_corrected", "from": "Existing source-review limitation not fully exposed in evidence-list status", "to": "Explicit reviewed evidence status on IN-005", "note": "Operator-authorised corpus reading audit Batch 3 / R02. Render the existing entry-level review disposition from explicit status metadata linked to its retained review and mutation. A withdrawn attribution is not a retracted publication; missing sources and Partial polarity do not automatically determine status. Preserve all original titles, descriptions, citations, counts, assessments, review markers and prior mutations. No substitute source, new evidence or reassessment. Receipt: docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md."},
     { id: "M-016", date: "2026-10-19", field: "reference_corrected", from: "IN-004 / IN-006 MASAI relationship implicit in descriptions and sources", to: "IN-006 explicitly linked to IN-004 as a report from the same trial", note: "Make the already recorded MASAI same-trial relationship explicit and machine-readable. Preserve both reports, descriptions, sources, chronology, vectors and all assessments. This is an editorial relationship correction, not new evidence, replication or a stage decision." },
     { id: "M-015", date: "2026-10-18", field: "verification_stage_challenge_opened", from: "AS-004 / stage presented without an active challenge", to: "VSC-001 / AS-004 stage under review; operator decision pending", note: "Operator-authorised bounded challenge and interim disclosure. No assessment, historical overlay, stage, Pressure State or evidence instance changed. The review finding is a recommendation, not a ratified replacement stage." },
