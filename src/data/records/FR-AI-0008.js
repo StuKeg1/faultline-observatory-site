@@ -66,7 +66,7 @@ export const FR_AI_0008 = {
       vectors: ["supportive--prospective-randomised-ai-supported-mammography-benefit"],
       date: "2021–25",
       sources: [
-        { citation: "Dembrower, K. et al. (2025), Screening performance and characteristics of breast cancer detected in the Mammography Screening with Artificial Intelligence trial (MASAI), The Lancet Digital Health.", url: "https://doi.org/10.1016/S2589-7500(24)00267-X", locator: "Randomised screening design; cancer detection; false positives; 44.2% workload reduction" },
+        { citation: "Hernström, V. et al. (2025), Screening performance and characteristics of breast cancer detected in the Mammography Screening with Artificial Intelligence trial (MASAI), The Lancet Digital Health.", url: "https://doi.org/10.1016/S2589-7500(24)00267-X", locator: "Randomised screening design; cancer detection; false positives; 44.2% workload reduction" },
       ],
     },
     {
