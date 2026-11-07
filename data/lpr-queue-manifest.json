@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "source": "src/data/corpus.js",
+  "selectionRule": "never-reviewed, oldest lastProvenanceReview, Record ID",
+  "nextRecordId": "FR-AI-0008",
+  "records": [
+    {
+      "id": "FR-AI-0008",
+      "lastProvenanceReview": "2026-10-04"
+    },
+    {
+      "id": "FR-AM-0008",
+      "lastProvenanceReview": "2026-10-05"
+    },
+    {
+      "id": "FR-AI-0009",
+      "lastProvenanceReview": "2026-10-06"
+    },
+    {
+      "id": "FR-AM-0001",
+      "lastProvenanceReview": "2026-10-07"
+    },
+    {
+      "id": "FR-AM-0002",
+      "lastProvenanceReview": "2026-10-08"
+    },
+    {
+      "id": "FR-AM-0003",
+      "lastProvenanceReview": "2026-10-09"
+    },
+    {
+      "id": "FR-QE-0005",
+      "lastProvenanceReview": "2026-10-11"
+    },
+    {
+      "id": "FR-QE-0006",
+      "lastProvenanceReview": "2026-10-12"
+    },
+    {
+      "id": "FR-QE-0007",
+      "lastProvenanceReview": "2026-10-14"
+    },
+    {
+      "id": "FR-AM-0006",
+      "lastProvenanceReview": "2026-10-15"
+    },
+    {
+      "id": "FR-AM-0007",
+      "lastProvenanceReview": "2026-10-16"
+    },
+    {
+      "id": "FR-BT-0001",
+      "lastProvenanceReview": "2026-10-17"
+    },
+    {
+      "id": "FR-BT-0002",
+      "lastProvenanceReview": "2026-10-18"
+    },
+    {
+      "id": "FR-BT-0003",
+      "lastProvenanceReview": "2026-10-19"
+    },
+    {
+      "id": "FR-QE-0008",
+      "lastProvenanceReview": "2026-10-20"
+    },
+    {
+      "id": "FR-BT-0005",
+      "lastProvenanceReview": "2026-10-21"
+    },
+    {
+      "id": "FR-BT-0006",
+      "lastProvenanceReview": "2026-10-22"
+    },
+    {
+      "id": "FR-BT-0007",
+      "lastProvenanceReview": "2026-10-23"
+    },
+    {
+      "id": "FR-AI-0002",
+      "lastProvenanceReview": "2026-10-24"
+    },
+    {
+      "id": "FR-AI-0001",
+      "lastProvenanceReview": "2026-10-25"
+    },
+    {
+      "id": "FR-AI-0003",
+      "lastProvenanceReview": "2026-10-26"
+    },
+    {
+      "id": "FR-QE-0001",
+      "lastProvenanceReview": "2026-10-27"
+    },
+    {
+      "id": "FR-QE-0003",
+      "lastProvenanceReview": "2026-10-28"
+    },
+    {
+      "id": "FR-QE-0004",
+      "lastProvenanceReview": "2026-10-29"
+    },
+    {
+      "id": "FR-AM-0004",
+      "lastProvenanceReview": "2026-10-30"
+    },
+    {
+      "id": "FR-AM-0005",
+      "lastProvenanceReview": "2026-10-31"
+    },
+    {
+      "id": "FR-BT-0004",
+      "lastProvenanceReview": "2026-11-01"
+    },
+    {
+      "id": "FR-AI-0004",
+      "lastProvenanceReview": "2026-11-02"
+    },
+    {
+      "id": "FR-AI-0006",
+      "lastProvenanceReview": "2026-11-03"
+    },
+    {
+      "id": "FR-AI-0005",
+      "lastProvenanceReview": "2026-11-04"
+    },
+    {
+      "id": "FR-AI-0007",
+      "lastProvenanceReview": "2026-11-05"
+    },
+    {
+      "id": "FR-QE-0002",
+      "lastProvenanceReview": "2026-11-06"
+    }
+  ]
+}

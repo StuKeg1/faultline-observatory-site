@@ -35,6 +35,9 @@ jobs:
       - name: Canonical corpus validation
         run: npm run validate:all
 
+      - name: Verify LPR queue manifest matches canonical corpus
+        run: node scripts/generate-lpr-queue-manifest.js --check
+
       - name: Lint
         run: npm run lint
 
