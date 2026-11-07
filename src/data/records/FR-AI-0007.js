@@ -246,6 +246,39 @@ export const FR_AI_0007 = {
         }
       ]
     },
+    {
+      "id": "IN-017",
+      "qualifiedEvent": "OmniQ — expert-verified repairs improve bounded figure reproduction",
+      "description": "Du et al. build an expert-audited benchmark of computational quantum-science figure reproduction. The initial 60-paper construction yields 59 evaluation papers after the unresolved case is excluded. Agents receive a paper and a target figure; a judge agent compares the reproduced figure with the published one. The authors report that DeepSeek V4.1 Flash improves from 68% to 85% in their fixed-model, fixed-budget comparison after the Residual Agents workflow reuses expert-verified repairs. This is mixed evidence on research judgment: validated corrections can improve execution, while ambiguous or inconsistent inputs can still require human expertise. The result concerns supplied reproduction tasks and agent-based scoring. It does not establish autonomous problem selection, independently verified novelty or end-to-end discovery.",
+      "vectors": [
+        "PARTIAL"
+      ],
+      "date": "2026-11-03",
+      "sources": [
+        {
+          "citation": "Du, Y. et al. (2026), Reimagining computational quantum research with AI scientists, arXiv:2611.02833v1.",
+          "url": "https://arxiv.org/abs/2611.02833v1",
+          "doi": "10.48550/arXiv.2611.02833",
+          "locator": "Figure 1; dataset cleaning and reproduction experiments; Appendix C.4, judge agent. Submitted 2 November, publicly listed 3 November 2026. Primary preprint by OmniQ and Residual Agents developers."
+        }
+      ]
+    },
+    {
+      "id": "IN-018",
+      "qualifiedEvent": "BioBasicsBench — bounded judgment on raw wet-lab data",
+      "description": "OpenAI and Ligo evaluate 100 supplied tasks using raw wet-lab data and expert-written rubrics. At xhigh, GPT-6 Astra earns 66.7% of available rubric credit (95% whole-task bootstrap CI 60.3–73.1%) and GPT-6.1 Sol earns 62.0% (55.6–68.4%), with five attempts per task per setting. The scores include partial credit and the intervals overlap. The benchmark measures interpretation, error detection and recognizing when evidence is insufficient. It shows bounded competence alongside substantial remaining judgment gaps. The release describes external review of tasks and rubrics and leaves the scorer for all evaluation runs unspecified. OpenAI co-developed the benchmark and supplied the evaluated models. Supplied questions and data leave physical experimentation, autonomous question selection and independently verified novelty untested.",
+      "vectors": [
+        "PARTIAL"
+      ],
+      "date": "2026-11-06",
+      "sources": [
+        {
+          "citation": "OpenAI and Ligo (2026), Measuring how AI agents handle everyday wet-lab science (BioBasicsBench), 6 November 2026.",
+          "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science/",
+          "locator": "Benchmark task and rubric review; Evaluation setup and xhigh results table; examples on recognizing evidential limits. First-party institutional evaluation."
+        }
+      ]
+    },
   ],
 
   assessments: [
@@ -332,6 +365,22 @@ export const FR_AI_0007 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-030",
+      "date": "2026-11-07",
+      "field": "instance_appended",
+      "from": "IN-017",
+      "to": "IN-018",
+      "note": "Operator-approved Scout flag 2026-11-07-03 implemented after explicit authorisation. INSTANCE only. Assessment, claim and prior history preserved. Receipt: docs/reviews/SCOUT-2026-11-07-APPROVED-INSTANCES.md."
+    },
+    {
+      "id": "M-029",
+      "date": "2026-11-07",
+      "field": "instance_appended",
+      "from": "IN-016",
+      "to": "IN-017",
+      "note": "Operator-approved Scout flag 2026-11-07-02 implemented after explicit authorisation. INSTANCE only. Assessment, claim and prior history preserved. Receipt: docs/reviews/SCOUT-2026-11-07-APPROVED-INSTANCES.md."
+    },
     { id: "M-028", date: "2026-11-05", field: "provenance_review", from: "LPR-001-D40 verified / not_required", to: "LPR-001-D72 verified / not_required", note: "Second-cycle bounded review of all 15 existing evidence instances: 14 with structured primary-source attribution retained, 1 (IN-005) remains explicitly excluded for unresolved legacy attribution. No newly identified material discrepancies, no source enrichment, no scientific evidence admitted, and no assessment, pressure state or verification stage changed. Review receipt docs/reviews/LPR-001-D72-FR-AI-0007-2026-11-05.json." },
     {
       "id": "M-027",

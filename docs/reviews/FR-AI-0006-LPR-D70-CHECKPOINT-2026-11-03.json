@@ -1,0 +1,33 @@
+{
+  "id": "FR-AI-0006-LPR-D70-CHECKPOINT-2026-11-03",
+  "recordId": "FR-AI-0006",
+  "date": "2026-11-03",
+  "sourceCommit": "41227a0b99e09657b5f78eaec0ef6f858c728ce7",
+  "mutationIds": [
+    "M-024"
+  ],
+  "changes": [
+    {
+      "fieldPath": "lastProvenanceReview",
+      "previous": "2026-10-01",
+      "current": "2026-11-03"
+    },
+    {
+      "fieldPath": "provenanceReviewId",
+      "previous": "LPR-001-D36",
+      "current": "LPR-001-D70"
+    },
+    {
+      "fieldPath": "provenanceOutcome",
+      "previous": "pass_after_correction",
+      "current": "verified"
+    },
+    {
+      "fieldPath": "provenanceRepairStatus",
+      "previous": "completed",
+      "current": "not_required"
+    }
+  ],
+  "originalRecordHash": "1724a88f287d6cde2b1e0d5c0bf13064e5e657d801075559de40a9e93feaf401",
+  "currentRecordHash": "2d1d5a2a064b4b04480b0f02f3770d38d7dfff44af5f65202a4a2cc4acc08f61"
+}

@@ -162,6 +162,23 @@ export const FR_QE_0008 = {
         }
       ]
     },
+    {
+      "id": "IN-012",
+      "qualifiedEvent": "Exact circuit-distance certification — IBM two-gross schedules",
+      "description": "Cheng, Guo and Pan certify circuit distances from a proved lower bound and an explicit logical fault of matching weight. For the reconstructed IBM two-gross memory instruction in their one-noisy-cycle circuit model, the standard schedule has distance 16, below the provisional value of 18 used in the architecture study. Redesigned schedules reach distance 18 in that setting at the cost of one more timestep per cycle. Across 26 papers, the authors identify overestimates or non-tight upper bounds in 10, with a maximum discrepancy of at least eight. This supplies a design constraint and a modeled mitigation for error-suppression projections. It provides no measured logical-error scaling curve or sustained hardware result. Circuit noise, cycle count, decoder behavior and the extra timestep cost limit extrapolation to application-scale suppression.",
+      "vectors": [
+        "PARTIAL"
+      ],
+      "date": "2026-11-06",
+      "sources": [
+        {
+          "citation": "Cheng, B., Guo, N. and Pan, F. (2026), Certifying quantum code and circuit distances at scale, arXiv:2611.08247v1.",
+          "url": "https://arxiv.org/abs/2611.08247v1",
+          "doi": "10.48550/arXiv.2611.08247",
+          "locator": "Sections 7 and 9.1–9.8; audited bounds, circuit noise and timing assumptions, certified distances, redesigned schedules and scope. Submitted 5 November, publicly listed 6 November 2026. Primary preprint by method developers affiliated with NUS and SUTD."
+        }
+      ]
+    },
   ],
 
   assessments: [
@@ -265,6 +282,14 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    {
+      "id": "M-022",
+      "date": "2026-11-07",
+      "field": "instance_appended",
+      "from": "IN-011",
+      "to": "IN-012",
+      "note": "Operator-approved Scout flag 2026-11-07-01 implemented after explicit authorisation. INSTANCE only. Assessment, claim and prior history preserved. Receipt: docs/reviews/SCOUT-2026-11-07-APPROVED-INSTANCES.md."
+    },
     {
       "id": "M-021",
       "date": "2026-10-31",
