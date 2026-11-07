@@ -109,7 +109,7 @@ test("assessment correction variants retain assessment trajectory classification
   assert.equal(detectMutationType(correction, correctionRecord), "assessment_reissued_no_state_change");
 });
 
-test("unresolved legacy assessment references remain visible and fail closed", () => {
+test("the unresolved assessment reference and two unclassified clinical entries fail closed", () => {
   const unclassified = ALL_RECORDS.flatMap((record) =>
     record.mutationLog
       .filter((entry) => detectMutationType(entry, record) === "unclassified")
@@ -118,6 +118,8 @@ test("unresolved legacy assessment references remain visible and fail closed", (
 
   assert.deepEqual(unclassified, [
     "FR-QE-0001:M-003:assessment_issued",
+    "FR-BT-0004:M-020:evidence_admitted",
+    "FR-BT-0004:M-019:bounded_correction",
   ]);
   assert.equal(qualifiesForHomepage("unclassified").qualifies, false);
 });

@@ -1,0 +1,19 @@
+{
+  "id": "FR-QE-0008-SCOUT-2026-11-07",
+  "date": "2026-11-07",
+  "recordId": "FR-QE-0008",
+  "baseCommit": "ae7a719bec130b35122fac37e2256e2ecf584878",
+  "originalRecordHash": "3e945a89c98a7cd8f038a271ad84bfa91c0d896f8117b4c354bbfceef0d85bd1",
+  "currentRecordHash": "6b8fccf55b44384413e49fe8f57922713aaa69a0c0710f14333aee559a02a97d",
+  "mutationIds": [
+    "M-022"
+  ],
+  "changes": [
+    {
+      "fieldPath": "instances.11",
+      "previous": null,
+      "current": "IN-012",
+      "basis": "Operator approved INSTANCE and explicitly authorised 7 November Scout implementation."
+    }
+  ]
+}

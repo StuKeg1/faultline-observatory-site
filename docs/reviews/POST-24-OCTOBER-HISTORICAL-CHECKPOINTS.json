@@ -4727,6 +4727,1631 @@
           ]
         }
       ]
+    },
+    {
+      "recordId": "FR-BT-0004",
+      "previousHash": "59d21eadc191802f1d96b1c87de74cee4fc5532f6f3b4c1f2b65af1f23c73662",
+      "currentHash": "eee19339876a0196e45cf48c76171927eb1d72dfc9285ef08ff1c2baa1fbadc4",
+      "changes": [
+        {
+          "field": "lastProvenanceReview",
+          "previous": "2026-09-26",
+          "current": "2026-11-01"
+        },
+        {
+          "field": "provenanceReviewId",
+          "previous": "LPR-001-D28",
+          "current": "LPR-001-D68"
+        },
+        {
+          "field": "instances",
+          "previous": [
+            {
+              "id": "IN-001",
+              "qualifiedEvent": "Cell-free DNA and circulating tumour DNA — technology foundation",
+              "description": "The detection of circulating tumour DNA (ctDNA) and cell-free DNA (cfDNA) fragments in blood establishes the technological basis for liquid biopsy. Diehl et al. (2008) demonstrate ctDNA detection in colorectal cancer; subsequent work extends detection across cancer types. Key technical advances include digital droplet PCR (ddPCR) for mutation detection and next-generation sequencing for broader genomic profiling. By 2019, several single-cancer liquid biopsy tests have received FDA breakthrough device designation. The technology establishes that tumour-derived nucleic acids are detectable in blood at clinically relevant cancer stages. This is foundational positive evidence: the proxy signal (blood-based ctDNA) does correlate with the presence of cancer, and the biological basis is sound. The question is whether the signal is detectable early enough and reliably enough to satisfy the claim.",
+              "vectors": [
+                "supportive--proxy-signal-biologically-validated"
+              ],
+              "date": "2008–19",
+              "sourceReference": "Diehl et al., Nature Medicine 14 (2008), doi:10.1038/nm.1789; Wan et al., Nature Reviews Cancer 17 (2017), doi:10.1038/nrc.2017.7",
+              "sources": [
+                {
+                  "citation": "Diehl et al. Circulating mutant DNA to assess tumor dynamics. Nature Medicine 14, 985–990 (2008).",
+                  "doi": "10.1038/nm.1789",
+                  "url": "https://www.nature.com/articles/nm.1789"
+                },
+                {
+                  "citation": "Wan et al. Liquid biopsies come of age: towards implementation of circulating tumour DNA. Nature Reviews Cancer 17, 223–238 (2017).",
+                  "doi": "10.1038/nrc.2017.7",
+                  "url": "https://www.nature.com/articles/nrc.2017.7"
+                }
+              ]
+            },
+            {
+              "id": "IN-002",
+              "qualifiedEvent": "Galleri studies — multi-cancer detection in screening and symptomatic cohorts",
+              "description": "GRAIL's Galleri test, using methylation sequencing of cfDNA, reports prospective evidence from two distinct intended-use settings. PATHFINDER, published in 2023 after enrolment and testing beginning earlier, returned results to asymptomatic adults aged 50 years or older. SYMPLIFY, also published in 2023, evaluated symptomatic patients already referred for cancer investigation in England and Wales: sensitivity was 66.3% overall and specificity 98.4%, while sensitivity rose from 24.2% at Stage I to 95.3% at Stage IV. This distinction matters: SYMPLIFY is a diagnostic-triage cohort, not a high-risk screening population. Across the evidence, detection is materially weaker at the early stages where the record's claim has greatest value, leaving the early-stage sensitivity gap as the primary evidential challenge.",
+              "vectors": [
+                "partial--detection-demonstrated-early-stage-sensitivity-remains-low"
+              ],
+              "date": "2021–23",
+              "sourceReference": "Schrag et al., The Lancet 402 (2023), PATHFINDER, doi:10.1016/S0140-6736(23)01700-2; Nicholson et al., The Lancet Oncology 24 (2023), SYMPLIFY, doi:10.1016/S1470-2045(23)00277-2",
+              "sources": [
+                {
+                  "citation": "Schrag et al. Blood-based tests for multicancer early detection (PATHFINDER): a prospective cohort study. The Lancet 402, 1251–1260 (2023).",
+                  "doi": "10.1016/S0140-6736(23)01700-2",
+                  "url": "https://doi.org/10.1016/S0140-6736(23)01700-2"
+                },
+                {
+                  "citation": "Nicholson et al. Multi-cancer early detection test in symptomatic patients referred for cancer investigation in England and Wales (SYMPLIFY): a large-scale, observational cohort study. The Lancet Oncology 24, 733–743 (2023).",
+                  "doi": "10.1016/S1470-2045(23)00277-2",
+                  "url": "https://doi.org/10.1016/S1470-2045(23)00277-2"
+                }
+              ]
+            },
+            {
+              "id": "IN-003",
+              "qualifiedEvent": "NHS-Galleri trial — population-level screening evidence",
+              "description": "The NHS-Galleri trial randomised 142,250 participants in England (71,122 to Galleri plus standard care and 71,128 to standard care alone) in an asymptomatic population aged 50–77. Its pre-specified primary objective was a reduction in late-stage (Stage III–IV) cancer incidence, first assessed across twelve pre-specified cancer types; mortality was not the primary endpoint. Randomisation and longer-term linkage can support later mortality comparison, but stage shift and mortality benefit are distinct outcomes. At this point in the record's chronology, the late-stage-incidence result and mortality follow-up were both pending. The claim therefore remained FRAGMENTING: early detection was demonstrably achievable in some contexts, while whether it produces clinically meaningful outcome benefit rather than lead-time or overdiagnosis effects remained unresolved.",
+              "vectors": [
+                "neutral--definitive-trial-ongoing-results-pending-2026"
+              ],
+              "date": "2021–23",
+              "sourceReference": "Swanton et al., Journal of Clinical Oncology 40 supplement (2022), NHS-Galleri trial design, doi:10.1200/JCO.2022.40.16_suppl.TPS6606; ISRCTN91431511; NCT05611632",
+              "sources": [
+                {
+                  "citation": "Swanton et al. NHS-Galleri Trial Design: Equitable study recruitment tactics for targeted population-level screening with a multi-cancer early detection (MCED) test. Journal of Clinical Oncology 40, TPS6606 (2022).",
+                  "doi": "10.1200/JCO.2022.40.16_suppl.TPS6606",
+                  "url": "https://doi.org/10.1200/JCO.2022.40.16_suppl.TPS6606",
+                  "locator": "Conference design abstract, not a results report."
+                },
+                {
+                  "citation": "ISRCTN91431511 — NHS-Galleri trial registration.",
+                  "url": "https://www.isrctn.com/ISRCTN91431511"
+                },
+                {
+                  "citation": "NCT05611632 — NHS-Galleri trial registration.",
+                  "url": "https://clinicaltrials.gov/study/NCT05611632"
+                }
+              ]
+            },
+            {
+              "id": "IN-004",
+              "qualifiedEvent": "Lead-time bias and overdiagnosis evidence — early detection without outcome benefit",
+              "description": "The cancer screening literature contains multiple examples of earlier detection not producing mortality benefit due to lead-time bias (earlier detection without actual life extension) and overdiagnosis (detection of cancers that would never have caused clinical harm). Prostate-specific antigen (PSA) screening is the canonical case: widespread adoption followed by evidence that many screen-detected cancers were low-risk and treated unnecessarily. Lung cancer screening with low-dose CT demonstrates genuine mortality benefit in high-risk populations, establishing that early detection can work. The liquid biopsy literature has not yet accumulated sufficient follow-up data to distinguish genuine benefit from lead-time bias at scale. This is the specific proxy gap: blood-based ctDNA signal (measured object) as proxy for clinically meaningful early cancer (asserted object). A cancer detectable by liquid biopsy may be a fast-growing, treatment-responsive cancer where earlier detection genuinely helps — or a slow-growing cancer that would never have caused symptoms, making detection harmful through unnecessary treatment. The measurement cannot currently discriminate between these.",
+              "vectors": [
+                "contesting--proxy-gap-detectable-signal--clinically-actionable-cancer"
+              ],
+              "date": "2023–24",
+              "sourceReference": "Andriole et al., New England Journal of Medicine 360 (2009), PLCO prostate screening, doi:10.1056/NEJMoa0810696; National Lung Screening Trial Research Team, New England Journal of Medicine 365 (2011), doi:10.1056/NEJMoa1102873",
+              "sources": [
+                {
+                  "citation": "Andriole et al. Mortality Results from a Randomized Prostate-Cancer Screening Trial. New England Journal of Medicine 360, 1310–1319 (2009).",
+                  "doi": "10.1056/NEJMoa0810696",
+                  "url": "https://doi.org/10.1056/NEJMoa0810696"
+                },
+                {
+                  "citation": "National Lung Screening Trial Research Team. Reduced Lung-Cancer Mortality with Low-Dose Computed Tomographic Screening. New England Journal of Medicine 365, 395–409 (2011).",
+                  "doi": "10.1056/NEJMoa1102873",
+                  "url": "https://doi.org/10.1056/NEJMoa1102873"
+                }
+              ]
+            },
+            {
+              "id": "IN-005",
+              "qualifiedEvent": "GRAIL acquisition by Illumina, regulatory battles, and commercial deployment",
+              "description": "Illumina completed its acquisition of GRAIL in 2021 in a transaction valued at approximately $7.1 billion. Competition authorities in both the European Union and United States challenged the transaction; the European Commission ordered restorative divestment measures in 2023, and Illumina announced it would divest after the December 2023 US Fifth Circuit decision. The separation was completed through a GRAIL spin-off on 24 June 2024. Meanwhile, GRAIL and competitors continued commercial deployment and clinical-validation programmes. Galleri was commercially available in the United States at approximately $950 per test without FDA approval for population screening. This constitutes anticipatory institutional evidence: substantial capital and commercial deployment preceded definitive randomised clinical-utility and mortality evidence.",
+              "vectors": [
+                "partial--anticipatory-commercial-deployment-definitive-evidence-pending"
+              ],
+              "date": "2021–24",
+              "sourceReference": "US FTC, Illumina/GRAIL enforcement record and divestment statement (2021–23); European Commission, restorative measures IP/23/4872 (2023); Illumina, 'Illumina completes the divestiture of GRAIL' (24 June 2024)",
+              "sources": [
+                {
+                  "citation": "Federal Trade Commission. Illumina, Inc., and GRAIL, Inc., In the Matter of. Case 201-0144.",
+                  "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/201-0144-illumina-inc-grail-inc-matter",
+                  "locator": "Enforcement chronology beginning in March 2021; competition proceedings, not a clinical efficacy finding."
+                },
+                {
+                  "citation": "Federal Trade Commission. Statement Regarding Illumina’s Decision to Divest Grail. 18 December 2023.",
+                  "url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/statement-regarding-illuminas-decision-divest-grail",
+                  "locator": "December 2023 court decision and announced divestment; the court vacated the order and remanded on the rebuttal-evidence standard."
+                },
+                {
+                  "citation": "European Commission. Commission orders Illumina to unwind its completed acquisition of GRAIL. IP/23/4872, 12 October 2023.",
+                  "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_23_4872/IP_23_4872_EN.pdf",
+                  "locator": "Pages 1–2: historical restorative and transitional measures adopted in October 2023."
+                },
+                {
+                  "citation": "Illumina. Illumina completes the divestiture of GRAIL. 24 June 2024.",
+                  "url": "https://www.illumina.com/company/news-center/press-releases/2024/d2e2aec7-563a-4301-9d60-db56ea067bfb.html",
+                  "locator": "Company announcement of the completed spin-off; commercial history, not independent clinical validation."
+                }
+              ]
+            },
+            {
+              "id": "IN-006",
+              "relationship": {
+                "type": "same_trial_report",
+                "relatedInstanceId": "IN-003",
+                "note": "Same NHS-Galleri trial as IN-003 (NCT05611632 / ISRCTN91431511). This is the conference results report from that trial, not an independent replication."
+              },
+              "qualifiedEvent": "NHS-Galleri trial — full results presented at ASCO 2026",
+              "description": "Investigators present the NHS-Galleri primary results orally at the 2026 American Society of Clinical Oncology Annual Meeting on 30 May 2026. The results are published as late-breaking abstract LBA100 in the Journal of Clinical Oncology conference supplement, not as a full peer-reviewed results article. The pre-specified primary endpoint — a statistically significant combined reduction in Stage III and Stage IV diagnoses across twelve cancer types — is not met. Stage IV diagnoses fall by more than 20% in later screening rounds, but a higher-than-anticipated number of Stage III diagnoses offsets that result in the combined endpoint. The Galleri arm reports a four-fold higher overall cancer detection rate than standard-care screening alone. No mortality endpoint is reported. Independent commentary via the Science Media Centre emphasises that stage shift and mortality benefit are distinct questions and describes the evidence as conference-presented results rather than a published full study. The awaited trial event has therefore occurred without producing the clean resolution anticipated by the record's original attractor.",
+              "vectors": [
+                "partial--primary-endpoint-missed-stage-shift-observed-mortality-pending"
+              ],
+              "date": "2026",
+              "sourceReference": "Swanton et al., NHS-Galleri primary results, Journal of Clinical Oncology 44 supplement (2026), abstract LBA100, doi:10.1200/JCO.2026.44.17_suppl.LBA100; GRAIL trial-results release (19 February 2026); Science Media Centre expert reaction (30 May 2026)",
+              "sources": [
+                {
+                  "citation": "Swanton et al. NHS-Galleri: Primary results from a randomised controlled trial to assess the clinical utility of a multi-cancer early detection (MCED) test in population screening. Journal of Clinical Oncology 44, LBA100 (2026).",
+                  "doi": "10.1200/JCO.2026.44.17_suppl.LBA100",
+                  "url": "https://doi.org/10.1200/JCO.2026.44.17_suppl.LBA100",
+                  "locator": "Conference abstract, not the later full results paper in IN-007."
+                },
+                {
+                  "citation": "GRAIL trial-results release (19 February 2026).",
+                  "locator": "Company trial-results release.",
+                  "url": "https://grail.com/press-releases/landmark-nhs-galleri-trial-demonstrates-a-substantial-reduction-in-stage-iv-cancer-diagnoses-increased-stage-i-and-ii-detection-of-deadly-cancers-and-four-fold-higher-cancer-detection-rate/"
+                },
+                {
+                  "citation": "Science Media Centre expert reaction (30 May 2026).",
+                  "locator": "Expert reaction to the conference results.",
+                  "url": "https://www.sciencemediacentre.org/expert-reaction-to-press-release-from-grail-on-full-results-of-the-nhs-galleri-trial-being-presented-at-asco/"
+                }
+              ]
+            },
+            {
+              "id": "IN-007",
+              "relationship": {
+                "type": "same_trial_report",
+                "relatedInstanceId": "IN-003",
+                "note": "Same NHS-Galleri trial as IN-003 and IN-006 (NCT05611632 / ISRCTN91431511). This is the peer-reviewed primary-results report, not another trial or independent replication."
+              },
+              "qualifiedEvent": "NHS-Galleri trial — peer-reviewed primary randomized results",
+              "description": "Sasieni et al. publish the NHS-Galleri primary randomized results in the New England Journal of Medicine on 22 September 2026. Among 142,250 randomized participants, the prespecified primary endpoint of Stage III/IV cancer incidence across twelve cancer types is not reduced by MCED screening plus usual care versus usual care alone (incidence-rate ratio 1.03; 95% CI 0.92–1.14; P=0.63). The key Stage IV secondary endpoint has an incidence-rate ratio of 0.86 (95% CI 0.74–1.00). Trial-related adverse events occur in fewer than 1% of participants and none are serious. The peer-reviewed article therefore confirms the mixed evidential state previously represented from ASCO 2026: the primary late-stage endpoint is negative while a Stage IV signal remains compatible with benefit but requires further follow-up. Mortality is not resolved.",
+              "vectors": [
+                "partial--peer-reviewed-primary-endpoint-negative-stage-IV-signal-mortality-pending"
+              ],
+              "date": "2026-09-22",
+              "sourceReference": "Sasieni et al., New England Journal of Medicine (2026), doi:10.1056/NEJMoa2505723",
+              "sources": [
+                {
+                  "citation": "Sasieni et al. (2026), Effect of Screening with Multicancer Early-Detection Test on Late-Stage Cancer Diagnosis, New England Journal of Medicine, published 22 September 2026.",
+                  "doi": "10.1056/NEJMoa2505723",
+                  "url": "https://doi.org/10.1056/NEJMoa2505723"
+                }
+              ]
+            },
+            {
+              "id": "IN-008",
+              "relationship": {
+                "type": "same_trial_report",
+                "relatedInstanceId": "IN-003",
+                "note": "Same NHS-Galleri trial as IN-003, IN-006 and IN-007 (NCT05611632 / ISRCTN91431511). This reports test performance in that trial’s intervention arm, not an independent replication."
+              },
+              "qualifiedEvent": "NHS-Galleri trial — three-round MCED test performance",
+              "description": "Neal et al. publish prespecified secondary test-performance endpoints from the NHS-Galleri intervention arm in Nature Medicine on 22 September 2026. Across the three annual screening rounds, positive predictive value is 58.0%, 50.4% and 45.8%; specificity remains 99.50–99.60%; and episode sensitivity for all cancers is 37.2%, 27.1% and 26.7%, respectively. Cancer-signal-origin accuracy remains above 91% by round. These results strengthen evidence that the assay can identify cancer signals with very high specificity in population screening, while also quantifying a substantial sensitivity limitation that persists across repeated annual rounds. The analyses are descriptive and do not establish mortality benefit or resolve overdiagnosis; those outcomes are reserved for future reporting.",
+              "vectors": [
+                "partial--high-specificity-persistent-sensitivity-limit-outcome-benefit-unresolved"
+              ],
+              "date": "2026-09-22",
+              "sourceReference": "Neal et al., Nature Medicine (2026), doi:10.1038/s41591-026-04652-8",
+              "sources": [
+                {
+                  "citation": "Neal et al. (2026), Performance of a multi-cancer early detection test in the randomized controlled NHS-Galleri trial, Nature Medicine, published 22 September 2026.",
+                  "doi": "10.1038/s41591-026-04652-8",
+                  "url": "https://doi.org/10.1038/s41591-026-04652-8"
+                }
+              ]
+            }
+          ],
+          "current": [
+            {
+              "id": "IN-001",
+              "qualifiedEvent": "Cell-free DNA and circulating tumour DNA — technology foundation",
+              "description": "The detection of circulating tumour DNA (ctDNA) and cell-free DNA (cfDNA) fragments in blood establishes the technological basis for liquid biopsy. Diehl et al. (2008) demonstrate ctDNA detection in colorectal cancer; subsequent work extends detection across cancer types. Key technical advances include digital droplet PCR (ddPCR) for mutation detection and next-generation sequencing for broader genomic profiling. The technology establishes that tumour-derived nucleic acids are detectable in blood at clinically relevant cancer stages. This is foundational positive evidence: the proxy signal (blood-based ctDNA) does correlate with the presence of cancer, and the biological basis is sound. The question is whether the signal is detectable early enough and reliably enough to satisfy the claim.",
+              "vectors": [
+                "supportive--proxy-signal-biologically-validated"
+              ],
+              "date": "2008–19",
+              "sourceReference": "Diehl et al., Nature Medicine 14 (2008), doi:10.1038/nm.1789; Wan et al., Nature Reviews Cancer 17 (2017), doi:10.1038/nrc.2017.7",
+              "sources": [
+                {
+                  "citation": "Diehl et al. Circulating mutant DNA to assess tumor dynamics. Nature Medicine 14, 985–990 (2008).",
+                  "doi": "10.1038/nm.1789",
+                  "url": "https://www.nature.com/articles/nm.1789"
+                },
+                {
+                  "citation": "Wan et al. Liquid biopsies come of age: towards implementation of circulating tumour DNA. Nature Reviews Cancer 17, 223–238 (2017).",
+                  "doi": "10.1038/nrc.2017.7",
+                  "url": "https://www.nature.com/articles/nrc.2017.7"
+                }
+              ]
+            },
+            {
+              "id": "IN-002",
+              "qualifiedEvent": "Galleri studies — multi-cancer detection in screening and symptomatic cohorts",
+              "description": "GRAIL's Galleri test, using methylation sequencing of cfDNA, reports prospective evidence from two distinct intended-use settings. PATHFINDER, published in 2023 after enrolment and testing beginning earlier, returned results to asymptomatic adults aged 50 years or older. SYMPLIFY, also published in 2023, evaluated symptomatic patients already referred for cancer investigation in England and Wales: sensitivity was 66.3% overall and specificity 98.4%, while sensitivity rose from 24.2% at Stage I to 95.3% at Stage IV. This distinction matters: SYMPLIFY is a diagnostic-triage cohort, not a high-risk screening population. Across the evidence, detection is materially weaker at the early stages where the record's claim has greatest value, leaving the early-stage sensitivity gap as the primary evidential challenge.",
+              "vectors": [
+                "partial--detection-demonstrated-early-stage-sensitivity-remains-low"
+              ],
+              "date": "2021–23",
+              "sourceReference": "Schrag et al., The Lancet 402 (2023), PATHFINDER, doi:10.1016/S0140-6736(23)01700-2; Nicholson et al., The Lancet Oncology 24 (2023), SYMPLIFY, doi:10.1016/S1470-2045(23)00277-2",
+              "sources": [
+                {
+                  "citation": "Schrag et al. Blood-based tests for multicancer early detection (PATHFINDER): a prospective cohort study. The Lancet 402, 1251–1260 (2023).",
+                  "doi": "10.1016/S0140-6736(23)01700-2",
+                  "url": "https://doi.org/10.1016/S0140-6736(23)01700-2"
+                },
+                {
+                  "citation": "Nicholson et al. Multi-cancer early detection test in symptomatic patients referred for cancer investigation in England and Wales (SYMPLIFY): a large-scale, observational cohort study. The Lancet Oncology 24, 733–743 (2023).",
+                  "doi": "10.1016/S1470-2045(23)00277-2",
+                  "url": "https://doi.org/10.1016/S1470-2045(23)00277-2"
+                }
+              ]
+            },
+            {
+              "id": "IN-003",
+              "qualifiedEvent": "NHS-Galleri trial — population-level screening evidence",
+              "description": "The NHS-Galleri trial randomised 142,250 participants in England (71,122 to Galleri plus standard care and 71,128 to standard care alone) in an asymptomatic population aged 50–77. Its pre-specified primary objective was a reduction in late-stage (Stage III–IV) cancer incidence, first assessed across twelve pre-specified cancer types; mortality was not the primary endpoint. Randomisation and longer-term linkage can support later mortality comparison, but stage shift and mortality benefit are distinct outcomes. At this point in the record's chronology, the late-stage-incidence result and mortality follow-up were both pending. The claim therefore remained FRAGMENTING: early detection was demonstrably achievable in some contexts, while whether it produces clinically meaningful outcome benefit rather than lead-time or overdiagnosis effects remained unresolved.",
+              "vectors": [
+                "neutral--definitive-trial-ongoing-results-pending-2026"
+              ],
+              "date": "2021–23",
+              "sourceReference": "Swanton et al., Journal of Clinical Oncology 40 supplement (2022), NHS-Galleri trial design, doi:10.1200/JCO.2022.40.16_suppl.TPS6606; ISRCTN91431511; NCT05611632",
+              "sources": [
+                {
+                  "citation": "Swanton et al. NHS-Galleri Trial Design: Equitable study recruitment tactics for targeted population-level screening with a multi-cancer early detection (MCED) test. Journal of Clinical Oncology 40, TPS6606 (2022).",
+                  "doi": "10.1200/JCO.2022.40.16_suppl.TPS6606",
+                  "url": "https://doi.org/10.1200/JCO.2022.40.16_suppl.TPS6606",
+                  "locator": "Conference design abstract, not a results report."
+                },
+                {
+                  "citation": "ISRCTN91431511 — NHS-Galleri trial registration.",
+                  "url": "https://www.isrctn.com/ISRCTN91431511"
+                },
+                {
+                  "citation": "NCT05611632 — NHS-Galleri trial registration.",
+                  "url": "https://clinicaltrials.gov/study/NCT05611632"
+                }
+              ]
+            },
+            {
+              "id": "IN-004",
+              "qualifiedEvent": "Lead-time bias and overdiagnosis evidence — early detection without outcome benefit",
+              "description": "The cancer screening literature contains multiple examples of earlier detection not producing mortality benefit due to lead-time bias (earlier detection without actual life extension) and overdiagnosis (detection of cancers that would never have caused clinical harm). Prostate-specific antigen (PSA) screening is the canonical case: widespread adoption followed by evidence that many screen-detected cancers were low-risk and treated unnecessarily. Lung cancer screening with low-dose CT demonstrates genuine mortality benefit in high-risk populations, establishing that early detection can work. The liquid biopsy literature has not yet accumulated sufficient follow-up data to distinguish genuine benefit from lead-time bias at scale. This is the specific proxy gap: blood-based ctDNA signal (measured object) as proxy for clinically meaningful early cancer (asserted object). A cancer detectable by liquid biopsy may be a fast-growing, treatment-responsive cancer where earlier detection genuinely helps — or a slow-growing cancer that would never have caused symptoms, making detection harmful through unnecessary treatment. The measurement cannot currently discriminate between these.",
+              "vectors": [
+                "contesting--proxy-gap-detectable-signal--clinically-actionable-cancer"
+              ],
+              "date": "2023–24",
+              "sourceReference": "Andriole et al., New England Journal of Medicine 360 (2009), PLCO prostate screening, doi:10.1056/NEJMoa0810696; National Lung Screening Trial Research Team, New England Journal of Medicine 365 (2011), doi:10.1056/NEJMoa1102873",
+              "sources": [
+                {
+                  "citation": "Andriole et al. Mortality Results from a Randomized Prostate-Cancer Screening Trial. New England Journal of Medicine 360, 1310–1319 (2009).",
+                  "doi": "10.1056/NEJMoa0810696",
+                  "url": "https://doi.org/10.1056/NEJMoa0810696"
+                },
+                {
+                  "citation": "National Lung Screening Trial Research Team. Reduced Lung-Cancer Mortality with Low-Dose Computed Tomographic Screening. New England Journal of Medicine 365, 395–409 (2011).",
+                  "doi": "10.1056/NEJMoa1102873",
+                  "url": "https://doi.org/10.1056/NEJMoa1102873"
+                }
+              ]
+            },
+            {
+              "id": "IN-005",
+              "qualifiedEvent": "GRAIL acquisition by Illumina, regulatory battles, and commercial deployment",
+              "description": "Illumina completed its acquisition of GRAIL in 2021 in a transaction valued at approximately $7.1 billion. Competition authorities in both the European Union and United States challenged the transaction; the European Commission ordered restorative divestment measures in 2023, and Illumina announced it would divest after the December 2023 US Fifth Circuit decision. The separation was completed through a GRAIL spin-off on 24 June 2024. In September 2024, the European Commission withdrew its 2023 restorative-measures decision following the Court of Justice jurisdiction ruling; this subsequent legal development is distinct from the completed spin-off. Meanwhile, GRAIL and competitors continued commercial deployment and clinical-validation programmes. Galleri was commercially available in the United States at approximately $950 per test without FDA approval for population screening. This constitutes anticipatory institutional evidence: substantial capital and commercial deployment preceded definitive randomised clinical-utility and mortality evidence.",
+              "vectors": [
+                "partial--anticipatory-commercial-deployment-definitive-evidence-pending"
+              ],
+              "date": "2021–24",
+              "sourceReference": "US FTC, Illumina/GRAIL enforcement record and divestment statement (2021–23); European Commission, restorative measures IP/23/4872 (2023); Illumina, 'Illumina completes the divestiture of GRAIL' (24 June 2024)",
+              "sources": [
+                {
+                  "citation": "Federal Trade Commission. Illumina, Inc., and GRAIL, Inc., In the Matter of. Case 201-0144.",
+                  "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/201-0144-illumina-inc-grail-inc-matter",
+                  "locator": "Enforcement chronology beginning in March 2021; competition proceedings, not a clinical efficacy finding."
+                },
+                {
+                  "citation": "Federal Trade Commission. Statement Regarding Illumina’s Decision to Divest Grail. 18 December 2023.",
+                  "url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/statement-regarding-illuminas-decision-divest-grail",
+                  "locator": "December 2023 court decision and announced divestment; the court vacated the order and remanded on the rebuttal-evidence standard."
+                },
+                {
+                  "citation": "European Commission. Commission orders Illumina to unwind its completed acquisition of GRAIL. IP/23/4872, 12 October 2023.",
+                  "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_23_4872/IP_23_4872_EN.pdf",
+                  "locator": "Pages 1–2: historical restorative and transitional measures adopted in October 2023."
+                },
+                {
+                  "citation": "European Commission, statement following the Court of Justice judgment in Illumina/GRAIL (September 2024)",
+                  "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_24_4525",
+                  "locator": "September 2024 withdrawal of Commission restorative measures after jurisdiction ruling; distinct from June spin-off."
+                },
+                {
+                  "citation": "Illumina. Illumina completes the divestiture of GRAIL. 24 June 2024.",
+                  "url": "https://www.illumina.com/company/news-center/press-releases/2024/d2e2aec7-563a-4301-9d60-db56ea067bfb.html",
+                  "locator": "Company announcement of the completed spin-off; commercial history, not independent clinical validation."
+                }
+              ]
+            },
+            {
+              "id": "IN-006",
+              "relationship": {
+                "type": "same_trial_report",
+                "relatedInstanceId": "IN-003",
+                "note": "Same NHS-Galleri trial as IN-003 (NCT05611632 / ISRCTN91431511). This is the conference results report from that trial, not an independent replication."
+              },
+              "qualifiedEvent": "NHS-Galleri trial — full results presented at ASCO 2026",
+              "description": "Investigators present the NHS-Galleri primary results orally at the 2026 American Society of Clinical Oncology Annual Meeting on 30 May 2026. The results are published as late-breaking abstract LBA100 in the Journal of Clinical Oncology conference supplement, not as a full peer-reviewed results article. The pre-specified primary endpoint — a statistically significant combined reduction in Stage III and Stage IV diagnoses across twelve cancer types — is not met. Stage IV diagnoses fall by more than 20% in later screening rounds, but a higher-than-anticipated number of Stage III diagnoses offsets that result in the combined endpoint. The Galleri arm reports approximately four times as many screen-detected cancers as standard care (1,173 versus 290), not four times as many total cancer diagnoses (3,637 versus 3,400). No mortality endpoint is reported. Independent commentary via the Science Media Centre emphasises that stage shift and mortality benefit are distinct questions and describes the evidence as conference-presented results rather than a published full study. The awaited trial event has therefore occurred without producing the clean resolution anticipated by the record's original attractor.",
+              "vectors": [
+                "partial--primary-endpoint-missed-stage-shift-observed-mortality-pending"
+              ],
+              "date": "2026",
+              "sourceReference": "Swanton et al., NHS-Galleri primary results, Journal of Clinical Oncology 44 supplement (2026), abstract LBA100, doi:10.1200/JCO.2026.44.17_suppl.LBA100; GRAIL trial-results release (19 February 2026); Science Media Centre expert reaction (30 May 2026)",
+              "sources": [
+                {
+                  "citation": "Swanton et al. NHS-Galleri: Primary results from a randomised controlled trial to assess the clinical utility of a multi-cancer early detection (MCED) test in population screening. Journal of Clinical Oncology 44, LBA100 (2026).",
+                  "doi": "10.1200/JCO.2026.44.17_suppl.LBA100",
+                  "url": "https://doi.org/10.1200/JCO.2026.44.17_suppl.LBA100",
+                  "locator": "Conference abstract, not the later full results paper in IN-007."
+                },
+                {
+                  "citation": "GRAIL trial-results release (19 February 2026).",
+                  "locator": "Company trial-results release.",
+                  "url": "https://grail.com/press-releases/landmark-nhs-galleri-trial-demonstrates-a-substantial-reduction-in-stage-iv-cancer-diagnoses-increased-stage-i-and-ii-detection-of-deadly-cancers-and-four-fold-higher-cancer-detection-rate/"
+                },
+                {
+                  "citation": "Science Media Centre expert reaction (30 May 2026).",
+                  "locator": "Expert reaction to the conference results.",
+                  "url": "https://www.sciencemediacentre.org/expert-reaction-to-press-release-from-grail-on-full-results-of-the-nhs-galleri-trial-being-presented-at-asco/"
+                }
+              ]
+            },
+            {
+              "id": "IN-007",
+              "relationship": {
+                "type": "same_trial_report",
+                "relatedInstanceId": "IN-003",
+                "note": "Same NHS-Galleri trial as IN-003 and IN-006 (NCT05611632 / ISRCTN91431511). This is the peer-reviewed primary-results report, not another trial or independent replication."
+              },
+              "qualifiedEvent": "NHS-Galleri trial — peer-reviewed primary randomized results",
+              "description": "Sasieni et al. publish the NHS-Galleri primary randomized results in the New England Journal of Medicine on 22 September 2026. Among 142,250 randomized participants, the prespecified primary endpoint of Stage III/IV cancer incidence across twelve cancer types is not reduced by MCED screening plus usual care versus usual care alone (incidence-rate ratio 1.03; 95% CI 0.92–1.14; P=0.63). The key Stage IV secondary endpoint has an incidence-rate ratio of 0.86 (95% CI 0.74–1.00). Trial-related adverse events occur in fewer than 1% of participants and none are serious. The peer-reviewed article therefore confirms the mixed evidential state previously represented from ASCO 2026: the primary late-stage endpoint is negative while a Stage IV signal remains compatible with benefit but requires further follow-up. Mortality is not resolved.",
+              "vectors": [
+                "partial--peer-reviewed-primary-endpoint-negative-stage-IV-signal-mortality-pending"
+              ],
+              "date": "2026-09-22",
+              "sourceReference": "Sasieni et al., New England Journal of Medicine (2026), doi:10.1056/NEJMoa2505723",
+              "sources": [
+                {
+                  "citation": "Sasieni et al. (2026), Effect of Screening with Multicancer Early-Detection Test on Late-Stage Cancer Diagnosis, New England Journal of Medicine, published 22 September 2026.",
+                  "doi": "10.1056/NEJMoa2505723",
+                  "url": "https://doi.org/10.1056/NEJMoa2505723"
+                }
+              ]
+            },
+            {
+              "id": "IN-008",
+              "relationship": {
+                "type": "same_trial_report",
+                "relatedInstanceId": "IN-003",
+                "note": "Same NHS-Galleri trial as IN-003, IN-006 and IN-007 (NCT05611632 / ISRCTN91431511). This reports test performance in that trial’s intervention arm, not an independent replication."
+              },
+              "qualifiedEvent": "NHS-Galleri trial — three-round MCED test performance",
+              "description": "Neal et al. publish prespecified secondary test-performance endpoints from the NHS-Galleri intervention arm in Nature Medicine on 22 September 2026. Across the three annual screening rounds, positive predictive value is 58.0%, 50.4% and 45.8%; specificity remains 99.50–99.60%; and episode sensitivity for all cancers is 37.2%, 27.1% and 26.7%, respectively. Cancer-signal-origin accuracy remains above 91% by round. These results strengthen evidence that the assay can identify cancer signals with very high specificity in population screening, while also quantifying a substantial sensitivity limitation that persists across repeated annual rounds. The analyses are descriptive and do not establish mortality benefit or resolve overdiagnosis; those outcomes are reserved for future reporting.",
+              "vectors": [
+                "partial--high-specificity-persistent-sensitivity-limit-outcome-benefit-unresolved"
+              ],
+              "date": "2026-09-22",
+              "sourceReference": "Neal et al., Nature Medicine (2026), doi:10.1038/s41591-026-04652-8",
+              "sources": [
+                {
+                  "citation": "Neal et al. (2026), Performance of a multi-cancer early detection test in the randomized controlled NHS-Galleri trial, Nature Medicine, published 22 September 2026.",
+                  "doi": "10.1038/s41591-026-04652-8",
+                  "url": "https://doi.org/10.1038/s41591-026-04652-8"
+                }
+              ]
+            },
+            {
+              "id": "IN-009",
+              "relationship": {
+                "type": "distinct_study",
+                "relatedInstanceId": "IN-008",
+                "note": "PATHFINDER 2 (NCT05155605) is a separate North American prospective single-arm study of the same MCED test; IN-008 is NHS-Galleri trial performance, not the same participant cohort or independent randomized utility confirmation."
+              },
+              "qualifiedEvent": "PATHFINDER 2 — prospective multi-cancer early-detection performance and safety",
+              "description": "Nabavizadeh et al. report the peer-reviewed PATHFINDER 2 prospective multicentre single-arm interventional study of Galleri in adults aged 50 years or older without clinical suspicion of cancer. Among 35,878 enrolled participants, 32,007 were performance-analyzable after 12-month cancer-status assessment: cancer detection rate 0.54%, positive predictive value 60.3%, specificity 99.64%, all-cancer 12-month episode sensitivity 39.3%, and sensitivity 69.8% in the prespecified subgroup of 12 cancers. In the safety-analyzable set (35,335), 213 participants (0.6%) underwent invasive procedures after a positive test; no serious study-related adverse events were reported by data lock. Descriptive endpoints had no formal hypothesis testing or prespecified success criteria. The study was designed and funded by GRAIL, which participated in analysis and manuscript preparation. These results strengthen prospective detection-performance evidence, but the single-arm design cannot establish reduction in late-stage incidence, cancer mortality or net population-screening benefit. Do not conflate this publication's unweighted performance analysis with separately weighted regulatory analyses or with NHS-Galleri's randomized trial.",
+              "vectors": [
+                "partial--prospective-detection-performance-supported-clinical-utility-unresolved"
+              ],
+              "date": "2026-09-22",
+              "sourceReference": "Nabavizadeh et al., Nature Medicine 32 (2026), doi:10.1038/s41591-026-04618-w; PATHFINDER 2 NCT05155605",
+              "sources": [
+                {
+                  "citation": "Nabavizadeh et al. Performance and safety of a multi-cancer early detection test: the PATHFINDER 2 study. Nature Medicine (2026).",
+                  "doi": "10.1038/s41591-026-04618-w",
+                  "url": "https://doi.org/10.1038/s41591-026-04618-w",
+                  "locator": "Abstract, Results, Methods, Funding and Data availability; 32,007 performance analysis versus 35,335 safety analysis; descriptive, single-arm."
+                },
+                {
+                  "citation": "ClinicalTrials.gov. PATHFINDER 2, NCT05155605.",
+                  "url": "https://clinicaltrials.gov/study/NCT05155605",
+                  "locator": "Trial identifier and study design; not a separate efficacy dataset."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": "assessments",
+          "previous": [
+            {
+              "id": "AS-001",
+              "date": "2024-01-15",
+              "pressureState": "fragmenting",
+              "verificationStage": "VS-03",
+              "summary": "The claim is partially supported and fragmenting. Blood-based liquid biopsy can detect cancer signals before conventional diagnosis in a demonstrable fraction of cases — the Galleri test's performance data establishes this for multiple cancer types. The detection is reliable in a technical sense: specificity is high (98.4%) and sensitivity, while lower than desired, is non-trivial across cancer types. For the claim as stated, this constitutes partial confirmation: early detection before conventional diagnosis is achievable in some cases. The claim fragments on the central unresolved question: whether that earlier detection reduces cancer mortality, or whether it produces stage shift and lead-time effects without a genuine survival benefit (IN-004). Sensitivity is markedly lower for early-stage disease (approximately 24% at Stage I) — precisely the regime in which the claim's value would be greatest — and the NHS-Galleri trial (INST-003), the first to test the claim against a mortality endpoint directly, has not yet reported. The pressure state is FRAGMENTING: the technology works as a detection instrument, but whether detection translates into the clinical benefit the claim asserts remains genuinely open (AT-001).",
+              "assessorNote": null
+            },
+            {
+              "id": "AS-002",
+              "date": "2026-06-27",
+              "pressureState": "fragmenting",
+              "verificationStage": "VS-04",
+              "summary": "The NHS-Galleri trial's full results (INST-006) sustain rather than resolve the FRAGMENTING state identified at AS-001. The trial delivers exactly the kind of evidence the record's attractor (AT-001) was built to await, and the result is genuinely mixed rather than confirmatory or disconfirming: a real, substantial reduction in late-stage diagnoses coexists with a missed primary endpoint, an unexpected rise in Stage III diagnoses, and no mortality data. This is not a null result — the four-fold detection-rate increase and Stage IV reduction are real signals — but it does not resolve the central contested question (OQ-001): whether earlier detection translates into reduced mortality, or whether it is partially absorbed by stage migration and lead-time effects that RM-001/AT-001 already anticipated. Verification stage advances to VS-04 (Replication): a population-scale randomised trial has now run and reported, the most rigorous test design available short of mortality follow-up itself. The record should be re-entered when GRAIL's extended follow-up data (6–12 months from this release) becomes available, since that data — not this release — is positioned to address OQ-001 directly.",
+              "assessorNote": "Sources: GRAIL press releases and ASCO 2026 presentation (May 30, 2026); Journal of Clinical Oncology; independent commentary via Science Media Centre. Verified directly via web search during RELEASE-004 / TRIAL-001, 2026-06-27."
+            },
+            {
+              "id": "AS-003",
+              "date": "2026-09-26",
+              "pressureState": "fragmenting",
+              "verificationStage": "VS-04",
+              "summary": "Peer-reviewed publication of the NHS-Galleri randomized primary results (IN-007) and three-round test-performance analysis (IN-008) materially strengthens the record's evidence quality without resolving its central fracture. The primary Stage III/IV incidence endpoint remains negative (IRR 1.03; 95% CI 0.92–1.14), while the Stage IV secondary result remains a potentially favorable but not independently resolving signal (IRR 0.86; 95% CI 0.74–1.00). The companion performance analysis shows consistently very high specificity but episode sensitivity of only 26.7–37.2% for all cancers across annual rounds. This combination supports the claim that blood-based MCED can detect otherwise occult cancers in population screening, but it does not establish that screening produces clinically meaningful outcome benefit. Mortality and overdiagnosis remain explicitly outstanding. Pressure State therefore remains FRAGMENTING and Verification Stage remains VS-04; AT-001 is unsatisfied.",
+              "assessorNote": "Normal Record Review 2026-09-26. Sources: Sasieni et al., NEJM, doi:10.1056/NEJMoa2505723; Neal et al., Nature Medicine, doi:10.1038/s41591-026-04652-8. Both published 22 September 2026. No mortality or overdiagnosis endpoint admitted."
+            }
+          ],
+          "current": [
+            {
+              "id": "AS-001",
+              "date": "2024-01-15",
+              "pressureState": "fragmenting",
+              "verificationStage": "VS-03",
+              "summary": "The claim is partially supported and fragmenting. Blood-based liquid biopsy can detect cancer signals before conventional diagnosis in a demonstrable fraction of cases — the Galleri test's performance data establishes this for multiple cancer types. The detection is reliable in a technical sense: specificity is high (98.4%) and sensitivity, while lower than desired, is non-trivial across cancer types. For the claim as stated, this constitutes partial confirmation: early detection before conventional diagnosis is achievable in some cases. The claim fragments on the central unresolved question: whether that earlier detection reduces cancer mortality, or whether it produces stage shift and lead-time effects without a genuine survival benefit (IN-004). Sensitivity is markedly lower for early-stage disease (approximately 24% at Stage I) — precisely the regime in which the claim's value would be greatest — and the NHS-Galleri trial (INST-003), the first to test the claim against a mortality endpoint directly, has not yet reported. The pressure state is FRAGMENTING: the technology works as a detection instrument, but whether detection translates into the clinical benefit the claim asserts remains genuinely open (AT-001).",
+              "assessorNote": null
+            },
+            {
+              "id": "AS-002",
+              "date": "2026-06-27",
+              "pressureState": "fragmenting",
+              "verificationStage": "VS-04",
+              "summary": "The NHS-Galleri trial's full results (INST-006) sustain rather than resolve the FRAGMENTING state identified at AS-001. The trial delivers exactly the kind of evidence the record's attractor (AT-001) was built to await, and the result is genuinely mixed rather than confirmatory or disconfirming: a real, substantial reduction in late-stage diagnoses coexists with a missed primary endpoint, an unexpected rise in Stage III diagnoses, and no mortality data. This is not a null result — the four-fold detection-rate increase and Stage IV reduction are real signals — but it does not resolve the central contested question (OQ-001): whether earlier detection translates into reduced mortality, or whether it is partially absorbed by stage migration and lead-time effects that RM-001/AT-001 already anticipated. Verification stage advances to VS-04 (Replication): a population-scale randomised trial has now run and reported, the most rigorous test design available short of mortality follow-up itself. The record should be re-entered when GRAIL's extended follow-up data (6–12 months from this release) becomes available, since that data — not this release — is positioned to address OQ-001 directly.",
+              "assessorNote": "Sources: GRAIL press releases and ASCO 2026 presentation (May 30, 2026); Journal of Clinical Oncology; independent commentary via Science Media Centre. Verified directly via web search during RELEASE-004 / TRIAL-001, 2026-06-27."
+            },
+            {
+              "id": "AS-003",
+              "date": "2026-09-26",
+              "pressureState": "fragmenting",
+              "verificationStage": "VS-04",
+              "summary": "Peer-reviewed publication of the NHS-Galleri randomized primary results (IN-007) and three-round test-performance analysis (IN-008) materially strengthens the record's evidence quality without resolving its central fracture. The primary Stage III/IV incidence endpoint remains negative (IRR 1.03; 95% CI 0.92–1.14), while the Stage IV secondary result remains a potentially favorable but not independently resolving signal (IRR 0.86; 95% CI 0.74–1.00). The companion performance analysis shows consistently very high specificity but episode sensitivity of only 26.7–37.2% for all cancers across annual rounds. This combination supports the claim that blood-based MCED can detect otherwise occult cancers in population screening, but it does not establish that screening produces clinically meaningful outcome benefit. Mortality and overdiagnosis remain explicitly outstanding. Pressure State therefore remains FRAGMENTING and Verification Stage remains VS-04; AT-001 is unsatisfied.",
+              "assessorNote": "Normal Record Review 2026-09-26. Sources: Sasieni et al., NEJM, doi:10.1056/NEJMoa2505723; Neal et al., Nature Medicine, doi:10.1038/s41591-026-04652-8. Both published 22 September 2026. No mortality or overdiagnosis endpoint admitted."
+            },
+            {
+              "id": "AS-004",
+              "date": "2026-11-01",
+              "pressureState": "fragmenting",
+              "verificationStage": "VS-04",
+              "summary": "D68 bounded corrections reaffirm FRAGMENTING / VS-04. The foundational ctDNA sources do not establish the removed generalised FDA breakthrough-designation claim. The European Commission withdrew its 2023 Illumina/GRAIL restorative-measures decision in September 2024 following a jurisdiction ruling; Illumina’s June 2024 spin-off remains historical fact. The NHS-Galleri fourfold comparison concerns screen-detected cancers (1,173 versus 290), not all cancers diagnosed (3,637 versus 3,400). AS-002 remains historically intact but its ambiguous denominator is superseded here. The missed combined Stage III/IV primary endpoint and lack of demonstrated mortality benefit remain controlling limitations. PATHFINDER 2 is a separate, unadmitted Normal Record Review candidate.",
+              "assessorNote": "Operator-approved D68 bounded correction; no new evidence admitted, historical assessments preserved."
+            },
+            {
+              "id": "AS-005",
+              "date": "2026-11-01",
+              "pressureState": "fragmenting",
+              "verificationStage": "VS-04",
+              "summary": "PATHFINDER 2 (IN-009) provides a distinct, peer-reviewed, prospective single-arm North American cohort supporting the reproducibility of Galleri cancer-signal detection performance in intended-use screening populations: 39.3% all-cancer episode sensitivity, 99.64% specificity and 60.3% positive predictive value in 32,007 performance-analyzable participants. It also exposes substantial false-negative sensitivity limitations. The sponsor-designed and sponsor-funded study has descriptive endpoints and does not demonstrate reduced late-stage incidence, mortality benefit or net clinical utility. NHS-Galleri's randomized missed primary Stage III/IV endpoint remains independently controlling for utility. The two cohorts must not be counted as two randomized efficacy confirmations, and separately weighted regulatory metrics must not be mixed with the paper's performance estimates. FRAGMENTING / VS-04 reaffirmed: detection performance strengthens, clinical outcome warrant remains unresolved.",
+              "assessorNote": "Operator-authorized Normal Record Review admission of distinct PATHFINDER 2 evidence. Source: Nabavizadeh et al., Nature Medicine 2026, doi:10.1038/s41591-026-04618-w. No reclassification or mortality inference."
+            }
+          ]
+        },
+        {
+          "field": "mutationLog",
+          "previous": [
+            {
+              "id": "M-017",
+              "date": "2026-10-19",
+              "field": "reference_corrected",
+              "from": "IN-005 institutional references unlinked; two IN-006 references unlinked",
+              "to": "Exact regulator/company source links on IN-005 and remaining same-trial references on IN-006",
+              "note": "Operator-authorised Batch 5 / R05 source repairs, increment 2. Add URLs for already named documents and structured citations for the existing IN-005 bundle. No new evidence, assessment, scientific wording, state, stage, dates, counts, relationships, review-completion marker or prior mutation changed. Preserve sourceReference and the conference-abstract citation; company releases and expert commentary are not independent trial replications. Exact changes and source verification: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-2-2026-10-19.json and companion .md."
+            },
+            {
+              "id": "M-016",
+              "date": "2026-10-19",
+              "field": "reference_corrected",
+              "from": "Named citations without structured verified links",
+              "to": "Verified source links on IN-001, IN-002, IN-003, IN-004, IN-006",
+              "note": "Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, assessments, dates, relationships, review status and all prior mutations preserved. BT-0004 IN-003 citation and sourceReference clarify Swanton as first author of the existing DOI; the prior Neal attribution is preserved in the receipt. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."
+            },
+            {
+              "id": "M-015",
+              "date": "2026-10-19",
+              "field": "reference_corrected",
+              "from": "Clinical report continuity not visible in evidence list",
+              "to": "Source-verified trial/participant continuity notices on IN-006, IN-007, IN-008",
+              "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."
+            },
+            {
+              "id": "M-014",
+              "date": "2026-10-19",
+              "field": "reference_corrected",
+              "from": "Generic historical assessment targets retained without structured links",
+              "to": "Reviewed associations: M-007 → AS-002",
+              "note": "Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."
+            },
+            {
+              "id": "M-013",
+              "date": "2026-10-08",
+              "field": "reference_corrected",
+              "from": "Stale explanatory cross-reference, regimen or count premise",
+              "to": "Explanatory fields aligned with existing record-specific evidence and corpus boundaries",
+              "note": "Editorial Correction (GP-001), second consistency batch: openQuestions.2.question aligned with existing admitted evidence, corrected cross-references and the dated corpus checkpoint. No new evidence, reassessment, taxonomy or logging procedure. Claims, instances, assessments, status, provenance metadata, original question IDs and raised dates, and prior mutations unchanged. Previous values and source basis: docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json."
+            },
+            {
+              "id": "M-012",
+              "date": "2026-09-26",
+              "field": "assessment_issued",
+              "from": "AS-002 / FRAGMENTING / VS-04",
+              "to": "AS-003 / FRAGMENTING / VS-04",
+              "note": "Normal Record Review of the two LPR-001-D28 new-evidence candidates. Peer-reviewed NHS-Galleri primary RCT and three-round performance papers admitted as IN-007 and IN-008. Evidence quality and test-performance characterization strengthened; mortality and overdiagnosis remain unresolved; AT-001 unsatisfied."
+            },
+            {
+              "id": "M-011",
+              "date": "2026-09-26",
+              "field": "instances_logged",
+              "from": "IN-001–IN-006",
+              "to": "IN-001–IN-008",
+              "note": "Normal Record Review admitted Sasieni et al. NEJM doi:10.1056/NEJMoa2505723 as IN-007 and Neal et al. Nature Medicine doi:10.1038/s41591-026-04652-8 as IN-008. These were held outside LPR-001-D28 until normal review."
+            },
+            {
+              "id": "M-010",
+              "date": "2026-09-26",
+              "field": "provenance_review_completed",
+              "from": "LPR-001-D28 discrepancies_found / pending",
+              "to": "LPR-001-D28 discrepancies_corrected / completed",
+              "note": "Approved bounded LPR-001 correction. IN-001 date scope corrected from 2014–19 to 2008–19 to include the cited Diehl et al. 2008 foundation. IN-003 participant count corrected from 142,924 enrolled to 142,250 randomised, with arm counts 71,122 and 71,128, matching the peer-reviewed NHS-Galleri result. No new scientific evidence admitted; September 2026 NHS-Galleri publications remain Normal Record Review candidates."
+            },
+            {
+              "id": "M-009",
+              "date": "2026-09-06",
+              "field": "description_restored",
+              "from": "Legacy ingestion cutoffs: mechanisms:BN-001",
+              "to": "Source-restored complete descriptions",
+              "note": "Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored BN-001 from FR_BT_0004_liquid_biopsy_early_cancer_detection.html (Drive file 1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."
+            },
+            {
+              "id": "M-008",
+              "date": "2026-08-28",
+              "field": "reference_corrected",
+              "from": "Instance references absent; IN-002 cohort/date imprecise; IN-003/AS-001 derivative frame treated mortality as NHS-Galleri's primary endpoint; IN-005 transaction value and divestment account imprecise; IN-006 described a conference abstract as concurrent JCO publication",
+              "to": "IN-001–IN-006 references recorded; cohort, endpoint, transaction and publication-status descriptions corrected",
+              "note": "GP-001 provenance and description correction following the bounded three-record source/DOI audit. IN-003, RM-001, AT-001 and OQ-001 now distinguish the trial's actual late-stage-incidence primary endpoint from later mortality evidence. IN-005 records the approximately $7.1bn transaction and both EU and US enforcement history. IN-006 identifies JCO LBA100 as a conference-supplement abstract rather than a full article. AS-001 and AS-002 remain unchanged as append-only historical assessments; their mortality-endpoint wording must be read with this correction. Current Pressure State FRAGMENTING and Verification Stage VS-04 remain unchanged."
+            },
+            {
+              "id": "M-007",
+              "date": "2026-06-27",
+              "field": "assessment_issued",
+              "from": "—",
+              "to": "ASSESSMENT-ISSUED",
+              "note": "ASSESSMENT-002 issued. Pressure state: FRAGMENTING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001."
+            },
+            {
+              "id": "M-006",
+              "date": "2026-06-27",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": "INST-006 added (NHS-Galleri full trial results, ASCO 2026)."
+            },
+            {
+              "id": "M-005",
+              "date": "2024-01-15",
+              "field": "diagnosis_confirmed",
+              "from": "—",
+              "to": "DIAGNOSIS-CONFIRMED",
+              "note": ""
+            },
+            {
+              "id": "M-004",
+              "date": "2024-01-15",
+              "field": "mechanisms_recorded",
+              "from": "—",
+              "to": "MECHANISMS-RECORDED",
+              "note": ""
+            },
+            {
+              "id": "M-003",
+              "date": "2024-01-15",
+              "field": "assessment_issued",
+              "from": "—",
+              "to": "ASSESSMENT-ISSUED",
+              "note": ""
+            },
+            {
+              "id": "M-002",
+              "date": "2024-01-15",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": ""
+            },
+            {
+              "id": "M-001",
+              "date": "2024-01-15",
+              "field": "record_created",
+              "from": "—",
+              "to": "RECORD-CREATED",
+              "note": ""
+            }
+          ],
+          "current": [
+            {
+              "id": "M-020",
+              "date": "2026-11-01",
+              "field": "evidence_admitted",
+              "from": "8 instances / 4 assessments; PATHFINDER 2 queued for Normal Record Review",
+              "to": "9 instances / 5 assessments; IN-009 and AS-005; FRAGMENTING / VS-04 retained",
+              "note": "Operator-approved source-verified PATHFINDER 2 admission. Distinct prospective single-arm cohort, not NHS-Galleri randomized efficacy replication. Source DOI 10.1038/s41591-026-04618-w; 32,007 performance set, 35,335 safety set; descriptive results and sponsor involvement noted; mortality/clinical utility unresolved."
+            },
+            {
+              "id": "M-019",
+              "date": "2026-11-01",
+              "field": "bounded_correction",
+              "from": "D68 three material representation discrepancies pending",
+              "to": "IN-001, IN-005, IN-006 corrected and AS-004 appended",
+              "note": "Operator-approved bounded repair: remove unsupported FDA-designation generalisation; add September 2024 EU withdrawal and primary source; distinguish screen-detected from total cancer diagnoses; append corrective assessment without rewriting AS-002. PATHFINDER 2 not admitted."
+            },
+            {
+              "id": "M-018",
+              "date": "2026-11-01",
+              "field": "provenance_review",
+              "from": "LPR-001-D28 discrepancies_corrected / completed",
+              "to": "LPR-001-D68 discrepancies_found / pending",
+              "note": "Second-cycle LPR-001 review of all eight existing instances, selected after verifying D67 persisted on canonical main. Five instances source-verified; three bounded material representation/attribution issues held for operator approval: IN-001 unsupported 2019 breakthrough-designation generalisation; IN-005 omitted 2024 EU withdrawal of Illumina/GRAIL divestment decision; IN-006 fourfold screen-detected versus overall cancer-detection conflation, also inherited by AS-002. No scientific text, vectors, sources, assessments, State or Stage altered. Distinct PATHFINDER 2 publication flagged for Normal Record Review, not admitted. Receipt docs/reviews/LPR-001-D68-FR-BT-0004-2026-11-01.json."
+            },
+            {
+              "id": "M-017",
+              "date": "2026-10-19",
+              "field": "reference_corrected",
+              "from": "IN-005 institutional references unlinked; two IN-006 references unlinked",
+              "to": "Exact regulator/company source links on IN-005 and remaining same-trial references on IN-006",
+              "note": "Operator-authorised Batch 5 / R05 source repairs, increment 2. Add URLs for already named documents and structured citations for the existing IN-005 bundle. No new evidence, assessment, scientific wording, state, stage, dates, counts, relationships, review-completion marker or prior mutation changed. Preserve sourceReference and the conference-abstract citation; company releases and expert commentary are not independent trial replications. Exact changes and source verification: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-2-2026-10-19.json and companion .md."
+            },
+            {
+              "id": "M-016",
+              "date": "2026-10-19",
+              "field": "reference_corrected",
+              "from": "Named citations without structured verified links",
+              "to": "Verified source links on IN-001, IN-002, IN-003, IN-004, IN-006",
+              "note": "Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, assessments, dates, relationships, review status and all prior mutations preserved. BT-0004 IN-003 citation and sourceReference clarify Swanton as first author of the existing DOI; the prior Neal attribution is preserved in the receipt. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."
+            },
+            {
+              "id": "M-015",
+              "date": "2026-10-19",
+              "field": "reference_corrected",
+              "from": "Clinical report continuity not visible in evidence list",
+              "to": "Source-verified trial/participant continuity notices on IN-006, IN-007, IN-008",
+              "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."
+            },
+            {
+              "id": "M-014",
+              "date": "2026-10-19",
+              "field": "reference_corrected",
+              "from": "Generic historical assessment targets retained without structured links",
+              "to": "Reviewed associations: M-007 → AS-002",
+              "note": "Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."
+            },
+            {
+              "id": "M-013",
+              "date": "2026-10-08",
+              "field": "reference_corrected",
+              "from": "Stale explanatory cross-reference, regimen or count premise",
+              "to": "Explanatory fields aligned with existing record-specific evidence and corpus boundaries",
+              "note": "Editorial Correction (GP-001), second consistency batch: openQuestions.2.question aligned with existing admitted evidence, corrected cross-references and the dated corpus checkpoint. No new evidence, reassessment, taxonomy or logging procedure. Claims, instances, assessments, status, provenance metadata, original question IDs and raised dates, and prior mutations unchanged. Previous values and source basis: docs/reviews/MCP-SECONDARY-CONSISTENCY-REPAIR-2026-10-08.json."
+            },
+            {
+              "id": "M-012",
+              "date": "2026-09-26",
+              "field": "assessment_issued",
+              "from": "AS-002 / FRAGMENTING / VS-04",
+              "to": "AS-003 / FRAGMENTING / VS-04",
+              "note": "Normal Record Review of the two LPR-001-D28 new-evidence candidates. Peer-reviewed NHS-Galleri primary RCT and three-round performance papers admitted as IN-007 and IN-008. Evidence quality and test-performance characterization strengthened; mortality and overdiagnosis remain unresolved; AT-001 unsatisfied."
+            },
+            {
+              "id": "M-011",
+              "date": "2026-09-26",
+              "field": "instances_logged",
+              "from": "IN-001–IN-006",
+              "to": "IN-001–IN-008",
+              "note": "Normal Record Review admitted Sasieni et al. NEJM doi:10.1056/NEJMoa2505723 as IN-007 and Neal et al. Nature Medicine doi:10.1038/s41591-026-04652-8 as IN-008. These were held outside LPR-001-D28 until normal review."
+            },
+            {
+              "id": "M-010",
+              "date": "2026-09-26",
+              "field": "provenance_review_completed",
+              "from": "LPR-001-D28 discrepancies_found / pending",
+              "to": "LPR-001-D28 discrepancies_corrected / completed",
+              "note": "Approved bounded LPR-001 correction. IN-001 date scope corrected from 2014–19 to 2008–19 to include the cited Diehl et al. 2008 foundation. IN-003 participant count corrected from 142,924 enrolled to 142,250 randomised, with arm counts 71,122 and 71,128, matching the peer-reviewed NHS-Galleri result. No new scientific evidence admitted; September 2026 NHS-Galleri publications remain Normal Record Review candidates."
+            },
+            {
+              "id": "M-009",
+              "date": "2026-09-06",
+              "field": "description_restored",
+              "from": "Legacy ingestion cutoffs: mechanisms:BN-001",
+              "to": "Source-restored complete descriptions",
+              "note": "Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored BN-001 from FR_BT_0004_liquid_biopsy_early_cancer_detection.html (Drive file 1gbY5KwOYxG6sVUv5rRJZUhmCzmS5B0HS). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."
+            },
+            {
+              "id": "M-008",
+              "date": "2026-08-28",
+              "field": "reference_corrected",
+              "from": "Instance references absent; IN-002 cohort/date imprecise; IN-003/AS-001 derivative frame treated mortality as NHS-Galleri's primary endpoint; IN-005 transaction value and divestment account imprecise; IN-006 described a conference abstract as concurrent JCO publication",
+              "to": "IN-001–IN-006 references recorded; cohort, endpoint, transaction and publication-status descriptions corrected",
+              "note": "GP-001 provenance and description correction following the bounded three-record source/DOI audit. IN-003, RM-001, AT-001 and OQ-001 now distinguish the trial's actual late-stage-incidence primary endpoint from later mortality evidence. IN-005 records the approximately $7.1bn transaction and both EU and US enforcement history. IN-006 identifies JCO LBA100 as a conference-supplement abstract rather than a full article. AS-001 and AS-002 remain unchanged as append-only historical assessments; their mortality-endpoint wording must be read with this correction. Current Pressure State FRAGMENTING and Verification Stage VS-04 remain unchanged."
+            },
+            {
+              "id": "M-007",
+              "date": "2026-06-27",
+              "field": "assessment_issued",
+              "from": "—",
+              "to": "ASSESSMENT-ISSUED",
+              "note": "ASSESSMENT-002 issued. Pressure state: FRAGMENTING (sustained). Triggering instance: INST-006. Part of RELEASE-004 / TRIAL-001."
+            },
+            {
+              "id": "M-006",
+              "date": "2026-06-27",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": "INST-006 added (NHS-Galleri full trial results, ASCO 2026)."
+            },
+            {
+              "id": "M-005",
+              "date": "2024-01-15",
+              "field": "diagnosis_confirmed",
+              "from": "—",
+              "to": "DIAGNOSIS-CONFIRMED",
+              "note": ""
+            },
+            {
+              "id": "M-004",
+              "date": "2024-01-15",
+              "field": "mechanisms_recorded",
+              "from": "—",
+              "to": "MECHANISMS-RECORDED",
+              "note": ""
+            },
+            {
+              "id": "M-003",
+              "date": "2024-01-15",
+              "field": "assessment_issued",
+              "from": "—",
+              "to": "ASSESSMENT-ISSUED",
+              "note": ""
+            },
+            {
+              "id": "M-002",
+              "date": "2024-01-15",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": ""
+            },
+            {
+              "id": "M-001",
+              "date": "2024-01-15",
+              "field": "record_created",
+              "from": "—",
+              "to": "RECORD-CREATED",
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "FR-QE-0002",
+      "previousHash": "02af0c06b9590be8c45d7183f920253fd2602212caaa815307341ab465a4a869",
+      "currentHash": "84968776795c8b9fa7bda2f6c68e86e9e127467a70e4c6d86449cb6ba29c4786",
+      "changes": [
+        {
+          "field": "lastProvenanceReview",
+          "previous": "2026-10-03",
+          "current": "2026-11-06"
+        },
+        {
+          "field": "provenanceReviewId",
+          "previous": "LPR-001-D39",
+          "current": "LPR-001-D73"
+        },
+        {
+          "field": "provenanceOutcome",
+          "previous": "discrepancies_corrected",
+          "current": "verified"
+        },
+        {
+          "field": "provenanceRepairStatus",
+          "previous": "completed",
+          "current": "not_required"
+        },
+        {
+          "field": "instances",
+          "previous": [
+            {
+              "id": "IN-001",
+              "qualifiedEvent": "D-Wave One / Two — Initial commercial deployments",
+              "description": "D-Wave's early commercial deployment included the 2011 Lockheed Martin system. In 2013, NASA, USRA and Google announced a collaboration using a D-Wave Two installed at NASA Ames; contemporaneous NASA reporting states that USRA leased the computer from D-Wave, rather than describing a collective Google/NASA/USRA purchase. Rønnow et al. (2014) subsequently benchmarked a D-Wave Two on random spin-glass instances and found no evidence of quantum speedup across the full data set, with instance-level subset results inconclusive.",
+              "vectors": [
+                "contesting"
+              ],
+              "date": "2011–2013",
+              "sources": [
+                {
+                  "citation": "NASA Advanced Supercomputing Division. Quantum Computing Collaboration Announced (17 May 2013).",
+                  "url": "https://www.nas.nasa.gov/pubs/news/2013/05-17-13.html"
+                },
+                {
+                  "citation": "Rønnow, T. F. et al. Defining and detecting quantum speedup. Science 345, 420–424 (2014).",
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/25061205/",
+                  "doi": "10.1126/science.1252319"
+                }
+              ]
+            },
+            {
+              "id": "IN-002",
+              "qualifiedEvent": "Google / D-Wave 2X finite-range tunnelling benchmark",
+              "description": "Denchev et al. (2016, Physical Review X) report that the D-Wave 2X achieved runtime advantages of up to about 100 million times over single-core simulated annealing and an optimized single-core quantum Monte Carlo implementation on a crafted weak-strong-cluster benchmark, using instances up to 945 variables. The authors also note that heuristic classical algorithms can solve most Chimera-structured instances on timescales comparable to the D-Wave 2X, bounding the demonstrated advantage to the specified benchmark and comparator classes.",
+              "vectors": [
+                "partial--benchmark-contested"
+              ],
+              "date": "2015–2016",
+              "sources": [
+                {
+                  "citation": "Denchev, V. S. et al. What is the Computational Value of Finite-Range Tunneling? Physical Review X 6, 031015 (2016).",
+                  "url": "https://journals.aps.org/prx/abstract/10.1103/PhysRevX.6.031015",
+                  "doi": "10.1103/PhysRevX.6.031015"
+                }
+              ]
+            },
+            {
+              "id": "IN-003",
+              "qualifiedEvent": "D-Wave Advantage launch — 5000+ qubit system",
+              "description": "D-Wave releases the Advantage system with over 5,000 qubits and a new Pegasus topology. D-Wave publishes case studies concerning applications including routing, scheduling and financial optimisation. Yarkoni et al. (2022, Reports on Progress in Physics) is a review of quantum annealing for industry applications that surveys application methods, opportunities and limitations; it does not establish the categorical cross-instance performance conclusion previously attributed to it in this record.",
+              "vectors": [
+                "partial--hybrid-dependency"
+              ],
+              "date": "2019–2020",
+              "sources": [
+                {
+                  "citation": "Yarkoni, S., Raponi, E., Bäck, T. & Schmitt, S. Quantum annealing for industry applications: introduction and review. Reports on Progress in Physics 85 (2022).",
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/36001953/",
+                  "doi": "10.1088/1361-6633/ac8c54"
+                }
+              ]
+            },
+            {
+              "id": "IN-004",
+              "qualifiedEvent": "King et al. — Coherent quantum annealing in a programmable 2,000-qubit Ising chain",
+              "description": "King et al. (2022, Nature Physics) demonstrate coherent evolution through a quantum phase transition in a one-dimensional transverse-field Ising chain using up to 2,000 superconducting flux qubits. The results agree quantitatively with analytical solutions of the closed-system quantum model and establish coherent large-scale annealing dynamics. The paper presents this capability as a path toward quantum optimisation, machine learning and simulation tasks; it does not itself establish practical computational advantage on optimisation tasks.",
+              "vectors": [
+                "supportive--scientific-relevance"
+              ],
+              "date": "2022",
+              "sources": [
+                {
+                  "citation": "King, A. D. et al. Coherent quantum annealing in a programmable 2,000 qubit Ising chain. Nature Physics 18, 1324–1328 (2022).",
+                  "url": "https://www.nature.com/articles/s41567-022-01741-6",
+                  "doi": "10.1038/s41567-022-01741-6"
+                }
+              ]
+            },
+            {
+              "id": "IN-005",
+              "qualifiedEvent": "King et al. — Computational advantage in quantum simulation of magnetic materials",
+              "description": "King et al. (2023, Nature) realize quantum-critical dynamics in three-dimensional spin glasses on thousands of qubits. The authors report critical exponents distinguishing quantum annealing from the slower stochastic dynamics of analogous Monte Carlo algorithms, supporting large-scale quantum simulation and a scaling advantage in energy optimization for the studied systems. The result is therefore bounded to the paper's spin-glass setting and analogous Monte Carlo comparators rather than establishing unrestricted advantage over classical methods.",
+              "vectors": [
+                "partial--domain-scope-disputed"
+              ],
+              "date": "2023",
+              "sources": [
+                {
+                  "citation": "King, A. D. et al. Quantum critical dynamics in a 5,000-qubit programmable spin glass. Nature 617, 61–66 (2023).",
+                  "url": "https://www.nature.com/articles/s41586-023-05867-2",
+                  "doi": "10.1038/s41586-023-05867-2"
+                }
+              ]
+            },
+            {
+              "id": "IN-006",
+              "qualifiedEvent": "Quinton et al. — D-Wave hybrid optimisation benchmarked against leading classical solvers",
+              "description": "Quinton et al. (2025) benchmarked D-Wave's LeapHybridCQMSolver against CPLEX, Gurobi and IPOPT across several optimisation classes. The hybrid solver was competitive with leading classical approaches only for a limited range of problems: it showed a computational advantage for the studied binary quadratic programming cases, while no computational advantage was found for the tested binary linear programming cases and it did not surpass Gurobi on the real-world mixed-integer unit-commitment case. The result therefore provides independently published, task-specific evidence of practical competitiveness and bounded advantage while directly constraining any broader optimisation-advantage interpretation.",
+              "vectors": [
+                "partial--limited-optimisation-advantage"
+              ],
+              "date": "2025",
+              "sources": [
+                {
+                  "citation": "Quinton, F. A., Myhr, P. A. S., Barani, M., Crespo del Granado, P. & Zhang, H. Quantum annealing applications, challenges and limitations for optimisation problems compared to classical solvers. Scientific Reports 15, 12733 (2025).",
+                  "url": "https://www.nature.com/articles/s41598-025-96220-2",
+                  "doi": "10.1038/s41598-025-96220-2"
+                }
+              ]
+            }
+          ],
+          "current": [
+            {
+              "id": "IN-001",
+              "qualifiedEvent": "D-Wave One / Two — Initial commercial deployments",
+              "description": "D-Wave's early commercial deployment included the 2011 Lockheed Martin system. In 2013, NASA, USRA and Google announced a collaboration using a D-Wave Two installed at NASA Ames; contemporaneous NASA reporting states that USRA leased the computer from D-Wave, rather than describing a collective Google/NASA/USRA purchase. Rønnow et al. (2014) subsequently benchmarked a D-Wave Two on random spin-glass instances and found no evidence of quantum speedup across the full data set, with instance-level subset results inconclusive.",
+              "vectors": [
+                "contesting"
+              ],
+              "date": "2011–2013",
+              "sources": [
+                {
+                  "citation": "NASA Advanced Supercomputing Division. Quantum Computing Collaboration Announced (17 May 2013).",
+                  "url": "https://www.nas.nasa.gov/pubs/news/2013/05-17-13.html"
+                },
+                {
+                  "citation": "Rønnow, T. F. et al. Defining and detecting quantum speedup. Science 345, 420–424 (2014).",
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/25061205/",
+                  "doi": "10.1126/science.1252319"
+                }
+              ]
+            },
+            {
+              "id": "IN-002",
+              "qualifiedEvent": "Google / D-Wave 2X finite-range tunnelling benchmark",
+              "description": "Denchev et al. (2016, Physical Review X) report that the D-Wave 2X achieved runtime advantages of up to about 100 million times over single-core simulated annealing and an optimized single-core quantum Monte Carlo implementation on a crafted weak-strong-cluster benchmark, using instances up to 945 variables. The authors also note that heuristic classical algorithms can solve most Chimera-structured instances on timescales comparable to the D-Wave 2X, bounding the demonstrated advantage to the specified benchmark and comparator classes.",
+              "vectors": [
+                "partial--benchmark-contested"
+              ],
+              "date": "2015–2016",
+              "sources": [
+                {
+                  "citation": "Denchev, V. S. et al. What is the Computational Value of Finite-Range Tunneling? Physical Review X 6, 031015 (2016).",
+                  "url": "https://journals.aps.org/prx/abstract/10.1103/PhysRevX.6.031015",
+                  "doi": "10.1103/PhysRevX.6.031015"
+                }
+              ]
+            },
+            {
+              "id": "IN-003",
+              "qualifiedEvent": "D-Wave Advantage launch — 5000+ qubit system",
+              "description": "D-Wave releases the Advantage system with over 5,000 qubits and a new Pegasus topology. D-Wave publishes case studies concerning applications including routing, scheduling and financial optimisation. Yarkoni et al. (2022, Reports on Progress in Physics) is a review of quantum annealing for industry applications that surveys application methods, opportunities and limitations; it does not establish the categorical cross-instance performance conclusion previously attributed to it in this record.",
+              "vectors": [
+                "partial--hybrid-dependency"
+              ],
+              "date": "2019–2020",
+              "sources": [
+                {
+                  "citation": "Yarkoni, S., Raponi, E., Bäck, T. & Schmitt, S. Quantum annealing for industry applications: introduction and review. Reports on Progress in Physics 85 (2022).",
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/36001953/",
+                  "doi": "10.1088/1361-6633/ac8c54"
+                },
+                {
+                  "citation": "D-Wave Systems. D-Wave Announces General Availability of First Quantum Computer Built for Business (29 September 2020).",
+                  "url": "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-announces-general-availability-of-first-quantum-computer-built-for-business/",
+                  "locator": "Primary company announcement for Advantage general availability, 5,000+ qubits and Pegasus connectivity; vendor claims are not independent performance validation."
+                }
+              ]
+            },
+            {
+              "id": "IN-004",
+              "qualifiedEvent": "King et al. — Coherent quantum annealing in a programmable 2,000-qubit Ising chain",
+              "description": "King et al. (2022, Nature Physics) demonstrate coherent evolution through a quantum phase transition in a one-dimensional transverse-field Ising chain using up to 2,000 superconducting flux qubits. The results agree quantitatively with analytical solutions of the closed-system quantum model and establish coherent large-scale annealing dynamics. The paper presents this capability as a path toward quantum optimisation, machine learning and simulation tasks; it does not itself establish practical computational advantage on optimisation tasks.",
+              "vectors": [
+                "supportive--scientific-relevance"
+              ],
+              "date": "2022",
+              "sources": [
+                {
+                  "citation": "King, A. D. et al. Coherent quantum annealing in a programmable 2,000 qubit Ising chain. Nature Physics 18, 1324–1328 (2022).",
+                  "url": "https://www.nature.com/articles/s41567-022-01741-6",
+                  "doi": "10.1038/s41567-022-01741-6"
+                }
+              ]
+            },
+            {
+              "id": "IN-005",
+              "qualifiedEvent": "King et al. — Computational advantage in quantum simulation of magnetic materials",
+              "description": "King et al. (2023, Nature) realize quantum-critical dynamics in three-dimensional spin glasses on thousands of qubits. The authors report critical exponents distinguishing quantum annealing from the slower stochastic dynamics of analogous Monte Carlo algorithms, supporting large-scale quantum simulation and a scaling advantage in energy optimization for the studied systems. The result is therefore bounded to the paper's spin-glass setting and analogous Monte Carlo comparators rather than establishing unrestricted advantage over classical methods.",
+              "vectors": [
+                "partial--domain-scope-disputed"
+              ],
+              "date": "2023",
+              "sources": [
+                {
+                  "citation": "King, A. D. et al. Quantum critical dynamics in a 5,000-qubit programmable spin glass. Nature 617, 61–66 (2023).",
+                  "url": "https://www.nature.com/articles/s41586-023-05867-2",
+                  "doi": "10.1038/s41586-023-05867-2"
+                }
+              ]
+            },
+            {
+              "id": "IN-006",
+              "qualifiedEvent": "Quinton et al. — D-Wave hybrid optimisation benchmarked against leading classical solvers",
+              "description": "Quinton et al. (2025) benchmarked D-Wave's LeapHybridCQMSolver against CPLEX, Gurobi and IPOPT across several optimisation classes. The hybrid solver was competitive with leading classical approaches only for a limited range of problems: it showed a computational advantage for the studied binary quadratic programming cases, while no computational advantage was found for the tested binary linear programming cases and it did not surpass Gurobi on the real-world mixed-integer unit-commitment case. The result therefore provides independently published, task-specific evidence of practical competitiveness and bounded advantage while directly constraining any broader optimisation-advantage interpretation.",
+              "vectors": [
+                "partial--limited-optimisation-advantage"
+              ],
+              "date": "2025",
+              "sources": [
+                {
+                  "citation": "Quinton, F. A., Myhr, P. A. S., Barani, M., Crespo del Granado, P. & Zhang, H. Quantum annealing applications, challenges and limitations for optimisation problems compared to classical solvers. Scientific Reports 15, 12733 (2025).",
+                  "url": "https://www.nature.com/articles/s41598-025-96220-2",
+                  "doi": "10.1038/s41598-025-96220-2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": "mutationLog",
+          "previous": [
+            {
+              "id": "M-014",
+              "date": "2026-10-08",
+              "field": "reference_corrected",
+              "from": "Explanatory wording inconsistent with corrected admitted evidence and current assessment",
+              "to": "Bounded explanatory wording aligned with existing source limits and settled claim scope",
+              "note": "Editorial Correction (GP-001), priority consistency repair: mechanisms.2.description, openQuestions.0.question, lineage.items.2.text, lineage.items.3.text, lineage.items.4.text, lineage.items.5.text, lineage.items.6.text corrected against existing admitted evidence and current assessment. No evidence admitted and no reassessment; claim, instances, assessments, status, question IDs and raised dates, and prior mutation entries preserved. Previous values and field-level basis: docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json."
+            },
+            {
+              "id": "M-013",
+              "date": "2026-10-03",
+              "field": "provenance_correction",
+              "from": "LPR-001-D39 discrepancies_found / pending",
+              "to": "LPR-001-D39 discrepancies_corrected / completed",
+              "note": "Operator-approved bounded correction of the five legacy source-representation discrepancies carried from D14 and reconfirmed by D39. IN-001 corrects the 2013 transaction to USRA leasing the D-Wave system within the NASA/Google/USRA collaboration and bounds the 2014 benchmark conclusion. IN-002 replaces the erroneous 108-qubit framing with the D-Wave 2X weak-strong-cluster benchmark up to 945 variables and preserves the source's comparator limits. IN-003 removes the categorical performance conclusion not established by Yarkoni et al. and represents that work as an industry-applications review. IN-004 corrects Nature to Nature Physics, the model to a one-dimensional transverse-field Ising chain, and removes the unsupported classical-inaccessibility claim. IN-005 bounds the 2023 result to 3D spin-glass dynamics and analogous Monte Carlo comparators and removes the unsourced critics assertion. Structured sources added where attribution is established. IN-006, assessments, Pressure State and Verification Stage unchanged."
+            },
+            {
+              "id": "M-012",
+              "date": "2026-10-03",
+              "field": "provenance_review",
+              "from": "LPR-001-D14",
+              "to": "LPR-001-D39",
+              "note": "Second-cycle Legacy Provenance Review completed. Six current instances examined. IN-006 verified. Five previously identified D14 representation discrepancies remain pending governed correction; no discrepant wording was changed and no provenance was attached where that would endorse the current representation. No instance was provenance-unverifiable. No new scientific evidence was admitted or flagged for Normal Record Review. Outcome remains discrepancies_found / pending; Pressure State and Verification Stage unchanged."
+            },
+            {
+              "id": "M-011",
+              "date": "2026-09-12",
+              "field": "record_review",
+              "from": "Two 2025 Record Review candidates",
+              "to": "Quinton et al. admitted as IN-006; King et al. not admitted",
+              "note": "Governed normal Record Review completed for the two candidates surfaced by LPR-001-D14. Quinton et al., Scientific Reports 2025 (DOI 10.1038/s41598-025-96220-2), is admitted as IN-006 because it directly benchmarks a D-Wave hybrid quantum-annealing workflow against CPLEX, Gurobi and IPOPT on optimisation tasks. Its result is mixed and bounded: advantage for the studied BQP cases, but no general advantage across tested classes and no superiority over Gurobi on the unit-commitment case. King et al., Science 2025 (DOI 10.1126/science.ado6285), is not admitted as an evidence instance: despite strong beyond-classical quantum-simulation results, it studies dynamical quantum simulation rather than an optimisation task and therefore fails the settled optimisation-task element of this record's identity-bearing kernel. AS-003 appended; FRAGMENTING / VS-03 reaffirmed; lineage extended. LPR-001-D14 legacy discrepancies remain pending and were not altered by this Record Review."
+            },
+            {
+              "id": "M-010",
+              "date": "2026-09-12",
+              "field": "provenance_review",
+              "from": "—",
+              "to": "LPR-001-D14",
+              "note": "Legacy provenance review completed. All five evidence instances examined and each contains at least one source-fidelity, attribution, chronology, or interpretive issue requiring governed correction before structured sources[] can be attached without endorsing legacy wording. IN-001 inaccurately frames the 2013 D-Wave Two transaction as a sale to Google/NASA/USRA collectively; contemporaneous reporting identifies USRA as purchaser with Google and NASA collaborators. IN-002's qualified event incorrectly says 108-qubit while Denchev et al. studied D-Wave 2X instances up to 945 variables, and the legacy wording strengthens the source-supported claim that specialist classical heuristics are comparable into a broader match-or-exceed assertion. IN-003 attributes a categorical cross-instance performance conclusion to Yarkoni et al. 2022 that the review does not state in that form. IN-004 misidentifies the journal as Nature rather than Nature Physics, describes the system as a frustrated Ising spin glass rather than a one-dimensional transverse-field Ising chain, and attributes an inaccessibility claim not made by the paper. IN-005 overgeneralises the 2023 Nature result from scaling advantage against analogous Monte Carlo dynamics into a broader all-classical computational-advantage formulation and carries an unsourced critic-comparison assertion. No historical wording, assessment, pressure state, or verification stage was silently changed. Two post-baseline items were flagged for normal Record Review only: King et al., Science 2025, Beyond-classical computation in quantum simulation (DOI 10.1126/science.ado6285), and Quinton et al., Scientific Reports 2025, benchmarking D-Wave hybrid optimisation against CPLEX, Gurobi and IPOPT (DOI 10.1038/s41598-025-96220-2)."
+            },
+            {
+              "id": "M-009",
+              "date": "2026-09-06",
+              "field": "description_restored",
+              "from": "Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002",
+              "to": "Source-restored complete descriptions",
+              "note": "Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002 from FR_QE_0002_DWave_frontier_record.html (Drive file 1s9-MAnWoWMwt2ReSLdPtGSW6QRtOVgvM). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."
+            },
+            {
+              "id": "M-008",
+              "date": "2026-07-28",
+              "field": "reference_corrected",
+              "from": "IN-003: \"Yarkoni et al. 2022, EPJ Quantum Technology\"",
+              "to": "IN-003: \"Yarkoni et al. 2022, Reports on Progress in Physics\"",
+              "note": "GP-001 Editorial Correction. Incorrect publication metadata — IN-003 cited the wrong journal for Yarkoni et al. 2022; correct journal is Reports on Progress in Physics. Surfaced during FR-QE-0002 Identity and Continuity Review, Revision 3 (Baseline Sufficiency Assessment), confirmed as an admission-era error present verbatim in the recovered pre-deployment source. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed."
+            },
+            {
+              "id": "M-007",
+              "date": "2026-07-28",
+              "field": "description_corrected",
+              "from": "IN-002: \"...on specific quantum simulation instances.\"",
+              "to": "IN-002: \"...on specific combinatorial optimisation instances.\"",
+              "note": "GP-001 Editorial Correction. IN-002's description mischaracterised the Denchev et al. 2016 benchmark as simulation-task evidence; the contemporaneous source frames it as a \"quantum enhanced optimization heuristic\" tested on a crafted combinatorial problem. Corrected to restore the contemporaneous framing. This wording error was cosmetic to the record's own task-class kernel analysis (Terminal Identity and Continuity Finding, §B), which already classified IN-002 as engaging the optimisation-task kernel using the correct framing — this correction does not alter that finding. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed."
+            },
+            {
+              "id": "M-006",
+              "date": "2026-07-26",
+              "field": "open_question_added",
+              "from": "—",
+              "to": "OQ-006",
+              "note": "OQ-006 formally entered per Terminal Identity and Continuity Finding §C precision requirement (whether \"practical\" is part of the identity-bearing kernel or only an evaluative standard applied to it). Resolved: element of the settled kernel (Terminal Finding §A.2), with the standard for operationalising it left open — an evaluative-standard question, not an identity question. Does not reopen or alter the ratified Terminal Identity and Continuity Finding or Pressure State Reassessment."
+            },
+            {
+              "id": "M-005",
+              "date": "2026-07-26",
+              "field": "assessment_reissued",
+              "from": "AS-001 (domain-split warrant)",
+              "to": "AS-002 (kernel-level warrant, OQ-6)",
+              "note": "AS-002 appended following ratified Identity and Continuity Finding (IDENTITY PRESERVED AS A COMPOUND CLAIM) and Pressure State Reassessment (FRAGMENTING REMAINS WARRANTED — RE-GROUNDED). AS-001 preserved unchanged."
+            },
+            {
+              "id": "M-004",
+              "date": "2024-01-15",
+              "field": "mechanisms_recorded",
+              "from": "—",
+              "to": "MECHANISMS-RECORDED",
+              "note": "RM-001, RM-002 (Resistance); BN-001, BN-002 (Bottleneck) added."
+            },
+            {
+              "id": "M-003",
+              "date": "2024-01-15",
+              "field": "assessment_issued",
+              "from": "—",
+              "to": "ASSESSMENT-ISSUED",
+              "note": "ASSESSMENT-001 issued. Pressure state: FRAGMENTING."
+            },
+            {
+              "id": "M-002",
+              "date": "2024-01-15",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": "INST-001 through INST-005 added."
+            },
+            {
+              "id": "M-001",
+              "date": "2024-01-15",
+              "field": "record_created",
+              "from": "—",
+              "to": "RECORD-CREATED",
+              "note": "FR-QE-0002 opened. Claim ratified. Programme: PROG-QE."
+            }
+          ],
+          "current": [
+            {
+              "id": "M-015",
+              "date": "2026-11-06",
+              "field": "provenance_review",
+              "from": "LPR-001-D39 discrepancies_corrected / completed",
+              "to": "LPR-001-D73 verified / not_required",
+              "note": "Second-cycle bounded audit of all six existing instances. Five existing primary/review source sets retained, one IN-003 enriched with D-Wave primary 29 September 2020 Advantage launch announcement, explicitly not independent advantage validation. No new material discrepancy, evidence instance, assessment or State/Stage change. Receipt: docs/reviews/LPR-001-D73-FR-QE-0002-2026-11-06.json."
+            },
+            {
+              "id": "M-014",
+              "date": "2026-10-08",
+              "field": "reference_corrected",
+              "from": "Explanatory wording inconsistent with corrected admitted evidence and current assessment",
+              "to": "Bounded explanatory wording aligned with existing source limits and settled claim scope",
+              "note": "Editorial Correction (GP-001), priority consistency repair: mechanisms.2.description, openQuestions.0.question, lineage.items.2.text, lineage.items.3.text, lineage.items.4.text, lineage.items.5.text, lineage.items.6.text corrected against existing admitted evidence and current assessment. No evidence admitted and no reassessment; claim, instances, assessments, status, question IDs and raised dates, and prior mutation entries preserved. Previous values and field-level basis: docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json."
+            },
+            {
+              "id": "M-013",
+              "date": "2026-10-03",
+              "field": "provenance_correction",
+              "from": "LPR-001-D39 discrepancies_found / pending",
+              "to": "LPR-001-D39 discrepancies_corrected / completed",
+              "note": "Operator-approved bounded correction of the five legacy source-representation discrepancies carried from D14 and reconfirmed by D39. IN-001 corrects the 2013 transaction to USRA leasing the D-Wave system within the NASA/Google/USRA collaboration and bounds the 2014 benchmark conclusion. IN-002 replaces the erroneous 108-qubit framing with the D-Wave 2X weak-strong-cluster benchmark up to 945 variables and preserves the source's comparator limits. IN-003 removes the categorical performance conclusion not established by Yarkoni et al. and represents that work as an industry-applications review. IN-004 corrects Nature to Nature Physics, the model to a one-dimensional transverse-field Ising chain, and removes the unsupported classical-inaccessibility claim. IN-005 bounds the 2023 result to 3D spin-glass dynamics and analogous Monte Carlo comparators and removes the unsourced critics assertion. Structured sources added where attribution is established. IN-006, assessments, Pressure State and Verification Stage unchanged."
+            },
+            {
+              "id": "M-012",
+              "date": "2026-10-03",
+              "field": "provenance_review",
+              "from": "LPR-001-D14",
+              "to": "LPR-001-D39",
+              "note": "Second-cycle Legacy Provenance Review completed. Six current instances examined. IN-006 verified. Five previously identified D14 representation discrepancies remain pending governed correction; no discrepant wording was changed and no provenance was attached where that would endorse the current representation. No instance was provenance-unverifiable. No new scientific evidence was admitted or flagged for Normal Record Review. Outcome remains discrepancies_found / pending; Pressure State and Verification Stage unchanged."
+            },
+            {
+              "id": "M-011",
+              "date": "2026-09-12",
+              "field": "record_review",
+              "from": "Two 2025 Record Review candidates",
+              "to": "Quinton et al. admitted as IN-006; King et al. not admitted",
+              "note": "Governed normal Record Review completed for the two candidates surfaced by LPR-001-D14. Quinton et al., Scientific Reports 2025 (DOI 10.1038/s41598-025-96220-2), is admitted as IN-006 because it directly benchmarks a D-Wave hybrid quantum-annealing workflow against CPLEX, Gurobi and IPOPT on optimisation tasks. Its result is mixed and bounded: advantage for the studied BQP cases, but no general advantage across tested classes and no superiority over Gurobi on the unit-commitment case. King et al., Science 2025 (DOI 10.1126/science.ado6285), is not admitted as an evidence instance: despite strong beyond-classical quantum-simulation results, it studies dynamical quantum simulation rather than an optimisation task and therefore fails the settled optimisation-task element of this record's identity-bearing kernel. AS-003 appended; FRAGMENTING / VS-03 reaffirmed; lineage extended. LPR-001-D14 legacy discrepancies remain pending and were not altered by this Record Review."
+            },
+            {
+              "id": "M-010",
+              "date": "2026-09-12",
+              "field": "provenance_review",
+              "from": "—",
+              "to": "LPR-001-D14",
+              "note": "Legacy provenance review completed. All five evidence instances examined and each contains at least one source-fidelity, attribution, chronology, or interpretive issue requiring governed correction before structured sources[] can be attached without endorsing legacy wording. IN-001 inaccurately frames the 2013 D-Wave Two transaction as a sale to Google/NASA/USRA collectively; contemporaneous reporting identifies USRA as purchaser with Google and NASA collaborators. IN-002's qualified event incorrectly says 108-qubit while Denchev et al. studied D-Wave 2X instances up to 945 variables, and the legacy wording strengthens the source-supported claim that specialist classical heuristics are comparable into a broader match-or-exceed assertion. IN-003 attributes a categorical cross-instance performance conclusion to Yarkoni et al. 2022 that the review does not state in that form. IN-004 misidentifies the journal as Nature rather than Nature Physics, describes the system as a frustrated Ising spin glass rather than a one-dimensional transverse-field Ising chain, and attributes an inaccessibility claim not made by the paper. IN-005 overgeneralises the 2023 Nature result from scaling advantage against analogous Monte Carlo dynamics into a broader all-classical computational-advantage formulation and carries an unsourced critic-comparison assertion. No historical wording, assessment, pressure state, or verification stage was silently changed. Two post-baseline items were flagged for normal Record Review only: King et al., Science 2025, Beyond-classical computation in quantum simulation (DOI 10.1126/science.ado6285), and Quinton et al., Scientific Reports 2025, benchmarking D-Wave hybrid optimisation against CPLEX, Gurobi and IPOPT (DOI 10.1038/s41598-025-96220-2)."
+            },
+            {
+              "id": "M-009",
+              "date": "2026-09-06",
+              "field": "description_restored",
+              "from": "Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002",
+              "to": "Source-restored complete descriptions",
+              "note": "Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002 from FR_QE_0002_DWave_frontier_record.html (Drive file 1s9-MAnWoWMwt2ReSLdPtGSW6QRtOVgvM). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."
+            },
+            {
+              "id": "M-008",
+              "date": "2026-07-28",
+              "field": "reference_corrected",
+              "from": "IN-003: \"Yarkoni et al. 2022, EPJ Quantum Technology\"",
+              "to": "IN-003: \"Yarkoni et al. 2022, Reports on Progress in Physics\"",
+              "note": "GP-001 Editorial Correction. Incorrect publication metadata — IN-003 cited the wrong journal for Yarkoni et al. 2022; correct journal is Reports on Progress in Physics. Surfaced during FR-QE-0002 Identity and Continuity Review, Revision 3 (Baseline Sufficiency Assessment), confirmed as an admission-era error present verbatim in the recovered pre-deployment source. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed."
+            },
+            {
+              "id": "M-007",
+              "date": "2026-07-28",
+              "field": "description_corrected",
+              "from": "IN-002: \"...on specific quantum simulation instances.\"",
+              "to": "IN-002: \"...on specific combinatorial optimisation instances.\"",
+              "note": "GP-001 Editorial Correction. IN-002's description mischaracterised the Denchev et al. 2016 benchmark as simulation-task evidence; the contemporaneous source frames it as a \"quantum enhanced optimization heuristic\" tested on a crafted combinatorial problem. Corrected to restore the contemporaneous framing. This wording error was cosmetic to the record's own task-class kernel analysis (Terminal Identity and Continuity Finding, §B), which already classified IN-002 as engaging the optimisation-task kernel using the correct framing — this correction does not alter that finding. No evidence, interpretation, pressureState, verificationStage, assessment, or open question substance changed."
+            },
+            {
+              "id": "M-006",
+              "date": "2026-07-26",
+              "field": "open_question_added",
+              "from": "—",
+              "to": "OQ-006",
+              "note": "OQ-006 formally entered per Terminal Identity and Continuity Finding §C precision requirement (whether \"practical\" is part of the identity-bearing kernel or only an evaluative standard applied to it). Resolved: element of the settled kernel (Terminal Finding §A.2), with the standard for operationalising it left open — an evaluative-standard question, not an identity question. Does not reopen or alter the ratified Terminal Identity and Continuity Finding or Pressure State Reassessment."
+            },
+            {
+              "id": "M-005",
+              "date": "2026-07-26",
+              "field": "assessment_reissued",
+              "from": "AS-001 (domain-split warrant)",
+              "to": "AS-002 (kernel-level warrant, OQ-6)",
+              "note": "AS-002 appended following ratified Identity and Continuity Finding (IDENTITY PRESERVED AS A COMPOUND CLAIM) and Pressure State Reassessment (FRAGMENTING REMAINS WARRANTED — RE-GROUNDED). AS-001 preserved unchanged."
+            },
+            {
+              "id": "M-004",
+              "date": "2024-01-15",
+              "field": "mechanisms_recorded",
+              "from": "—",
+              "to": "MECHANISMS-RECORDED",
+              "note": "RM-001, RM-002 (Resistance); BN-001, BN-002 (Bottleneck) added."
+            },
+            {
+              "id": "M-003",
+              "date": "2024-01-15",
+              "field": "assessment_issued",
+              "from": "—",
+              "to": "ASSESSMENT-ISSUED",
+              "note": "ASSESSMENT-001 issued. Pressure state: FRAGMENTING."
+            },
+            {
+              "id": "M-002",
+              "date": "2024-01-15",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": "INST-001 through INST-005 added."
+            },
+            {
+              "id": "M-001",
+              "date": "2024-01-15",
+              "field": "record_created",
+              "from": "—",
+              "to": "RECORD-CREATED",
+              "note": "FR-QE-0002 opened. Claim ratified. Programme: PROG-QE."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "FR-AI-0004",
+      "previousHash": "9fc6153360d43f93b11cd74c72f45d392b67c38017e3228bf2962da1177f7669",
+      "currentHash": "0f29191fc7968731755aa48f7e01f0faea2958f78770ca816599e3270d512f3a",
+      "changes": [
+        {
+          "field": "lastProvenanceReview",
+          "previous": "2026-09-30",
+          "current": "2026-11-02"
+        },
+        {
+          "field": "provenanceReviewId",
+          "previous": "LPR-001-D35",
+          "current": "LPR-001-D69"
+        },
+        {
+          "field": "provenanceOutcome",
+          "previous": "discrepancies_corrected",
+          "current": "verified"
+        },
+        {
+          "field": "provenanceRepairStatus",
+          "previous": "completed",
+          "current": "not_required"
+        },
+        {
+          "field": "mutationLog",
+          "previous": [
+            {
+              "id": "M-017",
+              "date": "2026-10-08",
+              "field": "reference_corrected",
+              "from": "Investigated clarification candidate",
+              "to": "Bounded wording aligned with source limits and existing assessment",
+              "note": "Editorial Correction (GP-001), investigated clarification repair: mechanisms.3.description corrected after source checks. No new evidence, reassessment, claim-scope change or provenance-cycle completion. Claims, assessment histories/current judgments, status, question IDs and raised dates, review metadata and prior mutation entries preserved. Previous values and source basis: docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json."
+            },
+            {
+              "id": "M-016",
+              "date": "2026-10-08",
+              "field": "reference_corrected",
+              "from": "Explanatory wording inconsistent with corrected admitted evidence and current assessment",
+              "to": "Bounded explanatory wording aligned with existing source limits and settled claim scope",
+              "note": "Editorial Correction (GP-001), priority consistency repair: lineage.items.1.text, lineage.items.2.year, lineage.items.2.text corrected against existing admitted evidence and current assessment. No evidence admitted and no reassessment; claim, instances, assessments, status, question IDs and raised dates, and prior mutation entries preserved. Previous values and field-level basis: docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json."
+            },
+            {
+              "id": "M-014",
+              "date": "2026-09-06",
+              "field": "description_restored",
+              "from": "Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001",
+              "to": "Source-restored complete descriptions",
+              "note": "Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_AI_0004_scaling_emergent_performance.html (Drive file 1k1YV18ZZDTs7emO7mBXZL103gIvoIsQV). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."
+            },
+            {
+              "id": "M-015",
+              "date": "2026-09-30",
+              "field": "provenance_correction",
+              "from": "LPR-001-D35 discrepancies_found",
+              "to": "DISCREPANCIES-CORRECTED",
+              "note": "Governed bounded correction applied to IN-002 after LPR-001-D35. Brown et al. remains strong supportive evidence for task-agnostic few-shot/in-context performance without task-specific parameter updates, but the description no longer asserts that the paper proves the evaluated tasks were absent from GPT-3 pretraining. Existing BN-001 contamination/task-novelty qualification is preserved. No new evidence admitted; claim statement, assessments, pressure state, and verification stage unchanged. LPR-001-D35 completion recorded so the provenance-review queue may advance."
+            },
+            {
+              "id": "M-013",
+              "date": "2026-09-02",
+              "field": "assessment_issued",
+              "from": "AS-002",
+              "to": "AS-003",
+              "note": "AS-003 issued as the governed append-only assessment correction after LPR-001-D04. It narrows historical source interpretations while retaining FRAGMENTING / VS-03. AS-001 and AS-002 remain unchanged as historical judgements; no new evidence admitted."
+            },
+            {
+              "id": "M-012",
+              "date": "2026-09-02",
+              "field": "provenance_correction",
+              "from": "LPR-001-D04 discrepancies_found",
+              "to": "DISCREPANCIES-CORRECTED",
+              "note": "Governed bounded correction applied to IN-001, IN-004, IN-005, IN-006, and IN-007. Structured primary-source provenance added; unsupported claims about unseen-task proof, universal continuity, benchmark-specific contamination/saturation, 2024 dating of Chinchilla, and bundled test-time-compute consensus/saturation claims were removed or bounded. IN-002 and IN-003 remain as verified during the original provenance pass."
+            },
+            {
+              "id": "M-011",
+              "date": "2026-09-02",
+              "field": "provenance_review",
+              "from": "—",
+              "to": "LPR-001-D04",
+              "note": "Legacy provenance review completed. Structured provenance added to IN-002 and IN-003. Material source-fidelity discrepancies identified in IN-001, IN-004, IN-005, IN-006, and IN-007 and left unchanged pending governed correction approval. No new scientific evidence admitted; assessments, pressure state, and verification stage unchanged."
+            },
+            {
+              "id": "M-010",
+              "date": "2026-07-09",
+              "field": "description_reordered",
+              "from": "—",
+              "to": "DESCRIPTION-REORDERED",
+              "note": "Editorial Correction (GP-001): IN-007 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed."
+            },
+            {
+              "id": "M-009",
+              "date": "2026-06-29",
+              "field": "open_question_raised",
+              "from": "—",
+              "to": "OQ-RAISED",
+              "note": "OQ-004 added: whether the claim statement's scope should be revisited now that a second scaling axis (test-time compute) has emerged."
+            },
+            {
+              "id": "M-008",
+              "date": "2026-06-29",
+              "field": "assessment_issued",
+              "from": "AS-001",
+              "to": "AS-002",
+              "note": "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: FRAGMENTING. New evidence (IN-007) adds a genuinely new mechanism (test-time compute) not anticipated by the original claim statement."
+            },
+            {
+              "id": "M-007",
+              "date": "2026-06-29",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": "IN-007 added: test-time compute / reasoning models (o1/o3, DeepSeek-R1) as a second scaling axis, plus 2025–26 field consensus on inference-driven progress."
+            },
+            {
+              "id": "M-006",
+              "date": "2024-01-15",
+              "field": "programme_panel_added",
+              "from": "—",
+              "to": "PROGRAMME-PANEL-ADDED",
+              "note": ""
+            },
+            {
+              "id": "M-005",
+              "date": "2024-01-15",
+              "field": "null_boundary_condition_met",
+              "from": "—",
+              "to": "NULL-BOUNDARY-CONDITION-MET",
+              "note": ""
+            },
+            {
+              "id": "M-004",
+              "date": "2024-01-15",
+              "field": "mechanisms_recorded",
+              "from": "—",
+              "to": "MECHANISMS-RECORDED",
+              "note": ""
+            },
+            {
+              "id": "M-003",
+              "date": "2024-01-15",
+              "field": "assessment_issued",
+              "from": "—",
+              "to": "ASSESSMENT-ISSUED",
+              "note": ""
+            },
+            {
+              "id": "M-002",
+              "date": "2024-01-15",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": ""
+            },
+            {
+              "id": "M-001",
+              "date": "2024-01-15",
+              "field": "record_created",
+              "from": "—",
+              "to": "RECORD-CREATED",
+              "note": ""
+            }
+          ],
+          "current": [
+            {
+              "id": "M-018",
+              "date": "2026-11-02",
+              "field": "provenance_review",
+              "from": "LPR-001-D35 discrepancies_corrected / completed",
+              "to": "LPR-001-D69 verified / not_required",
+              "note": "Second-cycle LPR-001 bounded source-provenance audit of all seven existing instances. All seven independently matched to their already structured arXiv primary sources; 7 verified, 0 enriched, 0 unverifiable, 0 material discrepancies, no new evidence admitted. Existing scope qualifications retained (held-out loss versus novel-task proof, benchmark contamination, metric-dependent emergence, and test-time compute outside training-scaling claim). Source, claim, vectors, assessments, State and Stage unchanged. Previous D68 completion marker confirmed on canonical main; deterministic selection from 32 reviewed records (oldest lastProvenanceReview 2026-09-30). Receipt: docs/reviews/LPR-001-D69-FR-AI-0004-2026-11-02.json."
+            },
+            {
+              "id": "M-017",
+              "date": "2026-10-08",
+              "field": "reference_corrected",
+              "from": "Investigated clarification candidate",
+              "to": "Bounded wording aligned with source limits and existing assessment",
+              "note": "Editorial Correction (GP-001), investigated clarification repair: mechanisms.3.description corrected after source checks. No new evidence, reassessment, claim-scope change or provenance-cycle completion. Claims, assessment histories/current judgments, status, question IDs and raised dates, review metadata and prior mutation entries preserved. Previous values and source basis: docs/reviews/MCP-CLARIFICATION-REPAIR-2026-10-08.json."
+            },
+            {
+              "id": "M-016",
+              "date": "2026-10-08",
+              "field": "reference_corrected",
+              "from": "Explanatory wording inconsistent with corrected admitted evidence and current assessment",
+              "to": "Bounded explanatory wording aligned with existing source limits and settled claim scope",
+              "note": "Editorial Correction (GP-001), priority consistency repair: lineage.items.1.text, lineage.items.2.year, lineage.items.2.text corrected against existing admitted evidence and current assessment. No evidence admitted and no reassessment; claim, instances, assessments, status, question IDs and raised dates, and prior mutation entries preserved. Previous values and field-level basis: docs/reviews/MCP-PRIORITY-CONSISTENCY-REPAIR-2026-10-08.json."
+            },
+            {
+              "id": "M-014",
+              "date": "2026-09-06",
+              "field": "description_restored",
+              "from": "Legacy ingestion cutoffs: mechanisms:RM-001, mechanisms:RM-002, mechanisms:BN-001, mechanisms:AT-001",
+              "to": "Source-restored complete descriptions",
+              "note": "Editorial Correction (GP-001), RENDER-PILOT-001 content restoration: restored RM-001, RM-002, BN-001, AT-001 from FR_AI_0004_scaling_emergent_performance.html (Drive file 1k1YV18ZZDTs7emO7mBXZL103gIvoIsQV). Each damaged value was a verified prefix of the recovered source after the existing FR-MF to FR-AM identifier migration. Restored the omitted remainder using the original converter text normalization; no inferred completion. Existing later corrections retained. Restoration recovers historical wording and does not reaffirm it as the current assessment. Assessments, evidence instances, open questions, claim, status and rendering eligibility unchanged. Source hashes and field receipt: docs/reviews/render-pilot-content-restoration.json; current-assessment compatibility review: docs/reviews/RENDER-PILOT-001-CONTENT-RESTORATION.md."
+            },
+            {
+              "id": "M-015",
+              "date": "2026-09-30",
+              "field": "provenance_correction",
+              "from": "LPR-001-D35 discrepancies_found",
+              "to": "DISCREPANCIES-CORRECTED",
+              "note": "Governed bounded correction applied to IN-002 after LPR-001-D35. Brown et al. remains strong supportive evidence for task-agnostic few-shot/in-context performance without task-specific parameter updates, but the description no longer asserts that the paper proves the evaluated tasks were absent from GPT-3 pretraining. Existing BN-001 contamination/task-novelty qualification is preserved. No new evidence admitted; claim statement, assessments, pressure state, and verification stage unchanged. LPR-001-D35 completion recorded so the provenance-review queue may advance."
+            },
+            {
+              "id": "M-013",
+              "date": "2026-09-02",
+              "field": "assessment_issued",
+              "from": "AS-002",
+              "to": "AS-003",
+              "note": "AS-003 issued as the governed append-only assessment correction after LPR-001-D04. It narrows historical source interpretations while retaining FRAGMENTING / VS-03. AS-001 and AS-002 remain unchanged as historical judgements; no new evidence admitted."
+            },
+            {
+              "id": "M-012",
+              "date": "2026-09-02",
+              "field": "provenance_correction",
+              "from": "LPR-001-D04 discrepancies_found",
+              "to": "DISCREPANCIES-CORRECTED",
+              "note": "Governed bounded correction applied to IN-001, IN-004, IN-005, IN-006, and IN-007. Structured primary-source provenance added; unsupported claims about unseen-task proof, universal continuity, benchmark-specific contamination/saturation, 2024 dating of Chinchilla, and bundled test-time-compute consensus/saturation claims were removed or bounded. IN-002 and IN-003 remain as verified during the original provenance pass."
+            },
+            {
+              "id": "M-011",
+              "date": "2026-09-02",
+              "field": "provenance_review",
+              "from": "—",
+              "to": "LPR-001-D04",
+              "note": "Legacy provenance review completed. Structured provenance added to IN-002 and IN-003. Material source-fidelity discrepancies identified in IN-001, IN-004, IN-005, IN-006, and IN-007 and left unchanged pending governed correction approval. No new scientific evidence admitted; assessments, pressure state, and verification stage unchanged."
+            },
+            {
+              "id": "M-010",
+              "date": "2026-07-09",
+              "field": "description_reordered",
+              "from": "—",
+              "to": "DESCRIPTION-REORDERED",
+              "note": "Editorial Correction (GP-001): IN-007 description reordered per EP-001 — existing closing synthesis sentence moved to opening, no wording added or removed."
+            },
+            {
+              "id": "M-009",
+              "date": "2026-06-29",
+              "field": "open_question_raised",
+              "from": "—",
+              "to": "OQ-RAISED",
+              "note": "OQ-004 added: whether the claim statement's scope should be revisited now that a second scaling axis (test-time compute) has emerged."
+            },
+            {
+              "id": "M-008",
+              "date": "2026-06-29",
+              "field": "assessment_issued",
+              "from": "AS-001",
+              "to": "AS-002",
+              "note": "AS-002 issued following targeted reassessment of single-assessment records. Pressure state unchanged: FRAGMENTING. New evidence (IN-007) adds a genuinely new mechanism (test-time compute) not anticipated by the original claim statement."
+            },
+            {
+              "id": "M-007",
+              "date": "2026-06-29",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": "IN-007 added: test-time compute / reasoning models (o1/o3, DeepSeek-R1) as a second scaling axis, plus 2025–26 field consensus on inference-driven progress."
+            },
+            {
+              "id": "M-006",
+              "date": "2024-01-15",
+              "field": "programme_panel_added",
+              "from": "—",
+              "to": "PROGRAMME-PANEL-ADDED",
+              "note": ""
+            },
+            {
+              "id": "M-005",
+              "date": "2024-01-15",
+              "field": "null_boundary_condition_met",
+              "from": "—",
+              "to": "NULL-BOUNDARY-CONDITION-MET",
+              "note": ""
+            },
+            {
+              "id": "M-004",
+              "date": "2024-01-15",
+              "field": "mechanisms_recorded",
+              "from": "—",
+              "to": "MECHANISMS-RECORDED",
+              "note": ""
+            },
+            {
+              "id": "M-003",
+              "date": "2024-01-15",
+              "field": "assessment_issued",
+              "from": "—",
+              "to": "ASSESSMENT-ISSUED",
+              "note": ""
+            },
+            {
+              "id": "M-002",
+              "date": "2024-01-15",
+              "field": "instances_logged",
+              "from": "—",
+              "to": "INSTANCES-LOGGED",
+              "note": ""
+            },
+            {
+              "id": "M-001",
+              "date": "2024-01-15",
+              "field": "record_created",
+              "from": "—",
+              "to": "RECORD-CREATED",
+              "note": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,25 @@
+{
+  "id": "FR-AI-0007-LPR-D72-CHECKPOINT-2026-11-05",
+  "date": "2026-11-05",
+  "recordId": "FR-AI-0007",
+  "baseCommit": "604ba3acdde46e0ec5d3fb8404e898698ad709e3",
+  "originalRecordHash": "6440c40394fc786e7f19edd5081ca661524d55353ad427f42f8fe9d5bb326af9",
+  "currentRecordHash": "7507077c1a6655e4643e6e9726412c84182821c58ad99b51c167fc5d946ca89a",
+  "mutationIds": [
+    "M-028"
+  ],
+  "changes": [
+    {
+      "fieldPath": "lastProvenanceReview",
+      "previous": "2026-10-03",
+      "current": "2026-11-05",
+      "basis": "Reconstructed from the original D72 commit and its parent."
+    },
+    {
+      "fieldPath": "provenanceReviewId",
+      "previous": "LPR-001-D40",
+      "current": "LPR-001-D72",
+      "basis": "Reconstructed from the original D72 commit and its parent."
+    }
+  ]
+}

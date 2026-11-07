@@ -137,7 +137,7 @@ test("three-record date pilot qualifies history while preserving every canonical
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/LEGACY-DATE-PILOT-STEP-5B-2026-10-19.json", import.meta.url)));
   assert.deepEqual(receipt.records.map(entry => entry.recordId), ["FR-QE-0002", "FR-AM-0003", "FR-BT-0004"]);
   for (const entry of receipt.records) {
-    const record = ALL_RECORDS.find(record => record.id === entry.recordId);
+    const record = historicalRecord(ALL_RECORDS.find(record => record.id === entry.recordId));
     assert.equal(createHash("sha256").update(JSON.stringify(record)).digest("hex"), entry.canonicalRecordHash);
     const history = getAssessmentHistory(record);
     assert.equal(history[0].date, "date uncertain (legacy)");

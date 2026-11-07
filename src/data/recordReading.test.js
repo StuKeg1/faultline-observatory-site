@@ -36,7 +36,7 @@ test("source-check recency is separate from the assessment and all same-day upda
   const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
   const before = JSON.stringify(ai);
   assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-18") }).labels, ["Record annotation updated", "Editorial correction recorded", "Verification Stage correction recorded (VS-03 → VS-05); Pressure State unchanged"]);
-  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
+  assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-19") }), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
   assert.equal(ai.assessments.at(-1).verificationStage, "VS-05");
   assert.equal(ai.verificationStageChallenges.at(-1).status, "awaiting_operator_decision");
   assert.equal(JSON.stringify(ai), before);
@@ -86,7 +86,8 @@ test("post-assessment admissions count distinct known entries without inventing 
   const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0007");
   assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-17") }), { date: "2026-10-17", labels: ["4 evidence entries added"] });
   assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-19") }), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
-  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-10-24", labels: ["2 evidence entries added"] });
+  assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-24") }), { date: "2026-10-24", labels: ["2 evidence entries added"] });
+  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-11-07", labels: ["2 evidence entries added"] });
   assert.ok(ai.assessments.at(-1).date < "2026-10-17");
 });
 
@@ -151,7 +152,7 @@ test("clinical continuity groups NHS-Galleri reports and ER-100 milestones witho
     ["FR-BT-0004", "IN-003", ["IN-006", "IN-007", "IN-008"], 8],
     ["FR-BT-0002", "IN-006", ["IN-007"], 7],
   ]) {
-    const record = ALL_RECORDS.find(r => r.id === id);
+    const record = historicalRecord(ALL_RECORDS.find(r => r.id === id));
     assert.equal(record.instances.length, count);
     assert.deepEqual(evidenceRelationships(record, record.instances.find(i => i.id === anchor)).map(r => r.targetId), reports);
     for (const report of reports) {
