@@ -59,8 +59,12 @@ test("latest-day assessment activity includes corrections logged under other mut
     assert.deepEqual(getRecordUpdateSummary(record), { date, labels });
     assert.deepEqual(getRecordUpdateSummary({ ...record, mutationLog: [...record.mutationLog].reverse() }).labels.slice().sort(), [...labels].sort());
   }
-  assert.deepEqual(getRecordUpdateSummary(ALL_RECORDS.find(r => r.id === "FR-AI-0009")), {
-    date: "2026-10-08", labels: ["Editorial correction recorded"],
+  const worldModel = ALL_RECORDS.find(r => r.id === "FR-AI-0009");
+  assert.deepEqual(getRecordUpdateSummary({ ...worldModel,
+    mutationLog: worldModel.mutationLog.filter(m => m.date <= "2026-10-08"),
+  }), { date: "2026-10-08", labels: ["Editorial correction recorded"] });
+  assert.deepEqual(getRecordUpdateSummary(worldModel), {
+    date: "2026-11-10", labels: ["Editorial correction recorded", "Source review completed"],
   });
   assert.equal(JSON.stringify(ALL_RECORDS), before);
 });
