@@ -115,6 +115,22 @@ test("post-24-October current records reconstruct pinned historical checkpoints 
 
 function atCheckpoint(record, date, rewindLater = true) {
   if (rewindLater) record = historicalRecord(record);
+  // D76's authorised IN-007 correction postdates the October clarification
+  // receipt. Reconstruct the pre-D76 record before checking its frozen hash.
+  if (record.id === "FR-AI-0009" && date < "2026-11-10" &&
+      record.provenanceReviewId === "LPR-001-D76") {
+    const restored = structuredClone(record);
+    const instance = restored.instances.find(item => item.id === "IN-007");
+    const corrected = "report that speed and acceleration information is accessible in early layers, while motion-direction information becomes accessible at an intermediate-depth Physics Emergence Zone";
+    const previous = "report an intermediate-depth transition where speed, acceleration and motion-direction information becomes accessible";
+    assert.ok(instance.description.includes(corrected), "D76 IN-007 wording has drifted");
+    assert.deepEqual(restored.mutationLog.slice(0, 2).map(item => item.id), ["M-016", "M-015"]);
+    instance.description = instance.description.replace(corrected, previous);
+    restored.lastProvenanceReview = "2026-10-06";
+    restored.provenanceReviewId = "LPR-001-D43";
+    restored.mutationLog = restored.mutationLog.slice(2);
+    record = restored;
+  }
   if (bt1AttractorReclassificationReceipt.date > date &&
       record.id === bt1AttractorReclassificationReceipt.recordId &&
       record.mutationLog[0]?.id === bt1AttractorReclassificationReceipt.mutationId) {
