@@ -13,8 +13,8 @@
 export const FR_AI_0009 = {
   id: "FR-AI-0009",
   programme: "PROG-AI",
-  lastProvenanceReview: "2026-10-06",
-  provenanceReviewId: "LPR-001-D43",
+  lastProvenanceReview: "2026-11-10",
+  provenanceReviewId: "LPR-001-D76",
   provenanceOutcome: "discrepancies_corrected",
   provenanceRepairStatus: "completed",
 
@@ -94,7 +94,7 @@ export const FR_AI_0009 = {
     {
       id: "IN-007",
       qualifiedEvent: "Mechanistic evidence — physical variables emerge in distributed video-model representations",
-      description: "Mechanistic analysis supplies supportive context for the possibility that useful physical prediction need not resemble an explicit physics engine. Joseph et al. probe large-scale video encoders and report an intermediate-depth transition where speed, acceleration and motion-direction information becomes accessible, with physical variables represented in distributed high-dimensional structures rather than compact factorised state variables. The result bears on mechanism, not transfer: it supports the plausibility that learned representations contain action-relevant physical structure while not establishing that the structure remains sufficiently faithful for reliable planning under changed environments or embodiments.",
+      description: "Mechanistic analysis supplies supportive context for the possibility that useful physical prediction need not resemble an explicit physics engine. Joseph et al. probe large-scale video encoders and report that speed and acceleration information is accessible in early layers, while motion-direction information becomes accessible at an intermediate-depth Physics Emergence Zone, with physical variables represented in distributed high-dimensional structures rather than compact factorised state variables. The result bears on mechanism, not transfer: it supports the plausibility that learned representations contain action-relevant physical structure while not establishing that the structure remains sufficiently faithful for reliable planning under changed environments or embodiments.",
       vectors: ["partial--physical-structure-represented-transfer-unresolved"],
       date: "2026",
       sourceReference: "Joseph et al., 'Interpreting Physics in Video World Models', ICML 2026; arXiv:2602.07050",
@@ -217,6 +217,8 @@ export const FR_AI_0009 = {
   ],
 
   mutationLog: [
+    { id: "M-016", date: "2026-11-10", field: "provenance_correction", from: "LPR-001-D76 review_required / pending", to: "LPR-001-D76 discrepancies_corrected / completed", note: "Operator-approved bounded source-fidelity correction to IN-007: early-layer speed and acceleration accessibility distinguished from intermediate-depth motion-direction accessibility. All nine instances reviewed; eight source-faithful and one corrected. No new evidence or reassessment; ESCALATING / VS-02 unchanged." },
+    { id: "M-015", date: "2026-11-10", field: "provenance_review", from: "LPR-001-D43", to: "LPR-001-D76", note: "Second-cycle LPR-001 provenance review across all nine existing instances. IN-007 required bounded correction to mechanistic layer-depth description, subsequently approved and applied as M-016. No new scientific evidence admitted. Queue completion marker governed and persisted with refreshed manifest." },
     {
       "id": "M-014",
       "date": "2026-10-08",
