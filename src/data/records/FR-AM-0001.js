@@ -12,10 +12,10 @@
 export const FR_AM_0001 = {
   id: "FR-AM-0001",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-10-07",
-  provenanceReviewId: "LPR-001-D44",
-  provenanceOutcome: "verified",
-  provenanceRepairStatus: "not_required",
+  lastProvenanceReview: "2026-11-11",
+  provenanceReviewId: "LPR-001-D77",
+  provenanceOutcome: "discrepancies_corrected",
+  provenanceRepairStatus: "completed",
 
   claim: {
     statement: "Electrochemical cells can produce nuclear fusion reactions at or near room temperature.",
@@ -157,7 +157,7 @@ export const FR_AM_0001 = {
     {
       id: "IN-009",
       qualifiedEvent: "Sub-keV fusion-yield plateau in electrochemically loaded palladium and titanium hydrides",
-      description: "Karahadian et al. (2026) combine electrochemical deuterium loading with low-energy deuteron bombardment and directly measure D–D fusion products in palladium and titanium hydrides. Across centre-of-mass energies from 0.25 to 6.5 keV they report a reproducible fusion-yield plateau below about 2 keV and enhancements exceeding 10^18 relative to bare-nucleus expectations at the lowest measured energies. The result shows that the condensed-matter environment can strongly alter tunnelling probabilities and fusion cross-sections in a regime where standard homogeneous screening models fail. It is materially relevant to the historical mechanism question because it demonstrates a genuine materials-governed low-energy fusion regime. It still does not satisfy the canonical claim: the reactions are initiated by an external deuteron beam, with the electrochemical cell supplying deuterium loading rather than independently producing fusion. The paper therefore strengthens the case for separating condensed-matter-assisted fusion physics from the original room-temperature electrochemical-fusion claim, while leaving the latter collapsed.",
+      description: "Karahadian et al. (2026) combine electrochemical deuterium loading with low-energy deuteron bombardment and directly measure D–D fusion products in palladium and titanium hydrides. Across centre-of-mass energies from 0.25 to 6.5 keV they report a reproducible fusion-yield plateau below about 2 keV. At the lowest measured energies, fusion yields in both loaded hydrides and unloaded metal targets are enhanced by more than 10^18 relative to theoretical bare-nucleus (unscreened) expectations; this factor is not the enhancement caused by electrochemical loading. The additional loading effect is evaluated separately through hydride-to-metal relative yield ratios, which show increased yields upon loading. The result shows that the condensed-matter environment can strongly alter tunnelling probabilities and fusion cross-sections in a regime where standard homogeneous screening models fail. It is materially relevant to the historical mechanism question because it demonstrates a genuine materials-governed low-energy fusion regime. It still does not satisfy the canonical claim: the reactions are initiated by an external deuteron beam, with the electrochemical cell supplying deuterium loading rather than independently producing fusion. The paper therefore strengthens the case for separating condensed-matter-assisted fusion physics from the original room-temperature electrochemical-fusion claim, while leaving the latter collapsed.",
       vectors: ["partial--materials-enhance-sub-kev-beam-driven-fusion-not-electrochemical-cell-alone"],
       date: "2026-07-18",
       sources: [
@@ -270,6 +270,8 @@ export const FR_AM_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-016", date: "2026-11-11", field: "provenance_correction", from: "LPR-001-D77 review_required / pending", to: "LPR-001-D77 discrepancies_corrected / completed", note: "Operator-approved bounded IN-009 source-fidelity correction: distinguishes the >10^18 yield enhancement relative to unscreened bare-nucleus expectations (loaded and unloaded targets) from the additional electrochemical-loading effect measured by hydride-to-metal yield ratios. No new evidence, vector change, or reassessment; COLLAPSED / VS-05 retained." },
+    { id: "M-015", date: "2026-11-11", field: "provenance_review", from: "LPR-001-D44", to: "LPR-001-D77", note: "Second-cycle Legacy Provenance Review of all nine existing instances. Eight without a confirmed material discrepancy; IN-009 corrected with operator approval. Some historical publisher material not directly retrievable; no guessed provenance, no new evidence or Normal Record Review candidate. Governed completion marker and queue manifest refreshed; COLLAPSED / VS-05 unchanged." },
     {"id":"M-014","date":"2026-10-19","field":"reference_corrected","from":"Shared citations not explained in the evidence list","to":"Source-specific reciprocal notices on IN-001, IN-003, IN-006","note":"Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."},
     { id: "M-013", date: "2026-10-07", field: "provenance_review", from: "LPR-001-D10", to: "LPR-001-D44", note: "Second-cycle Legacy Provenance Review completed as PASS across all nine existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-012", date: "2026-09-08", field: "assessment_issued", from: "AS-004", to: "AS-005", note: "Normal Record Review of IN-008 and IN-009. COLLAPSED / VS-05 retained. The new evidence positively establishes condensed-matter enhancement of externally driven low-energy fusion but does not satisfy the canonical electrochemical-cell-driven cold-fusion claim. OQ-002 and lineage updated to make the reopening boundary explicit; historical assessments and legacy instances preserved." },
