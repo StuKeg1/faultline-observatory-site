@@ -3,11 +3,13 @@ import PageMeta from "../components/PageMeta.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import { ALL_NOTES, getNoteUrl } from "../data/notes.js";
 import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
+import { READING_GUIDES } from "../data/readingGuides.js";
 import { LANDSCAPE_ESSAYS } from "../data/landscapeEssays.js";
 import "./Institutional.css";
 import "./ReadingRoom.css";
 
 const SECTIONS = [
+  { title: "Reading Guides", description: "Practical guides to reading the evidence; current assessments remain in the records.", items: READING_GUIDES },
   {
     title: "Programme Syntheses",
     description: "Start with the current record-grounded synthesis; the essays below explore what those patterns may mean.",

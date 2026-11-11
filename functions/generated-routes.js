@@ -34,7 +34,8 @@ export const CANONICAL_ROUTES = [
   "/notes/pn-ai-001/",
   "/notes/pn-qe-001/",
   "/notes/le-ai-001/",
-  "/notes/le-qe-001/"
+  "/notes/le-qe-001/",
+  "/notes/rg-001/"
 ];
 export const LEGACY_REDIRECTS = [
   {

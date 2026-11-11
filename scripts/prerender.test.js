@@ -355,3 +355,26 @@ test("legacy Verification Stage provenance is disclosed without exposing its res
   assert.equal(deployableText.includes("1aDpuzdV01cWV9ZOZ17r_R1UbrUDJqUPoKH6b359kJhA"), false);
   assert.equal(deployableText.includes("Review authority"), false);
 });
+
+test("reading guide is discoverable, prerendered and links to real evidence fragments", { skip }, async () => {
+  const { READING_GUIDES } = await import("../src/data/readingGuides.js");
+  for (const guide of READING_GUIDES) {
+    const route = `notes/${guide.id.toLowerCase()}`;
+    const html = read(route);
+    assert.ok(read("reading-room").includes(`/notes/${guide.id.toLowerCase()}/`));
+    assert.ok(html.includes(guide.title));
+    assert.ok(html.includes("Reading Guide"));
+    assert.ok(html.includes("State Warrant remains the authority"));
+    assert.ok(sitemapRoutes("sitemap-notes.xml").includes(`/${route}/`));
+    for (const ref of guide.reviewedRecords) {
+      const record = ALL_RECORDS.find(r => r.id === ref.id);
+      assert.ok(record.assessments.some(a => a.id === ref.assessmentId));
+      for (const id of ref.entries) {
+        assert.ok(record.instances.some(i => i.id === id));
+        const target = `the-record/${ref.id.toLowerCase()}`;
+        assert.ok(html.includes(`/${target}/#evidence-${id}`));
+        assert.ok(read(target).includes(`id="evidence-${id}"`));
+      }
+    }
+  }
+});

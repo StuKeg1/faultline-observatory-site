@@ -65,7 +65,8 @@ export async function getDynamicRouteGroups() {
     const { ALL_NOTES: INSTITUTIONAL_NOTES } = await server.ssrLoadModule("/src/data/notes.js");
     const { PROGRAMME_NOTES } = await server.ssrLoadModule("/src/data/programmeNotes.js");
     const { LANDSCAPE_ESSAYS } = await server.ssrLoadModule("/src/data/landscapeEssays.js");
-    const INDEXABLE_PUBLICATIONS = [...INSTITUTIONAL_NOTES, ...PROGRAMME_NOTES, ...LANDSCAPE_ESSAYS];
+    const { READING_GUIDES } = await server.ssrLoadModule("/src/data/readingGuides.js");
+    const INDEXABLE_PUBLICATIONS = [...INSTITUTIONAL_NOTES, ...PROGRAMME_NOTES, ...LANDSCAPE_ESSAYS, ...READING_GUIDES];
     for (const publication of INDEXABLE_PUBLICATIONS) groups.notes.push(`/notes/${publication.id.toLowerCase()}/`);
   } finally {
     await server.close();
