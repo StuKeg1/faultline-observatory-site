@@ -5,6 +5,7 @@ import { ALL_NOTES } from "../data/notes.js";
 import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
 import {
   HOME_QUESTIONS,
+  resolveHomeIntroduction,
   resolveHomeQuestion,
   assertValidHomeQuestions,
 } from "./homeQuestions.js";
@@ -122,4 +123,11 @@ test("duplicate entry ids are rejected", () => {
 
 test("a configuration without exactly six entries is rejected", () => {
   assert.throws(() => assertValidHomeQuestions(HOME_QUESTIONS.slice(0, 5)));
+});
+
+test("a new assessment cannot silently retain a stale homepage introduction", () => {
+  const entry = HOME_QUESTIONS.find(e => e.target.type === "record");
+  const record = structuredClone(ALL_RECORDS.find(r => r.id === entry.target.id));
+  record.assessments.push({ ...record.assessments.at(-1), id: "AS-999" });
+  assert.throws(() => resolveHomeIntroduction(entry, record), /requires review against AS-999/);
 });
