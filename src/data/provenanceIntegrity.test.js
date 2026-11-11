@@ -131,6 +131,24 @@ function atCheckpoint(record, date, rewindLater = true) {
     restored.mutationLog = restored.mutationLog.slice(2);
     record = restored;
   }
+  // D77 source-fidelity correction postdates the October shared-source receipt.
+  // Reverse only its two governed mutations and exact IN-009 wording change.
+  if (record.id === "FR-AM-0001" && date < "2026-11-11" &&
+      record.provenanceReviewId === "LPR-001-D77") {
+    const restored = structuredClone(record);
+    assert.deepEqual(restored.mutationLog.slice(0, 2).map(item => item.id), ["M-016", "M-015"]);
+    const instance = restored.instances.find(item => item.id === "IN-009");
+    const current = "Across centre-of-mass energies from 0.25 to 6.5 keV they report a reproducible fusion-yield plateau below about 2 keV. At the lowest measured energies, fusion yields in both loaded hydrides and unloaded metal targets are enhanced by more than 10^18 relative to theoretical bare-nucleus (unscreened) expectations; this factor is not the enhancement caused by electrochemical loading. The additional loading effect is evaluated separately through hydride-to-metal relative yield ratios, which show increased yields upon loading.";
+    const previous = "Across centre-of-mass energies from 0.25 to 6.5 keV they report a reproducible fusion-yield plateau below about 2 keV and enhancements exceeding 10^18 relative to bare-nucleus expectations at the lowest measured energies.";
+    assert.ok(instance.description.includes(current), "D77 IN-009 wording has drifted");
+    instance.description = instance.description.replace(current, previous);
+    restored.lastProvenanceReview = "2026-10-07";
+    restored.provenanceReviewId = "LPR-001-D44";
+    restored.provenanceOutcome = "verified";
+    restored.provenanceRepairStatus = "not_required";
+    restored.mutationLog = restored.mutationLog.slice(2);
+    record = restored;
+  }
   if (bt1AttractorReclassificationReceipt.date > date &&
       record.id === bt1AttractorReclassificationReceipt.recordId &&
       record.mutationLog[0]?.id === bt1AttractorReclassificationReceipt.mutationId) {
