@@ -3,6 +3,7 @@ import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import { ALL_NOTES, NOTE_TYPE_LABELS, getNoteUrl } from "../data/notes.js";
 import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
+import { READING_GUIDES } from "../data/readingGuides.js";
 import { LANDSCAPE_ESSAYS } from "../data/landscapeEssays.js";
 import "./Notes.css";
 
@@ -112,6 +113,7 @@ export function NotesIndex() {
 // This is template-level navigation correction only — it does not merge
 // the registries, change routes, or resolve IL-003.
 const READING_ROOM_REGISTRIES = {
+  "reading-guide": { sectionLabel: "Reading Guides", items: READING_GUIDES },
   "programme-note": { sectionLabel: "Programme Notes", items: PROGRAMME_NOTES },
   "landscape-essay": { sectionLabel: "Landscape Essays", items: LANDSCAPE_ESSAYS },
 };
@@ -120,6 +122,7 @@ export function NoteDetail() {
   const { noteId } = useParams();
 
   const readingRoomNotes = [
+    ...READING_GUIDES,
     ...PROGRAMME_NOTES.map((n) => ({ ...n, type: "programme-note", relation: n.programme })),
     ...LANDSCAPE_ESSAYS.map((n) => ({ ...n, type: "landscape-essay", relation: n.programme })),
   ];
@@ -176,7 +179,7 @@ export function NoteDetail() {
                   <NoteStatusBadge status={note.status} />
                 </div>
                 <div className="npm-row">
-                  <span className="npm-label">Note Date</span>
+                  <span className="npm-label">{note.type === "reading-guide" ? "Reviewed" : "Note Date"}</span>
                   <span className="npm-value">{note.date}</span>
                 </div>
                 {note.previousVersions?.length > 0 && (

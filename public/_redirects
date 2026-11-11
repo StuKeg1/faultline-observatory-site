@@ -35,6 +35,7 @@
 /notes/pn-qe-001 /notes/pn-qe-001/ 301
 /notes/le-ai-001 /notes/le-ai-001/ 301
 /notes/le-qe-001 /notes/le-qe-001/ 301
+/notes/rg-001 /notes/rg-001/ 301
 
 # Known routes -> SPA shell (exact matches)
 /public-record/ /index.html 200
@@ -68,6 +69,7 @@
 /notes/pn-qe-001/ /index.html 200
 /notes/le-ai-001/ /index.html 200
 /notes/le-qe-001/ /index.html 200
+/notes/rg-001/ /index.html 200
 
 # Legacy id migrations (Release 006) — placeholder rules, kept last
 /programmes/prog-mf /programmes/prog-am/ 301

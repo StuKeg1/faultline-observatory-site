@@ -42,6 +42,7 @@ export const ALL_NOTES = [
 
 /** Note type display labels */
 export const NOTE_TYPE_LABELS = {
+  "reading-guide":         "Reading Guide",
   "founding-milestone":    "Founding Milestone",
   "evidence-note":         "Evidence Note",
   "consultation-note":     "Consultation Note",
