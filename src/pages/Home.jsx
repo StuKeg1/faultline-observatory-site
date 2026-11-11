@@ -139,12 +139,6 @@ const QUESTION_ICONS = {
   explore: IconExplore,
 };
 
-function assessmentExcerpt(summary) {
-  if (!summary) return "No current assessment summary available.";
-  const firstSentence = summary.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim();
-  return firstSentence || summary;
-}
-
 // ─── HOME ────────────────────────────────────────────────────
 export default function Home() {
   const totalRecords = useMemo(
@@ -288,7 +282,7 @@ export default function Home() {
                         </div>
                         <h3 className="hqc-question hqc-question--record">{question}</h3>
                         <p className="hqc-record-title">{record.claim.shortLabel}</p>
-                        <p className="hqc-record-assessment">{assessmentExcerpt(current.summary)}</p>
+                        <p className="hqc-record-assessment">{resolved.introduction}</p>
                         <div className="hqc-foot hqc-foot--record">
                           <span className="hqc-meta">{record.programme}</span>
                           <span className="hqc-record-action">Follow the evidence <span className="hqc-arrow" aria-hidden="true">→</span></span>

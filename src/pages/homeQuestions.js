@@ -11,7 +11,8 @@
  * Every destination is resolved through existing canonical data helpers.
  * No record, note, state or URL is duplicated here as an editorial
  * constant — only reader-facing navigation copy and a reference to the
- * canonical object it targets.
+ * canonical object it targets. Record introductions are reviewed, non-canonical
+ * navigation copy pinned to the current assessment ID.
  *
  * Note-target correction (2026-07-21): the specification describes
  * resolving `note` targets through `ALL_NOTES` alone. That is not correct
@@ -27,7 +28,7 @@
 import { ALL_RECORDS } from "../data/corpus.js";
 import { ALL_NOTES, getNoteUrl } from "../data/notes.js";
 import { PROGRAMME_NOTES } from "../data/programmeNotes.js";
-import { getRecordUrl } from "../data/derive.js";
+import { getCurrentAssessment, getRecordUrl } from "../data/derive.js";
 import { getRecordUpdatedDate } from "../data/recordDirectory.js";
 import { isSupportedPressureState } from "../data/pressureStates.js";
 
@@ -51,18 +52,21 @@ export const HOME_QUESTIONS = [
     icon: "quantum",
     question: "Has a quantum computer achieved practical advantage yet?",
     target: { type: "record", id: "FR-QE-0007" },
+    introduction: { assessmentId: "AS-003", text: "Quantum experiments show strong performance, but the evidence on record has not yet demonstrated a lasting advantage over classical computing on a practically useful problem at the same scale." },
   },
   {
     id: "liquid-biopsy-screening",
     icon: "biopsy",
     question: "Is liquid-biopsy cancer screening real yet?",
     target: { type: "record", id: "FR-BT-0004" },
+    introduction: { assessmentId: "AS-005", text: "Blood tests can detect some cancers before conventional diagnosis, but missed cancers remain a limitation and the evidence on record has not established that screening improves survival or overall clinical outcomes." },
   },
   {
     id: "room-temperature-superconductors",
     icon: "superconductor",
     question: "Whatever happened to room-temperature superconductors?",
     target: { type: "record", id: "FR-AM-0005" },
+    introduction: { assessmentId: "AS-004", text: "The candidates on record still lack independently reproduced room-temperature superconductivity; one unsuccessful reproduction used a different synthesis method, so it does not conclusively rule out the original result." },
   },
   {
     id: "ai-evidence-current-state",
@@ -132,8 +136,10 @@ export function resolveHomeQuestion(entry) {
       throw new Error(`homeQuestions: could not derive a URL for record "${target.id}"`);
     }
     const date = getRecordUpdatedDate(record);
+    const introduction = resolveHomeIntroduction(entry, record);
     return {
       url,
+      introduction,
       meta: `${record.id} · Updated ${date}`,
       destinationLabel: "Frontier Record",
     };
@@ -203,4 +209,13 @@ export function assertValidHomeQuestions(entries) {
     // Resolving throws on any broken/unsupported reference.
     resolveHomeQuestion(entry);
   }
+}
+
+/** Non-canonical navigation copy. A new assessment requires explicit copy review. */
+export function resolveHomeIntroduction(entry, record) {
+  const current = getCurrentAssessment(record);
+  if (!entry.introduction?.text || entry.introduction.assessmentId !== current.id) {
+    throw new Error(`Homepage introduction for ${record.id} requires review against ${current.id}`);
+  }
+  return entry.introduction.text;
 }
