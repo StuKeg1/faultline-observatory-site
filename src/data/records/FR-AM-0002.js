@@ -12,8 +12,8 @@
 export const FR_AM_0002 = {
   id: "FR-AM-0002",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-10-08",
-  provenanceReviewId: "LPR-001-D45",
+  lastProvenanceReview: "2026-11-12",
+  provenanceReviewId: "LPR-001-D78",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -180,6 +180,7 @@ export const FR_AM_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-012", date: "2026-11-12", field: "provenance_review", from: "LPR-001-D45", to: "LPR-001-D78", note: "Third-cycle Legacy Provenance Review PASS across five existing evidence instances. DOE 1989 chronology, SRI 1992/93 primary paper, Storms 2010 review metadata/abstract, Berlinguette 2019 Nature article, and NASA Glenn 2020 lattice-confinement account checked against the bounded claims. The SRI 2009 proceedings volume was not directly retrievable, and the full Storms article was not accessible; those limitations do not establish a discrepancy in the bounded descriptions. Existing structured sources are sufficient; no new attribution guessed. No material discrepancy or new evidence identified; no Normal Record Review candidate. Canonical outcome verified / not_required; FRAGMENTING / VS-03 retained." },
     { id: "M-011", date: "2026-10-08", field: "provenance_review", from: "LPR-001-D11", to: "LPR-001-D45", note: "Second-cycle Legacy Provenance Review completed as PASS across all five existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-010", date: "2026-09-09", field: "assessment_and_dependencies_corrected", from: "AS-001 / legacy RM-BN-lineage-OQ wording", to: "AS-002 / corrected dependencies", note: "Append-only AS-002 issued after the operator-approved LPR-001-D11 repair. FRAGMENTING / VS-03 retained on a narrower evidential basis. RM-001, RM-002, BN-001, the inherited-condition wording, lineage and OQ-001/OQ-002/OQ-004 were aligned to corrected source boundaries. Historical AS-001 preserved." },
     { id: "M-009", date: "2026-09-09", field: "provenance_correction", from: "LPR-001-D11 discrepancies_found", to: "LPR-001-D11 discrepancies_corrected", note: "Operator-approved correction of IN-001 through IN-005. Texas A&M attribution corrected; SRI loading correlation bounded to the programme's reported criterion; Storms reframed as a proponent review rather than validated protocol evidence; Berlinguette et al. corrected and the unsupported anomalous-calorimetry acknowledgement withdrawn; NASA/Navy bundle separated, with NASA lattice-confinement work treated as adjacent rather than direct excess-heat evidence. Structured provenance added where confidently established." },
