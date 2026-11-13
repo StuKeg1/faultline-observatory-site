@@ -1,11 +1,8 @@
 /**
  * Evidence Brief — bounded derived-reading-aid prototype.
  *
- * This module intentionally stores no brief prose. It projects existing
- * canonical record fields for the five records judged Compatible in the
- * RENDER-PILOT-001 content review (2026-09-06). The State Warrant remains
- * authoritative; this is neither an assessment nor a publication surface
- * independent of the record.
+ * Projects canonical fields for reviewed records and provides a dated
+ * editorial lead for the FR-QE-0004 trial. The State Warrant retains authority.
  */
 import { getCurrentAssessment } from "./derive.js";
 
@@ -15,6 +12,7 @@ export const EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS = new Set([
   "FR-AI-0009",
   "FR-AM-0007",
   "FR-BT-0005",
+  "FR-QE-0004",
 ]);
 
 export function getEvidenceBrief(record) {
@@ -24,9 +22,19 @@ export function getEvidenceBrief(record) {
   const attractors = (record.mechanisms ?? []).filter((mechanism) => mechanism.type === "ATTRACTOR");
   const questions = record.openQuestions ?? [];
 
-  // Keep the reading map limited to metadata; it cannot duplicate prose.
+  const update = record.id === "FR-QE-0004" && current.id === "AS-005"
+    ? record.instances.find((entry) => entry.id === "IN-011")
+    : undefined;
   return {
     current: { pressureState: current.pressureState, date: current.date },
+    ...(update && {
+      whatChanged: {
+        evidenceId: update.id,
+        date: update.date,
+        finding: "The Helios preprint reported that logical memory errors fell as the code distance increased from 3 to 5 to 7 on a trapped-ion processor. FR-QE-0008 cites the same experiment.",
+        consequence: "This strengthens the evidence for scaling across hardware platforms. The assessment reaffirmed Resolving (VS-04), with scaling at distance 11 and above still open.",
+      },
+    }),
     evidenceCount: record.instances?.length ?? 0,
     attractorCount: attractors.length,
     questionCount: questions.length,
