@@ -11,19 +11,28 @@ export const EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS = new Set([
   "FR-AI-0008",
   "FR-AI-0009",
   "FR-AM-0007",
+  "FR-BT-0004",
   "FR-BT-0005",
   "FR-QE-0004",
   "FR-QE-0008",
 ]);
 
-const HELIOS_LEADS = {
+const EVIDENCE_BRIEF_LEADS = {
+  "FR-BT-0004": {
+    evidenceId: "IN-009",
+    evidenceLabel: "PATHFINDER 2 evidence entry",
+    finding: "PATHFINDER 2 showed that Galleri could detect cancer signals in a separate prospective screening cohort from NHS-Galleri, while missing a substantial share of cancers.",
+    consequence: "The assessment reaffirmed Fragmenting (VS-04): the study strengthens evidence on detection performance, while reduced late-stage incidence, mortality benefit and net clinical utility remain unestablished by this single-arm study.",
+  },
   "FR-QE-0004": {
     evidenceId: "IN-011",
+    evidenceLabel: "Helios evidence entry",
     finding: "The Helios preprint reported that logical memory errors fell as the code distance increased from 3 to 5 to 7 on a trapped-ion processor. FR-QE-0008 cites the same experiment.",
     consequence: "This strengthens the evidence for scaling across hardware platforms. The assessment reaffirmed Resolving (VS-04), with scaling at distance 11 and above still open.",
   },
   "FR-QE-0008": {
     evidenceId: "IN-009",
+    evidenceLabel: "Helios evidence entry",
     finding: "The Helios preprint measured below-threshold logical-memory error suppression across colour-code distances 3, 5 and 7 on trapped-ion hardware, extending earlier fixed-distance trapped-ion benchmarks. FR-QE-0004 cites the same experiment.",
     consequence: "The assessment reaffirmed Resolving (VS-04): the measurements strengthen the scaling case across hardware platforms, while larger-scale resource estimates remain projections and sustained universal computation remains unproven.",
   },
@@ -36,7 +45,7 @@ export function getEvidenceBrief(record) {
   const attractors = (record.mechanisms ?? []).filter((mechanism) => mechanism.type === "ATTRACTOR");
   const questions = record.openQuestions ?? [];
 
-  const lead = HELIOS_LEADS[record.id];
+  const lead = EVIDENCE_BRIEF_LEADS[record.id];
   const update = lead && current.id === "AS-005"
     ? record.instances?.find((entry) => entry.id === lead.evidenceId)
     : undefined;
