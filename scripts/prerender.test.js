@@ -175,7 +175,7 @@ test("Evidence Brief prototype is prerendered only for reviewed records", { skip
     if (EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id)) {
       const map = rendered.match(/<aside class="evidence-brief"[\s\S]*?<\/aside>/)?.[0];
       assert.ok(map, `${id}: reading map missing`);
-      const evidenceId = { "FR-QE-0004": "IN-011", "FR-QE-0008": "IN-009" }[id];
+      const evidenceId = { "FR-BT-0004": "IN-009", "FR-QE-0004": "IN-011", "FR-QE-0008": "IN-009" }[id];
       if (evidenceId && map.includes("What changed?")) {
         assert.ok(map.includes(`href="#evidence-${evidenceId}"`));
         assert.ok(rendered.includes(`id="evidence-${evidenceId}"`));
