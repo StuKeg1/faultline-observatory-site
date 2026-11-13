@@ -137,7 +137,20 @@ test("three-record date pilot qualifies history while preserving every canonical
   const receipt = JSON.parse(readFileSync(new URL("../../docs/reviews/LEGACY-DATE-PILOT-STEP-5B-2026-10-19.json", import.meta.url)));
   assert.deepEqual(receipt.records.map(entry => entry.recordId), ["FR-QE-0002", "FR-AM-0003", "FR-BT-0004"]);
   for (const entry of receipt.records) {
-    const record = historicalRecord(ALL_RECORDS.find(record => record.id === entry.recordId));
+    let record = historicalRecord(ALL_RECORDS.find(record => record.id === entry.recordId));
+    // The October date-pilot receipt predates D79. Reconstruct the exact
+    // pre-D79 governed metadata before comparing its frozen canonical hash.
+    if (entry.recordId === "FR-AM-0003" && record.provenanceReviewId === "LPR-001-D79") {
+      const restored = structuredClone(record);
+      assert.equal(restored.mutationLog[0]?.id, "M-013");
+      assert.equal(restored.mutationLog[0]?.field, "provenance_review");
+      restored.mutationLog = restored.mutationLog.slice(1);
+      restored.lastProvenanceReview = "2026-10-09";
+      restored.provenanceReviewId = "LPR-001-D46";
+      assert.equal(restored.provenanceOutcome, "verified");
+      assert.equal(restored.provenanceRepairStatus, "not_required");
+      record = restored;
+    }
     assert.equal(createHash("sha256").update(JSON.stringify(record)).digest("hex"), entry.canonicalRecordHash);
     const history = getAssessmentHistory(record);
     assert.equal(history[0].date, "date uncertain (legacy)");

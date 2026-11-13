@@ -149,6 +149,17 @@ function atCheckpoint(record, date, rewindLater = true) {
     restored.mutationLog = restored.mutationLog.slice(2);
     record = restored;
   }
+  // D79 is a provenance-only marker after the October frozen checkpoints.
+  // Rewind only its governed metadata and appended mutation for historic hashes.
+  if (record.id === "FR-AM-0003" && date < "2026-11-13" &&
+      record.provenanceReviewId === "LPR-001-D79") {
+    const restored = structuredClone(record);
+    assert.equal(restored.mutationLog[0]?.id, "M-013", "D79 mutation has drifted");
+    restored.lastProvenanceReview = "2026-10-09";
+    restored.provenanceReviewId = "LPR-001-D46";
+    restored.mutationLog = restored.mutationLog.slice(1);
+    record = restored;
+  }
   if (bt1AttractorReclassificationReceipt.date > date &&
       record.id === bt1AttractorReclassificationReceipt.recordId &&
       record.mutationLog[0]?.id === bt1AttractorReclassificationReceipt.mutationId) {

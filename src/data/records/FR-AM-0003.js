@@ -12,8 +12,8 @@
 export const FR_AM_0003 = {
   id: "FR-AM-0003",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-10-09",
-  provenanceReviewId: "LPR-001-D46",
+  lastProvenanceReview: "2026-11-13",
+  provenanceReviewId: "LPR-001-D79",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -118,6 +118,7 @@ export const FR_AM_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-013", date: "2026-11-13", field: "provenance_review", from: "LPR-001-D46", to: "LPR-001-D79", note: "Third-cycle Legacy Provenance Review completed as PASS across seven existing instances (IN-001 through IN-007). Original publisher or institutional abstracts and bibliographic records checked for all; primary publisher full text was inaccessible for Mazurenko 2017, with independent bibliographic and Nature abstract corroboration. All seven bounded representations supported, zero enriched, zero material discrepancies, zero unverified at abstract/metadata level. Existing structured sources sufficient. No new scientific evidence admitted or Normal Record Review candidate identified. FRAGMENTING / VS-03 retained. Governed outcome verified / not_required." },
     { id: "M-012", date: "2026-10-09", field: "provenance_review", from: "LPR-001-D12", to: "LPR-001-D46", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-011", date: "2026-09-10", field: "record_review", from: "2026 evidence candidates", to: "IN-006 + IN-007 admitted", note: "Governed Record Review admitted Radaelli et al. 2026 critical-spin-fluctuation evidence as IN-006 and Sordi et al. 2026 Hubbard-model pairing-dynamics evidence as IN-007. Append-only AS-003 records the combined assessment and reaffirms FRAGMENTING / VS-03. AT-001 was strengthened only to reflect the discriminating computational progress demonstrated by IN-007; lineage extended through 2026. Neither paper is treated as identifying the microscopic pairing mechanism in real cuprates." },
     { id: "M-010", date: "2026-09-10", field: "provenance_correction", from: "LPR-001-D12 discrepancies pending", to: "LPR-001-D12 repaired", note: "Approved bounded provenance repair. Corrected IN-001 through IN-005 for source fidelity, chronology and mechanistic scope; added structured sources[] only for confidently established primary/review sources. Removed the categorical BCS/phonon exclusion from IN-001 and IN-003; narrowed IN-002 to Anderson's source-supported RVB proposal; removed categorical theory-exclusion claims from IN-004; corrected IN-005 chronology to 2015–24 and distinguished Hubbard-model benchmarking and cold-atom antiferromagnetism from direct reproduction of cuprate superconductivity. Append-only AS-002 reaffirms FRAGMENTING / VS-03 with corrected rationale; AS-001 remains intact as historical assessment. RM-002, BN-001, AT-001, lineage and OQ-001 were aligned to the corrected evidence semantics. No 2026 scientific evidence was admitted through this repair; previously flagged 2026 items remain normal Record Review candidates." },
