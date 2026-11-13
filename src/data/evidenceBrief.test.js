@@ -7,10 +7,10 @@ import {
 } from "./evidenceBrief.js";
 import { getCurrentAssessment } from "./derive.js";
 
-test("Evidence Brief prototype is restricted to the seven reviewed records", () => {
+test("Evidence Brief prototype is restricted to the eight reviewed records", () => {
   assert.deepEqual(
     [...EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS].sort(),
-    ["FR-AI-0007", "FR-AI-0008", "FR-AI-0009", "FR-AM-0007", "FR-BT-0005", "FR-QE-0004", "FR-QE-0008"],
+    ["FR-AI-0007", "FR-AI-0008", "FR-AI-0009", "FR-AM-0007", "FR-BT-0004", "FR-BT-0005", "FR-QE-0004", "FR-QE-0008"],
   );
 
   for (const record of ALL_RECORDS) {
@@ -47,6 +47,19 @@ test("The FR-QE-0008 Helios lead points to the evidence assessed in its current 
   const lead = getEvidenceBrief(record).whatChanged;
   if (getCurrentAssessment(record).id === "AS-005") {
     assert.equal(lead.evidenceId, "IN-009");
+    assert.equal(lead.date, record.instances.find(({ id }) => id === "IN-009").date);
+  } else {
+    assert.equal(lead, undefined);
+  }
+});
+
+test("The PATHFINDER 2 lead points to the evidence assessed in the current warrant", () => {
+  const record = ALL_RECORDS.find(({ id }) => id === "FR-BT-0004");
+  const lead = getEvidenceBrief(record).whatChanged;
+  const current = getCurrentAssessment(record);
+  if (current.id === "AS-005") {
+    assert.equal(lead.evidenceId, "IN-009");
+    assert.equal(lead.evidenceLabel, "PATHFINDER 2 evidence entry");
     assert.equal(lead.date, record.instances.find(({ id }) => id === "IN-009").date);
   } else {
     assert.equal(lead, undefined);
