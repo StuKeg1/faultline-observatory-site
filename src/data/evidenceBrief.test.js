@@ -7,10 +7,10 @@ import {
 } from "./evidenceBrief.js";
 import { getCurrentAssessment } from "./derive.js";
 
-test("Evidence Brief prototype is restricted to the six reviewed records", () => {
+test("Evidence Brief prototype is restricted to the seven reviewed records", () => {
   assert.deepEqual(
     [...EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS].sort(),
-    ["FR-AI-0007", "FR-AI-0008", "FR-AI-0009", "FR-AM-0007", "FR-BT-0005", "FR-QE-0004"],
+    ["FR-AI-0007", "FR-AI-0008", "FR-AI-0009", "FR-AM-0007", "FR-BT-0005", "FR-QE-0004", "FR-QE-0008"],
   );
 
   for (const record of ALL_RECORDS) {
@@ -40,4 +40,15 @@ test("The Helios lead is tied to the assessment that reviewed the finding", () =
   }
   const superseded = { ...record, assessments: [...record.assessments, { ...current, id: "AS-TEST" }] };
   assert.equal(getEvidenceBrief(superseded).whatChanged, undefined);
+});
+
+test("The FR-QE-0008 Helios lead points to the evidence assessed in its current warrant", () => {
+  const record = ALL_RECORDS.find(({ id }) => id === "FR-QE-0008");
+  const lead = getEvidenceBrief(record).whatChanged;
+  if (getCurrentAssessment(record).id === "AS-005") {
+    assert.equal(lead.evidenceId, "IN-009");
+    assert.equal(lead.date, record.instances.find(({ id }) => id === "IN-009").date);
+  } else {
+    assert.equal(lead, undefined);
+  }
 });
