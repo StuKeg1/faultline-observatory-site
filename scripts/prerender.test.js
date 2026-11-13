@@ -175,9 +175,10 @@ test("Evidence Brief prototype is prerendered only for reviewed records", { skip
     if (EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id)) {
       const map = rendered.match(/<aside class="evidence-brief"[\s\S]*?<\/aside>/)?.[0];
       assert.ok(map, `${id}: reading map missing`);
-      if (id === "FR-QE-0004" && map.includes("What changed?")) {
-        assert.ok(map.includes('href="#evidence-IN-011"'));
-        assert.ok(rendered.includes('id="evidence-IN-011"'));
+      const evidenceId = { "FR-QE-0004": "IN-011", "FR-QE-0008": "IN-009" }[id];
+      if (evidenceId && map.includes("What changed?")) {
+        assert.ok(map.includes(`href="#evidence-${evidenceId}"`));
+        assert.ok(rendered.includes(`id="evidence-${evidenceId}"`));
       }
       assert.ok(map.includes("Questions on record"));
       assert.ok(map.includes("Mechanisms and barriers"));
