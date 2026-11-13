@@ -163,7 +163,7 @@ test("record-reading repair preserves assessment authority and discloses evidenc
   assert.ok(kidney.includes('id="evidence-IN-008"'));
 });
 
-test("Evidence Brief prototype is prerendered only for reviewed Compatible records", { skip }, () => {
+test("Evidence Brief prototype is prerendered only for reviewed records", { skip }, () => {
   for (const route of sitemapRoutes("sitemap-records.xml")) {
     const id = route.split("/").filter(Boolean).at(-1).toUpperCase();
     const rendered = body(read(route));
@@ -175,6 +175,10 @@ test("Evidence Brief prototype is prerendered only for reviewed Compatible recor
     if (EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id)) {
       const map = rendered.match(/<aside class="evidence-brief"[\s\S]*?<\/aside>/)?.[0];
       assert.ok(map, `${id}: reading map missing`);
+      if (id === "FR-QE-0004" && map.includes("What changed?")) {
+        assert.ok(map.includes('href="#evidence-IN-011"'));
+        assert.ok(rendered.includes('id="evidence-IN-011"'));
+      }
       assert.ok(map.includes("Questions on record"));
       assert.ok(map.includes("Mechanisms and barriers"));
       assert.ok(!map.includes("Attractor"));

@@ -578,6 +578,13 @@ function EvidenceBrief({ brief }) {
     <aside className="evidence-brief" aria-labelledby="evidence-brief-title" data-evidence-brief-prototype="compatible">
       <h2 id="evidence-brief-title">Read this record</h2>
       <p className="evidence-brief-context">A guide to the record’s sections. The State Warrant gives the current assessment.</p>
+      {brief.whatChanged && (
+        <div>
+          <h3>What changed?</h3>
+          <p><time dateTime={brief.whatChanged.date}>{brief.whatChanged.date}</time> · {brief.whatChanged.finding} {brief.whatChanged.consequence}</p>
+          <p><a href={`#evidence-${brief.whatChanged.evidenceId}`}>Helios evidence entry</a> · <a href="#s-warrant">State Warrant</a></p>
+        </div>
+      )}
       <nav className="evidence-brief-grid" aria-label="Read this record">
         <a href="#s-warrant"><strong>Current assessment →</strong><span>{state} · assessed {brief.current.date}</span></a>
         <a href="#evidence-entries"><strong>Evidence and sources →</strong><span>{brief.evidenceCount} logged {brief.evidenceCount === 1 ? "entry" : "entries"}</span></a>
