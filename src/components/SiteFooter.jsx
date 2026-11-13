@@ -24,7 +24,9 @@ export default function SiteFooter() {
         </nav>
 
         <nav className="site-footer-mcp" aria-label="MCP Access">
-          <Link to="/guides/mcp-access" className="site-footer-mcp-link">MCP Access</Link>
+          <Link to="/guides/mcp-access/" className="site-footer-mcp-link">
+            Connect AI assistants to Faultline Observatory (MCP)
+          </Link>
         </nav>
       </div>
 

@@ -5,38 +5,40 @@ import PageMeta from "../../components/PageMeta.jsx";
 import "./MCPAccess.css";
 import { mcpHttpExample } from "../../data/mcpProjection.js";
 
+const MCP_ENDPOINT = "https://mcp.faultlinewatch.com/mcp";
+
 const TABS = [
   {
     id: "codex",
     label: "Codex",
     codeLabel: "config.toml",
-    code: `[mcp_servers.faultline]\nurl = "https://mcp.faultlinewatch.com/mcp"`,
+    code: `[mcp_servers.faultline]\nurl = "${MCP_ENDPOINT}"`,
   },
   {
     id: "claude",
     label: "Claude Desktop",
     codeLabel: "Recommended — Custom Connectors",
-    code: `Settings → Connectors → Add custom connector\n\nhttps://mcp.faultlinewatch.com/mcp`,
+    code: `Settings → Connectors → Add custom connector\n\n${MCP_ENDPOINT}`,
     fallbackLabel: "Fallback — claude_desktop_config.json",
-    fallbackCode: `{\n  "mcpServers": {\n    "faultline": {\n      "command": "npx",\n      "args": ["mcp-remote", "https://mcp.faultlinewatch.com/mcp"]\n    }\n  }\n}`,
+    fallbackCode: `{\n  "mcpServers": {\n    "faultline": {\n      "command": "npx",\n      "args": ["mcp-remote", "${MCP_ENDPOINT}"]\n    }\n  }\n}`,
   },
   {
     id: "inspector",
     label: "MCP Inspector",
     codeLabel: "MCP Inspector",
-    code: `# Transport Type: Streamable HTTP\n# URL:\nhttps://mcp.faultlinewatch.com/mcp`,
+    code: `# Transport Type: Streamable HTTP\n# URL:\n${MCP_ENDPOINT}`,
   },
   {
     id: "claude-code",
     label: "Claude Code",
     codeLabel: "shell",
-    code: `claude mcp add --transport http faultline https://mcp.faultlinewatch.com/mcp`,
+    code: `claude mcp add --transport http faultline ${MCP_ENDPOINT}`,
   },
   {
     id: "http",
     label: "Raw HTTP",
     codeLabel: "curl",
-    code: `curl -s https://mcp.faultlinewatch.com/mcp \\
+    code: `curl -s ${MCP_ENDPOINT} \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{
@@ -55,6 +57,17 @@ const HTTP_SAMPLE_RESPONSE = mcpHttpExample();
 
 export default function MCPAccess() {
   const [activeTab, setActiveTab] = useState("codex");
+
+  const [copyStatus, setCopyStatus] = useState("");
+
+  async function copyEndpoint() {
+    try {
+      await navigator.clipboard.writeText(MCP_ENDPOINT);
+      setCopyStatus("Endpoint URL copied.");
+    } catch {
+      setCopyStatus("Could not copy. Select and copy the endpoint URL above.");
+    }
+  }
 
   return (
     <>
@@ -76,6 +89,11 @@ export default function MCPAccess() {
           <p className="mcp-eyebrow">Guide — Machine Interface</p>
           <h1 className="mcp-title">Using the Observatory with AI Assistants</h1>
           <p className="mcp-intro">
+            To read public Frontier Records in Claude or another MCP client, add Faultline
+            Observatory as a custom connector. Copy the endpoint URL below into the server
+            URL field. Access is read-only and requires no API key or sign-in.
+          </p>
+          <p className="mcp-intro">
             Connect an AI assistant directly to the same canonical Frontier Record corpus
             that powers the website. Agents can inspect claim evidence, the underlying sources
             recorded for evidence instances, assessment history, current Pressure State and
@@ -84,9 +102,15 @@ export default function MCPAccess() {
           </p>
 
           <div className="mcp-glance-card">
-            <div className="mcp-glance-item">
+            <div className="mcp-glance-item mcp-glance-full">
               <div className="mcp-glance-label">Endpoint</div>
-              <div className="mcp-glance-value"><code>mcp.faultlinewatch.com/mcp</code></div>
+              <div className="mcp-glance-value"><code>{MCP_ENDPOINT}</code></div>
+              <div className="mcp-copy-controls">
+                <button type="button" className="mcp-tab-btn" onClick={copyEndpoint}>
+                  Copy endpoint URL
+                </button>
+                <span role="status">{copyStatus}</span>
+              </div>
             </div>
             <div className="mcp-glance-item">
               <div className="mcp-glance-label">Status</div>

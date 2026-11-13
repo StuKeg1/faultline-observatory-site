@@ -92,6 +92,19 @@
   border: 1px solid var(--rule-light);
 }
 
+.mcp-glance-full code {
+  overflow-wrap: anywhere;
+}
+
+.mcp-copy-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+}
+
 .mcp-status-dot {
   display: inline-block;
   width: 6px;
