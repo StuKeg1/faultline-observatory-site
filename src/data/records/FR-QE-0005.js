@@ -12,8 +12,8 @@
 export const FR_QE_0005 = {
   id: "FR-QE-0005",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-10-11",
-  provenanceReviewId: "LPR-001-D48",
+  lastProvenanceReview: "2026-11-14",
+  provenanceReviewId: "LPR-001-D80",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -203,6 +203,7 @@ export const FR_QE_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-017", date: "2026-11-14", field: "provenance_review", from: "LPR-001-D48", to: "LPR-001-D80", note: "Third-cycle Legacy Provenance Review completed as PASS across all eight existing instances (IN-001 through IN-008). Primary journal, preprint, publisher and institutional source abstracts checked for claim representation and bounded distinctions; IEEE Shor full text not directly retrievable, with bibliographic and independent journal corroboration. Eight supported at source/abstract level; zero enriched, zero material discrepancies, zero unverified at that level. Existing structured sources sufficient. No new scientific evidence admitted or Normal Record Review candidate identified. ESCALATING / VS-02 retained. Governed outcome verified / not_required." },
     { id: "M-016", date: "2026-10-11", field: "provenance_review", from: "LPR-001-D17", to: "LPR-001-D48", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-015", date: "2026-09-15", field: "instances_logged", from: "IN-006", to: "IN-008", note: "Normal Record Review admitted two 2026 RSA-2048 resource analyses: IN-007 Webster et al. Pinnacle QLDPC architecture and IN-008 Mundada et al. heterogeneous architecture. Appended AS-004 and updated current mechanisms, lineage and open questions to distinguish architecture-dependent theoretical resource compression from demonstrated cryptographic capability. Pressure state remains ESCALATING; verification stage remains VS-02." },
     { id: "M-014", date: "2026-09-15", field: "provenance_corrected", from: "LPR-001-D17 discrepancies", to: "PASS-AFTER-CORRECTION", note: "LPR-001-D17 bounded correction: repaired IN-001 through IN-006, added confidently established structured provenance, corrected dependent mechanisms, lineage and open-question wording, and appended AS-003 rather than rewriting historical assessments. Removed unreviewed 2026 QLDPC/ECC material from legacy IN-006 so it can be handled through normal Record Review. Pressure state remains ESCALATING; verification stage remains VS-02." },
