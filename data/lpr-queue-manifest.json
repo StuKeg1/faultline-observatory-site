@@ -2,12 +2,8 @@
   "schemaVersion": 1,
   "source": "src/data/corpus.js",
   "selectionRule": "never-reviewed, oldest lastProvenanceReview, Record ID",
-  "nextRecordId": "FR-QE-0005",
+  "nextRecordId": "FR-QE-0006",
   "records": [
-    {
-      "id": "FR-QE-0005",
-      "lastProvenanceReview": "2026-10-11"
-    },
     {
       "id": "FR-QE-0006",
       "lastProvenanceReview": "2026-10-12"
@@ -131,6 +127,10 @@
     {
       "id": "FR-AM-0003",
       "lastProvenanceReview": "2026-11-13"
+    },
+    {
+      "id": "FR-QE-0005",
+      "lastProvenanceReview": "2026-11-14"
     }
   ]
 }
