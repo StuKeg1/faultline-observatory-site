@@ -21,3 +21,16 @@ Authority: user explicitly approved merge of PR #254 and automatic Cloudflare Pa
 
 ## Exact next gate
 Obtain direct no-cache `deployment.json` for website and MCP Worker showing `8b624e6af97822515ec3f98a44e70c2226d6a7d5` or documented equivalent artifact provenance, collect four fresh record-page AS-001 date extracts, and run live MCP read/search matching the same expected date and `recordedDate`. If genuine deployment failure appears, diagnose it separately and seek any repair approval. Once all pass, issue a **new** acceptance receipt and advance to A03.
+
+## Cloudflare browser-tab verification supplement — 15 November 2026
+
+The user supplied a screenshot and an authenticated Cloudflare Workers & Pages dashboard tab was independently read using the connected browser's read-only tab-context capability. The dashboard showed:
+- **Cloudflare Pages** `faultline-observatory-site` at `faultline-observatory-site.pages.dev`, linked to `StuKeg1/faultline-observatory-site`, recent build/update activity labelled with the **FIP-A02 post-merge decision-log commit**.
+- A distinct Worker `faultline-observatory-site` at `faultline-observatory-site.sjoerdkeg.workers.dev` with recent activity bearing the same commit title.
+- `faultline-mcp` Worker at `mcp.faultlinewatch.com`, shown as recently modified (approximately two minutes in the contemporaneous browser view) with a deployments link.
+
+**Interpretation:** Stronger evidence of Cloudflare/GitHub integration and recent build activity than an unverified inference; **not** evidence that the specific source merge SHA `8b624e6af97822515ec3f98a44e70c2226d6a7d5` was published, since the dashboard displays a later administrative commit title and no deployed SHA, build success, route-level content, or MCP protocol result.
+
+The browser connection is read-only for already-open tabs; this session cannot navigate or click into the deployment detail pages. The dashboard's visible links identify the Cloudflare Pages project and the Workers' production deployment pages, but the details are not accessible from the open overview tab. Public `/deployment.json` endpoints still cannot be fetched in the available web tool; local direct HTTPS requests fail DNS. Public record pages returned by web extraction still have unqualified 2024-01-15 dates for the four records in retrieved content, but freshness cannot be pinned to the post-merge SHA.
+
+**Disposition unchanged:** A02 BLOCKED AT INDEPENDENT DEPLOYED-SHA, FOUR LIVE AS-001 HISTORIES AND MCP PARITY gates; do not mark accepted merely because dashboard lists recent activity. Next evidence needed: the user opens the Pages deployment detail and MCP deployment detail in connected browser tabs (for readback), or supplies their deployment SHA/details; separately obtain a reliable current record HTML and protocol-level MCP check.
