@@ -13,3 +13,4 @@ Always append a dated row with the original item ID, options considered, decisio
 | 2026-11-15 | M0 ACCEPTED | Verified GitHub main readback | Documentation-only setup | PR #253, merge 1b408959; receipt receipts/M0-2026-11-15.md |
 
 | 2026-11-15 | FIP-A01 review completed; DECISION REQUIRED | Evidence-only user request | Review [A01-2026-11-15](reviews/A01-2026-11-15.md) | Production snapshots not same-time; MCP response inaccessible; no repair authorised |
+| 2026-11-15 | FIP-A01 bounded diagnostic follow-up AUTHORISED | User explicit approval | Fresh production/deployed SHA, existing validators, live MCP checks; evidence-only | No code changes, redeployment or canonical mutations; repair proposal requires separate approval |
