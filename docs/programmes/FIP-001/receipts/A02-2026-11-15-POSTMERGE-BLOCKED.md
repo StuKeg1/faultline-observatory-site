@@ -65,3 +65,14 @@ User requested a new confirmation pass. Direct web retrievals again returned the
 This is **unresolved counter-evidence** to public content acceptance. The retriever does not expose an exact request time, response headers, body hash or deploy SHA, so it could be presenting earlier cached HTML. Direct HTTP requests from the executable container to custom-domain and Pages preview hosts failed DNS resolution; generic web fetch of website and MCP deployment.json, merge-specific Pages URL and Pages main host also failed. No live Streamable HTTP MCP request completed. The connected browser still has authenticated Cloudflare deployment tabs but no currently open public record page tabs to read.
 
 **Updated disposition:** Remain BLOCKED, not ACCEPTED. Explicit open questions: cache-stale crawl versus current production content; MCP version-to-commit identity and protocol payload. Do not assert confirmed production regression, and do not attempt a new repair/redeploy until verified browser/current HTTP evidence distinguishes the alternatives. Requested follow-up: inspect fresh public record pages directly in the connected browser and obtain MCP full-record projection in an authorised working client or reliable HTTP environment.
+
+## Direct public browser verification — 2026-11-15 19:17 GMT
+
+The operator opened and refreshed the public https://faultlinewatch.com/the-record/fr-qe-0003/ page in the connected browser. Read-only browser tab-context inspection returned the currently displayed page text, not a stale search crawler snapshot. **FR-QE-0003 live LAD-001 display PASS**:
+- Verification Matrix VS-02: `First recorded date uncertain (legacy)`.
+- State Warrant: `State entered date uncertain (legacy)`.
+- Assessment History AS-001: `date uncertain (legacy)`, initial assessment retained.
+- Latest assessment remains `2026-06-28`.
+- Separate historical question dates, mutations and annotation text still contain `2024-01-15` by design; this is not an AS-001 issuance-date regression.
+
+This directly rebuts the earlier web-retriever snapshots on FR-QE-0003 and establishes the deployed public date qualification for **one of four** target records. It does not establish exact browser-served deployed SHA (the earlier Cloudflare dashboard confirms a Pages production deployment for the merge), the other three public records, or MCP full-record date/recordedDate parity. **A02 remains BLOCKED at the remaining three record-page checks and MCP production parity.** No further code change authorised or performed.
