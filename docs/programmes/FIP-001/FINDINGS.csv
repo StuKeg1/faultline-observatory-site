@@ -1,0 +1,63 @@
+finding_id,package,initial_triage,short_description,notes
+F1-01,A,VERIFY,Cross-surface record disagreement,Merge with F2-15 and F4-09
+F1-02,A,VERIFY,Programme count metadata
+F1-03,A,VERIFY,Assessment-gap label
+F1-04,A,VERIFY,Legacy baseline dating,See F3-01
+F1-05,C,VERIFY,Legacy Audit filter
+F1-06,C,VERIFY,Overlapping browse entry points
+F1-07,C,VERIFY,Repeated trajectory link labels
+F1-08,C,VERIFY,Welcome typo
+F1-09,B,ADAPT,Public visibility of review receipts
+F1-10,D,VERIFY,Brand discoverability
+F2-01,C,VERIFY,Search absence claim,Potentially already solved
+F2-02,C,ADOPT,Ambiguous Escalating direction
+F2-03,C,ADAPT,Record top-level complexity,Existing legibility repairs must be reviewed
+F2-04,C,VERIFY,Point-of-use state definitions
+F2-05,C,VERIFY,Navigation changes proposed
+F2-06,C,ADAPT,Naming and classifications
+F2-07,B,VERIFY,Evidence vocabulary mismatch,EN-001 unread to Claude
+F2-08,C,ADOPT,Public code glossary
+F2-09,C,ADAPT,Trajectories complexity,Check newer registers
+F2-10,C,VERIFY,Accessible names for links
+F2-11,C,VERIFY,Duplicate navigation DOM,Live browser check required
+F2-12,D,ADOPT,Cite and as-of record
+F2-13,C,VERIFY,Homepage latest activity
+F2-14,C,ADAPT,Closed interpretation
+F2-15,A,VERIFY,Template drift,Merge with F1-01
+F2-16,C,ADAPT,Mutation log legibility
+F2-17,B,VERIFY,Contact fallback
+F3-01,A,VERIFY,Historical assessment dating,High priority; do not mass relabel without identity analysis
+F3-02,A,ADAPT,Legacy audit findings report,Distinguish minor/material and re-count from canonical data
+F3-03,A,ADOPT,Append-only wording precision
+F3-04,B,ADAPT,Governance and AI disclosure,External panel not pre-authorised
+F3-05,B,VERIFY,State stickiness,Step 8 reduced severity to Medium
+F3-06,B,VERIFY,Rescoping of QE-0001
+F3-07,A,VERIFY,Stage semantics VS-04/VS-05
+F3-08,B,DECLINE,Positive terminal state proposal,Methodology change not supported by symmetry argument
+F3-09,E,ADAPT,Selection rationale
+F3-10,B,VERIFY,Evidence appraisal rubric,Check existing EN-001 and FCIF
+F3-11,A,VERIFY,Representation accuracy and corrections
+F3-12,C,ADAPT,Process notes and readability,Recount alleged 20 percent before use
+F3-13,B,ADAPT,Sponsor and independence fields
+F3-14,B,ADOPT,Right-of-response policy
+F4-01,B,ADAPT,Public governance transparency,AI collaboration already acknowledged per Step 8
+F4-02,B,VERIFY,Privacy terms licence and contact,Check current pages before additions
+F4-03,E,VERIFY,Experimental political pilot,Outside core website change until scoped
+F4-04,E,ADAPT,Audience priority
+F4-05,E,VERIFY,Human-filtered analytics,Claude monthly visitor figures invalid
+F4-06,D,ADAPT,Disambiguation and external discovery
+F4-07,D,ADOPT,Citation guidance,Merge with F2-12
+F4-08,B,ADOPT,Claimant response,Merge with F3-14
+F4-09,A,VERIFY,MCP and web inconsistency,Merge with F1-01
+F4-10,E,ADAPT,Public audience metrics
+F6-01,E,VERIFY,Quantum Advantage Tracker overlap
+F6-02,E,ADAPT,Competitive differentiation,Step 8 narrowed uniqueness claim
+F6-03,B,ADAPT,Governance peer comparison,Right-size one-person institution
+F6-04,D,VERIFY,Reach and discovery estimates,Step 8 disowned monthly visits unit
+F6-05,B,ADAPT,Independent reliability review
+F6-06,F,DEFER,Funding model
+F6-07,D,ADAPT,AI answer-engine use
+F6-08,E,DEFER,Metaculus links
+F6-09,E,DEFER,Hindsight partnership
+STEP-5,D,VERIFY,Technical SEO and AI discoverability audit,Claude did not execute
+STEP-8,ALL,REFERENCE,Red-team corrections supersede earlier unsupported statements,Apply CH-01 through CH-24 when reviewing
