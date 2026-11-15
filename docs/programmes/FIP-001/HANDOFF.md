@@ -1,17 +1,24 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-15
 **Programme:** FIP-001 / Wave 1
-**Current milestone:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MERGED — BLOCKED AT LIVE PRODUCTION VERIFICATION** (not accepted)
-**Authority:** User approved PR #254 merge and automatic Cloudflare Pages + MCP Worker production deployments. No further code repairs or canonical record/FCIF changes authorised.
-**GitHub outcome:** [PR #254](https://github.com/StuKeg1/faultline-observatory-site/pull/254) merged 2026-11-15T17:30:04Z, SHA `8b624e6af97822515ec3f98a44e70c2226d6a7d5`. Main readback confirmed four proposed LAD-001 overlays. CI [#930](https://github.com/StuKeg1/faultline-observatory-site/actions/runs/43741124591) PASSED (221/221 built-output tests; 63 prerendered pages; lint, validators, MCP typecheck).
-**Cloudflare evidence (2026-11-15):** Both authenticated deployment tabs independently read. Cloudflare Pages lists a **production deployment explicitly for A02 merge SHA `8b624e6...`** and later main deployments. MCP Worker version `e688ea27` is active/Ready with 100% traffic; its Git SHA is not exposed. All four public AS-001 histories independently verified in connected browser; only live MCP protocol/date and deployed-commit parity remains unverified. See [blocking receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).\n**A02 acceptance:** PUBLIC-SITE GATE PASSED (all four directly read through connected browser); MCP PROTOCOL/DEPLOYED SHA PARITY NOT VERIFIED. The exact merge SHA was deployed in a Pages production build, but the current public endpoint content cannot be reliably proven; available web retriever still serves unqualified AS-001 historical snapshots for three pages without proveable freshness; fourth page is older crawl; live MCP deployed fingerprint and protocol parity cannot be read. These are verification blockers, not demonstrated deployment defects.
-**Blocking receipt:** [A02 Postmerge Verification](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).
-**Scope unchanged:** no Frontier Record modules or FCIF governance changed in PR #254. No automatic new assessment or stage transition.
-**Programme progress:** M0 accepted; A01 accepted with exceptions; A02 implementation merged but blocked pending independent live checks. A03 BACKLOG, not started.
+**Current milestone:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; FIP-A02 MERGED / FOUR LIVE PAGES VERIFIED / MCP PARITY DEFERRED (not accepted); **FIP-A03 EVIDENCE REVIEW COMPLETE — DECISION REQUIRED**.
+**Authority:** Operator requested an A03 evidence-only review of VS-04/VS-05 and explicitly deferred the A02 live MCP parity check. No scientific-record, assessment, FCIF, application-code, or production change authorised.
 
-**Live page verification (2026-11-15 19:17 GMT):** FR-QE-0003 directly inspected through connected public browser tab: AS-001, State Warrant and VS-02 first-recorded dates all show `date uncertain (legacy)`; latest assessment unchanged. PASS 1/4. Three other records and live MCP parity remain outstanding. See [updated A02 blocking receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).
-**Public browser readback (~19:19 GMT):** FR-QE-0003, FR-QE-0008 and FR-QE-0005 all independently PASS on AS-001 `date uncertain (legacy)` and State Warrant; latest assessment dates unchanged. FR-AI-0001 was not open (two QE-0005 tabs instead), so public verification is **3/4**. MCP protocol parity remains unverified. See [A02 blocking receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).
-**Next recommended action — exactly one:** Verify live MCP Worker deployed source/commit and call its full-record projection for all four A02 IDs; require `date uncertain (legacy)` and `recordedDate: 2024-01-15` on AS-001. Public Pages 4/4 PASS. Do not accept A02 until MCP gate passes or operator explicitly dispositions the exception.
-**Resume:** Read README.md, BACKLOG.md, DECISIONS.md, this HANDOFF.md and blocking receipt on main. Never equate a merged PR or green CI with deployed production verification.
+## A03 findings and decision
+Read [A03 evidence review](reviews/A03-2026-11-15.md) in full before proceeding.
+- Primary ratified authority: July 22 Semantic-Authority Ruling and July 23 Legacy Assignment Review (linked in A03). Verification Stage is evidence depth, independent from Pressure State; VS-04 includes qualifying adverse/null direct reproduction and VS-05 requires sustained/applied operation of the **claimed capability**.
+- Canonical current stage census across 32 records: VS-02 9, VS-03 15, VS-04 5, VS-05 3, VS-01 0.
+- **A03-01 MATERIAL:** FR-AM-0001 AS-005 and FR-AM-0005 AS-004 continue to carry COLLAPSED / VS-05 despite historical review overlays that corrected earlier VS-05 assessments to VS-04 and current notes lacking an operational warrant for the full claims. This is a current-stage **warrant-review candidate**, not a ratified downgrade. Recommend bounded two-record evidence-only review.
+- **A03-02:** FR-AI-0008 VS-05 already has VSC-001 awaiting operator decision; avoid duplicate general review or automatic VS-03/04 fallback.
+- **A03-03:** FR-QE-0001 counter-performance VS-04 is specifically ratified under claim-level adversarial reproduction; Claude's general semantic-defect claim is CLOSED as overbroad.
+- **A03-04:** Other VS-04 cases scoped; no blanket correction. FR-BT-0004 single-arm PATHFINDER 2 is not an independently replicated randomised mortality result.
+- **A03-05:** Public reading guide `src/pages/Stubs.jsx` equates VS-05 with “being tested in real-world conditions”, weaker than ratified applied-operation boundary. Recommend **separate copy proposal only**, no implementation.
+- A03 disposition **DECISION REQUIRED**, not authorised, implemented or accepted.
 
-**A02 4/4 public readback (2026-11-15 ~19:21 GMT):** QE-0003, QE-0008, QE-0005, AI-0001 all show qualified date in Assessment History and State Warrant, with current assessments preserved. [Evidence receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md). MCP parity remains blocked.
+## A02 residual
+[PR #254](https://github.com/StuKeg1/faultline-observatory-site/pull/254) merged as `8b624e6af97822515ec3f98a44e70c2226d6a7d5`. GitHub CI #930 passed 221 tests and build/MCP typecheck; Cloudflare Pages production deployed exact merge SHA; all four public AS-001 uncertain-date displays were independently read in connected browser and PASSED. **Live MCP deployed Git SHA and full-record qualified-date/`recordedDate` parity remain DEFERRED by operator, NOT VERIFIED; A02 is not accepted.** [A02 evidence receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md). No premature acceptance.
+
+## Resume / next action
+**Next recommended action — exactly one:** Operator decides whether to authorise an **evidence-only current-stage warrant review** for FR-AM-0001 and FR-AM-0005 (later assessments only, full evidence locators), with keep/VS-04/other alternatives and no automatic patch. If authorised, produce proposal and ask separate implementation decision.
+After this, A04 copy/history review is the next backlog item; public reader-copy finding A03-05 may be coordinated with it without merging authorities.
+Always read FIP-001 README, BACKLOG, DECISIONS, current HANDOFF and A03 review on canonical main. A03 report is noncanonical administration, not a stage ruling or scientific fact amendment.
