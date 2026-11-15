@@ -26,7 +26,7 @@ F2-14,C,ADAPT,Closed interpretation
 F2-15,A,VERIFY,Template drift,Merge with F1-01
 F2-16,C,ADAPT,Mutation log legibility
 F2-17,B,VERIFY,Contact fallback
-F3-01,A,VERIFY,Historical assessment dating,High priority; do not mass relabel without identity analysis
+F3-01,A,ADAPT,Historical assessment dating,Existing 23-record UNKNOWN classification; 3 LAD-001 pilot overlays; 20 unqualified; A02 review 2026-11-15; no blanket rewrite
 F3-02,A,ADAPT,Legacy audit findings report,Distinguish minor/material and re-count from canonical data
 F3-03,A,ADOPT,Append-only wording precision
 F3-04,B,ADAPT,Governance and AI disclosure,External panel not pre-authorised
