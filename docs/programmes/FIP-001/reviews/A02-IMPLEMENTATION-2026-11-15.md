@@ -33,3 +33,17 @@ Mandatory before merge:
 Do **not** merge or deploy until tests pass and user grants separate approval. If tests are inaccessible, report BLOCKED FOR MERGE rather than calling A02 ACCEPTED. Avoid opening an automatic preview deployment by creating a pull request without explicit approval.
 
 Next single action: arrange or authorise executable CI validation of the isolated branch and inspect results; seek distinct merge/deployment approval only after successful validation.
+
+## Executable isolated validation supplement — 15 November 2026
+
+**Scope:** Executed actual branch module source fetched from GitHub inside a JavaScript isolate, with ES module export/import wrappers adapted for testing. This tests selected production derivation functions in executable JavaScript; it is **not** a Node/npm CI run, production build, or live MCP request.
+
+- **40 assertions passed** across actual `verificationStageReviews.js` and four canonical record modules: unique overlay keys (11), target date qualification, unchanged stored issue dates, retained `recordedDate`, pressure state/stage consistency, valid `basis` references and immutable source objects. The two modified test files passed JavaScript syntax-compilation checks after import transformation.
+- **32 additional assertions passed** using actual `derive.js`, `cardAssessmentHistory.js`, `verificationStageReviews.js` and the four record modules: historical date projections, state-entry dates, card dates, latest assessment continuity, transition counts, compact trajectory existence and non-mutation.
+- **Notable nuance:** FR-QE-0005's derived Verification Matrix `getVerificationStages` dates for current VS-02 resolve to 2026-09-15, and VS-03 to 2026-06-29. The historical AS-001 date is correctly qualified in `getAssessmentHistory`, `getStateEnteredDate` and card history, but **does not appear in the stage matrix** because its current VS-02 run begins later. This is existing stage-run logic, not a failing LAD-001 overlay; do not assert every record's stage matrix must expose an unknown date.
+- GitHub compare still lists precisely three changed files: sidecar and two test files, no canonical record files.
+
+### Full CI blockage and merge disposition
+`.github/workflows/ci.yml` triggers only for `pull_request` and pushes to `main`. No available GitHub connector action can dispatch a new workflow run on this feature branch. Opening a PR may also trigger Cloudflare preview deployment (repo documents Cloudflare checks on PRs), so that route is **not used under the instruction not to deploy**. The local execution container has Node 22/npm 10 but no network access to clone the repository or install dependencies. Thus the repository's `npm ci`, `validate:all`, lint, `npm test`, build, built-output tests and MCP typecheck remain unexecuted for this branch.
+
+**Decision: HOLD MERGE / DO NOT DEPLOY.** Isolated executable checks passed but do not satisfy the formal CI/build acceptance gate. Do not mark A02 ACCEPTED. The next authorised action must specifically enable full CI without an unauthorised deployment (e.g., approve a PR/preview workflow, or provide a local checkout accessible to an executable runner). After CI results are reviewed, seek a separate merge decision.
