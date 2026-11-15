@@ -115,6 +115,25 @@ test("post-24-October current records reconstruct pinned historical checkpoints 
 
 function atCheckpoint(record, date, rewindLater = true) {
   if (rewindLater) record = historicalRecord(record);
+  // FIP-A03 was issued after the frozen shared-source and provenance receipts.
+  // Reverse only its prospective AS-006 / M-017 before the earlier D77 rewind.
+  // This is test-time reconstruction; canonical history remains untouched.
+  if (record.id === "FR-AM-0001" && date < "2026-11-15" &&
+      record.assessments.at(-1)?.id === "AS-006") {
+    assert.equal(record.assessments.at(-1).date, "2026-11-15");
+    assert.equal(record.assessments.at(-1).changeKind, "verification_stage_correction");
+    assert.equal(record.assessments.at(-1).pressureState, "collapsed");
+    assert.equal(record.assessments.at(-1).verificationStage, "VS-04");
+    assert.deepEqual(record.mutationLog.slice(0, 3).map(item => item.id), ["M-017", "M-016", "M-015"]);
+    assert.equal(record.mutationLog[0].field, "assessment_correction");
+    assert.equal(record.mutationLog[0].from, "AS-005 / COLLAPSED / VS-05");
+    assert.equal(record.mutationLog[0].to, "AS-006 / COLLAPSED / VS-04");
+    assert.equal(record.assessments.at(-2)?.id, "AS-005");
+    const restored = structuredClone(record);
+    restored.assessments.pop();
+    restored.mutationLog.shift();
+    record = restored;
+  }
   // D76's authorised IN-007 correction postdates the October clarification
   // receipt. Reconstruct the pre-D76 record before checking its frozen hash.
   if (record.id === "FR-AI-0009" && date < "2026-11-10" &&
