@@ -58,6 +58,10 @@ Search additionally returns `matches`, grouped by `recordId`, and `matchPolicy`.
 
 The existing `query`, `count` and `records` fields and record projections remain unchanged. Search continues to include historical text. A historical hit locates preserved wording; it does not reinstate that wording as the controlling judgment. Read `currentAssessment` to interpret the record now. Evidence-instance and current-field matches are retrieval references, not independent verification of the matched assertion.
 
+## FIP-A03 post-issuance status clarifications (optional full-view field)
+
+Two narrowly bound administrative annotations identify the completed approval/issuance status of FR-AM-0001 AS-006/M-017 and FR-AM-0005 AS-005/M-022. A live *full* record may include an optional top-level `issuanceStatusClarifications[]` derived from a fail-closed source snapshot, identifying `recordId`, `assessmentId`, `mutationId`, `reviewDate`, `scope`, `text` and `mergeCommit`. The original assessment notes and mutation notes remain untouched. These clarifications do **not** constitute new evidence, new assessments, mutation entries or fresh Verification Stage changes. Thin summary outputs remain unchanged; search results using `detail: "full"` include the same optional field. This concerns only FIP-A03 administrative wording; FIP-A02 historical-date parity remains deferred.
+
 ## Structured evidence provenance
 
 PA-002 admits structured source provenance directly on canonical evidence instances as `instances[].sources[]`. The MCP does not transform this into a separate interface-specific model: full-record retrieval exposes the canonical structure as authored.
