@@ -1,13 +1,14 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-15
 **Programme:** FIP-001 / Wave 1
-**Current milestone:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; FIP-A02 IMPLEMENTED ON BRANCH (tests not executed; merge blocked)
+**Current milestone:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; FIP-A02 IMPLEMENTED ON BRANCH (targeted validation passed; full CI pending; merge held)
 **Authorities:** A01 closure accepted; A02 four LAD-001 overlays and regression tests authorised for isolated-branch implementation only. No merge, production deployment or FCIF/canonical-record mutation authorised.
 **Receipts:** [M0](receipts/M0-2026-11-15.md); [A01](receipts/A01-2026-11-15.md).
 **A01 basis:** 32 records / 109 assessments match retrieved public site. Four missing-assessment allegations retracted as parser false positives. Runtime deployment SHA and MCP protocol parity remain unverified, not failed.
 **A02 findings:** On 19 October 2026, all 23 legacy AS-001 dates were classified UNKNOWN; 3 received display-only LAD-001 uncertain-date overlays. 20 remain unqualified. The anachronisms in QE-0003, QE-0008, AI-0001 and QE-0005 are materially supported, but no real issue dates are established. See [A02 review](reviews/A02-2026-11-15.md).
-**Programme progress:** M0 accepted; A01 accepted with exceptions; A02 1 bounded implementation on isolated branch (not accepted or merged); 0 canonical record edits; runtime tests unexecuted.
-**A02 prepared change:** [Exact four-record LAD-001 proposal and test plan](proposals/A02-LAD001-four-record-2026-11-15.md). Four source records unchanged. Main has 7 overlays and the isolated branch now has 11; prior pilot expectations and MCP regression assertions are updated on that branch. No executable test run claimed.
+**Programme progress:** M0 accepted; A01 accepted with exceptions; A02 1 bounded implementation on isolated branch (not accepted or merged); 0 canonical record edits; 72 targeted executable assertions passed; full CI/build unexecuted.
+**A02 prepared change:** [Exact four-record LAD-001 proposal and test plan](proposals/A02-LAD001-four-record-2026-11-15.md). Four source records unchanged. Main has 7 overlays and the isolated branch now has 11; prior pilot expectations and MCP regression assertions are updated on that branch. Targeted isolated JavaScript execution: 40 + 32 assertions passed; full Node/npm CI not run.
 **A02 implementation receipt:** [A02 branch diff and validation constraints](reviews/A02-IMPLEMENTATION-2026-11-15.md), branch `fip-a02-lad001-four-legacy-dates`, head `2c71f42716c9875dc7e4b7e863cca9f83fd995b2`. Exactly three source/test files modified.
-**Next recommended action — exactly one:** Obtain executable Node/CI validation of isolated A02 branch (no deployment); review results, then request a separate merge decision. A03 remains queued.
+**Validation/decision:** 72 isolated executable assertions passed; GitHub PR-only CI cannot be launched without a PR, which could trigger preview deployment. **HOLD MERGE** pending full CI/build validation and explicit approval. See the supplement in [A02 implementation review](reviews/A02-IMPLEMENTATION-2026-11-15.md).
+**Next recommended action — exactly one:** Authorise a safe CI execution path (e.g. draft PR with preview-deployment implications explicitly accepted, or provide an executable repository checkout); review full CI before any merge decision. A03 remains queued.
 **Resume:** Read README.md, BACKLOG.md, DECISIONS.md and this hand-off on main, plus latest receipt/review. Do not treat source inspection as executed tests or a GitHub merge as deployed verification.
