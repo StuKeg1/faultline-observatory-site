@@ -76,3 +76,12 @@ The operator opened and refreshed the public https://faultlinewatch.com/the-reco
 - Separate historical question dates, mutations and annotation text still contain `2024-01-15` by design; this is not an AS-001 issuance-date regression.
 
 This directly rebuts the earlier web-retriever snapshots on FR-QE-0003 and establishes the deployed public date qualification for **one of four** target records. It does not establish exact browser-served deployed SHA (the earlier Cloudflare dashboard confirms a Pages production deployment for the merge), the other three public records, or MCP full-record date/recordedDate parity. **A02 remains BLOCKED at the remaining three record-page checks and MCP production parity.** No further code change authorised or performed.
+
+## Public browser readback — 2026-11-15 ~19:19 GMT (3 of 4)
+
+The operator reported all three remaining target tabs open. The connected browser list actually contained FR-QE-0008 and **two FR-QE-0005 tabs**, but **no FR-AI-0001 tab**. Both distinct available pages were inspected with `get_tab_context`; this tool reads live rendered browser content, not an indexed search snapshot:
+- **FR-QE-0008 PASS:** `State entered date uncertain (legacy)`, `VS-04 Current from date uncertain (legacy)`, `Assessment History` includes `date uncertain (legacy)`; latest assessment remains `2026-10-20`. Original `2024-01-15` values persist elsewhere for questions, mutations and historical text without being the AS-001 issue date.
+- **FR-QE-0005 PASS:** `State entered date uncertain (legacy)`, `Assessment History` includes `date uncertain (legacy)`; latest assessment remains `2026-09-15`. The stage matrix continues to reflect later stage-run dates, as expected. Both duplicate tabs returned the same text.
+- **FR-AI-0001 NOT VERIFIED:** absent from the connected tab list at this checkpoint.
+
+**Overall browser live public history: PASS 3/4** (QE-0003 previously verified). **MCP full-record parity remains UNVERIFIED.** A02 remains blocked until those separate checks pass. No further code modification.
