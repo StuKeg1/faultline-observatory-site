@@ -11,3 +11,5 @@
 Always append a dated row with the original item ID, options considered, decision owner and rationale; do not overwrite prior judgements. A separate record must approve any material change in scope. If a finding is declined or already solved, mark CLOSED with reason; do not count it as an accepted implementation.
 
 | 2026-11-15 | M0 ACCEPTED | Verified GitHub main readback | Documentation-only setup | PR #253, merge 1b408959; receipt receipts/M0-2026-11-15.md |
+
+| 2026-11-15 | FIP-A01 review completed; DECISION REQUIRED | Evidence-only user request | Review [A01-2026-11-15](reviews/A01-2026-11-15.md) | Production snapshots not same-time; MCP response inaccessible; no repair authorised |
