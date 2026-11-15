@@ -20,9 +20,15 @@ import { getRecordLegibility } from "../data/recordLegibility.js";
 import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment, evidenceReadingStatus, mutationReceiptLinks } from "../data/recordReading.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
+import { getIssuanceStatusClarifications } from "../data/issuanceStatusClarifications.js";
 import "./FrontierRecord.css";
 
 const VS_STAGES = ["VS-01", "VS-02", "VS-03", "VS-04", "VS-05"];
+
+function IssuanceStatusNote({ clarification }) {
+  if (!clarification) return null;
+  return <p className="reading-note" role="note"><strong>Post-issuance clarification ({clarification.reviewDate}):</strong> {clarification.text} <a href={`https://github.com/StuKeg1/faultline-observatory-site/commit/${clarification.mergeCommit}`} target="_blank" rel="noreferrer">Merge receipt</a>.</p>;
+}
 
 function RecordCodeKey({ text }) {
   const explanations = recordCodeExplanations(text);
@@ -59,6 +65,7 @@ function StageProvenanceMarker() {
 // Pressure State does not imply the whole assessment was reaffirmed:
 // its reasoning or Verification Stage may have changed.
 function WarrantPanel({ current, record }) {
+  const issuanceClarification = getIssuanceStatusClarifications(record).find(item => item.assessmentId === current.id);
   const enteredDate = getStateEnteredDate(record);
   const reading = assessmentReadingView(record, current);
   return (
@@ -90,6 +97,7 @@ function WarrantPanel({ current, record }) {
           </span>
         </div>
       )}
+      <IssuanceStatusNote clarification={issuanceClarification} />
       <OriginalAssessmentWording assessment={current} reading={reading} />
       <RecordCodeKey text={JSON.stringify(record)} />
         <div className="wp-row">
@@ -270,6 +278,7 @@ function VerificationMatrix({ record }) {
 // Compare both axes in the governed display history. A held Pressure State
 // must not label a Verification Stage change as "no change".
 function RecordLineage({ record }) {
+  const issuanceClarifications = getIssuanceStatusClarifications(record);
   const history = getAssessmentHistory(record).map(a => chronologicalReadingAssessment(record, a));
   const lastIndex = history.length - 1;
   return (
@@ -296,6 +305,7 @@ function RecordLineage({ record }) {
               {a.assessorNote && (
                 <div className="tl-assessor-note">{reading.assessorNote}</div>
               )}
+              <IssuanceStatusNote clarification={issuanceClarifications.find(item => item.assessmentId === a.id)} />
               <OriginalAssessmentWording assessment={a} reading={reading} />
               {a.verificationStageProvenance && (
                 <div className="tl-assessor-note">
@@ -323,6 +333,7 @@ function RecordLineage({ record }) {
 // for every other record, where no provider wraps it.
 function MutationLog({ record }) {
   const highlight = useMutationHighlight();
+  const issuanceClarifications = getIssuanceStatusClarifications(record);
   return (
     <div className="mutation-table-scroll" ref={highlight?.tableRef}>
       <table className="mutation-table" aria-label="Record mutations">
@@ -353,7 +364,7 @@ function MutationLog({ record }) {
                 <td className="mut-field">{mutationFieldLabel(m.field)}<small className="reading-note">{m.field}</small></td>
                 <td className="mut-from">{m.from}</td>
                 <td className="mut-to">{m.to}
-                  {m.note && <details className="mutation-explanation"><summary>What this update recorded <span className="sr-only">for {m.id}</span></summary><p>{m.note}</p>{mutationReceiptLinks(m).map(receipt => <a key={receipt.path} href={receipt.href} target="_blank" rel="noreferrer">View correction receipt (fields, prior wording and source basis) ↗</a>)}</details>}
+                  {m.note && <details className="mutation-explanation"><summary>What this update recorded <span className="sr-only">for {m.id}</span></summary><p>{m.note}</p><IssuanceStatusNote clarification={issuanceClarifications.find(item => item.mutationId === m.id)} />{mutationReceiptLinks(m).map(receipt => <a key={receipt.path} href={receipt.href} target="_blank" rel="noreferrer">View correction receipt (fields, prior wording and source basis) ↗</a>)}</details>}
                   {referenceReview && (
                     <small className="reading-note">
                       {referenceReview.disposition === "linked"
