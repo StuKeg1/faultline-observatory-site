@@ -1,6 +1,6 @@
 # FIP-001 — Execution backlog
 Snapshot: 2026-11-15; initial priority, not a promise of fixed dates.
-**Status**: M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS (runtime deployment SHA and MCP parity not verified); FIP-A02 DECISION REQUIRED (prior 23-record classification and three-record pilot verified; four-record overlay preparation proposed); remaining items BACKLOG. No canonical repair authorised.
+**Status**: M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS (runtime deployment SHA and MCP parity not verified); FIP-A02 DECISION REQUIRED (four-record LAD-001 overlay and tests prepared in proposal; implementation not authorised); remaining items BACKLOG. No canonical repair authorised.
 This backlog is sequenced for work, not a license for automated implementation.
 
 | ID | Package/Wave | Item | Audit sources | Dependency | Gate / successor |
