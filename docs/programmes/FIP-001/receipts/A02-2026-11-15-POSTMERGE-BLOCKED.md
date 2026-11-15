@@ -85,3 +85,12 @@ The operator reported all three remaining target tabs open. The connected browse
 - **FR-AI-0001 NOT VERIFIED:** absent from the connected tab list at this checkpoint.
 
 **Overall browser live public history: PASS 3/4** (QE-0003 previously verified). **MCP full-record parity remains UNVERIFIED.** A02 remains blocked until those separate checks pass. No further code modification.
+
+## Live browser completion — 2026-11-15 approximately 19:21 GMT
+
+User opened FR-AI-0001 in connected browser. Independently read rendered public page:
+- `https://faultlinewatch.com/the-record/fr-ai-0001/`: AS-001 in Assessment History `date uncertain (legacy)`; State Warrant `State entered date uncertain (legacy)`; Verification Matrix VS-02 `First recorded date uncertain (legacy)`; latest assessment `2026-10-12` unchanged. **PASS**.
+- Together with prior FR-QE-0003, FR-QE-0008 and FR-QE-0005 inspections, the **four-of-four live public content gate is PASSED**. Original `2024-01-15` persists legitimately in separate question/mutation metadata and historical wording; these are out of LAD-001 issue-date scope.
+- Cloudflare Pages dashboard previously verified production deployment of merged SHA `8b624e6af97822515ec3f98a44e70c2226d6a7d5`, followed by newer main deployments.
+
+**Remaining blocker: MCP live provenance and date/recordedDate parity.** Active Cloudflare Worker status is Ready but no protocol-level full record responses and no matching deployed Git SHA have been independently fetched. Do not accept A02 until this is verified or separately dispositioned by operator. No code/FCIF/canonical mutation made in this verification pass.
