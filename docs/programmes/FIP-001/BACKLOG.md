@@ -1,6 +1,6 @@
 # FIP-001 — Execution backlog
 Snapshot: 2026-11-15; initial priority, not a promise of fixed dates.
-**Status**: M0 ACCEPTED; FIP-A01 DECISION REQUIRED (four source-missing authorised assessments confirmed; deployed SHA and MCP runtime parity unverified); all other items BACKLOG. No repairs authorised.
+**Status**: M0 ACCEPTED; FIP-A01 DECISION REQUIRED (source-count false positive corrected: 109 canonical and public; runtime deployed SHA/MCP parity unverified); all other items BACKLOG. No repairs authorised.
 This backlog is sequenced for work, not a license for automated implementation.
 
 | ID | Package/Wave | Item | Audit sources | Dependency | Gate / successor |
