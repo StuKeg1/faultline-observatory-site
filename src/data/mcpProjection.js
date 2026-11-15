@@ -2,6 +2,7 @@
 import { ALL_RECORDS, PROGRAMMES } from "./corpus.js";
 import { getAssessmentHistory, getCurrentAssessment, getRecordUrl, getTransitionFeed } from "./derive.js";
 import { getAssessmentMutationReferenceReviews } from "./assessmentMutationReferences.js";
+import { getIssuanceStatusClarifications } from "./issuanceStatusClarifications.js";
 
 export function programmeFor(record) {
   return PROGRAMMES.find(programme => programme.id === record.programme) ?? null;
@@ -13,8 +14,10 @@ export function canonicalUrl(record) {
 
 export function canonicalRecordView(record) {
   const referenceReviews = getAssessmentMutationReferenceReviews(record);
+  const issuanceClarifications = getIssuanceStatusClarifications(record);
   return { ...record, assessments: getAssessmentHistory(record),
     ...(referenceReviews.length ? { assessmentMutationReferenceReviews: referenceReviews } : {}),
+    ...(issuanceClarifications.length ? { issuanceStatusClarifications: issuanceClarifications } : {}),
     currentAssessment: getCurrentAssessment(record), transitionFeed: getTransitionFeed(record),
     programmeMetadata: programmeFor(record), canonicalUrl: canonicalUrl(record),
     canonicalSource: "src/data/corpus.js → src/data/records/FR-*.js" };
