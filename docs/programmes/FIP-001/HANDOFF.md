@@ -8,5 +8,7 @@
 **Blocking receipt:** [A02 Postmerge Verification](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).
 **Scope unchanged:** no Frontier Record modules or FCIF governance changed in PR #254. No automatic new assessment or stage transition.
 **Programme progress:** M0 accepted; A01 accepted with exceptions; A02 implementation merged but blocked pending independent live checks. A03 BACKLOG, not started.
+
+**Live page verification (2026-11-15 19:17 GMT):** FR-QE-0003 directly inspected through connected public browser tab: AS-001, State Warrant and VS-02 first-recorded dates all show `date uncertain (legacy)`; latest assessment unchanged. PASS 1/4. Three other records and live MCP parity remain outstanding. See [updated A02 blocking receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).
 **Next recommended action — exactly one:** Obtain direct fresh HTTP/deployment evidence for both Cloudflare Pages and MCP at merged SHA, plus all four public AS-001 dates and MCP derived-history parity; if verified, accept A02 and proceed to A03; otherwise diagnose specific production failure before any further repair.
 **Resume:** Read README.md, BACKLOG.md, DECISIONS.md, this HANDOFF.md and blocking receipt on main. Never equate a merged PR or green CI with deployed production verification.
