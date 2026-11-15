@@ -3,7 +3,7 @@ Date: 2026-11-15
 **Disposition:** EVIDENCE-ONLY FOLLOW-UP COMPLETED — **OPERATOR DECISION REQUIRED**.
 Authority: user's explicit approval to review current VS-04/VS-05 warrants for exactly two records; **no** authorisation to change assessments, Pressure States, stage overlays, FCIF, site code, MCP or deployments.
 Parent review: [A03-2026-11-15](A03-2026-11-15.md), finding A03-01 / Claude F3-07.
-Source snapshot: GitHub `main` on 2026-11-15. Canonical record blobs: FR-AM-0001 `df5f00ae6ff645075f0f2afaa09c9bccc7459bd4`; FR-AM-0005 `[see canonical file]`. Identifiers and evidence below are taken from the canonical modules, not from generic claims about these fields.
+Source snapshot: GitHub `main` on 2026-11-15. Canonical record blobs: FR-AM-0001 `df5f00ae6ff645075f0f2afaa09c9bccc7459bd4`; FR-AM-0005 `ded52d16d22a7089ff64fbd33c93e70a71a68ee7`. Identifiers and evidence below are taken from the canonical modules, not from generic claims about these fields.
 
 ## 1. Decision rule and protected boundaries
 
