@@ -1,24 +1,23 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-15
 **Programme:** FIP-001 / Wave 1
-**Current milestone:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; FIP-A02 MERGED / FOUR LIVE PAGES VERIFIED / MCP PARITY DEFERRED (not accepted); **FIP-A03 EVIDENCE REVIEW COMPLETE — DECISION REQUIRED**.
-**Authority:** Operator requested an A03 evidence-only review of VS-04/VS-05 and explicitly deferred the A02 live MCP parity check. No scientific-record, assessment, FCIF, application-code, or production change authorised.
+**Current milestone:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; FIP-A02 MERGED / PUBLIC SITE 4/4 VERIFIED / MCP PARITY DEFERRED (not accepted); **FIP-A03 BOUNDED CURRENT-STAGE WARRANT REVIEW COMPLETE — DECISION REQUIRED**.
+**Authority:** Operator authorised an evidence-only review of **FR-AM-0001** and **FR-AM-0005** under the ratified July 22/23 VS-04/VS-05 semantic rules. **No** record, assessment, FCIF, application, MCP or deployment implementation authorised.
 
-## A03 findings and decision
-Read [A03 evidence review](reviews/A03-2026-11-15.md) in full before proceeding.
-- Primary ratified authority: July 22 Semantic-Authority Ruling and July 23 Legacy Assignment Review (linked in A03). Verification Stage is evidence depth, independent from Pressure State; VS-04 includes qualifying adverse/null direct reproduction and VS-05 requires sustained/applied operation of the **claimed capability**.
-- Canonical current stage census across 32 records: VS-02 9, VS-03 15, VS-04 5, VS-05 3, VS-01 0.
-- **A03-01 MATERIAL:** FR-AM-0001 AS-005 and FR-AM-0005 AS-004 continue to carry COLLAPSED / VS-05 despite historical review overlays that corrected earlier VS-05 assessments to VS-04 and current notes lacking an operational warrant for the full claims. This is a current-stage **warrant-review candidate**, not a ratified downgrade. Recommend bounded two-record evidence-only review.
-- **A03-02:** FR-AI-0008 VS-05 already has VSC-001 awaiting operator decision; avoid duplicate general review or automatic VS-03/04 fallback.
-- **A03-03:** FR-QE-0001 counter-performance VS-04 is specifically ratified under claim-level adversarial reproduction; Claude's general semantic-defect claim is CLOSED as overbroad.
-- **A03-04:** Other VS-04 cases scoped; no blanket correction. FR-BT-0004 single-arm PATHFINDER 2 is not an independently replicated randomised mortality result.
-- **A03-05:** Public reading guide `src/pages/Stubs.jsx` equates VS-05 with “being tested in real-world conditions”, weaker than ratified applied-operation boundary. Recommend **separate copy proposal only**, no implementation.
-- A03 disposition **DECISION REQUIRED**, not authorised, implemented or accepted.
+## A03 current findings
+**Review to read first:** [A03 bounded current-stage warrants](reviews/A03-BOUNDED-CURRENT-STAGE-WARRANT-2026-11-15.md). Parent [A03 census and interpretation](reviews/A03-2026-11-15.md).
 
-## A02 residual
-[PR #254](https://github.com/StuKeg1/faultline-observatory-site/pull/254) merged as `8b624e6af97822515ec3f98a44e70c2226d6a7d5`. GitHub CI #930 passed 221 tests and build/MCP typecheck; Cloudflare Pages production deployed exact merge SHA; all four public AS-001 uncertain-date displays were independently read in connected browser and PASSED. **Live MCP deployed Git SHA and full-record qualified-date/`recordedDate` parity remain DEFERRED by operator, NOT VERIFIED; A02 is not accepted.** [A02 evidence receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md). No premature acceptance.
+- **FR-AM-0001:** Current AS-005, 2026-09-08, retains COLLAPSED / stored VS-05. Independently attempted direct electrochemical-fusion reproduction (IN-002/003/007) supports VS-04, including null attempts. New IN-008/009 are *externally beam-driven* and expressly do not demonstrate autonomous electrochemical-cell fusion. Ratified July AS-003 historical overlay interpreted VS-04. **Recommend new current VS-04 correction, HIGH semantic confidence**, only if explicitly operator ratified. Strongest dissent: AS-004/005 post-July were themselves separately operator approved; they must remain preserved.
+- **FR-AM-0005:** Current AS-004, 2026-10-30, retains COLLAPSED / stored VS-05. LK-99 worldwide negative reproduction (IN-002) and Semenok's qualified single-team alloy-precursor failure (IN-007) warrant VS-04 as evidence depth, not capability Operation. The precursor mismatch prevents calling the latest trial an exact reproduction or universal null; multiple reports from overlapping team are not independent trials. Ratified July overlays read AS-001/002 as VS-04. **Recommend new current VS-04 correction, HIGH semantic confidence**, only if separately ratified. Strongest dissent: latest AS-003/004 explicitly reaffirmed VS-05 after material corrections; do not override by inference.
+- In **both cases Pressure State COLLAPSED is unchanged**, claim and all evidence remain as recorded, prior assessments/overlays and mutations immutable. Provisional next AS IDs mentioned in review **must be checked again**; no ID reserved. No current stage changes made.
+- Existing FR-AI-0008 challenge VSC-001 remains pending separately; QE-0001 bounded adversarial VS-04 is already case-ratified; public stage-copy clarification may be coordinated later with A04.
+- A03 status remains **DECISION REQUIRED**; evidence-only follow-up is complete, not an implemented stage ruling.
 
-## Resume / next action
-**Next recommended action — exactly one:** Operator decides whether to authorise an **evidence-only current-stage warrant review** for FR-AM-0001 and FR-AM-0005 (later assessments only, full evidence locators), with keep/VS-04/other alternatives and no automatic patch. If authorised, produce proposal and ask separate implementation decision.
-After this, A04 copy/history review is the next backlog item; public reader-copy finding A03-05 may be coordinated with it without merging authorities.
-Always read FIP-001 README, BACKLOG, DECISIONS, current HANDOFF and A03 review on canonical main. A03 report is noncanonical administration, not a stage ruling or scientific fact amendment.
+## A02 deferred gate
+[PR #254](https://github.com/StuKeg1/faultline-observatory-site/pull/254) merged `8b624e6af97822515ec3f98a44e70c2226d6a7d5`; full GitHub CI #930 passed; Cloudflare Pages showed merged-SHA production deployment; four public LAD-001 historical dates directly verified in connected browser. **Live MCP deployed-source and full-record date/recordedDate parity remain deliberately DEFERRED and unverified by operator**; A02 not accepted. [A02 receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).
+
+## Single next action
+**Operator decides for each of FR-AM-0001 and FR-AM-0005: retain VS-05 with explicit claimed-capability Operation warrant, approve VS-04 stage-correction recommendation in principle (separate implementation approval required), or defer with a governed stage challenge.** Do not silently merge stage cases into a generic rule, or proceed to implementation without explicit bounded authorisation.
+
+**Successor:** A04 append-only/history wording audit is next after disposition of A03; no implied release authority.
+**Resume:** Read FIP-001 README, BACKLOG, DECISIONS, this HANDOFF, and both A03 reviews on canonical main.
