@@ -1,11 +1,11 @@
 # FIP-001 — Execution backlog
 Snapshot: 2026-11-15; initial priority, not a promise of fixed dates.
-**Status**: M0 AUTHORISED (execution underway at creation); A01–A10 BACKLOG, none authorised for implementation.
+**Status**: M0 ACCEPTED; FIP-A01 IN REVIEW (evidence only); all other items BACKLOG. No repairs authorised.
 This backlog is sequenced for work, not a license for automated implementation.
 
 | ID | Package/Wave | Item | Audit sources | Dependency | Gate / successor |
 |---|---|---|---|---|---|
-| FIP-A01 | A/W1 | Reconcile canonical corpus with rendered site and MCP | F1-01 F2-15 F4-09 | M0 accepted | Verify discrepancies; propose bounded repairs; FIP-A02 |
+| FIP-A01 | A/W1 · IN REVIEW | Reconcile canonical corpus with rendered site and MCP | F1-01 F2-15 F4-09 | M0 accepted | Verify discrepancies; propose bounded repairs; FIP-A02 |
 | FIP-A02 | A/W1 | Historical baseline dating provenance audit | F1-04 F3-01 | A01 baseline | Decide if corrections needed; FIP-A03 |
 | FIP-A03 | A/W1 | Evaluate disputed VS-04/VS-05 stage semantics | F3-07 | A01 and existing FCIF authority | No automatic stage change; FIP-A04 |
 | FIP-A04 | A/W1 | Clarify append-only and correction-history wording | F3-03 | A02 provenance semantics | FIP-A05 |
