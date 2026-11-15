@@ -19,6 +19,15 @@
 - [PR #254](https://github.com/StuKeg1/faultline-observatory-site/pull/254) merged as `8b624e6af97822515ec3f98a44e70c2226d6a7d5`; all four LAD-001 public AS-001 uncertain-date displays passed direct connected-browser verification.
 - **Live MCP deployed SHA and `date`/`recordedDate` history parity are DEFERRED by operator, still outstanding, and do not count as accepted.** Do not conflate A03 premerge Worker typecheck with live A02 protocol parity. [A02 outstanding receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).
 
+## Bounded W-01/W-02 implementation — branch-only, pre-CI
+- Operator separately authorised implementation of the [reviewed annotation design](proposals/A03-ISSUANCE-STATUS-ANNOTATION-DESIGN-2026-11-15.md) on non-production branch `fip-a03-wording-clarification-design-20261115`, **not** merge or production deployment.
+- Additive `src/data/issuanceStatusClarifications.js` holds two exact-source-snapshotted administrative annotations, one for FR-AM-0001 AS-006/M-017 and one for FR-AM-0005 AS-005/M-022. Snapshot validation fails closed; no existing assessment or mutation was modified.
+- `src/pages/FrontierRecord.jsx` adds the same linked explanation below State Warrant, in Assessment History, and within the matching mutation disclosure. `src/data/mcpProjection.js` adds `issuanceStatusClarifications[]` **only** to eligible full-record derived views. MCP summary unchanged; `faultline-mcp/README.md` describes the field.
+- `src/data/issuanceStatusClarifications.test.js` was added to `npm test`, covering exact bindings, drift rejection, historical invariants, MCP full/summary/search and renderer placement. **Full GitHub CI not yet claimed until actual PR run completes**.
+- Scope excludes canonical `src/data/records/*` changes, `verificationStageReviews.js`, FCIF, historical date parity, and A03 formal acceptance. The source branch remains isolated from `main`. Draft PR for CI and any automatic preview are not release authority.
+
+**Next one action:** review full CI, complete branch diff, and explicit operator merge/deployment gate. FIP-A02 MCP date/recordedDate remains deferred.
+
 ## Prepared W-01/W-02 design and W-03 PR addendum (branch-only update)
 - Operator approved **design preparation only**, not implementation or deployment, for a source-preserving, fail-closed, dated administrative qualification of FR-AM-0001 AS-006/M-017 and FR-AM-0005 AS-005/M-022. The complete [bounded design](proposals/A03-ISSUANCE-STATUS-ANNOTATION-DESIGN-2026-11-15.md) was committed on the documentation-only branch `fip-a03-wording-clarification-design-20261115`. It proposes exact snapshots, public State Warrant/Assessment History/Mutation Log placements, optional derived full-MCP field, and tests preserving every original canonical AS/M word. No production source code has been edited.
 - [PR #255 W-03 additive status comment](https://github.com/StuKeg1/faultline-observatory-site/pull/255#issuecomment-6902176617) published; original draft-era PR body remains intact.
