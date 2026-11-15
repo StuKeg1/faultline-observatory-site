@@ -34,3 +34,21 @@ The user supplied a screenshot and an authenticated Cloudflare Workers & Pages d
 The browser connection is read-only for already-open tabs; this session cannot navigate or click into the deployment detail pages. The dashboard's visible links identify the Cloudflare Pages project and the Workers' production deployment pages, but the details are not accessible from the open overview tab. Public `/deployment.json` endpoints still cannot be fetched in the available web tool; local direct HTTPS requests fail DNS. Public record pages returned by web extraction still have unqualified 2024-01-15 dates for the four records in retrieved content, but freshness cannot be pinned to the post-merge SHA.
 
 **Disposition unchanged:** A02 BLOCKED AT INDEPENDENT DEPLOYED-SHA, FOUR LIVE AS-001 HISTORIES AND MCP PARITY gates; do not mark accepted merely because dashboard lists recent activity. Next evidence needed: the user opens the Pages deployment detail and MCP deployment detail in connected browser tabs (for readback), or supplies their deployment SHA/details; separately obtain a reliable current record HTML and protocol-level MCP check.
+
+
+## Direct authenticated deployment-tab readback — 2026-11-15, approximately 17:36 UTC
+
+The operator opened both requested tabs; the connected browser successfully read their live dashboard contents:
+
+**Pages, production:** Cloudflare's Pages deployment list explicitly identifies `8b624e6af97822515ec3f98a44e70c2226d6a7d5` as a `main` production deployment with unique build URL `https://0c2672a8.faultline-observatory-site.pages.dev/` and deployment detail `https://dash.cloudflare.com/145fa3f7c38e336aaa0b1713a658cf89/pages/view/faultline-observatory-site/0c2672a8-9a70-445c-ab13-9fecf7e19475`. Subsequent production deployments from later FIP-001 administrative commits are also listed; the currently highlighted production commit at tab read was `72347423f90afba5eda14330d0ffbaed2dc18358` with build URL `https://da609002.faultline-observatory-site.pages.dev/`. This **confirms that Cloudflare created a Pages production deployment for the exact merge SHA and subsequent main changes**, although the list alone does not guarantee the public `faultlinewatch.com` route is currently serving the expected updated assessment content.
+
+**MCP Worker, production:** The dashboard displays active Worker version `e688ea27`, status `Ready`, serving 100% of traffic, deployed approximately five minutes before the tab read, via Wrangler using an API token. An earlier `4c3b3265` version is listed one day earlier. The active deployment's dashboard has **no Git commit SHA** on this page. Its observed error rate of ~6.3% cannot be attributed to the A02 deployment without request-level error evidence and is not a parity pass.
+
+**Public route data fetches:** Generic public web retrievals of all four record detail pages on 2026-11-15 still show `State entered 2024-01-15` (and on QE-0003, QE-0008, AI-0001 stage-first 2024-01-15), but the extractor's `Crawled: today` label cannot pin them to the postmerge Pages deployment or provide raw HTTP headers; do not interpret these as confirmed production regressions. Web opening `/deployment.json` for the website, MCP and the merge-specific Pages URL all returned inaccessible. No live MCP protocol call completed.
+
+### Updated gate disposition
+- **PASS (deployment event):** Pages has a production deployment explicitly for merge `8b624e6...`, plus later commits.
+- **PASS (Worker active):** MCP Worker version `e688ea27` active/Ready, 100% traffic; **UNKNOWN** whether built from merge commit and protocol parity.
+- **NOT ACCEPTED:** Four current public historical assessment views unverified; live Pages route content and MCP SHA/protocol parity unverified. These are the exact remaining acceptance gates, not a failure to deploy the merge to Pages.
+
+For final acceptance obtain a direct postmerge public HTTP/body read or trusted browser tab on `faultlinewatch.com/the-record/{fr-qe-0003,fr-qe-0008,fr-ai-0001,fr-qe-0005}/` showing the qualified AS-001 date, and a live MCP record projection with qualified `date`, retained `recordedDate` plus deployment fingerprint. No code repair or redeploy authorised by this readback.
