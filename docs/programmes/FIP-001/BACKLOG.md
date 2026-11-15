@@ -1,13 +1,13 @@
 # FIP-001 — Execution backlog
 Snapshot: 2026-11-15; initial priority, not a promise of fixed dates.
-**Status**: M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; FIP-A02 MERGED / BLOCKED AT LIVE PRODUCTION + MCP VERIFICATION (PR #254 merge 8b624e6; production state not independently proven); remaining items BACKLOG. No further repair authorised.
+**Status**: M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; FIP-A02 MERGED / PUBLIC SITE VERIFIED 4/4 / MCP PARITY DEFERRED (not accepted); FIP-A03 EVIDENCE REVIEW COMPLETE — DECISION REQUIRED (no canonical/site changes); remaining items BACKLOG.
 This backlog is sequenced for work, not a license for automated implementation.
 
 | ID | Package/Wave | Item | Audit sources | Dependency | Gate / successor |
 |---|---|---|---|---|---|
 | FIP-A01 | A/W1 · ACCEPTED WITH EXCEPTIONS | Reconcile canonical corpus with rendered site and MCP | F1-01 F2-15 F4-09 | M0 accepted | Verify discrepancies; propose bounded repairs; FIP-A02 |
-| FIP-A02 | A/W1 · MERGED — VERIFICATION BLOCKED | Historical baseline dating provenance audit | F1-04 F3-01 | A01 baseline | Decide if corrections needed; FIP-A03 |
-| FIP-A03 | A/W1 | Evaluate disputed VS-04/VS-05 stage semantics | F3-07 | A01 and existing FCIF authority | No automatic stage change; FIP-A04 |
+| FIP-A02 | A/W1 · MERGED — MCP PARITY DEFERRED | Historical baseline dating provenance audit | F1-04 F3-01 | A01 baseline | Decide if corrections needed; FIP-A03 |
+| FIP-A03 | A/W1 · DECISION REQUIRED | Evaluate disputed VS-04/VS-05 stage semantics | F3-07 | A01 and existing FCIF authority | No automatic stage change; FIP-A04 |
 | FIP-A04 | A/W1 | Clarify append-only and correction-history wording | F3-03 | A02 provenance semantics | FIP-A05 |
 | FIP-A05 | A/W1 | Recount legacy audit corrections by severity and publishability | F3-02 | A01 inventory | FIP-D01 |
 | FIP-D01 | D/W1 | Complete Claude's missing Step 5 SEO/GEO/technical audit | STEP-5 F1-10 F6-07 | M0; independent of A02–A05 | FIP-B01 |
