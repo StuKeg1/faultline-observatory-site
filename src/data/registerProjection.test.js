@@ -78,7 +78,7 @@ test("state change register remains derived from its transition feed", () => {
 test("stage change register uses stored assessment stages rather than reviewed stages", () => {
   assert.deepEqual(
     getRegisterRows(ALL_RECORDS, "stage-changed").map((row) => row.record.id).sort(),
-    ["FR-QE-0001", "FR-QE-0003", "FR-AI-0001", "FR-AI-0008", "FR-AM-0001", "FR-AM-0004", "FR-AM-0006", "FR-BT-0003", "FR-BT-0004"].sort(),
+    ["FR-QE-0001", "FR-QE-0003", "FR-AI-0001", "FR-AI-0008", "FR-AM-0001", "FR-AM-0004", "FR-AM-0005", "FR-AM-0006", "FR-BT-0003", "FR-BT-0004"].sort(),
   );
 });
 

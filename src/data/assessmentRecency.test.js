@@ -61,9 +61,11 @@ test("LAD-001 historical display dates are used by assessment recency", () => {
   const coldFusion = ALL_RECORDS.find((record) => record.id === "FR-AM-0001");
   const recency = getAssessmentRecency(coldFusion);
   assert.deepEqual(recency, {
-    date: "2026-09-08",
+    date: "2026-11-15",
     type: "reassessment",
     reaffirmation: true,
   });
-  assert.equal(coldFusion.assessments.at(-1).date, "2026-09-08");
+  assert.equal(coldFusion.assessments.at(-1).id, "AS-006");
+  assert.equal(coldFusion.assessments.at(-1).date, "2026-11-15");
+  assert.equal(coldFusion.assessments.at(-2).date, "2026-09-08");
 });

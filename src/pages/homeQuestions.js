@@ -66,7 +66,7 @@ export const HOME_QUESTIONS = [
     icon: "superconductor",
     question: "Whatever happened to room-temperature superconductors?",
     target: { type: "record", id: "FR-AM-0005" },
-    introduction: { assessmentId: "AS-004", text: "The candidates on record still lack independently reproduced room-temperature superconductivity; one unsuccessful reproduction used a different synthesis method, so it does not conclusively rule out the original result." },
+    introduction: { assessmentId: "AS-005", text: "The candidates on record still lack independently reproduced room-temperature superconductivity; one unsuccessful reproduction used a different synthesis method, so it does not conclusively rule out the original result." },
   },
   {
     id: "ai-evidence-current-state",

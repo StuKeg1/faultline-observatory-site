@@ -51,7 +51,8 @@ test("LAD-001 display dates flow through the compact trajectory", () => {
     "Apr–Nov 1989",
     "2004 or earlier",
   ]);
-  assert.equal(trajectory.currentAssessmentDate, "2026-09-08");
+  assert.equal(trajectory.currentAssessmentDate, "2026-11-15");
+  assert.equal(coldFusion.assessments.at(-2).date, "2026-09-08");
   assert.equal(trajectory.currentStateEnteredDate, "2004 or earlier");
 });
 
