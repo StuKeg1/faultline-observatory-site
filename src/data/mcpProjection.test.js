@@ -90,3 +90,19 @@ test("summary and full MCP views expose the same pending challenge as the public
     assert.equal(recordSummary(other).verificationStageChallenge, undefined);
   }
 });
+
+test("FIP-A02 four qualified historical assessment dates carry recordedDate in MCP without changing summary", () => {
+  for (const id of ["FR-QE-0003", "FR-QE-0008", "FR-AI-0001", "FR-QE-0005"]) {
+    const record = ALL_RECORDS.find(r => r.id === id);
+    const full = canonicalRecordView(record);
+    const summary = recordSummary(record);
+    assert.equal(full.assessments[0].date, "date uncertain (legacy)");
+    assert.equal(full.assessments[0].recordedDate, "2024-01-15");
+    assert.equal(full.currentAssessment.id, record.assessments.at(-1).id);
+    assert.equal(summary.assessmentDate, record.assessments.at(-1).date);
+    assert.equal(summary.openedDate, record.claim.openedDate);
+    assert.equal(summary.assessments, record.assessments.length);
+    assert.equal(summary.pressureState, getCurrentAssessment(record).pressureState);
+    assert.equal(summary.verificationStage, getCurrentAssessment(record).verificationStage);
+  }
+});

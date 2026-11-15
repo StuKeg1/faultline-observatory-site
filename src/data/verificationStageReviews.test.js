@@ -111,10 +111,10 @@ test("LAD-001 preserves recorded dates while deriving historical chronology for 
 });
 
 test("LAD-001 historical dates carry bounded precision and evidence-instance provenance", () => {
-  assert.equal(HISTORICAL_EFFECTIVE_DATES.length, 7);
+  assert.equal(HISTORICAL_EFFECTIVE_DATES.length, 11);
   assert.deepEqual(
     HISTORICAL_EFFECTIVE_DATES.map(({ recordId, assessmentId }) => `${recordId}:${assessmentId}`),
-    ["FR-QE-0002:AS-001", "FR-AM-0003:AS-001", "FR-BT-0004:AS-001", "FR-AI-0008:AS-001", "FR-AM-0001:AS-001", "FR-AM-0001:AS-002", "FR-AM-0001:AS-003"],
+    ["FR-QE-0002:AS-001", "FR-AM-0003:AS-001", "FR-BT-0004:AS-001", "FR-QE-0003:AS-001", "FR-QE-0008:AS-001", "FR-AI-0001:AS-001", "FR-QE-0005:AS-001", "FR-AI-0008:AS-001", "FR-AM-0001:AS-001", "FR-AM-0001:AS-002", "FR-AM-0001:AS-003"],
   );
 
   for (const entry of HISTORICAL_EFFECTIVE_DATES) {
@@ -166,7 +166,33 @@ test("three-record date pilot qualifies history while preserving every canonical
     assert.deepEqual(getTransitionFeed(record), []);
   }
   const otherRecords = HISTORICAL_EFFECTIVE_DATES.filter(entry => !receipt.records.some(record => record.recordId === entry.recordId));
-  assert.deepEqual([...new Set(otherRecords.map(entry => entry.recordId))].sort(), ["FR-AI-0008", "FR-AM-0001"]);
+  assert.deepEqual([...new Set(otherRecords.map(entry => entry.recordId))].sort(), ["FR-AI-0001", "FR-AI-0008", "FR-AM-0001", "FR-QE-0003", "FR-QE-0005", "FR-QE-0008"].sort());
+});
+
+
+test("FIP-A02 date-only qualification preserves canonical history and interpretation for four records", () => {
+  for (const id of ["FR-QE-0003", "FR-QE-0008", "FR-AI-0001", "FR-QE-0005"]) {
+    const record = ALL_RECORDS.find(r => r.id === id);
+    const original = JSON.stringify(record);
+    const before = getTransitionFeed(record);
+    const canonicalFirst = record.assessments[0];
+    const history = getAssessmentHistory(record);
+    const first = history[0];
+    const overlay = getHistoricalEffectiveDate(id, "AS-001");
+    assert.equal(overlay.precision, "unknown");
+    assert.equal(first.id, "AS-001");
+    assert.equal(first.date, "date uncertain (legacy)");
+    assert.equal(first.recordedDate, "2024-01-15");
+    assert.equal(canonicalFirst.date, "2024-01-15");
+    assert.equal(first.pressureState, canonicalFirst.pressureState);
+    assert.equal(first.verificationStage,
+      getVerificationStageReview(id, "AS-001")?.reconstructedStage ?? canonicalFirst.verificationStage);
+    assert.equal(getCardAssessmentHistory(record).states[0].date, "date uncertain (legacy)");
+    assert.equal(getStateEnteredDate(record), "date uncertain (legacy)");
+    assert.equal(getCurrentAssessment(record).date, record.assessments.at(-1).date);
+    assert.deepEqual(getTransitionFeed(record), before);
+    assert.equal(JSON.stringify(record), original);
+  }
 });
 
 test("AI-0008 stage correction preserves historical assignments without a false 2024 operation date", () => {
