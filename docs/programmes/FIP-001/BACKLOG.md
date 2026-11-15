@@ -1,12 +1,12 @@
 # FIP-001 — Execution backlog
 Snapshot: 2026-11-15; initial priority, not a promise of fixed dates.
-**Status**: M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS (runtime deployment SHA and MCP parity not verified); FIP-A02 IMPLEMENTED ON BRANCH / MERGE HELD (72 targeted executable assertions pass; full CI/build unavailable; no merge/deploy); remaining items BACKLOG. No canonical repair authorised.
+**Status**: M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS (runtime deployment SHA and MCP parity not verified); FIP-A02 DRAFT PR #254 / CI PASSED (GitHub Actions #930, 221 tests, build and MCP typecheck green; explicit merge and possible production deployment approval pending); remaining items BACKLOG. No canonical repair authorised.
 This backlog is sequenced for work, not a license for automated implementation.
 
 | ID | Package/Wave | Item | Audit sources | Dependency | Gate / successor |
 |---|---|---|---|---|---|
 | FIP-A01 | A/W1 · ACCEPTED WITH EXCEPTIONS | Reconcile canonical corpus with rendered site and MCP | F1-01 F2-15 F4-09 | M0 accepted | Verify discrepancies; propose bounded repairs; FIP-A02 |
-| FIP-A02 | A/W1 · IMPLEMENTED — MERGE HELD | Historical baseline dating provenance audit | F1-04 F3-01 | A01 baseline | Decide if corrections needed; FIP-A03 |
+| FIP-A02 | A/W1 · CI VALIDATED — MERGE DECISION | Historical baseline dating provenance audit | F1-04 F3-01 | A01 baseline | Decide if corrections needed; FIP-A03 |
 | FIP-A03 | A/W1 | Evaluate disputed VS-04/VS-05 stage semantics | F3-07 | A01 and existing FCIF authority | No automatic stage change; FIP-A04 |
 | FIP-A04 | A/W1 | Clarify append-only and correction-history wording | F3-03 | A02 provenance semantics | FIP-A05 |
 | FIP-A05 | A/W1 | Recount legacy audit corrections by severity and publishability | F3-02 | A01 inventory | FIP-D01 |
