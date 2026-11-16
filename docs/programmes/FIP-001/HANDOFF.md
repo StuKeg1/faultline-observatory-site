@@ -1,7 +1,14 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-16  
 **Programme:** FIP-001 / Wave 1  
-**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MCP HISTORICAL DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 COPY PROPOSAL PREPARED — IMPLEMENTATION DECISION REQUIRED**.
+**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MCP HISTORICAL DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 COPY IMPLEMENTED ON ISOLATED BRANCH — CI DECISION REQUIRED**.
+
+## Latest A04 checkpoint — branch implementation complete, CI pending (16 November 2026)
+
+- Operator explicitly authorised bounded copy-only implementation of **P1 Home, P2 Methodology, P3 Institutional Changelog, P4 About**, plus regression tests, **on the existing isolated branch only**. The exact proposals have been applied to `src/pages/Home.jsx`, `src/pages/Methodology.jsx`, `src/pages/InstitutionalChangelog.jsx`, `src/pages/About.jsx`, with source/prerender tests added in `src/pages/fipA04Copy.test.js` and registered in `package.json`.
+- [Exact isolated implementation receipt](reviews/A04-ISOLATED-IMPLEMENTATION-2026-11-16.md) records old/new blob references, scoped text modifications, and unrun validation/release gates. GitHub comparison shows no changes to Welcome, `src/data/records/*`, FCIF or MCP. Full prior-value diffs remain separately deferred; FIP-A02 historical date parity remains DEFERRED/NOT ACCEPTED. FIP-A03 remains ACCEPTED.
+- **Current status: IMPLEMENTED ON ISOLATED BRANCH, NOT ACCEPTED.** No draft PR, merge, CI, deployment or production publication authorised/performed. Any automatic preview requires separate PR authority.
+- **Exactly one next action:** request authorisation for a **CI-only draft PR** for branch `fip-a04-copy-proposal-20261116`, allowing preview but explicitly forbidding production merge or deploy, then execute full checks and review results before another decision.
 
 ## Latest A04 checkpoint — exact copy proposal prepared (16 November 2026)
 
