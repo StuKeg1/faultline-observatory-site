@@ -1,8 +1,17 @@
 # FIP-001 — Active hand-off
-**As-of:** 2026-11-15
-**Authority:** This is the post-merge administrative reconciliation requested by the operator. It supersedes the pre-merge *status statements* in the isolated implementation receipt without rewriting that historical receipt.
-**Programme:** FIP-001 / Wave 1
-**Current milestone:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MERGED / PUBLIC 4/4 VERIFIED / MCP PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 MERGED / LIVE PAGES AND MCP DATA PARITY EVIDENCED — FORMAL ACCEPTANCE AND EDITORIAL DECISION REQUIRED**.
+**As-of:** 2026-11-16  
+**Programme:** FIP-001 / Wave 1  
+**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MERGED / PUBLIC 4/4 VERIFIED / HISTORICAL MCP DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ORIGINAL STAGE CORRECTION VERIFIED / W-01–W-02 ANNOTATIONS MERGED + PAGES DEPLOYED / FRESH PUBLIC + MCP FULL-RESPONSE READBACK BLOCKED (NOT ACCEPTED)**.
+
+## Current authoritative checkpoint — 16 November 2026
+- **Two distinct A03 releases:** [PR #255](https://github.com/StuKeg1/faultline-observatory-site/pull/255) merged `2a4b2f7c2623fb66f800e45e60aabd94eff88456`: FR-AM-0001 AS-006/M-017 and FR-AM-0005 AS-005/M-022, both `collapsed / VS-04`; original public pages plus reported 32-record direct JSON-RPC Claude MCP parity passed **for this original correction**.
+- [PR #256](https://github.com/StuKeg1/faultline-observatory-site/pull/256) merged `76dcabf9bbd78ffd3ea70d5ce88344c181ea495f`: W-01/W-02 immutable-source administrative annotations `FIP-A03-ISC-001` and `FIP-A03-ISC-002`; added derived website display and optional full MCP field. CI [#977](https://github.com/StuKeg1/faultline-observatory-site/actions/runs/43768864274) PASSED (225/225 postbuild; 63 prerender pages; Worker typecheck). Original record blobs unchanged; pressure/state semantics untouched. W-03 [PR #255 addendum](https://github.com/StuKeg1/faultline-observatory-site/pull/255#issuecomment-6902176617) complete.
+- **Cloudflare Pages release independently read back:** authenticated dashboard lists `Production/main` deployment for `76dcabf9...`. Worker dashboard lists active version `c2e7c17b` but does not expose full current record response data.
+- **Final acceptance cannot yet be declared:** two live public pages were not freshly retrievable and the old open FR-AM-0005 tab is pre-deployment; live `faultline_read_record` on the new annotation field was not accessible through current tools. See [detailed validation receipt](receipts/A03-2026-11-16-LIVE-CHECK-GATE.md). This is a **validation-access BLOCK**, not an observed regression. No subsequent code repair is indicated by currently available evidence.
+- **Exactly one next action:** secure fresh live HTML/browser observations for FR-AM-0001 and FR-AM-0005 and direct current MCP full-record responses, log actual annotation IDs/locators; then mark A03 ACCEPTED or record a real failure. Do **not** combine with deliberately deferred A02 `date`/`recordedDate` MCP parity.
+- **FIP-A04** append-only and correction-history public-language review is the next substantive Wave 1 task after A03 disposition. Unresolved FR-AI-0008 / VSC-001 remains a separate challenge.
+
+## Previous checkpoints — retained as dated historical context
 
 ## FIP-A03 — canonical main and governance
 - [PR #255](https://github.com/StuKeg1/faultline-observatory-site/pull/255), initially draft for CI, subsequently expressly authorised by the operator to merge, was merged on 2026-11-15 as **`2a4b2f7c2623fb66f800e45e60aabd94eff88456`**. GitHub subsequently confirmed `closed/merged`, and canonical main was read back.
@@ -19,7 +28,7 @@
 - [PR #254](https://github.com/StuKeg1/faultline-observatory-site/pull/254) merged as `8b624e6af97822515ec3f98a44e70c2226d6a7d5`; all four LAD-001 public AS-001 uncertain-date displays passed direct connected-browser verification.
 - **Live MCP deployed SHA and `date`/`recordedDate` history parity are DEFERRED by operator, still outstanding, and do not count as accepted.** Do not conflate A03 premerge Worker typecheck with live A02 protocol parity. [A02 outstanding receipt](receipts/A02-2026-11-15-POSTMERGE-BLOCKED.md).
 
-## Bounded W-01/W-02 implementation — branch-only, pre-CI
+## Historical pre-CI branch implementation note (superseded by PR #256 merge)
 - Operator separately authorised implementation of the [reviewed annotation design](proposals/A03-ISSUANCE-STATUS-ANNOTATION-DESIGN-2026-11-15.md) on non-production branch `fip-a03-wording-clarification-design-20261115`, **not** merge or production deployment.
 - Additive `src/data/issuanceStatusClarifications.js` holds two exact-source-snapshotted administrative annotations, one for FR-AM-0001 AS-006/M-017 and one for FR-AM-0005 AS-005/M-022. Snapshot validation fails closed; no existing assessment or mutation was modified.
 - `src/pages/FrontierRecord.jsx` adds the same linked explanation below State Warrant, in Assessment History, and within the matching mutation disclosure. `src/data/mcpProjection.js` adds `issuanceStatusClarifications[]` **only** to eligible full-record derived views. MCP summary unchanged; `faultline-mcp/README.md` describes the field.
@@ -28,13 +37,13 @@
 
 **Next one action:** review full CI, complete branch diff, and explicit operator merge/deployment gate. FIP-A02 MCP date/recordedDate remains deferred.
 
-## Prepared W-01/W-02 design and W-03 PR addendum (branch-only update)
+## Historical design-only checkpoint (superseded by PR #256 merge)
 - Operator approved **design preparation only**, not implementation or deployment, for a source-preserving, fail-closed, dated administrative qualification of FR-AM-0001 AS-006/M-017 and FR-AM-0005 AS-005/M-022. The complete [bounded design](proposals/A03-ISSUANCE-STATUS-ANNOTATION-DESIGN-2026-11-15.md) was committed on the documentation-only branch `fip-a03-wording-clarification-design-20261115`. It proposes exact snapshots, public State Warrant/Assessment History/Mutation Log placements, optional derived full-MCP field, and tests preserving every original canonical AS/M word. No production source code has been edited.
 - [PR #255 W-03 additive status comment](https://github.com/StuKeg1/faultline-observatory-site/pull/255#issuecomment-6902176617) published; original draft-era PR body remains intact.
 - **This updated HANDOFF/BACKLOG/DECISIONS exists only on the isolated branch until independently authorised to merge; canonical `main` is unchanged by this design.** This avoids any implied authorisation of automatic Cloudflare Pages deployment.
 - **Next single decision:** authorise *bounded implementation on an isolated branch* of the proposed annotation design, optionally allowing draft PR CI/preview, but **not** production merge/deploy. FIP-A03 formal acceptance remains separately gated; FIP-A02 historical MCP date parity remains deferred.
 
-## Historical postmerge wording review and next decision
+## Historical wording review and design decision checkpoint
 [A03 bounded temporal-wording review](reviews/A03-POSTMERGE-WORDING-REVIEW-2026-11-15.md) has confirmed three issues W-01–W-03: obsolete conditional phrasing in the newly issued assessment notes and mutations of both corrected records, plus the historically accurate but stale draft-era PR #255 body. **Evidence-only review completed; no edit authorised.** Recommendation: preserve issued AS/M text, propose a separately dated, precisely linked administrative qualification (public and MCP display where appropriate), and add a post-merge PR annotation without rewriting the original draft restriction. No new scientific assessment or change in stage/pressure.
 
 **Exactly one next recommended action:** operator decide whether to authorise a narrowly scoped, append-only administrative clarification *design* for W-01/W-02 and an additive PR #255 status comment for W-03; preserve source text. Formal A03 acceptance remains a separate decision after recording all gates; A04 public correction/history audit is a later package. FIP-A02 historical MCP date/recordedDate parity remains deferred. Never infer authority for canonical edits from this hand-off.
