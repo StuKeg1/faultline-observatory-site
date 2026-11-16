@@ -228,8 +228,9 @@ export default function Home() {
                   <div className="htc-block-title">Methodology</div>
                   <p className="htc-block-text">
                     Each record tracks a scientific or technology claim over time.
-                    It&apos;s only ever added to, never rewritten — updates are dated,
-                    so the full history of an assessment stays visible.
+                    Assessments are added without overwriting earlier judgements.
+                    Evidence descriptions and other record details may be corrected,
+                    with dated changes recorded in the Mutation Log.
                   </p>
                 </div>
               </div>
