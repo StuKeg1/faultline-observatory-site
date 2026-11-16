@@ -130,9 +130,9 @@ const PRESSURE_STATE_CLOSING = "Pressure States describe the condition of the ev
 // interchangeable wording).
 const ARCHITECTURE_INDEX = [
   { term: "Verification Stage",           def: "A discrete stage in the formal verification sequence (VS-01 through VS-05). The current stage is derived from assessments; it is never stored as a verdict. Mirrors the progression from initial scientific claim to independently replicated and operationally validated result." },
-  { term: "Frontier Record",              def: "The atomic unit of institutional memory. Each record preserves a claim under observation, its instances, its full assessment history, its evidence trail, and its mutation log. Records are permanent, citable, and append-only." },
+  { term: "Frontier Record",              def: "The atomic unit of institutional memory. Each record preserves a claim under observation, its evidence trail, assessment history, and dated mutation log. Assessments are append-only; governed corrections to other record fields are logged." },
   { term: "Assessment",                   def: "A dated, append-only entry recording the Observatory's position on a record at a point in time. The current assessment is always the last entry — never stored separately." },
-  { term: "Mutation Log",                 def: "An append-only log of every structural change to a record. Nothing is deleted; changes are recorded and the prior state is preserved." },
+  { term: "Mutation Log",                 def: "A dated, append-only log of recorded changes to a Frontier Record, including corrections to existing fields. Entries describe what changed; some link to supporting review receipts. They do not necessarily reproduce the complete earlier field wording." },
   { term: "Transition Feed",              def: "A derived sequence of state changes — computed from consecutive assessments where the pressure state changed. Not stored; always derived from the record's assessment history." },
 ];
 
