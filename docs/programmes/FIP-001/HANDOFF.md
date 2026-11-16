@@ -1,7 +1,15 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-16  
 **Programme:** FIP-001 / Wave 1  
-**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED (16 November 2026)**. Next: FIP-A05 evidence-only severity and denominator recount.
+**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED (16 November 2026)**. FIP-A05 IN REVIEW: initial current-corpus inventory complete; original first-cycle severity/denominator recount outstanding.
+
+## Current checkpoint — FIP-A05 evidence review opened (16 November 2026)
+
+- Operator authorised **evidence-only review**, not corrections or public publication of an error rate. [Initial A05 corpus inventory and severity/denominator methodology](reviews/A05-LEGACY-PROVENANCE-SEVERITY-RECOUNT-2026-11-16.md) committed on main.
+- Read canonical `src/data/corpus.js` and all 32 `src/data/records/*` modules: 32 records (QE8, AI9, AM8, BT7); **current** latest-review outcome counts 23 verified, 8 corrected, 1 pending. This is *not* the historical first-review numerator: e.g. AI-0002 and QE-0005 had first-round corrections followed by later clean markers.
+- Claude's Step 8 **26/32 and 24/32** first-cycle estimates remain **UNVERIFIED**. Complete dated event-level first-review corrections (D01–D31, and D42 as later first-entry review) and original cohort eligibility/denominator before publishing any percentage. Distinguish material/minor, enrichment-only, pending vs repaired, first vs subsequent cycles.
+- **Single next action:** prepare an event-level D01–D31/D42 first-cycle classification annex with record-specific original review and mutation locators, exact eligible denominator and material/minor counts. Review remains IN REVIEW, no public website/FCIF/record/MCP changes.
+- A04 and A03 remain ACCEPTED. A02 historical MCP `date`/`recordedDate` parity remains **DEFERRED / NOT ACCEPTED**. Complete prior-text diffs remain deferred.
 
 ## Current authoritative checkpoint — FIP-A04 ACCEPTED (16 November 2026)
 
