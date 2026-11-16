@@ -1,7 +1,14 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-16  
 **Programme:** FIP-001 / Wave 1  
-**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MCP HISTORICAL DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 REVIEW COMPLETE — DECISION REQUIRED**.
+**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MCP HISTORICAL DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 COPY PROPOSAL PREPARED — IMPLEMENTATION DECISION REQUIRED**.
+
+## Latest A04 checkpoint — exact copy proposal prepared (16 November 2026)
+
+- Operator approved **preparation only** of A04 P1 Homepage, P2 Methodology (`Frontier Record` and `Mutation Log` glossary definitions), P3 Institutional Changelog, and optional P4 About. [Source-anchored copy and test contract](proposals/A04-EXACT-COPY-PATCH-AND-TESTS-2026-11-16.md) committed to documentation-only branch `fip-a04-copy-proposal-20261116`, based on canonical `c8b581569c2f3a1007be8a871ca332112335f242`.
+- Exact old/new copy, verified file blobs, planned regression assertions and prospective CI/live acceptance gates recorded. **No `src/pages` or `src/data` file, `package.json`, test code, FCIF, MCP, PR, production branch or deployment was modified/started.** P4 is an *optional implementation choice* still needing explicit election.
+- **Welcome** assessment-specific historical wording unchanged. Full prior-value diff system **deferred to separate provenance design**. FIP-A02 historical MCP `date`/`recordedDate` parity remains **DEFERRED / NOT ACCEPTED**; FIP-A03 remains **ACCEPTED**.
+- **Exactly one next operator decision:** authorise bounded isolated-branch implementation of P1/P2/P3 and explicitly INCLUDE or DEFER P4; approve only the associated tests at that gate, with draft PR CI, merge and production deployment requiring separate authority.
 
 ## Current authoritative checkpoint — FIP-A04 evidence review complete (16 November 2026)
 
