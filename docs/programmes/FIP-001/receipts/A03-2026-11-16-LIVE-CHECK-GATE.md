@@ -31,3 +31,31 @@
 - The authorised [W-03 PR #255 postmerge comment](https://github.com/StuKeg1/faultline-observatory-site/pull/255#issuecomment-6902176617) is complete; original draft text preserved.
 - FIP-A02 historical `date`/`recordedDate` MCP parity stays separately **DEFERRED / NOT ACCEPTED**.
 - **Next single action:** obtain the fresh two-page + live MCP response receipts above, then make the A03 formal acceptance decision. FIP-A04 is next substantive Wave 1 item only after this gate is dispositioned.
+
+---
+
+## Superseding acceptance addendum — 16 November 2026
+
+**Final disposition: FIP-A03 ACCEPTED.** This dated addendum supersedes only the **earlier blocked acceptance status** at the top of this receipt; the original access failure and its observations remain intact as historical verification evidence.
+
+### Evidence received after the blocked check
+
+The operator supplied Claude's subsequent independent live MCP and public-site acceptance audit. Claude reported executing **direct JSON-RPC via curl** against the production MCP endpoint and **fresh uncached HTTP/Playwright Chromium retrieval** of both public pages on 2026-11-16. We reviewed the supplied report, but did **not** rerun the raw network calls ourselves in this ChatGPT environment. GitHub's merged PR #256 and source/code preservation were checked separately through the connected GitHub connector.
+
+| Gate | Independent live result supplied by Claude | Disposition |
+| --- | --- | --- |
+| Production Worker identity | `faultline_about.deploymentCommit`, `/health`, and `/deployment.json` each reported `76dcabf9bbd78ffd3ea70d5ce88344c181ea495f`; 32 records, and actual annotation fields present | PASS |
+| FR-AM-0001 full record | `AS-006 / collapsed / VS-04`; exactly one `issuanceStatusClarifications[]` entry, `FIP-A03-ISC-001`, `AS-006`/`M-017`, date `2026-11-15`, `issuance_authority_status_only`, original #255 merge SHA `2a4b2f7c2623fb66f800e45e60aabd94eff88456`; explicitly no pending correction | PASS |
+| FR-AM-0005 full record | `AS-005 / collapsed / VS-04`; exactly one `FIP-A03-ISC-002`, `AS-005`/`M-022`, same date/scope/merge reference and completed-issuance meaning | PASS |
+| Historical source preservation | Full live assessment summaries, assessor notes and mutation logs match the PR #255 baseline except existing governed July stage and excluded A02 date projection overlays. Earlier AS-005/AS-004 `collapsed / VS-05` remain. Both immutable record blobs stay `197bfdbfc978b38a007b58238ea1562320729164` and `ab98c513e69a9f52e03b9a4deda99a1ce7053a98` | PASS |
+| List and search parity | Live full `list_records` and `search_records` agree exactly with `read_record`; exactly 2/32 records have annotations, thin summaries unchanged (14 fields), current VS-04 on both, no extra AS/M entry | PASS |
+| FR-AM-0001 public page | Fresh HTTP 200/Chromium: `Post-issuance clarification (2026-11-15)` exactly three times, beneath State Warrant, AS-006 assessment history and M-017 mutation detail, original conditional wording preserved | PASS |
+| FR-AM-0005 public page | Fresh HTTP 200/Chromium: same exact three placements for State Warrant, AS-005 and M-022; original wording preserved | PASS |
+
+**Other observations, outside the A03 acceptance scope:** FR-AI-0008 remains a separate unresolved stage challenge; FR-AM-0001 raw historical `transitionFeed`/legacy-date matters were not reassessed. A false-positive FR-AI-0004 text search occurred because `ISC` is a substring of `DISCREPANCIES-CORRECTED`, and was excluded after inspection. Neither finding is an A03 failure. **FIP-A02 historical `date`/`recordedDate` live MCP parity remains DEFERRED and NOT ACCEPTED.**
+
+### Acceptance decision and successor
+
+**ACCEPTED — FIP-A03 closed.** Current VS-04 stage corrections (PR #255) and administrative issuance-status annotations (PR #256) have the required CI, canonical-source, deploy, public-page and live MCP verification receipts. No further A03 canonical change is indicated. The W-03 administrative PR #255 additive status comment remains completed, with original draft wording preserved. This outcome is limited to the implemented A03 scope; it does not endorse unrelated scientific claims, change FCIF, or silently close any A02 issue.
+
+**Next FIP-001 item:** FIP-A04 — bounded evidence-only review of public append-only and correction-history wording. No A04 edit is authorised by this acceptance.
