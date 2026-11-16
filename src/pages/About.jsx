@@ -47,7 +47,7 @@ const ABOUT_BLOCKS = [
  },
  {
  heading: "The Record",
- body: "The Frontier Record is not a database of outcomes. It is a record of trajectories — how claims were stated, what evidence tested them, and how the evidentiary position evolved. Records are never closed by editorial judgement. They close only when the observable facts warrant closure. Each record is citable, permanent, and append-only.",
+ body: "The Frontier Record is not a database of outcomes. It is a record of trajectories — how claims were stated, what evidence tested them, and how the evidentiary position evolved. Records are never closed by editorial judgement. They close only when the observable facts warrant closure. Each record has a permanent identifier and preserves its assessment history and dated mutation log; corrections to other record fields are recorded.",
  },
  {
  heading: "FCIF",
