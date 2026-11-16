@@ -1,7 +1,18 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-16  
 **Programme:** FIP-001 / Wave 1  
-**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED (16 November 2026)**. FIP-A05 IN REVIEW: initial current-corpus inventory complete; original first-cycle severity/denominator recount outstanding.
+**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED (16 November 2026)**. FIP-A05 REVIEW COMPLETE — DECISION REQUIRED (original review event-level census complete; public correction rate HOLD).
+
+## Current authoritative checkpoint — FIP-A05 first-review census completed (16 November 2026)
+
+- **Evidence-only classification completed:** [event-level D01–D31 and D42 ledger](reviews/A05-FIRST-REVIEW-CLASSIFICATION-LEDGER-2026-11-16.md), with 32 named record-source locators, original review-day dates, correction types, severity assessment and recorded repair disposition. Companion [A05 inventory](reviews/A05-LEGACY-PROVENANCE-SEVERITY-RECOUNT-2026-11-16.md) retains the separate latest-marker snapshot.
+- **Verified cohort:** First LPR cycle D01–D31 = **31 distinct reviewed records**, 26 identified source-representation discrepancies, 5 clean/enrichment-only. FR-AM-0008 was first reviewed separately at D42 (2026-10-05) and clean, making an **extended** 32-record history of 26 positive, 6 clean. Do not describe 26/32 as the rate *within the D01–D31 original cycle*. These are records with at least one identified issue, not inaccurate scientific claims/assessments.
+- **Claude Step 8 correction:** 26/32 is supported **only for the extended ever-first-reviewed set**, while 24/32 material-only is **not corroborated**. D28's correction from enrolled to randomised cancer-screening participant denominator is material under A05's pre-existing definition; material tally 26 positive, explicit sensitivity 25 if D28 labelled minor-only under a stricter consequence-based publication rule. No two minor-only cases identified.
+- **Status:** A05 **REVIEW COMPLETE — DECISION REQUIRED** on the D28 materiality-policy choice and whether the internal result is accepted. **Do not publish any correction rate or declare A05 accepted automatically.** The historical amendment/withdrawal receipt trails are distinguished from original detection and from later second-cycle findings.
+- **One next operator decision:** accept the 32-record A05 ledger as internal audit inventory, retain D28 as material with a flagged sensitivity, and expressly keep all public-rate publication on HOLD; or request a focused D28 source-severity review before closing A05. FIP-D01 follows the A05 disposition.
+- **Preserved boundaries:** FIP-A03 and A04 remain ACCEPTED; FIP-A02 historical MCP `date`/`recordedDate` parity remains DEFERRED/NOT ACCEPTED; full prior-value diffs remain deferred. No scientific/FCIF/MCP/public website code changed by A05.
+
+## Historical checkpoint — A05 initial inventory (retained)
 
 ## Current checkpoint — FIP-A05 evidence review opened (16 November 2026)
 
