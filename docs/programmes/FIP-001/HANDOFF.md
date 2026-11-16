@@ -1,9 +1,19 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-16  
 **Programme:** FIP-001 / Wave 1  
-**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MERGED / PUBLIC 4/4 VERIFIED / HISTORICAL MCP DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ORIGINAL STAGE CORRECTION VERIFIED / W-01–W-02 ANNOTATIONS MERGED + PAGES DEPLOYED / FRESH PUBLIC + MCP FULL-RESPONSE READBACK BLOCKED (NOT ACCEPTED)**.
+**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MERGED / PUBLIC 4/4 VERIFIED / HISTORICAL MCP DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED (16 November 2026)** after independent live MCP and fresh public-render verification.
 
-## Current authoritative checkpoint — 16 November 2026
+## Current authoritative checkpoint — FIP-A03 ACCEPTED (16 November 2026)
+
+**Superseding acceptance receipt:** [A03 final live-check gate with dated acceptance addendum](receipts/A03-2026-11-16-LIVE-CHECK-GATE.md). The originally recorded blocked access result is a valid historical checkpoint, not A03's current status.
+
+- **Original stage correction — PR #255:** merged `2a4b2f7c2623fb66f800e45e60aabd94eff88456`; both FR-AM-0001 AS-006/M-017 and FR-AM-0005 AS-005/M-022 are current `collapsed / VS-04`; prior `collapsed / VS-05` judgments retained. Original public and full MCP parity were previously tested.
+- **Administrative clarifications — PR #256:** merged `76dcabf9bbd78ffd3ea70d5ce88344c181ea495f`; CI #977 passed 225/225 post-build tests, original canonical record source preserved. Cloudflare Pages dashboard confirmed the production merge. An operator-supplied independent Claude audit subsequently verified the live Worker `deploymentCommit` and two `issuanceStatusClarifications[]` entries (`FIP-A03-ISC-001/002`) using direct production JSON-RPC; both public pages were freshly rendered in Chromium and showed the dated clarification at **three required locations each**. Live full/list/search parity and unmodified summaries passed. The Claude audit is independently executed evidence **reported to** this review, not raw network traffic repeated by ChatGPT.
+- **W-03** post-merge PR #255 status note remains complete; original draft-era body preserved.
+- **Decision:** A03 **ACCEPTED**, with no further A03 fix or deployment required on present evidence. The unrelated FR-AI-0008 VSC-001 challenge and FIP-A02 historical MCP `date`/`recordedDate` parity remain separate and unaltered.
+- **Exactly one next recommended action:** open **FIP-A04** for a bounded, evidence-only review of append-only/correction-history wording (finding F3-03), identifying current live text and proposing precise corrections if warranted. No implementation authority is implied.
+
+## Historical checkpoint — A03 pre-acceptance (retained without rewriting past observations)
 - **Two distinct A03 releases:** [PR #255](https://github.com/StuKeg1/faultline-observatory-site/pull/255) merged `2a4b2f7c2623fb66f800e45e60aabd94eff88456`: FR-AM-0001 AS-006/M-017 and FR-AM-0005 AS-005/M-022, both `collapsed / VS-04`; original public pages plus reported 32-record direct JSON-RPC Claude MCP parity passed **for this original correction**.
 - [PR #256](https://github.com/StuKeg1/faultline-observatory-site/pull/256) merged `76dcabf9bbd78ffd3ea70d5ce88344c181ea495f`: W-01/W-02 immutable-source administrative annotations `FIP-A03-ISC-001` and `FIP-A03-ISC-002`; added derived website display and optional full MCP field. CI [#977](https://github.com/StuKeg1/faultline-observatory-site/actions/runs/43768864274) PASSED (225/225 postbuild; 63 prerender pages; Worker typecheck). Original record blobs unchanged; pressure/state semantics untouched. W-03 [PR #255 addendum](https://github.com/StuKeg1/faultline-observatory-site/pull/255#issuecomment-6902176617) complete.
 - **Cloudflare Pages release independently read back:** authenticated dashboard lists `Production/main` deployment for `76dcabf9...`. Worker dashboard lists active version `c2e7c17b` but does not expose full current record response data.
