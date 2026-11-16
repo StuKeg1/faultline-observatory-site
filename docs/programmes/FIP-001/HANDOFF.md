@@ -1,7 +1,15 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-16  
 **Programme:** FIP-001 / Wave 1  
-**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MERGED / PUBLIC 4/4 VERIFIED / HISTORICAL MCP DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED (16 November 2026)** after independent live MCP and fresh public-render verification.
+**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MCP HISTORICAL DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 REVIEW COMPLETE — DECISION REQUIRED**.
+
+## Current authoritative checkpoint — FIP-A04 evidence review complete (16 November 2026)
+
+- [FIP-A04 bounded review](reviews/A04-APPEND-ONLY-PUBLIC-WORDING-2026-11-16.md) source-audited Claude finding F3-03 against canonical Home, Methodology, Institutional Changelog, About and Welcome wording plus public indexed examples. **Review complete / decision required.**
+- **Confirmed:** homepage `only ever added to, never rewritten` overstates immutability across all record fields. Earlier assessment history is preserved as appended assessments, but evidence descriptions, references and other dependent fields have been corrected in place with logged mutations. Methodology and Changelog overstate or leave ambiguous whether every full prior-value snapshot is publicly shown. Welcome correctly confines `never rewritten` to assessments.
+- **Proposed, not executed:** P1 Home and P2 Methodology limited copy repairs; P3 Changelog qualified descriptions; P4 About optional consistency; complete prior-text diffs P5 deferred to a separate design. Exact text, locators, limits and tests are in the review. No source changes authorised; review documentation only updated.
+- **Exactly one next operator decision:** approve preparation of a bounded copy-only implementation proposal for P1/P2/P3 and decide inclusion of optional P4. Do not infer permission to alter code, FCIF, records, MCP, merge or deploy. On a later A04 disposition, proceed to FIP-A05.
+- FIP-A03 remains **ACCEPTED**. FIP-A02 historical MCP `date`/`recordedDate` parity remains **DEFERRED / NOT ACCEPTED**.
 
 ## Current authoritative checkpoint — FIP-A03 ACCEPTED (16 November 2026)
 
