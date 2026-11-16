@@ -105,3 +105,18 @@ A record can have more than one field issue but contributes only once to a per-r
 **Initial review opened and current 32-record source/metadata inventory completed. Historical first-cycle N1/N2/N3 severity recount remains OPEN.** The exact chronological first-review receipt and mutation text for each D01..D31 and D42 must now be transcribed into a 32-row event-level classification ledger, with issue-level locators; compare their original cohort timing and count N1/N2/N3 independently. Then reconcile numerator and denominator against Claude's 26/32 and 24/32, including its claimed two minor-only cases.
 
 **Exactly one next recommended action:** perform that **event-level first-cycle classification pass** and publish an evidence-only follow-up annex with each record's reviewed date, initial status, identified issue IDs/type/severity, whether repaired, primary source locator and cohort eligibility. **No canonical/public site edit, percentage publication or new remediation authority is granted.**
+
+---
+
+## Superseding first-cycle classification result — 16 November 2026
+
+**Status update:** The original D01–D31 review events and separate D42 first-entry review have now been classified individually. See the [full 32-row first-review classification ledger](A05-FIRST-REVIEW-CLASSIFICATION-LEDGER-2026-11-16.md). The prior phrases "historical recount remains OPEN" above and the closing next-action paragraph describe the **earlier inventory checkpoint**; the ledger is the authoritative follow-up.
+
+- D01–D31: **31** original first-review records (30 August–28 September 2026), **26** discrepancy-positive and **5** clean/enrichment-only. Exact original-cycle denominator **31**, not current corpus 32.
+- D42: FR-AM-0008 first reviewed **5 October 2026** and clean. Extended all-ever-first-reviewed 32 includes **26** discrepancy-positive and **6** clean.
+- The first-review count **26/32** reported by Claude is supported only with this explicitly extended denominator. Its **24/32** severity-restricted figure is **not substantiated** by the retained original review events under the predeclared A05 material criteria.
+- D28 FR-BT-0004 has a minor foundational date-range amendment and **enrolled-vs-randomised NHS-Galleri cohort-denominator correction**. Under A05's predeclared denominator rule, this is material, giving **26 material-positive of 31 core / 32 extended**. Sensitivity: if the operator elects to treat D28 as minor-only, the material count is **25**, not Claude's 24. The public materiality rule itself requires a separate decision before any external aggregate.
+- All 26 first-review discrepancy-positive records have a governed correction/withdrawal trail in the later canonical mutation history; that does not mean every legacy attribution has been recovered or that subsequent cycles found no new issues.
+- **Public publication HOLD:** No statement that 80% of records were "wrong"; denominator is records reviewed, not individual evidence/assessment errors. No source or public site edit authorised.
+
+**Current disposition:** Historical classification **REVIEW COMPLETE — DECISION REQUIRED** on public-facing severity treatment; no implementation or public-rate acceptance. Exactly one recommended decision: approve the event-level ledger as internal audit inventory with D28 explicitly flagged for severity-policy review, and **do not authorise publishing a percentage** in this item. A05 successor remains FIP-D01 after formal disposition.
