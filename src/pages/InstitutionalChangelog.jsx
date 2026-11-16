@@ -56,10 +56,9 @@ export default function InstitutionalChangelog() {
             <div className="ichl-eyebrow">Faultline Observatory</div>
             <h1 className="ichl-title">Institutional Changelog</h1>
             <p className="ichl-intro">
-              Every mutation to every Frontier Record, in full, chronological order.
-              Nothing here is deleted, hidden, or summarised away — this is the
-              complete operational history the Observatory's append-only obligation
-              requires it to keep.
+              Recorded mutation entries for Frontier Records, presented in chronological order.
+              They document changes, including corrections to existing fields.
+              An entry may summarise a correction rather than reproduce the complete earlier wording.
             </p>
             <p className="ichl-intro">
               The homepage shows a filtered subset,{" "}
