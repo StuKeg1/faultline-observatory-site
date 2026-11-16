@@ -1,7 +1,16 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-16  
 **Programme:** FIP-001 / Wave 1  
-**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 MCP HISTORICAL DATE PARITY DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 COPY IMPLEMENTED ON ISOLATED BRANCH — CI DECISION REQUIRED**.
+**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED (16 November 2026)**. Next: FIP-A05 evidence-only severity and denominator recount.
+
+## Current authoritative checkpoint — FIP-A04 ACCEPTED (16 November 2026)
+
+- [Final acceptance receipt](receipts/A04-2026-11-16-POSTMERGE-ACCEPTANCE.md) documents the full release chain: [PR #257](https://github.com/StuKeg1/faultline-observatory-site/pull/257) merged to canonical `main` as `b89cdc3bc4b73b17be49364e34ecd7f3b8af6fc0`, CI 231/231 postbuild tests passed, and authenticated Cloudflare Pages [production deployment](https://dash.cloudflare.com/145fa3f7c38e336aaa0b1713a658cf89/pages/view/faultline-observatory-site/2dafdafd-49ec-4037-bb25-4e6c7af19900) reported success at the exact merge SHA.
+- The operator opened five fresh public tabs after deployment; the connected browser readback found the precise approved **P1 Home, P2 Methodology, P3 Institutional Changelog, P4 About** wording once each at expected positions, superseded wording absent, and **Welcome** preserved verbatim. Postmerge GitHub confirmed no canonical record, FCIF or MCP change.
+- **Disposition: ACCEPTED.** This is a bounded public-copy clarification, not a methodology change or a reconstruction of all prior field text. Full prior-value diffs remain **DEFERRED** for separate provenance design. **FIP-A02 historical MCP `date`/`recordedDate` parity remains DEFERRED / NOT ACCEPTED.** FIP-A03 remains accepted.
+- **Exactly one next recommended action:** open FIP-A05 for an evidence-only canonical recount of legacy provenance corrections, with explicit denominators and severity classes. Do not repeat Claude's estimated correction rates without independent verification or publish changes without separate approval.
+
+## Historical implementation and CI gates — retained as earlier snapshots
 
 ## Latest A04 checkpoint — branch implementation complete, CI pending (16 November 2026)
 
