@@ -72,7 +72,7 @@ The *latest* `provenanceOutcome` fields classify the current record review check
 3. [FR-QE-0001](../../src/data/records/FR-QE-0001.js) D13 original review states all six instances were source-faithful and provenance was enriched; later D37 review found an IN-004 discrepancy. A05 must **not retroactively count a second-cycle finding as a first-cycle failure**.
 4. [FR-QE-0003](../../src/data/records/FR-QE-0003.js) D15 found four material representation discrepancies in IN-001..IN-004 pending bounded correction. Later second-cycle marker D64 is `discrepancies_corrected/completed`; status must be allocated to the appropriate issue date and repair decision separately.
 5. [FR-BT-0004](../../src/data/records/FR-BT-0004.js) D68 corrections distinguish foundational ctDNA claims, superseded EU regulatory state and NHS-Galleri screen-detected vs total cancer denominators. This is a **later correction event**, not proof of which first-cycle D28 category it belongs to.
-6. The [evidence-status retained dispositions](../../docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md) distinguish unresolved, excluded, unverified and withdrawn legacy *attributions*. These are **not** paper retractions, and a later passing record-level review does not erase explicit entry-level exclusions.
+6. The [evidence-status retained dispositions](../../../reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md) distinguish unresolved, excluded, unverified and withdrawn legacy *attributions*. These are **not** paper retractions, and a later passing record-level review does not erase explicit entry-level exclusions.
 
 ## Required denominator design — to be completed before a historical rate
 
