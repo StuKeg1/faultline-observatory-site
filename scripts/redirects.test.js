@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import {
   STATIC_ROUTES,
   LEGACY_REDIRECTS,
+  NON_INDEXABLE_ROUTES,
   getAllCanonicalRoutes,
   getRedirectsManagedRoutes,
 } from "./route-manifest.js";
@@ -54,6 +55,8 @@ test("generated Function route table matches the redirects-managed manifest", as
   const generated = await import(generatedUrl);
   assert.deepEqual(generated.CANONICAL_ROUTES, expected);
   assert.deepEqual(generated.LEGACY_REDIRECTS, LEGACY_REDIRECTS);
+  assert.deepEqual(generated.NON_INDEXABLE_ROUTES, [...NON_INDEXABLE_ROUTES]);
+  assert.deepEqual(generated.NON_INDEXABLE_ROUTES, ["/experiments/vd-001/", "/experiments/vd-002/", "/tokens/"]);
 });
 
 test("catch-all Function serves known routes, canonicalises aliases, and preserves unknown 404s", async () => {
@@ -184,4 +187,61 @@ test("known record and programme ids resolve to canonical routes", async () => {
   assert.ok(routes.includes("/the-record/fr-bt-0001/"), "FR-BT-0001 missing from manifest");
   assert.ok(routes.includes("/programmes/prog-qe/"), "PROG-QE missing from manifest");
   assert.ok(!routes.includes("/the-record/fr-mf-0001/"), "legacy FR-MF id should not appear as a canonical route — it's a redirect, not a destination");
+});
+
+test("FIP-D01-P2-R01: protected routes retain response body, status and headers", async () => {
+  const { onRequest } = await import(`${new URL("../functions/[[path]].js", import.meta.url).href}?noindex=${Date.now()}`);
+  for (const pathname of NON_INDEXABLE_ROUTES) {
+    for (const assetAvailable of [true, false]) {
+      const calls = [];
+      const originalHeaders = {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=60",
+        "x-test-header": "preserved",
+      };
+      const context = {
+        request: new Request(`https://faultlinewatch.com${pathname}?sample=1`),
+        env: { ASSETS: { fetch: async (request) => {
+          const path = new URL(request.url).pathname;
+          calls.push(path);
+          if (path === pathname && !assetAvailable) return new Response("missing", { status: 404 });
+          return new Response(path === "/" ? "SPA SHELL" : "STATIC PAGE", { status: 200, headers: originalHeaders });
+        } } },
+        next: async () => { throw new Error("Unexpected delegation"); },
+      };
+      const response = await onRequest(context);
+      assert.equal(response.status, 200, pathname);
+      assert.equal(response.headers.get("x-robots-tag"), "noindex, nofollow", pathname);
+      for (const [name, value] of Object.entries(originalHeaders)) {
+        assert.equal(response.headers.get(name), value, pathname + " " + name);
+      }
+      assert.equal(await response.text(), assetAvailable ? "STATIC PAGE" : "SPA SHELL", pathname);
+      assert.deepEqual(calls, assetAvailable ? [pathname] : [pathname, "/"], pathname);
+    }
+  }
+});
+
+test("FIP-D01-P2-R01: public routes and redirects do not acquire noindex", async () => {
+  const { onRequest } = await import(`${new URL("../functions/[[path]].js", import.meta.url).href}?negative=${Date.now()}`);
+  const makeContext = (pathname) => ({
+    request: new Request(`https://faultlinewatch.com${pathname}`),
+    env: { ASSETS: { fetch: async (request) => {
+      const path = new URL(request.url).pathname;
+      return new Response(path === "/" ? "SPA" : "NOT FOUND", { status: path === "/" ? 200 : 404 });
+    } } },
+    next: async () => new Response("record response", { status: 200 }),
+  });
+  for (const pathname of ["/", "/the-record/", "/public-record/", "/programmes/prog-ai/", "/notes/le-ai-001/"]) {
+    const response = await onRequest(makeContext(pathname));
+    assert.equal(response.headers.get("x-robots-tag"), null, pathname);
+  }
+  for (const pathname of ["/experiments/vd-001", "/experiments/vd-002", "/tokens"]) {
+    const response = await onRequest(makeContext(pathname));
+    assert.equal(response.status, 301, pathname);
+    assert.equal(response.headers.get("x-robots-tag"), null, pathname);
+    assert.equal(new URL(response.headers.get("location")).pathname, pathname + "/", pathname);
+  }
+  const unknown = await onRequest(makeContext("/not-a-real-route/"));
+  assert.equal(unknown.status, 404);
+  assert.equal(unknown.headers.get("x-robots-tag"), null);
 });

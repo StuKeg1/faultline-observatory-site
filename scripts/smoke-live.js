@@ -15,7 +15,7 @@
  *
  * Exits non-zero if any check fails.
  */
-import { getAllCanonicalRoutes } from "./route-manifest.js";
+import { getAllCanonicalRoutes, NON_INDEXABLE_ROUTES } from "./route-manifest.js";
 
 const BASE_URL = (process.env.SMOKE_BASE_URL || "https://faultlinewatch.com").replace(/\/$/, "");
 const SAMPLE_SIZE = 3;
@@ -185,6 +185,31 @@ if (sampleRecordRoutes.length > 0) {
       getOgTitle(crawlerBody) === getOgTitle(defaultBody),
       "og:title differs between default and Googlebot user agents"
     );
+  });
+}
+
+for (const pathname of NON_INDEXABLE_ROUTES) {
+  await check(`non-indexable ${pathname} responds with noindex header`, async () => {
+    const res = await fetchNoRedirect(pathname);
+    assert(res.status === 200, `expected 200, got ${res.status}`);
+    assert(res.headers.get("x-robots-tag") === "noindex, nofollow",
+      `expected noindex, nofollow, got "${res.headers.get("x-robots-tag")}"`);
+  });
+  await check(`non-slash protected alias redirects ${pathname}`, async () => {
+    const alias = pathname.slice(0, -1);
+    const res = await fetchNoRedirect(alias);
+    assert(res.status === 301, `expected 301, got ${res.status}`);
+    const location = new URL(res.headers.get("location"), BASE_URL);
+    assert(location.pathname === pathname, `expected ${pathname}, got ${location.pathname}`);
+  });
+}
+
+for (const pathname of ["/", "/public-record/", "/programmes/prog-ai/", "/notes/le-ai-001/", "/the-record/fr-ai-0007/"]) {
+  await check(`public route ${pathname} has no noindex header`, async () => {
+    const res = await fetchNoRedirect(pathname);
+    assert(res.status === 200, `expected 200, got ${res.status}`);
+    assert(!/(^|[,\s])noindex([,\s]|$)/i.test(res.headers.get("x-robots-tag") || ""),
+      `public route unexpectedly carries noindex: ${res.headers.get("x-robots-tag")}`);
   });
 }
 

@@ -11,9 +11,10 @@
  * Where a canonical route has a build-time generated static page (Programme
  * Notes — see scripts/prerender.js), that page is served instead of the shell.
  */
-import { CANONICAL_ROUTES, LEGACY_REDIRECTS } from "./generated-routes.js";
+import { CANONICAL_ROUTES, LEGACY_REDIRECTS, NON_INDEXABLE_ROUTES } from "./generated-routes.js";
 
 const canonicalRoutes = new Set(CANONICAL_ROUTES);
+const nonIndexableRoutes = new Set(NON_INDEXABLE_ROUTES);
 const legacyRedirects = new Map(LEGACY_REDIRECTS.map(({ from, to }) => [from, to]));
 
 function nonCanonicalForm(route) {
@@ -38,6 +39,17 @@ function fetchAsset(context, pathname) {
   return context.env.ASSETS.fetch(new Request(assetUrl.toString(), context.request));
 }
 
+function protectNonIndexableResponse(response) {
+  const headers = new Headers(response.headers);
+  headers.set("X-Robots-Tag", "noindex, nofollow");
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   const { pathname } = url;
@@ -59,8 +71,10 @@ export async function onRequest(context) {
     // (scripts/prerender.js). Serve the generated page when one exists; every
     // other canonical route still resolves to the SPA shell as before.
     const prerendered = await fetchAsset(context, pathname);
-    if (prerendered.ok) return prerendered;
-    return fetchAsset(context, "/");
+    const response = prerendered.ok ? prerendered : await fetchAsset(context, "/");
+    return nonIndexableRoutes.has(pathname)
+      ? protectNonIndexableResponse(response)
+      : response;
   }
 
   // Static assets and unknown paths both remain asset-server concerns. Known

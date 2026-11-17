@@ -37,6 +37,11 @@ export const CANONICAL_ROUTES = [
   "/notes/le-qe-001/",
   "/notes/rg-001/"
 ];
+export const NON_INDEXABLE_ROUTES = [
+  "/experiments/vd-001/",
+  "/experiments/vd-002/",
+  "/tokens/"
+];
 export const LEGACY_REDIRECTS = [
   {
     "from": "/programmes/prog-mf",
