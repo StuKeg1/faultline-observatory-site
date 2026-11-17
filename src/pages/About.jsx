@@ -85,7 +85,13 @@ export default function About() {
  {ABOUT_BLOCKS.map(({ heading, body, link }) => (
  <div key={heading} className="inst-about-block">
  <div className="inst-about-heading">{heading}</div>
+ {heading === "How the Observatory operates" ? (
+ body.split(/\n\s*\n/).map((paragraph, index) => (
+ <p key={index} className="inst-about-body">{paragraph}</p>
+ ))
+ ) : (
  <p className="inst-about-body">{body}</p>
+ )}
  {link && (
  <p className="inst-about-body" style={{ marginTop: "0.75rem" }}>
  <Link to={link.to} style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1px solid var(--accent-dim)" }}>
