@@ -160,6 +160,20 @@ function atCheckpoint(record, date, rewindLater = true) {
     restored.mutationLog = restored.mutationLog.slice(1);
     record = restored;
   }
+  // D81 is a governed provenance-only completion after the October receipts.
+  // Restore its exact predecessor metadata before testing frozen record hashes.
+  if (record.id === "FR-QE-0006" && date < "2026-11-15" &&
+      record.provenanceReviewId === "LPR-001-D81") {
+    const restored = structuredClone(record);
+    assert.equal(restored.mutationLog[0]?.id, "M-017", "D81 mutation has drifted");
+    assert.equal(restored.mutationLog[0]?.field, "provenance_review");
+    assert.equal(restored.mutationLog[0]?.from, "LPR-001-D49");
+    assert.equal(restored.mutationLog[0]?.to, "LPR-001-D81");
+    restored.lastProvenanceReview = "2026-10-12";
+    restored.provenanceReviewId = "LPR-001-D49";
+    restored.mutationLog = restored.mutationLog.slice(1);
+    record = restored;
+  }
   if (bt1AttractorReclassificationReceipt.date > date &&
       record.id === bt1AttractorReclassificationReceipt.recordId &&
       record.mutationLog[0]?.id === bt1AttractorReclassificationReceipt.mutationId) {
