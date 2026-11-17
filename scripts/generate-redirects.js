@@ -27,7 +27,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { STATIC_ROUTES, LEGACY_REDIRECTS, getRedirectsManagedRoutes } from "./route-manifest.js";
+import { STATIC_ROUTES, LEGACY_REDIRECTS, NON_INDEXABLE_ROUTES, getRedirectsManagedRoutes } from "./route-manifest.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const OUT_PATH = path.join(ROOT, "public", "_redirects");
@@ -111,6 +111,7 @@ function buildFunctionRoutes(canonicalRoutes) {
     " * Edge-safe route data for functions/[[path]].js.",
     " */",
     `export const CANONICAL_ROUTES = ${JSON.stringify(canonicalRoutes, null, 2)};`,
+    `export const NON_INDEXABLE_ROUTES = ${JSON.stringify([...NON_INDEXABLE_ROUTES], null, 2)};`,
     `export const LEGACY_REDIRECTS = ${JSON.stringify(LEGACY_REDIRECTS, null, 2)};`,
     "",
   ].join("\n");
