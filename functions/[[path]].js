@@ -2,9 +2,9 @@
  * Cloudflare Pages Function — authoritative routing for every public route
  * outside /the-record/*.
  *
- * The project's exact 200 rules in public/_redirects are present and valid,
- * but live Pages deployments have repeatedly served 404.html for those known
- * routes. A matched Function has a reliable asset binding, so this boundary
+ * Redundant 200 rewrites are omitted from public/_redirects because
+ * Cloudflare rejects them as potential loops. A matched Function has a
+ * reliable asset binding, so this boundary
  * resolves canonical routes explicitly while preserving genuine 404s for
  * unknown paths. /the-record/* remains owned by its more-specific Function.
  *
