@@ -58,6 +58,16 @@ const ABOUT_BLOCKS = [
  body: "Observation Before Interpretation. The Observatory records what is observable before forming interpretive positions. This is not a statement of neutrality — it is a statement of sequence.",
  },
  {
+ heading: "How the Observatory operates",
+ body: `Faultline Observatory is independently operated by its founder, Stuart Kegel. He personally funds its operating costs and states that the Observatory receives no external financial support or sponsorship.
+
+AI assists with discovering and reviewing evidence, challenging interpretations and preparing assessments. Evidence enters the canonical record only with the founder's authorisation, which may cover defined batches. New Frontier Records, substantive assessments, changes to Pressure States or Verification Stages, and significant corrections require his explicit approval. AI may carry out minor administrative or technical corrections under existing standing authorisations.
+
+The founder reports no current professional or financial interests relevant to the technologies or companies covered by Frontier Records. Should a relevant interest arise, he will disclose it and apply the same FCIF evidence standards.
+
+The Observatory has no formal external advisory board or independent review panel with decision-making authority. Its methodology, assessment histories and institutional changelog provide public visibility into how claims are evaluated and how the record changes.`,
+ },
+ {
  heading: "Who the Record Serves",
  body: "The Frontier Record is maintained for those with an interest in how frontier claims evolve through time rather than how they are announced. Researchers, journalists, investors, policy analysts, historians of technology, and technically literate observers may find it useful as a permanent, structured archive of claim and evidence trajectories. The Observatory does not address general news readers or those seeking current product or technology information — other institutions serve that purpose better.",
  },
