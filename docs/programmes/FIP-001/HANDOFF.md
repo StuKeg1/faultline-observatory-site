@@ -1,7 +1,16 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-17  
 **Programme:** FIP-001 / Wave 1  
-**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 G1 ACCEPTED; G2 PLACEMENT ACCEPTED; G3 NON-PUBLIC WORDING PREPARED — DECISION REQUIRED**.
+**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 G1 ACCEPTED; G2 PLACEMENT ACCEPTED; G3 NON-PUBLIC WORDING ACCEPTED — G4 NOT AUTHORISED**.
+
+## Current authoritative checkpoint — FIP-B01 G3 revised wording accepted (17 November 2026)
+
+- **Operator decision:** all five G3 review amendments and the revised “How the Observatory operates” text are **ACCEPTED as a non-public wording baseline only**. [Exact approved text and G1 trace](proposals/B01-G3-ABOUT-OPERATING-ARRANGEMENTS-2026-11-17.md); [G3 acceptance receipt](receipts/B01-G3-2026-11-17-WORDING-ACCEPTANCE.md).
+- **Accepted revisions:** founder-attributed personal financing/no outside support (no audit claim); shorter AI/human decision boundaries with authorised batches; standing permission restricted to minor administrative/technical corrections; narrow operator-attested conflicts statement and future disclosure promise; removal of inline Markdown links incompatible with existing plain-text About body.
+- **Placement:** a single proposed block in `src/pages/About.jsx` between `Institutional Principle` and `Who the Record Serves`. Preserve existing seven About blocks, institutional-health aside, other pages, routes and navigation; no novel public policy, external board, independently audited finances or universal human source-re-read claim.
+- **Release gate:** **G3 wording ACCEPTED; G4 source implementation NOT AUTHORISED**. A bounded About-only implementation branch, testing, PR/preview, merge and Cloudflare production deployment each require appropriate distinct authority; approval of wording supplies none.
+- **Actual execution:** administrative documentation modified on isolated `fip-b01-g2-g3-proposal-20261117` only, not canonical main. No site, FCIF, records or MCP mutation, PR, merge or deployment. FIP-A02 historical MCP `date`/`recordedDate` parity **DEFERRED / NOT ACCEPTED**.
+- **Next separate recommendation:** invite operator decision on a limited G4 About-only implementation, then independently inspect CI, exact source diff and preview before any PR/merge request.
 
 ## Current authoritative checkpoint — FIP-B01 G2 acceptance and G3 wording proposal (17 November 2026)
 
