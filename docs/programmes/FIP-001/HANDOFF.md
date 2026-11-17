@@ -1,9 +1,17 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-17  
 **Programme:** FIP-001 / Wave 1  
-**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 G1 SOURCE LEDGER COMPLETE — OPERATOR FACT CONFIRMATION REQUIRED**.
+**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 ACCEPTED WITH NON-BLOCKING EDITORIAL FOLLOW-UPS**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 G1 SOURCE LEDGER COMPLETE — OPERATOR FACT CONFIRMATION REQUIRED**.
 
-## Current authoritative checkpoint — FIP-B01 G1 fact-verification ledger (17 November 2026)
+## Latest authoritative checkpoint — FIP-A02 formal acceptance (17 November 2026)
+
+- **Operator decision:** Explicitly **ACCEPTED WITH NON-BLOCKING EDITORIAL FOLLOW-UPS** after review of Claude's reported live JSON-RPC MCP `faultline_read_record` evidence for FR-QE-0003, FR-QE-0008, FR-AI-0001 and FR-QE-0005. [Superseding acceptance receipt](receipts/A02-2026-11-17-FORMAL-ACCEPTANCE.md).
+- **Scope:** Four fresh public AS-001 histories previously passed; four production MCP full-record responses reportedly returned `date uncertain (legacy)` plus retained `recordedDate: 2024-01-15`, without altering current assessments. Claude reported MCP `faultline_about.deploymentCommit` `76dcabf9bbd78ffd3ea70d5ce88344c181ea495f`; service provenance is self-reported, and raw temporary Claude HTTP bodies have not been archived in this repository.
+- **Editorial residuals:** A02-E01 preparation-era notes and A02-E02 FR-QE-0003 M-022 date wording are **non-blocking review candidates**, not authorised repairs. Preserve raw assessment, question, opening and mutation dates; no FCIF, MCP, scientific content or historical text changes.
+- **Prior checkpoint supersession:** Earlier A02 `DEFERRED / NOT ACCEPTED` statements below are retained as dated history only, not current status. Current FIP-B01 production G4 is separately merged; this administrative hand-off update does not reopen its release gate.
+- **Documentation release boundary:** This reconciliation is staged on an isolated branch; do not merge or cause a production deploy without distinct approval.
+
+## Historical checkpoint — FIP-B01 G1 fact-verification ledger (17 November 2026)
 
 - **Authority:** Operator expressly authorised FIP-B01 G1 factual clarification only: funding/sponsor relationships, conflict management and human/AI editorial responsibilities. No website copy, PR, merge, production deployment or change to FCIF, corpus or MCP.
 - **Result:** [B01 G1 verification ledger](reviews/B01-G1-FACT-VERIFICATION-LEDGER-2026-11-17.md) contains ten separately identified factual questions (F01–F10), each with source locator, evidence classification and owner-confirmation requirement. Source inspection includes Welcome, About, Origins/FM-001, Methodology, Health, FIP execution controls, OPERATIONS.md, CLAUDE.md, and dated Scout approval receipts. Observed individual approval events are **not** promoted into proof of a universal human gate.
