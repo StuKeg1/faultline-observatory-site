@@ -1,7 +1,8 @@
 /**
  * generate-redirects.js — writes public/_redirects from the canonical
  * route manifest (scripts/route-manifest.js). It also writes the edge-safe
- * route table consumed by functions/[[path]].js. Cloudflare Pages Functions are the authoritative runtime router.
+ * route table consumed by functions/[[path]].js. Cloudflare Pages Functions
+ * are the authoritative runtime router.
  * Do not emit redundant 200 rewrites: Cloudflare rejects these as potential
  * loops when prerendered route assets already exist.
  *
@@ -83,7 +84,9 @@ function validateWrittenFile(contents, canonicalRoutes) {
     fail("generated _redirects still contains a blanket wildcard rule");
   }
 
-  if (/^\\/\\S+\\s+\\/index\\.html\\s+200\\s*$/m.test(contents)) {\n    fail("generated _redirects contains a redundant 200 rewrite");\n  }
+  if (/^\/\S+\s+\/index\.html\s+200\s*$/m.test(contents)) {
+    fail("generated _redirects contains a redundant 200 rewrite");
+  }
 
   for (const r of LEGACY_REDIRECTS) {
     if (!contents.includes(`${r.from} ${r.to} 301`)) {
