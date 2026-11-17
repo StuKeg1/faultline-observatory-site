@@ -1,7 +1,9 @@
 /**
  * generate-redirects.js — writes public/_redirects from the canonical
  * route manifest (scripts/route-manifest.js). It also writes the edge-safe
- * route table consumed by functions/[[path]].js. Cloudflare Pages Functions are the authoritative runtime router.\n * Do not emit redundant 200 rewrites: Cloudflare rejects these as potential\n * loops when prerendered route assets already exist.
+ * route table consumed by functions/[[path]].js. Cloudflare Pages Functions are the authoritative runtime router.
+ * Do not emit redundant 200 rewrites: Cloudflare rejects these as potential
+ * loops when prerendered route assets already exist.
  *
  * Replaces the old blanket `/* /index.html 200` SPA fallback, which
  * rewrote every path (including nonexistent ones) to 200, producing soft
