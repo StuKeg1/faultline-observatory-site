@@ -1,7 +1,16 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-17  
 **Programme:** FIP-001 / Wave 1  
-**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 EVIDENCE-ONLY REVIEW COMPLETE — DECISION REQUIRED**.
+**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 G1 SOURCE LEDGER COMPLETE — OPERATOR FACT CONFIRMATION REQUIRED**.
+
+## Current authoritative checkpoint — FIP-B01 G1 fact-verification ledger (17 November 2026)
+
+- **Authority:** Operator expressly authorised FIP-B01 G1 factual clarification only: funding/sponsor relationships, conflict management and human/AI editorial responsibilities. No website copy, PR, merge, production deployment or change to FCIF, corpus or MCP.
+- **Result:** [B01 G1 verification ledger](reviews/B01-G1-FACT-VERIFICATION-LEDGER-2026-11-17.md) contains ten separately identified factual questions (F01–F10), each with source locator, evidence classification and owner-confirmation requirement. Source inspection includes Welcome, About, Origins/FM-001, Methodology, Health, FIP execution controls, OPERATIONS.md, CLAUDE.md, and dated Scout approval receipts. Observed individual approval events are **not** promoted into proof of a universal human gate.
+- **Confirmed in sources:** Founder and self-described public-interest status are disclosed; origins recount ChatGPT collaboration; OPERATIONS.md identifies human reviewer/operator and AI file-generation/implementation support; dated Scout decisions show explicit human approval in sampled workflows; methodology, correction history and contact channels exist.
+- **Unconfirmed:** Present financing and in-kind support, sponsors/advertising/donations, conflicts or any mitigating policy, exact entity/legal form, universal admission/assessment/publication sign-off, AI standing delegations, source-verification exceptions and formal external oversight. Absence of a public disclosure is not evidence of absence of a relationship.
+- **Status:** **SOURCE COLLECTION COMPLETE — OPERATOR FACT CONFIRMATION PENDING**. No public wording drafted, no fact automatically affirmed by the operator. FIP-D01 remains conditionally closed with residuals; FIP-A02 historical MCP `date`/`recordedDate` parity remains DEFERRED / NOT ACCEPTED.
+- **Exactly one next action:** invite owner confirmation of Priority 1 facts (current operating form and final authority; financing and sponsor influence; conflicts; actual human/AI approval rules), permitting unknown/declined answers. G2 disclosure-placement review, B02 policies and implementation remain separately gated. All new G1 documentation remains on the isolated branch `fip-d01-closure-b01-review-20261117`, not merged into main.
 
 ## Current authoritative checkpoint — D01 conditional closure accepted; B01 evidence review completed (17 November 2026)
 
