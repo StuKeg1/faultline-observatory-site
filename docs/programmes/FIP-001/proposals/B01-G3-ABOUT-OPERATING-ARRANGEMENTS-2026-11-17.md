@@ -1,8 +1,8 @@
 # FIP-B01 G3 — Non-public About operating-arrangements wording proposal
 
 Date: 2026-11-17
-Status: **DRAFT PREPARED — OPERATOR WORDING DECISION REQUIRED**. Non-public administrative proposal only; **no public source change, PR, merge or deployment authorised**.
-Authority: Operator accepted G2 placement recommendation and authorised G3 *wording preparation only*. FIP-A02 historical MCP `date`/`recordedDate` parity stays **DEFERRED / NOT ACCEPTED**.
+Status: **G3 REVISED WORDING ACCEPTED — NON-PUBLIC BASELINE (2026-11-17)**. Administrative approval of wording only; **no public source change, PR, merge or deployment authorised**.
+Authority: Operator accepted G2 placement and subsequently expressly accepted all five G3 review amendments and the revised About wording as a **non-public wording baseline**. FIP-A02 historical MCP `date`/`recordedDate` parity stays **DEFERRED / NOT ACCEPTED**.
 
 ## 1. Exact proposed placement
 
@@ -15,19 +15,28 @@ and **before** the object:
 
 One new content block, working title **"How the Observatory operates"**. This is a proposal locator only — **do not modify `src/pages/About.jsx`** in G3. Preserve About's existing Mission, Purpose, Origins, The Record, FCIF, Institutional Principle, Who the Record Serves and Public accountability aside in their current order and wording. Reuse the page's existing simple block layout if any later implementation is separately authorised; avoid a new governance route, panel or visual prominence.
 
-## 2. Candidate publication wording — NOT approved or live
+## 2. Approved non-public wording baseline — NOT published or implementation-authorised
 
-> **How the Observatory operates**
->
-> Faultline Observatory is a founder-operated public-interest project maintained by Stuart Kegel. Its operating costs are personally funded; the Observatory currently receives no outside financial support or editorial sponsorship. These are the founder's statements about its present arrangements, not independently audited financial assurances.
->
-> AI tools assist with finding, investigating, classifying and reviewing evidence, preparing recommendations, and carrying out authorised implementation work. The founder retains final authority over admitting evidence to the canonical record (including approved batches), opening new Frontier Records, making substantive assessments, changing Pressure States or Verification Stages, and approving significant corrections. Minor administrative or technical corrections may proceed under existing standing authorisations; this does not authorise independent scientific judgments by AI.
->
-> The founder reports no current professional or financial interests relevant to the companies or technologies covered by Frontier Records. Any future relevant interest will be disclosed, and the same FCIF evidence standards will apply. The Observatory has no formal external advisory board or independent review panel with decision-making authority.
->
-> Its [Methodology](/methodology/) explains the evidentiary framework; [Origins](/about/origins/) preserves the founding history of its human–AI collaboration. Published record histories and the [Institutional Changelog](/institutional-changelog/) document changes, and [Contact](mailto:hello@faultlinewatch.com) provides a route for correspondence.
+The operator accepted the following **exact revised text** on 2026-11-17, after G3 review. This supersedes the earlier candidate in this proposal and is not a live website statement.
 
-**Drafting caution:** This is a candidate, not a policy, legal representation or certification. “No current professional or financial interests relevant to the companies or technologies covered” is a direct operator self-report with the narrow scope accepted in G1, not a global assertion of no interests. Likewise, prospective disclosure is a commitment, **not** an existing published conflicts/recusal system. The description of AI assistance and batch approvals must not imply unapproved autonomous admission or continuous human re-reading of every primary source.
+> ### How the Observatory operates
+>
+> Faultline Observatory is independently operated by its founder, Stuart Kegel. He personally funds its operating costs and states that the Observatory receives no external financial support or sponsorship.
+>
+> AI assists with discovering and reviewing evidence, challenging interpretations and preparing assessments. Evidence enters the canonical record only with the founder's authorisation, which may cover defined batches. New Frontier Records, substantive assessments, changes to Pressure States or Verification Stages, and significant corrections require his explicit approval. AI may carry out minor administrative or technical corrections under existing standing authorisations.
+>
+> The founder reports no current professional or financial interests relevant to the technologies or companies covered by Frontier Records. Should a relevant interest arise, he will disclose it and apply the same FCIF evidence standards.
+>
+> The Observatory has no formal external advisory board or independent review panel with decision-making authority. Its methodology, assessment histories and institutional changelog provide public visibility into how claims are evaluated and how the record changes.
+
+**Accepted review amendments (all five):**
+1. Replace the interruptive financial disclaimer with explicit founder attribution; no independent audit is implied.
+2. Simplify AI authority without losing autonomous investigation, authorised canonical evidence admission (including approved batches), and explicit approval for substantive scientific decisions.
+3. Retain bounded standing authorisations for minor administrative/technical changes; these do not confer independent AI scientific decision rights.
+4. Phrase the conflict statement as a narrowly scoped present operator report with future disclosure as a commitment; do not invent a conflict register or recusal mechanism.
+5. Remove embedded Markdown links from the plain-text About block; preserve and rely on existing site routes/navigation instead of silently changing the `ABOUT_BLOCKS` rendering system.
+
+**Drafting/verification constraints:** The published sentence “He personally funds...” remains operator self-attestation, not audited accounts. Present absence of relevant interests is not a global conflicts certification. There is no formal external board or independent veto, and the proposal must not imply that every evidence source has separately been read by a human. Any future implementation must preserve the text and these qualifiers, subject to a separately authorised release gate. The historical original proposal is superseded by this dated acceptance record.
 
 ## 3. G1 source-to-statement trace
 
@@ -42,7 +51,7 @@ One new content block, working title **"How the Observatory operates"**. This is
 | No formal external board, independent panel or external veto authority | F10 | **A** and public-source absence **N** | No equivalence to independent certification; informal external criticism may still occur |
 | Methodology, Origins, changelog and contact links | F07, F09 | Website/Repository **S** | Link existing routes; avoid inventing a new correction/appeal policy |
 
-G1 source: [accepted operator receipt](../receipts/B01-G1-2026-11-17-OPERATOR-ACCEPTANCE.md) and [ten-point ledger with source matrix](../reviews/B01-G1-FACT-VERIFICATION-LEDGER-2026-11-17.md). The wording is **not** independently verified financial or governance evidence; it is a proposed public account of verified-by-operator arrangements.
+G1 source: [accepted operator receipt](../receipts/B01-G1-2026-11-17-OPERATOR-ACCEPTANCE.md) and [ten-point ledger with source matrix](../reviews/B01-G1-FACT-VERIFICATION-LEDGER-2026-11-17.md). The approved **non-public** wording is **not** independently verified financial or governance evidence; it is a candidate public account of operator-attested arrangements, awaiting separate implementation authorisation.
 
 ## 4. Duplication and route audit
 
@@ -64,11 +73,11 @@ Potential redundancy: About already says “The founder ...” in Origins, Welco
 1. Assert that **only** the planned About `ABOUT_BLOCKS` addition is in any future approved diff; no other page/component, FCIF, record, MCP, data, sitemap, routing or assessment changed.
 2. Verify original seven About blocks, their exact text and relative order, and the existing Institutional Health aside and link are unchanged. New block occurs exactly once between `Institutional Principle` and `Who the Record Serves`.
 3. Source trace each factual sentence to accepted G1 IDs, preserving self-attestation, future-intent, standing minor-fix bounds and absence of external review. Don't assert audited finances, legal registration, conflict-free status across unrelated companies, a universal source-check protocol, or formal oversight.
-4. Check exact links for `/methodology/`, `/about/origins/`, `/institutional-changelog/` and `mailto:hello@faultlinewatch.com`; do not introduce an extra nav destination or placeholder policy page.
+4. Verify existing About/Welcome/Methodology/Origins navigation, Institutional Changelog and `mailto:hello@faultlinewatch.com` remain intact. The approved new plain-text `ABOUT_BLOCKS.body` includes **no inline Markdown or JSX links**, and no new nav destination, placeholder policy page, or rendering-system change is authorised.
 5. Reconfirm `src/pages/Welcome.jsx`, `src/pages/Origins.jsx`, `src/data/notes/FM-001.js`, `src/pages/Methodology.jsx`, `src/pages/InstitutionalHealth.jsx`, `src/pages/InstitutionalChangelog.jsx`, `src/components/SiteFooter.jsx` unchanged by proposed implementation.
 6. For any separately authorised implementation: independently inspect PR diff and CI, then separately seek merge permission. Cloudflare Pages may auto-deploy a main merge; no deploy/production authority follows from G3. Review rendered live About only after separately authorised release.
 7. Keep FIP-A02 historical MCP `date`/`recordedDate` parity DEFERRED / NOT ACCEPTED, FIP-D01 conditionally closed and FIP-B02 separate.
 
 ## 6. Recommendation and next operator decision
 
-**G3 PREPARED — DECISION REQUIRED**: Approve, amend or decline this candidate wording **as wording only**, before considering a separate isolated implementation/CI authorisation. No code change, public copy deployment, PR, merge, or production deployment is performed or authorised here.
+**G3 WORDING ACCEPTED — IMPLEMENTATION NOT AUTHORISED**. The accepted revision and five review amendments are recorded in [the G3 acceptance receipt](../receipts/B01-G3-2026-11-17-WORDING-ACCEPTANCE.md). Next distinct gate: explicit approval for a bounded isolated About-only source implementation and validation, optionally allowing PR/CI/preview by separate instruction; **no PR, merge or production deployment** follows from wording acceptance. FIP-A02 MCP historical date parity remains deferred.
