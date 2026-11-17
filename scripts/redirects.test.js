@@ -109,18 +109,15 @@ test("/the-record/* never appears in public/_redirects — that subtree is Funct
   );
 });
 
-test("every _redirects-managed route (except /) has an exact 200 rewrite", async () => {
+test("no redundant 200 rewrites remain; Pages Functions own canonical routes", async () => {
   const contents = fs.readFileSync(REDIRECTS_PATH, "utf8");
   const routes = await getRedirectsManagedRoutes();
   const expectedStaticCount = STATIC_ROUTES.filter((r) => !r.startsWith("/the-record/")).length;
   assert.ok(routes.length > expectedStaticCount, "no dynamic routes resolved — corpus/notes/events import likely broken");
-
+  assert.doesNotMatch(contents, /^\/\S+\s+\/index\.html\s+200\s*$/m, "redundant 200 rewrite remains");
   for (const route of routes) {
     if (route === "/") continue;
-    assert.ok(
-      contents.includes(`${route} /index.html 200`),
-      `missing exact 200 rewrite for canonical route ${route}`
-    );
+    assert.ok(!contents.includes(`${route} /index.html 200`), `unexpected 200 rewrite for ${route}`);
   }
 });
 

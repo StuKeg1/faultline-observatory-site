@@ -37,40 +37,6 @@
 /notes/le-qe-001 /notes/le-qe-001/ 301
 /notes/rg-001 /notes/rg-001/ 301
 
-# Known routes -> SPA shell (exact matches)
-/public-record/ /index.html 200
-/reading-room/ /index.html 200
-/evidence-trajectories/ /index.html 200
-/events/ /index.html 200
-/programmes/ /index.html 200
-/methodology/ /index.html 200
-/welcome/ /index.html 200
-/about/ /index.html 200
-/about/origins/ /index.html 200
-/notes/ /index.html 200
-/how-to-read/ /index.html 200
-/guides/ /index.html 200
-/guides/mcp-access/ /index.html 200
-/institutional-health/ /index.html 200
-/institutional-changelog/ /index.html 200
-/documentation-requests/ /index.html 200
-/political-rumour-accuracy-pilot/ /index.html 200
-/experiments/vd-001/ /index.html 200
-/experiments/vd-002/ /index.html 200
-/tokens/ /index.html 200
-/programmes/prog-qe/ /index.html 200
-/programmes/prog-ai/ /index.html 200
-/programmes/prog-am/ /index.html 200
-/programmes/prog-bt/ /index.html 200
-/notes/fm-001/ /index.html 200
-/notes/en-001/ /index.html 200
-/notes/aud-001/ /index.html 200
-/notes/pn-ai-001/ /index.html 200
-/notes/pn-qe-001/ /index.html 200
-/notes/le-ai-001/ /index.html 200
-/notes/le-qe-001/ /index.html 200
-/notes/rg-001/ /index.html 200
-
 # Legacy id migrations (Release 006) — placeholder rules, kept last
 /programmes/prog-mf /programmes/prog-am/ 301
 /programmes/prog-mf/ /programmes/prog-am/ 301
