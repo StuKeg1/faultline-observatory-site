@@ -1,7 +1,15 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-17  
 **Programme:** FIP-001 / Wave 1  
-**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 G1 ACCEPTED — OPERATOR-ATTESTED FACTUAL BASELINE; G2 DECISION REQUIRED**.
+**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 G1 ACCEPTED; G2 PLACEMENT ACCEPTED; G3 NON-PUBLIC WORDING PREPARED — DECISION REQUIRED**.
+
+## Current authoritative checkpoint — FIP-B01 G2 acceptance and G3 wording proposal (17 November 2026)
+
+- **Authority:** Operator explicitly accepted G2's placement recommendation: exactly one compact *current operating arrangements* section on About; preserve Welcome, Origins/FM-001, Methodology, Institutional Health. Authorised G3 non-public wording preparation only, **not website code, a PR, merge, deployment, FCIF, records or MCP changes**.
+- **G3 deliverable:** [Non-public wording proposal](proposals/B01-G3-ABOUT-OPERATING-ARRANGEMENTS-2026-11-17.md) includes exact `src/pages/About.jsx` insertion between `Institutional Principle` and `Who the Record Serves`; one candidate block; G1 F01–F10 source-to-claim matrix distinguishing operator-attestation from historical notes and sampled receipts; no-duplication route audit; preservation and future release gates. This is **not public copy or an authorised site modification**.
+- **Decision status:** G1 **ACCEPTED** as operator-attested baseline; G2 **ACCEPTED** as non-duplicative placement; G3 **PREPARED — OPERATOR WORDING DECISION REQUIRED**. No assertion of external audit, formal board, legal nonprofit status, universal human source reread, recusal policy or appeals procedure. FIP-B02 separately gated.
+- **One next recommended operator action:** review and accept/amend/decline the G3 candidate *wording only*. Any future source implementation, preview/CI, merge and automatic Cloudflare production deployment must be separately authorised. **FIP-A02 historical MCP date/recordedDate parity remains DEFERRED / NOT ACCEPTED**.
+- **Repository safeguard:** Document changes are on isolated branch `fip-b01-g2-g3-proposal-20261117`, based on unmerged accepted G1 branch `fip-b01-g1-operator-acceptance-20261117`. Neither G1 nor G3 administrative amendments are represented as canonical main. No PR, merge or manual deployment performed.
 
 ## Current authoritative checkpoint — FIP-B01 G1 operator factual acceptance (17 November 2026)
 
