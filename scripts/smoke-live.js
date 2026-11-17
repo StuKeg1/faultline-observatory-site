@@ -208,7 +208,7 @@ for (const pathname of ["/", "/public-record/", "/programmes/prog-ai/", "/notes/
   await check(`public route ${pathname} has no noindex header`, async () => {
     const res = await fetchNoRedirect(pathname);
     assert(res.status === 200, `expected 200, got ${res.status}`);
-    assert(!/(^|[,\\s])noindex([,\\s]|$)/i.test(res.headers.get("x-robots-tag") || ""),
+    assert(!/(^|[,\s])noindex([,\s]|$)/i.test(res.headers.get("x-robots-tag") || ""),
       `public route unexpectedly carries noindex: ${res.headers.get("x-robots-tag")}`);
   });
 }
