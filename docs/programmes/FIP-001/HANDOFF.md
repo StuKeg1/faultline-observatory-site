@@ -1,7 +1,15 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-16  
 **Programme:** FIP-001 / Wave 1  
-**Latest status:** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED (16 November 2026)**. FIP-A05 REVIEW COMPLETE — DECISION REQUIRED (original review event-level census complete; public correction rate HOLD).
+**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 historical MCP date parity DEFERRED (NOT ACCEPTED)**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public correction percentages remain on HOLD).
+
+## Current authoritative checkpoint — FIP-A05 ACCEPTED internally (17 November 2026)
+
+- **Authority and receipt:** operator expressly accepted the [original first-review classification ledger](reviews/A05-FIRST-REVIEW-CLASSIFICATION-LEDGER-2026-11-16.md) as an **internal audit inventory**, recorded in [A05 acceptance receipt](receipts/A05-2026-11-17-INTERNAL-ACCEPTANCE.md). The previous 16 November decision-required checkpoint is retained below as history.
+- **Denominator:** D01–D31 = 31 first-reviewed records, 26 discrepancy-positive, five clean. D42 = separately reviewed clean record, giving an extended 32-record set, 26 discrepancy-positive and six clean. Do not call 26/32 the original D01–D31 cycle or a proportion of incorrect scientific claims.
+- **Severity:** D28 FR-BT-0004 enrolled-versus-randomised NHS-Galleri participant denominator is **material under the preset A05 threshold**; narrower consequence-based interpretation gives a **sensitivity scenario** of 25 material-positive/32 rather than 26/32. Claude's proposed 24/32 material-only claim is unsupported.
+- **Publication decision:** all **public correction percentages and public reliability-rate claims remain NOT AUTHORISED**. This acceptance does not establish complete legacy attribution, error prevalence across all assessments, or a public-facing severity standard. Preserve differences between first discovery, completed corrections, subsequent clean reviews and unresolved attribution.
+- **Boundaries:** documentation-only decision; no canonical scientific records, FCIF, MCP, site content or existing historical review texts changed. FIP-A02 historical MCP `date`/`recordedDate` parity remains **DEFERRED / NOT ACCEPTED**. Next FIP-D01 Step 5 technical SEO/GEO review is not yet opened or implemented.
 
 ## Current authoritative checkpoint — FIP-A05 first-review census completed (16 November 2026)
 
