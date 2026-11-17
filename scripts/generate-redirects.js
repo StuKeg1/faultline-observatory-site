@@ -1,13 +1,11 @@
 /**
  * generate-redirects.js — writes public/_redirects from the canonical
  * route manifest (scripts/route-manifest.js). It also writes the edge-safe
- * route table consumed by functions/[[path]].js. Cloudflare has not reliably
- * applied exact 200 rewrites on this project, so the Function is the
- * authoritative runtime router and _redirects remains a declarative fallback.
+ * route table consumed by functions/[[path]].js. Cloudflare Pages Functions are the authoritative runtime router.\n * Do not emit redundant 200 rewrites: Cloudflare rejects these as potential\n * loops when prerendered route assets already exist.
  *
  * Replaces the old blanket `/* /index.html 200` SPA fallback, which
  * rewrote every path (including nonexistent ones) to 200, producing soft
- * 404s. Instead: an exact `200` rewrite per known route, a 301 from each
+ * 404s. Instead: a 301 from each
  * route's non-canonical slash form to its canonical form, and an explicit
  * legacy prog-mf redirect. Anything not listed here falls through to
  * Cloudflare Pages' native 404 handling (public/404.html), since no
@@ -54,11 +52,7 @@ function buildRedirects(canonicalRoutes) {
     seen.add(route);
   }
 
-  const rewriteLines = canonicalRoutes
-    .filter((route) => route !== "/")
-    .map((route) => `${route} /index.html 200`);
-
-  const slashRedirectLines = canonicalRoutes
+    const slashRedirectLines = canonicalRoutes
     .map((route) => {
       const nonCanonical = nonCanonicalForm(route);
       return nonCanonical ? `${nonCanonical} ${route} 301` : null;
@@ -76,9 +70,6 @@ function buildRedirects(canonicalRoutes) {
     "# exact rules resolve faster than splat/placeholder rules)",
     ...slashRedirectLines,
     "",
-    "# Known routes -> SPA shell (exact matches)",
-    ...rewriteLines,
-    "",
     "# Legacy id migrations (Release 006) — placeholder rules, kept last",
     ...legacyLines,
     "",
@@ -90,12 +81,7 @@ function validateWrittenFile(contents, canonicalRoutes) {
     fail("generated _redirects still contains a blanket wildcard rule");
   }
 
-  for (const route of canonicalRoutes) {
-    if (route === "/") continue;
-    if (!contents.includes(`${route} /index.html 200`)) {
-      fail(`generated _redirects is missing an exact rule for ${route}`);
-    }
-  }
+  if (/^\\/\\S+\\s+\\/index\\.html\\s+200\\s*$/m.test(contents)) {\n    fail("generated _redirects contains a redundant 200 rewrite");\n  }
 
   for (const r of LEGACY_REDIRECTS) {
     if (!contents.includes(`${r.from} ${r.to} 301`)) {
