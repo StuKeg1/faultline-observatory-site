@@ -115,6 +115,20 @@ test("post-24-October current records reconstruct pinned historical checkpoints 
 
 function atCheckpoint(record, date, rewindLater = true) {
   if (rewindLater) record = historicalRecord(record);
+  // D81 is a governed provenance-only completion after the October receipts.
+  // Restore its exact predecessor metadata before testing frozen record hashes.
+  if (record.id === "FR-QE-0006" && date < "2026-11-15" &&
+      record.provenanceReviewId === "LPR-001-D81") {
+    const restored = structuredClone(record);
+    assert.equal(restored.mutationLog[0]?.id, "M-017", "D81 mutation has drifted");
+    assert.equal(restored.mutationLog[0]?.field, "provenance_review");
+    assert.equal(restored.mutationLog[0]?.from, "LPR-001-D49");
+    assert.equal(restored.mutationLog[0]?.to, "LPR-001-D81");
+    restored.lastProvenanceReview = "2026-10-12";
+    restored.provenanceReviewId = "LPR-001-D49";
+    restored.mutationLog = restored.mutationLog.slice(1);
+    record = restored;
+  }
   // FIP-A03 was issued after the frozen shared-source and provenance receipts.
   // Reverse only its prospective AS-006 / M-017 before the earlier D77 rewind.
   // This is test-time reconstruction; canonical history remains untouched.

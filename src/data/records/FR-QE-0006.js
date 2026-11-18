@@ -6,8 +6,8 @@
 export const FR_QE_0006 = {
   id: "FR-QE-0006",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-10-12",
-  provenanceReviewId: "LPR-001-D49",
+  lastProvenanceReview: "2026-11-15",
+  provenanceReviewId: "LPR-001-D81",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
   claim: {
@@ -63,6 +63,7 @@ export const FR_QE_0006 = {
   ],
   realizationNotes: [{ id: "REN-001", note: "Realization currently depends on fault-tolerant hardware at application-relevant logical-qubit count and sustained circuit depth, distinct from the simple fault-tolerant circuits already demonstrated.", conflation: null, raisedDate: "2026-07-08", status: "open", closedDate: null, closedNote: null }],
   mutationLog: [
+    { id: "M-017", date: "2026-11-15", field: "provenance_review", from: "LPR-001-D49", to: "LPR-001-D81", note: "Third-cycle Legacy Provenance Review completed across all seven existing instances. Primary publisher, institutional and preprint abstract/bibliographic evidence checked where accessible, including HHL, Lee et al., Tindall, Quantinuum/Microsoft, Lin and Proctor; Shor and Grover publisher full text and Nature publisher pages were not directly retrievable. Existing structured sources retained without speculative attribution. All seven bounded representations supported at available source level; no confirmed material discrepancies or new scientific evidence admitted. Shared IBM/Tindall sources in IN-002 and IN-005 remain one experimental lineage, not independent experiments. ESCALATING / VS-02 unchanged; governed outcome verified / not_required." },
     {"id":"M-016","date":"2026-10-19","field":"reference_corrected","from":"Shared citations not explained in the evidence list","to":"Source-specific reciprocal notices on IN-005","note":"Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."},
     { id: "M-015", date: "2026-10-12", field: "provenance_review", from: "LPR-001-D18", to: "LPR-001-D49", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-014", date: "2026-09-16", field: "record_review", from: "LPR-001-D18 Record Review candidate", to: "IN-007 / AS-004", note: "Normal Record Review admitted Proctor et al. QUOPS (arXiv:2609.12146) as supportive system-level gap-measurement evidence. Added IN-007 and AS-004 and updated current mechanisms and lineage to recognise the benchmark while preserving the application-specific classical-comparator requirement. QUOPS measures present physical and small logical processors and maps recognised challenge workloads into the same capability framework; its FeMoco translation remains about five orders of magnitude beyond present measured circuit-size capability. It does not demonstrate practical quantum advantage. ESCALATING / VS-02 reaffirmed. LPR-001-D18 remains completed." },
