@@ -92,6 +92,11 @@ export default function About() {
  ) : (
  <p className="inst-about-body">{body}</p>
  )}
+ {heading === "How the Observatory operates" && (
+ <p className="inst-about-body" style={{ marginTop: "0.75rem" }}>
+ <Link className="inst-about-link" to="/corrections-and-responses/">Corrections and responses →</Link>
+ </p>
+ )}
  {link && (
  <p className="inst-about-body" style={{ marginTop: "0.75rem" }}>
  <Link to={link.to} style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1px solid var(--accent-dim)" }}>
