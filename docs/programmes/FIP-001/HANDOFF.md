@@ -1,9 +1,18 @@
 # FIP-001 — Active hand-off
-**As-of:** 2026-11-17  
-**Programme:** FIP-001 / Wave 1  
-**Latest status (17 November 2026):** M0 ACCEPTED; FIP-A01 ACCEPTED WITH EXCEPTIONS; **FIP-A02 ACCEPTED WITH NON-BLOCKING EDITORIAL FOLLOW-UPS**; **FIP-A03 ACCEPTED**; **FIP-A04 ACCEPTED**; **FIP-A05 ACCEPTED AS INTERNAL AUDIT INVENTORY ONLY** (public percentages HOLD); **FIP-D01 CLOSED CONDITIONALLY (P2/R01 ACCEPTED)**; **FIP-B01 G1 SOURCE LEDGER COMPLETE — OPERATOR FACT CONFIRMATION REQUIRED**.
+**As-of:** 2026-11-19  
+**Programme:** FIP-001 / Wave 2  
+**Latest status (19 November 2026):** M0 ACCEPTED; A01 ACCEPTED WITH EXCEPTIONS; A02 ACCEPTED WITH NON-BLOCKING EDITORIAL FOLLOW-UPS; A03/A04 ACCEPTED; A05 ACCEPTED FOR INTERNAL INVENTORY ONLY; D01 CONDITIONALLY CLOSED; B01 G4 public disclosure published (package closure not independently recorded); **B02 ACCEPTED/CLOSED**; **C01 IN REVIEW (G1 evidence only)**.
 
-## Latest authoritative checkpoint — FIP-A02 formal acceptance (17 November 2026)
+## Current authoritative checkpoint — FIP-B02 closure and FIP-C01 start (19 November 2026)
+
+- **Operator authority:** Explicit instruction in ChatGPT: **"Close FIP-B02, then begin FIP-C01"**. No website/FCIF/corpus/MCP repair or further publication delegated by this instruction.
+- **FIP-B02: ACCEPTED/CLOSED.** [Closure receipt](receipts/B02-2026-11-19-FORMAL-CLOSURE.md) links PR #267 (`6f55a00b76bc2733263217b456829dce20da6045`) and PR #268 (`e5416404f88b2432a802e0b5dffc4b94052ae268`). Canonical Contact page with inviting email, preserved corrections procedure, one footer Contact link and one-hop old-URL redirect declarations; pre-merge CI/preview and post-merge GitHub `validate` / `verify`, Cloudflare Pages, Workers Builds all SUCCESS for final merge commit. No scientific/FCIF/MCP changes.
+- **FIP-C01: IN REVIEW — G1 evidence only.** [Initial source and public-content baseline](reviews/C01-2026-11-19-G1-INITIAL-EVIDENCE.md) records existing journey and coded interaction patterns. Two source-level guide wording mismatches and record-tab semantics are review candidates; actual novice task performance, narrow-view/mobile, full keyboard and screen-reader behavior are **not yet verified**.
+- **FIP-B01:** Prior G1 pending wording below is dated history; approved current About disclosure was subsequently published via PR #262. Do not infer formal whole-package closure or new authority from this administrative reconciliation.
+- **Next single action:** execute controlled FIP-C01 user journey and accessibility tests on live/current deployment, first desktop and mobile, then keyboard/screen-reader. Log exact browser/viewport/device, task evidence and observed failures separately. No automatic repairs.
+- **Release boundary:** B02/C01 administrative documentation only; no site code/record/FCIF/MCP edits. Historic dated checkpoints below remain as evidence.
+
+## Historical checkpoint — FIP-A02 formal acceptance (17 November 2026)
 
 - **Operator decision:** Explicitly **ACCEPTED WITH NON-BLOCKING EDITORIAL FOLLOW-UPS** after review of Claude's reported live JSON-RPC MCP `faultline_read_record` evidence for FR-QE-0003, FR-QE-0008, FR-AI-0001 and FR-QE-0005. [Superseding acceptance receipt](receipts/A02-2026-11-17-FORMAL-ACCEPTANCE.md).
 - **Scope:** Four fresh public AS-001 histories previously passed; four production MCP full-record responses reportedly returned `date uncertain (legacy)` plus retained `recordedDate: 2024-01-15`, without altering current assessments. Claude reported MCP `faultline_about.deploymentCommit` `76dcabf9bbd78ffd3ea70d5ce88344c181ea495f`; service provenance is self-reported, and raw temporary Claude HTTP bodies have not been archived in this repository.
