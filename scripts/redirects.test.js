@@ -156,6 +156,23 @@ test("the duplicate how-to-read route redirects directly to its canonical path",
   assert.doesNotMatch(contents, /^\/guides\/how-to-read\/ \/index\.html 200$/m);
 });
 
+test("FIP-B02: old corrections URLs redirect directly to canonical Contact", async () => {
+  const { onRequest } = await import(`${new URL("../functions/[[path]].js", import.meta.url).href}?contact=${Date.now()}`);
+  for (const source of ["/corrections-and-responses", "/corrections-and-responses/"]) {
+    const response = await onRequest({
+      request: new Request(`https://faultlinewatch.com${source}?source=legacy`),
+      env: { ASSETS: { fetch: async () => { throw new Error("Legacy redirect should not fetch assets"); } } },
+      next: async () => { throw new Error("Legacy redirect should not delegate"); },
+    });
+    assert.equal(response.status, 301);
+    assert.equal(response.headers.get("location"), "https://faultlinewatch.com/contact/?source=legacy");
+  }
+  const contents = fs.readFileSync(REDIRECTS_PATH, "utf8");
+  assert.match(contents, /^\/corrections-and-responses \/contact\/ 301$/m);
+  assert.match(contents, /^\/corrections-and-responses\/ \/contact\/ 301$/m);
+  assert.ok(!STATIC_ROUTES.includes("/corrections-and-responses/"));
+});
+
 test("manifest has no duplicate routes", async () => {
   const routes = await getAllCanonicalRoutes();
   const seen = new Set();
@@ -171,7 +188,7 @@ test("known static routes are present in the full manifest", async () => {
     "/", "/public-record/", "/reading-room/", "/the-record/", "/programmes/", "/notes/", "/events/",
     "/methodology/", "/welcome/", "/about/", "/about/origins/",
     "/institutional-health/", "/institutional-changelog/", "/evidence-trajectories/",
-    "/documentation-requests/",
+    "/documentation-requests/", "/contact/",
   ]) {
     assert.ok(routes.includes(expected), `expected static route missing from manifest: ${expected}`);
   }
