@@ -15,7 +15,8 @@ test("FIP-B02: dedicated page has five sections and a bounded email intake", () 
   for (const heading of ["How to contact us", "How submissions are reviewed", "Decisions and changes", "Responses and reconsideration", "Privacy and publication"]) {
     assert.ok(page.includes(heading), heading);
   }
-  assert.match(page, /mailto:hello@faultlinewatch\.com\?subject=Frontier%20Record%20challenge/);
+  assert.match(page, /mailto:hello@faultlinewatch\.com\?subject=Comments%2C%20questions%20or%20suggestions/);
+  assert.match(page, /Email your comments, questions or suggestions/);
   assert.match(page, /no fixed response time is promised/);
   assert.match(page, /does not guarantee publication or editorial agreement/);
   assert.match(page, /no independent appeals panel/);
@@ -40,5 +41,5 @@ test("FIP-B02: new public route is prerendered with policy content", {
   const rendered = readFileSync(html, "utf8");
   assert.match(rendered, /Corrections and responses/);
   assert.match(rendered, /How submissions are reviewed/);
-  assert.match(rendered, /Frontier Record challenge/);
+  assert.match(rendered, /Email your comments, questions or suggestions/);
 });
