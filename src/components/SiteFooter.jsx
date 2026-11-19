@@ -13,8 +13,7 @@ export default function SiteFooter() {
           <Link to="/methodology/">Methodology</Link>
           <Link to="/about/">About</Link>
           <Link to="/institutional-changelog/">Institutional Changelog</Link>
-          <Link to="/corrections-and-responses/">Corrections and responses</Link>
-          <a href="mailto:hello@faultlinewatch.com">Contact</a>
+          <Link to="/contact/">Contact</Link>
           <a href="https://x.com/FaultlineWatch" target="_blank" rel="noreferrer">
             Official X account ↗
           </a>
