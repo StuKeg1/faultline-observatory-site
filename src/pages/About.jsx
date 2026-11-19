@@ -94,7 +94,7 @@ export default function About() {
  )}
  {heading === "How the Observatory operates" && (
  <p className="inst-about-body" style={{ marginTop: "0.75rem" }}>
- <Link className="inst-about-link" to="/corrections-and-responses/">Corrections and responses →</Link>
+ <Link className="inst-about-link" to="/contact/">Contact the Observatory →</Link>
  </p>
  )}
  {link && (

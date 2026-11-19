@@ -25,7 +25,7 @@ export const STATIC_ROUTES = [
   "/institutional-health/",
   "/institutional-changelog/",
   "/documentation-requests/",
-  "/corrections-and-responses/",
+  "/contact/",
   "/political-rumour-accuracy-pilot/",
   "/experiments/vd-001/",
   "/experiments/vd-002/",
@@ -37,6 +37,8 @@ export const LEGACY_REDIRECTS = [
   { from: "/programmes/prog-mf/", to: "/programmes/prog-am/" },
   { from: "/guides/how-to-read", to: "/how-to-read/" },
   { from: "/guides/how-to-read/", to: "/how-to-read/" },
+  { from: "/corrections-and-responses", to: "/contact/" },
+  { from: "/corrections-and-responses/", to: "/contact/" },
 ];
 
 export const NON_INDEXABLE_ROUTES = new Set([
