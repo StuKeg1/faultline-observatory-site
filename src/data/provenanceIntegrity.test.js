@@ -272,6 +272,15 @@ test("successive source increments preserve all scientific content and prior his
     const receipt = sourceLinkReceipts[index];
     for (const entry of receipt.records) {
       let record = historicalRecord(Object.values(await import(`./records/${entry.id}.js`))[0]);
+      // D82 is a provenance-only checkpoint after the frozen October source receipts.
+      // Reconstruct the exact predecessor metadata before testing their hashes.
+      if (record.id === "FR-QE-0007" && record.provenanceReviewId === "LPR-001-D82") {
+        assert.equal(record.mutationLog[0]?.id, "M-018");
+        assert.equal(record.mutationLog[0]?.field, "provenance_review");
+        record = { ...record, lastProvenanceReview: "2026-10-14", provenanceReviewId: "LPR-001-D50",
+          provenanceOutcome: "discrepancies_corrected", provenanceRepairStatus: "completed",
+          mutationLog: record.mutationLog.slice(1) };
+      }
       // Reverse the newer A4 editorial receipt before validating historical
       // source increments, then reverse only explicitly receipted later increments.
       if (a4AuthorityReceipt.records.some(item => item.recordId === record.id)) record = undoA4AuthorityReceipt(record);
