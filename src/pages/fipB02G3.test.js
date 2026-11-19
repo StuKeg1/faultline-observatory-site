@@ -12,7 +12,7 @@ const routes = source("../../scripts/route-manifest.js");
 const docs = source("./DocumentationRequests.jsx");
 
 test("FIP-B02: dedicated page has five sections and a bounded email intake", () => {
-  for (const heading of ["How to contact us", "How submissions are reviewed", "Decisions and changes", "Responses and reconsideration", "Privacy and publication"]) {
+  for (const heading of ["Get in touch", "Corrections and responses", "How submissions are reviewed", "Decisions and changes", "Responses and reconsideration", "Privacy and publication"]) {
     assert.ok(page.includes(heading), heading);
   }
   assert.match(page, /mailto:hello@faultlinewatch\.com\?subject=Comments%2C%20questions%20or%20suggestions/);
@@ -22,23 +22,25 @@ test("FIP-B02: dedicated page has five sections and a bounded email intake", () 
   assert.match(page, /no independent appeals panel/);
   assert.match(page, /not automatically made public/);
 });
-test("FIP-B02: route, public indexing, and two navigation entries", () => {
-  assert.match(app, /path="\/corrections-and-responses"/);
-  assert.match(routes, /"\/corrections-and-responses\/"/);
-  assert.match(about, /to="\/corrections-and-responses\/"/);
-  assert.match(footer, /to="\/corrections-and-responses\/"/);
-  assert.match(page, /path="\/corrections-and-responses\/"/);
+test("FIP-B02: Contact is sole footer entry; About links to contact", () => {
+  assert.match(app, /path="\/contact"/);
+  assert.match(routes, /"\/contact\/"/);
+  assert.match(about, /to="\/contact\/"/);
+  assert.match(footer, /to="\/contact\/"/);
+  assert.doesNotMatch(footer, /to="\/corrections-and-responses\/"|mailto:hello@faultlinewatch\.com/);
+  assert.match(page, /path="\/contact\/"/);
 });
 test("FIP-B02: documentation requests remain a distinct procedure", () => {
   assert.match(docs, /subject=Documentation%20request/);
   assert.match(docs, /How to request an inspection copy/);
   assert.doesNotMatch(docs, /Frontier Record challenge/);
 });
-const html = new URL("../../dist/corrections-and-responses/index.html", import.meta.url);
+const html = new URL("../../dist/contact/index.html", import.meta.url);
 test("FIP-B02: new public route is prerendered with policy content", {
   skip: existsSync(html) ? false : "dist absent: rerun after npm run build",
 }, () => {
   const rendered = readFileSync(html, "utf8");
+  assert.match(rendered, /Contact the Observatory/);
   assert.match(rendered, /Corrections and responses/);
   assert.match(rendered, /How submissions are reviewed/);
   assert.match(rendered, /Email your comments, questions or suggestions/);
