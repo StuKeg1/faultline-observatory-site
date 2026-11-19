@@ -111,7 +111,7 @@ export const FR_QE_0007 = {
         { citation: "Zhang et al. Molecular geometry from out-of-time-order correlators. arXiv:2510.19550 (2025).", url: "https://arxiv.org/abs/2510.19550", locator: "Molecular distance and angle estimation using OTOCs" },
         { citation: "Bermejo et al. Tensor-network analysis of Quantum Echoes circuits. arXiv:2604.15427 (2026).", url: "https://arxiv.org/abs/2604.15427", locator: "Classical-simulation analysis; affiliated corroboration boundary" },
       ],
-    }
+    },
     {
       id: "IN-007",
       qualifiedEvent: "IBM–University of Chicago doped Clifford sampling — verified hard-circuit claim and classical challenges",
