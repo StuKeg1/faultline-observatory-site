@@ -93,8 +93,8 @@ export function AppShell() {
   <Route path="/institutional-changelog" element={<InstitutionalChangelog />} />
   <Route path="/documentation-requests" element={<DocumentationRequests />} />
   <Route path="/documentation-requests/" element={<DocumentationRequests />} />
-  <Route path="/corrections-and-responses" element={<CorrectionsAndResponses />} />
-  <Route path="/corrections-and-responses/" element={<CorrectionsAndResponses />} />
+  <Route path="/contact" element={<CorrectionsAndResponses />} />
+  <Route path="/contact/" element={<CorrectionsAndResponses />} />
   <Route path="/political-rumour-accuracy-pilot" element={<PoliticalRumourAccuracyPilot />} />
   <Route path="/political-rumour-accuracy-pilot/" element={<PoliticalRumourAccuracyPilot />} />
   <Route path="/experiments/vd-001" element={<ErrorBoundary context="VD-001 experiment"><VisualDiscoverabilityExperiment /></ErrorBoundary>} />
