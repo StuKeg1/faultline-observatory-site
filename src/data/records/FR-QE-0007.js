@@ -12,10 +12,10 @@
 export const FR_QE_0007 = {
   id: "FR-QE-0007",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-10-14",
-  provenanceReviewId: "LPR-001-D50",
-  provenanceOutcome: "discrepancies_corrected",
-  provenanceRepairStatus: "completed",
+  lastProvenanceReview: "2026-11-19",
+  provenanceReviewId: "LPR-001-D82",
+  provenanceOutcome: "verified",
+  provenanceRepairStatus: "not_required",
 
   claim: {
     statement: "A quantum computer has achieved quantum advantage on a practically relevant problem.",
@@ -141,6 +141,7 @@ export const FR_QE_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-018", date: "2026-11-19", field: "provenance_review", from: "LPR-001-D50", to: "LPR-001-D82", note: "Third-cycle bounded Legacy Provenance Review of all six existing instances (IN-001–IN-006). Existing structured citations and DOIs cross-checked against accessible publisher, preprint and institutional source-level material and the prior governed LPR corrections; no new source attribution guessed or evidence admitted. Prior Sycamore time-indexed comparison, photonic sampling application boundary, IBM classical-reproduction caveat, Google RCS versus Willow QEC distinction, small-model simulation limitation and Quantum Echoes scale separation retained. Some complete publisher full texts not independently accessible; no confirmed new material discrepancy in accessible evidence. No provenance enrichment required. The existing IBM/University of Chicago hard-circuit candidate remains reserved for Normal Record Review. FRAGMENTING / VS-03 unchanged; outcome verified / not_required." },
     {"id":"M-017","date":"2026-10-19","field":"reference_corrected","from":"Named citations without structured verified links","to":"Verified source links on IN-005","note":"Operator-authorised corpus audit Batch 5 / R05, increment 1. Structured provenance enrichment of already admitted citations; no new evidence or reassessment. Scientific descriptions, vectors, sourceReference, assessments, dates, relationships, review status and all prior mutations preserved. Exact field changes, verification limits and deferred work: docs/reviews/VERIFIED-SOURCE-REPAIRS-INCREMENT-1-2026-10-19.json and companion .md."},
     {"id": "M-016", "date": "2026-10-19", "field": "reference_corrected", "from": "IN-001 characterises quantum advantage as established at 2019 publication", "to": "IN-001 follows FR-QE-0001 AS-002: original comparison unresolved; later superseded", "note": "Operator-authorised corpus audit Batch 4B / R08 editorial alignment. Correct the final interpretation sentence and dependent vector reason on IN-001 to follow the existing operator-ratified FR-QE-0001 AS-002 ruling of 2026-07-22. Experimental task performance is distinguished from original practical classical infeasibility; later counter-performance is not backdated as proof of original falsity. Partial polarity, sources, dates, counts, assessments, current FRAGMENTING / VS-03 and all previous mutations are preserved. No new evidence admitted; FR-QE-0001 remains closed and untouched. Exact prior wording and basis: docs/reviews/BATCH-4B-QE-0007-SYCAMORE-2026-10-19.md."},
     { id: "M-015", date: "2026-10-14", field: "provenance_repair", from: "LPR-001-D50 pending", to: "LPR-001-D50 completed", note: "Operator-approved bounded attribution correction completed for IN-006. The structured Nature citation title attached to DOI 10.1038/s41586-025-09526-6 was corrected from the noncanonical title Quantum echoes and the computational complexity of many-body dynamics to the DOI-resolved title Observation of constructive interference at the edge of quantum ergodicity. DOI, URL, locator, sourceReference, evidence description, vectors, assessment, Pressure State and Verification Stage remain unchanged. provenanceOutcome advanced to discrepancies_corrected and provenanceRepairStatus to completed." },
