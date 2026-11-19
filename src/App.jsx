@@ -46,6 +46,7 @@ const EvidenceTrajectories = lazyRoute(() => import("./pages/EvidenceTrajectorie
 const PublicRecord = lazyRoute(() => import("./pages/PublicRecord.jsx"));
 const ReadingRoom = lazyRoute(() => import("./pages/ReadingRoom.jsx"));
 const DocumentationRequests = lazyRoute(() => import("./pages/DocumentationRequests.jsx"));
+const CorrectionsAndResponses = lazyRoute(() => import("./pages/CorrectionsAndResponses.jsx"));
 const PoliticalRumourAccuracyPilot = lazyRoute(() => import("./pages/PoliticalRumourAccuracyPilot.jsx"));
 const VisualDiscoverabilityExperiment = lazyRoute(() => import("./pages/VisualDiscoverabilityExperiment.jsx"));
 const DocumentaryImageryExperiment = lazyRoute(() => import("./pages/DocumentaryImageryExperiment.jsx"));
@@ -92,6 +93,8 @@ export function AppShell() {
   <Route path="/institutional-changelog" element={<InstitutionalChangelog />} />
   <Route path="/documentation-requests" element={<DocumentationRequests />} />
   <Route path="/documentation-requests/" element={<DocumentationRequests />} />
+  <Route path="/corrections-and-responses" element={<CorrectionsAndResponses />} />
+  <Route path="/corrections-and-responses/" element={<CorrectionsAndResponses />} />
   <Route path="/political-rumour-accuracy-pilot" element={<PoliticalRumourAccuracyPilot />} />
   <Route path="/political-rumour-accuracy-pilot/" element={<PoliticalRumourAccuracyPilot />} />
   <Route path="/experiments/vd-001" element={<ErrorBoundary context="VD-001 experiment"><VisualDiscoverabilityExperiment /></ErrorBoundary>} />
