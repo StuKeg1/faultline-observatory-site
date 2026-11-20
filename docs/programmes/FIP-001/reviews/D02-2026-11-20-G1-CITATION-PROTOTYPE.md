@@ -50,3 +50,8 @@ The permanent record page is **living**. Assessment IDs help identify the histor
 
 ## G1 disposition
 **Evidence review begun and preliminary three-level prototype drafted. Not approved or implemented.** Next bounded gate: operator review of CITE-01 through CITE-07 and explicit choice of whether to prototype noncanonical citation text only or a small UI change. No external newcomer test, page edits or canonical content changes authorised.
+
+## G2 operator design acceptance — 2026-11-20
+Operator replied **"accepted"** to the recommendation to approve the bounded three-level citation design. This accepts **CITE-01 to CITE-04 as a design basis** and retains CITE-05 (public copy action) deferred, CITE-06 (assessment anchor verification) unproven, and CITE-07 out of scope. G1's historical 'not approved' disposition above remains its original checkpoint; this G2 acceptance supersedes only that status.
+
+**Not authorised by this acceptance:** merging draft PR #271, publishing citation guidance or any public standard, introducing copy buttons, changing routes/anchors, FCIF, canonical records or MCP. A small noncanonical text-only sample is a possible next gated activity, not automatically approved.
