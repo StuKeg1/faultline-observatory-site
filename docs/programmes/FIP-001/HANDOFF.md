@@ -1,7 +1,15 @@
 # FIP-001 — Active hand-off
 **As-of:** 2026-11-20  
 **Programme:** FIP-001 / Wave 3 (D02 review; C01 deferred)  
-**Latest status (20 November 2026):** B02 ACCEPTED/CLOSED; C01 DEFERRED (newcomer, mobile, keyboard, screen-reader and AI proxy tests not performed); **D02 G1 CITATION FORMAT REVIEW IN PROGRESS — EVIDENCE/PROTOTYPE ONLY**. Earlier A/D/B programme statuses remain as recorded in BACKLOG.md.
+**Latest status (20 November 2026):** B02 ACCEPTED/CLOSED; C01 DEFERRED (newcomer, mobile, keyboard, screen-reader and AI proxy tests not performed); **D02 ACCEPTED/CLOSED — NON-PUBLIC SOURCE-TESTED CITATION PROTOTYPE**. Earlier A/D/B programme statuses remain as recorded in BACKLOG.md.
+
+## FIP-D02 formal acceptance and closure (20 November 2026)
+
+- **Operator acceptance:** The three-level citation design (FR/AS/IN) was accepted, and the operator then authorised seven-case prototype tests before accepting the recommendation for bounded closure.
+- **Status:** **FIP-D02 ACCEPTED / CLOSED — successful non-public prototype.** [Formal receipt](receipts/D02-2026-11-20-PROTOTYPE-ACCEPTANCE.md); [source-level results](reviews/D02-2026-11-20-G3-TEST-RESULTS.md).
+- **Validated boundaries:** Distinguish FR-ID, AS-ID, IN-ID; preserve assessed-vs-updated-vs-accessed distinctions; retain LAD-001 legacy uncertainty and S4 provenance. The same-day BT-0004 AS-004 / AS-005 and legacy QE-0003 AS-001 date tests demonstrate why IDs and qualifiers are necessary.
+- **Not established:** Browser URL fragment focus, published citation panel, direct immutable assessment deep link, automated export, or external newcomer/screen-reader testing. All remain outside D02 closure; C01 is independently deferred.
+- **Release boundary:** The accepted deliverable is **documentation only**. No public citation standard, site route, content, FCIF, canonical scientific data or MCP change authorised. Older G1/G3 pending wording below is preserved as dated history.
 
 ## New authoritative checkpoint — FIP-C01 deferral / FIP-D02 start (20 November 2026)
 
