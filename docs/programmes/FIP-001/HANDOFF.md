@@ -1,7 +1,15 @@
 # FIP-001 — Active hand-off
-**As-of:** 2026-11-19  
-**Programme:** FIP-001 / Wave 2  
-**Latest status (19 November 2026):** M0 ACCEPTED; A01 ACCEPTED WITH EXCEPTIONS; A02 ACCEPTED WITH NON-BLOCKING EDITORIAL FOLLOW-UPS; A03/A04 ACCEPTED; A05 ACCEPTED FOR INTERNAL INVENTORY ONLY; D01 CONDITIONALLY CLOSED; B01 G4 public disclosure published (package closure not independently recorded); **B02 ACCEPTED/CLOSED**; **C01 IN REVIEW (G1 evidence only)**.
+**As-of:** 2026-11-20  
+**Programme:** FIP-001 / Wave 3 (D02 review; C01 deferred)  
+**Latest status (20 November 2026):** B02 ACCEPTED/CLOSED; C01 DEFERRED (newcomer, mobile, keyboard, screen-reader and AI proxy tests not performed); **D02 G1 CITATION FORMAT REVIEW IN PROGRESS — EVIDENCE/PROTOTYPE ONLY**. Earlier A/D/B programme statuses remain as recorded in BACKLOG.md.
+
+## New authoritative checkpoint — FIP-C01 deferral / FIP-D02 start (20 November 2026)
+
+- **Operator decision:** Declined independent newcomer and AI-assisted proxy testing for now. C01 is **DEFERRED — NOT TESTED**, not accepted. Existing C01 source-level candidates remain recorded; no C01 repair or conclusive UX/accessibility verdict.
+- **D02 started:** Operator expressly instructed "Next: FIP-D02 — Citation Format Prototype". [G1 evidence review and non-public draft](reviews/D02-2026-11-20-G1-CITATION-PROTOTYPE.md) is limited to F2-12/F4-07.
+- **Candidate:** Separate record-level, assessment-specific and evidence-instance citations. Cite canonical FR-ID and URL; for assessments additionally cite AS-ID and assessed date (with provenance uncertainty as applicable); for evidence use anchored IN-ID and primary source. Do not equate accessed, last updated or assessed timestamps. AS-ID does not create immutable page snapshot.
+- **Implementation boundary:** G1 documentation-only prototype; no public citation guide, copy control, new assessment anchors, website code, FCIF/corpus/MCP changes or merge to production authorised by this instruction.
+- **Next decision:** Review candidates CITE-01 through CITE-07; separately authorise any G2 design / site work.
 
 ## Current authoritative checkpoint — FIP-B02 closure and FIP-C01 start (19 November 2026)
 
