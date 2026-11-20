@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import StateBadge from "../components/StateBadge.jsx";
+import RecordCitation from "../components/RecordCitation.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import EvidenceTrajectory from "../components/trajectory/EvidenceTrajectory.jsx";
@@ -771,6 +772,7 @@ export default function FrontierRecord() {
               </p>
               <WhereRecordStands legibility={legibility} />
               {assessmentTrajectory && <RecordAssessmentHistory trajectory={assessmentTrajectory} />}
+              <RecordCitation key={record.id} record={record} />
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               {record.claim.subject && (
