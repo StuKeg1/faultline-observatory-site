@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { FR_QE_0001 } from "./records/FR-QE-0001.js";
 import { FR_QE_0003 } from "./records/FR-QE-0003.js";
 import { FR_BT_0004 } from "./records/FR-BT-0004.js";
@@ -72,4 +73,21 @@ test("no dated mutation cannot masquerade as immutable version", () => {
   const ref = getRecordReference(record);
   assert.equal(ref.latestMutationId, null);
   assert.match(getRecordVersionLabel(ref), /not established/);
+});
+
+
+test("metadata shows a single last-updated row, without redundant version or mutation count rows", () => {
+  const page = readFileSync(new URL("../pages/FrontierRecord.jsx", import.meta.url), "utf8");
+  const panel = page.slice(page.indexOf('<aside className="rp-meta-panel"'), page.indexOf("</aside>", page.indexOf('<aside className="rp-meta-panel"')));
+  assert.match(panel, /Last updated/);
+  assert.match(panel, /recordReference\.updateDate/);
+  assert.match(panel, /recordReference\.latestMutationId/);
+  assert.doesNotMatch(panel, /Record version|Mutation Count|Latest record update/);
+});
+
+test("citation explains M-ID limitations and still retains version in citation text", () => {
+  const ui = readFileSync(new URL("../components/RecordCitation.jsx", import.meta.url), "utf8");
+  assert.match(ui, /current living record, not a preserved copy/);
+  assert.match(ui, /M-ID identifies a logged change/);
+  assert.match(currentAssessmentCitation(FR_QE_0001), /Record as of M-012 \(2026-10-27\)/);
 });
