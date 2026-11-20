@@ -16,8 +16,8 @@
 export const FR_AM_0006 = {
   id: "FR-AM-0006",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-10-15",
-  provenanceReviewId: "LPR-001-D51",
+  lastProvenanceReview: "2026-11-20",
+  provenanceReviewId: "LPR-001-D83",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -41,6 +41,10 @@ export const FR_AM_0006 = {
       description: "Toyota, QuantumScape, and Solid Power made industrial commitments and public milestones. QuantumScape's December 2020 investor materials reported more than 1,000 cycles in single-layer cells; a 2021 independent test by Mobile Power Solutions reported 800+ cycles for QuantumScape single-layer cells under its stated conditions. Neither result is a peer-reviewed Joule paper, and neither demonstrates automotive multi-layer commercial manufacture. The distinction between single-layer cell results and repeatable multi-layer, pouch or prismatic production at yield and cost remains material. These announcements show industrial interest and reported cell-level progress, not a resolved commercial-viability claim.",
       vectors: ["partial--laboratory-cycle-life-demonstrated-manufacturing-scale-up-absent"],
       date: "2020–22",
+      sources: [
+        { citation: "QuantumScape, Third-Party Test Results, 27 October 2021", url: "https://www.quantumscape.com/press-release/quantumscape-releases-third-party-test-results/", locator: "Mobile Power Solutions single-layer cell test; 800 cycles under specified conditions" },
+        { citation: "QuantumScape, 10-layer battery cell testing data, 16 November 2021", url: "https://www.sec.gov/Archives/edgar/data/1811414/000119312521331451/d266113dex991.htm", locator: "Company-reported multilayer result; separate from independent single-layer testing" },
+      ],
     },
     {
       id: "IN-003",
@@ -55,6 +59,10 @@ export const FR_AM_0006 = {
       description: "Toyota's June 2023 technical roadmap described an approximately 1,200 km battery-electric driving-range target and charging in 10 minutes or less, with a stated commercialisation objective of 2027–28. It did not claim 1,200 Wh/L or 1,000+ cycles. Toyota identified durability as continuing development work. The roadmap is a company target, not independently verified production or performance evidence, and it does not by itself establish the record's simultaneous commercial energy-density, safety, cycle-life, yield, and cost conjunction.",
       vectors: ["partial--claimed-breakthrough-peer-reviewed-verification-absent"],
       date: "2023–24",
+      sources: [
+        { citation: "Toyota, Electrified Technologies — Batteries, 13 June 2023", url: "https://global.toyota/en/newsroom/corporate/39330500.html", locator: "All-solid-state development objectives, 2027–28 target, charging and range comparisons" },
+        { citation: "Toyota Motor Europe, advanced battery technologies, 4 December 2023", url: "https://newsroom.toyota.eu/toyota-previews-expanded-dedicated-bev-line-up-and-advanced-battery-technologies/", locator: "2027–28 introduction and 10-minute charging target" },
+      ],
     },
     {
       id: "IN-005",
@@ -69,6 +77,10 @@ export const FR_AM_0006 = {
       description: "Toyota's development and production plan for next-generation batteries, including all-solid-state batteries, received METI certification under the Battery Supply Assurance Plan on September 6, 2024. Toyota and Sumitomo Metal Mining announced a joint development agreement for cathode materials for all-solid-state batteries on October 8, 2025. Toyota continues to state a 2027–28 market-launch objective. These are industrial-policy and supply-chain events, not independent validation of commercial vehicle performance, yield, safety, cycle life, or execution certainty. Earlier claims in this instance about Chinese pilot lines, energy density, and supply contracts are removed because this record does not retain a sufficient source basis for them.",
       vectors: ["partial--timeline-elapsed-without-delivery-genuine-progress-continues"],
       date: "2025–26",
+      sources: [
+        { citation: "Toyota, Next-Generation BEV Battery Development and Production Plan Certified by METI, 6 September 2024", url: "https://global.toyota/en/newsroom/corporate/41100223.html", locator: "Supply Assurance Plan certification; industrial policy, not performance validation" },
+        { citation: "Toyota and Sumitomo Metal Mining, Mass Production of Cathode Materials for All-Solid-State Batteries, 8 October 2025", url: "https://www.smm.co.jp/en/news/release/2025/10/002036.html", locator: "Cathode material joint development agreement" },
+      ],
     },
     {
       id: "IN-007",
@@ -200,6 +212,7 @@ export const FR_AM_0006 = {
   ],
 
   mutationLog: [
+    { id: "M-021", date: "2026-11-20", field: "provenance_review", from: "LPR-001-D51", to: "LPR-001-D83", note: "Third-cycle bounded provenance review of IN-001–IN-007. Seven instances examined against accessible primary institutional, company, regulator and SEC evidence, with structured attribution added only for IN-002, IN-004 and IN-006. IN-001 and IN-005 remain bounded background/industrial-activity summaries without invented precise source attribution; IN-003 is supported by dated company roadmap and manufacturing evidence; IN-007 SEC filings checked. No confirmed material discrepancy or newly admitted evidence. Some original full-text and broad background chains remain inaccessible or nonspecific. ESCALATING / VS-02 unchanged; outcome verified / not_required." },
     {"id":"M-020","date":"2026-10-24","field":"editorial_correction","from":"ATTRACTOR wording assigned a governed institutional consequence directly to the future evidence event","to":"ATTRACTOR wording preserves the evidence route while reserving State, Stage, verdict or reopening consequences to governed assessment","note":"Operator-authorised A4 institutional-authority consistency repair. Correct AT-001 explanatory wording only; no new evidence, scientific threshold, evidence target, Pressure State, Verification Stage, assessment or ATTRACTOR identity changed. This repair is independent of the closed ATTRACTOR taxonomy v2 FAIL. Receipt: docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json."},
     {"id":"M-019","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-009 → AS-002; M-013 → AS-003; M-015 → AS-004","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
     { id: "M-018", date: "2026-10-15", field: "provenance_review", from: "LPR-001-D23", to: "LPR-001-D51", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
