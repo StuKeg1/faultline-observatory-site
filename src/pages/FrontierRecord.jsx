@@ -1,12 +1,12 @@
 import { useState, useEffect, Fragment } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import StateBadge from "../components/StateBadge.jsx";
+import RecordCitation from "../components/RecordCitation.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import EvidenceTrajectory from "../components/trajectory/EvidenceTrajectory.jsx";
 import { MutationHighlightProvider, useMutationHighlight } from "../components/trajectory/MutationHighlightContext.jsx";
 import { ALL_RECORDS } from "../data/corpus.js";
-import { getAssessmentRecency } from "../data/assessmentRecency.js";
 import {
   getCurrentAssessment,
   getAssessmentHistory,
@@ -17,7 +17,8 @@ import {
 } from "../data/derive.js";
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
-import { getRecordUpdateSummary, assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment, evidenceReadingStatus, mutationReceiptLinks } from "../data/recordReading.js";
+import { assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment, evidenceReadingStatus, mutationReceiptLinks } from "../data/recordReading.js";
+import { getRecordReference } from "../data/recordReference.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import { getIssuanceStatusClarifications } from "../data/issuanceStatusClarifications.js";
@@ -699,8 +700,7 @@ export default function FrontierRecord() {
   if (!record) return <Navigate to="/the-record" replace />;
 
   const current = getCurrentAssessment(record);
-  const assessmentRecency = getAssessmentRecency(record);
-  const recordUpdate = getRecordUpdateSummary(record);
+  const recordReference = getRecordReference(record);
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const evidenceBrief = getEvidenceBrief(record);
@@ -771,6 +771,7 @@ export default function FrontierRecord() {
               </p>
               <WhereRecordStands legibility={legibility} />
               {assessmentTrajectory && <RecordAssessmentHistory trajectory={assessmentTrajectory} />}
+              <RecordCitation key={record.id} record={record} />
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               {record.claim.subject && (
@@ -793,21 +794,17 @@ export default function FrontierRecord() {
               )}
               <div className="rp-meta-row">
                 <span className="rp-status-label">Last Assessment</span>
-                <span className="rp-status-value">{assessmentRecency.date}</span>
+                <span className="rp-status-value">{recordReference.assessedDate}</span>
               </div>
               <div className="rp-meta-row">
-                <span className="rp-status-label">Latest record update</span>
-                <span className="rp-status-value">{recordUpdate.date ?? "—"}</span>
+                <span className="rp-status-label">Last updated</span>
+                <span className="rp-status-value">{recordReference.updateDate ?? "—"}{recordReference.latestMutationId ? ` · ${recordReference.latestMutationId}` : ""}</span>
               </div>
               <div className="rp-update-description">
                 <ul aria-label="Updates recorded on this date">
-                  {recordUpdate.labels.map((label) => <li key={label}>{label}</li>)}
+                  {recordReference.updateLabels.map((label) => <li key={label}>{label}</li>)}
                 </ul>
                 <a href="#s-mutations">View change log</a>
-              </div>
-              <div className="rp-meta-row">
-                <span className="rp-status-label">Mutation Count</span>
-                <span className="rp-status-value">{record.mutationLog.length}</span>
               </div>
               <div className="rp-meta-row">
                 <span className="rp-status-label">Status</span>
