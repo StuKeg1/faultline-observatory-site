@@ -55,3 +55,6 @@ The permanent record page is **living**. Assessment IDs help identify the histor
 Operator replied **"accepted"** to the recommendation to approve the bounded three-level citation design. This accepts **CITE-01 to CITE-04 as a design basis** and retains CITE-05 (public copy action) deferred, CITE-06 (assessment anchor verification) unproven, and CITE-07 out of scope. G1's historical 'not approved' disposition above remains its original checkpoint; this G2 acceptance supersedes only that status.
 
 **Not authorised by this acceptance:** merging draft PR #271, publishing citation guidance or any public standard, introducing copy buttons, changing routes/anchors, FCIF, canonical records or MCP. A small noncanonical text-only sample is a possible next gated activity, not automatically approved.
+
+## G3 bounded non-public prototype tests — 2026-11-20
+Operator authorised testing. [Seven source-grounded test cases and dispositions](D02-2026-11-20-G3-TEST-RESULTS.md) cover stable record, dated assessment vs update, two same-day assessments, uncertain legacy date, structured and multiple primary sources, and nonexistent assessment deep links. Bounded citation grammar PASSES source-level samples, subject to explicit unresolved public browser/fragment behaviour. G3 is **tested but not approved as public format or implemented**. Draft PR remains unmerged.
