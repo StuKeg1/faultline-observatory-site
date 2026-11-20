@@ -76,3 +76,6 @@ Evidence: `Faultline Observatory. [claim.shortLabel]. FR-XXXX-NNNN, IN-NNN. [rec
 The **FR / AS / IN three-level citation grammar passes bounded source-level examples**, including two critical failure cases that a date-only citation would mishandle. The public record is dynamic, so precise claims about historical assessment content require citation by AS-ID and appropriate qualification. Do not style this as a fully tested public copy-and-cite feature.
 
 **Recommendation:** Proceed to G4 operator review of these results, with CITE-01–04 design retained, CITE-05 public UI deferred, CITE-06 direct assessment anchors unimplemented, CITE-07 out of scope. No publication or merge automatically authorised.
+
+## G4 operator acceptance — 2026-11-20
+Operator explicitly **accepted** the bounded seven-case prototype results and closure recommendation. [Formal acceptance receipt](../receipts/D02-2026-11-20-PROTOTYPE-ACCEPTANCE.md) governs the disposition: **D02 accepted/closed as a non-public source-tested experiment**. The historical G3 recommendation above is retained as the earlier pre-acceptance state. No public feature or standard accepted; T07 remains unimplemented.
