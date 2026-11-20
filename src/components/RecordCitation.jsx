@@ -57,7 +57,7 @@ export default function RecordCitation({ record }) {
         <button className="record-citation-copy" type="button" onClick={copyCitation} disabled={!citation}>Copy citation</button>
         <span className="record-citation-status" role="status" aria-live="polite">{status}</span>
         <p className="record-citation-note">
-          This is a living record, not an immutable snapshot. Assessment citations refer to the identified assessment, not the latest record update.
+          This URL always opens the current living record, not a preserved copy of the cited mutation state. Use the Mutation Log to review subsequent changes; an M-ID identifies a logged change, not a retrievable historical snapshot. Assessment citations refer to the identified assessment, not the latest record update.
           {kind === "evidence" && " Cite the underlying research separately when relying on its results; the Observatory's interpretation is distinct."}
         </p>
       </div>
