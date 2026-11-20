@@ -18,7 +18,7 @@ import {
 import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
 import { assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment, evidenceReadingStatus, mutationReceiptLinks } from "../data/recordReading.js";
-import { getRecordReference, getRecordVersionLabel } from "../data/recordReference.js";
+import { getRecordReference } from "../data/recordReference.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import { getIssuanceStatusClarifications } from "../data/issuanceStatusClarifications.js";
@@ -797,22 +797,14 @@ export default function FrontierRecord() {
                 <span className="rp-status-value">{recordReference.assessedDate}</span>
               </div>
               <div className="rp-meta-row">
-                <span className="rp-status-label">Latest record update</span>
-                <span className="rp-status-value">{recordReference.updateDate ?? "—"}</span>
-              </div>
-              <div className="rp-meta-row">
-                <span className="rp-status-label">Record version</span>
-                <span className="rp-status-value">{getRecordVersionLabel(recordReference)}</span>
+                <span className="rp-status-label">Last updated</span>
+                <span className="rp-status-value">{recordReference.updateDate ?? "—"}{recordReference.latestMutationId ? ` · ${recordReference.latestMutationId}` : ""}</span>
               </div>
               <div className="rp-update-description">
                 <ul aria-label="Updates recorded on this date">
                   {recordReference.updateLabels.map((label) => <li key={label}>{label}</li>)}
                 </ul>
                 <a href="#s-mutations">View change log</a>
-              </div>
-              <div className="rp-meta-row">
-                <span className="rp-status-label">Mutation Count</span>
-                <span className="rp-status-value">{recordReference.mutationCount}</span>
               </div>
               <div className="rp-meta-row">
                 <span className="rp-status-label">Status</span>
