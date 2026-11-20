@@ -425,7 +425,8 @@
 .mutation-table td { padding: 0.8rem 0; border-bottom: 1px solid var(--rule-light); vertical-align: top; color: #3a3a36; font-size: 11.5px; line-height: 1.5; }
 .mutation-table td.mut-id { color: var(--accent); }
 .mutation-table td.mut-field { color: var(--ink); }
-.mutation-table td.mut-from { text-decoration: line-through; color: var(--ink-faint); }
+/* Prior values are historical evidence, not deleted or invalid content. */
+.mutation-table td.mut-from { color: var(--ink-mid); }
 .mutation-table td.mut-to { color: var(--ink); }
 .mutation-table th:not(:last-child), .mutation-table td:not(:last-child) { padding-right: 1.5rem; }
 
