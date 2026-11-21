@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, useRef, Fragment } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import StateBadge from "../components/StateBadge.jsx";
 import RecordCitation from "../components/RecordCitation.jsx";
@@ -184,7 +184,6 @@ function WhereRecordStands({ legibility }) {
     <section className="record-stands" aria-labelledby="record-stands-title">
       <div className="record-stands-header">
         <h2 id="record-stands-title">Where the record stands</h2>
-        <span className="record-stands-date">Assessed {current.date}</span>
       </div>
       <div className="record-stands-assessment">
         <span className="record-stands-label">Current assessment</span>
@@ -701,6 +700,12 @@ export default function FrontierRecord() {
 
   const current = getCurrentAssessment(record);
   const recordReference = getRecordReference(record);
+  const citationDisclosureRef = useRef(null);
+  const openCitation = () => {
+    if (!citationDisclosureRef.current) return;
+    citationDisclosureRef.current.open = true;
+    citationDisclosureRef.current.querySelector("summary")?.focus();
+  };
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const evidenceBrief = getEvidenceBrief(record);
@@ -762,7 +767,7 @@ export default function FrontierRecord() {
                 <span className="rp-status-sep">·</span>
                 <span className="rp-status-since">Assessed {current.date}</span>
                 {current.provenanceNote && (
-                  <span className="rp-status-provenance">S4 reconstruction · not reaffirmed by realignment</span>
+                  <span className="rp-status-provenance">S4 reconstruction{record.reconstruction?.effectiveCreationDate ? ` (${record.reconstruction.effectiveCreationDate})` : ""} · not reaffirmed by realignment</span>
                 )}
               </div>
               <p className="rp-state-explanation">
@@ -771,7 +776,7 @@ export default function FrontierRecord() {
               </p>
               <WhereRecordStands legibility={legibility} />
               {assessmentTrajectory && <RecordAssessmentHistory trajectory={assessmentTrajectory} />}
-              <RecordCitation key={record.id} record={record} />
+              <RecordCitation key={record.id} record={record} disclosureRef={citationDisclosureRef} />
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               {record.claim.subject && (
@@ -806,10 +811,18 @@ export default function FrontierRecord() {
                 </ul>
                 <a href="#s-mutations">View change log</a>
               </div>
-              <div className="rp-meta-row">
-                <span className="rp-status-label">Status</span>
-                <span className="rp-status-value" style={{ textTransform: "capitalize" }}>{record.status}</span>
-              </div>
+              {record.status !== "open" && (
+                <div className="rp-record-status">
+                  <div className="rp-meta-row">
+                    <span className="rp-status-label">Record status</span>
+                    <span className="rp-status-value">{record.status === "closed" ? "Closed" : record.status}</span>
+                  </div>
+                  {record.status === "closed" && (
+                    <p className="rp-status-clarification">Closed is an administrative status: evidence and assessments may still be added, and reopening requires a governed decision.</p>
+                  )}
+                </div>
+              )}
+              <button type="button" className="rp-cite-link" onClick={openCitation}>Cite this record</button>
               <Link
                 to={`/evidence-trajectories/?record=${record.id}`}
                 className="rp-trajectory-link"
