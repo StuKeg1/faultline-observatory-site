@@ -706,7 +706,8 @@ export default function FrontierRecord() {
   const openCitation = () => {
     if (!citationDisclosureRef.current) return;
     citationDisclosureRef.current.open = true;
-    citationDisclosureRef.current.querySelector("summary")?.focus();
+    citationDisclosureRef.current.scrollIntoView({ block: "start" });
+    citationDisclosureRef.current.querySelector("summary")?.focus({ preventScroll: true });
   };
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
@@ -778,7 +779,7 @@ export default function FrontierRecord() {
               </p>
               <WhereRecordStands legibility={legibility} />
               {assessmentTrajectory && <RecordAssessmentHistory trajectory={assessmentTrajectory} />}
-              <RecordCitation key={record.id} record={record} disclosureRef={citationDisclosureRef} />
+
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
               <h2 className="rp-meta-heading">Record details</h2>
@@ -893,6 +894,10 @@ export default function FrontierRecord() {
           <section className="record-section-inner" id="s-evidence">
             <div className="rs-header">Evidence Sources</div>
             <EvidenceSources record={record} />
+          </section>
+
+          <section className="record-section-inner record-citation-section" aria-label="Cite this record">
+            <RecordCitation key={record.id} record={record} disclosureRef={citationDisclosureRef} />
           </section>
 
           {record.lineage?.relatedRecords?.length > 0 && (
