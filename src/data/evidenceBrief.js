@@ -21,8 +21,8 @@ const EVIDENCE_BRIEF_LEADS = {
   "FR-BT-0004": {
     evidenceId: "IN-009",
     evidenceLabel: "PATHFINDER 2 evidence entry",
-    finding: "PATHFINDER 2 was a prospective, single-arm screening study in a separate cohort from NHS-Galleri. It measured how often Galleri detected cancer signals and found that the test missed a substantial share of cancers.",
-    consequence: "The assessment reaffirmed Fragmenting (VS-04). Whether screening reduces late-stage cancer incidence or mortality, and whether its benefits outweigh its harms, remain open.",
+    finding: "PATHFINDER 2 tested Galleri in adults aged 50 or older with no clinical suspicion of cancer. Galleri detected 39.3% of cancers diagnosed within 12 months, and 60.3% of positive results were confirmed as cancer.",
+    consequence: "The single-arm study leaves open how much earlier Galleri detects cancer than usual care. Beyond the detection claim, effects on late-stage cancer, mortality and net benefit remain open. The assessment reaffirmed Fragmenting (VS-04).",
   },
   "FR-QE-0004": {
     evidenceId: "IN-011",
