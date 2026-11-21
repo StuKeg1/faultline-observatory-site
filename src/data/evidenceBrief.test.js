@@ -7,10 +7,10 @@ import {
 } from "./evidenceBrief.js";
 import { getCurrentAssessment } from "./derive.js";
 
-test("Evidence Brief prototype is restricted to the eight reviewed records", () => {
+test("Evidence Brief prototype is restricted to the sixteen reviewed records", () => {
   assert.deepEqual(
     [...EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS].sort(),
-    ["FR-AI-0007", "FR-AI-0008", "FR-AI-0009", "FR-AM-0007", "FR-BT-0004", "FR-BT-0005", "FR-QE-0004", "FR-QE-0008"],
+    ["FR-AI-0001", "FR-AI-0007", "FR-AI-0008", "FR-AI-0009", "FR-AM-0004", "FR-AM-0005", "FR-AM-0006", "FR-AM-0007", "FR-BT-0003", "FR-BT-0004", "FR-BT-0005", "FR-BT-0007", "FR-QE-0001", "FR-QE-0004", "FR-QE-0007", "FR-QE-0008"],
   );
 
   for (const record of ALL_RECORDS) {
