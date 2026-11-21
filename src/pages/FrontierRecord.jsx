@@ -779,24 +779,7 @@ export default function FrontierRecord() {
               <RecordCitation key={record.id} record={record} disclosureRef={citationDisclosureRef} />
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
-              {record.claim.subject && (
-                <div className="rp-meta-row">
-                  <span className="rp-status-label">Claim Subject</span>
-                  <span className="rp-status-value">{record.claim.subject}</span>
-                </div>
-              )}
-              {record.claim.claimClass && (
-                <div className="rp-meta-row">
-                  <span className="rp-status-label">Claim Class</span>
-                  <span className="rp-status-value">{record.claim.claimClass}</span>
-                </div>
-              )}
-              {record.reconstruction?.effectiveCreationDate && (
-                <div className="rp-meta-row">
-                  <span className="rp-status-label">Effective Reconstruction</span>
-                  <span className="rp-status-value">{record.reconstruction.effectiveCreationDate} · S4</span>
-                </div>
-              )}
+              <h2 className="rp-meta-heading">Record details</h2>
               <div className="rp-meta-row">
                 <span className="rp-status-label">Last Assessment</span>
                 <span className="rp-status-value">{recordReference.assessedDate}</span>
