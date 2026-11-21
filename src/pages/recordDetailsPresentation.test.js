@@ -1,0 +1,52 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { FR_QE_0001 } from "../data/records/FR-QE-0001.js";
+import { FR_AI_0008 } from "../data/records/FR-AI-0008.js";
+import { FR_AM_0001 } from "../data/records/FR-AM-0001.js";
+import { FR_AM_0005 } from "../data/records/FR-AM-0005.js";
+import { FR_BT_0004 } from "../data/records/FR-BT-0004.js";
+
+const page = readFileSync(new URL("./FrontierRecord.jsx", import.meta.url), "utf8");
+const citation = readFileSync(new URL("../components/RecordCitation.jsx", import.meta.url), "utf8");
+const metadata = page.slice(page.indexOf('<aside className="rp-meta-panel"'), page.indexOf("</aside>", page.indexOf('<aside className="rp-meta-panel"')));
+
+test("ordinary open record shows no lifecycle-status row", () => {
+  assert.equal(FR_AI_0008.status, "open");
+  assert.equal(FR_BT_0004.status, "open");
+  assert.equal(FR_BT_0004.reconstruction, undefined);
+  assert.match(metadata, /record\.status !== "open"/);
+  assert.match(metadata, /Record status/);
+  assert.doesNotMatch(metadata, /Status<\/span>/);
+});
+
+test("closed records alone show a qualified administrative status", () => {
+  assert.equal(FR_AM_0001.status, "closed");
+  assert.equal(FR_AM_0005.status, "closed");
+  assert.match(metadata, /record\.status === "closed" \? "Closed" : record\.status/);
+  assert.match(metadata, /evidence and assessments may still be added, and reopening requires a governed decision/);
+  assert.doesNotMatch(metadata, /Claim Class|Claim Subject|Effective Reconstruction/);
+});
+
+test("legacy reconstruction is shown only in header provenance, not panel", () => {
+  assert.equal(FR_QE_0001.reconstruction.effectiveCreationDate, "2026-06-11");
+  assert.match(page, /S4 reconstruction\{record\.reconstruction\?\.effectiveCreationDate/);
+  assert.doesNotMatch(metadata, /record\.reconstruction|claim\.subject|claim\.claimClass/);
+});
+
+test("two clocks retained, one adjacent redundant assessed date removed", () => {
+  assert.match(metadata, /Last Assessment/);
+  assert.match(metadata, /Last updated/);
+  assert.match(metadata, /recordReference\.latestMutationId/);
+  const section = page.slice(page.indexOf("function WhereRecordStands"),page.indexOf("// ─── EXPERIMENTAL ANNOTATIONS"));
+  assert.doesNotMatch(section, /record-stands-date|Assessed \{current.date\}/);
+  assert.match(page, /rp-status-since">Assessed \{current.date\}/);
+});
+
+test("citation action expands the existing disclosure and focuses summary", () => {
+  assert.match(metadata, /<button type="button" className="rp-cite-link" onClick=\{openCitation\}>Cite this record<\/button>/);
+  assert.match(page, /citationDisclosureRef\.current\.open = true/);
+  assert.match(page, /querySelector\("summary"\)\?\.focus\(\)/);
+  assert.match(page, /disclosureRef=\{citationDisclosureRef\}/);
+  assert.match(citation, /<details ref=\{disclosureRef\} className="record-citation">/);
+});
