@@ -179,7 +179,9 @@ test("Evidence Brief prototype is prerendered only for reviewed records", { skip
       const brief = getEvidenceBrief(record);
       const evidenceId = brief.whatChanged?.evidenceId;
       assert.equal(map.includes("What changed?"), Boolean(evidenceId), `${id}: update heading`);
+      assert.equal((map.match(/href="#s-warrant"/g) ?? []).length, 1, `${id}: current assessment link`);
       if (evidenceId) {
+        assert.ok(!/\bVS-\d{2}\b/.test(map), `${id}: stage codes belong in the State Warrant`);
         assert.ok(map.includes(`href="#evidence-${evidenceId}"`));
         assert.ok(rendered.includes(`id="evidence-${evidenceId}"`));
       }
