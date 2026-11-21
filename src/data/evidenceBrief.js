@@ -133,7 +133,7 @@ const NEWCOMER_FINDINGS = {
     assessmentId: "AS-005",
     supported: "Prominent reported candidates have not met the independent reproducibility standard for the claimed room-temperature capability.",
     uncertain: "Negative tests of particular candidates and preparation methods do not prove room-temperature superconductivity physically impossible or rule out every untested method.",
-    why: "Collapsed applies to the represented reproducibility claims, not to the possibility of the phenomenon. Historical VS-05 entries were corrected to VS-04 because testing a candidate is not operation of a reproduced capability.",
+    why: "Collapsed applies to the represented reproducibility claims, not to the possibility of the phenomenon. Earlier records had assigned an operational verification stage; that classification was later corrected to independent replication because testing a candidate is not operation of a reproduced capability.",
   },
 };
 
