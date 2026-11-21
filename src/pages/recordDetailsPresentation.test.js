@@ -6,6 +6,7 @@ import { FR_AI_0008 } from "../data/records/FR-AI-0008.js";
 import { FR_AM_0001 } from "../data/records/FR-AM-0001.js";
 import { FR_AM_0005 } from "../data/records/FR-AM-0005.js";
 import { FR_BT_0004 } from "../data/records/FR-BT-0004.js";
+import { getRecordStatusPresentation, CLOSED_RECORD_NOTE } from "../data/recordDetailsPresentation.js";
 
 const page = readFileSync(new URL("./FrontierRecord.jsx", import.meta.url), "utf8");
 const citation = readFileSync(new URL("../components/RecordCitation.jsx", import.meta.url), "utf8");
@@ -15,7 +16,9 @@ test("ordinary open record shows no lifecycle-status row", () => {
   assert.equal(FR_AI_0008.status, "open");
   assert.equal(FR_BT_0004.status, "open");
   assert.equal(FR_BT_0004.reconstruction, undefined);
-  assert.match(metadata, /record\.status !== "open"/);
+  assert.equal(getRecordStatusPresentation(FR_AI_0008), null);
+  assert.equal(getRecordStatusPresentation(FR_BT_0004), null);
+  assert.match(metadata, /recordStatusPresentation &&/);
   assert.match(metadata, /Record status/);
   assert.doesNotMatch(metadata, /Status<\/span>/);
 });
@@ -23,8 +26,10 @@ test("ordinary open record shows no lifecycle-status row", () => {
 test("closed records alone show a qualified administrative status", () => {
   assert.equal(FR_AM_0001.status, "closed");
   assert.equal(FR_AM_0005.status, "closed");
-  assert.match(metadata, /record\.status === "closed" \? "Closed" : record\.status/);
-  assert.match(metadata, /evidence and assessments may still be added, and reopening requires a governed decision/);
+  assert.deepEqual(getRecordStatusPresentation(FR_AM_0001), {label:"Closed", note:CLOSED_RECORD_NOTE});
+  assert.deepEqual(getRecordStatusPresentation(FR_AM_0005), {label:"Closed", note:CLOSED_RECORD_NOTE});
+  assert.match(metadata, /recordStatusPresentation\.label/);
+  assert.match(metadata, /recordStatusPresentation\.note/);
   assert.doesNotMatch(metadata, /Claim Class|Claim Subject|Effective Reconstruction/);
 });
 
@@ -49,4 +54,10 @@ test("citation action expands the existing disclosure and focuses summary", () =
   assert.match(page, /querySelector\("summary"\)\?\.focus\(\)/);
   assert.match(page, /disclosureRef=\{citationDisclosureRef\}/);
   assert.match(citation, /<details ref=\{disclosureRef\} className="record-citation">/);
+});
+
+
+test("unexpected statuses fail visibly rather than disappearing as Open", () => {
+  assert.deepEqual(getRecordStatusPresentation({status:"pending_review"}), {label:"pending_review", note:null});
+  assert.deepEqual(getRecordStatusPresentation({}), {label:"Unknown", note:null});
 });
