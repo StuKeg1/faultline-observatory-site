@@ -51,7 +51,8 @@ test("two clocks retained, one adjacent redundant assessed date removed", () => 
 test("citation action expands the existing disclosure and focuses summary", () => {
   assert.match(metadata, /<button type="button" className="rp-cite-link" onClick=\{openCitation\}>Cite this record<\/button>/);
   assert.match(page, /citationDisclosureRef\.current\.open = true/);
-  assert.match(page, /querySelector\("summary"\)\?\.focus\(\)/);
+  assert.match(page, /scrollIntoView\(\{ block: "start" \}\)/);
+  assert.match(page, /querySelector\("summary"\)\?\.focus\(\{ preventScroll: true \}\)/);
   assert.match(page, /disclosureRef=\{citationDisclosureRef\}/);
   assert.match(citation, /<details ref=\{disclosureRef\} className="record-citation">/);
 });
@@ -60,4 +61,14 @@ test("citation action expands the existing disclosure and focuses summary", () =
 test("unexpected statuses fail visibly rather than disappearing as Open", () => {
   assert.deepEqual(getRecordStatusPresentation({status:"pending_review"}), {label:"pending_review", note:null});
   assert.deepEqual(getRecordStatusPresentation({}), {label:"Unknown", note:null});
+});
+
+test("citation disclosure is exactly once, below Evidence Sources and before Related Records", () => {
+  const evidenceEnd = page.indexOf('id="s-evidence"');
+  const citationSection = page.indexOf('className="record-section-inner record-citation-section"');
+  const relatedSection = page.indexOf('id="s-related"');
+  assert.ok(evidenceEnd > -1 && citationSection > evidenceEnd && relatedSection > citationSection);
+  assert.equal((page.match(/<RecordCitation /g) ?? []).length, 1);
+  const headingArea = page.slice(page.indexOf('<div className="record-passport">'), page.indexOf('<RecordTabs sections='));
+  assert.doesNotMatch(headingArea, /<RecordCitation /);
 });
