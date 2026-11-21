@@ -594,6 +594,15 @@ function EvidenceBrief({ brief }) {
           ? "The State Warrant is the authoritative assessment."
           : "A guide to the record’s sections. The State Warrant gives the current assessment."}
       </p>
+      {brief.newcomerFinding && (
+        <div className="evidence-brief-newcomer" aria-label="What the evidence establishes">
+          <h3>What the evidence establishes</h3>
+          <p><strong>Supported:</strong> {brief.newcomerFinding.supported}</p>
+          <p><strong>Not yet established:</strong> {brief.newcomerFinding.uncertain}</p>
+          <p><strong>Why this state:</strong> {brief.newcomerFinding.why}</p>
+          <p className="evidence-brief-editorial-note">Reading aid derived from the current assessment; the State Warrant remains authoritative.</p>
+        </div>
+      )}
       {brief.whatChanged && (
         <div>
           <h3>What changed?</h3>
