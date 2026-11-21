@@ -114,6 +114,29 @@ const EVIDENCE_BRIEF_LEADS = {
   },
 };
 
+// Editorial orientation only. These are bounded readings of the identified
+// current assessment, not additional evidence, assessments or claim revisions.
+const NEWCOMER_FINDINGS = {
+  "FR-QE-0007": {
+    assessmentId: "AS-003",
+    supported: "Quantum computers have demonstrated strong performance on certain benchmark tasks, and separate work has explored scientifically useful applications.",
+    uncertain: "No admitted result yet shows a durable advantage over classical methods on a practically relevant task at the same demonstrated scale.",
+    why: "Fragmenting: evidence supports different parts of the claim, but not both together.",
+  },
+  "FR-BT-0004": {
+    assessmentId: "AS-005",
+    supported: "Galleri can detect some cancer signals in people without a prior cancer diagnosis, with high specificity in the reported studies.",
+    uncertain: "The test misses many cancers; whether detecting them earlier than usual care improves late-stage outcomes, survival or overall benefit has not been established.",
+    why: "Fragmenting: detecting some cancers is supported, but 'reliably' is constrained by limited sensitivity; clinical benefit is a separate, broader question, not an added condition of the stated detection claim.",
+  },
+  "FR-AM-0005": {
+    assessmentId: "AS-005",
+    supported: "Prominent reported candidates have not met the independent reproducibility standard for the claimed room-temperature capability.",
+    uncertain: "Negative tests of particular candidates and preparation methods do not prove room-temperature superconductivity physically impossible or rule out every untested method.",
+    why: "Collapsed applies to the represented reproducibility claims, not to the possibility of the phenomenon. Historical VS-05 entries were corrected to VS-04 because testing a candidate is not operation of a reproduced capability.",
+  },
+};
+
 export function getEvidenceBrief(record) {
   const current = getCurrentAssessment(record);
   const attractors = (record.mechanisms ?? []).filter((mechanism) => mechanism.type === "ATTRACTOR");
@@ -126,6 +149,7 @@ export function getEvidenceBrief(record) {
   return {
     current: { pressureState: current.pressureState, date: current.date },
     ...(update && { whatChanged: { ...lead, date: update.date } }),
+    ...(NEWCOMER_FINDINGS[record.id]?.assessmentId === current.id && { newcomerFinding: NEWCOMER_FINDINGS[record.id] }),
     evidenceCount: record.instances?.length ?? 0,
     attractorCount: attractors.length,
     questionCount: questions.length,
