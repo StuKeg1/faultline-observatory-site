@@ -12,8 +12,8 @@
 export const FR_AM_0007 = {
   id: "FR-AM-0007",
   programme: "PROG-AM",
-  lastProvenanceReview: "2026-10-16",
-  provenanceReviewId: "LPR-001-D52",
+  lastProvenanceReview: "2026-11-21",
+  provenanceReviewId: "LPR-001-D84",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -173,6 +173,7 @@ export const FR_AM_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-010", date: "2026-11-21", field: "provenance_review", from: "LPR-001-D52", to: "LPR-001-D84", note: "Third-cycle bounded Legacy Provenance Review of all four existing evidence instances. Verified Wu et al. 2020 Sb (10.1016/j.mtphys.2020.100291), Deng et al. 2021 FeSe/Cu-doped FeSe (10.1073/pnas.2108938118), Deng et al. 2025 Bi0.5Sb1.5Te3 (10.1073/pnas.2423102122), and Deng et al. 2026 Hg1223 151 K (10.1073/pnas.2536178123) against publisher/authoritative source material. IN-001 and IN-002 share the same 2021 FeSe paper and are not independent replications. Ambient pressure is distinguished from room-temperature durable operation; originating-group concentration remains. All four existing structured source chains sufficient; no enrichment or new evidence admitted. No confirmed material discrepancy or new Normal Record Review candidate. ESCALATING / VS-03 unchanged; outcome verified / not_required." },
     { id: "M-009", date: "2026-10-19", field: "reference_corrected", from: "IN-001 / IN-002 shared FeSe publication implicit in sources", to: "IN-002 explicitly linked to IN-001 as partial publication overlap", note: "Both entries cite Deng et al. (2021), DOI 10.1073/pnas.2108938118. IN-001 also cites Wu et al. (2020) on antimony. Make the partial overlap explicit without merging distinct evidence or claiming independent replication. Preserve all assessments, descriptions, sources, dates and vectors; no new evidence admitted." },
     { id: "M-008", date: "2026-10-16", field: "provenance_review", from: "LPR-001-D24", to: "LPR-001-D52", note: "Second-cycle Legacy Provenance Review completed as PASS across all four existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {
