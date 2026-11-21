@@ -588,8 +588,12 @@ function EvidenceBrief({ brief }) {
   const state = brief.current.pressureState.toUpperCase();
   return (
     <aside className="evidence-brief" aria-labelledby="evidence-brief-title" data-evidence-brief-prototype="compatible">
-      <h2 id="evidence-brief-title">Read this record</h2>
-      <p className="evidence-brief-context">A guide to the record’s sections. The State Warrant gives the current assessment.</p>
+      <h2 id="evidence-brief-title">{brief.whatChanged ? "In brief" : "Read this record"}</h2>
+      <p className="evidence-brief-context">
+        {brief.whatChanged
+          ? "The State Warrant is the authoritative assessment."
+          : "A guide to the record’s sections. The State Warrant gives the current assessment."}
+      </p>
       {brief.whatChanged && (
         <div>
           <h3>What changed?</h3>
@@ -597,7 +601,7 @@ function EvidenceBrief({ brief }) {
           <p><a href={`#evidence-${brief.whatChanged.evidenceId}`}>{brief.whatChanged.evidenceLabel}</a> · <a href="#s-warrant">State Warrant</a></p>
         </div>
       )}
-      <nav className="evidence-brief-grid" aria-label="Read this record">
+      <nav className="evidence-brief-grid" aria-label="Record sections">
         <a href="#s-warrant"><strong>Current assessment →</strong><span>{state} · assessed {brief.current.date}</span></a>
         <a href="#evidence-entries"><strong>Evidence and sources →</strong><span>{brief.evidenceCount} logged {brief.evidenceCount === 1 ? "entry" : "entries"}</span></a>
         {brief.attractorCount > 0 && <a href="#s-mechanisms"><strong>Mechanisms and barriers →</strong><span>Barriers and possible ways forward</span></a>}
