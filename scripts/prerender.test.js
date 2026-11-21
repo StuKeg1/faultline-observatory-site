@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 import { extractHeadTags, mergeHead, composePage } from "./prerender.js";
 import { ALL_RECORDS } from "../src/data/corpus.js";
 import { getAssessmentHistory } from "../src/data/derive.js";
-import { EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS } from "../src/data/evidenceBrief.js";
+import { EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS, getEvidenceBrief } from "../src/data/evidenceBrief.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const DIST = path.join(ROOT, "dist");
@@ -175,20 +175,22 @@ test("Evidence Brief prototype is prerendered only for reviewed records", { skip
     if (EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id)) {
       const map = rendered.match(/<aside class="evidence-brief"[\s\S]*?<\/aside>/)?.[0];
       assert.ok(map, `${id}: reading map missing`);
-      const evidenceId = { "FR-BT-0004": "IN-009", "FR-QE-0004": "IN-011", "FR-QE-0008": "IN-009" }[id];
-      if (evidenceId && map.includes("What changed?")) {
+      const record = ALL_RECORDS.find((item) => item.id === id);
+      const brief = getEvidenceBrief(record);
+      const evidenceId = brief.whatChanged?.evidenceId;
+      assert.equal(map.includes("What changed?"), Boolean(evidenceId), `${id}: update heading`);
+      if (evidenceId) {
         assert.ok(map.includes(`href="#evidence-${evidenceId}"`));
         assert.ok(rendered.includes(`id="evidence-${evidenceId}"`));
       }
       assert.ok(map.includes("Questions on record"));
-      assert.ok(map.includes("Mechanisms and barriers"));
+      assert.equal(map.includes("Mechanisms and barriers"), brief.attractorCount > 0);
       assert.ok(!map.includes("Attractor"));
       assert.ok(rendered.indexOf(map) < rendered.indexOf('id="s-matrix"'), `${id}: map must precede matrix`);
-      for (const target of ["s-warrant", "evidence-entries", "s-mechanisms", "s-open-questions"]) {
+      for (const target of ["s-warrant", "evidence-entries", "s-open-questions", ...(brief.attractorCount > 0 ? ["s-mechanisms"] : [])]) {
         assert.ok(map.includes(`href="#${target}"`), `${id}: missing link ${target}`);
         assert.ok(rendered.includes(`id="${target}"`), `${id}: missing target ${target}`);
       }
-      const record = ALL_RECORDS.find((item) => item.id === id);
       const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#x27;");
       assert.ok(!map.includes(escape(record.assessments.at(-1).summary)), `${id}: duplicates assessment prose`);
       for (const item of record.mechanisms.filter((item) => item.type === "ATTRACTOR")) {
