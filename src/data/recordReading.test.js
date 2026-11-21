@@ -31,7 +31,8 @@ test("code help is contextual and change-log labels preserve field meaning", () 
 test("source-check recency is separate from the assessment and all same-day update types are retained", () => {
   const am = ALL_RECORDS.find(r => r.id === "FR-AM-0007");
   assert.deepEqual(getRecordUpdateSummary({ ...am, mutationLog: am.mutationLog.filter(m => m.date <= "2026-10-16") }), { date: "2026-10-16", labels: ["Source review completed"] });
-  assert.deepEqual(getRecordUpdateSummary(am), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
+  assert.deepEqual(getRecordUpdateSummary({ ...am, mutationLog: am.mutationLog.filter(m => m.date <= "2026-10-19") }), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
+  assert.deepEqual(getRecordUpdateSummary(am), { date: "2026-11-21", labels: ["Source review completed"] });
   assert.ok(am.assessments.at(-1).date < "2026-10-16");
   const ai = ALL_RECORDS.find(r => r.id === "FR-AI-0008");
   const before = JSON.stringify(ai);
