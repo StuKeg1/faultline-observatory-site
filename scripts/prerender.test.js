@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 import { extractHeadTags, mergeHead, composePage } from "./prerender.js";
 import { ALL_RECORDS } from "../src/data/corpus.js";
 import { getAssessmentHistory } from "../src/data/derive.js";
-import { EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS, getEvidenceBrief } from "../src/data/evidenceBrief.js";
+import { getEvidenceBrief } from "../src/data/evidenceBrief.js";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url)).replace(/scripts$/, "");
 const DIST = path.join(ROOT, "dist");
@@ -163,43 +163,37 @@ test("record-reading repair preserves assessment authority and discloses evidenc
   assert.ok(kidney.includes('id="evidence-IN-008"'));
 });
 
-test("Evidence Brief prototype is prerendered only for reviewed records", { skip }, () => {
+test("Evidence Brief prototype is prerendered for every record", { skip }, () => {
   for (const route of sitemapRoutes("sitemap-records.xml")) {
     const id = route.split("/").filter(Boolean).at(-1).toUpperCase();
     const rendered = body(read(route));
-    assert.equal(
-      rendered.includes('data-evidence-brief-prototype="compatible"'),
-      EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id),
-      `${id}: Evidence Brief eligibility`,
-    );
-    if (EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(id)) {
-      const map = rendered.match(/<aside class="evidence-brief"[\s\S]*?<\/aside>/)?.[0];
-      assert.ok(map, `${id}: reading map missing`);
-      const record = ALL_RECORDS.find((item) => item.id === id);
-      const brief = getEvidenceBrief(record);
-      const evidenceId = brief.whatChanged?.evidenceId;
-      assert.equal(map.includes("What changed?"), Boolean(evidenceId), `${id}: update heading`);
-      assert.equal((map.match(/href="#s-warrant"/g) ?? []).length, 1, `${id}: current assessment link`);
-      if (evidenceId) {
-        assert.ok(!/\bVS-\d{2}\b/.test(map), `${id}: stage codes belong in the State Warrant`);
-        assert.ok(map.includes(`href="#evidence-${evidenceId}"`));
-        assert.ok(rendered.includes(`id="evidence-${evidenceId}"`));
-      }
-      assert.ok(map.includes("Questions on record"));
-      assert.equal(map.includes("Mechanisms and barriers"), brief.attractorCount > 0);
-      assert.ok(!map.includes("Attractor"));
-      assert.ok(rendered.indexOf(map) < rendered.indexOf('id="s-matrix"'), `${id}: map must precede matrix`);
-      for (const target of ["s-warrant", "evidence-entries", "s-open-questions", ...(brief.attractorCount > 0 ? ["s-mechanisms"] : [])]) {
-        assert.ok(map.includes(`href="#${target}"`), `${id}: missing link ${target}`);
-        assert.ok(rendered.includes(`id="${target}"`), `${id}: missing target ${target}`);
-      }
-      const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#x27;");
-      assert.ok(!map.includes(escape(record.assessments.at(-1).summary)), `${id}: duplicates assessment prose`);
-      for (const item of record.mechanisms.filter((item) => item.type === "ATTRACTOR")) {
-        assert.ok(!map.includes(escape(item.description)), `${id}: duplicates Attractor prose`);
-      }
-      for (const item of record.openQuestions) assert.ok(!map.includes(escape(item.question)), `${id}: duplicates question prose`);
+    const map = rendered.match(/<aside class="evidence-brief"[\s\S]*?<\/aside>/)?.[0];
+    assert.ok(map, `${id}: reading map missing`);
+    const record = ALL_RECORDS.find((item) => item.id === id);
+    const brief = getEvidenceBrief(record);
+    const evidenceId = brief.whatChanged?.evidenceId;
+    assert.equal(map.includes("What changed?"), Boolean(evidenceId), `${id}: update heading`);
+    assert.equal((map.match(/href="#s-warrant"/g) ?? []).length, 1, `${id}: current assessment link`);
+    if (evidenceId) {
+      assert.ok(!/\bVS-\d{2}\b/.test(map), `${id}: stage codes belong in the State Warrant`);
+      assert.ok(map.includes(`href="#evidence-${evidenceId}"`));
+      assert.ok(rendered.includes(`id="evidence-${evidenceId}"`));
     }
+    assert.equal(map.includes("Questions on record"), brief.questionCount > 0);
+    assert.equal(map.includes("Mechanisms and barriers"), brief.attractorCount > 0);
+    assert.ok(!map.includes("Attractor"));
+    assert.ok(rendered.indexOf(map) < rendered.indexOf('id="s-matrix"'), `${id}: map must precede matrix`);
+    for (const target of ["s-warrant", "evidence-entries", ...(brief.questionCount > 0 ? ["s-open-questions"] : []), ...(brief.attractorCount > 0 ? ["s-mechanisms"] : [])]) {
+      assert.ok(map.includes(`href="#${target}"`), `${id}: missing link ${target}`);
+      assert.ok(rendered.includes(`id="${target}"`), `${id}: missing target ${target}`);
+    }
+    const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#x27;");
+    assert.ok(!map.includes(escape(record.assessments.at(-1).summary)), `${id}: duplicates assessment prose`);
+    for (const item of (record.mechanisms ?? []).filter((item) => item.type === "ATTRACTOR")) {
+      assert.ok(!map.includes(escape(item.description)), `${id}: duplicates Attractor prose`);
+    }
+    for (const item of record.openQuestions ?? []) assert.ok(!map.includes(escape(item.question)), `${id}: duplicates question prose`);
+
   }
 });
 
