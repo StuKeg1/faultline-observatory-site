@@ -38,7 +38,7 @@ const EVIDENCE_BRIEF_LEADS = {
     evidenceId: "IN-006",
     evidenceLabel: "MASAI evidence entry",
     finding: "In the Swedish MASAI screening trial, AI-supported mammography reading had non-inferior interval-cancer performance, higher sensitivity and unchanged specificity compared with standard double reading.",
-    consequence: "The latest assessment corrects the verification stage using that existing evidence. The result applies to this screening workflow. Dependable transfer across imaging tasks, populations and implementations remains open.",
+    consequence: "The assessment now recognises that the existing evidence tested AI in an operating screening programme. Dependable transfer across imaging tasks, populations and implementations remains open.",
   },
   "FR-AI-0009": {
     assessmentId: "AS-002",
@@ -59,7 +59,7 @@ const EVIDENCE_BRIEF_LEADS = {
     evidenceId: "IN-007",
     evidenceLabel: "Semenok evidence entry",
     finding: "Semenok and colleagues reported no near-room-temperature superconductivity across seven La–Sc alloy-precursor synthesis attempts.",
-    consequence: "Their precursor differed from the original preparation, leaving reproducibility under that exact method open. The latest assessment corrects the verification stage using existing evidence.",
+    consequence: "Their precursor differed from the original preparation, leaving reproducibility under that exact method open. The assessment now reflects how far independent replication attempts tested the claim.",
   },
   "FR-AM-0006": {
     assessmentId: "AS-005",
@@ -80,7 +80,7 @@ const EVIDENCE_BRIEF_LEADS = {
     evidenceId: "IN-004",
     evidenceLabel: "Biomarker validation evidence",
     finding: "Longitudinal studies found that blood-based methylation biomarker scores were associated with later outcomes at the population level.",
-    consequence: "The latest assessment corrects the verification stage for that population-level evidence. Dependable, externally calibrated predictions for individual people without symptoms, and whether acting on them improves health, remain open.",
+    consequence: "The assessment now recognises that the population-level association was reproduced. Dependable, externally calibrated predictions for individual people without symptoms, and whether acting on them improves health, remain open.",
   },
   "FR-BT-0005": {
     assessmentId: "AS-002",
@@ -115,21 +115,21 @@ const EVIDENCE_BRIEF_LEADS = {
     evidenceId: "IN-009",
     evidenceLabel: "PATHFINDER 2 evidence entry",
     finding: "PATHFINDER 2 tested Galleri in adults aged 50 or older with no clinical suspicion of cancer. Galleri detected 39.3% of cancers diagnosed within 12 months, and 60.3% of positive results were confirmed as cancer.",
-    consequence: "The single-arm study leaves open whether, and by how much, Galleri detects cancer earlier than usual care. Beyond the detection claim, effects on late-stage cancer, mortality and net benefit remain open. The assessment reaffirmed Fragmenting (VS-04).",
+    consequence: "The single-arm study leaves open whether, and by how much, Galleri detects cancer earlier than usual care. Beyond the detection claim, effects on late-stage cancer, mortality and net benefit remain open. The assessment reaffirmed Fragmenting.",
   },
   "FR-QE-0004": {
     assessmentId: "AS-005",
     evidenceId: "IN-011",
     evidenceLabel: "Helios evidence entry",
     finding: "The Helios preprint measured logical memory errors on a trapped-ion processor. Errors fell as colour-code distance increased from 3 to 5 to 7. FR-QE-0008 cites the same experiment.",
-    consequence: "The assessment reaffirmed Resolving (VS-04). The result strengthens evidence for scaling across hardware platforms. Sustained error suppression at distance 11 and above remains open for this record.",
+    consequence: "The assessment reaffirmed Resolving. The result strengthens evidence for scaling across hardware platforms. Sustained error suppression at distance 11 and above remains open for this record.",
   },
   "FR-QE-0008": {
     assessmentId: "AS-005",
     evidenceId: "IN-009",
     evidenceLabel: "Helios evidence entry",
     finding: "The Helios preprint measured below-threshold error suppression for logical memory at colour-code distances 3, 5 and 7, and for two-qubit Clifford benchmarks from distance 3 to 5. FR-QE-0004 cites the same experiment.",
-    consequence: "The assessment reaffirmed Resolving (VS-04). The experiment extends earlier fixed-distance trapped-ion results. Resource estimates for larger systems remain projections, and sustained universal computation remains open.",
+    consequence: "The assessment reaffirmed Resolving. The experiment extends earlier fixed-distance trapped-ion results. Resource estimates for larger systems remain projections, and sustained universal computation remains open.",
   },
 };
 
