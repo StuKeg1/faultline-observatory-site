@@ -91,12 +91,31 @@ const HOW_TO_READ_SECTIONS = [
     body: `The current assessment is the Observatory's most recent position on the record. It describes where the claim currently stands under accumulated evidence — not a final judgement, but a dated statement of the evidentiary situation at the time of writing. The current assessment is always the last entry in the assessment history. It is derived from the record's history; it is never stored as a standalone verdict. When reading the current assessment, note the date. Evidence may have arrived since the last assessment was written.`,
   },
   {
+    heading: "Pressure States and the State Warrant",
+    body: `The State Warrant is the authoritative dated explanation of the current assessment. A Pressure State describes how the claim is responding to evidence, not a universal declaration that the underlying phenomenon is possible or impossible.
+
+Emerging — evidence is early and the claim is still taking shape.
+Escalating — support or practical consequences are strengthening, while material tests remain.
+Stabilising — the evidential position is becoming more bounded and durable.
+Fragmenting — evidence supports parts of a claim but not the full conjunction.
+Resolving — decisive tests are narrowing the remaining uncertainty.
+Collapsed — the represented claim has failed its operative evidential threshold; this is not a proof that the underlying science is impossible.
+
+Read the plain claim first, then the current State Warrant, and distinguish what the evidence supports from what is still unresolved. These are reading explanations, not replacements for the formal Methodology definitions.`,
+  },
+  {
     heading: "Verification stages",
-    body: `Every assessment carries a verification stage — a position in the formal sequence from initial claim to independently validated result.\n\nVS-01 Assertion — the claim has been stated but not yet formally published.\nVS-02 Published — peer-reviewed publication exists.\nVS-03 Audit — independent scrutiny is underway.\nVS-04 Replication — independent groups are attempting to reproduce the result.\nVS-05 Operation — the claim is being tested in real-world conditions.\n\nA claim at VS-03 is not a failed claim. It is a claim under examination, which is precisely where frontier claims should be. The stages describe the evidentiary process, not the claim's validity. A claim can also carry a Contested state, indicating that active, substantive challenge exists regardless of stage.`,
+    body: `Every assessment carries a verification stage — a position in the formal sequence from initial claim to independently validated result.\n\nVS-01 Assertion — the claim has been stated but not yet formally published.\nVS-02 Published — peer-reviewed publication exists.\nVS-03 Audit — independent scrutiny is underway.\nVS-04 Replication — independent groups are attempting to reproduce the result.\nVS-05 Operation — the claim is being tested in real-world conditions.\n\nA claim at VS-03 is not a failed claim. It is a claim under examination, which is precisely where frontier claims should be. The stages describe the evidentiary process, not the claim's validity. Pressure State is separate from Verification Stage. Earlier stage codes remain visible as historical entries even when subsequently corrected; a historical VS-05 does not prove that the claimed capability operated.`,
   },
   {
     heading: "Evidence and instances",
-    body: `The evidence section records each significant development in the evidentiary trail — papers, independent replications, challenge results, revised baselines. Each entry carries a date, a citation, and a weight: primary, secondary, counter, or contested. Reading the evidence chronologically reveals how the evidential landscape has built or shifted. A claim with extensive counter-evidence is not necessarily false — it may be a claim where the mechanism is disputed while the core result holds. The evidence section shows you the character of the challenge, not just its existence.`,
+    body: `The evidence section records each significant development in the evidentiary trail — papers, independent replications, challenge results, revised baselines. Each evidence entry carries a source and an indication of its relationship to the claim. The displayed evidence labels include Supportive, Partial, Neutral and Contesting: Supportive backs a material part of the claim; Partial supports some elements but not the whole; Neutral provides context without deciding the claim; Contesting challenges a material part. A Partial label is not a numerical reliability score, and several Partial entries are not necessarily independent tests. Reading the evidence chronologically reveals how the evidential landscape has built or shifted. A claim with extensive counter-evidence is not necessarily false — it may be a claim where the mechanism is disputed while the core result holds. The evidence section shows you the character of the challenge, not just its existence.`,
+  },
+  {
+    heading: "Mechanisms and record codes",
+    body: `Mechanisms and barriers describe how a claim might work or fail: AT (Attractor) is a possible path toward meeting the claim; BN (Bottleneck) is a limiting obstacle; RM (Resistance mechanism) is a mechanism that may work against it. They are explanatory, not additional independent evidence.
+
+IN identifies an evidence instance, AS an assessment, and M an entry in the Mutation Log. LPR refers to a legacy provenance review. PROG identifies the programme containing the record. These identifiers are for traceability; newcomers do not need to decode them to understand the current result.`,
   },
   {
     heading: "Open questions",

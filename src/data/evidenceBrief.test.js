@@ -17,6 +17,24 @@ test("Evidence Brief fields are projections of canonical record fields", () => {
   }
 });
 
+test("Newcomer explanations are bounded to the three selected current assessments", () => {
+  const selected = new Map([
+    ["FR-QE-0007", "AS-003"],
+    ["FR-BT-0004", "AS-005"],
+    ["FR-AM-0005", "AS-005"],
+  ]);
+  for (const record of ALL_RECORDS) {
+    const brief = getEvidenceBrief(record);
+    const expected = selected.get(record.id);
+    assert.equal(Boolean(brief.newcomerFinding), Boolean(expected && getCurrentAssessment(record).id === expected), record.id);
+    if (!expected) continue;
+    for (const field of ["supported", "uncertain", "why"]) assert.ok(brief.newcomerFinding[field].length > 25, `${record.id}: ${field}`);
+    const current = getCurrentAssessment(record);
+    const future = { ...record, assessments: [...record.assessments, { ...current, id: "AS-FUTURE" }] };
+    assert.equal(getEvidenceBrief(future).newcomerFinding, undefined, `${record.id}: stale summary is suppressed`);
+  }
+});
+
 test("The Helios lead is tied to the assessment that reviewed the finding", () => {
   const record = ALL_RECORDS.find(({ id }) => id === "FR-QE-0004");
   const brief = getEvidenceBrief(record);
