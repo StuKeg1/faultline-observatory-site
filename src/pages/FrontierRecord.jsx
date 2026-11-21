@@ -598,7 +598,7 @@ function EvidenceBrief({ brief }) {
         <div>
           <h3>What changed?</h3>
           <p><time dateTime={brief.whatChanged.date}>{brief.whatChanged.date}</time> · {brief.whatChanged.finding} {brief.whatChanged.consequence}</p>
-          <p><a href={`#evidence-${brief.whatChanged.evidenceId}`}>{brief.whatChanged.evidenceLabel}</a> · <a href="#s-warrant">State Warrant</a></p>
+          <p><a href={`#evidence-${brief.whatChanged.evidenceId}`}>{brief.whatChanged.evidenceLabel}</a></p>
         </div>
       )}
       <nav className="evidence-brief-grid" aria-label="Record sections">
