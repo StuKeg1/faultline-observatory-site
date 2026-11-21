@@ -1,29 +1,10 @@
 /**
  * Evidence Brief — bounded derived-reading-aid prototype.
  *
- * Projects canonical fields for reviewed records and provides a dated
+ * Projects canonical fields for all records and provides a dated
  * editorial lead for the trial records. The State Warrant retains authority.
  */
 import { getCurrentAssessment } from "./derive.js";
-
-export const EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS = new Set([
-  "FR-AI-0001",
-  "FR-AI-0007",
-  "FR-AI-0008",
-  "FR-AI-0009",
-  "FR-AM-0004",
-  "FR-AM-0005",
-  "FR-AM-0006",
-  "FR-AM-0007",
-  "FR-BT-0003",
-  "FR-BT-0004",
-  "FR-BT-0005",
-  "FR-BT-0007",
-  "FR-QE-0001",
-  "FR-QE-0004",
-  "FR-QE-0007",
-  "FR-QE-0008",
-]);
 
 const EVIDENCE_BRIEF_LEADS = {
   "FR-AI-0001": {
@@ -134,8 +115,6 @@ const EVIDENCE_BRIEF_LEADS = {
 };
 
 export function getEvidenceBrief(record) {
-  if (!EVIDENCE_BRIEF_COMPATIBLE_RECORD_IDS.has(record.id)) return null;
-
   const current = getCurrentAssessment(record);
   const attractors = (record.mechanisms ?? []).filter((mechanism) => mechanism.type === "ATTRACTOR");
   const questions = record.openQuestions ?? [];
