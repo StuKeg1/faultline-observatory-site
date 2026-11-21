@@ -171,6 +171,12 @@
   gap: 0.5rem;
   padding-top: 0.25rem;
 }
+.rp-meta-heading { font-family: var(--sans); color: var(--ink); font-weight: 600; font-size: 0.8rem; margin: 0 0 0.5rem; }
+.rp-record-status { display: flex; flex-direction: column; gap: 0.4rem; }
+.rp-status-clarification { font-family: var(--sans); color: var(--ink-mid); font-size: 0.75rem; line-height: 1.5; margin: 0; }
+.rp-cite-link { border: 0; border-top: 1px solid var(--rule-light); background: transparent; color: var(--accent); font: inherit; font-size: 10px; letter-spacing: 0.04em; line-height: 1.4; margin-top: 0.35rem; padding: 0.65rem 0 0; text-align: left; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.rp-cite-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rp-cite-link:hover { color: var(--ink); }
 .rp-meta-row {
   display: flex;
   justify-content: space-between;

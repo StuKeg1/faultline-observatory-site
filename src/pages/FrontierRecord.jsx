@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, useRef, Fragment } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import StateBadge from "../components/StateBadge.jsx";
 import RecordCitation from "../components/RecordCitation.jsx";
@@ -19,6 +19,7 @@ import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
 import { assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment, evidenceReadingStatus, mutationReceiptLinks } from "../data/recordReading.js";
 import { getRecordReference } from "../data/recordReference.js";
+import { getRecordStatusPresentation } from "../data/recordDetailsPresentation.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import { getIssuanceStatusClarifications } from "../data/issuanceStatusClarifications.js";
@@ -184,7 +185,6 @@ function WhereRecordStands({ legibility }) {
     <section className="record-stands" aria-labelledby="record-stands-title">
       <div className="record-stands-header">
         <h2 id="record-stands-title">Where the record stands</h2>
-        <span className="record-stands-date">Assessed {current.date}</span>
       </div>
       <div className="record-stands-assessment">
         <span className="record-stands-label">Current assessment</span>
@@ -681,6 +681,7 @@ export default function FrontierRecord() {
   );
 
   const [activeSection, setActiveSection] = useState("s-matrix");
+  const citationDisclosureRef = useRef(null);
 
   // Scrollspy — guards on `record` since this hook runs before the
   // not-found early return below; sections are computed per-record
@@ -705,6 +706,13 @@ export default function FrontierRecord() {
 
   const current = getCurrentAssessment(record);
   const recordReference = getRecordReference(record);
+  const recordStatusPresentation = getRecordStatusPresentation(record);
+  const openCitation = () => {
+    if (!citationDisclosureRef.current) return;
+    citationDisclosureRef.current.open = true;
+    citationDisclosureRef.current.scrollIntoView({ block: "start" });
+    citationDisclosureRef.current.querySelector("summary")?.focus({ preventScroll: true });
+  };
   const url = `/the-record/${record.id.toLowerCase()}/`;
   const sections = getSections(record);
   const evidenceBrief = getEvidenceBrief(record);
@@ -766,7 +774,7 @@ export default function FrontierRecord() {
                 <span className="rp-status-sep">·</span>
                 <span className="rp-status-since">Assessed {current.date}</span>
                 {current.provenanceNote && (
-                  <span className="rp-status-provenance">S4 reconstruction · not reaffirmed by realignment</span>
+                  <span className="rp-status-provenance">S4 reconstruction{record.reconstruction?.effectiveCreationDate ? ` (${record.reconstruction.effectiveCreationDate})` : ""} · not reaffirmed by realignment</span>
                 )}
               </div>
               <p className="rp-state-explanation">
@@ -775,27 +783,10 @@ export default function FrontierRecord() {
               </p>
               <WhereRecordStands legibility={legibility} />
               {assessmentTrajectory && <RecordAssessmentHistory trajectory={assessmentTrajectory} />}
-              <RecordCitation key={record.id} record={record} />
+
             </div>
             <aside className="rp-meta-panel" aria-label="Record metadata">
-              {record.claim.subject && (
-                <div className="rp-meta-row">
-                  <span className="rp-status-label">Claim Subject</span>
-                  <span className="rp-status-value">{record.claim.subject}</span>
-                </div>
-              )}
-              {record.claim.claimClass && (
-                <div className="rp-meta-row">
-                  <span className="rp-status-label">Claim Class</span>
-                  <span className="rp-status-value">{record.claim.claimClass}</span>
-                </div>
-              )}
-              {record.reconstruction?.effectiveCreationDate && (
-                <div className="rp-meta-row">
-                  <span className="rp-status-label">Effective Reconstruction</span>
-                  <span className="rp-status-value">{record.reconstruction.effectiveCreationDate} · S4</span>
-                </div>
-              )}
+              <h2 className="rp-meta-heading">Record details</h2>
               <div className="rp-meta-row">
                 <span className="rp-status-label">Last Assessment</span>
                 <span className="rp-status-value">{recordReference.assessedDate}</span>
@@ -810,10 +801,18 @@ export default function FrontierRecord() {
                 </ul>
                 <a href="#s-mutations">View change log</a>
               </div>
-              <div className="rp-meta-row">
-                <span className="rp-status-label">Status</span>
-                <span className="rp-status-value" style={{ textTransform: "capitalize" }}>{record.status}</span>
-              </div>
+              {recordStatusPresentation && (
+                <div className="rp-record-status">
+                  <div className="rp-meta-row">
+                    <span className="rp-status-label">Record status</span>
+                    <span className="rp-status-value">{recordStatusPresentation.label}</span>
+                  </div>
+                  {recordStatusPresentation.note && (
+                    <p className="rp-status-clarification">{recordStatusPresentation.note}</p>
+                  )}
+                </div>
+              )}
+              <button type="button" className="rp-cite-link" onClick={openCitation}>Cite this record</button>
               <Link
                 to={`/evidence-trajectories/?record=${record.id}`}
                 className="rp-trajectory-link"
@@ -899,6 +898,10 @@ export default function FrontierRecord() {
           <section className="record-section-inner" id="s-evidence">
             <div className="rs-header">Evidence Sources</div>
             <EvidenceSources record={record} />
+          </section>
+
+          <section className="record-section-inner record-citation-section" aria-label="Cite this record">
+            <RecordCitation key={record.id} record={record} disclosureRef={citationDisclosureRef} />
           </section>
 
           {record.lineage?.relatedRecords?.length > 0 && (

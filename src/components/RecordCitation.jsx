@@ -3,7 +3,7 @@ import { currentAssessmentCitation, evidenceInstanceCitation, recordCitation } f
 import "./RecordCitation.css";
 
 /** Disclosure only: does not change record, assessment, source, or site metadata. */
-export default function RecordCitation({ record }) {
+export default function RecordCitation({ record, disclosureRef }) {
   const [kind, setKind] = useState("assessment");
   const [instanceId, setInstanceId] = useState(record.instances?.[0]?.id ?? "");
   const [status, setStatus] = useState("");
@@ -25,7 +25,7 @@ export default function RecordCitation({ record }) {
   }
 
   return (
-    <details className="record-citation">
+    <details ref={disclosureRef} className="record-citation">
       <summary>Cite this record</summary>
       <div className="record-citation-content">
         <label htmlFor="record-citation-type">Citation type</label>
