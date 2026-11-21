@@ -22,7 +22,7 @@ const EVIDENCE_BRIEF_LEADS = {
     evidenceId: "IN-009",
     evidenceLabel: "PATHFINDER 2 evidence entry",
     finding: "PATHFINDER 2 tested Galleri in adults aged 50 or older with no clinical suspicion of cancer. Galleri detected 39.3% of cancers diagnosed within 12 months, and 60.3% of positive results were confirmed as cancer.",
-    consequence: "The single-arm study leaves open how much earlier Galleri detects cancer than usual care. Beyond the detection claim, effects on late-stage cancer, mortality and net benefit remain open. The assessment reaffirmed Fragmenting (VS-04).",
+    consequence: "The single-arm study leaves open whether, and by how much, Galleri detects cancer earlier than usual care. Beyond the detection claim, effects on late-stage cancer, mortality and net benefit remain open. The assessment reaffirmed Fragmenting (VS-04).",
   },
   "FR-QE-0004": {
     evidenceId: "IN-011",
