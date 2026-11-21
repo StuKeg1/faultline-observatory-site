@@ -676,6 +676,7 @@ export default function FrontierRecord() {
   );
 
   const [activeSection, setActiveSection] = useState("s-matrix");
+  const citationDisclosureRef = useRef(null);
 
   // Scrollspy — guards on `record` since this hook runs before the
   // not-found early return below; sections are computed per-record
@@ -700,7 +701,6 @@ export default function FrontierRecord() {
 
   const current = getCurrentAssessment(record);
   const recordReference = getRecordReference(record);
-  const citationDisclosureRef = useRef(null);
   const openCitation = () => {
     if (!citationDisclosureRef.current) return;
     citationDisclosureRef.current.open = true;
