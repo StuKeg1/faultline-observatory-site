@@ -19,6 +19,7 @@ import { getEvidenceBrief } from "../data/evidenceBrief.js";
 import { getRecordLegibility } from "../data/recordLegibility.js";
 import { assessmentChangeLabel, questionDateText, evidencePolarity, evidenceRelationships, mutationFieldLabel, recordCodeExplanations, assessmentReadingView, chronologicalReadingAssessment, evidenceReadingStatus, mutationReceiptLinks } from "../data/recordReading.js";
 import { getRecordReference } from "../data/recordReference.js";
+import { getRecordStatusPresentation } from "../data/recordDetailsPresentation.js";
 import { getPressureStateExplanation } from "../data/pressureStates.js";
 import { getAssessmentMutationReferenceReview } from "../data/assessmentMutationReferences.js";
 import { getIssuanceStatusClarifications } from "../data/issuanceStatusClarifications.js";
@@ -701,6 +702,7 @@ export default function FrontierRecord() {
 
   const current = getCurrentAssessment(record);
   const recordReference = getRecordReference(record);
+  const recordStatusPresentation = getRecordStatusPresentation(record);
   const openCitation = () => {
     if (!citationDisclosureRef.current) return;
     citationDisclosureRef.current.open = true;
@@ -794,14 +796,14 @@ export default function FrontierRecord() {
                 </ul>
                 <a href="#s-mutations">View change log</a>
               </div>
-              {record.status !== "open" && (
+              {recordStatusPresentation && (
                 <div className="rp-record-status">
                   <div className="rp-meta-row">
                     <span className="rp-status-label">Record status</span>
-                    <span className="rp-status-value">{record.status === "closed" ? "Closed" : record.status}</span>
+                    <span className="rp-status-value">{recordStatusPresentation.label}</span>
                   </div>
-                  {record.status === "closed" && (
-                    <p className="rp-status-clarification">Closed is an administrative status: evidence and assessments may still be added, and reopening requires a governed decision.</p>
+                  {recordStatusPresentation.note && (
+                    <p className="rp-status-clarification">{recordStatusPresentation.note}</p>
                   )}
                 </div>
               )}
