@@ -11,3 +11,6 @@
 .record-citation-status { font-size: 0.75rem; color: var(--ink-mid); }
 .record-citation-status:empty { display: none; }
 .record-citation-note { color: var(--ink-light); font-size: 0.76rem; line-height: 1.55; margin: 0.35rem 0 0; }
+
+/* Citation destination: keep focus/jump clear of the sticky navigation. */
+.record-citation-section .record-citation { scroll-margin-top: 120px; margin-top: 0; }
