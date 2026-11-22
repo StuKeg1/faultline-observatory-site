@@ -12,10 +12,10 @@
 export const FR_BT_0001 = {
   id: "FR-BT-0001",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-10-17",
-  provenanceReviewId: "LPR-001-D53",
-  provenanceOutcome: "verified",
-  provenanceRepairStatus: "not_required",
+  lastProvenanceReview: "2026-11-22",
+  provenanceReviewId: "LPR-001-D85",
+  provenanceOutcome: "discrepancies_found",
+  provenanceRepairStatus: "pending",
 
   claim: {
     statement: "Senolytic therapies can meaningfully extend healthy human lifespan.",
@@ -167,6 +167,7 @@ export const FR_BT_0001 = {
   ],
 
   mutationLog: [
+    { id: "M-014", date: "2026-11-22", field: "provenance_review", from: "LPR-001-D53", to: "LPR-001-D85 REVIEW REQUIRED", note: "Third-cycle bounded LPR of all six existing evidence instances. IN-001 Baker mouse causal evidence verified; IN-002 separate Justice and Hickson pilots and 2020 corrigendum verified; IN-003 UBX0101 null trial and distinct UBX1325 eye-disease programme verified substantively, but Lane et al. structured citation title differs from the publisher's canonical article title, requiring operator-approved attribution correction; IN-004 withdrawn MILES/AFFIRM-NASH bundle remains properly excluded; IN-005 NIA ITP broader-programme context retained; IN-006 Bian et al. 2026 mouse kidney findings verified. Publisher full-text access was uneven; no unsupported new source added. No change to instances, assessments, pressure state ESCALATING or VS-02. Candidate: correct IN-003 Lane citation title only after approval; no new scientific evidence admitted." },
     {"id":"M-013","date":"2026-10-24","field":"editorial_correction","from":"AT-001 separately framed regulatory and biomarker developments as resolving BN-001","to":"AT-001 retired; supported enabling-condition distinctions preserved in BN-001 and RM-001","note":"Operator-authorised bounded mechanism-overlap correction following FR-BT-0001 AT-001 Mechanism-Overlap Review. Retire current AT-001 and preserve only its corpus-supported structural distinction: a governed clinical endpoint could reduce the regulatory/operational bottleneck, and validated predictive biomarkers could reduce the surrogate/trial-duration barrier, without either development itself demonstrating senolytic healthspan efficacy or automatically resolving the meaning of 'meaningful'. No new evidence, external factual update, reassessment, claim change, Pressure State change, Verification Stage change or historical rewrite. Receipt: docs/reviews/FR-BT-0001-AT-001-RECLASSIFICATION-2026-10-24.json."},
     {"id": "M-012", "date": "2026-10-19", "field": "reference_corrected", "from": "Existing source-review limitation not fully exposed in evidence-list status", "to": "Explicit reviewed evidence status on IN-004", "note": "Operator-authorised corpus reading audit Batch 3 / R02. Render the existing entry-level review disposition from explicit status metadata linked to its retained review and mutation. A withdrawn attribution is not a retracted publication; missing sources and Partial polarity do not automatically determine status. Preserve all original titles, descriptions, citations, counts, assessments, review markers and prior mutations. No substitute source, new evidence or reassessment. Receipt: docs/reviews/EVIDENCE-STATUS-BATCH-3-2026-10-19.md."},
     { id: "M-011", date: "2026-10-17", field: "provenance_review", from: "LPR-001-D25", to: "LPR-001-D53", note: "Second-cycle Legacy Provenance Review completed as PASS across all six existing evidence instances. Underlying sources and claim representation verified. Routine provenance enrichment added the 2020 Hickson et al. corrigendum to IN-002 and the NIA Interventions Testing Program source to IN-005; neither changes evidence interpretation. No unverifiable attribution, factual, interpretive, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
