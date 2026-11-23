@@ -71,7 +71,7 @@ function withoutD83(record) {
   return restored;
 }
 export function historicalRecord(record){
-  const checked = withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(record)));
+  const checked = withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(record))));
   const entry=receipt.records.find(e=>e.recordId===record.id);
   if(!entry || hash(checked)===entry.previousHash)return checked;
   assert.equal(hash(checked),entry.currentHash,`${record.id}: current content differs from explicit checkpoint receipt`);
@@ -82,5 +82,5 @@ export function historicalRecord(record){
 }
 export async function verifyHistoricalCheckpoints(){
   assert.equal(receipt.checkpointCommit,'8d8968ef683118f00b43f05df7d646d3b7fb84dc');
-  for(const e of receipt.records){const record=withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(Object.values(await import(`./records/${e.recordId}.js`))[0])));assert.equal(hash(record),e.currentHash);assert.equal(hash(historicalRecord(record)),e.previousHash);}
+  for(const e of receipt.records){const record=withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(Object.values(await import(`./records/${e.recordId}.js`))[0]))));assert.equal(hash(record),e.currentHash);assert.equal(hash(historicalRecord(record)),e.previousHash);}
 }
