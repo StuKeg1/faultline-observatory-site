@@ -2280,7 +2280,401 @@
           "sampleInterval": 1
         }
       ]
+    },
+    {
+      "periodStart": "2026-11-16",
+      "periodEnd": "2026-11-22",
+      "capturedAt": "2026-11-23T16:46:25.637Z",
+      "status": "available",
+      "methodology": "Best-effort reader-facing traffic. Includes only Cloudflare's requestSource=eyeball data; this is not a people count and may include automation.",
+      "limitations": [
+        "Referrer data is unavailable for this zone's current Cloudflare access level.",
+        "Adaptive data can be sampled; each row retains Cloudflare's sample interval.",
+        "Known operational, asset and hostile-probe paths are excluded from reader-facing routes."
+      ],
+      "referrerSources": "unavailable",
+      "exclusions": [
+        "deployment.json",
+        "robots and sitemaps",
+        "assets",
+        "Cloudflare utility routes",
+        "common hostile probes"
+      ],
+      "readerFacingRoutes": [
+        {
+          "path": "/",
+          "requests": 552,
+          "visits": 233,
+          "sampleInterval": 1.037593984962406
+        },
+        {
+          "path": "/evidence-trajectories/",
+          "requests": 487,
+          "visits": 298,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/mcp",
+          "requests": 457,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/the-record/fr-qe-0001/",
+          "requests": 139,
+          "visits": 131,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/the-record/fr-am-0004/",
+          "requests": 102,
+          "visits": 92,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/the-record/fr-am-0005/",
+          "requests": 96,
+          "visits": 77,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/the-record/fr-ai-0007/",
+          "requests": 85,
+          "visits": 75,
+          "sampleInterval": 1.118421052631579
+        },
+        {
+          "path": "/evidence-trajectories",
+          "requests": 75,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/the-record/fr-ai-0003/",
+          "requests": 69,
+          "visits": 50,
+          "sampleInterval": 1.1694915254237288
+        },
+        {
+          "path": "/the-record/fr-bt-0004/",
+          "requests": 67,
+          "visits": 48,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/public-record/",
+          "requests": 64,
+          "visits": 46,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/the-record/fr-bt-0002/",
+          "requests": 61,
+          "visits": 55,
+          "sampleInterval": 1.1730769230769231
+        },
+        {
+          "path": "/the-record/",
+          "requests": 56,
+          "visits": 27,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/programmes/prog-qe/",
+          "requests": 55,
+          "visits": 46,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/methodology/",
+          "requests": 52,
+          "visits": 26,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/programmes/prog-ai/",
+          "requests": 49,
+          "visits": 39,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/notes/le-ai-001/",
+          "requests": 45,
+          "visits": 40,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/the-record/fr-qe-0007/",
+          "requests": 45,
+          "visits": 33,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/the-record/fr-am-0001/",
+          "requests": 44,
+          "visits": 35,
+          "sampleInterval": 1
+        },
+        {
+          "path": "/definitely-not-a-page-xyz",
+          "requests": 43,
+          "visits": 0,
+          "sampleInterval": 1.2647058823529411
+        }
+      ],
+      "countries": [
+        {
+          "country": "US",
+          "requests": 4519,
+          "visits": 1427,
+          "sampleInterval": 1.026578827805543
+        },
+        {
+          "country": "NL",
+          "requests": 3675,
+          "visits": 303,
+          "sampleInterval": 1.0882440035534497
+        },
+        {
+          "country": "BE",
+          "requests": 1614,
+          "visits": 13,
+          "sampleInterval": 1.7429805615550755
+        },
+        {
+          "country": "GB",
+          "requests": 765,
+          "visits": 148,
+          "sampleInterval": 1.0213618157543392
+        },
+        {
+          "country": "SG",
+          "requests": 492,
+          "visits": 20,
+          "sampleInterval": 1.0186335403726707
+        },
+        {
+          "country": "DE",
+          "requests": 430,
+          "visits": 23,
+          "sampleInterval": 1.053921568627451
+        },
+        {
+          "country": "AU",
+          "requests": 376,
+          "visits": 5,
+          "sampleInterval": 1.032967032967033
+        },
+        {
+          "country": "JP",
+          "requests": 374,
+          "visits": 8,
+          "sampleInterval": 1.4782608695652173
+        },
+        {
+          "country": "PL",
+          "requests": 360,
+          "visits": 44,
+          "sampleInterval": 1.0112359550561798
+        },
+        {
+          "country": "KR",
+          "requests": 207,
+          "visits": 10,
+          "sampleInterval": 1.0298507462686568
+        },
+        {
+          "country": "CN",
+          "requests": 132,
+          "visits": 22,
+          "sampleInterval": 1
+        },
+        {
+          "country": "BR",
+          "requests": 119,
+          "visits": 25,
+          "sampleInterval": 1
+        },
+        {
+          "country": "FR",
+          "requests": 95,
+          "visits": 18,
+          "sampleInterval": 1
+        },
+        {
+          "country": "LT",
+          "requests": 92,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "country": "ES",
+          "requests": 79,
+          "visits": 63,
+          "sampleInterval": 1.1285714285714286
+        },
+        {
+          "country": "HK",
+          "requests": 61,
+          "visits": 24,
+          "sampleInterval": 1
+        },
+        {
+          "country": "IN",
+          "requests": 55,
+          "visits": 5,
+          "sampleInterval": 1
+        },
+        {
+          "country": "T1",
+          "requests": 55,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "country": "MX",
+          "requests": 44,
+          "visits": 6,
+          "sampleInterval": 1
+        },
+        {
+          "country": "ID",
+          "requests": 35,
+          "visits": 8,
+          "sampleInterval": 1
+        }
+      ],
+      "deviceTypes": [
+        {
+          "device": "desktop",
+          "requests": 12678,
+          "visits": 1811,
+          "sampleInterval": 1.1120077186211736
+        },
+        {
+          "device": "mobile",
+          "requests": 1245,
+          "visits": 404,
+          "sampleInterval": 1.028075970272502
+        },
+        {
+          "device": "tablet",
+          "requests": 157,
+          "visits": 1,
+          "sampleInterval": 1
+        }
+      ],
+      "browsers": [
+        {
+          "browser": "Unknown",
+          "requests": 8479,
+          "visits": 1447,
+          "sampleInterval": 1.1372049356223175
+        },
+        {
+          "browser": "Chrome",
+          "requests": 3504,
+          "visits": 239,
+          "sampleInterval": 1.0732006125574272
+        },
+        {
+          "browser": "ChromeMobile",
+          "requests": 545,
+          "visits": 265,
+          "sampleInterval": 1.0167910447761195
+        },
+        {
+          "browser": "MobileSafari",
+          "requests": 357,
+          "visits": 102,
+          "sampleInterval": 1.0469208211143695
+        },
+        {
+          "browser": "Curl",
+          "requests": 303,
+          "visits": 75,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "GoogleBot",
+          "requests": 191,
+          "visits": 36,
+          "sampleInterval": 1.0494505494505495
+        },
+        {
+          "browser": "Firefox",
+          "requests": 181,
+          "visits": 12,
+          "sampleInterval": 1.0284090909090908
+        },
+        {
+          "browser": "Safari",
+          "requests": 172,
+          "visits": 5,
+          "sampleInterval": 1.0238095238095237
+        },
+        {
+          "browser": "Edge",
+          "requests": 140,
+          "visits": 11,
+          "sampleInterval": 1.044776119402985
+        },
+        {
+          "browser": "BingBot",
+          "requests": 83,
+          "visits": 14,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "TwitterBot",
+          "requests": 63,
+          "visits": 7,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "ChromeHeadless",
+          "requests": 18,
+          "visits": 2,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "YandexBot",
+          "requests": 15,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "ChromeMobileWebview",
+          "requests": 11,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "ChromeDerivative",
+          "requests": 8,
+          "visits": 1,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "SamsungInternet",
+          "requests": 6,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "Yandex",
+          "requests": 3,
+          "visits": 0,
+          "sampleInterval": 1
+        },
+        {
+          "browser": "MobileSafariWebview",
+          "requests": 1,
+          "visits": 0,
+          "sampleInterval": 1
+        }
+      ]
     }
   ],
-  "updatedAt": "2026-11-16T14:14:39.388Z"
+  "updatedAt": "2026-11-23T16:46:25.637Z"
 }
