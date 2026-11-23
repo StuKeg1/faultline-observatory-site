@@ -12,8 +12,8 @@
 export const FR_BT_0002 = {
   id: "FR-BT-0002",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-10-18",
-  provenanceReviewId: "LPR-001-D54",
+  lastProvenanceReview: "2026-11-23",
+  provenanceReviewId: "LPR-001-D86",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -195,6 +195,7 @@ export const FR_BT_0002 = {
   ],
 
   mutationLog: [
+    { id: "M-021", date: "2026-11-23", field: "provenance_review", from: "LPR-001-D54", to: "LPR-001-D86", note: "Third-cycle bounded LPR completed as PASS across all eight existing evidence instances (IN-001–IN-008). Verified original scientific papers and citation DOIs for Yamanaka/Olova, Ocampo/Lu and clock-uncertainty studies; verified Altos and Kyoto launch attribution, Life Biosciences' 2024 NHP announcement, January 2026 IND clearance, June first dosing, clinical trial NCT07290244 and October sponsor-reported interim findings. Existing structured sources[] are sufficient; no new sources added. Olova's 2018 online/2019 volume date and Ocampo's approximately 30% Salk-reported lifespan gain are compatible with existing qualified representation. Successive ER-100 milestones are the same trial, not independent replications. No factual, interpretive, attribution or stage discrepancy established; no newly discovered scientific evidence admitted. Canonical outcome verified / not_required; ESCALATING / VS-02 unchanged." },
     {"id": "M-020", "date": "2026-11-04", "field": "assessment_issued", "from": "AS-004", "to": "AS-005", "note": "Operator-approved assessment retains ESCALATING / VS-02. Current mechanisms, 2026 lineage and OQ-004 aligned to initial human observations; historical instances and assessments preserved. Receipt: docs/reviews/ER100-NRR-2026-11-04.md."},
     {"id": "M-019", "date": "2026-11-04", "field": "instance_added", "from": "IN-007", "to": "IN-008", "note": "Operator-approved Normal Record Review admits the October 8 ER-100 sponsor report as PARTIAL; same-trial continuity retained. Not independent replication. Unverified 75% figure excluded."},
     {"id": "M-018", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-007", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
