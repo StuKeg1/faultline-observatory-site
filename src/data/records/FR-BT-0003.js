@@ -12,8 +12,8 @@
 export const FR_BT_0003 = {
   id: "FR-BT-0003",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-10-19",
-  provenanceReviewId: "LPR-001-D55",
+  lastProvenanceReview: "2026-11-24",
+  provenanceReviewId: "LPR-001-D87",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -30,6 +30,10 @@ export const FR_BT_0003 = {
       description: "Steve Horvath (2013, Genome Biology) publishes the first multi-tissue epigenetic clock, demonstrating that DNA methylation patterns predict chronological age with high accuracy (r ≈ 0.96 across tissues). Subsequent clocks — Hannum (2013), PhenoAge (2018), GrimAge (2019) — improve predictive performance for biological outcomes including mortality, disease incidence, and functional decline. GrimAge in particular demonstrates that accelerated epigenetic age (epigenetic age exceeding chronological age) predicts mortality risk independently of other known risk factors. These results establish that blood-based methylation measurements have predictive validity for biological outcomes — epigenetic age acceleration predicts who will decline faster. The clocks are not purely blood-based in all cases, but blood methylation profiles drive the most practically deployable versions. This is the strongest positive evidence in the record: longitudinal cohort data demonstrating that the measurement predicts subsequent clinical outcomes.",
       vectors: ["supportive--predictive-validity-demonstrated-in-longitudinal-cohorts"],
       date: "2013–19",
+      sources: [
+        { citation: "Horvath, DNA methylation age of human tissues and cell types, Genome Biology 14:R115 (2013)", doi: "10.1186/gb-2013-14-10-r115", locator: "Abstract and Results — multi-tissue methylation age prediction; chronological-age performance, not independent prospective outcome validation" },
+        { citation: "Lu et al., DNA methylation GrimAge strongly predicts lifespan and healthspan, Aging 11, 303–327 (2019)", doi: "10.18632/aging.101684", locator: "Abstract and Results — prospective time-to-death, coronary heart disease and cancer associations; age-adjusted GrimAge" },
+      ],
     },
     {
       id: "IN-002",
@@ -171,6 +175,7 @@ export const FR_BT_0003 = {
   ],
 
   mutationLog: [
+    { id: "M-011", date: "2026-11-24", field: "provenance_review", from: "LPR-001-D55", to: "LPR-001-D87", note: "Third-cycle bounded LPR of all six existing instances. IN-001 Horvath chronological-age clock and Lu GrimAge prospective outcome associations independently sourced without conflating their warrants; IN-002 Lehallier proteome age association, IN-003 Ahadi ageotypes and Oh organ-specific model, IN-004 DunedinPACE outcomes, IN-005 three distinct consumer specimen methods, and IN-006 Oh 2025 UK Biobank prospective organ outcomes checked against original publications or first-party methods. IN-001 enriched with two confidently attributable structured primary sources; remaining structured provenance retained. No factual, interpretive, attribution, or stage correction, no new instance or reassessment. Earlier Wang et al. 2026 candidate remains held for Normal Record Review, not admitted by LPR. PASS verified / not_required; FRAGMENTING / VS-04 unchanged." },
     { id: "M-010", date: "2026-10-19", field: "provenance_review", from: "LPR-001-D27", to: "LPR-001-D55", note: "Second-cycle Legacy Provenance Review completed as PASS across all six existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. Wang et al. (bioRxiv, 2026) was identified as genuinely new evidence relevant to individual predictive uncertainty and is held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id": "M-009", "date": "2026-10-19", "field": "assessment_correction", "from": "AS-003 / FRAGMENTING / VS-03", "to": "AS-004 / FRAGMENTING / VS-04", "note": "Operator-ratified stage and scope reconciliation. VS-04 concerns reproduced population-level predictive associations under the explicitly qualified July interpretation; it does not certify calibrated individual prognosis or clinical utility. The retained longitudinal clock-validation packet survives September corrections. No general cohort/team equivalence rule, new evidence or Pressure State transition. Preserve AS-001–AS-003 and July AS-001 overlay. Receipt: docs/reviews/AM-0004-BT-0003-STAGE-RECONCILIATION-2026-10-19.md."},
 
