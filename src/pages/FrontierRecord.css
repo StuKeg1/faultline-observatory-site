@@ -525,6 +525,11 @@
   color: var(--ink-mid);
   margin: 0.65rem 0 1.25rem;
 }
+.evidence-brief-newcomer { border-top: 1px solid var(--rule-light); padding-top: .9rem; margin-bottom: 1.1rem; }
+.evidence-brief-newcomer h3 { margin: 0 0 .6rem; font: 500 1rem var(--serif); }
+.evidence-brief-newcomer p { margin: .45rem 0; font: 400 .91rem/1.65 var(--serif); color: var(--ink-mid); }
+.evidence-brief-newcomer p strong { color: var(--ink); font-weight: 600; }
+.evidence-brief-newcomer .evidence-brief-editorial-note { font-size: .78rem; color: var(--ink-light); }
 .evidence-brief-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
 .evidence-brief-grid a {
   display: flex;
