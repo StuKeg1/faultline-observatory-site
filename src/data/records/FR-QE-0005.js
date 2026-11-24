@@ -93,6 +93,22 @@ export const FR_QE_0005 = {
       vectors: ["supportive--independent-resource-architecture-estimate"],
       date: "2026",
       sources: [{ citation: "Mundada, P. S. et al. Heterogeneous architectures enable a 138x reduction in physical qubit requirements for fault-tolerant quantum computing under detailed accounting. arXiv:2604.06319 (2026).", url: "https://arxiv.org/abs/2604.06319", locator: "Abstract; RSA-2048 resource estimates" }],
+    },
+    {
+      id: "IN-009",
+      qualifiedEvent: "Reconfigurable neutral atoms — RSA-2048 qubit and runtime trade-offs",
+      description: "Cain et al. model RSA-2048 factorisation on reconfigurable neutral atoms using high-rate quantum LDPC codes and a 1 ms stabilizer cycle. Figure 3b estimates 11,033 physical qubits and approximately 43,000 days for a space-efficient design, or 13,255 qubits and approximately 10,000 days for a balanced design. A preliminary time-efficient design uses a different circuit and assumes parallel logical operations, yielding approximately 102,000 qubits and 97 days. The 26,000-qubit configuration in the paper is for ECC-256. These modelled trade-offs quantify the runtime cost of reducing the qubit footprint on a proposed architecture. No RSA-2048 factorisation was performed.",
+      vectors: ["supportive--architecture-dependent-resource-compression"],
+      date: "2026-03-30",
+      sources: [{ citation: "Cain, M. et al. Shor’s algorithm is possible with as few as 10,000 reconfigurable atomic qubits. arXiv:2603.28627v1 (2026).", url: "https://arxiv.org/abs/2603.28627v1", locator: "Figure 3b and Resource estimates; Appendices E.4 and F" }],
+    },
+    {
+      id: "IN-010",
+      qualifiedEvent: "Superconducting cat qubits — compiled RSA-2048 estimate and bit-flip sensitivity",
+      description: "Pappalardo et al. estimate 22,593 physical cat qubits and an expected 3.14 days for RSA-2048 in a balanced LDPC-cat configuration, averaging 9.6 shots of 7.84 hours. The model assumes a 1 microsecond correction cycle, a 10 microsecond decoder reaction time, a circuit-level phase-flip probability of 0.0005 and negligible bit flips. The authors associate the last assumption with a physical bit-flip lifetime of about 100 years, at which they estimate about 11% runtime overhead. With about a one-hour physical bit-flip lifetime and an added distance-3 protection layer, they estimate approximately 45,000 cat qubits and at least 3.14 days. These estimates come from compilation and scheduling on a proposed architecture. No RSA-2048 factorisation was performed.",
+      vectors: ["supportive--architecture-dependent-resource-compression"],
+      date: "2026-10-28",
+      sources: [{ citation: "Pappalardo, A. et al. Shor's algorithm compiled on cat qubits: 22 593 qubits for RSA-2048 in 3.14 days. Cryptology ePrint Archive 2026/2665 (2026).", url: "https://eprint.iacr.org/2026/2665", locator: "Table I; Appendix C.9(c)–(d)" }],
     }
   ],
 
@@ -203,6 +219,8 @@ export const FR_QE_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-019", date: "2026-11-24", field: "instance_added", from: "—", to: "IN-010", note: "Normal Record Review admitted Pappalardo et al.'s compiled cat-qubit RSA-2048 resource estimate with the finite bit-flip sensitivity case. The evidence is theoretical. AS-004 remains current at ESCALATING / VS-02." },
+    { id: "M-018", date: "2026-11-24", field: "instance_added", from: "—", to: "IN-009", note: "Normal Record Review admitted Cain et al.'s modelled RSA-2048 space and runtime trade-offs for reconfigurable neutral atoms. AS-004 remains current at ESCALATING / VS-02." },
     { id: "M-017", date: "2026-11-14", field: "provenance_review", from: "LPR-001-D48", to: "LPR-001-D80", note: "Third-cycle Legacy Provenance Review completed as PASS across all eight existing instances (IN-001 through IN-008). Primary journal, preprint, publisher and institutional source abstracts checked for claim representation and bounded distinctions; IEEE Shor full text not directly retrievable, with bibliographic and independent journal corroboration. Eight supported at source/abstract level; zero enriched, zero material discrepancies, zero unverified at that level. Existing structured sources sufficient. No new scientific evidence admitted or Normal Record Review candidate identified. ESCALATING / VS-02 retained. Governed outcome verified / not_required." },
     { id: "M-016", date: "2026-10-11", field: "provenance_review", from: "LPR-001-D17", to: "LPR-001-D48", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence admitted or flagged for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-015", date: "2026-09-15", field: "instances_logged", from: "IN-006", to: "IN-008", note: "Normal Record Review admitted two 2026 RSA-2048 resource analyses: IN-007 Webster et al. Pinnacle QLDPC architecture and IN-008 Mundada et al. heterogeneous architecture. Appended AS-004 and updated current mechanisms, lineage and open questions to distinguish architecture-dependent theoretical resource compression from demonstrated cryptographic capability. Pressure state remains ESCALATING; verification stage remains VS-02." },
