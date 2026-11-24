@@ -17,6 +17,23 @@ function withoutFipA03StageCorrection(record) {
   assert.equal(record.mutationLog[1]?.id, "M-021");
   return { ...record, assessments: record.assessments.slice(0, -1), mutationLog: record.mutationLog.slice(1) };
 }
+// D87 provenance-only completion and IN-001 source enrichment postdate
+// frozen historical checkpoint receipts. Restore exact predecessor in tests.
+function withoutD87(record) {
+  if (record.id !== "FR-BT-0003" || record.provenanceReviewId !== "LPR-001-D87") return record;
+  assert.equal(record.mutationLog[0]?.id, "M-011");
+  assert.equal(record.mutationLog[0]?.field, "provenance_review");
+  assert.equal(record.mutationLog[0]?.from, "LPR-001-D55");
+  assert.equal(record.mutationLog[0]?.to, "LPR-001-D87");
+  const restored = structuredClone(record);
+  restored.lastProvenanceReview = "2026-10-19";
+  restored.provenanceReviewId = "LPR-001-D55";
+  restored.mutationLog.shift();
+  const instance = restored.instances.find(item => item.id === "IN-001");
+  assert.equal(instance?.sources?.length, 2);
+  delete instance.sources;
+  return restored;
+}
 // D86 is a later provenance-only PASS; reconstruct its predecessor for
 // frozen October checkpoint hashes without modifying the canonical record.
 function withoutD86(record) {
@@ -71,7 +88,7 @@ function withoutD83(record) {
   return restored;
 }
 export function historicalRecord(record){
-  const checked = withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(record))));
+  const checked = withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(withoutD87(record)))));
   const entry=receipt.records.find(e=>e.recordId===record.id);
   if(!entry || hash(checked)===entry.previousHash)return checked;
   assert.equal(hash(checked),entry.currentHash,`${record.id}: current content differs from explicit checkpoint receipt`);
@@ -82,5 +99,5 @@ export function historicalRecord(record){
 }
 export async function verifyHistoricalCheckpoints(){
   assert.equal(receipt.checkpointCommit,'8d8968ef683118f00b43f05df7d646d3b7fb84dc');
-  for(const e of receipt.records){const record=withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(Object.values(await import(`./records/${e.recordId}.js`))[0]))));assert.equal(hash(record),e.currentHash);assert.equal(hash(historicalRecord(record)),e.previousHash);}
+  for(const e of receipt.records){const record=withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(withoutD87(Object.values(await import(`./records/${e.recordId}.js`))[0])))));assert.equal(hash(record),e.currentHash);assert.equal(hash(historicalRecord(record)),e.previousHash);}
 }
