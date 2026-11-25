@@ -12,8 +12,8 @@
 export const FR_QE_0008 = {
   id: "FR-QE-0008",
   programme: "PROG-QE",
-  lastProvenanceReview: "2026-10-20",
-  provenanceReviewId: "LPR-001-D56",
+  lastProvenanceReview: "2026-11-25",
+  provenanceReviewId: "LPR-001-D88",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -282,6 +282,7 @@ export const FR_QE_0008 = {
   ],
 
   mutationLog: [
+    { id: "M-023", date: "2026-11-25", field: "provenance_review", from: "LPR-001-D56", to: "LPR-001-D88", note: "Third-cycle bounded LPR of all twelve existing evidence instances IN-001 through IN-012. Existing structured sources retained; no ungrounded provenance enrichment. Cross-checked primary publications and source metadata including foundational threshold/surface-code results, Google Nature scaling and correlated-floor papers, Microsoft/Quantinuum first-party demonstrations, Sivak Nature 2026, Berthusen and Lavasani Helios preprints, Burt distributed lattice surgery, Siegel NeST simulation, Wang correlation-sensitive distillation, and Cheng/Guo/Pan exact-distance certification. Hardware measurements, modeling, projections, shared publications and independence limitations remain separated. No confirmed material attribution, factual, interpretive or verification-stage discrepancy; no new evidence admitted. Canonical outcome verified / not_required; RESOLVING / VS-04 unchanged." },
     {
       "id": "M-022",
       "date": "2026-11-07",
