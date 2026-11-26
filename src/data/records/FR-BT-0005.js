@@ -13,8 +13,8 @@
 export const FR_BT_0005 = {
   id: "FR-BT-0005",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-10-21",
-  provenanceReviewId: "LPR-001-D57",
+  lastProvenanceReview: "2026-11-26",
+  provenanceReviewId: "LPR-001-D89",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -199,6 +199,7 @@ export const FR_BT_0005 = {
   ],
 
   mutationLog: [
+    { id: "M-012", date: "2026-11-26", field: "provenance_review", from: "LPR-001-D57", to: "LPR-001-D89", note: "Third-cycle bounded LPR PASS across all eight existing instances. IN-001 Montgomery/Porrett decedent studies, IN-002 Kawai first living recipient, IN-003 contemporaneous 271-day case, IN-004 Ribas same-recipient immune profiling, IN-005 United Therapeutics EXPAND prospective trial, IN-006 Ladowski/Meier clinical review, IN-007 FDA infectious-risk guidance, and IN-008 Riella peer-reviewed same-recipient follow-up reviewed against existing publisher, institutional and regulatory attribution. Existing structured sources sufficient; no provenance enrichment or unsupported attribution. No material discrepancies identified within source-access limits. New 20 November 2026 EXTEND first-transplant disclosure flagged outside LPR-001 for Normal Record Review; not admitted. Pressure State ESCALATING and VS-03 unchanged. Canonical outcome verified / not_required." },
     { id: "M-011", date: "2026-10-21", field: "provenance_review_completed", from: "LPR-001-D29", to: "LPR-001-D57", note: "Second-cycle Legacy Provenance Review completed as PASS across all eight existing evidence instances. Underlying sources and claim representations verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution or verification-stage discrepancy identified. A September 2026 report of another living recipient exceeding nine months with a functioning pig kidney was identified as genuinely new evidence and is held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     { id: "M-010", date: "2026-10-19", field: "reference_corrected", from: "IN-004 recipient relationship implicit; IN-002 title says 51 days", to: "IN-004 explicitly linked to IN-002 as same-recipient analysis; IN-002 title omits ambiguous duration", note: "Ribas et al., Nature Medicine, DOI 10.1038/s41591-025-04053-3, profiles the March 2024 first recipient reported by Kawai et al., NEJM, DOI 10.1056/NEJMoa2412747. Not another patient. Remove the unexplained 51-day title while preserving the description and source chronology documenting death on postoperative day 52. All assessments, sources, dates, vectors and historical mutations preserved; no new clinical evidence admitted." },
     { id: "M-009", date: "2026-10-18", field: "reference_corrected", from: "IN-003 / IN-008 relationship in narrative only", to: "IN-008 explicitly linked to IN-003 as same-recipient follow-up", note: "Make the already recorded same-recipient relationship explicit and machine-readable. Preserve both entries, source chronology, descriptions, vectors and assessments. Eight logged entries do not mean eight independent cases." },

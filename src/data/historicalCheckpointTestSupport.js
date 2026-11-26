@@ -17,6 +17,22 @@ function withoutFipA03StageCorrection(record) {
   assert.equal(record.mutationLog[1]?.id, "M-021");
   return { ...record, assessments: record.assessments.slice(0, -1), mutationLog: record.mutationLog.slice(1) };
 }
+// D89 is a later provenance-only PASS; restore its exact D57 predecessor
+// for frozen historical receipts without modifying the canonical record.
+function withoutD89(record) {
+  if (record.id !== "FR-BT-0005" || record.provenanceReviewId !== "LPR-001-D89") return record;
+  assert.equal(record.mutationLog[0]?.id, "M-012");
+  assert.equal(record.mutationLog[0]?.field, "provenance_review");
+  assert.equal(record.mutationLog[0]?.from, "LPR-001-D57");
+  assert.equal(record.mutationLog[0]?.to, "LPR-001-D89");
+  assert.equal(record.provenanceOutcome, "verified");
+  assert.equal(record.provenanceRepairStatus, "not_required");
+  const restored = structuredClone(record);
+  restored.lastProvenanceReview = "2026-10-21";
+  restored.provenanceReviewId = "LPR-001-D57";
+  restored.mutationLog.shift();
+  return restored;
+}
 // D88 is a later provenance-only PASS. Reconstruct the D56 predecessor
 // solely for frozen historical receipts; canonical content stays untouched.
 function withoutD88(record) {
@@ -131,7 +147,7 @@ function withoutMutationOrderCleanup(record) {
 
 function atReceipt(record) {
   return withoutMutationOrderCleanup(
-    withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(withoutD87(withoutD88(record))))))
+    withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(withoutD87(withoutD88(withoutD89(record)))))))
   );
 }
 
