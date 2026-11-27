@@ -13,8 +13,8 @@
 export const FR_BT_0006 = {
   id: "FR-BT-0006",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-10-22",
-  provenanceReviewId: "LPR-001-D58",
+  lastProvenanceReview: "2026-11-27",
+  provenanceReviewId: "LPR-001-D90",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -174,6 +174,7 @@ export const FR_BT_0006 = {
   ],
 
   mutationLog: [
+    { id: "M-010", date: "2026-11-27", field: "provenance_review", from: "LPR-001-D58", to: "LPR-001-D90", note: "Third-cycle bounded Legacy Provenance Review completed as PASS across all four existing evidence instances. Fletcher, Diggines and Elani Nature Chemistry Perspective verified for IN-001 and IN-004 as one shared field synthesis, not independent experiments; Restrepo Sierra et al. Nature Communications 2026 primary article verified for IN-002; Gaut et al. July 2026 bioRxiv preprint verified for IN-003, preserving separate mechanical multi-generation division and genetically encoded division demonstrations. Existing structured sources and DOI attribution sufficient; no new sources added. No unverifiable instance, material discrepancy or new scientific evidence candidate identified. Claim, evidence, assessments, pressure state EMERGING and verification stage VS-02 unchanged. Canonical outcome verified / not_required." },
     { id: "M-009", date: "2026-10-24", field: "reference_corrected", from: "Duplicate M-007 identifiers on 19 and 22 October", to: "22 October LPR-001-D58 entry identified as M-008", note: "Build-blocking identifier collision corrected during authorised 24 October Scout implementation. The 19 October M-007 retains its identity. The newer 22 October provenance-review entry receives unused M-008 and preserves its originalId M-007; its date, field, from/to and note are unchanged. No evidence, assessment, state, stage or provenance outcome changed. Original collision was introduced in d84d4bd (PR #194) after the earlier M-007 existed. This M-009 explicitly records the metadata correction. Receipt: docs/reviews/SCOUT-2026-10-24-APPROVED-INSTANCES.md." },
     { id: "M-008", originalId: "M-007", date: "2026-10-22", field: "provenance_review", from: "LPR-001-D30", to: "LPR-001-D58", note: "Second-cycle Legacy Provenance Review completed as PASS across all four existing evidence instances. Underlying sources and claim representation verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. No genuinely new scientific evidence requiring Normal Record Review was identified. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id":"M-007","date":"2026-10-19","field":"reference_corrected","from":"Shared citations not explained in the evidence list","to":"Source-specific reciprocal notices on IN-004","note":"Operator-authorised corpus reading audit Step 5A / R04. Label exact shared publications/reports after checking their evidential roles. Shared reporting does not by itself determine experimental independence. No sources, scientific wording, vectors, counts, assessments, states, stages, dates, review markers or prior mutations changed. Scope, primary-source ledger and exact field receipt: docs/reviews/SHARED-SOURCE-LABELS-STEP-5A-2026-10-19.md and companion .json."},
