@@ -12,8 +12,8 @@
 export const FR_BT_0007 = {
   id: "FR-BT-0007",
   programme: "PROG-BT",
-  lastProvenanceReview: "2026-10-23",
-  provenanceReviewId: "LPR-001-D59",
+  lastProvenanceReview: "2026-11-28",
+  provenanceReviewId: "LPR-001-D91",
   provenanceOutcome: "verified",
   provenanceRepairStatus: "not_required",
 
@@ -236,6 +236,7 @@ export const FR_BT_0007 = {
   ],
 
   mutationLog: [
+    { id: "M-009", date: "2026-11-28", field: "provenance_review", from: "LPR-001-D59", to: "LPR-001-D91", note: "Third-cycle bounded Legacy Provenance Review: all seven existing evidence instances audited against their attributed original publications and available publisher abstracts or full text. IN-001 Moses restricted-vocabulary ECoG result; IN-002 independent Willett and Metzger 2023 demonstrations; IN-003 Card rapid calibration; IN-004 distinct Littlejohn BRAVO-3 and Wairagkar T15 streaming voice results; IN-005 Card long-term home use of same T15 recipient; IN-006 Brosler multimodal/context-dependent decoding; IN-007 Patrick-Krueger field-level clinical-trial inventory. Publisher access to some full texts was restricted; no unsupported new source or claim added. Existing structured citations sufficient. No material attribution, factual, interpretive or verification-stage discrepancy confirmed; no new scientific evidence admitted. Earlier Paradromics Connexus candidate remains outside LPR for Normal Record Review. Outcome verified / not_required; EMERGING / VS-03 unchanged." },
     { id: "M-008", date: "2026-10-23", field: "provenance_review", from: "LPR-001-D31", to: "LPR-001-D59", note: "Second-cycle Legacy Provenance Review completed as PASS across all seven existing evidence instances. Underlying sources and claim representations verified; existing structured provenance is sufficient and no unverifiable attribution was introduced. No factual, interpretive, attribution, or verification-stage discrepancy identified. Paradromics Connexus first-participant real-time open-ended communication reporting was identified as genuinely new potentially relevant evidence and held outside LPR-001 for Normal Record Review. Canonical outcome verified / not_required; Pressure State and Verification Stage unchanged." },
     {"id": "M-007", "date": "2026-10-19", "field": "reference_corrected", "from": "Clinical report continuity not visible in evidence list", "to": "Source-verified trial/participant continuity notices on IN-004, IN-005", "note": "Operator-authorised corpus reading audit Batch 2 / R03. Add explicit relationships between existing reports; preserve evidence counts, source citations, descriptions, assessments, dates and July overlays. BT-0007 overlap is limited to the Wairagkar component of IN-004; Littlejohn BRAVO-3 is distinct. This is reader metadata, not new evidence or reassessment. Source ledger and exclusions: docs/reviews/CLINICAL-CONTINUITY-BATCH-2-2026-10-19.md."},
     // APPEND-ONLY. Newest first.
