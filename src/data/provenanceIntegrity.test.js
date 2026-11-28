@@ -26,7 +26,7 @@ const sharedSourceReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/
 const a4AuthorityReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json", import.meta.url)));
 const ai1AttractorRetirementReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-AI-0001-AT-001-RETIREMENT-2026-10-24.json", import.meta.url)));
 const bt1AttractorReclassificationReceipt = JSON.parse(readFileSync(new URL("../../docs/reviews/FR-BT-0001-AT-001-RECLASSIFICATION-2026-10-24.json", import.meta.url)));
-const laterRecordReceipts = ["FR-QE-0008-SCOUT-2026-11-07", "FR-AI-0007-SCOUT-2026-11-07", "FR-AI-0007-LPR-D72-CHECKPOINT-2026-11-05", "FR-AI-0006-LPR-D70-CHECKPOINT-2026-11-03", "FR-QE-0008-SCOUT-2026-10-31", "FR-AI-0002-SCOUT-2026-10-31", "FR-QE-0008-D56-HELIOS-2026-10-20", "FR-QE-0008-SCOUT-2026-10-24", "FR-AI-0007-SCOUT-2026-10-24", "FR-BT-0006-MUTATION-ID-2026-10-24", "FR-BT-0006-D58-2026-10-22", "FR-AI-0002-D60-2026-10-24"].map(id => JSON.parse(readFileSync(new URL(
+const laterRecordReceipts = ["FR-AI-0007-SCOUT-2026-11-28", "FR-QE-0008-SCOUT-2026-11-07", "FR-AI-0007-SCOUT-2026-11-07", "FR-AI-0007-LPR-D72-CHECKPOINT-2026-11-05", "FR-AI-0006-LPR-D70-CHECKPOINT-2026-11-03", "FR-QE-0008-SCOUT-2026-10-31", "FR-AI-0002-SCOUT-2026-10-31", "FR-QE-0008-D56-HELIOS-2026-10-20", "FR-QE-0008-SCOUT-2026-10-24", "FR-AI-0007-SCOUT-2026-10-24", "FR-BT-0006-MUTATION-ID-2026-10-24", "FR-BT-0006-D58-2026-10-22", "FR-AI-0002-D60-2026-10-24"].map(id => JSON.parse(readFileSync(new URL(
   `../../docs/reviews/${id}.json`, import.meta.url)))).sort((a, b) => b.date.localeCompare(a.date));
 
 function undoRecordReceipt(record, receipt) {

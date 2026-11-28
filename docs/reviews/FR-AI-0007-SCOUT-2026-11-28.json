@@ -1,0 +1,19 @@
+{
+  "id": "FR-AI-0007-SCOUT-2026-11-28",
+  "date": "2026-11-28",
+  "recordId": "FR-AI-0007",
+  "baseCommit": "61cc8e3964f683d82ce93f6d54dab93c5b0394e6",
+  "originalRecordHash": "dee8db9066864bbe16eb476782b6f0e93dd24707e06beb13d79ef592b0a92a48",
+  "currentRecordHash": "52bd82b7193c74af8303c4f2500edeae81bcb93bb1c1a527515837866146e309",
+  "mutationIds": [
+    "M-031"
+  ],
+  "changes": [
+    {
+      "fieldPath": "instances.17",
+      "previous": null,
+      "current": "IN-019",
+      "basis": "Operator approved INSTANCE only for flag 2026-11-28-01 and explicitly authorised implementation. AS-004 remains Fragmenting / VS-03."
+    }
+  ]
+}

@@ -92,7 +92,8 @@ test("post-assessment admissions count distinct known entries without inventing 
   assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-17") }), { date: "2026-10-17", labels: ["4 evidence entries added"] });
   assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-19") }), { date: "2026-10-19", labels: ["Editorial correction recorded"] });
   assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-10-24") }), { date: "2026-10-24", labels: ["2 evidence entries added"] });
-  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-11-07", labels: ["2 evidence entries added"] });
+  assert.deepEqual(getRecordUpdateSummary({ ...ai, mutationLog: ai.mutationLog.filter(m => m.date <= "2026-11-07") }), { date: "2026-11-07", labels: ["2 evidence entries added"] });
+  assert.deepEqual(getRecordUpdateSummary(ai), { date: "2026-11-28", labels: ["Evidence entry added"] });
   assert.ok(ai.assessments.at(-1).date < "2026-10-17");
 });
 
