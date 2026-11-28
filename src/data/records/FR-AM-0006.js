@@ -105,7 +105,49 @@ export const FR_AM_0006 = {
           locator: "Eagle Line Update",
         },
       ],
-    }
+    },
+    {
+      id: "IN-008",
+      qualifiedEvent: "Contouring a lithium–ceramic interface delays voiding during discharge",
+      description: "At 2 MPa and 30 °C, a contoured lithium–ceramic interface raised the discharge current density at which voids began from 0.2 to 2 mA/cm² under matched conditions. In a separate thin-electrolyte laboratory full-cell comparison at 2 MPa and 60 °C, the contoured cell cycled for 50 cycles at 6 mA/cm² discharge and 0.5 mA/cm² charge, while the flat-interface comparator failed on its second charge. The June 2026 preprint already reported the voiding threshold. The first appearance of the full-cell comparison remains unverified. Long service life and commercial manufacturing remain open.",
+      vectors: ["PARTIAL"],
+      date: "2026-11-23",
+      sources: [
+        {
+          citation: "Zhang, S. et al. (2026), Contouring mitigates voiding at the lithium/ceramic electrolyte interface on discharging solid-state batteries, Nature Energy.",
+          url: "https://www.nature.com/articles/s41560-026-02172-w",
+          doi: "10.1038/s41560-026-02172-w",
+          locator: "Discharge voiding threshold and Fig. 7 full-cell comparison. Journal version published 23 November 2026.",
+        },
+        {
+          citation: "Zhang, S. et al. (June 2026), Contouring mitigates voiding at the lithium/ceramic electrolyte interface on discharging solid-state batteries, ChemRxiv v1.",
+          url: "https://doi.org/10.26434/chemrxiv.15004316/v1",
+          doi: "10.26434/chemrxiv.15004316/v1",
+          locator: "Earlier version of the same study. Abstract reports the matched-pressure voiding threshold.",
+        },
+      ],
+    },
+    {
+      id: "IN-009",
+      qualifiedEvent: "A deformable organic cathode supports laboratory cycling at 1 MPa",
+      description: "A laboratory solid-state cell using a TAQ organic cathode retained 80.3% of its capacity after 100 cycles at 0.5C and 1 MPa operating stack pressure. The deformable cathode helps maintain contact during cycling. The active loading was 1.8 mg/cm² and fabrication used 375 MPa cold pressing. The November 2025 preprint already reported the headline low-pressure cycling result. Practical loading, cell-level energy density, service life and commercial manufacture remain open.",
+      vectors: ["PARTIAL"],
+      date: "2026-11-25",
+      sources: [
+        {
+          citation: "Chen, Z. et al. (2026), Low-pressure operation of all-solid-state batteries enabled by an organic electrode, Nature Communications.",
+          url: "https://www.nature.com/articles/s41467-026-79379-8",
+          doi: "10.1038/s41467-026-79379-8",
+          locator: "Fig. 4 for pressure-specific cycling and Methods for active loading and cold pressing. Journal version published 25 November 2026.",
+        },
+        {
+          citation: "Chen, Z. et al. (November 2025), Low-Pressure Operation of All-Solid-State Batteries Enabled by Low-Hardness Creep-Prone Electrodes, ChemRxiv.",
+          url: "https://doi.org/10.26434/chemrxiv-2025-0fvvk",
+          doi: "10.26434/chemrxiv-2025-0fvvk",
+          locator: "Earlier version of the same study. Abstract reports the 1 MPa cycling and 80.3% capacity retention result.",
+        },
+      ],
+    },
   ],
 
   assessments: [
@@ -212,6 +254,8 @@ export const FR_AM_0006 = {
   ],
 
   mutationLog: [
+    { id: "M-023", date: "2026-11-28", field: "instance_appended", from: "IN-008", to: "IN-009", note: "Normal Record Review of flag 2026-11-28-03. Operator-authorised instance-only admission of Chen et al. as partial evidence on low operating pressure in a laboratory cell. Scout publication-window hold retained. AS-005 remains ESCALATING / VS-02." },
+    { id: "M-022", date: "2026-11-28", field: "instance_appended", from: "IN-007", to: "IN-008", note: "Normal Record Review of flag 2026-11-28-02. Operator-authorised instance-only admission of Zhang et al. as partial evidence on discharge voiding and laboratory full-cell performance. Scout publication-window hold retained. AS-005 remains ESCALATING / VS-02." },
     { id: "M-021", date: "2026-11-20", field: "provenance_review", from: "LPR-001-D51", to: "LPR-001-D83", note: "Third-cycle bounded provenance review of IN-001–IN-007. Seven instances examined against accessible primary institutional, company, regulator and SEC evidence, with structured attribution added only for IN-002, IN-004 and IN-006. IN-001 and IN-005 remain bounded background/industrial-activity summaries without invented precise source attribution; IN-003 is supported by dated company roadmap and manufacturing evidence; IN-007 SEC filings checked. No confirmed material discrepancy or newly admitted evidence. Some original full-text and broad background chains remain inaccessible or nonspecific. ESCALATING / VS-02 unchanged; outcome verified / not_required." },
     {"id":"M-020","date":"2026-10-24","field":"editorial_correction","from":"ATTRACTOR wording assigned a governed institutional consequence directly to the future evidence event","to":"ATTRACTOR wording preserves the evidence route while reserving State, Stage, verdict or reopening consequences to governed assessment","note":"Operator-authorised A4 institutional-authority consistency repair. Correct AT-001 explanatory wording only; no new evidence, scientific threshold, evidence target, Pressure State, Verification Stage, assessment or ATTRACTOR identity changed. This repair is independent of the closed ATTRACTOR taxonomy v2 FAIL. Receipt: docs/reviews/A4-INSTITUTIONAL-AUTHORITY-CONSISTENCY-REPAIR-2026-10-24.json."},
     {"id":"M-019","date":"2026-10-19","field":"reference_corrected","from":"Generic historical assessment targets retained without structured links","to":"Reviewed associations: M-009 → AS-002; M-013 → AS-003; M-015 → AS-004","note":"Operator-approved bounded metadata correction. Add source-backed associations in assessmentMutationReferences.js; preserve all original mutations, dates, assessments and current stage/state. This is not a new assessment or evidence admission. Receipt: docs/reviews/LEGACY-ASSESSMENT-REFERENCE-CORRECTION-2026-10-19.md."},
