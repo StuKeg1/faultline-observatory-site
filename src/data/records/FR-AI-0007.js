@@ -279,6 +279,21 @@ export const FR_AI_0007 = {
         }
       ]
     },
+    {
+      id: "IN-019",
+      qualifiedEvent: "REE — agents improve supplied research solutions on held-out tests",
+      description: "Zhou et al. evaluate AI agents on 100 supplied computational research tasks across 23 domains. Each run starts from a supplied solution and has up to 12 hours. On held-out tests, Claude Opus 5.5 and GPT-6.1 Sol score above the study's expert reference on 86 and 81 tasks respectively, with mean scores of 39.6 and 38.2 versus 24.4 for the expert solutions. The authors built and scored the benchmark, and each agent-task result comes from a single run. The results support bounded research engineering and leave autonomous question selection, experimental validation and independently verified novelty untested.",
+      vectors: ["PARTIAL"],
+      date: "2026-11-25",
+      sources: [
+        {
+          citation: "Zhou, Z. et al. (2026), REE: A Scientific Research Entrance Exam for AI Agents, arXiv:2611.34646v1.",
+          url: "https://arxiv.org/html/2611.34646v1",
+          doi: "10.48550/arXiv.2611.34646",
+          locator: "Benchmark design and held-out evaluation; Table 3 and Figure 5; limitations. Primary preprint by the benchmark developers.",
+        },
+      ],
+    },
   ],
 
   assessments: [
@@ -365,6 +380,14 @@ export const FR_AI_0007 = {
   ],
 
   mutationLog: [
+    {
+      id: "M-031",
+      date: "2026-11-28",
+      field: "instance_appended",
+      from: "IN-018",
+      to: "IN-019",
+      note: "Operator-approved Scout flag 2026-11-28-01 implemented after explicit authorisation. INSTANCE only. AS-004 remains FRAGMENTING / VS-03. Receipt: docs/reviews/FR-AI-0007-SCOUT-2026-11-28.json.",
+    },
     {
       "id": "M-030",
       "date": "2026-11-07",
