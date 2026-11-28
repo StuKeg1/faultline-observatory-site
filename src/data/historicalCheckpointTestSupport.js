@@ -132,6 +132,16 @@ function withoutD85(record) {
   restored.mutationLog.shift();
   return restored;
 }
+// Strip the two later evidence admissions before reconstructing D83.
+function withoutBatteryEvidenceAdmissions(record) {
+  if (record.id !== "FR-AM-0006" || record.mutationLog[0]?.id !== "M-023") return record;
+  assert.deepEqual(record.mutationLog.slice(0, 2).map(({ id, field, to }) => [id, field, to]), [
+    ["M-023", "instance_appended", "IN-009"],
+    ["M-022", "instance_appended", "IN-008"],
+  ]);
+  assert.deepEqual(record.instances.slice(-2).map(({ id }) => id), ["IN-008", "IN-009"]);
+  return { ...record, instances: record.instances.slice(0, -2), mutationLog: record.mutationLog.slice(2) };
+}
 // D83 is a later provenance-only review; reconstruct its exact predecessor for
 // frozen October hashes. This helper affects tests only, not canonical records.
 function withoutD83(record) {
@@ -179,7 +189,7 @@ function withoutMutationOrderCleanup(record) {
 
 function atReceipt(record) {
   return withoutMutationOrderCleanup(
-    withoutFipA03StageCorrection(withoutD83(withoutD85(withoutD86(withoutD87(withoutD88(withoutD89(withoutD90(withoutD91(record)))))))))
+    withoutFipA03StageCorrection(withoutD83(withoutBatteryEvidenceAdmissions(withoutD85(withoutD86(withoutD87(withoutD88(withoutD89(withoutD90(withoutD91(record))))))))))
   );
 }
 
